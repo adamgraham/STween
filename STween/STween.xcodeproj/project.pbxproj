@@ -1,0 +1,624 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9D0869A11D5FBAB300301C48 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0869A01D5FBAB300301C48 /* Functions.swift */; };
+		9D0F173B1D60E51000D0D737 /* EaseMappings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0F173A1D60E51000D0D737 /* EaseMappings.swift */; };
+		9D1D1E3A1D31CB6E00BF01E0 /* Ease.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1D1E391D31CB6E00BF01E0 /* Ease.swift */; };
+		9D1D1E4C1D31F46200BF01E0 /* RGBA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1D1E4B1D31F46200BF01E0 /* RGBA.swift */; };
+		9D525EE31D222676009F4C23 /* Deserializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D525EE21D222676009F4C23 /* Deserializable.swift */; };
+		9D604E431D16A10F009398A6 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D604E421D16A10F009398A6 /* Defaults.swift */; };
+		9D604E591D17BDC7009398A6 /* UIColor+RGBA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D604E581D17BDC7009398A6 /* UIColor+RGBA.swift */; };
+		9D656F3A1D33397D00693D0F /* DoubleConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D656F391D33397D00693D0F /* DoubleConvertible.swift */; };
+		9D6840151D2F2F23009F6255 /* InterpolationValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6840141D2F2F23009F6255 /* InterpolationValue.swift */; };
+		9D6840171D2F39AF009F6255 /* InterpolationMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6840161D2F39AF009F6255 /* InterpolationMethod.swift */; };
+		9D77AC3A1D13B8D70033F88E /* STween.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D77AC391D13B8D70033F88E /* STween.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9D77AC521D13B9E40033F88E /* EaseAlgorithms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D77AC501D13B9E40033F88E /* EaseAlgorithms.swift */; };
+		9D77AC561D13B9EC0033F88E /* EaseClassification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D77AC541D13B9EC0033F88E /* EaseClassification.swift */; };
+		9D77AC5A1D13B9F30033F88E /* EaseRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D77AC581D13B9F30033F88E /* EaseRepresentable.swift */; };
+		9D77AC641D13BB150033F88E /* UIView+Tweening.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D77AC631D13BB150033F88E /* UIView+Tweening.swift */; };
+		9D77AC671D13BEBA0033F88E /* FrameRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D77AC661D13BEBA0033F88E /* FrameRate.swift */; };
+		9D77AC6F1D13C6770033F88E /* Callback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D77AC6E1D13C6770033F88E /* Callback.swift */; };
+		9D9220831D2C91980045C293 /* Serializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9220821D2C91980045C293 /* Serializable.swift */; };
+		9D9220851D2C91C10045C293 /* SerializationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9220841D2C91C10045C293 /* SerializationError.swift */; };
+		9D9220871D2C931E0045C293 /* SerializationValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9220861D2C931E0045C293 /* SerializationValue.swift */; };
+		9D9220951D2CB1C00045C293 /* Interpolatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9220941D2CB1C00045C293 /* Interpolatable.swift */; };
+		9D9220971D2CB5410045C293 /* InterpolationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9220961D2CB5410045C293 /* InterpolationError.swift */; };
+		9DCD64FF1D1687DD00C726E7 /* STween.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D77AC361D13B8D70033F88E /* STween.framework */; };
+		9DE1D2451D5EEA8D000071A0 /* TweenAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE1D23F1D5EEA8D000071A0 /* TweenAnimation.swift */; };
+		9DE1D2461D5EEA8D000071A0 /* Tweenable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE1D2401D5EEA8D000071A0 /* Tweenable.swift */; };
+		9DE1D2471D5EEA8D000071A0 /* TweenableProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE1D2411D5EEA8D000071A0 /* TweenableProperty.swift */; };
+		9DE1D2481D5EEA8D000071A0 /* Tweener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE1D2421D5EEA8D000071A0 /* Tweener.swift */; };
+		9DE1D24A1D5EEA8D000071A0 /* TweenTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE1D2441D5EEA8D000071A0 /* TweenTimer.swift */; };
+		9DE1D24C1D5EEAE5000071A0 /* TweeningError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE1D24B1D5EEAE5000071A0 /* TweeningError.swift */; };
+		9DE744181D73A0910082D15E /* NSLayoutConstraint+Tweening.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE744171D73A0910082D15E /* NSLayoutConstraint+Tweening.swift */; };
+		9DEA4F861D7211A900DB361A /* Tween.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEA4F851D7211A900DB361A /* Tween.swift */; };
+		9DEE2F911D18CD7D008133DD /* EaseCurve.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEE2F901D18CD7D008133DD /* EaseCurve.swift */; };
+		9DEE2F931D18D09E008133DD /* Tween+Chaining.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEE2F921D18D09E008133DD /* Tween+Chaining.swift */; };
+		9DF2B24D1D26F025002F820A /* DeserializationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF2B24C1D26F025002F820A /* DeserializationError.swift */; };
+		9DFC2BB61D755548004CB38B /* TweenStateChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFC2BB51D755548004CB38B /* TweenStateChange.swift */; };
+		9DFFCFFC1D5FB5960028C85A /* TweenState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFFCFFB1D5FB5960028C85A /* TweenState.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9DCD65001D1687DD00C726E7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9D77AC2D1D13B8D70033F88E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9D77AC351D13B8D70033F88E;
+			remoteInfo = STween;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		9D0869A01D5FBAB300301C48 /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
+		9D0F173A1D60E51000D0D737 /* EaseMappings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EaseMappings.swift; sourceTree = "<group>"; };
+		9D1D1E2A1D31C5AD00BF01E0 /* STweenTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "STweenTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		9D1D1E391D31CB6E00BF01E0 /* Ease.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Ease.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		9D1D1E4B1D31F46200BF01E0 /* RGBA.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RGBA.swift; sourceTree = "<group>"; };
+		9D525EE21D222676009F4C23 /* Deserializable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deserializable.swift; sourceTree = "<group>"; };
+		9D604E421D16A10F009398A6 /* Defaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Defaults.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		9D604E581D17BDC7009398A6 /* UIColor+RGBA.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+RGBA.swift"; sourceTree = "<group>"; };
+		9D656F391D33397D00693D0F /* DoubleConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubleConvertible.swift; sourceTree = "<group>"; };
+		9D6840141D2F2F23009F6255 /* InterpolationValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = InterpolationValue.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		9D6840161D2F39AF009F6255 /* InterpolationMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = InterpolationMethod.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		9D77AC361D13B8D70033F88E /* STween.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = STween.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D77AC391D13B8D70033F88E /* STween.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STween.h; sourceTree = "<group>"; };
+		9D77AC3B1D13B8D70033F88E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9D77AC501D13B9E40033F88E /* EaseAlgorithms.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = EaseAlgorithms.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		9D77AC541D13B9EC0033F88E /* EaseClassification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = EaseClassification.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		9D77AC581D13B9F30033F88E /* EaseRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = EaseRepresentable.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		9D77AC631D13BB150033F88E /* UIView+Tweening.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "UIView+Tweening.swift"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		9D77AC661D13BEBA0033F88E /* FrameRate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrameRate.swift; sourceTree = "<group>"; };
+		9D77AC6E1D13C6770033F88E /* Callback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Callback.swift; sourceTree = "<group>"; };
+		9D9220821D2C91980045C293 /* Serializable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Serializable.swift; sourceTree = "<group>"; };
+		9D9220841D2C91C10045C293 /* SerializationError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SerializationError.swift; sourceTree = "<group>"; };
+		9D9220861D2C931E0045C293 /* SerializationValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SerializationValue.swift; sourceTree = "<group>"; };
+		9D9220941D2CB1C00045C293 /* Interpolatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Interpolatable.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		9D9220961D2CB5410045C293 /* InterpolationError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = InterpolationError.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		9DCD64FA1D1687DD00C726E7 /* STweenTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = STweenTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9DCD64FE1D1687DD00C726E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9DE1D23F1D5EEA8D000071A0 /* TweenAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = TweenAnimation.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		9DE1D2401D5EEA8D000071A0 /* Tweenable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Tweenable.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		9DE1D2411D5EEA8D000071A0 /* TweenableProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = TweenableProperty.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		9DE1D2421D5EEA8D000071A0 /* Tweener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweener.swift; sourceTree = "<group>"; };
+		9DE1D2441D5EEA8D000071A0 /* TweenTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweenTimer.swift; sourceTree = "<group>"; };
+		9DE1D24B1D5EEAE5000071A0 /* TweeningError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweeningError.swift; sourceTree = "<group>"; };
+		9DE744171D73A0910082D15E /* NSLayoutConstraint+Tweening.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "NSLayoutConstraint+Tweening.swift"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		9DEA4F851D7211A900DB361A /* Tween.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tween.swift; sourceTree = "<group>"; };
+		9DEE2F901D18CD7D008133DD /* EaseCurve.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = EaseCurve.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		9DEE2F921D18D09E008133DD /* Tween+Chaining.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "Tween+Chaining.swift"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		9DF2B24C1D26F025002F820A /* DeserializationError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeserializationError.swift; sourceTree = "<group>"; };
+		9DFC2BB51D755548004CB38B /* TweenStateChange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweenStateChange.swift; sourceTree = "<group>"; };
+		9DFFCFFB1D5FB5960028C85A /* TweenState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweenState.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9D77AC321D13B8D70033F88E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9DCD64F71D1687DD00C726E7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9DCD64FF1D1687DD00C726E7 /* STween.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9D1D1E4D1D31FFE300BF01E0 /* Color */ = {
+			isa = PBXGroup;
+			children = (
+				9D1D1E4B1D31F46200BF01E0 /* RGBA.swift */,
+				9D604E581D17BDC7009398A6 /* UIColor+RGBA.swift */,
+			);
+			path = Color;
+			sourceTree = "<group>";
+		};
+		9D656F381D33394500693D0F /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				9D656F391D33397D00693D0F /* DoubleConvertible.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		9D6840181D2F4842009F6255 /* Interpolation */ = {
+			isa = PBXGroup;
+			children = (
+				9D9220941D2CB1C00045C293 /* Interpolatable.swift */,
+				9D9220961D2CB5410045C293 /* InterpolationError.swift */,
+				9D6840161D2F39AF009F6255 /* InterpolationMethod.swift */,
+				9D6840141D2F2F23009F6255 /* InterpolationValue.swift */,
+			);
+			path = Interpolation;
+			sourceTree = "<group>";
+		};
+		9D77AC2C1D13B8D70033F88E = {
+			isa = PBXGroup;
+			children = (
+				9D77AC381D13B8D70033F88E /* STween */,
+				9DCD64FB1D1687DD00C726E7 /* STweenTests */,
+				9D77AC371D13B8D70033F88E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9D77AC371D13B8D70033F88E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9D77AC361D13B8D70033F88E /* STween.framework */,
+				9DCD64FA1D1687DD00C726E7 /* STweenTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9D77AC381D13B8D70033F88E /* STween */ = {
+			isa = PBXGroup;
+			children = (
+				9DF2B24F1D26F5A2002F820A /* Core */,
+				9D77AC471D13B9210033F88E /* Easing */,
+				9D6840181D2F4842009F6255 /* Interpolation */,
+				9DF2B24E1D26F03B002F820A /* Serialization */,
+				9D77AC481D13B9270033F88E /* Tweening */,
+				9D77AC651D13BE830033F88E /* Utils */,
+				9D77AC391D13B8D70033F88E /* STween.h */,
+				9D77AC3B1D13B8D70033F88E /* Info.plist */,
+			);
+			path = STween;
+			sourceTree = "<group>";
+		};
+		9D77AC471D13B9210033F88E /* Easing */ = {
+			isa = PBXGroup;
+			children = (
+				9D1D1E391D31CB6E00BF01E0 /* Ease.swift */,
+				9D77AC501D13B9E40033F88E /* EaseAlgorithms.swift */,
+				9D77AC541D13B9EC0033F88E /* EaseClassification.swift */,
+				9DEE2F901D18CD7D008133DD /* EaseCurve.swift */,
+				9D0F173A1D60E51000D0D737 /* EaseMappings.swift */,
+				9D77AC581D13B9F30033F88E /* EaseRepresentable.swift */,
+			);
+			path = Easing;
+			sourceTree = "<group>";
+		};
+		9D77AC481D13B9270033F88E /* Tweening */ = {
+			isa = PBXGroup;
+			children = (
+				9D77AC4D1D13B95E0033F88E /* Extensions */,
+				9DEA4F851D7211A900DB361A /* Tween.swift */,
+				9DE1D23F1D5EEA8D000071A0 /* TweenAnimation.swift */,
+				9DE1D2401D5EEA8D000071A0 /* Tweenable.swift */,
+				9DE1D2411D5EEA8D000071A0 /* TweenableProperty.swift */,
+				9DE1D2421D5EEA8D000071A0 /* Tweener.swift */,
+				9DE1D24B1D5EEAE5000071A0 /* TweeningError.swift */,
+				9DFFCFFB1D5FB5960028C85A /* TweenState.swift */,
+				9DFC2BB51D755548004CB38B /* TweenStateChange.swift */,
+				9DE1D2441D5EEA8D000071A0 /* TweenTimer.swift */,
+			);
+			path = Tweening;
+			sourceTree = "<group>";
+		};
+		9D77AC4D1D13B95E0033F88E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				9DEE2F921D18D09E008133DD /* Tween+Chaining.swift */,
+				9DE744171D73A0910082D15E /* NSLayoutConstraint+Tweening.swift */,
+				9D77AC631D13BB150033F88E /* UIView+Tweening.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		9D77AC651D13BE830033F88E /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				9D1D1E4D1D31FFE300BF01E0 /* Color */,
+				9D656F381D33394500693D0F /* Protocols */,
+				9D0869A01D5FBAB300301C48 /* Functions.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		9DCD64FB1D1687DD00C726E7 /* STweenTests */ = {
+			isa = PBXGroup;
+			children = (
+				9D1D1E2A1D31C5AD00BF01E0 /* STweenTests-Bridging-Header.h */,
+				9DCD64FE1D1687DD00C726E7 /* Info.plist */,
+			);
+			path = STweenTests;
+			sourceTree = "<group>";
+		};
+		9DF2B24E1D26F03B002F820A /* Serialization */ = {
+			isa = PBXGroup;
+			children = (
+				9D525EE21D222676009F4C23 /* Deserializable.swift */,
+				9DF2B24C1D26F025002F820A /* DeserializationError.swift */,
+				9D9220821D2C91980045C293 /* Serializable.swift */,
+				9D9220841D2C91C10045C293 /* SerializationError.swift */,
+				9D9220861D2C931E0045C293 /* SerializationValue.swift */,
+			);
+			path = Serialization;
+			sourceTree = "<group>";
+		};
+		9DF2B24F1D26F5A2002F820A /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				9D77AC6E1D13C6770033F88E /* Callback.swift */,
+				9D604E421D16A10F009398A6 /* Defaults.swift */,
+				9D77AC661D13BEBA0033F88E /* FrameRate.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		9D77AC331D13B8D70033F88E /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9D77AC3A1D13B8D70033F88E /* STween.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		9D77AC351D13B8D70033F88E /* STween */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9D77AC3E1D13B8D70033F88E /* Build configuration list for PBXNativeTarget "STween" */;
+			buildPhases = (
+				9D77AC311D13B8D70033F88E /* Sources */,
+				9D77AC321D13B8D70033F88E /* Frameworks */,
+				9D77AC331D13B8D70033F88E /* Headers */,
+				9D77AC341D13B8D70033F88E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = STween;
+			productName = STween;
+			productReference = 9D77AC361D13B8D70033F88E /* STween.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		9DCD64F91D1687DD00C726E7 /* STweenTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9DCD65021D1687DD00C726E7 /* Build configuration list for PBXNativeTarget "STweenTests" */;
+			buildPhases = (
+				9DCD64F61D1687DD00C726E7 /* Sources */,
+				9DCD64F71D1687DD00C726E7 /* Frameworks */,
+				9DCD64F81D1687DD00C726E7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9DCD65011D1687DD00C726E7 /* PBXTargetDependency */,
+			);
+			name = STweenTests;
+			productName = STweenTests;
+			productReference = 9DCD64FA1D1687DD00C726E7 /* STweenTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9D77AC2D1D13B8D70033F88E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0800;
+				ORGANIZATIONNAME = "Adam Graham";
+				TargetAttributes = {
+					9D77AC351D13B8D70033F88E = {
+						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
+					};
+					9DCD64F91D1687DD00C726E7 = {
+						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
+					};
+				};
+			};
+			buildConfigurationList = 9D77AC301D13B8D70033F88E /* Build configuration list for PBXProject "STween" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 9D77AC2C1D13B8D70033F88E;
+			productRefGroup = 9D77AC371D13B8D70033F88E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9D77AC351D13B8D70033F88E /* STween */,
+				9DCD64F91D1687DD00C726E7 /* STweenTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9D77AC341D13B8D70033F88E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9DCD64F81D1687DD00C726E7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9D77AC311D13B8D70033F88E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9D1D1E3A1D31CB6E00BF01E0 /* Ease.swift in Sources */,
+				9D0F173B1D60E51000D0D737 /* EaseMappings.swift in Sources */,
+				9D9220831D2C91980045C293 /* Serializable.swift in Sources */,
+				9D6840151D2F2F23009F6255 /* InterpolationValue.swift in Sources */,
+				9DE744181D73A0910082D15E /* NSLayoutConstraint+Tweening.swift in Sources */,
+				9DF2B24D1D26F025002F820A /* DeserializationError.swift in Sources */,
+				9DEE2F911D18CD7D008133DD /* EaseCurve.swift in Sources */,
+				9D604E431D16A10F009398A6 /* Defaults.swift in Sources */,
+				9DEA4F861D7211A900DB361A /* Tween.swift in Sources */,
+				9D9220971D2CB5410045C293 /* InterpolationError.swift in Sources */,
+				9D9220951D2CB1C00045C293 /* Interpolatable.swift in Sources */,
+				9D77AC521D13B9E40033F88E /* EaseAlgorithms.swift in Sources */,
+				9D0869A11D5FBAB300301C48 /* Functions.swift in Sources */,
+				9DE1D2471D5EEA8D000071A0 /* TweenableProperty.swift in Sources */,
+				9DE1D24A1D5EEA8D000071A0 /* TweenTimer.swift in Sources */,
+				9DE1D2481D5EEA8D000071A0 /* Tweener.swift in Sources */,
+				9D6840171D2F39AF009F6255 /* InterpolationMethod.swift in Sources */,
+				9D1D1E4C1D31F46200BF01E0 /* RGBA.swift in Sources */,
+				9DFFCFFC1D5FB5960028C85A /* TweenState.swift in Sources */,
+				9DE1D24C1D5EEAE5000071A0 /* TweeningError.swift in Sources */,
+				9D77AC641D13BB150033F88E /* UIView+Tweening.swift in Sources */,
+				9D77AC671D13BEBA0033F88E /* FrameRate.swift in Sources */,
+				9D604E591D17BDC7009398A6 /* UIColor+RGBA.swift in Sources */,
+				9D525EE31D222676009F4C23 /* Deserializable.swift in Sources */,
+				9D77AC5A1D13B9F30033F88E /* EaseRepresentable.swift in Sources */,
+				9DFC2BB61D755548004CB38B /* TweenStateChange.swift in Sources */,
+				9D77AC6F1D13C6770033F88E /* Callback.swift in Sources */,
+				9DEE2F931D18D09E008133DD /* Tween+Chaining.swift in Sources */,
+				9D9220851D2C91C10045C293 /* SerializationError.swift in Sources */,
+				9DE1D2451D5EEA8D000071A0 /* TweenAnimation.swift in Sources */,
+				9D9220871D2C931E0045C293 /* SerializationValue.swift in Sources */,
+				9DE1D2461D5EEA8D000071A0 /* Tweenable.swift in Sources */,
+				9D656F3A1D33397D00693D0F /* DoubleConvertible.swift in Sources */,
+				9D77AC561D13B9EC0033F88E /* EaseClassification.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9DCD64F61D1687DD00C726E7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9DCD65011D1687DD00C726E7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9D77AC351D13B8D70033F88E /* STween */;
+			targetProxy = 9DCD65001D1687DD00C726E7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		9D77AC3C1D13B8D70033F88E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		9D77AC3D1D13B8D70033F88E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				ONLY_ACTIVE_ARCH = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		9D77AC3F1D13B8D70033F88E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = STween/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.adamgraham.STween.STween;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		9D77AC401D13B8D70033F88E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = STween/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.adamgraham.STween.STween;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		9DCD65031D1687DD00C726E7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				INFOPLIST_FILE = STweenTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.adamgraham.STween.STweenTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "STweenTests/STweenTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		9DCD65041D1687DD00C726E7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				INFOPLIST_FILE = STweenTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.adamgraham.STween.STweenTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "STweenTests/STweenTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9D77AC301D13B8D70033F88E /* Build configuration list for PBXProject "STween" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9D77AC3C1D13B8D70033F88E /* Debug */,
+				9D77AC3D1D13B8D70033F88E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9D77AC3E1D13B8D70033F88E /* Build configuration list for PBXNativeTarget "STween" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9D77AC3F1D13B8D70033F88E /* Debug */,
+				9D77AC401D13B8D70033F88E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9DCD65021D1687DD00C726E7 /* Build configuration list for PBXNativeTarget "STweenTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9DCD65031D1687DD00C726E7 /* Debug */,
+				9DCD65041D1687DD00C726E7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9D77AC2D1D13B8D70033F88E /* Project object */;
+}
