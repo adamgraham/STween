@@ -63,18 +63,6 @@ public protocol Tween: class, EaseRepresentable {
      */
     @discardableResult func invoke(_ stateChange: TweenStateChange) -> Swift.Bool
 
-    /**
-     A method to invoke a change of state on `self` with an optional callback.
-
-     - Parameters:
-        - stateChange: The change of state to be invoked on `self`.
-        - completion: An optional callback invoked if a change of state 
-                      occurs successfully.
-     
-     - Returns: `true` if the state of `self` is changed successfully.
-     */
-    @discardableResult func invoke(_ stateChange: TweenStateChange, completion: Callback?) -> Swift.Bool
-
     // MARK: Callback Methods
 
     /**

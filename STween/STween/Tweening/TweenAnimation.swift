@@ -84,13 +84,9 @@ extension TweenAnimation {
 
      **Note:** `self` can only be updated if in an active state.
      
-     - Parameters:
-        - completion: An optional callback invoked if `self` is updated
-                      successfully.
-     
      - Returns: `true` if `self` is updated successfully.
      */
-    @discardableResult internal func update(_ completion: Callback? = nil) -> Swift.Bool {
+    @discardableResult internal func update() -> Swift.Bool {
         guard self.state.canUpdate else {
             return false
         }
@@ -102,8 +98,6 @@ extension TweenAnimation {
             callback(invoke: .update)
             complete()
         }
-
-        completion?()
 
         return true
     }
@@ -174,14 +168,10 @@ extension TweenAnimation {
      A method to set `self` as active, starting from its beginning values.
 
      **Note:** `self` can only be started if in a new or inactive state.
-
-     - Parameters:
-        - completion: An optional callback invoked if `self` is started
-                      successfully.
      
      - Returns: `true` if `self` is started successfully.
      */
-    @discardableResult internal func start(_ completion: Callback? = nil) -> Swift.Bool {
+    @discardableResult internal func start() -> Swift.Bool {
         guard self.state.canStart else {
             return false
         }
@@ -199,9 +189,6 @@ extension TweenAnimation {
         // Callback event
         callback(invoke: .start)
 
-        // Completion
-        completion?()
-
         return true
     }
 
@@ -209,14 +196,10 @@ extension TweenAnimation {
      A method to set `self` as inactive, resetting to its beginning values.
 
      **Note:** `self` can only be stopped if in an active or paused state.
-
-     - Parameters:
-        - completion: An optional callback invoked if `self` is stopped
-                      successfully.
      
      - Returns: `true` if `self` is stopped successfully.
      */
-    @discardableResult internal func stop(_ completion: Callback? = nil) -> Swift.Bool {
+    @discardableResult internal func stop() -> Swift.Bool {
         guard self.state.canStop else {
             return false
         }
@@ -231,9 +214,6 @@ extension TweenAnimation {
         // Callback event
         callback(invoke: .stop)
 
-        // Completion
-        completion?()
-
         return true
     }
 
@@ -243,14 +223,10 @@ extension TweenAnimation {
 
      **Note:** `self` can only be restarted if in an active, paused, or completed 
      state.
-
-     - Parameters:
-        - completion: An optional callback invoked if `self` is restarted
-                      successfully.
      
      - Returns: `true` if `self` is restarted successfully.
      */
-    @discardableResult internal func restart(_ completion: Callback? = nil) -> Swift.Bool {
+    @discardableResult internal func restart() -> Swift.Bool {
         guard self.state.canRestart else {
             return false
         }
@@ -262,9 +238,6 @@ extension TweenAnimation {
 
         start()
 
-        // Completion
-        completion?()
-
         return true
     }
 
@@ -272,14 +245,10 @@ extension TweenAnimation {
      A method to set `self` as paused, maintaining its current values.
 
      **Note:** `self` can only be paused if in an active state.
-
-     - Parameters:
-        - completion: An optional callback invoked if `self` is paused
-                      successfully.
      
      - Returns: `true` if `self` is paused successfully.
      */
-    @discardableResult internal func pause(_ completion: Callback? = nil) -> Swift.Bool {
+    @discardableResult internal func pause() -> Swift.Bool {
         guard self.state.canPause else {
             return false
         }
@@ -293,9 +262,6 @@ extension TweenAnimation {
         // Callback event
         callback(invoke: .pause)
 
-        // Completion
-        completion?()
-
         return true
     }
 
@@ -304,14 +270,10 @@ extension TweenAnimation {
      paused.
 
      **Note:** `self` can only be resumed if in a paused state.
-
-     - Parameters:
-        - completion: An optional callback invoked if `self` is resumed
-                      successfully.
      
      - Returns: `true` if `self` is resumed successfully.
      */
-    @discardableResult internal func resume(_ completion: Callback? = nil) -> Swift.Bool {
+    @discardableResult internal func resume() -> Swift.Bool {
         guard self.state.canResume else {
             return false
         }
@@ -325,9 +287,6 @@ extension TweenAnimation {
         // Callback event
         callback(invoke: .resume)
 
-        // Completion
-        completion?()
-
         return true
     }
 
@@ -336,14 +295,10 @@ extension TweenAnimation {
      will be killed if `Defaults.autoKillCompletedTweens` is `true`.
 
      **Note:** `self` can only be completed if in an active or paused state.
-
-     - Parameters:
-        - completion: An optional callback invoked if `self` is completed
-                      successfully.
      
      - Returns: `true` if `self` is completed successfully.
      */
-    @discardableResult internal func complete(_ completion: Callback? = nil) -> Swift.Bool {
+    @discardableResult internal func complete() -> Swift.Bool {
         guard self.state.canComplete else {
             return false
         }
@@ -366,9 +321,6 @@ extension TweenAnimation {
             kill()
         }
 
-        // Completion
-        completion?()
-
         return true
     }
 
@@ -377,14 +329,10 @@ extension TweenAnimation {
      remove it from `Tweener`'s list of tracked tweens.
 
      **Note:** `self` can only be killed if *not* already in a killed state.
-
-     - Parameters:
-        - completion: An optional callback invoked if `self` is killed
-                      successfully.
      
      - Returns: `true` if `self` is killed successfully.
      */
-    @discardableResult internal func kill(_ completion: Callback? = nil) -> Swift.Bool {
+    @discardableResult internal func kill() -> Swift.Bool {
         guard self.state.canKill else {
             return false
         }
@@ -401,9 +349,6 @@ extension TweenAnimation {
         // Callback event
         callback(invoke: .kill)
 
-        // Completion
-        completion?()
-
         return true
     }
 
@@ -413,14 +358,10 @@ extension TweenAnimation {
      the only way to revive a killed `self`.
 
      **Note:** `self` can only be reset if *not* already in a new state.
-
-     - Parameters:
-        - completion: An optional callback invoked if `self` is reset
-                      successfully.
      
      - Returns: `true` if `self` is reset successfully.
      */
-    @discardableResult internal func reset(_ completion: Callback? = nil) -> Swift.Bool {
+    @discardableResult internal func reset() -> Swift.Bool {
         guard self.state.canReset else {
             return false
         }
@@ -444,9 +385,6 @@ extension TweenAnimation {
         // Callback event
         callback(invoke: .reset)
         self.callbacks.removeAll()
-        
-        // Completion
-        completion?()
 
         return true
     }
@@ -457,30 +395,26 @@ extension TweenAnimation {
 
 extension TweenAnimation {
 
-    internal func invoke(_ stateChange: TweenStateChange) -> Swift.Bool {
-        return invoke(stateChange, completion: nil)
-    }
-
-    internal func invoke(_ stateChange: TweenStateChange, completion: Callback? = nil) -> Swift.Bool {
+    @discardableResult internal func invoke(_ stateChange: TweenStateChange) -> Swift.Bool {
         switch stateChange {
         case .start:
-            return start(completion)
+            return start()
         case .stop:
-            return stop(completion)
+            return stop()
         case .restart:
-            return restart(completion)
+            return restart()
         case .pause:
-            return pause(completion)
+            return pause()
         case .resume:
-            return resume(completion)
+            return resume()
         case .complete:
-            return complete(completion)
+            return complete()
         case .kill:
-            return kill(completion)
+            return kill()
         case .reset:
-            return reset(completion)
+            return reset()
         case .update:
-            return update(completion)
+            return update()
         }
     }
 
