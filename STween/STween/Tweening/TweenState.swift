@@ -30,7 +30,7 @@ extension TweenState {
     
     /**
      The ability for a `Tween` to be started, based on the state of `self`.
-     Will return `true` if `self` is `new` or `inactive`.
+     Returns `true` if `self` is `new` or `inactive`.
      */
     internal var canStart: Swift.Bool {
         switch self {
@@ -43,7 +43,7 @@ extension TweenState {
 
     /**
      The ability for a `Tween` to be stopped, based on the state of `self`.
-     Will return `true` if `self` is `active` or `paused`.
+     Returns `true` if `self` is `active` or `paused`.
      */
     internal var canStop: Swift.Bool {
         switch self {
@@ -56,7 +56,7 @@ extension TweenState {
 
     /**
      The ability for a `Tween` to be restarted, based on the state of `self`.
-     Will return `true` if `self` is `active`, `paused`, or `completed`.
+     Returns `true` if `self` is `active`, `paused`, or `completed`.
      */
     internal var canRestart: Swift.Bool {
         switch self {
@@ -69,7 +69,7 @@ extension TweenState {
 
     /**
      The ability for a `Tween` to be paused, based on the state of `self`.
-     Will only return `true` if `self` is `active`.
+     Returns `true` only if `self` is `active`.
      */
     internal var canPause: Swift.Bool {
         switch self {
@@ -82,7 +82,7 @@ extension TweenState {
 
     /**
      The ability for a `Tween` to be resumed, based on the state of `self`.
-     Will only return `true` if `self` is `paused`.
+     Returns `true` only if `self` is `paused`.
      */
     internal var canResume: Swift.Bool {
         switch self {
@@ -95,7 +95,7 @@ extension TweenState {
 
     /**
      The ability for a `Tween` to be completed, based on the state of `self`.
-     Will return `true` if `self` is `active` or `paused`.
+     Returns `true` if `self` is `active` or `paused`.
      */
     internal var canComplete: Swift.Bool {
         switch self {
@@ -108,7 +108,7 @@ extension TweenState {
 
     /**
      The ability for a `Tween` to be killed, based on the state of `self`.
-     Will always return `true` if `self` is *not* already `killed`.
+     Always returns `true` if `self` is *not* already `killed`.
      */
     internal var canKill: Swift.Bool {
         switch self {
@@ -121,7 +121,7 @@ extension TweenState {
 
     /**
      The ability for a `Tween` to be reset, based on the state of `self`.
-     Will always return `true` if `self` is *not* already `new`.
+     Always returns `true` if `self` is *not* already `new`.
      */
     internal var canReset: Swift.Bool {
         switch self {
@@ -134,7 +134,7 @@ extension TweenState {
 
     /**
      The ability for a `Tween` to be updated, based on the state of `self`.
-     Will only return `true` if `self` is `active`.
+     Returns `true` only if `self` is `active`.
      */
     internal var canUpdate: Swift.Bool {
         switch self {
