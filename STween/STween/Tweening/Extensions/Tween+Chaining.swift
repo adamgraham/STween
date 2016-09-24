@@ -85,7 +85,7 @@ extension Tween {
 
      - Returns: `self` to allow for additional method chaining.
      */
-    public final func set(callback: Callback, for stateChange: TweenStateChange) -> Tween {
+    public final func set(callback: @escaping Callback, for stateChange: TweenStateChange) -> Tween {
         self.callback(set: stateChange, value: callback)
         return self
     }
