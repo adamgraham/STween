@@ -13,6 +13,13 @@ public final class Defaults {
     private init() {}
 
     /**
+     The default rate at which every `Tween` updates.
+     
+     Default: 30.0
+     */
+    public static var frameRate = 30.0
+
+    /**
      The default `Ease` assigned to every `Tween`.
 
      Default: `Ease.quadOut`

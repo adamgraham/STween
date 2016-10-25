@@ -20,7 +20,7 @@ public final class FrameRate {
      
      Default: 30.0
      */
-    public static var targetFrameRate: Swift.Double = 30.0
+    public static var targetFrameRate: Swift.Double = Defaults.frameRate
 
     /**
      The duration of a single frame, in seconds, based on the 
