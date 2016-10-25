@@ -84,7 +84,7 @@ extension TweenAnimation {
 
      **Note:** `self` can only be updated if in an active state.
      
-     - Returns: `true` if `self` is updated successfully.
+     - Returns: `true` if `self` is successfully updated.
      */
     @discardableResult internal func update() -> Swift.Bool {
         guard self.state.canUpdate else {
@@ -169,7 +169,7 @@ extension TweenAnimation {
 
      **Note:** `self` can only be started if in a new or inactive state.
      
-     - Returns: `true` if `self` is started successfully.
+     - Returns: `true` if `self` is successfully started.
      */
     @discardableResult internal func start() -> Swift.Bool {
         guard self.state.canStart else {
@@ -197,7 +197,7 @@ extension TweenAnimation {
 
      **Note:** `self` can only be stopped if in an active or paused state.
      
-     - Returns: `true` if `self` is stopped successfully.
+     - Returns: `true` if `self` is successfully stopped.
      */
     @discardableResult internal func stop() -> Swift.Bool {
         guard self.state.canStop else {
@@ -224,7 +224,7 @@ extension TweenAnimation {
      **Note:** `self` can only be restarted if in an active, paused, or completed 
      state.
      
-     - Returns: `true` if `self` is restarted successfully.
+     - Returns: `true` if `self` is successfully restarted.
      */
     @discardableResult internal func restart() -> Swift.Bool {
         guard self.state.canRestart else {
@@ -246,7 +246,7 @@ extension TweenAnimation {
 
      **Note:** `self` can only be paused if in an active state.
      
-     - Returns: `true` if `self` is paused successfully.
+     - Returns: `true` if `self` is successfully paused.
      */
     @discardableResult internal func pause() -> Swift.Bool {
         guard self.state.canPause else {
@@ -271,7 +271,7 @@ extension TweenAnimation {
 
      **Note:** `self` can only be resumed if in a paused state.
      
-     - Returns: `true` if `self` is resumed successfully.
+     - Returns: `true` if `self` is successfully resumed.
      */
     @discardableResult internal func resume() -> Swift.Bool {
         guard self.state.canResume else {
@@ -296,7 +296,7 @@ extension TweenAnimation {
 
      **Note:** `self` can only be completed if in an active or paused state.
      
-     - Returns: `true` if `self` is completed successfully.
+     - Returns: `true` if `self` is successfully completed.
      */
     @discardableResult internal func complete() -> Swift.Bool {
         guard self.state.canComplete else {
@@ -330,7 +330,7 @@ extension TweenAnimation {
 
      **Note:** `self` can only be killed if *not* already in a killed state.
      
-     - Returns: `true` if `self` is killed successfully.
+     - Returns: `true` if `self` is successfully killed.
      */
     @discardableResult internal func kill() -> Swift.Bool {
         guard self.state.canKill else {
@@ -359,7 +359,7 @@ extension TweenAnimation {
 
      **Note:** `self` can only be reset if *not* already in a new state.
      
-     - Returns: `true` if `self` is reset successfully.
+     - Returns: `true` if `self` is successfully reset.
      */
     @discardableResult internal func reset() -> Swift.Bool {
         guard self.state.canReset else {

@@ -13,11 +13,12 @@ public final class FrameRate {
     private init() {}
 
     /**
-     The desired frames per second every `Tween` will run at.
+     The rate at which every `Tween` will update. For example, a frame rate of 
+     30 means the tween will update 30 times per second. The higher the 
+     number, the smoother the tween animation will be but at a higher
+     computational cost.
      
-     **Note:** In actuality, a `Tween` may run at a lower frame rate depending on 
-     the processing power of the device executing the code i.e. the actual 
-     frame rate may vary second to second.
+     Default: 30.0
      */
     public static var targetFrameRate: Swift.Double = 30.0
 

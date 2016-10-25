@@ -122,6 +122,7 @@ internal final class TweenTimer {
 
 // MARK: - TweenTimerDelegate Declaration
 
+/// A protocol to inform a `TweenTimer`'s delegate of events.
 protocol TweenTimerDelegate: class {
 
     /**
