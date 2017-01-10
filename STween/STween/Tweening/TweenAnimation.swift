@@ -91,11 +91,10 @@ extension TweenAnimation {
             return false
         }
 
-        if self.elapsed < self.duration {
-            updateProperties()
-            callback(invoke: .update)
-        } else {
-            callback(invoke: .update)
+        updateProperties()
+        callback(invoke: .update)
+
+        if self.elapsed >= self.duration {
             complete()
         }
 
