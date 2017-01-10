@@ -7,7 +7,7 @@
 //
 
 /// A protocol to provide control and customization of a tween animation.
-public protocol Tween: class, EaseRepresentable {
+public protocol Tween: class {
 
     // MARK: Animation & State Properties
 
