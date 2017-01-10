@@ -30,7 +30,7 @@ internal final class TweenTimer {
     // MARK: Time Properties
 
     /// The amount of time, in seconds, `self` has been running.
-    internal var elapsed = 0.0
+    internal var elapsed: Foundation.TimeInterval = 0.0
 
     /// The date/time of the last "tick" event.
     private var lastTickDate = Foundation.Date()

@@ -27,7 +27,7 @@ extension UIKit.NSLayoutConstraint: Tweenable {
         
     }
 
-    public typealias PropertyType = NSLayoutConstraint.TweenProperty
+    public typealias PropertyType = UIKit.NSLayoutConstraint.TweenProperty
 
     public func tweenableValue(get property: TweenProperty) -> InterpolationValue {
         switch property {

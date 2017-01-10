@@ -119,7 +119,7 @@ extension TweenAnimation {
                 try self.target.tweenableValue(set: data.property, newValue: interpolatedValue)
             }
         } catch let error {
-            if let stringConvertible = error as? CustomStringConvertible {
+            if let stringConvertible = error as? Swift.CustomStringConvertible {
                 print(stringConvertible.description)
             } else {
                 print("ERROR: \(error.localizedDescription)")
