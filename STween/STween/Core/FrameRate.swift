@@ -31,4 +31,12 @@ public final class FrameRate {
         return 1.0 / FrameRate.targetFrameRate
     }
 
+    /**
+     A method to reset the target frame rate to its default value - 
+     `Defaults.frameRate`.
+     */
+    public static func reset() {
+        FrameRate.targetFrameRate = Defaults.frameRate
+    }
+
 }
