@@ -467,4 +467,22 @@ internal struct TweenInterpolationData<T> {
     /// The end value of the property.
     internal let endValue: InterpolationValue
 
+    /**
+     A method to calculate the value between `self.startValue` and 
+     `self.endValue` at a specific point in time.
+
+     - Parameters:
+        - ease: The `Ease` used to interpolate values.
+        - elapsed: The elapsed amount of time passed to the `ease` algorithm.
+        - duration: The duration of time passed to the `ease` algorithm.
+     
+     - Throws: `InterpolationError.valueNotConvertible` if `self.startValue` 
+                or `self.endValue` fails to convert to an expected type.
+
+     - Returns: The value interpolated between `self.startValue` and `self.endValue`.
+     */
+    func interpolate(with ease: Ease, elapsed: Foundation.TimeInterval, duration: Foundation.TimeInterval) throws -> InterpolationValue {
+        return try self.startValue.interpolate(with: ease, endValue: self.endValue, elapsed: elapsed, duration: duration)
+    }
+
 }
