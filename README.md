@@ -45,7 +45,6 @@ tween.set(ease: .bounceInOut)
 
 - Detailed usage/documentation readme
 - Support for mutable structs
-- Finish unit tests
 - Example project
 
 ### License
