@@ -58,14 +58,11 @@ internal final class TweenTimer {
     /**
      A method to set `self.running` to `true`, causing the timer to start 
      firing "tick" events.
-     
-     **Note:** Invoking this method will trigger an immediate "tick" event on 
-     `self`.
      */
     internal func start() {
-        self.running = true
-        self.lastTickDate = Date()
         self.timer.fire()
+        self.lastTickDate = Date()
+        self.running = true
     }
 
     /**
