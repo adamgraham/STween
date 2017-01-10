@@ -278,64 +278,22 @@ public enum Ease {
      */
     case bounceInOut
 
-    /// A case to denote a custom ease.
-    case custom(algorithm: EaseAlgorithm)
-
 }
 
-// MARK: - Equatable
+// MARK: - Properties
 
-extension Ease: Swift.Equatable {
+extension Ease {
 
-    public static func ==(lhs: Ease, rhs: Ease) -> Swift.Bool {
-        switch (lhs, rhs) {
-        case (.linear, .linear),
-
-             (.sineIn, .sineIn),
-             (.sineOut, .sineOut),
-             (.sineInOut, .sineInOut),
-
-             (.cubicIn, .cubicIn),
-             (.cubicOut, .cubicOut),
-             (.cubicInOut, .cubicInOut),
-
-             (.quadIn, .quadIn),
-             (.quadOut, .quadOut),
-             (.quadInOut, .quadInOut),
-
-             (.quartIn, .quartIn),
-             (.quartOut, .quartOut),
-             (.quartInOut, .quartInOut),
-
-             (.quintIn, .quintIn),
-             (.quintOut, .quintOut),
-             (.quintInOut, .quintInOut),
-
-             (.expoIn, .expoIn),
-             (.expoOut, .expoOut),
-             (.expoInOut, .expoInOut),
-
-             (.circIn, .circIn),
-             (.circOut, .circOut),
-             (.circInOut, .circInOut),
-
-             (.backIn, .backIn),
-             (.backOut, .backOut),
-             (.backInOut, .backInOut),
-
-             (.elasticIn, .elasticIn),
-             (.elasticOut, .elasticOut),
-             (.elasticInOut, .elasticInOut),
-
-             (.bounceIn, .bounceIn),
-             (.bounceOut, .bounceOut),
-             (.bounceInOut, .bounceInOut):
-            return true
-        default:
-            return false
-        }
+    /// The `EaseClassification` associated with `self`.
+    public var classification: EaseClassification {
+        return EaseMappings.eases[self]!.classification
     }
 
+    /// The `EaseCurve` associated with `self`.
+    public var curve: EaseCurve {
+        return EaseMappings.eases[self]!.curve
+    }
+    
 }
 
 // MARK: - Hashable
@@ -421,40 +379,4 @@ extension Ease: Swift.Hashable {
         }
     }
 
-}
-
-// MARK: - Properties
-
-extension Ease {
-
-    /// The `EaseClassification` associated with `self`.
-    public var classification: EaseClassification {
-        switch self {
-        case .custom:
-            return .custom
-        default:
-            return EaseMappings.eases[self]!.classification
-        }
-    }
-
-    /// The `EaseCurve` associated with `self`.
-    public var curve: EaseCurve {
-        switch self {
-        case .custom:
-            return .custom
-        default:
-            return EaseMappings.eases[self]!.curve
-        }
-    }
-
-    /// The `EaseAlgorithm` associated with `self`.
-    public var algorithm: EaseAlgorithm {
-        switch self {
-        case let .custom(algorithm):
-            return algorithm
-        default:
-            return EaseMappings.eases[self]!.algorithm
-        }
-    }
-    
 }

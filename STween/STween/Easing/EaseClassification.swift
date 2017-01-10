@@ -116,9 +116,6 @@ public enum EaseClassification {
      */
     case bounce
 
-    /// A case to denote a custom algorithmic classification.
-    case custom
-
 }
 
 // MARK: - Look-up Helpers
@@ -127,32 +124,17 @@ extension EaseClassification {
 
     /// The `Ease` associated with `self` and `EaseCurve.in`.
     public var `in`: Ease? {
-        switch self {
-        case .custom:
-            return nil
-        default:
-            return EaseMappings.classificationMappings[self]![.in]!
-        }
+        return EaseMappings.classificationMappings[self]![.in]!
     }
 
     /// The `Ease` associated with `self` and `EaseCurve.out`.
     public var out: Ease? {
-        switch self {
-        case .custom:
-            return nil
-        default:
-            return EaseMappings.classificationMappings[self]![.out]!
-        }
+        return EaseMappings.classificationMappings[self]![.out]!
     }
 
     /// The `Ease` associated with `self` and `EaseCurve.inOut`.
     public var inOut: Ease? {
-        switch self {
-        case .custom:
-            return nil
-        default:
-            return EaseMappings.classificationMappings[self]![.inOut]!
-        }
+        return EaseMappings.classificationMappings[self]![.inOut]!
     }
 
 }
