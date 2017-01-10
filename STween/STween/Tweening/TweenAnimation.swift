@@ -21,7 +21,7 @@ internal final class TweenAnimation<TweenableTarget: Tweenable>: Tween {
     internal let targetProperties: [TweenableTarget.PropertyType]
 
     /// An array of data needed to interpolate each property every update cycle.
-    fileprivate var tweeningData = [TweenInterpolationData]()
+    fileprivate var tweeningData = [TweenInterpolationData<TweenableTarget.PropertyType>]()
 
     /// A dictionary storing the callbacks for each change of state.
     fileprivate var callbacks = [TweenStateChange: Callback?]()
@@ -91,11 +91,10 @@ extension TweenAnimation {
             return false
         }
 
-        if self.elapsed < self.duration {
-            updateProperties()
-            callback(invoke: .update)
-        } else {
-            callback(invoke: .update)
+        updateProperties()
+        callback(invoke: .update)
+
+        if self.elapsed >= self.duration {
             complete()
         }
 
@@ -107,24 +106,24 @@ extension TweenAnimation {
      current state, and assign the interpolated values to the target.
      */
     fileprivate func updateProperties() {
+        let ease = self.ease
         let elapsed = self.elapsed
+        let duration = self.duration
 
         do {
             for data in self.tweeningData {
-                guard let property = data.property as? TweenableTarget.PropertyType else {
-                    continue
-                }
+                let interpolatedValue = try data.interpolate(with: ease,
+                                                             elapsed: elapsed,
+                                                             duration: duration)
 
-                let interpolatedValue = try data.startValue.interpolate(with: self.ease,
-                                                                        endValue: data.endValue,
-                                                                        elapsed: elapsed,
-                                                                        duration: self.duration)
-
-
-                try self.target.tweenableValue(set: property, newValue: interpolatedValue)
+                try self.target.tweenableValue(set: data.property, newValue: interpolatedValue)
             }
-        } catch {
-            // ignore exceptions
+        } catch let error {
+            if let stringConvertible = error as? Swift.CustomStringConvertible {
+                print(stringConvertible.description)
+            } else {
+                print("ERROR: \(error.localizedDescription)")
+            }
         }
     }
 
@@ -137,20 +136,17 @@ extension TweenAnimation {
         self.tweeningData.removeAll()
 
         for property in self.targetProperties {
-            guard let tweenableProperty = property as? TweenableProperty else {
-                continue
-            }
-
             let startValue = self.target.tweenableValue(get: property)
-            let data: TweenInterpolationData
+            let endValue = (property as! TweenableProperty).associatedValue
+            let data: TweenInterpolationData<TweenableTarget.PropertyType>
 
             if !self.reversed {
-                data = TweenInterpolationData(property: tweenableProperty,
+                data = TweenInterpolationData(property: property,
                                               startValue: startValue,
-                                              endValue: tweenableProperty.interpolationValue)
+                                              endValue: endValue)
             } else {
-                data = TweenInterpolationData(property: tweenableProperty,
-                                              startValue: tweenableProperty.interpolationValue,
+                data = TweenInterpolationData(property: property,
+                                              startValue: endValue,
                                               endValue: startValue)
             }
             
@@ -371,7 +367,7 @@ extension TweenAnimation {
 
         // Default properties
         self.tweeningData = []
-        self.reversed = false
+        self.reversed = Defaults.reversed
         self.ease = Defaults.ease
         self.delay = Defaults.delay
         
@@ -461,13 +457,31 @@ extension TweenAnimation: TweenTimerDelegate {
 
 // MARK: - TweenInterpolationData Declaration
 
-internal struct TweenInterpolationData {
+internal struct TweenInterpolationData<T> {
 
     /// The property being interpolated.
-    internal let property: TweenableProperty
+    internal let property: T
     /// The start value of the property.
     internal let startValue: InterpolationValue
     /// The end value of the property.
     internal let endValue: InterpolationValue
+
+    /**
+     A method to calculate the value between `self.startValue` and 
+     `self.endValue` at a specific point in time.
+
+     - Parameters:
+        - ease: The `Ease` used to interpolate values.
+        - elapsed: The elapsed amount of time passed to the `ease` algorithm.
+        - duration: The duration of time passed to the `ease` algorithm.
+     
+     - Throws: `InterpolationError.valueNotConvertible` if `self.startValue` 
+                or `self.endValue` fails to convert to an expected type.
+
+     - Returns: The value interpolated between `self.startValue` and `self.endValue`.
+     */
+    func interpolate(with ease: Ease, elapsed: Foundation.TimeInterval, duration: Foundation.TimeInterval) throws -> InterpolationValue {
+        return try self.startValue.interpolate(with: ease, endValue: self.endValue, elapsed: elapsed, duration: duration)
+    }
 
 }

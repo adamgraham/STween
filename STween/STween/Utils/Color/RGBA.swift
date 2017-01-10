@@ -38,7 +38,7 @@ fileprivate let epsilon = CoreGraphics.CGFloat(CoreGraphics.FLT_EPSILON)
 
 extension RGBA: Swift.Equatable {
 
-    internal static func ==(lhs: RGBA, rhs: RGBA) -> Bool {
+    internal static func ==(lhs: RGBA, rhs: RGBA) -> Swift.Bool {
         return abs(lhs.red   - rhs.red)   <= epsilon &&
                abs(lhs.green - rhs.green) <= epsilon &&
                abs(lhs.blue  - rhs.blue)  <= epsilon &&

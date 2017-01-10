@@ -10,12 +10,6 @@
 public protocol Interpolatable {
 
     /**
-     The method of interpolation that determines how a value or object is
-     converted or broken-down such that it can be interpolated.
-     */
-    static var interpolationMethod: InterpolationMethod { get }
-
-    /**
      A class method to calculate the value between a start and end value at a 
      specific point in time.
      
@@ -32,41 +26,34 @@ public protocol Interpolatable {
      - Returns: The value interpolated between the `startValue` and `endValue`.
      */
     static func interpolate(with ease: Ease,
-                            startValue: InterpolationValue,
-                            endValue: InterpolationValue,
-                            elapsed: Foundation.TimeInterval,
-                            duration: Foundation.TimeInterval) throws -> InterpolationValue
+                           startValue: InterpolationValue,
+                             endValue: InterpolationValue,
+                              elapsed: Foundation.TimeInterval,
+                             duration: Foundation.TimeInterval) throws -> InterpolationValue
 
 }
 
-// MARK: - Default Implementation
+extension Interpolatable where Self: Arithmetic, Self: InterpolationValue {
 
-extension Interpolatable {
+    public static func interpolate(with ease: Ease,
+                                   startValue: InterpolationValue,
+                                   endValue: InterpolationValue,
+                                   elapsed: Foundation.TimeInterval,
+                                   duration: Foundation.TimeInterval) throws -> InterpolationValue {
 
-    public static var interpolationMethod: InterpolationMethod {
-        return .doubleConversion
-    }
-
-    public static final func interpolate(with ease: Ease,
-                                         startValue: InterpolationValue,
-                                         endValue: InterpolationValue,
-                                         elapsed: Foundation.TimeInterval,
-                                         duration: Foundation.TimeInterval) throws -> InterpolationValue {
-
-        switch self.interpolationMethod {
-        case .doubleConversion:
-            if let startValueDouble = startValue.doubleValue {
-                if let endValueDouble = endValue.doubleValue {
-                    return ease.algorithm(startValueDouble, endValueDouble - startValueDouble, elapsed, duration)
-                } else {
-                    throw InterpolationError.valueNotConvertible(value: endValue, to: Swift.Double.self)
-                }
-            } else {
-                throw InterpolationError.valueNotConvertible(value: startValue, to: Swift.Double.self)
-            }
-        case let .custom(method):
-            return try method(ease, startValue, endValue, elapsed, duration)
+        guard let _startValue = startValue as? Self else {
+            throw InterpolationError.valueNotConvertible(value: startValue, to: Self.self)
         }
+
+        guard let _endValue = endValue as? Self else {
+            throw InterpolationError.valueNotConvertible(value: endValue, to: Self.self)
+        }
+
+        let value: Self = ease.interpolate(startValue: _startValue,
+                                           endValue: _endValue,
+                                           elapsed: elapsed,
+                                           duration: duration)
+        return value
     }
 
 }
@@ -95,107 +82,85 @@ extension CoreGraphics.CGFloat: Interpolatable {
 
 extension CoreGraphics.CGPoint: Interpolatable {
 
-    public static var interpolationMethod: InterpolationMethod {
-        return .custom(method: {
-            (ease: Ease,
-            startValue: InterpolationValue,
-            endValue: InterpolationValue,
-            elapsed: Foundation.TimeInterval,
-            duration: Foundation.TimeInterval) throws in
+    public static func interpolate(with ease: Ease,
+                                   startValue: InterpolationValue,
+                                   endValue: InterpolationValue,
+                                   elapsed: Foundation.TimeInterval,
+                                   duration: Foundation.TimeInterval) throws -> InterpolationValue {
 
-            if let _startValue = startValue as? CoreGraphics.CGPoint {
-                if let _endValue = endValue as? CoreGraphics.CGPoint {
+        guard let _startValue = startValue as? CoreGraphics.CGPoint else {
+            throw InterpolationError.valueNotConvertible(value: startValue, to: CoreGraphics.CGPoint.self)
+        }
 
-                    let algorithm = ease.algorithm
+        guard let _endValue = endValue as? CoreGraphics.CGPoint else {
+            throw InterpolationError.valueNotConvertible(value: endValue, to: CoreGraphics.CGPoint.self)
+        }
 
-                    let interpolate: (Swift.Double, Swift.Double) -> Swift.Double = { (start, end) in
-                        return algorithm(start, end - start, elapsed, duration)
-                    }
+        let interpolate: (CoreGraphics.CGFloat, CoreGraphics.CGFloat) -> CoreGraphics.CGFloat = { (start, end) in
+            return ease.interpolate(startValue: start, endValue: end, elapsed: elapsed, duration: duration)
+        }
 
-                    let x = interpolate(_startValue.x.native, _endValue.x.native)
-                    let y = interpolate(_startValue.y.native, _endValue.y.native)
+        let x = interpolate(_startValue.x, _endValue.x)
+        let y = interpolate(_startValue.y, _endValue.y)
 
-                    return CoreGraphics.CGPoint(x: x, y: y)
-
-                } else {
-                    throw InterpolationError.valueNotConvertible(value: endValue, to: CoreGraphics.CGPoint.self)
-                }
-            } else {
-                throw InterpolationError.valueNotConvertible(value: startValue, to: CoreGraphics.CGPoint.self)
-            }
-        })
+        return CoreGraphics.CGPoint(x: x, y: y)
     }
 
 }
 
 extension CoreGraphics.CGSize: Interpolatable {
 
-    public static var interpolationMethod: InterpolationMethod {
-        return .custom(method: {
-            (ease: Ease,
-            startValue: InterpolationValue,
-            endValue: InterpolationValue,
-            elapsed: Foundation.TimeInterval,
-            duration: Foundation.TimeInterval) throws in
+    public static func interpolate(with ease: Ease,
+                                   startValue: InterpolationValue,
+                                   endValue: InterpolationValue,
+                                   elapsed: Foundation.TimeInterval,
+                                   duration: Foundation.TimeInterval) throws -> InterpolationValue {
 
-            if let _startValue = startValue as? CoreGraphics.CGSize {
-                if let _endValue = endValue as? CoreGraphics.CGSize {
+        guard let _startValue = startValue as? CoreGraphics.CGSize else {
+            throw InterpolationError.valueNotConvertible(value: startValue, to: CoreGraphics.CGSize.self)
+        }
 
-                    let algorithm = ease.algorithm
+        guard let _endValue = endValue as? CoreGraphics.CGSize else {
+            throw InterpolationError.valueNotConvertible(value: endValue, to: CoreGraphics.CGSize.self)
+        }
 
-                    let interpolate: (Swift.Double, Swift.Double) -> Swift.Double = { (start, end) in
-                        return algorithm(start, end - start, elapsed, duration)
-                    }
+        let interpolate: (CoreGraphics.CGFloat, CoreGraphics.CGFloat) -> CoreGraphics.CGFloat = { (start, end) in
+            return ease.interpolate(startValue: start, endValue: end, elapsed: elapsed, duration: duration)
+        }
 
-                    let width = interpolate(_startValue.width.native, _endValue.width.native)
-                    let height = interpolate(_startValue.height.native, _endValue.height.native)
+        let width = interpolate(_startValue.width, _endValue.width)
+        let height = interpolate(_startValue.height, _endValue.height)
 
-                    return CoreGraphics.CGSize(width: width, height: height)
-
-                } else {
-                    throw InterpolationError.valueNotConvertible(value: endValue, to: CoreGraphics.CGSize.self)
-                }
-            } else {
-                throw InterpolationError.valueNotConvertible(value: startValue, to: CoreGraphics.CGSize.self)
-            }
-        })
+        return CoreGraphics.CGSize(width: width, height: height)
     }
-
 }
 
 extension CoreGraphics.CGRect: Interpolatable {
 
-    public static var interpolationMethod: InterpolationMethod {
-        return .custom(method: {
-            (ease: Ease,
-            startValue: InterpolationValue,
-            endValue: InterpolationValue,
-            elapsed: Foundation.TimeInterval,
-            duration: Foundation.TimeInterval) throws in
+    public static func interpolate(with ease: Ease,
+                                   startValue: InterpolationValue,
+                                   endValue: InterpolationValue,
+                                   elapsed: Foundation.TimeInterval,
+                                   duration: Foundation.TimeInterval) throws -> InterpolationValue {
 
-            if let _startValue = startValue as? CoreGraphics.CGRect {
-                if let _endValue = endValue as? CoreGraphics.CGRect {
+        guard let _startValue = startValue as? CoreGraphics.CGRect else {
+            throw InterpolationError.valueNotConvertible(value: startValue, to: CoreGraphics.CGRect.self)
+        }
 
-                    let algorithm = ease.algorithm
+        guard let _endValue = endValue as? CoreGraphics.CGRect else {
+            throw InterpolationError.valueNotConvertible(value: endValue, to: CoreGraphics.CGRect.self)
+        }
 
-                    let interpolate: (Swift.Double, Swift.Double) -> Swift.Double = { (start, end) in
-                        return algorithm(start, end - start, elapsed, duration)
-                    }
+        let interpolate: (CoreGraphics.CGFloat, CoreGraphics.CGFloat) -> CoreGraphics.CGFloat = { (start, end) in
+            return ease.interpolate(startValue: start, endValue: end, elapsed: elapsed, duration: duration)
+        }
 
-                    let x = interpolate(_startValue.midX.native, _endValue.midX.native)
-                    let y = interpolate(_startValue.midY.native, _endValue.midY.native)
-                    let width = interpolate(_startValue.width.native, _endValue.width.native)
-                    let height = interpolate(_startValue.height.native, _endValue.height.native)
+        let x = interpolate(_startValue.origin.x, _endValue.origin.x)
+        let y = interpolate(_startValue.origin.y, _endValue.origin.y)
+        let width = interpolate(_startValue.size.width, _endValue.size.width)
+        let height = interpolate(_startValue.size.height, _endValue.size.height)
 
-                    return CoreGraphics.CGRect(x: x, y: y, width: width, height: height)
-
-                } else {
-                    throw InterpolationError.valueNotConvertible(value: endValue, to: CoreGraphics.CGRect.self)
-                }
-            } else {
-                throw InterpolationError.valueNotConvertible(value: startValue, to: CoreGraphics.CGRect.self)
-            }
-        })
+        return CoreGraphics.CGRect(x: x, y: y, width: width, height: height)
     }
 
 }

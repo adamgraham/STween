@@ -50,6 +50,7 @@ extension Tweener {
      */
     public static func to<Target: Tweenable>(target: Target, properties: [Target.PropertyType], duration: Foundation.TimeInterval, completion: Callback? = nil) -> Tween {
         let tween = TweenAnimation(target: target, properties: properties, duration: duration)
+        tween.reversed = false
         tween.callback(set: .complete, value: completion)
 
         add(tween)
@@ -95,6 +96,11 @@ extension Tweener {
 
 extension Tweener {
 
+    /// The number of tweens crrently being tracked.
+    public static var count: Swift.Int {
+        return self.tweens.count
+    }
+
     /**
      A method to add a tween to the list of tracked tweens.
      
@@ -116,12 +122,27 @@ extension Tweener {
         - tween: The tween to be removed from the list of tracked tweens.
      */
     internal static func remove(_ tween: Tween) {
-        guard let index = self.tweens.index(where: { $0 === tween }),
-            index >= 0 && index < self.tweens.count else {
-                return
+        if let index = self.tweens.index(where: { $0 === tween }),
+            index >= 0 && index < self.tweens.count {
+                self.tweens.remove(at: index)
         }
 
-        self.tweens.remove(at: index)
+        if let index = self.queuedTweens.index(where: { $0 === tween }),
+            index >= 0 && index < self.queuedTweens.count {
+                self.queuedTweens.remove(at: index)
+        }
+    }
+
+    /**
+     A method to check if a tween is in the list of tracked tweens.
+
+     - Parameters:
+        - tween: The tween to be checked if in the list of tracked tweens.
+     
+     - Returns: `true` if the `tween` is in the list of tracked tweens.
+     */
+    internal static func contains(_ tween: Tween) -> Swift.Bool {
+        return self.tweens.contains(where: { $0 === tween })
     }
 
 }
@@ -129,6 +150,11 @@ extension Tweener {
 // MARK: - Queueing
 
 extension Tweener {
+
+    /// The number of tweens currently queued to start.
+    internal static var queuedCount: Swift.Int {
+        return self.queuedTweens.count
+    }
 
     /**
      A method to queue a tween to be started. Tweens are started one frame 

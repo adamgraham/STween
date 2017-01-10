@@ -13,7 +13,7 @@
 
  ```
  let tween = self.tween(property: .x(50.0), duration: 1.0)
-    .set(ease: Ease.quadInOut)
+    .set(ease: Ease.backOut)
     .set(delay: 0.5)
     .set(callback: { ... }, for: TweenStateChange.complete)
  ```
@@ -28,7 +28,7 @@ extension Tween {
     
      - Returns: `self` to allow for additional method chaining.
      */
-    public final func set(ease: Ease) -> Tween {
+    @discardableResult public final func set(ease: Ease) -> Tween {
         self.ease = ease
         return self
     }
@@ -42,7 +42,7 @@ extension Tween {
 
      - Returns: `self` to allow for additional method chaining.
      */
-    public final func set(delay: Foundation.TimeInterval) -> Tween {
+    @discardableResult public final func set(delay: Foundation.TimeInterval) -> Tween {
         self.delay = delay
         return self
     }
@@ -56,7 +56,7 @@ extension Tween {
 
      - Returns: `self` to allow for additional method chaining.
      */
-    public final func set(duration: Foundation.TimeInterval) -> Tween {
+    @discardableResult public final func set(duration: Foundation.TimeInterval) -> Tween {
         self.duration = duration
         return self
     }
@@ -69,7 +69,7 @@ extension Tween {
 
      - Returns: `self` to allow for additional method chaining.
      */
-    public final func set(reversed: Swift.Bool) -> Tween {
+    @discardableResult public final func set(reversed: Swift.Bool) -> Tween {
         self.reversed = reversed
         return self
     }
@@ -85,7 +85,7 @@ extension Tween {
 
      - Returns: `self` to allow for additional method chaining.
      */
-    public final func set(callback: @escaping Callback, for stateChange: TweenStateChange) -> Tween {
+    @discardableResult public final func set(callback: @escaping Callback, for stateChange: TweenStateChange) -> Tween {
         self.callback(set: stateChange, value: callback)
         return self
     }

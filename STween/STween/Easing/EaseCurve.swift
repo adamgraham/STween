@@ -33,7 +33,4 @@ public enum EaseCurve {
      */
     case inOut
 
-    /// A case to denote a custom acceleration pattern.
-    case custom
-
 }

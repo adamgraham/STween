@@ -278,149 +278,6 @@ public enum Ease {
      */
     case bounceInOut
 
-    /// A case to denote a custom ease.
-    case custom(algorithm: EaseAlgorithm)
-
-}
-
-// MARK: - Equatable
-
-extension Ease: Swift.Equatable {
-
-    public static func ==(lhs: Ease, rhs: Ease) -> Swift.Bool {
-        switch (lhs, rhs) {
-        case (.linear, .linear),
-
-             (.sineIn, .sineIn),
-             (.sineOut, .sineOut),
-             (.sineInOut, .sineInOut),
-
-             (.cubicIn, .cubicIn),
-             (.cubicOut, .cubicOut),
-             (.cubicInOut, .cubicInOut),
-
-             (.quadIn, .quadIn),
-             (.quadOut, .quadOut),
-             (.quadInOut, .quadInOut),
-
-             (.quartIn, .quartIn),
-             (.quartOut, .quartOut),
-             (.quartInOut, .quartInOut),
-
-             (.quintIn, .quintIn),
-             (.quintOut, .quintOut),
-             (.quintInOut, .quintInOut),
-
-             (.expoIn, .expoIn),
-             (.expoOut, .expoOut),
-             (.expoInOut, .expoInOut),
-
-             (.circIn, .circIn),
-             (.circOut, .circOut),
-             (.circInOut, .circInOut),
-
-             (.backIn, .backIn),
-             (.backOut, .backOut),
-             (.backInOut, .backInOut),
-
-             (.elasticIn, .elasticIn),
-             (.elasticOut, .elasticOut),
-             (.elasticInOut, .elasticInOut),
-
-             (.bounceIn, .bounceIn),
-             (.bounceOut, .bounceOut),
-             (.bounceInOut, .bounceInOut):
-            return true
-        default:
-            return false
-        }
-    }
-
-}
-
-// MARK: - Hashable
-
-extension Ease: Swift.Hashable {
-
-    public var hashValue: Swift.Int {
-        switch self {
-        case .custom:
-            return -1
-        case .linear:
-            return 0
-
-        case .sineIn:
-            return 1
-        case .sineOut:
-            return 2
-        case .sineInOut:
-            return 3
-
-        case .cubicIn:
-            return 4
-        case .cubicOut:
-            return 5
-        case .cubicInOut:
-            return 6
-
-        case .quadIn:
-            return 7
-        case .quadOut:
-            return 8
-        case .quadInOut:
-            return 9
-
-        case .quartIn:
-            return 10
-        case .quartOut:
-            return 11
-        case .quartInOut:
-            return 12
-
-        case .quintIn:
-            return 13
-        case .quintOut:
-            return 14
-        case .quintInOut:
-            return 15
-
-        case .expoIn:
-            return 16
-        case .expoOut:
-            return 17
-        case .expoInOut:
-            return 18
-
-        case .circIn:
-            return 19
-        case .circOut:
-            return 20
-        case .circInOut:
-            return 21
-
-        case .backIn:
-            return 22
-        case .backOut:
-            return 23
-        case .backInOut:
-            return 24
-
-        case .elasticIn:
-            return 25
-        case .elasticOut:
-            return 26
-        case .elasticInOut:
-            return 27
-
-        case .bounceIn:
-            return 28
-        case .bounceOut:
-            return 29
-        case .bounceInOut:
-            return 30
-        }
-    }
-
 }
 
 // MARK: - Properties
@@ -429,32 +286,112 @@ extension Ease {
 
     /// The `EaseClassification` associated with `self`.
     public var classification: EaseClassification {
-        switch self {
-        case .custom:
-            return .custom
-        default:
-            return EaseMappings.eases[self]!.classification
-        }
+        return EaseMappings.eases[self]!.classification
     }
 
     /// The `EaseCurve` associated with `self`.
     public var curve: EaseCurve {
+        return EaseMappings.eases[self]!.curve
+    }
+    
+}
+
+// MARK: - Interpolation
+
+extension Ease {
+
+    /**
+     A method to calculate the value between a start and end value at a
+     specific point in time.
+     
+     - Parameters:
+        - startValue: The start value passed to the `ease` algorithm.
+        - endValue: The end value passed to the `ease` algorithm.
+        - elapsed: The elapsed amount of time passed to the `ease` algorithm.
+        - duration: The duration of time passed to the `ease` algorithm.
+
+     - Returns: The value interpolated between the `startValue` and `endValue`.
+     */
+    public func interpolate<T: Arithmetic>(startValue: T, endValue: T, elapsed: Foundation.TimeInterval, duration: Foundation.TimeInterval) -> T {
+        let b = startValue
+        let c = endValue - startValue
+        let t = elapsed
+        let d = duration
+
         switch self {
-        case .custom:
-            return .custom
-        default:
-            return EaseMappings.eases[self]!.curve
+        case .linear:
+            return EaseAlgorithms.linear(b: b, c: c, t: t, d: d)
+
+        case .sineIn:
+            return EaseAlgorithms.sineIn(b: b, c: c, t: t, d: d)
+        case .sineOut:
+            return EaseAlgorithms.sineOut(b: b, c: c, t: t, d: d)
+        case .sineInOut:
+            return EaseAlgorithms.sineInOut(b: b, c: c, t: t, d: d)
+
+        case .cubicIn:
+            return EaseAlgorithms.cubicIn(b: b, c: c, t: t, d: d)
+        case .cubicOut:
+            return EaseAlgorithms.cubicOut(b: b, c: c, t: t, d: d)
+        case .cubicInOut:
+            return EaseAlgorithms.cubicInOut(b: b, c: c, t: t, d: d)
+
+        case .quadIn:
+            return EaseAlgorithms.quadIn(b: b, c: c, t: t, d: d)
+        case .quadOut:
+            return EaseAlgorithms.quadOut(b: b, c: c, t: t, d: d)
+        case .quadInOut:
+            return EaseAlgorithms.quadInOut(b: b, c: c, t: t, d: d)
+
+        case .quartIn:
+            return EaseAlgorithms.quartIn(b: b, c: c, t: t, d: d)
+        case .quartOut:
+            return EaseAlgorithms.quartOut(b: b, c: c, t: t, d: d)
+        case .quartInOut:
+            return EaseAlgorithms.quartInOut(b: b, c: c, t: t, d: d)
+
+        case .quintIn:
+            return EaseAlgorithms.quintIn(b: b, c: c, t: t, d: d)
+        case .quintOut:
+            return EaseAlgorithms.quintOut(b: b, c: c, t: t, d: d)
+        case .quintInOut:
+            return EaseAlgorithms.quintInOut(b: b, c: c, t: t, d: d)
+
+        case .expoIn:
+            return EaseAlgorithms.expoIn(b: b, c: c, t: t, d: d)
+        case .expoOut:
+            return EaseAlgorithms.expoOut(b: b, c: c, t: t, d: d)
+        case .expoInOut:
+            return EaseAlgorithms.expoInOut(b: b, c: c, t: t, d: d)
+
+        case .circIn:
+            return EaseAlgorithms.circIn(b: b, c: c, t: t, d: d)
+        case .circOut:
+            return EaseAlgorithms.circOut(b: b, c: c, t: t, d: d)
+        case .circInOut:
+            return EaseAlgorithms.circInOut(b: b, c: c, t: t, d: d)
+
+        case .backIn:
+            return EaseAlgorithms.backIn(b: b, c: c, t: t, d: d)
+        case .backOut:
+            return EaseAlgorithms.backOut(b: b, c: c, t: t, d: d)
+        case .backInOut:
+            return EaseAlgorithms.backInOut(b: b, c: c, t: t, d: d)
+
+        case .elasticIn:
+            return EaseAlgorithms.elasticIn(b: b, c: c, t: t, d: d)
+        case .elasticOut:
+            return EaseAlgorithms.elasticOut(b: b, c: c, t: t, d: d)
+        case .elasticInOut:
+            return EaseAlgorithms.elasticInOut(b: b, c: c, t: t, d: d)
+
+        case .bounceIn:
+            return EaseAlgorithms.bounceIn(b: b, c: c, t: t, d: d)
+        case .bounceOut:
+            return EaseAlgorithms.bounceOut(b: b, c: c, t: t, d: d)
+        case .bounceInOut:
+            return EaseAlgorithms.bounceInOut(b: b, c: c, t: t, d: d)
         }
     }
 
-    /// The `EaseAlgorithm` associated with `self`.
-    public var algorithm: EaseAlgorithm {
-        switch self {
-        case let .custom(algorithm):
-            return algorithm
-        default:
-            return EaseMappings.eases[self]!.algorithm
-        }
-    }
-    
 }

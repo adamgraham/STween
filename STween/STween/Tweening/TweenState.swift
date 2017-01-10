@@ -56,11 +56,11 @@ extension TweenState {
 
     /**
      The ability for a `Tween` to be restarted, based on the state of `self`.
-     Returns `true` if `self` is `active`, `paused`, or `completed`.
+     Returns `true` if `self` is `active`, `inactive`, `paused`, or `completed`.
      */
     internal var canRestart: Swift.Bool {
         switch self {
-        case .active, .paused, .completed:
+        case .active, .inactive, .paused, .completed:
             return true
         default:
             return false

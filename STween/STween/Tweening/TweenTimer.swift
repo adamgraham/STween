@@ -33,7 +33,7 @@ internal final class TweenTimer {
     internal var elapsed: Foundation.TimeInterval = 0.0
 
     /// The date/time of the last "tick" event.
-    private var lastTickDate: Foundation.Date?
+    private var lastTickDate = Foundation.Date()
 
     // MARK: Initialization
 
@@ -58,14 +58,11 @@ internal final class TweenTimer {
     /**
      A method to set `self.running` to `true`, causing the timer to start 
      firing "tick" events.
-     
-     **Note:** Invoking this method will trigger an immediate "tick" event on 
-     `self`.
      */
     internal func start() {
-        self.running = true
-        self.lastTickDate = Date()
         self.timer.fire()
+        self.lastTickDate = Date()
+        self.running = true
     }
 
     /**
@@ -83,7 +80,7 @@ internal final class TweenTimer {
      */
     internal func reset() {
         self.elapsed = 0.0
-        self.lastTickDate = nil
+        self.lastTickDate = Date()
     }
 
     /**
@@ -103,15 +100,15 @@ internal final class TweenTimer {
     /**
      A method invoked every update cycle that updates `self`'s elapsed time 
      by the amount of time passed since the last update cycle. The duration
-     between update cycles is determined by `FrameRate.targetFrameDuration`.
+     between update cycles is determined by the timer's `timeInterval`.
      */
-    @objc internal func tick() {
+    @objc fileprivate func tick() {
         guard self.running else {
             return
         }
 
         let now = Date()
-        let deltaTime = now.timeIntervalSince(self.lastTickDate ?? now)
+        let deltaTime = now.timeIntervalSince(self.lastTickDate)
 
         self.elapsed += deltaTime
         self.lastTickDate = now

@@ -10,6 +10,6 @@
 public protocol TweenableProperty {
 
     /// The `InterpolationValue` associated with `self`.
-    var interpolationValue: InterpolationValue { get }
+    var associatedValue: InterpolationValue { get }
 
 }
