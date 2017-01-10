@@ -27,6 +27,9 @@ public protocol Tweenable {
      - Parameters:
         - property: The property to which a new value will be assigned.
         - newValue: The value to be assigned to the `property` on `self`.
+     
+     - Throws: `DeserializationError.valueNotDeserializable` if `newValue` 
+                cannot be converted to its expected type.
      */
     func tweenableValue(set property: Self.PropertyType, newValue: InterpolationValue) throws
 
