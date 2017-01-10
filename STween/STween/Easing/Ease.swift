@@ -296,86 +296,101 @@ extension Ease {
     
 }
 
-// MARK: - Hashable
+// MARK: - Interpolation
 
-extension Ease: Swift.Hashable {
+extension Ease {
 
-    public var hashValue: Swift.Int {
+    /**
+     A method to calculate the value between a start and end value at a
+     specific point in time.
+     
+     - Parameters:
+        - startValue: The start value passed to the `ease` algorithm.
+        - endValue: The end value passed to the `ease` algorithm.
+        - elapsed: The elapsed amount of time passed to the `ease` algorithm.
+        - duration: The duration of time passed to the `ease` algorithm.
+
+     - Returns: The value interpolated between the `startValue` and `endValue`.
+     */
+    public func interpolate<T: Arithmetic>(startValue: T, endValue: T, elapsed: Foundation.TimeInterval, duration: Foundation.TimeInterval) -> T {
+        let b = startValue
+        let c = endValue - startValue
+        let t = elapsed
+        let d = duration
+
         switch self {
-        case .custom:
-            return -1
         case .linear:
-            return 0
+            return EaseAlgorithms.linear(b: b, c: c, t: t, d: d)
 
         case .sineIn:
-            return 1
+            return EaseAlgorithms.sineIn(b: b, c: c, t: t, d: d)
         case .sineOut:
-            return 2
+            return EaseAlgorithms.sineOut(b: b, c: c, t: t, d: d)
         case .sineInOut:
-            return 3
+            return EaseAlgorithms.sineInOut(b: b, c: c, t: t, d: d)
 
         case .cubicIn:
-            return 4
+            return EaseAlgorithms.cubicIn(b: b, c: c, t: t, d: d)
         case .cubicOut:
-            return 5
+            return EaseAlgorithms.cubicOut(b: b, c: c, t: t, d: d)
         case .cubicInOut:
-            return 6
+            return EaseAlgorithms.cubicInOut(b: b, c: c, t: t, d: d)
 
         case .quadIn:
-            return 7
+            return EaseAlgorithms.quadIn(b: b, c: c, t: t, d: d)
         case .quadOut:
-            return 8
+            return EaseAlgorithms.quadOut(b: b, c: c, t: t, d: d)
         case .quadInOut:
-            return 9
+            return EaseAlgorithms.quadInOut(b: b, c: c, t: t, d: d)
 
         case .quartIn:
-            return 10
+            return EaseAlgorithms.quartIn(b: b, c: c, t: t, d: d)
         case .quartOut:
-            return 11
+            return EaseAlgorithms.quartOut(b: b, c: c, t: t, d: d)
         case .quartInOut:
-            return 12
+            return EaseAlgorithms.quartInOut(b: b, c: c, t: t, d: d)
 
         case .quintIn:
-            return 13
+            return EaseAlgorithms.quintIn(b: b, c: c, t: t, d: d)
         case .quintOut:
-            return 14
+            return EaseAlgorithms.quintOut(b: b, c: c, t: t, d: d)
         case .quintInOut:
-            return 15
+            return EaseAlgorithms.quintInOut(b: b, c: c, t: t, d: d)
 
         case .expoIn:
-            return 16
+            return EaseAlgorithms.expoIn(b: b, c: c, t: t, d: d)
         case .expoOut:
-            return 17
+            return EaseAlgorithms.expoOut(b: b, c: c, t: t, d: d)
         case .expoInOut:
-            return 18
+            return EaseAlgorithms.expoInOut(b: b, c: c, t: t, d: d)
 
         case .circIn:
-            return 19
+            return EaseAlgorithms.circIn(b: b, c: c, t: t, d: d)
         case .circOut:
-            return 20
+            return EaseAlgorithms.circOut(b: b, c: c, t: t, d: d)
         case .circInOut:
-            return 21
+            return EaseAlgorithms.circInOut(b: b, c: c, t: t, d: d)
 
         case .backIn:
-            return 22
+            return EaseAlgorithms.backIn(b: b, c: c, t: t, d: d)
         case .backOut:
-            return 23
+            return EaseAlgorithms.backOut(b: b, c: c, t: t, d: d)
         case .backInOut:
-            return 24
+            return EaseAlgorithms.backInOut(b: b, c: c, t: t, d: d)
 
         case .elasticIn:
-            return 25
+            return EaseAlgorithms.elasticIn(b: b, c: c, t: t, d: d)
         case .elasticOut:
-            return 26
+            return EaseAlgorithms.elasticOut(b: b, c: c, t: t, d: d)
         case .elasticInOut:
-            return 27
+            return EaseAlgorithms.elasticInOut(b: b, c: c, t: t, d: d)
 
         case .bounceIn:
-            return 28
+            return EaseAlgorithms.bounceIn(b: b, c: c, t: t, d: d)
         case .bounceOut:
-            return 29
+            return EaseAlgorithms.bounceOut(b: b, c: c, t: t, d: d)
         case .bounceInOut:
-            return 30
+            return EaseAlgorithms.bounceInOut(b: b, c: c, t: t, d: d)
         }
     }
 
