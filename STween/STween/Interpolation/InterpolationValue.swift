@@ -16,8 +16,8 @@ public protocol InterpolationValue: Interpolatable, SerializationValue {
 extension InterpolationValue {
 
     /**
-     A method to calculate the value between a start value -- `self` -- and end 
-     value at a specific point in time.
+     A method to calculate the value between `self` and an end value at a 
+     specific point in time.
      
      - Parameters:
         - ease: The `Ease` used to interpolate values.
@@ -40,17 +40,6 @@ extension InterpolationValue {
                                     endValue: endValue,
                                     elapsed: elapsed,
                                     duration: duration)
-    }
-
-    /// The `Swift.Double?` value of `self`.
-    internal final var doubleValue: Swift.Double? {
-        if let double = self as? Swift.Double {
-            return double
-        } else if let doubleConvertible = self as? DoubleConvertible {
-            return Swift.Double(convertible: doubleConvertible)
-        } else {
-            return nil
-        }
     }
 
 }
