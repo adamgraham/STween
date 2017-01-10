@@ -367,7 +367,7 @@ extension TweenAnimation {
 
         // Default properties
         self.tweeningData = []
-        self.reversed = false
+        self.reversed = Defaults.reversed
         self.ease = Defaults.ease
         self.delay = Defaults.delay
         

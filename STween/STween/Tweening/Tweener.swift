@@ -50,6 +50,7 @@ extension Tweener {
      */
     public static func to<Target: Tweenable>(target: Target, properties: [Target.PropertyType], duration: Foundation.TimeInterval, completion: Callback? = nil) -> Tween {
         let tween = TweenAnimation(target: target, properties: properties, duration: duration)
+        tween.reversed = false
         tween.callback(set: .complete, value: completion)
 
         add(tween)
