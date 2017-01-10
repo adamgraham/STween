@@ -122,12 +122,15 @@ extension Tweener {
         - tween: The tween to be removed from the list of tracked tweens.
      */
     internal static func remove(_ tween: Tween) {
-        guard let index = self.tweens.index(where: { $0 === tween }),
-            index >= 0 && index < self.tweens.count else {
-                return
+        if let index = self.tweens.index(where: { $0 === tween }),
+            index >= 0 && index < self.tweens.count {
+                self.tweens.remove(at: index)
         }
 
-        self.tweens.remove(at: index)
+        if let index = self.queuedTweens.index(where: { $0 === tween }),
+            index >= 0 && index < self.queuedTweens.count {
+                self.queuedTweens.remove(at: index)
+        }
     }
 
 }
