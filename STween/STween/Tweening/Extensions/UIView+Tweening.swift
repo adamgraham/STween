@@ -6,51 +6,51 @@
 //  Copyright © 2016 Adam Graham. All rights reserved.
 //
 
-// MARK: - TweenableProperty
-
-/**
- An enum to describe the properties that can be animated with a tween
- on a `UIKit.UIView`.
- */
-public enum UIViewTweenableProperty: TweenableProperty {
-
-    /// A case to denote the `frame.midX` property of a `UIKit.UIView`.
-    case x(CoreGraphics.CGFloat)
-    /// A case to denote the `frame.midY` property of a `UIKit.UIView`.
-    case y(CoreGraphics.CGFloat)
-    /// A case to denote the `frame.width` property of a `UIKit.UIView`.
-    case width(CoreGraphics.CGFloat)
-    /// A case to denote the `frame.height` property of a `UIKit.UIView`.
-    case height(CoreGraphics.CGFloat)
-    /// A case to denote the `frame.origin` property of a `UIKit.UIView`.
-    case origin(CoreGraphics.CGPoint)
-    /// A case to denote the `frame.size` property of a `UIKit.UIView`.
-    case size(CoreGraphics.CGSize)
-    /// A case to denote the `frame` property of a `UIKit.UIView`.
-    case frame(CoreGraphics.CGRect)
-
-    public var interpolationValue: InterpolationValue {
-        switch self {
-        case let .x(value as InterpolationValue),
-             let .y(value as InterpolationValue),
-             let .width(value as InterpolationValue),
-             let .height(value as InterpolationValue),
-             let .origin(value as InterpolationValue),
-             let .size(value as InterpolationValue),
-             let .frame(value as InterpolationValue):
-            return value
-        }
-    }
-
-}
-
-// MARK: - Tweenable
-
+/// An extension to provide tweening animation functionality to `UIKit.UIView`.
 extension UIKit.UIView: Tweenable {
 
-    public typealias PropertyType = UIViewTweenableProperty
+    /**
+     An enum to describe the properties that can be animated with a tween
+     on a `UIKit.UIView`.
+     */
+    public enum TweenProperty: TweenableProperty {
 
-    public func tweenableValue(get property: UIViewTweenableProperty) -> InterpolationValue {
+        /// A case to denote the `frame.midX` property of a `UIKit.UIView`.
+        case x(CoreGraphics.CGFloat)
+        /// A case to denote the `frame.midY` property of a `UIKit.UIView`.
+        case y(CoreGraphics.CGFloat)
+        /// A case to denote the `frame.width` property of a `UIKit.UIView`.
+        case width(CoreGraphics.CGFloat)
+        /// A case to denote the `frame.height` property of a `UIKit.UIView`.
+        case height(CoreGraphics.CGFloat)
+        /// A case to denote the `frame.origin` property of a `UIKit.UIView`.
+        case origin(CoreGraphics.CGPoint)
+        /// A case to denote the `frame.size` property of a `UIKit.UIView`.
+        case size(CoreGraphics.CGSize)
+        /// A case to denote the `frame` property of a `UIKit.UIView`.
+        case frame(CoreGraphics.CGRect)
+
+        public var associatedValue: InterpolationValue {
+            switch self {
+            case let .x(value),
+                 let .y(value),
+                 let .width(value),
+                 let .height(value):
+                return value as InterpolationValue
+            case let .origin(value as InterpolationValue):
+                return value
+            case let .size(value as InterpolationValue):
+                return value
+            case let .frame(value as InterpolationValue):
+                return value
+            }
+        }
+        
+    }
+
+    public typealias PropertyType = UIKit.UIView.TweenProperty
+
+    public func tweenableValue(get property: TweenProperty) -> InterpolationValue {
         switch property {
         case .x:
             return self.frame.midX
@@ -69,7 +69,7 @@ extension UIKit.UIView: Tweenable {
         }
     }
 
-    public func tweenableValue(set property: UIViewTweenableProperty, newValue: InterpolationValue) throws {
+    public func tweenableValue(set property: TweenProperty, newValue: InterpolationValue) throws {
         switch property {
         case .x:
             self.frame.origin.x = try newValue.deserialize()
