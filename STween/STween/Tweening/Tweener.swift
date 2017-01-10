@@ -96,6 +96,11 @@ extension Tweener {
 
 extension Tweener {
 
+    /// The number of tweens crrently being tracked.
+    public static var count: Swift.Int {
+        return self.tweens.count
+    }
+
     /**
      A method to add a tween to the list of tracked tweens.
      
@@ -130,6 +135,11 @@ extension Tweener {
 // MARK: - Queueing
 
 extension Tweener {
+
+    /// The number of tweens currently queued to start.
+    internal static var queuedCount: Swift.Int {
+        return self.queuedTweens.count
+    }
 
     /**
      A method to queue a tween to be started. Tweens are started one frame 
