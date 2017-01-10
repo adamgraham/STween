@@ -133,6 +133,18 @@ extension Tweener {
         }
     }
 
+    /**
+     A method to check if a tween is in the list of tracked tweens.
+
+     - Parameters:
+        - tween: The tween to be checked if in the list of tracked tweens.
+     
+     - Returns: `true` if the `tween` is in the list of tracked tweens.
+     */
+    internal static func contains(_ tween: Tween) -> Swift.Bool {
+        return self.tweens.contains(where: { $0 === tween })
+    }
+
 }
 
 // MARK: - Queueing
