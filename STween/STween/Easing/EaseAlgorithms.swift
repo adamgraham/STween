@@ -31,7 +31,7 @@
  
  - Returns: The value at a specific point in time from the start value.
  */
-public typealias EaseAlgorithm<T: Arithmetic> = (
+internal typealias EaseAlgorithm<T: Arithmetic> = (
     _ b: T,
     _ c: T,
     _ t: Foundation.TimeInterval,

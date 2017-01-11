@@ -312,7 +312,9 @@ extension Ease {
 
      - Returns: The value interpolated between the `startValue` and `endValue`.
      */
-    public func interpolate<T: Arithmetic>(startValue: T, endValue: T, elapsed: Foundation.TimeInterval, duration: Foundation.TimeInterval) -> T {
+    internal func interpolate<T: Arithmetic>(startValue: T, endValue: T,
+                                             elapsed: Foundation.TimeInterval,
+                                             duration: Foundation.TimeInterval) -> T {
         let b = startValue
         let c = endValue - startValue
         let t = elapsed
