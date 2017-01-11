@@ -7,13 +7,13 @@
 //
 
 /// A protocol to define a type that can be interpolated.
-public protocol InterpolationValue: Interpolatable, SerializationValue {
 
 }
 
 // MARK: - Helpers
 
 extension InterpolationValue {
+public protocol InterpolationValue: Serializable, Deserializable {
 
     /**
      A method to calculate the value between `self` and an end value at a 

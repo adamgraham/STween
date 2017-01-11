@@ -37,7 +37,6 @@
 		9D77AC6F1D13C6770033F88E /* Callback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D77AC6E1D13C6770033F88E /* Callback.swift */; };
 		9D9220831D2C91980045C293 /* Serializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9220821D2C91980045C293 /* Serializable.swift */; };
 		9D9220851D2C91C10045C293 /* SerializationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9220841D2C91C10045C293 /* SerializationError.swift */; };
-		9D9220871D2C931E0045C293 /* SerializationValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9220861D2C931E0045C293 /* SerializationValue.swift */; };
 		9D9220951D2CB1C00045C293 /* Interpolatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9220941D2CB1C00045C293 /* Interpolatable.swift */; };
 		9D9220971D2CB5410045C293 /* InterpolationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9220961D2CB5410045C293 /* InterpolationError.swift */; };
 		9DA009B61E1DF4C700D91B1C /* Arithmetic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA009B51E1DF4C700D91B1C /* Arithmetic.swift */; };
@@ -121,7 +120,6 @@
 		9D77AC6E1D13C6770033F88E /* Callback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Callback.swift; sourceTree = "<group>"; };
 		9D9220821D2C91980045C293 /* Serializable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Serializable.swift; sourceTree = "<group>"; };
 		9D9220841D2C91C10045C293 /* SerializationError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SerializationError.swift; sourceTree = "<group>"; };
-		9D9220861D2C931E0045C293 /* SerializationValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SerializationValue.swift; sourceTree = "<group>"; };
 		9D9220941D2CB1C00045C293 /* Interpolatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Interpolatable.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		9D9220961D2CB5410045C293 /* InterpolationError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = InterpolationError.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		9DA009B51E1DF4C700D91B1C /* Arithmetic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Arithmetic.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -411,7 +409,6 @@
 				9DF2B24C1D26F025002F820A /* DeserializationError.swift */,
 				9D9220821D2C91980045C293 /* Serializable.swift */,
 				9D9220841D2C91C10045C293 /* SerializationError.swift */,
-				9D9220861D2C931E0045C293 /* SerializationValue.swift */,
 			);
 			path = Serialization;
 			sourceTree = "<group>";
@@ -565,7 +562,6 @@
 				9DEE2F931D18D09E008133DD /* Tween+Chaining.swift in Sources */,
 				9D9220851D2C91C10045C293 /* SerializationError.swift in Sources */,
 				9DE1D2451D5EEA8D000071A0 /* TweenAnimation.swift in Sources */,
-				9D9220871D2C931E0045C293 /* SerializationValue.swift in Sources */,
 				9DE1D2461D5EEA8D000071A0 /* Tweenable.swift in Sources */,
 				9D656F3A1D33397D00693D0F /* DoubleConvertible.swift in Sources */,
 				9D77AC561D13B9EC0033F88E /* EaseClassification.swift in Sources */,

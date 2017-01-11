@@ -20,7 +20,7 @@ public protocol Serializable {
 
      - Returns: `self` serialized to a `SerializationValue`.
      */
-    func serialize() throws -> SerializationValue
+    func serialize() throws -> Deserializable
 
 }
 
@@ -28,8 +28,8 @@ public protocol Serializable {
 
 extension Serializable {
 
-    public final func serialize() throws -> SerializationValue {
-        if let serialized = self as? SerializationValue {
+    public final func serialize() throws -> Deserializable {
+        if let serialized = self as? Deserializable {
             return serialized
         } else {
             throw SerializationError.valueNotSerializable(value: self)
