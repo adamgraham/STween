@@ -242,6 +242,7 @@
 		9D88904F1E2883160023FE78 /* Tweening */ = {
 			isa = PBXGroup;
 			children = (
+				9DE4B9581E28AD6900315612 /* Conformance */,
 				9D8890501E2883160023FE78 /* Extensions */,
 				9D8890541E2883160023FE78 /* Tween.swift */,
 				9D8890571E2883160023FE78 /* TweenAnimation.swift */,
@@ -258,9 +259,7 @@
 		9D8890501E2883160023FE78 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				9D8890511E2883160023FE78 /* NSLayoutConstraint+Tweening.swift */,
 				9D8890521E2883160023FE78 /* Tween+Chaining.swift */,
-				9D8890531E2883160023FE78 /* UIView+Tweening.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -345,6 +344,15 @@
 				9DD240461DCD436A009C658F /* InterpolatableTest.swift */,
 			);
 			path = Interpolation;
+			sourceTree = "<group>";
+		};
+		9DE4B9581E28AD6900315612 /* Conformance */ = {
+			isa = PBXGroup;
+			children = (
+				9D8890511E2883160023FE78 /* NSLayoutConstraint+Tweening.swift */,
+				9D8890531E2883160023FE78 /* UIView+Tweening.swift */,
+			);
+			path = Conformance;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
