@@ -11,4 +11,4 @@
  are invoked upon completion of many different events, such as when a 
  `Tween` has finished animating.
  */
-public typealias Callback = () -> Swift.Void
+public typealias Callback = () -> Void

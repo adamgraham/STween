@@ -10,7 +10,7 @@
  An enum to encapsulate errors that may arise during tweening 
  animations.
  */
-public enum TweenError: Swift.Error {
+public enum TweenError: Error {
 
     /**
      A case to denote a mismatched set of values could not be interpolated 
@@ -22,10 +22,10 @@ public enum TweenError: Swift.Error {
 
 // MARK: - CustomStringConvertible
 
-extension TweenError: Swift.CustomStringConvertible {
+extension TweenError: CustomStringConvertible {
 
     /// A textual representation of `self`.
-    public var description: Swift.String {
+    public var description: String {
         switch self {
         case let .invalidInterpolation(valueA, valueB, tweenable):
             return "TweeningError.invalidInterpolation: A mismatched set of values, \(valueA) and \(valueB), could not be interpolated on \(tweenable)."

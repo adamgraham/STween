@@ -36,7 +36,7 @@ public protocol Tweenable {
                 interpolated with each other.
      */
     func interpolate(with ease: Ease, values: InterpolationValues<Self.Property>,
-                     elapsed: Foundation.TimeInterval, duration: Foundation.TimeInterval) throws
+                     elapsed: TimeInterval, duration: TimeInterval) throws
 
     /**
      A method to create an animation of a tweenable property on `self` with a 
@@ -49,7 +49,7 @@ public protocol Tweenable {
      
      - Returns: The `Tween` control for the animation.
      */
-    func tween(property: Self.Property, duration: Foundation.TimeInterval, completion: Callback?) -> Tween
+    func tween(property: Self.Property, duration: TimeInterval, completion: Callback?) -> Tween
 
     /**
      A method to create an animation of an array of tweenable properties on 
@@ -62,7 +62,7 @@ public protocol Tweenable {
      
      - Returns: The `Tween` control for the animation.
      */
-    func tween(properties: [Self.Property], duration: Foundation.TimeInterval, completion: Callback?) -> Tween
+    func tween(properties: [Self.Property], duration: TimeInterval, completion: Callback?) -> Tween
 
 }
 
@@ -70,11 +70,11 @@ public protocol Tweenable {
 
 extension Tweenable {
 
-    public final func tween(property: Self.Property, duration: Foundation.TimeInterval, completion: Callback? = nil) -> Tween {
+    public final func tween(property: Self.Property, duration: TimeInterval, completion: Callback? = nil) -> Tween {
         return tween(properties: [property], duration: duration, completion: completion)
     }
 
-    public final func tween(properties: [Self.Property], duration: Foundation.TimeInterval, completion: Callback? = nil) -> Tween {
+    public final func tween(properties: [Self.Property], duration: TimeInterval, completion: Callback? = nil) -> Tween {
         return Tweener.to(target: self, properties: properties, duration: duration, completion: completion)
     }
 
@@ -84,9 +84,8 @@ extension Tweenable {
 
 extension Tweenable {
 
-    public final func interpolate<T: Interpolatable>(
-        with ease: Ease, startValue: T, endValue: T,
-        elapsed: Foundation.TimeInterval, duration: Foundation.TimeInterval) -> T {
+    public final func interpolate<T: Interpolatable>(with ease: Ease, startValue: T, endValue: T,
+                                                     elapsed: TimeInterval, duration: TimeInterval) -> T {
 
         return T.interpolate(with: ease, startValue: startValue, endValue: endValue,
                              elapsed: elapsed, duration: duration)

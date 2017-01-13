@@ -22,218 +22,218 @@ internal protocol Arithmetic {
     static func *(lhs: Self, rhs: Self) -> Self
     static func /(lhs: Self, rhs: Self) -> Self
 
-    static func +(lhs: Self, rhs: Swift.Double) -> Self
-    static func -(lhs: Self, rhs: Swift.Double) -> Self
-    static func *(lhs: Self, rhs: Swift.Double) -> Self
-    static func /(lhs: Self, rhs: Swift.Double) -> Self
+    static func +(lhs: Self, rhs: Double) -> Self
+    static func -(lhs: Self, rhs: Double) -> Self
+    static func *(lhs: Self, rhs: Double) -> Self
+    static func /(lhs: Self, rhs: Double) -> Self
 
-    static func +(lhs: Swift.Double, rhs: Self) -> Self
-    static func -(lhs: Swift.Double, rhs: Self) -> Self
-    static func *(lhs: Swift.Double, rhs: Self) -> Self
-    static func /(lhs: Swift.Double, rhs: Self) -> Self
+    static func +(lhs: Double, rhs: Self) -> Self
+    static func -(lhs: Double, rhs: Self) -> Self
+    static func *(lhs: Double, rhs: Self) -> Self
+    static func /(lhs: Double, rhs: Self) -> Self
 
 }
 
 // MARK: - Conformance
 
-extension Swift.UInt: Arithmetic {
+extension UInt: Arithmetic {
 
-    internal static var identity: Swift.UInt {
+    internal static var identity: UInt {
         return 0
     }
 
 
-    internal static prefix func -(value: Swift.UInt) -> Swift.UInt {
+    internal static prefix func -(value: UInt) -> UInt {
         return value * 1
     }
 
-    internal static prefix func +(value: Swift.UInt) -> Swift.UInt {
+    internal static prefix func +(value: UInt) -> UInt {
         return value * 1
     }
 
 
-    internal static func +(lhs: Swift.UInt, rhs: Swift.Double) -> Swift.UInt {
-        let value = Swift.Double(lhs) + rhs
-        return value < 0.0 ? 0 : Swift.UInt(value)
+    internal static func +(lhs: UInt, rhs: Double) -> UInt {
+        let value = Double(lhs) + rhs
+        return value < 0.0 ? 0 : UInt(value)
     }
 
-    internal static func -(lhs: Swift.UInt, rhs: Swift.Double) -> Swift.UInt {
-        let value = Swift.Double(lhs) - rhs
-        return value < 0.0 ? 0 : Swift.UInt(value)
+    internal static func -(lhs: UInt, rhs: Double) -> UInt {
+        let value = Double(lhs) - rhs
+        return value < 0.0 ? 0 : UInt(value)
     }
 
-    internal static func *(lhs: Swift.UInt, rhs: Swift.Double) -> Swift.UInt {
-        let value = Swift.Double(lhs) * rhs
-        return value < 0.0 ? 0 : Swift.UInt(value)
+    internal static func *(lhs: UInt, rhs: Double) -> UInt {
+        let value = Double(lhs) * rhs
+        return value < 0.0 ? 0 : UInt(value)
     }
 
-    internal static func /(lhs: Swift.UInt, rhs: Swift.Double) -> Swift.UInt {
-        let value = Swift.Double(lhs) / rhs
-        return value < 0.0 ? 0 : Swift.UInt(value)
+    internal static func /(lhs: UInt, rhs: Double) -> UInt {
+        let value = Double(lhs) / rhs
+        return value < 0.0 ? 0 : UInt(value)
     }
 
 
-    internal static func +(lhs: Swift.Double, rhs: Swift.UInt) -> Swift.UInt {
-        let value = lhs + Swift.Double(rhs)
-        return value < 0.0 ? 0 : Swift.UInt(value)
+    internal static func +(lhs: Double, rhs: UInt) -> UInt {
+        let value = lhs + Double(rhs)
+        return value < 0.0 ? 0 : UInt(value)
     }
 
-    internal static func -(lhs: Swift.Double, rhs: Swift.UInt) -> Swift.UInt {
-        let value = lhs - Swift.Double(rhs)
-        return value < 0.0 ? 0 : Swift.UInt(value)
+    internal static func -(lhs: Double, rhs: UInt) -> UInt {
+        let value = lhs - Double(rhs)
+        return value < 0.0 ? 0 : UInt(value)
     }
 
-    internal static func *(lhs: Swift.Double, rhs: Swift.UInt) -> Swift.UInt {
-        let value = lhs * Swift.Double(rhs)
-        return value < 0.0 ? 0 : Swift.UInt(value)
+    internal static func *(lhs: Double, rhs: UInt) -> UInt {
+        let value = lhs * Double(rhs)
+        return value < 0.0 ? 0 : UInt(value)
     }
 
-    internal static func /(lhs: Swift.Double, rhs: Swift.UInt) -> Swift.UInt {
-        let value = lhs / Swift.Double(rhs)
-        return value < 0.0 ? 0 : Swift.UInt(value)
+    internal static func /(lhs: Double, rhs: UInt) -> UInt {
+        let value = lhs / Double(rhs)
+        return value < 0.0 ? 0 : UInt(value)
     }
 
 }
 
-extension Swift.Int: Arithmetic {
+extension Int: Arithmetic {
 
-    internal static var identity: Swift.Int {
+    internal static var identity: Int {
         return 0
     }
 
 
-    internal static prefix func -(value: Swift.Int) -> Swift.Int {
+    internal static prefix func -(value: Int) -> Int {
         return value * -1
     }
 
-    internal static prefix func +(value: Swift.Int) -> Swift.Int {
+    internal static prefix func +(value: Int) -> Int {
         return value * 1
     }
 
 
-    internal static func +(lhs: Swift.Int, rhs: Swift.Double) -> Swift.Int {
-        return Swift.Int(Swift.Double(lhs) + rhs)
+    internal static func +(lhs: Int, rhs: Double) -> Int {
+        return Int(Double(lhs) + rhs)
     }
 
-    internal static func -(lhs: Swift.Int, rhs: Swift.Double) -> Swift.Int {
-        return Swift.Int(Swift.Double(lhs) - rhs)
+    internal static func -(lhs: Int, rhs: Double) -> Int {
+        return Int(Double(lhs) - rhs)
     }
 
-    internal static func *(lhs: Swift.Int, rhs: Swift.Double) -> Swift.Int {
-        return Swift.Int(Swift.Double(lhs) * rhs)
+    internal static func *(lhs: Int, rhs: Double) -> Int {
+        return Int(Double(lhs) * rhs)
     }
 
-    internal static func /(lhs: Swift.Int, rhs: Swift.Double) -> Swift.Int {
-        return Swift.Int(Swift.Double(lhs) / rhs)
+    internal static func /(lhs: Int, rhs: Double) -> Int {
+        return Int(Double(lhs) / rhs)
     }
 
 
-    internal static func +(lhs: Swift.Double, rhs: Swift.Int) -> Swift.Int {
-        return Swift.Int(lhs + Swift.Double(rhs))
+    internal static func +(lhs: Double, rhs: Int) -> Int {
+        return Int(lhs + Double(rhs))
     }
 
-    internal static func -(lhs: Swift.Double, rhs: Swift.Int) -> Swift.Int {
-        return Swift.Int(lhs - Swift.Double(rhs))
+    internal static func -(lhs: Double, rhs: Int) -> Int {
+        return Int(lhs - Double(rhs))
     }
 
-    internal static func *(lhs: Swift.Double, rhs: Swift.Int) -> Swift.Int {
-        return Swift.Int(lhs * Swift.Double(rhs))
+    internal static func *(lhs: Double, rhs: Int) -> Int {
+        return Int(lhs * Double(rhs))
     }
 
-    internal static func /(lhs: Swift.Double, rhs: Swift.Int) -> Swift.Int {
-        return Swift.Int(lhs / Swift.Double(rhs))
+    internal static func /(lhs: Double, rhs: Int) -> Int {
+        return Int(lhs / Double(rhs))
     }
 
 }
 
-extension Swift.Double: Arithmetic {
+extension Double: Arithmetic {
 
-    internal static var identity: Swift.Double {
+    internal static var identity: Double {
         return 0.0
     }
 
 }
 
-extension Swift.Float: Arithmetic {
+extension Float: Arithmetic {
 
-    internal static var identity: Swift.Float {
+    internal static var identity: Float {
         return 0.0
     }
 
 
-    internal static func +(lhs: Swift.Float, rhs: Swift.Double) -> Swift.Float {
-        return Swift.Float(Swift.Double(lhs) + rhs)
+    internal static func +(lhs: Float, rhs: Double) -> Float {
+        return Float(Double(lhs) + rhs)
     }
 
-    internal static func -(lhs: Swift.Float, rhs: Swift.Double) -> Swift.Float {
-        return Swift.Float(Swift.Double(lhs) - rhs)
+    internal static func -(lhs: Float, rhs: Double) -> Float {
+        return Float(Double(lhs) - rhs)
     }
 
-    internal static func *(lhs: Swift.Float, rhs: Swift.Double) -> Swift.Float {
-        return Swift.Float(Swift.Double(lhs) * rhs)
+    internal static func *(lhs: Float, rhs: Double) -> Float {
+        return Float(Double(lhs) * rhs)
     }
 
-    internal static func /(lhs: Swift.Float, rhs: Swift.Double) -> Swift.Float {
-        return Swift.Float(Swift.Double(lhs) / rhs)
+    internal static func /(lhs: Float, rhs: Double) -> Float {
+        return Float(Double(lhs) / rhs)
     }
 
 
-    internal static func +(lhs: Swift.Double, rhs: Swift.Float) -> Swift.Float {
-        return Swift.Float(lhs + Swift.Double(rhs))
+    internal static func +(lhs: Double, rhs: Float) -> Float {
+        return Float(lhs + Double(rhs))
     }
 
-    internal static func -(lhs: Swift.Double, rhs: Swift.Float) -> Swift.Float {
-        return Swift.Float(lhs - Swift.Double(rhs))
+    internal static func -(lhs: Double, rhs: Float) -> Float {
+        return Float(lhs - Double(rhs))
     }
 
-    internal static func *(lhs: Swift.Double, rhs: Swift.Float) -> Swift.Float {
-        return Swift.Float(lhs * Swift.Double(rhs))
+    internal static func *(lhs: Double, rhs: Float) -> Float {
+        return Float(lhs * Double(rhs))
     }
 
-    internal static func /(lhs: Swift.Double, rhs: Swift.Float) -> Swift.Float {
-        return Swift.Float(lhs / Swift.Double(rhs))
+    internal static func /(lhs: Double, rhs: Float) -> Float {
+        return Float(lhs / Double(rhs))
     }
 
 }
 
-extension CoreGraphics.CGFloat: Arithmetic {
+extension CGFloat: Arithmetic {
 
-    internal static var identity: CoreGraphics.CGFloat {
+    internal static var identity: CGFloat {
         return 0.0
     }
 
 
-    internal static func +(lhs: CoreGraphics.CGFloat, rhs: Swift.Double) -> CoreGraphics.CGFloat {
-        return CoreGraphics.CGFloat(Swift.Double(lhs) + rhs)
+    internal static func +(lhs: CGFloat, rhs: Double) -> CGFloat {
+        return CGFloat(Double(lhs) + rhs)
     }
 
-    internal static func -(lhs: CoreGraphics.CGFloat, rhs: Swift.Double) -> CoreGraphics.CGFloat {
-        return CoreGraphics.CGFloat(Swift.Double(lhs) - rhs)
+    internal static func -(lhs: CGFloat, rhs: Double) -> CGFloat {
+        return CGFloat(Double(lhs) - rhs)
     }
 
-    internal static func *(lhs: CoreGraphics.CGFloat, rhs: Swift.Double) -> CoreGraphics.CGFloat {
-        return CoreGraphics.CGFloat(Swift.Double(lhs) * rhs)
+    internal static func *(lhs: CGFloat, rhs: Double) -> CGFloat {
+        return CGFloat(Double(lhs) * rhs)
     }
 
-    internal static func /(lhs: CoreGraphics.CGFloat, rhs: Swift.Double) -> CoreGraphics.CGFloat {
-        return CoreGraphics.CGFloat(Swift.Double(lhs) / rhs)
+    internal static func /(lhs: CGFloat, rhs: Double) -> CGFloat {
+        return CGFloat(Double(lhs) / rhs)
     }
 
 
-    internal static func +(lhs: Swift.Double, rhs: CoreGraphics.CGFloat) -> CoreGraphics.CGFloat {
-        return CoreGraphics.CGFloat(lhs + Swift.Double(rhs))
+    internal static func +(lhs: Double, rhs: CGFloat) -> CGFloat {
+        return CGFloat(lhs + Double(rhs))
     }
 
-    internal static func -(lhs: Swift.Double, rhs: CoreGraphics.CGFloat) -> CoreGraphics.CGFloat {
-        return CoreGraphics.CGFloat(lhs - Swift.Double(rhs))
+    internal static func -(lhs: Double, rhs: CGFloat) -> CGFloat {
+        return CGFloat(lhs - Double(rhs))
     }
 
-    internal static func *(lhs: Swift.Double, rhs: CoreGraphics.CGFloat) -> CoreGraphics.CGFloat {
-        return CoreGraphics.CGFloat(lhs * Swift.Double(rhs))
+    internal static func *(lhs: Double, rhs: CGFloat) -> CGFloat {
+        return CGFloat(lhs * Double(rhs))
     }
 
-    internal static func /(lhs: Swift.Double, rhs: CoreGraphics.CGFloat) -> CoreGraphics.CGFloat {
-        return CoreGraphics.CGFloat(lhs / Swift.Double(rhs))
+    internal static func /(lhs: Double, rhs: CGFloat) -> CGFloat {
+        return CGFloat(lhs / Double(rhs))
     }
 
 }

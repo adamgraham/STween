@@ -20,7 +20,7 @@ public final class Tweener {
     fileprivate static var queuedTweens = [Tween]()
 
     /// The timer object used to start any queued `Tween`s every frame.
-    fileprivate static let queueTimer = Foundation.Timer.scheduledTimer(
+    fileprivate static let queueTimer = Timer.scheduledTimer(
         timeInterval: FrameRate.targetFrameDuration,
         target: Tweener.self,
         selector: #selector(Tweener.startQueuedTweens),
@@ -48,7 +48,7 @@ extension Tweener {
 
      - Returns: The `Tween` control for the animation.
      */
-    public static func to<Target: Tweenable>(target: Target, properties: [Target.Property], duration: Foundation.TimeInterval, completion: Callback? = nil) -> Tween {
+    public static func to<Target: Tweenable>(target: Target, properties: [Target.Property], duration: TimeInterval, completion: Callback? = nil) -> Tween {
         let tween = TweenAnimation(target: target, properties: properties, duration: duration)
         tween.reversed = false
         tween.callback(set: .complete, value: completion)
@@ -76,7 +76,7 @@ extension Tweener {
      
      - Returns: The `Tween` control for the animation.
      */
-    public static func from<Target: Tweenable>(target: Target, properties: [Target.Property], duration: Foundation.TimeInterval, completion: Callback? = nil) -> Tween {
+    public static func from<Target: Tweenable>(target: Target, properties: [Target.Property], duration: TimeInterval, completion: Callback? = nil) -> Tween {
         let tween = TweenAnimation(target: target, properties: properties, duration: duration)
         tween.reversed = true
         tween.callback(set: .complete, value: completion)
@@ -97,7 +97,7 @@ extension Tweener {
 extension Tweener {
 
     /// The number of tweens crrently being tracked.
-    public static var count: Swift.Int {
+    public static var count: Int {
         return self.tweens.count
     }
 
@@ -141,7 +141,7 @@ extension Tweener {
      
      - Returns: `true` if the `tween` is in the list of tracked tweens.
      */
-    internal static func contains(_ tween: Tween) -> Swift.Bool {
+    internal static func contains(_ tween: Tween) -> Bool {
         return self.tweens.contains(where: { $0 === tween })
     }
 
@@ -152,7 +152,7 @@ extension Tweener {
 extension Tweener {
 
     /// The number of tweens currently queued to start.
-    internal static var queuedCount: Swift.Int {
+    internal static var queuedCount: Int {
         return self.queuedTweens.count
     }
 

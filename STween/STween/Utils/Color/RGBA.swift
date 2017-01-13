@@ -10,17 +10,17 @@
 internal struct RGBA {
 
     /// The value of the red component of `self`.
-    internal let red: CoreGraphics.CGFloat
+    internal let red: CGFloat
     /// The value of the green component of `self`.
-    internal let green: CoreGraphics.CGFloat
+    internal let green: CGFloat
     /// The value of the blue component of `self`.
-    internal let blue: CoreGraphics.CGFloat
+    internal let blue: CGFloat
     /// The value of the alpha component of `self`.
-    internal let alpha: CoreGraphics.CGFloat
+    internal let alpha: CGFloat
 
-    /// The `UIKit.UIColor` equivalant of `self`.
-    internal var color: UIKit.UIColor {
-        return UIKit.UIColor(red: self.red,
+    /// The `UIColor` equivalant of `self`.
+    internal var color: UIColor {
+        return UIColor(red: self.red,
                              green: self.green,
                              blue: self.blue,
                              alpha: self.alpha)
@@ -34,11 +34,11 @@ internal struct RGBA {
  An epsilon value used to compare floating-point values in order to avoid
  floating-point precision errors.
  */
-fileprivate let epsilon = CoreGraphics.CGFloat(CoreGraphics.FLT_EPSILON)
+fileprivate let epsilon = CGFloat(FLT_EPSILON)
 
-extension RGBA: Swift.Equatable {
+extension RGBA: Equatable {
 
-    internal static func ==(lhs: RGBA, rhs: RGBA) -> Swift.Bool {
+    internal static func ==(lhs: RGBA, rhs: RGBA) -> Bool {
         return abs(lhs.red   - rhs.red)   <= epsilon &&
                abs(lhs.green - rhs.green) <= epsilon &&
                abs(lhs.blue  - rhs.blue)  <= epsilon &&
@@ -49,10 +49,10 @@ extension RGBA: Swift.Equatable {
 
 // MARK: - CustomStringConvertible
 
-extension RGBA: Swift.CustomStringConvertible {
+extension RGBA: CustomStringConvertible {
 
     /// A textual representation of `self`.
-    internal var description: Swift.String {
+    internal var description: String {
         return "Red: \(self.red), Green: \(self.green), Blue: \(self.blue), Alpha: \(self.alpha)"
     }
 

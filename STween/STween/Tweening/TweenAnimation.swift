@@ -45,9 +45,9 @@ internal final class TweenAnimation<TweenableTarget: Tweenable>: Tween {
     
     internal var delay = Defaults.delay
 
-    internal var duration: Foundation.TimeInterval
+    internal var duration: TimeInterval
 
-    internal var elapsed: Foundation.TimeInterval {
+    internal var elapsed: TimeInterval {
         return self.state == .completed ? self.duration : self.timer.elapsed
     }
 
@@ -64,7 +64,7 @@ internal final class TweenAnimation<TweenableTarget: Tweenable>: Tween {
      */
     internal init(target: TweenableTarget,
                   properties: [TweenableTarget.Property],
-                  duration: Foundation.TimeInterval) {
+                  duration: TimeInterval) {
 
         self.target = target
         self.duration = duration
@@ -86,7 +86,7 @@ extension TweenAnimation {
      
      - Returns: `true` if `self` is successfully updated.
      */
-    @discardableResult internal func update() -> Swift.Bool {
+    @discardableResult internal func update() -> Bool {
         guard self.state.canUpdate else {
             return false
         }
@@ -115,7 +115,7 @@ extension TweenAnimation {
                 try self.target.interpolate(with: ease, values: values, elapsed: elapsed, duration: duration)
             }
         } catch let error {
-            if let stringConvertible = error as? Swift.CustomStringConvertible {
+            if let stringConvertible = error as? CustomStringConvertible {
                 print(stringConvertible.description)
             } else {
                 print("ERROR: \(error.localizedDescription)")
@@ -157,7 +157,7 @@ extension TweenAnimation {
      
      - Returns: `true` if `self` is successfully started.
      */
-    @discardableResult internal func start() -> Swift.Bool {
+    @discardableResult internal func start() -> Bool {
         guard self.state.canStart else {
             return false
         }
@@ -185,7 +185,7 @@ extension TweenAnimation {
      
      - Returns: `true` if `self` is successfully stopped.
      */
-    @discardableResult internal func stop() -> Swift.Bool {
+    @discardableResult internal func stop() -> Bool {
         guard self.state.canStop else {
             return false
         }
@@ -212,7 +212,7 @@ extension TweenAnimation {
      
      - Returns: `true` if `self` is successfully restarted.
      */
-    @discardableResult internal func restart() -> Swift.Bool {
+    @discardableResult internal func restart() -> Bool {
         guard self.state.canRestart else {
             return false
         }
@@ -234,7 +234,7 @@ extension TweenAnimation {
      
      - Returns: `true` if `self` is successfully paused.
      */
-    @discardableResult internal func pause() -> Swift.Bool {
+    @discardableResult internal func pause() -> Bool {
         guard self.state.canPause else {
             return false
         }
@@ -259,7 +259,7 @@ extension TweenAnimation {
      
      - Returns: `true` if `self` is successfully resumed.
      */
-    @discardableResult internal func resume() -> Swift.Bool {
+    @discardableResult internal func resume() -> Bool {
         guard self.state.canResume else {
             return false
         }
@@ -284,7 +284,7 @@ extension TweenAnimation {
      
      - Returns: `true` if `self` is successfully completed.
      */
-    @discardableResult internal func complete() -> Swift.Bool {
+    @discardableResult internal func complete() -> Bool {
         guard self.state.canComplete else {
             return false
         }
@@ -318,7 +318,7 @@ extension TweenAnimation {
      
      - Returns: `true` if `self` is successfully killed.
      */
-    @discardableResult internal func kill() -> Swift.Bool {
+    @discardableResult internal func kill() -> Bool {
         guard self.state.canKill else {
             return false
         }
@@ -347,7 +347,7 @@ extension TweenAnimation {
      
      - Returns: `true` if `self` is successfully reset.
      */
-    @discardableResult internal func reset() -> Swift.Bool {
+    @discardableResult internal func reset() -> Bool {
         guard self.state.canReset else {
             return false
         }
@@ -381,7 +381,7 @@ extension TweenAnimation {
 
 extension TweenAnimation {
 
-    @discardableResult internal func invoke(_ stateChange: TweenStateChange) -> Swift.Bool {
+    @discardableResult internal func invoke(_ stateChange: TweenStateChange) -> Bool {
         switch stateChange {
         case .start:
             return start()
@@ -439,7 +439,7 @@ extension TweenAnimation {
 
 extension TweenAnimation: TweenTimerDelegate {
 
-    internal func tweenTimer(_ timer: TweenTimer, didUpdateWithElapsedTime elapsed: Foundation.TimeInterval) {
+    internal func tweenTimer(_ timer: TweenTimer, didUpdateWithElapsedTime elapsed: TimeInterval) {
         update()
     }
 

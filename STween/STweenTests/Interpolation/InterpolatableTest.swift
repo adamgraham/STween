@@ -53,8 +53,8 @@ class InterpolatableTest: XCTestCase {
             public static func interpolate(with ease: Ease,
                                            startValue: InterpolationValue,
                                            endValue: InterpolationValue,
-                                           elapsed: Foundation.TimeInterval,
-                                           duration: Foundation.TimeInterval) throws -> InterpolationValue {
+                                           elapsed: TimeInterval,
+                                           duration: TimeInterval) throws -> InterpolationValue {
                 return 0.0
             }
         }

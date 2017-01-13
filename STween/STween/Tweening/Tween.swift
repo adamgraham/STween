@@ -20,7 +20,7 @@ public protocol Tween: class {
 
      **Note:** Has no effect once `self` is started.
      */
-    var reversed: Swift.Bool { get set }
+    var reversed: Bool { get set }
 
     /// The current state of `self` i.e. active, paused, etc.
     var state: TweenState { get }
@@ -33,14 +33,14 @@ public protocol Tween: class {
 
      **Note:** Assigning has no effect once `self` is started.
      */
-    var delay: Foundation.TimeInterval { get set }
+    var delay: TimeInterval { get set }
 
     /**
      The total amount of time, in seconds, `self` is set to run.
 
      **Note:** Assigning while `self` is active may cause undesired behavior.
      */
-    var duration: Foundation.TimeInterval { get set }
+    var duration: TimeInterval { get set }
 
     /**
      The amount of time, in seconds, `self` has been active.
@@ -49,7 +49,7 @@ public protocol Tween: class {
      paused. If `self` is completed, the elapsed time is the same as `self`'s
      duration.
      */
-    var elapsed: Foundation.TimeInterval { get }
+    var elapsed: TimeInterval { get }
 
     // MARK: Invocation Methods
 
@@ -61,7 +61,7 @@ public protocol Tween: class {
      
      - Returns: `true` if the state of `self` is changed successfully.
      */
-    @discardableResult func invoke(_ stateChange: TweenStateChange) -> Swift.Bool
+    @discardableResult func invoke(_ stateChange: TweenStateChange) -> Bool
 
     // MARK: Callback Methods
 
@@ -105,7 +105,7 @@ extension Tween {
      The percentage of `self`'s `elapsed` time over `self`'s `duration` of time,
      in the range of `0.0` to `1.0`.
      */
-    var percentComplete: Swift.Double {
+    var percentComplete: Double {
         return clamp(value: self.elapsed / self.duration, lower: 0.0, upper: 1.0)
     }
     

@@ -123,17 +123,17 @@ public enum EaseClassification {
 extension EaseClassification {
 
     /// The `Ease` associated with `self` and `EaseCurve.in`.
-    public var `in`: Ease? {
+    public var `in`: Ease {
         return EaseMappings.classificationMappings[self]![.in]!
     }
 
     /// The `Ease` associated with `self` and `EaseCurve.out`.
-    public var out: Ease? {
+    public var out: Ease {
         return EaseMappings.classificationMappings[self]![.out]!
     }
 
     /// The `Ease` associated with `self` and `EaseCurve.inOut`.
-    public var inOut: Ease? {
+    public var inOut: Ease {
         return EaseMappings.classificationMappings[self]![.inOut]!
     }
 

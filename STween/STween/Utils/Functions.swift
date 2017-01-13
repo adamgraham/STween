@@ -16,6 +16,6 @@
  
  - Returns: The clamped value between `lower` and `upper`.
  */
-internal func clamp<T: Swift.Comparable>(value: T, lower: T, upper: T) -> T {
+internal func clamp<T: Comparable>(value: T, lower: T, upper: T) -> T {
     return min(max(value, lower), upper)
 }

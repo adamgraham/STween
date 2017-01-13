@@ -6,49 +6,49 @@
 //  Copyright © 2016 Adam Graham. All rights reserved.
 //
 
-/// An extension to provide tweening animation functionality to `UIKit.UIView`.
-extension UIKit.UIView: Tweenable {
+/// An extension to provide tweening animation functionality to `UIView`.
+extension UIView: Tweenable {
 
     /**
      An enum to describe the properties that can be animated with a tween
-     on a `UIKit.UIView`.
+     on a `UIView`.
      */
     public enum TweenProperty {
 
-        /// A case to denote the `frame.origin.x` property of a `UIKit.UIView`.
-        case x(CoreGraphics.CGFloat)
-        /// A case to denote the `frame.origin.y` property of a `UIKit.UIView`.
-        case y(CoreGraphics.CGFloat)
-        /// A case to denote the `frame.origin` property of a `UIKit.UIView`.
-        case origin(CoreGraphics.CGPoint)
+        /// A case to denote the `frame.origin.x` property of a `UIView`.
+        case x(CGFloat)
+        /// A case to denote the `frame.origin.y` property of a `UIView`.
+        case y(CGFloat)
+        /// A case to denote the `frame.origin` property of a `UIView`.
+        case origin(CGPoint)
 
-        /// A case to denote the `frame.size.width` property of a `UIKit.UIView`.
-        case width(CoreGraphics.CGFloat)
-        /// A case to denote the `frame.size.height` property of a `UIKit.UIView`.
-        case height(CoreGraphics.CGFloat)
-        /// A case to denote the `frame.size` property of a `UIKit.UIView`.
-        case size(CoreGraphics.CGSize)
+        /// A case to denote the `frame.size.width` property of a `UIView`.
+        case width(CGFloat)
+        /// A case to denote the `frame.size.height` property of a `UIView`.
+        case height(CGFloat)
+        /// A case to denote the `frame.size` property of a `UIView`.
+        case size(CGSize)
 
-        /// A case to denote the `frame.minX` property of a `UIKit.UIView`.
-        case left(CoreGraphics.CGFloat)
-        /// A case to denote the `frame.maxX` property of a `UIKit.UIView`.
-        case right(CoreGraphics.CGFloat)
-        /// A case to denote the `frame.minY` property of a `UIKit.UIView`.
-        case top(CoreGraphics.CGFloat)
-        /// A case to denote the `frame.maxY` property of a `UIKit.UIView`.
-        case bottom(CoreGraphics.CGFloat)
+        /// A case to denote the `frame.minX` property of a `UIView`.
+        case left(CGFloat)
+        /// A case to denote the `frame.maxX` property of a `UIView`.
+        case right(CGFloat)
+        /// A case to denote the `frame.minY` property of a `UIView`.
+        case top(CGFloat)
+        /// A case to denote the `frame.maxY` property of a `UIView`.
+        case bottom(CGFloat)
 
-        /// A case to denote the `frame` property of a `UIKit.UIView`.
-        case frame(CoreGraphics.CGRect)
-        /// A case to denote the `bounds` property of a `UIKit.UIView`.
-        case bounds(CoreGraphics.CGRect)
+        /// A case to denote the `frame` property of a `UIView`.
+        case frame(CGRect)
+        /// A case to denote the `bounds` property of a `UIView`.
+        case bounds(CGRect)
         
-        /// A case to denote the `center` property of a `UIKit.UIView`.
-        case center(CoreGraphics.CGPoint)
-        /// A case to denote the `center.x` property of a `UIKit.UIView`.
-        case centerX(CoreGraphics.CGFloat)
-        /// A case to denote the `center.y` property of a `UIKit.UIView`.
-        case centerY(CoreGraphics.CGFloat)
+        /// A case to denote the `center` property of a `UIView`.
+        case center(CGPoint)
+        /// A case to denote the `center.x` property of a `UIView`.
+        case centerX(CGFloat)
+        /// A case to denote the `center.y` property of a `UIView`.
+        case centerY(CGFloat)
 
     }
 
@@ -94,7 +94,7 @@ extension UIKit.UIView: Tweenable {
     }
 
     public func interpolate(with ease: Ease, values: InterpolationValues<TweenProperty>,
-                            elapsed: Foundation.TimeInterval, duration: Foundation.TimeInterval) throws {
+                            elapsed: TimeInterval, duration: TimeInterval) throws {
 
         switch (values.start, values.end) {
         case let (.x(startValue), .x(endValue)):
