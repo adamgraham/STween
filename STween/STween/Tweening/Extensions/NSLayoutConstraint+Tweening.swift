@@ -13,33 +13,36 @@ extension UIKit.NSLayoutConstraint: Tweenable {
      An enum to describe the properties that can be animated with a tween
      on a `UIKit.NSLayoutConstraint`.
      */
-    public enum TweenProperty: TweenableProperty {
+    public enum TweenProperty {
 
         /// A case to denote the `constant` property of a `UIKit.NSLayoutConstraint`.
         case constant(CoreGraphics.CGFloat)
-
-        public var associatedValue: InterpolationValue {
-            switch self {
-            case let .constant(value as InterpolationValue):
-                return value
-            }
-        }
+        /// A case to denote the `priority` property of a `UIKit.NSLayoutConstraint`.
+        case priority(UIKit.UILayoutPriority)
         
     }
 
-    public typealias PropertyType = UIKit.NSLayoutConstraint.TweenProperty
+    public typealias Property = TweenProperty
 
-    public func tweenableValue(get property: TweenProperty) -> InterpolationValue {
+    public func interpolationValues(for property: TweenProperty) -> InterpolationValues<TweenProperty> {
         switch property {
-        case .constant:
-            return self.constant
+        case let .constant(endValue):
+            return InterpolationValues(start: .constant(self.constant), end: .constant(endValue))
+        case let .priority(endValue):
+            return InterpolationValues(start: .priority(self.priority), end: .priority(endValue))
         }
     }
 
-    public func tweenableValue(set property: TweenProperty, newValue: InterpolationValue) throws {
-        switch property {
-        case .constant:
-            self.constant = try newValue.deserialize()
+    public func interpolate(with ease: Ease, values: InterpolationValues<TweenProperty>,
+                            elapsed: Foundation.TimeInterval, duration: Foundation.TimeInterval) throws {
+
+        switch (values.start, values.end) {
+        case let (.constant(startValue), .constant(endValue)):
+            self.constant = interpolate(with: ease, startValue: startValue, endValue: endValue, elapsed: elapsed, duration: duration)
+        case let (.priority(startValue), .priority(endValue)):
+            self.priority = interpolate(with: ease, startValue: startValue, endValue: endValue, elapsed: elapsed, duration: duration)
+        default:
+            throw TweenError.invalidInterpolation(valueA: values.start, valueB: values.end, tweenable: self)
         }
     }
     
