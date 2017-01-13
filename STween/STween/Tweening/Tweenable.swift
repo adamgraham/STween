@@ -9,7 +9,7 @@
 /// A protocol to provide tweening animation functionality.
 public protocol Tweenable {
 
-    associatedtype PropertyType = TweenableProperty
+    associatedtype Property
 
     /**
      A method to retrieve the value of a tweenable property on `self`.

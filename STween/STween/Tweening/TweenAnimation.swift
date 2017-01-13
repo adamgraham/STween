@@ -18,7 +18,7 @@ internal final class TweenAnimation<TweenableTarget: Tweenable>: Tween {
     internal let target: TweenableTarget
 
     /// The array of properties being animated.
-    internal let targetProperties: [TweenableTarget.PropertyType]
+    internal let targetProperties: [TweenableTarget.Property]
 
     /// An array of data needed to interpolate each property every update cycle.
     fileprivate var tweeningData = [TweenInterpolationData<TweenableTarget.PropertyType>]()
@@ -63,7 +63,7 @@ internal final class TweenAnimation<TweenableTarget: Tweenable>: Tween {
         - duration: The total amount of time, in seconds, the animation will run.
      */
     internal init(target: TweenableTarget,
-                  properties: [TweenableTarget.PropertyType],
+                  properties: [TweenableTarget.Property],
                   duration: Foundation.TimeInterval) {
 
         self.target = target

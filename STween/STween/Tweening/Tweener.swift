@@ -48,7 +48,7 @@ extension Tweener {
 
      - Returns: The `Tween` control for the animation.
      */
-    public static func to<Target: Tweenable>(target: Target, properties: [Target.PropertyType], duration: Foundation.TimeInterval, completion: Callback? = nil) -> Tween {
+    public static func to<Target: Tweenable>(target: Target, properties: [Target.Property], duration: Foundation.TimeInterval, completion: Callback? = nil) -> Tween {
         let tween = TweenAnimation(target: target, properties: properties, duration: duration)
         tween.reversed = false
         tween.callback(set: .complete, value: completion)
@@ -76,7 +76,7 @@ extension Tweener {
      
      - Returns: The `Tween` control for the animation.
      */
-    public static func from<Target: Tweenable>(target: Target, properties: [Target.PropertyType], duration: Foundation.TimeInterval, completion: Callback? = nil) -> Tween {
+    public static func from<Target: Tweenable>(target: Target, properties: [Target.Property], duration: Foundation.TimeInterval, completion: Callback? = nil) -> Tween {
         let tween = TweenAnimation(target: target, properties: properties, duration: duration)
         tween.reversed = true
         tween.callback(set: .complete, value: completion)
