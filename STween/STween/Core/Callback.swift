@@ -8,7 +8,7 @@
 
 /**
  A typealias for the method signature of a "callback" closure. Callbacks 
- are invoked upon completion of many different events, such as a `Tween` 
- being started.
+ are invoked upon completion of many different events, such as when a 
+ `Tween` has finished animating.
  */
 public typealias Callback = () -> Swift.Void
