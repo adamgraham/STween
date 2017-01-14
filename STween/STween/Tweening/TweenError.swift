@@ -24,7 +24,7 @@ extension TweenError: CustomStringConvertible {
     public var description: String {
         switch self {
         case let .invalidInterpolation(valueA, valueB, tweenable):
-            return "TweeningError.invalidInterpolation: A mismatched set of values, \(valueA) and \(valueB), could not be interpolated on \(tweenable)."
+            return "TweenError.invalidInterpolation: A mismatched set of values, \(valueA) and \(valueB), could not be interpolated on \(tweenable)."
         }
     }
     
