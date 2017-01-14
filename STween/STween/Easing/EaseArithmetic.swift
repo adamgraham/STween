@@ -1,5 +1,5 @@
 //
-//  Arithmetic.swift
+//  EaseArithmetic.swift
 //  STween
 //
 //  Created by Adam Graham on 1/4/17.
@@ -8,7 +8,7 @@
 
 /// A protocol to provide arithmetic functions i.e. addition, subtraction,
 /// multiplication, division, etc.
-internal protocol Arithmetic {
+internal protocol EaseArithmetic {
 
     static var identity: Self { get }
 
@@ -34,7 +34,7 @@ internal protocol Arithmetic {
 
 // MARK: - Conformance
 
-extension UInt: Arithmetic {
+extension UInt: EaseArithmetic {
 
     internal static var identity: UInt {
         return 0
@@ -93,7 +93,7 @@ extension UInt: Arithmetic {
 
 }
 
-extension Int: Arithmetic {
+extension Int: EaseArithmetic {
 
     internal static var identity: Int {
         return 0
@@ -144,7 +144,7 @@ extension Int: Arithmetic {
 
 }
 
-extension Double: Arithmetic {
+extension Double: EaseArithmetic {
 
     internal static var identity: Double {
         return 0.0
@@ -152,7 +152,7 @@ extension Double: Arithmetic {
 
 }
 
-extension Float: Arithmetic {
+extension Float: EaseArithmetic {
 
     internal static var identity: Float {
         return 0.0
@@ -194,7 +194,7 @@ extension Float: Arithmetic {
 
 }
 
-extension CGFloat: Arithmetic {
+extension CGFloat: EaseArithmetic {
 
     internal static var identity: CGFloat {
         return 0.0

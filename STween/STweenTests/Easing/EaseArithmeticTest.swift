@@ -1,5 +1,5 @@
 //
-//  ArithmeticTest.swift
+//  EaseArithmeticTest.swift
 //  STween
 //
 //  Created by Adam Graham on 1/4/17.
@@ -10,13 +10,13 @@ import XCTest
 
 @testable import STween
 
-class ArithmeticTest: XCTestCase {
+class EaseArithmeticTest: XCTestCase {
 
 }
 
 // MARK: - UInt Tests
 
-extension ArithmeticTest {
+extension EaseArithmeticTest {
 
     // Identity Tests
 
@@ -140,7 +140,7 @@ extension ArithmeticTest {
 
 // MARK: - Int Tests
 
-extension ArithmeticTest {
+extension EaseArithmeticTest {
 
     // Identity Tests
 
@@ -216,7 +216,7 @@ extension ArithmeticTest {
 
 // MARK: - Double Tests
 
-extension ArithmeticTest {
+extension EaseArithmeticTest {
 
     // Identity Tests
 
@@ -228,7 +228,7 @@ extension ArithmeticTest {
 
 // MARK: - Float Tests
 
-extension ArithmeticTest {
+extension EaseArithmeticTest {
 
     // Identity Tests
 
@@ -304,7 +304,7 @@ extension ArithmeticTest {
 
 // MARK: - CGFloat Tests
 
-extension ArithmeticTest {
+extension EaseArithmeticTest {
 
     // Identity Tests
 

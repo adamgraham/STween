@@ -18,7 +18,7 @@
 		9D6A3DC11DDEB0B5009B6352 /* TweenStateChangeTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6A3DC01DDEB0B5009B6352 /* TweenStateChangeTest.swift */; };
 		9D6A3DC31DDEB0BE009B6352 /* TweenTimerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6A3DC21DDEB0BE009B6352 /* TweenTimerTest.swift */; };
 		9D77AC3A1D13B8D70033F88E /* STween.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D77AC391D13B8D70033F88E /* STween.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9D8890631E2883160023FE78 /* Arithmetic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8890411E2883160023FE78 /* Arithmetic.swift */; };
+		9D8890631E2883160023FE78 /* EaseArithmetic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8890411E2883160023FE78 /* EaseArithmetic.swift */; };
 		9D8890641E2883160023FE78 /* Callback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8890421E2883160023FE78 /* Callback.swift */; };
 		9D8890651E2883160023FE78 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8890431E2883160023FE78 /* Defaults.swift */; };
 		9D8890661E2883160023FE78 /* FrameRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8890441E2883160023FE78 /* FrameRate.swift */; };
@@ -60,7 +60,7 @@
 		9DBF34051DB8F4BA006C0D84 /* EaseMappingsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBF33FF1DB8F4BA006C0D84 /* EaseMappingsTest.swift */; };
 		9DCD64FF1D1687DD00C726E7 /* STween.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D77AC361D13B8D70033F88E /* STween.framework */; };
 		9DD2404A1DCD436A009C658F /* InterpolatableTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD240461DCD436A009C658F /* InterpolatableTest.swift */; };
-		9DD43F901E2497010005E3E2 /* ArithmeticTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD43F8F1E2497010005E3E2 /* ArithmeticTest.swift */; };
+		9DD43F901E2497010005E3E2 /* EaseArithmeticTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD43F8F1E2497010005E3E2 /* EaseArithmeticTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,7 +88,7 @@
 		9D77AC361D13B8D70033F88E /* STween.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = STween.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D77AC391D13B8D70033F88E /* STween.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STween.h; sourceTree = "<group>"; };
 		9D77AC3B1D13B8D70033F88E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9D8890411E2883160023FE78 /* Arithmetic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Arithmetic.swift; sourceTree = "<group>"; };
+		9D8890411E2883160023FE78 /* EaseArithmetic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EaseArithmetic.swift; sourceTree = "<group>"; };
 		9D8890421E2883160023FE78 /* Callback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Callback.swift; sourceTree = "<group>"; };
 		9D8890431E2883160023FE78 /* Defaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
 		9D8890441E2883160023FE78 /* FrameRate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrameRate.swift; sourceTree = "<group>"; };
@@ -131,7 +131,7 @@
 		9DCD64FA1D1687DD00C726E7 /* STweenTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = STweenTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DCD64FE1D1687DD00C726E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9DD240461DCD436A009C658F /* InterpolatableTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterpolatableTest.swift; sourceTree = "<group>"; };
-		9DD43F8F1E2497010005E3E2 /* ArithmeticTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArithmeticTest.swift; sourceTree = "<group>"; };
+		9DD43F8F1E2497010005E3E2 /* EaseArithmeticTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EaseArithmeticTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,7 +205,6 @@
 		9D8890401E2883160023FE78 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				9D8890411E2883160023FE78 /* Arithmetic.swift */,
 				9D8890421E2883160023FE78 /* Callback.swift */,
 				9D8890431E2883160023FE78 /* Defaults.swift */,
 				9D8890441E2883160023FE78 /* FrameRate.swift */,
@@ -218,6 +217,7 @@
 			children = (
 				9D8890461E2883160023FE78 /* Ease.swift */,
 				9D8890471E2883160023FE78 /* EaseAlgorithms.swift */,
+				9D8890411E2883160023FE78 /* EaseArithmetic.swift */,
 				9D8890481E2883160023FE78 /* EaseClassification.swift */,
 				9D8890491E2883160023FE78 /* EaseCurve.swift */,
 				9D88904A1E2883160023FE78 /* EaseMappings.swift */,
@@ -280,7 +280,6 @@
 		9DB3D62F1DAE686F00134C1D /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				9DD43F8F1E2497010005E3E2 /* ArithmeticTest.swift */,
 				9DB3D6341DAE686F00134C1D /* CallbackTest.swift */,
 				9DB3D6301DAE686F00134C1D /* DefaultsTest.swift */,
 				9DB3D6311DAE686F00134C1D /* FrameRateTest.swift */,
@@ -329,6 +328,7 @@
 			children = (
 				9DBF33FB1DB8F4BA006C0D84 /* EaseTest.swift */,
 				9DBF33FC1DB8F4BA006C0D84 /* EaseAlgorithmsTest.swift */,
+				9DD43F8F1E2497010005E3E2 /* EaseArithmeticTest.swift */,
 				9D482BCC1DC22F55009A1CCD /* EaseClassificationTest.swift */,
 				9DBF33FD1DB8F4BA006C0D84 /* EaseCurveTest.swift */,
 				9DBF33FF1DB8F4BA006C0D84 /* EaseMappingsTest.swift */,
@@ -498,7 +498,7 @@
 				9D88906A1E2883160023FE78 /* EaseCurve.swift in Sources */,
 				9D133AE81E289E320030B97E /* TweenError.swift in Sources */,
 				9D88907A1E2883160023FE78 /* RGBA.swift in Sources */,
-				9D8890631E2883160023FE78 /* Arithmetic.swift in Sources */,
+				9D8890631E2883160023FE78 /* EaseArithmetic.swift in Sources */,
 				9D8890681E2883160023FE78 /* EaseAlgorithms.swift in Sources */,
 				9D8890781E2883160023FE78 /* TweenStateChange.swift in Sources */,
 				9D88906C1E2883160023FE78 /* Interpolatable.swift in Sources */,
@@ -536,7 +536,7 @@
 				9DB3D6401DAE6CCB00134C1D /* XCTestCase+Utils.swift in Sources */,
 				9DB46B1A1E29EB6000CB21F9 /* TweenableTestable.swift in Sources */,
 				9DB3D6441DAE758F00134C1D /* FunctionsTest.swift in Sources */,
-				9DD43F901E2497010005E3E2 /* ArithmeticTest.swift in Sources */,
+				9DD43F901E2497010005E3E2 /* EaseArithmeticTest.swift in Sources */,
 				9DBF34011DB8F4BA006C0D84 /* EaseTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
