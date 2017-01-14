@@ -106,15 +106,15 @@ extension TweenAnimation {
         let elapsed = self.elapsed
         let duration = self.duration
 
-        do {
-            for values in self.interpolationValues {
+        for values in self.interpolationValues {
+            do {
                 try self.target.interpolate(with: ease, values: values, elapsed: elapsed, duration: duration)
-            }
-        } catch let error {
-            if let stringConvertible = error as? CustomStringConvertible {
-                print(stringConvertible.description)
-            } else {
-                print("ERROR: \(error.localizedDescription)")
+            } catch let error {
+                if let stringConvertible = error as? CustomStringConvertible {
+                    print(stringConvertible.description)
+                } else {
+                    print("ERROR: \(error.localizedDescription)")
+                }
             }
         }
     }
