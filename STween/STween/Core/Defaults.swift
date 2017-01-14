@@ -27,59 +27,43 @@ public final class Defaults {
     /// The default state of every `Tween` automatically being killed upon completion.
     private static let _autoKillCompletedTweens = true
 
-    /**
-     The default rate at which every `Tween` updates.
-     
-     Default: 30.0
-     */
+    /// The default rate at which every `Tween` updates.
+    ///
+    /// Default: 30.0
     public static var frameRate = Defaults._frameRate
 
-    /**
-     The default `Ease` assigned to every `Tween`.
-
-     Default: `Ease.quadOut`
-     */
+    /// The default `Ease` assigned to every `Tween`.
+    ///
+    /// Default: `Ease.quadOut`
     public static var ease = Defaults._ease
 
-    /**
-     The default overshoot value used in easing algorithms.
-     
-     Default: 1.70158
-     */
+    /// The default overshoot value used in easing algorithms.
+    ///
+    /// Default: 1.70158
     public static var overshoot = Defaults._overshoot
 
-    /**
-     The default amount of time, in seconds, before every `Tween` starts.
-
-     Default: `0.0`
-     */
+    /// The default amount of time, in seconds, before every `Tween` starts.
+    ///
+    /// Default: `0.0`
     public static var delay = Defaults._delay
 
-    /**
-     The default state of every `Tween` being reversed.
-     
-     Default: `false`
-     */
+    /// The default state of every `Tween` being reversed.
+    ///
+    /// Default: `false`
     public static var reversed = Defaults._reversed
 
-    /**
-     The default state of every `Tween` automatically starting upon creation.
-
-     Default: `true`
-     */
+    /// The default state of every `Tween` automatically starting upon creation.
+    ///
+    /// Default: `true`
     public static var autoStartTweens = Defaults._autoStartTweens
 
-    /**
-     The default state of every `Tween` automatically being killed upon 
-     completion.
-
-     Default: `true`
-     */
+    /// The default state of every `Tween` automatically being killed upon
+    /// completion.
+    ///
+    /// Default: `true`
     public static var autoKillCompletedTweens = Defaults._autoKillCompletedTweens
 
-    /**
-     A method to reset all defaults to their original values.
-     */
+    /// A method to reset all defaults to their original values.
     public static func reset() {
         self.frameRate = Defaults._frameRate
         self.ease = Defaults._ease

@@ -6,10 +6,8 @@
 //  Copyright © 2016 Adam Graham. All rights reserved.
 //
 
-/**
- A class to animate properties on a `Tweenable` object via interpolation 
- and easing algorithms.
- */
+/// A class to animate properties on a `Tweenable` object via interpolation
+/// and easing algorithms.
 internal final class TweenAnimation<TweenableTarget: Tweenable>: Tween {
 
     // MARK: Core Properties
@@ -36,11 +34,9 @@ internal final class TweenAnimation<TweenableTarget: Tweenable>: Tween {
 
     // MARK: Time Properties
 
-    /**
-     The internal timer of `self` used to keep track of total elapsed time and 
-     fire update cycles. The rate at which the timer updates is based on
-     `FrameRate.targetFrameRate`.
-     */
+    /// The internal timer of `self` used to keep track of total elapsed time and
+    /// fire update cycles. The rate at which the timer updates is based on
+    /// `FrameRate.targetFrameRate`.
     fileprivate lazy var timer: TweenTimer = TweenTimer(delegate: self)
     
     internal var delay = Defaults.delay

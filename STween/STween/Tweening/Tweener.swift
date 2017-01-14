@@ -6,6 +6,7 @@
 //  Copyright © 2016 Adam Graham. All rights reserved.
 //
 
+/// A static factory class to create, queue, and manage `Tween` objects.
 public final class Tweener {
 
     // Prevent instantiation of the class.

@@ -14,10 +14,8 @@ public struct InterpolationValues<T> {
     /// The end value to be interpolated.
     let end: T
 
-    /**
-     The reversed version of `self` where the start value is the end value, and 
-     the end value is the start value.
-     */
+    /// The reversed version of `self` where the start value is the end value, and
+    /// the end value is the start value.
     var reversed: InterpolationValues<T> {
         return InterpolationValues<T>(start: self.end, end: self.start)
     }

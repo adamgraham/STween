@@ -6,10 +6,8 @@
 //  Copyright © 2017 Adam Graham. All rights reserved.
 //
 
-/** 
- A protocol to provide arithmetic functions i.e. addition, subtraction,
- multiplication, division, etc.
- */
+/// A protocol to provide arithmetic functions i.e. addition, subtraction,
+/// multiplication, division, etc.
 internal protocol Arithmetic {
 
     static var identity: Self { get }

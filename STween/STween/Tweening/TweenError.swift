@@ -6,16 +6,12 @@
 //  Copyright © 2016 Adam Graham. All rights reserved.
 //
 
-/**
- An enum to encapsulate errors that may arise during tweening 
- animations.
- */
+/// An enum to encapsulate errors that may arise during tweening
+/// animations.
 public enum TweenError: Error {
 
-    /**
-     A case to denote a mismatched set of values could not be interpolated 
-     on a tweenable type.
-     */
+    /// A case to denote a mismatched set of values could not be interpolated
+    /// on a tweenable type.
     case invalidInterpolation(valueA: Any, valueB: Any, tweenable: Any)
 
 }

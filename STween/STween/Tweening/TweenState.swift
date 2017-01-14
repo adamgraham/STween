@@ -27,11 +27,9 @@ public enum TweenState {
 // MARK: - State Machine Helpers
 
 extension TweenState {
-    
-    /**
-     The ability for a `Tween` to be started, based on the state of `self`.
-     Returns `true` if `self` is `new` or `inactive`.
-     */
+
+    /// The ability for a `Tween` to be started, based on the state of `self`.
+    /// Returns `true` if `self` is `new` or `inactive`.
     internal var canStart: Bool {
         switch self {
         case .new, .inactive:
@@ -41,10 +39,8 @@ extension TweenState {
         }
     }
 
-    /**
-     The ability for a `Tween` to be stopped, based on the state of `self`.
-     Returns `true` if `self` is `active` or `paused`.
-     */
+    /// The ability for a `Tween` to be stopped, based on the state of `self`.
+    /// Returns `true` if `self` is `active` or `paused`.
     internal var canStop: Bool {
         switch self {
         case .active, .paused:
@@ -54,10 +50,8 @@ extension TweenState {
         }
     }
 
-    /**
-     The ability for a `Tween` to be restarted, based on the state of `self`.
-     Returns `true` if `self` is `active`, `inactive`, `paused`, or `completed`.
-     */
+    /// The ability for a `Tween` to be restarted, based on the state of `self`.
+    /// Returns `true` if `self` is `active`, `inactive`, `paused`, or `completed`.
     internal var canRestart: Bool {
         switch self {
         case .active, .inactive, .paused, .completed:
@@ -67,10 +61,8 @@ extension TweenState {
         }
     }
 
-    /**
-     The ability for a `Tween` to be paused, based on the state of `self`.
-     Returns `true` only if `self` is `active`.
-     */
+    /// The ability for a `Tween` to be paused, based on the state of `self`.
+    /// Returns `true` only if `self` is `active`.
     internal var canPause: Bool {
         switch self {
         case .active:
@@ -80,10 +72,8 @@ extension TweenState {
         }
     }
 
-    /**
-     The ability for a `Tween` to be resumed, based on the state of `self`.
-     Returns `true` only if `self` is `paused`.
-     */
+    /// The ability for a `Tween` to be resumed, based on the state of `self`.
+    /// Returns `true` only if `self` is `paused`.
     internal var canResume: Bool {
         switch self {
         case .paused:
@@ -93,10 +83,8 @@ extension TweenState {
         }
     }
 
-    /**
-     The ability for a `Tween` to be completed, based on the state of `self`.
-     Returns `true` if `self` is `active` or `paused`.
-     */
+    /// The ability for a `Tween` to be completed, based on the state of `self`.
+    /// Returns `true` if `self` is `active` or `paused`.
     internal var canComplete: Bool {
         switch self {
         case .active, .paused:
@@ -106,10 +94,8 @@ extension TweenState {
         }
     }
 
-    /**
-     The ability for a `Tween` to be killed, based on the state of `self`.
-     Always returns `true` if `self` is *not* already `killed`.
-     */
+    /// The ability for a `Tween` to be killed, based on the state of `self`.
+    /// Always returns `true` if `self` is *not* already `killed`.
     internal var canKill: Bool {
         switch self {
         case .killed:
@@ -119,10 +105,8 @@ extension TweenState {
         }
     }
 
-    /**
-     The ability for a `Tween` to be reset, based on the state of `self`.
-     Always returns `true` if `self` is *not* already `new`.
-     */
+    /// The ability for a `Tween` to be reset, based on the state of `self`.
+    /// Always returns `true` if `self` is *not* already `new`.
     internal var canReset: Bool {
         switch self {
         case .new:
@@ -132,10 +116,8 @@ extension TweenState {
         }
     }
 
-    /**
-     The ability for a `Tween` to be updated, based on the state of `self`.
-     Returns `true` only if `self` is `active`.
-     */
+    /// The ability for a `Tween` to be updated, based on the state of `self`.
+    /// Returns `true` only if `self` is `active`.
     internal var canUpdate: Bool {
         switch self {
         case .active:

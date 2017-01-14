@@ -6,6 +6,7 @@
 //  Copyright © 2016 Adam Graham. All rights reserved.
 //
 
+/// A class to schedule timed interval events for a `Tween`.
 internal final class TweenTimer {
 
     // MARK: References
