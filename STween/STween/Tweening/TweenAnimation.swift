@@ -16,10 +16,10 @@ internal final class TweenAnimation<TweenableTarget: Tweenable>: Tween {
     internal let target: TweenableTarget
 
     /// The array of properties being animated.
-    internal let targetProperties: [TweenableTarget.Property]
+    internal let targetProperties: [TweenableTarget.TweenProperty]
 
     /// An array of values used to interpolate each property every update cycle.
-    fileprivate var interpolationValues = [InterpolationValues<TweenableTarget.Property>]()
+    fileprivate var interpolationValues = [InterpolationValues<TweenableTarget.TweenProperty>]()
 
     /// A dictionary storing the callbacks for each change of state.
     fileprivate var callbacks = [TweenStateChange: Callback?]()
@@ -59,7 +59,7 @@ internal final class TweenAnimation<TweenableTarget: Tweenable>: Tween {
         - duration: The total amount of time, in seconds, the animation will run.
      */
     internal init(target: TweenableTarget,
-                  properties: [TweenableTarget.Property],
+                  properties: [TweenableTarget.TweenProperty],
                   duration: TimeInterval) {
 
         self.target = target
@@ -128,7 +128,7 @@ extension TweenAnimation {
         self.interpolationValues.removeAll()
 
         for property in self.targetProperties {
-            let values: InterpolationValues<TweenableTarget.Property>
+            let values: InterpolationValues<TweenableTarget.TweenProperty>
 
             if !self.reversed {
                 values = self.target.interpolationValues(for: property)

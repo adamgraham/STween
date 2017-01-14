@@ -50,8 +50,6 @@ extension UIView: Tweenable {
 
     }
 
-    public typealias Property = TweenProperty
-
     public func interpolationValues(for property: TweenProperty) -> InterpolationValues<TweenProperty> {
         switch property {
         case let .x(endValue):

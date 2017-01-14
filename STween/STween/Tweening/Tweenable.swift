@@ -9,7 +9,7 @@
 /// A protocol to provide tweening animation functionality.
 public protocol Tweenable {
 
-    associatedtype Property
+    associatedtype TweenProperty
 
     /**
      A method to retrieve the interpolation values (a start and end value) for a 
@@ -20,7 +20,7 @@ public protocol Tweenable {
      
      - Returns: The interpolation values on `self` for the given `property`.
      */
-    func interpolationValues(for property: Self.Property) -> InterpolationValues<Self.Property>
+    func interpolationValues(for property: Self.TweenProperty) -> InterpolationValues<Self.TweenProperty>
 
     /**
      A method to interpolate a set of values for a tweenable property on
@@ -35,7 +35,7 @@ public protocol Tweenable {
      - Throws: `TweenError.invalidInterpolation` if the values can not be
                 interpolated with each other.
      */
-    func interpolate(with ease: Ease, values: InterpolationValues<Self.Property>,
+    func interpolate(with ease: Ease, values: InterpolationValues<Self.TweenProperty>,
                      elapsed: TimeInterval, duration: TimeInterval) throws
 
     /**
@@ -49,7 +49,7 @@ public protocol Tweenable {
      
      - Returns: The `Tween` control for the animation.
      */
-    func tween(property: Self.Property, duration: TimeInterval, completion: Callback?) -> Tween
+    func tween(property: Self.TweenProperty, duration: TimeInterval, completion: Callback?) -> Tween
 
     /**
      A method to create an animation of an array of tweenable properties on 
@@ -62,7 +62,7 @@ public protocol Tweenable {
      
      - Returns: The `Tween` control for the animation.
      */
-    func tween(properties: [Self.Property], duration: TimeInterval, completion: Callback?) -> Tween
+    func tween(properties: [Self.TweenProperty], duration: TimeInterval, completion: Callback?) -> Tween
 
 }
 
@@ -70,11 +70,11 @@ public protocol Tweenable {
 
 extension Tweenable {
 
-    public final func tween(property: Self.Property, duration: TimeInterval, completion: Callback? = nil) -> Tween {
+    public final func tween(property: Self.TweenProperty, duration: TimeInterval, completion: Callback? = nil) -> Tween {
         return tween(properties: [property], duration: duration, completion: completion)
     }
 
-    public final func tween(properties: [Self.Property], duration: TimeInterval, completion: Callback? = nil) -> Tween {
+    public final func tween(properties: [Self.TweenProperty], duration: TimeInterval, completion: Callback? = nil) -> Tween {
         return Tweener.to(target: self, properties: properties, duration: duration, completion: completion)
     }
 
