@@ -15,96 +15,70 @@ class InterpolatableTest: XCTestCase {
     // MARK: Custom Implementation Tests
 
     func testUIntInterpolation() {
-        InterpolatableTest.assertInterpolation(interpolatable: UInt.self, validValue: UInt())
+        let startValue: UInt = 0
+        let endValue: UInt = 10
+        let expectedValue: UInt = 5
+        InterpolatableTest.assertInterpolation(startValue: startValue, endValue: endValue, expectedValue: expectedValue)
     }
 
     func testIntInterpolation() {
-        InterpolatableTest.assertInterpolation(interpolatable: Int.self, validValue: Int())
+        let startValue: Int = 0
+        let endValue: Int = 10
+        let expectedValue: Int = 5
+        InterpolatableTest.assertInterpolation(startValue: startValue, endValue: endValue, expectedValue: expectedValue)
     }
 
     func testDoubleInterpolation() {
-        InterpolatableTest.assertInterpolation(interpolatable: Double.self, validValue: Double())
+        let startValue: Double = 0.0
+        let endValue: Double = 10.0
+        let expectedValue: Double = 5.0
+        InterpolatableTest.assertInterpolation(startValue: startValue, endValue: endValue, expectedValue: expectedValue)
     }
 
     func testFloatInterpolation() {
-        InterpolatableTest.assertInterpolation(interpolatable: Float.self, validValue: Float())
+        let startValue: Float = 0.0
+        let endValue: Float = 10.0
+        let expectedValue: Float = 5.0
+        InterpolatableTest.assertInterpolation(startValue: startValue, endValue: endValue, expectedValue: expectedValue)
     }
 
     func testCGFloatInterpolation() {
-        InterpolatableTest.assertInterpolation(interpolatable: CGFloat.self, validValue: CGFloat())
+        let startValue: CGFloat = 0.0
+        let endValue: CGFloat = 10.0
+        let expectedValue: CGFloat = 5.0
+        InterpolatableTest.assertInterpolation(startValue: startValue, endValue: endValue, expectedValue: expectedValue)
     }
 
     func testCGPointInterpolation() {
-        InterpolatableTest.assertInterpolation(interpolatable: CGPoint.self, validValue: CGPoint())
+        let startValue = CGPoint(x: 0.0, y: 0.0)
+        let endValue = CGPoint(x: 10.0, y: 10.0)
+        let expectedValue = CGPoint(x: 5.0, y: 5.0)
+        InterpolatableTest.assertInterpolation(startValue: startValue, endValue: endValue, expectedValue: expectedValue)
     }
 
     func testCGSizeInterpolation() {
-        InterpolatableTest.assertInterpolation(interpolatable: CGSize.self, validValue: CGSize())
+        let startValue = CGSize(width: 0.0, height: 0.0)
+        let endValue = CGSize(width: 10.0, height: 10.0)
+        let expectedValue = CGSize(width: 5.0, height: 5.0)
+        InterpolatableTest.assertInterpolation(startValue: startValue, endValue: endValue, expectedValue: expectedValue)
     }
 
     func testCGRectInterpolation() {
-        InterpolatableTest.assertInterpolation(interpolatable: CGRect.self, validValue: CGRect())
+        let startValue = CGRect(x: 0.0, y: 0.0, width: 0.0, height: 0.0)
+        let endValue = CGRect(x: 10.0, y: 10.0, width: 10.0, height: 10.0)
+        let expectedValue = CGRect(x: 5.0, y: 5.0, width: 5.0, height: 5.0)
+        InterpolatableTest.assertInterpolation(startValue: startValue, endValue: endValue, expectedValue: expectedValue)
     }
 
     // MARK: Assertions
 
-    static func assertInterpolation(interpolatable: Interpolatable.Type, validValue: InterpolationValue) {
-        class InvalidValue: InterpolationValue {
-            public static func interpolate(with ease: Ease,
-                                           startValue: InterpolationValue,
-                                           endValue: InterpolationValue,
-                                           elapsed: TimeInterval,
-                                           duration: TimeInterval) throws -> InterpolationValue {
-                return 0.0
-            }
-        }
+    static func assertInterpolation<T: Interpolatable & Equatable>(startValue: T, endValue: T, expectedValue: T) {
+        var interpolatedValue = T.interpolate(with: .linear, startValue: startValue, endValue: endValue, elapsed: 0.5, duration: 1.0)
+        XCTAssertEqual(interpolatedValue, expectedValue)
 
-        // Test for no errors
-
-        do {
-            _ = try interpolatable.interpolate(
-                with: .linear,
-                startValue: validValue,
-                endValue: validValue,
-                elapsed: 0.5,
-                duration: 1.0)
-        } catch let error as InterpolationError {
-            XCTFail(error.description)
-        } catch {
-            XCTFail("The class failed to interpolate a value with an unknown error.")
-        }
-
-        // Test for error `valueNotConvertible` on `startValue`
-
-        do {
-            _ = try interpolatable.interpolate(
-                with: .linear,
-                startValue: InvalidValue(),
-                endValue: validValue,
-                elapsed: 0.5,
-                duration: 1.0)
-            XCTFail("The class succeeded to interpolate a value when it was intended to fail.")
-        } catch let error as InterpolationError {
-            XCTAssertTrue(error.description.contains("InterpolationError.valueNotConvertible:"))
-        } catch {
-            XCTFail("The class failed to interpolate a value with an unknown error.")
-        }
-
-        // Test for error `valueNotConvertible` on `endValue`
-
-        do {
-            _ = try interpolatable.interpolate(
-                with: .linear,
-                startValue: validValue,
-                endValue: InvalidValue(),
-                elapsed: 0.5,
-                duration: 1.0)
-            XCTFail("The class succeeded to interpolate a value when it was intended to fail.")
-        } catch let error as InterpolationError {
-            XCTAssertTrue(error.description.contains("InterpolationError.valueNotConvertible:"))
-        } catch {
-            XCTFail("The class failed to interpolate a value with an unknown error.")
-        }
+        let values = InterpolationValues(start: startValue, end: endValue)
+        interpolatedValue = T.interpolate(with: .linear, values: values, elapsed: 0.5, duration: 1.0)
+        XCTAssertEqual(interpolatedValue, expectedValue)
     }
 
 }
