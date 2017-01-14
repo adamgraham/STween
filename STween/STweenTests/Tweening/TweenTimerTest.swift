@@ -116,7 +116,7 @@ fileprivate class TestDelegateClass: TweenTimerDelegate {
 
     var callback: (() -> Void)?
 
-    func tweenTimer(_ timer: TweenTimer, didUpdateWithElapsedTime elapsed: Foundation.TimeInterval) {
+    func tweenTimer(_ timer: TweenTimer, didUpdateWithElapsedTime elapsed: TimeInterval) {
         self.callback?()
     }
 

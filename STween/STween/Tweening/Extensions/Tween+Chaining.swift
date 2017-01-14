@@ -42,7 +42,7 @@ extension Tween {
 
      - Returns: `self` to allow for additional method chaining.
      */
-    @discardableResult public final func set(delay: Foundation.TimeInterval) -> Tween {
+    @discardableResult public final func set(delay: TimeInterval) -> Tween {
         self.delay = delay
         return self
     }
@@ -56,7 +56,7 @@ extension Tween {
 
      - Returns: `self` to allow for additional method chaining.
      */
-    @discardableResult public final func set(duration: Foundation.TimeInterval) -> Tween {
+    @discardableResult public final func set(duration: TimeInterval) -> Tween {
         self.duration = duration
         return self
     }
@@ -69,7 +69,7 @@ extension Tween {
 
      - Returns: `self` to allow for additional method chaining.
      */
-    @discardableResult public final func set(reversed: Swift.Bool) -> Tween {
+    @discardableResult public final func set(reversed: Bool) -> Tween {
         self.reversed = reversed
         return self
     }

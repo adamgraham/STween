@@ -6,6 +6,7 @@
 //  Copyright © 2016 Adam Graham. All rights reserved.
 //
 
+/// A class to schedule timed interval events for a `Tween`.
 internal final class TweenTimer {
 
     // MARK: References
@@ -14,7 +15,7 @@ internal final class TweenTimer {
     internal weak var delegate: TweenTimerDelegate?
 
     /// The timer object that invokes scheduled "tick" events.
-    private lazy var timer: Foundation.Timer = Foundation.Timer.scheduledTimer(
+    private lazy var timer: Timer = Timer.scheduledTimer(
         timeInterval: FrameRate.targetFrameDuration,
         target: self,
         selector: #selector(tick),
@@ -30,10 +31,10 @@ internal final class TweenTimer {
     // MARK: Time Properties
 
     /// The amount of time, in seconds, `self` has been running.
-    internal var elapsed: Foundation.TimeInterval = 0.0
+    internal var elapsed: TimeInterval = 0.0
 
     /// The date/time of the last "tick" event.
-    private var lastTickDate = Foundation.Date()
+    private var lastTickDate = Date()
 
     // MARK: Initialization
 
@@ -131,6 +132,6 @@ protocol TweenTimerDelegate: class {
         - elapsed: The amount of time, in seconds, the `timer` has been 
                    running.
      */
-    func tweenTimer(_ timer: TweenTimer, didUpdateWithElapsedTime elapsed: Foundation.TimeInterval)
+    func tweenTimer(_ timer: TweenTimer, didUpdateWithElapsedTime elapsed: TimeInterval)
 
 }

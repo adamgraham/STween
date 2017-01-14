@@ -6,10 +6,8 @@
 //  Copyright © 2016 Adam Graham. All rights reserved.
 //
 
-/**
- A class to animate properties on a `Tweenable` object via interpolation 
- and easing algorithms.
- */
+/// A class to animate properties on a `Tweenable` object via interpolation
+/// and easing algorithms.
 internal final class TweenAnimation<TweenableTarget: Tweenable>: Tween {
 
     // MARK: Core Properties
@@ -18,10 +16,10 @@ internal final class TweenAnimation<TweenableTarget: Tweenable>: Tween {
     internal let target: TweenableTarget
 
     /// The array of properties being animated.
-    internal let targetProperties: [TweenableTarget.PropertyType]
+    internal let targetProperties: [TweenableTarget.TweenProperty]
 
-    /// An array of data needed to interpolate each property every update cycle.
-    fileprivate var tweeningData = [TweenInterpolationData<TweenableTarget.PropertyType>]()
+    /// An array of values used to interpolate each property every update cycle.
+    fileprivate var interpolationValues = [InterpolationValues<TweenableTarget.TweenProperty>]()
 
     /// A dictionary storing the callbacks for each change of state.
     fileprivate var callbacks = [TweenStateChange: Callback?]()
@@ -36,18 +34,16 @@ internal final class TweenAnimation<TweenableTarget: Tweenable>: Tween {
 
     // MARK: Time Properties
 
-    /**
-     The internal timer of `self` used to keep track of total elapsed time and 
-     fire update cycles. The rate at which the timer updates is based on
-     `FrameRate.targetFrameRate`.
-     */
+    /// The internal timer of `self` used to keep track of total elapsed time and
+    /// fire update cycles. The rate at which the timer updates is based on
+    /// `FrameRate.targetFrameRate`.
     fileprivate lazy var timer: TweenTimer = TweenTimer(delegate: self)
     
     internal var delay = Defaults.delay
 
-    internal var duration: Foundation.TimeInterval
+    internal var duration: TimeInterval
 
-    internal var elapsed: Foundation.TimeInterval {
+    internal var elapsed: TimeInterval {
         return self.state == .completed ? self.duration : self.timer.elapsed
     }
 
@@ -63,8 +59,8 @@ internal final class TweenAnimation<TweenableTarget: Tweenable>: Tween {
         - duration: The total amount of time, in seconds, the animation will run.
      */
     internal init(target: TweenableTarget,
-                  properties: [TweenableTarget.PropertyType],
-                  duration: Foundation.TimeInterval) {
+                  properties: [TweenableTarget.TweenProperty],
+                  duration: TimeInterval) {
 
         self.target = target
         self.duration = duration
@@ -86,7 +82,7 @@ extension TweenAnimation {
      
      - Returns: `true` if `self` is successfully updated.
      */
-    @discardableResult internal func update() -> Swift.Bool {
+    @discardableResult internal func update() -> Bool {
         guard self.state.canUpdate else {
             return false
         }
@@ -110,19 +106,15 @@ extension TweenAnimation {
         let elapsed = self.elapsed
         let duration = self.duration
 
-        do {
-            for data in self.tweeningData {
-                let interpolatedValue = try data.interpolate(with: ease,
-                                                             elapsed: elapsed,
-                                                             duration: duration)
-
-                try self.target.tweenableValue(set: data.property, newValue: interpolatedValue)
-            }
-        } catch let error {
-            if let stringConvertible = error as? Swift.CustomStringConvertible {
-                print(stringConvertible.description)
-            } else {
-                print("ERROR: \(error.localizedDescription)")
+        for values in self.interpolationValues {
+            do {
+                try self.target.interpolate(with: ease, values: values, elapsed: elapsed, duration: duration)
+            } catch let error {
+                if let stringConvertible = error as? CustomStringConvertible {
+                    print(stringConvertible.description)
+                } else {
+                    print("ERROR: \(error.localizedDescription)")
+                }
             }
         }
     }
@@ -133,24 +125,18 @@ extension TweenAnimation {
      flipped with each other.
      */
     fileprivate func storeStartingAndEndingValues() {
-        self.tweeningData.removeAll()
+        self.interpolationValues.removeAll()
 
         for property in self.targetProperties {
-            let startValue = self.target.tweenableValue(get: property)
-            let endValue = (property as! TweenableProperty).associatedValue
-            let data: TweenInterpolationData<TweenableTarget.PropertyType>
+            let values: InterpolationValues<TweenableTarget.TweenProperty>
 
             if !self.reversed {
-                data = TweenInterpolationData(property: property,
-                                              startValue: startValue,
-                                              endValue: endValue)
+                values = self.target.interpolationValues(for: property)
             } else {
-                data = TweenInterpolationData(property: property,
-                                              startValue: endValue,
-                                              endValue: startValue)
+                values = self.target.interpolationValues(for: property).reversed
             }
             
-            self.tweeningData.append(data)
+            self.interpolationValues.append(values)
         }
     }
 
@@ -167,7 +153,7 @@ extension TweenAnimation {
      
      - Returns: `true` if `self` is successfully started.
      */
-    @discardableResult internal func start() -> Swift.Bool {
+    @discardableResult internal func start() -> Bool {
         guard self.state.canStart else {
             return false
         }
@@ -195,7 +181,7 @@ extension TweenAnimation {
      
      - Returns: `true` if `self` is successfully stopped.
      */
-    @discardableResult internal func stop() -> Swift.Bool {
+    @discardableResult internal func stop() -> Bool {
         guard self.state.canStop else {
             return false
         }
@@ -222,7 +208,7 @@ extension TweenAnimation {
      
      - Returns: `true` if `self` is successfully restarted.
      */
-    @discardableResult internal func restart() -> Swift.Bool {
+    @discardableResult internal func restart() -> Bool {
         guard self.state.canRestart else {
             return false
         }
@@ -244,7 +230,7 @@ extension TweenAnimation {
      
      - Returns: `true` if `self` is successfully paused.
      */
-    @discardableResult internal func pause() -> Swift.Bool {
+    @discardableResult internal func pause() -> Bool {
         guard self.state.canPause else {
             return false
         }
@@ -269,7 +255,7 @@ extension TweenAnimation {
      
      - Returns: `true` if `self` is successfully resumed.
      */
-    @discardableResult internal func resume() -> Swift.Bool {
+    @discardableResult internal func resume() -> Bool {
         guard self.state.canResume else {
             return false
         }
@@ -294,7 +280,7 @@ extension TweenAnimation {
      
      - Returns: `true` if `self` is successfully completed.
      */
-    @discardableResult internal func complete() -> Swift.Bool {
+    @discardableResult internal func complete() -> Bool {
         guard self.state.canComplete else {
             return false
         }
@@ -328,7 +314,7 @@ extension TweenAnimation {
      
      - Returns: `true` if `self` is successfully killed.
      */
-    @discardableResult internal func kill() -> Swift.Bool {
+    @discardableResult internal func kill() -> Bool {
         guard self.state.canKill else {
             return false
         }
@@ -357,7 +343,7 @@ extension TweenAnimation {
      
      - Returns: `true` if `self` is successfully reset.
      */
-    @discardableResult internal func reset() -> Swift.Bool {
+    @discardableResult internal func reset() -> Bool {
         guard self.state.canReset else {
             return false
         }
@@ -366,7 +352,7 @@ extension TweenAnimation {
         self.state = .new
 
         // Default properties
-        self.tweeningData = []
+        self.interpolationValues = []
         self.reversed = Defaults.reversed
         self.ease = Defaults.ease
         self.delay = Defaults.delay
@@ -391,7 +377,7 @@ extension TweenAnimation {
 
 extension TweenAnimation {
 
-    @discardableResult internal func invoke(_ stateChange: TweenStateChange) -> Swift.Bool {
+    @discardableResult internal func invoke(_ stateChange: TweenStateChange) -> Bool {
         switch stateChange {
         case .start:
             return start()
@@ -449,39 +435,8 @@ extension TweenAnimation {
 
 extension TweenAnimation: TweenTimerDelegate {
 
-    internal func tweenTimer(_ timer: TweenTimer, didUpdateWithElapsedTime elapsed: Foundation.TimeInterval) {
+    internal func tweenTimer(_ timer: TweenTimer, didUpdateWithElapsedTime elapsed: TimeInterval) {
         update()
-    }
-
-}
-
-// MARK: - TweenInterpolationData Declaration
-
-internal struct TweenInterpolationData<T> {
-
-    /// The property being interpolated.
-    internal let property: T
-    /// The start value of the property.
-    internal let startValue: InterpolationValue
-    /// The end value of the property.
-    internal let endValue: InterpolationValue
-
-    /**
-     A method to calculate the value between `self.startValue` and 
-     `self.endValue` at a specific point in time.
-
-     - Parameters:
-        - ease: The `Ease` used to interpolate values.
-        - elapsed: The elapsed amount of time passed to the `ease` algorithm.
-        - duration: The duration of time passed to the `ease` algorithm.
-     
-     - Throws: `InterpolationError.valueNotConvertible` if `self.startValue` 
-                or `self.endValue` fails to convert to an expected type.
-
-     - Returns: The value interpolated between `self.startValue` and `self.endValue`.
-     */
-    func interpolate(with ease: Ease, elapsed: Foundation.TimeInterval, duration: Foundation.TimeInterval) throws -> InterpolationValue {
-        return try self.startValue.interpolate(with: ease, endValue: self.endValue, elapsed: elapsed, duration: duration)
     }
 
 }

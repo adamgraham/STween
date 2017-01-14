@@ -36,11 +36,6 @@ A visualized cheat-sheet of the algorithms can be found at [easings.net](http://
 - Elastic
 - Bounce
 
-To set the type of ease a Tween will use, for example, see the following:
-``` swift
-tween.set(ease: .bounceInOut)
-```
-
 ### To Do
 
 - Detailed usage/documentation readme

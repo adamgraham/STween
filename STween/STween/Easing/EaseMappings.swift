@@ -51,16 +51,12 @@ internal final class EaseMappings {
         .bounceInOut:  (.bounce,  .inOut)
     ]
 
-    /**
-     A typealias for a dictionary containing each `EaseCurve` and an 
-     associated `Ease`.
-     */
+    /// A typealias for a dictionary containing each `EaseCurve` and an
+    /// associated `Ease`.
     internal typealias EaseCurveMappings = [EaseCurve: Ease]
 
-    /**
-     A dictionary containing every `EaseClassification` and its associated
-     `EaseCurveMappings`.
-     */
+    /// A dictionary containing every `EaseClassification` and its associated
+    /// `EaseCurveMappings`.
     internal static let classificationMappings: [EaseClassification: EaseCurveMappings] = [
         .linear: [
             .in: .linear,

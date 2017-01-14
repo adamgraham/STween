@@ -9,33 +9,38 @@
 /// A protocol to provide tweening animation functionality.
 public protocol Tweenable {
 
-    associatedtype PropertyType = TweenableProperty
+    associatedtype TweenProperty
 
     /**
-     A method to retrieve the value of a tweenable property on `self`.
-
-     - Parameters:
-        - property: The property of which its value will be retrieved.
-
-     - Returns: The value of the `property` on `self`.
-     */
-    func tweenableValue(get property: PropertyType) -> InterpolationValue
-
-    /**
-     A method to assign a new value to a tweenable property on `self`.
-
-     - Parameters:
-        - property: The property to which a new value will be assigned.
-        - newValue: The value to be assigned to the `property` on `self`.
+     A method to retrieve the interpolation values (a start and end value) for a 
+     tweenable property on `self`.
      
-     - Throws: `DeserializationError.valueNotDeserializable` if `newValue` 
-                cannot be converted to its expected type.
+     - Parameters:
+        - property: The property for which the interpolation values should be retrieved.
+     
+     - Returns: The interpolation values on `self` for the given `property`.
      */
-    func tweenableValue(set property: Self.PropertyType, newValue: InterpolationValue) throws
+    func interpolationValues(for property: Self.TweenProperty) -> InterpolationValues<Self.TweenProperty>
 
     /**
-     A method to animate a tweenable property on `self` with a given
-     duration.
+     A method to interpolate a set of values for a tweenable property on
+     `self` and apply the result to `self`.
+     
+     - Parameters:
+        - ease: The `Ease` used to interpolate values.
+        - values: The start and end value passed to the `ease` algorithm.
+        - elapsed: The elapsed amount of time passed to the `ease` algorithm.
+        - duration: The duration of time passed to the `ease` algorithm.
+     
+     - Throws: `TweenError.invalidInterpolation` if the values can not be
+                interpolated with each other.
+     */
+    func interpolate(with ease: Ease, values: InterpolationValues<Self.TweenProperty>,
+                     elapsed: TimeInterval, duration: TimeInterval) throws
+
+    /**
+     A method to create an animation of a tweenable property on `self` with a 
+     given duration.
      
      - Parameters:
         - property: The property to be animated.
@@ -44,11 +49,11 @@ public protocol Tweenable {
      
      - Returns: The `Tween` control for the animation.
      */
-    func tween(property: Self.PropertyType, duration: Foundation.TimeInterval, completion: Callback?) -> Tween
+    func tween(property: Self.TweenProperty, duration: TimeInterval, completion: Callback?) -> Tween
 
     /**
-     A method to animate an array of tweenable properties on `self` with a 
-     given duration.
+     A method to create an animation of an array of tweenable properties on 
+     `self` with a given duration.
      
      - Parameters:
         - properties: The array of properties to be animated.
@@ -57,7 +62,7 @@ public protocol Tweenable {
      
      - Returns: The `Tween` control for the animation.
      */
-    func tween(properties: [Self.PropertyType], duration: Foundation.TimeInterval, completion: Callback?) -> Tween
+    func tween(properties: [Self.TweenProperty], duration: TimeInterval, completion: Callback?) -> Tween
 
 }
 
@@ -65,12 +70,25 @@ public protocol Tweenable {
 
 extension Tweenable {
 
-    public final func tween(property: Self.PropertyType, duration: Foundation.TimeInterval, completion: Callback? = nil) -> Tween {
+    public final func tween(property: Self.TweenProperty, duration: TimeInterval, completion: Callback? = nil) -> Tween {
         return tween(properties: [property], duration: duration, completion: completion)
     }
 
-    public final func tween(properties: [Self.PropertyType], duration: Foundation.TimeInterval, completion: Callback? = nil) -> Tween {
+    public final func tween(properties: [Self.TweenProperty], duration: TimeInterval, completion: Callback? = nil) -> Tween {
         return Tweener.to(target: self, properties: properties, duration: duration, completion: completion)
+    }
+
+}
+
+// MARK: - Helpers
+
+extension Tweenable {
+
+    public final func interpolate<T: Interpolatable>(with ease: Ease, startValue: T, endValue: T,
+                                                     elapsed: TimeInterval, duration: TimeInterval) -> T {
+
+        return T.interpolate(with: ease, startValue: startValue, endValue: endValue,
+                             elapsed: elapsed, duration: duration)
     }
 
 }

@@ -11,271 +11,209 @@ public enum Ease {
 
     // MARK: Linear
 
-    /**
-     A case to denote an `EaseClassification.linear` algorithm.
-
-     [Visual Reference](http://easings.net/)
-     */
+    /// A case to denote an `EaseClassification.linear` algorithm.
+    ///
+    /// [Visual Reference](http://easings.net/)
     case linear
 
     // MARK: Sinusoidal
 
-    /**
-     A case to denote an `EaseClassification.sine` algorithm with an 
-     `EaseCurve.in` acceleration pattern.
-     
-     [Visual Reference](http://easings.net/#easeInSine)
-     */
+    /// A case to denote an `EaseClassification.sine` algorithm with an
+    /// `EaseCurve.in` acceleration pattern.
+    ///
+    /// [Visual Reference](http://easings.net/#easeInSine)
     case sineIn
 
-    /**
-     A case to denote an `EaseClassification.sine` algorithm with an 
-     `EaseCurve.out` acceleration pattern.
-
-     [Visual Reference](http://easings.net/#easeOutSine)
-     */
+    /// A case to denote an `EaseClassification.sine` algorithm with an
+    /// `EaseCurve.out` acceleration pattern.
+    ///
+    /// [Visual Reference](http://easings.net/#easeOutSine)
     case sineOut
 
-    /**
-     A case to denote an `EaseClassification.sine` algorithm with an 
-     `EaseCurve.inOut` acceleration pattern.
-
-     [Visual Reference](http://easings.net/#easeInOutSine)
-     */
+    /// A case to denote an `EaseClassification.sine` algorithm with an
+    /// `EaseCurve.inOut` acceleration pattern.
+    ///
+    /// [Visual Reference](http://easings.net/#easeInOutSine)
     case sineInOut
 
     // MARK: Cubic
 
-    /**
-     A case to denote an `EaseClassification.cubic` algorithm with an 
-     `EaseCurve.in` acceleration pattern.
-
-     [Visual Reference](http://easings.net/#easeInCubic)
-     */
+    /// A case to denote an `EaseClassification.cubic` algorithm with an 
+    /// `EaseCurve.in` acceleration pattern.
+    ///
+    /// [Visual Reference](http://easings.net/#easeInCubic)
     case cubicIn
 
-    /**
-     A case to denote an `EaseClassification.cubic` algorithm with an
-     `EaseCurve.out` acceleration pattern.
-
-     [Visual Reference](http://easings.net/#easeOutCubic)
-     */
+    /// A case to denote an `EaseClassification.cubic` algorithm with an
+    /// `EaseCurve.out` acceleration pattern.
+    ///
+    /// [Visual Reference](http://easings.net/#easeOutCubic)
     case cubicOut
 
-    /**
-     A case to denote an `EaseClassification.cubic` algorithm with an
-     `EaseCurve.inOut` acceleration pattern.
-
-     [Visual Reference](http://easings.net/#easeInOutCubic)
-     */
+    /// A case to denote an `EaseClassification.cubic` algorithm with an
+    /// `EaseCurve.inOut` acceleration pattern.
+    ///
+    /// [Visual Reference](http://easings.net/#easeInOutCubic)
     case cubicInOut
 
     // MARK: Quadratic
 
-    /**
-     A case to denote an `EaseClassification.quad` algorithm with an
-     `EaseCurve.in` acceleration pattern.
-
-     [Visual Reference](http://easings.net/#easeInQuad)
-     */
+    /// A case to denote an `EaseClassification.quad` algorithm with an
+    /// `EaseCurve.in` acceleration pattern.
+    ///
+    /// [Visual Reference](http://easings.net/#easeInQuad)
     case quadIn
 
-    /**
-     A case to denote an `EaseClassification.quad` algorithm with an
-     `EaseCurve.out` acceleration pattern.
-
-     [Visual Reference](http://easings.net/#easeOutQuad)
-     */
+    /// A case to denote an `EaseClassification.quad` algorithm with an
+    /// `EaseCurve.out` acceleration pattern.
+    ///
+    /// [Visual Reference](http://easings.net/#easeOutQuad)
     case quadOut
 
-    /**
-     A case to denote an `EaseClassification.quad` algorithm with an
-     `EaseCurve.inOut` acceleration pattern.
-
-     [Visual Reference](http://easings.net/#easeInOutQuad)
-     */
+    /// A case to denote an `EaseClassification.quad` algorithm with an
+    /// `EaseCurve.inOut` acceleration pattern.
+    ///
+    /// [Visual Reference](http://easings.net/#easeInOutQuad)
     case quadInOut
 
     // MARK: Quartic
 
-    /**
-     A case to denote an `EaseClassification.quart` algorithm with an
-     `EaseCurve.in` acceleration pattern.
-
-     [Visual Reference](http://easings.net/#easeInQuart)
-     */
+    /// A case to denote an `EaseClassification.quart` algorithm with an
+    /// `EaseCurve.in` acceleration pattern.
+    ///
+    /// [Visual Reference](http://easings.net/#easeInQuart)
     case quartIn
 
-    /**
-     A case to denote an `EaseClassification.quart` algorithm with an
-     `EaseCurve.out` acceleration pattern.
-
-     [Visual Reference](http://easings.net/#easeOutQuart)
-     */
+    /// A case to denote an `EaseClassification.quart` algorithm with an
+    /// `EaseCurve.out` acceleration pattern.
+    ///
+    /// [Visual Reference](http://easings.net/#easeOutQuart)
     case quartOut
 
-    /**
-     A case to denote an `EaseClassification.quart` algorithm with an
-     `EaseCurve.inOut` acceleration pattern.
-
-     [Visual Reference](http://easings.net/#easeInOutQuart)
-     */
+    /// A case to denote an `EaseClassification.quart` algorithm with an
+    /// `EaseCurve.inOut` acceleration pattern.
+    ///
+    /// [Visual Reference](http://easings.net/#easeInOutQuart)
     case quartInOut
 
     // MARK: Quintic
 
-    /**
-     A case to denote an `EaseClassification.quint` algorithm with an
-     `EaseCurve.in` acceleration pattern.
-
-     [Visual Reference](http://easings.net/#easeInQuint)
-     */
+    /// A case to denote an `EaseClassification.quint` algorithm with an
+    /// `EaseCurve.in` acceleration pattern.
+    ///
+    /// [Visual Reference](http://easings.net/#easeInQuint)
     case quintIn
 
-    /**
-     A case to denote an `EaseClassification.quint` algorithm with an
-     `EaseCurve.out` acceleration pattern.
-
-     [Visual Reference](http://easings.net/#easeOutQuint)
-     */
+    /// A case to denote an `EaseClassification.quint` algorithm with an
+    /// `EaseCurve.out` acceleration pattern.
+    ///
+    /// [Visual Reference](http://easings.net/#easeOutQuint)
     case quintOut
 
-    /**
-     A case to denote an `EaseClassification.quint` algorithm with an
-     `EaseCurve.inOut` acceleration pattern.
-
-     [Visual Reference](http://easings.net/#easeInOutQuint)
-     */
+    /// A case to denote an `EaseClassification.quint` algorithm with an
+    /// `EaseCurve.inOut` acceleration pattern.
+    ///
+    /// [Visual Reference](http://easings.net/#easeInOutQuint)
     case quintInOut
 
     // MARK: Exponential
 
-    /**
-     A case to denote an `EaseClassification.expo` algorithm with an
-     `EaseCurve.in` acceleration pattern.
-
-     [Visual Reference](http://easings.net/#easeInExpo)
-     */
+    /// A case to denote an `EaseClassification.expo` algorithm with an
+    /// `EaseCurve.in` acceleration pattern.
+    ///
+    /// [Visual Reference](http://easings.net/#easeInExpo)
     case expoIn
 
-    /**
-     A case to denote an `EaseClassification.expo` algorithm with an
-     `EaseCurve.out` acceleration pattern.
-
-     [Visual Reference](http://easings.net/#easeOutExpo)
-     */
+    /// A case to denote an `EaseClassification.expo` algorithm with an
+    /// `EaseCurve.out` acceleration pattern.
+    ///
+    /// [Visual Reference](http://easings.net/#easeOutExpo)
     case expoOut
 
-    /**
-     A case to denote an `EaseClassification.expo` algorithm with an
-     `EaseCurve.inOut` acceleration pattern.
-
-     [Visual Reference](http://easings.net/#easeInOutExpo)
-     */
+    /// A case to denote an `EaseClassification.expo` algorithm with an
+    /// `EaseCurve.inOut` acceleration pattern.
+    ///
+    /// [Visual Reference](http://easings.net/#easeInOutExpo)
     case expoInOut
 
     // MARK: Circular
 
-    /**
-     A case to denote an `EaseClassification.circ` algorithm with an
-     `EaseCurve.in` acceleration pattern.
-
-     [Visual Reference](http://easings.net/#easeInCirc)
-     */
+    /// A case to denote an `EaseClassification.circ` algorithm with an
+    /// `EaseCurve.in` acceleration pattern.
+    ///
+    /// [Visual Reference](http://easings.net/#easeInCirc)
     case circIn
 
-    /**
-     A case to denote an `EaseClassification.circ` algorithm with an
-     `EaseCurve.out` acceleration pattern.
-
-     [Visual Reference](http://easings.net/#easeOutCirc)
-     */
+    /// A case to denote an `EaseClassification.circ` algorithm with an
+    /// `EaseCurve.out` acceleration pattern.
+    ///
+    /// [Visual Reference](http://easings.net/#easeOutCirc)
     case circOut
 
-    /**
-     A case to denote an `EaseClassification.circ` algorithm with an
-     `EaseCurve.inOut` acceleration pattern.
-
-     [Visual Reference](http://easings.net/#easeInOutCirc)
-     */
+    /// A case to denote an `EaseClassification.circ` algorithm with an
+    /// `EaseCurve.inOut` acceleration pattern.
+    ///
+    /// [Visual Reference](http://easings.net/#easeInOutCirc)
     case circInOut
 
     // MARK: Back
 
-    /**
-     A case to denote an `EaseClassification.back` algorithm with an
-     `EaseCurve.in` acceleration pattern.
-
-     [Visual Reference](http://easings.net/#easeInBack)
-     */
+    /// A case to denote an `EaseClassification.back` algorithm with an
+    /// `EaseCurve.in` acceleration pattern.
+    ///
+    /// [Visual Reference](http://easings.net/#easeInBack)
     case backIn
 
-    /**
-     A case to denote an `EaseClassification.back` algorithm with an
-     `EaseCurve.out` acceleration pattern.
-
-     [Visual Reference](http://easings.net/#easeOutBack)
-     */
+    /// A case to denote an `EaseClassification.back` algorithm with an
+    /// `EaseCurve.out` acceleration pattern.
+    ///
+    /// [Visual Reference](http://easings.net/#easeOutBack)
     case backOut
 
-    /**
-     A case to denote an `EaseClassification.back` algorithm with an
-     `EaseCurve.inOut` acceleration pattern.
-
-     [Visual Reference](http://easings.net/#easeInOutBack)
-     */
+    /// A case to denote an `EaseClassification.back` algorithm with an
+    /// `EaseCurve.inOut` acceleration pattern.
+    ///
+    /// [Visual Reference](http://easings.net/#easeInOutBack)
     case backInOut
 
     // MARK: Elastic
 
-    /**
-     A case to denote an `EaseClassification.elastic` algorithm with an
-     `EaseCurve.in` acceleration pattern.
-
-     [Visual Reference](http://easings.net/#easeInElastic)
-     */
+    /// A case to denote an `EaseClassification.elastic` algorithm with an
+    /// `EaseCurve.in` acceleration pattern.
+    ///
+    /// [Visual Reference](http://easings.net/#easeInElastic)
     case elasticIn
 
-    /**
-     A case to denote an `EaseClassification.elastic` algorithm with an
-     `EaseCurve.out` acceleration pattern.
-
-     [Visual Reference](http://easings.net/#easeOutElastic)
-     */
+    /// A case to denote an `EaseClassification.elastic` algorithm with an
+    /// `EaseCurve.out` acceleration pattern.
+    ///
+    /// [Visual Reference](http://easings.net/#easeOutElastic)
     case elasticOut
 
-    /**
-     A case to denote an `EaseClassification.elastic` algorithm with an
-     `EaseCurve.inOut` acceleration pattern.
-
-     [Visual Reference](http://easings.net/#easeInOutElastic)
-     */
+    /// A case to denote an `EaseClassification.elastic` algorithm with an
+    /// `EaseCurve.inOut` acceleration pattern.
+    ///
+    /// [Visual Reference](http://easings.net/#easeInOutElastic)
     case elasticInOut
 
     // MARK: Bounce
 
-    /**
-     A case to denote an `EaseClassification.bounce` algorithm with an
-     `EaseCurve.in` acceleration pattern.
-
-     [Visual Reference](http://easings.net/#easeInBounce)
-     */
+    /// A case to denote an `EaseClassification.bounce` algorithm with an
+    /// `EaseCurve.in` acceleration pattern.
+    ///
+    /// [Visual Reference](http://easings.net/#easeInBounce)
     case bounceIn
 
-    /**
-     A case to denote an `EaseClassification.bounce` algorithm with an
-     `EaseCurve.out` acceleration pattern.
-
-     [Visual Reference](http://easings.net/#easeOutBounce)
-     */
+    /// A case to denote an `EaseClassification.bounce` algorithm with an
+    /// `EaseCurve.out` acceleration pattern.
+    ///
+    /// [Visual Reference](http://easings.net/#easeOutBounce)
     case bounceOut
 
-    /**
-     A case to denote an `EaseClassification.bounce` algorithm with an
-     `EaseCurve.inOut` acceleration pattern.
-
-     [Visual Reference](http://easings.net/#easeInOutBounce)
-     */
+    /// A case to denote an `EaseClassification.bounce` algorithm with an
+    /// `EaseCurve.inOut` acceleration pattern.
+    ///
+    /// [Visual Reference](http://easings.net/#easeInOutBounce)
     case bounceInOut
 
 }
@@ -312,7 +250,9 @@ extension Ease {
 
      - Returns: The value interpolated between the `startValue` and `endValue`.
      */
-    public func interpolate<T: Arithmetic>(startValue: T, endValue: T, elapsed: Foundation.TimeInterval, duration: Foundation.TimeInterval) -> T {
+    internal func interpolate<T: Arithmetic>(startValue: T, endValue: T,
+                                             elapsed: TimeInterval,
+                                             duration: TimeInterval) -> T {
         let b = startValue
         let c = endValue - startValue
         let t = elapsed

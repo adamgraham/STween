@@ -31,11 +31,11 @@
  
  - Returns: The value at a specific point in time from the start value.
  */
-public typealias EaseAlgorithm<T: Arithmetic> = (
+internal typealias EaseAlgorithm<T: Arithmetic> = (
     _ b: T,
     _ c: T,
-    _ t: Foundation.TimeInterval,
-    _ d: Foundation.TimeInterval) -> T
+    _ t: TimeInterval,
+    _ d: TimeInterval) -> T
 
 /**
  A class to hold a collection of easing algorithms based upon
@@ -46,7 +46,7 @@ public typealias EaseAlgorithm<T: Arithmetic> = (
  */
 internal final class EaseAlgorithms {
 
-    fileprivate static let PI = Swift.Double.pi
+    fileprivate static let PI = Double.pi
     fileprivate static let PI_M2 = PI * 2.0
     fileprivate static let PI_D2 = PI / 2.0
 
@@ -78,7 +78,7 @@ extension EaseAlgorithms {
      
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func linear<T: Arithmetic>(b: T, c: T, t: Foundation.TimeInterval, d: Foundation.TimeInterval) -> T {
+    internal static func linear<T: Arithmetic>(b: T, c: T, t: TimeInterval, d: TimeInterval) -> T {
         let n = t/d
         return c * n + b
     }
@@ -101,7 +101,7 @@ extension EaseAlgorithms {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func sineIn<T: Arithmetic>(b: T, c: T, t: Foundation.TimeInterval, d: Foundation.TimeInterval) -> T {
+    internal static func sineIn<T: Arithmetic>(b: T, c: T, t: TimeInterval, d: TimeInterval) -> T {
         let n = t/d
         let m = cos(n * PI_D2)
         return -c * m + c + b
@@ -119,7 +119,7 @@ extension EaseAlgorithms {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func sineOut<T: Arithmetic>(b: T, c: T, t: Foundation.TimeInterval, d: Foundation.TimeInterval) -> T {
+    internal static func sineOut<T: Arithmetic>(b: T, c: T, t: TimeInterval, d: TimeInterval) -> T {
         let n = t/d
         let m = sin(n * PI_D2)
         return c * m + b
@@ -137,7 +137,7 @@ extension EaseAlgorithms {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func sineInOut<T: Arithmetic>(b: T, c: T, t: Foundation.TimeInterval, d: Foundation.TimeInterval) -> T {
+    internal static func sineInOut<T: Arithmetic>(b: T, c: T, t: TimeInterval, d: TimeInterval) -> T {
         let x = c/2.0
         let n = t/d
         let m = cos(n * PI) - 1.0
@@ -162,7 +162,7 @@ extension EaseAlgorithms {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func cubicIn<T: Arithmetic>(b: T, c: T, t: Foundation.TimeInterval, d: Foundation.TimeInterval) -> T {
+    internal static func cubicIn<T: Arithmetic>(b: T, c: T, t: TimeInterval, d: TimeInterval) -> T {
         let n = t/d
         let m = n*n*n
         return c * m + b
@@ -180,7 +180,7 @@ extension EaseAlgorithms {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func cubicOut<T: Arithmetic>(b: T, c: T, t: Foundation.TimeInterval, d: Foundation.TimeInterval) -> T {
+    internal static func cubicOut<T: Arithmetic>(b: T, c: T, t: TimeInterval, d: TimeInterval) -> T {
         let n = (t/d) - 1.0
         let m = (n*n*n) + 1.0
         return c * m + b
@@ -198,7 +198,7 @@ extension EaseAlgorithms {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func cubicInOut<T: Arithmetic>(b: T, c: T, t: Foundation.TimeInterval, d: Foundation.TimeInterval) -> T {
+    internal static func cubicInOut<T: Arithmetic>(b: T, c: T, t: TimeInterval, d: TimeInterval) -> T {
         let x = c/2.0
         var n = t/(d/2.0)
 
@@ -230,7 +230,7 @@ extension EaseAlgorithms {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func quadIn<T: Arithmetic>(b: T, c: T, t: Foundation.TimeInterval, d: Foundation.TimeInterval) -> T {
+    internal static func quadIn<T: Arithmetic>(b: T, c: T, t: TimeInterval, d: TimeInterval) -> T {
         let n = t/d
         let m = n*n
         return c * m + b
@@ -248,7 +248,7 @@ extension EaseAlgorithms {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func quadOut<T: Arithmetic>(b: T, c: T, t: Foundation.TimeInterval, d: Foundation.TimeInterval) -> T {
+    internal static func quadOut<T: Arithmetic>(b: T, c: T, t: TimeInterval, d: TimeInterval) -> T {
         let n = t/d
         let m = n*(n - 2.0)
         return -c * m + b
@@ -266,7 +266,7 @@ extension EaseAlgorithms {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func quadInOut<T: Arithmetic>(b: T, c: T, t: Foundation.TimeInterval, d: Foundation.TimeInterval) -> T {
+    internal static func quadInOut<T: Arithmetic>(b: T, c: T, t: TimeInterval, d: TimeInterval) -> T {
         let x = c/2.0
         var n = t/(d/2.0)
 
@@ -298,7 +298,7 @@ extension EaseAlgorithms {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func quartIn<T: Arithmetic>(b: T, c: T, t: Foundation.TimeInterval, d: Foundation.TimeInterval) -> T {
+    internal static func quartIn<T: Arithmetic>(b: T, c: T, t: TimeInterval, d: TimeInterval) -> T {
         let n = t/d
         let m = n*n*n*n
         return c * m + b
@@ -316,7 +316,7 @@ extension EaseAlgorithms {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func quartOut<T: Arithmetic>(b: T, c: T, t: Foundation.TimeInterval, d: Foundation.TimeInterval) -> T {
+    internal static func quartOut<T: Arithmetic>(b: T, c: T, t: TimeInterval, d: TimeInterval) -> T {
         let n = (t/d) - 1.0
         let m = (n*n*n*n) - 1.0
         return -c * m + b
@@ -334,7 +334,7 @@ extension EaseAlgorithms {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func quartInOut<T: Arithmetic>(b: T, c: T, t: Foundation.TimeInterval, d: Foundation.TimeInterval) -> T {
+    internal static func quartInOut<T: Arithmetic>(b: T, c: T, t: TimeInterval, d: TimeInterval) -> T {
         let x = c/2.0
         var n = t/(d/2.0)
 
@@ -366,7 +366,7 @@ extension EaseAlgorithms {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func quintIn<T: Arithmetic>(b: T, c: T, t: Foundation.TimeInterval, d: Foundation.TimeInterval) -> T {
+    internal static func quintIn<T: Arithmetic>(b: T, c: T, t: TimeInterval, d: TimeInterval) -> T {
         let n = t/d
         let m = n*n*n*n*n
         return c * m + b
@@ -384,7 +384,7 @@ extension EaseAlgorithms {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func quintOut<T: Arithmetic>(b: T, c: T, t: Foundation.TimeInterval, d: Foundation.TimeInterval) -> T {
+    internal static func quintOut<T: Arithmetic>(b: T, c: T, t: TimeInterval, d: TimeInterval) -> T {
         let n = (t/d) - 1.0
         let m = (n*n*n*n*n) + 1.0
         return c * m + b
@@ -402,7 +402,7 @@ extension EaseAlgorithms {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func quintInOut<T: Arithmetic>(b: T, c: T, t: Foundation.TimeInterval, d: Foundation.TimeInterval) -> T {
+    internal static func quintInOut<T: Arithmetic>(b: T, c: T, t: TimeInterval, d: TimeInterval) -> T {
         let x = c/2.0
         var n = t/(d/2.0)
 
@@ -434,7 +434,7 @@ extension EaseAlgorithms {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func expoIn<T: Arithmetic>(b: T, c: T, t: Foundation.TimeInterval, d: Foundation.TimeInterval) -> T {
+    internal static func expoIn<T: Arithmetic>(b: T, c: T, t: TimeInterval, d: TimeInterval) -> T {
         if t == 0.0 {
             return b
         } else {
@@ -457,7 +457,7 @@ extension EaseAlgorithms {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func expoOut<T: Arithmetic>(b: T, c: T, t: Foundation.TimeInterval, d: Foundation.TimeInterval) -> T {
+    internal static func expoOut<T: Arithmetic>(b: T, c: T, t: TimeInterval, d: TimeInterval) -> T {
         if t == d {
             return b + c
         } else {
@@ -480,7 +480,7 @@ extension EaseAlgorithms {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func expoInOut<T: Arithmetic>(b: T, c: T, t: Foundation.TimeInterval, d: Foundation.TimeInterval) -> T {
+    internal static func expoInOut<T: Arithmetic>(b: T, c: T, t: TimeInterval, d: TimeInterval) -> T {
         if t == 0.0 {
             return b
         } else if t == d {
@@ -520,7 +520,7 @@ extension EaseAlgorithms {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func circIn<T: Arithmetic>(b: T, c: T, t: Foundation.TimeInterval, d: Foundation.TimeInterval) -> T {
+    internal static func circIn<T: Arithmetic>(b: T, c: T, t: TimeInterval, d: TimeInterval) -> T {
         let n = t/d
         let z = 1.0 - (n*n)
         let m = sqrt(z) - 1.0
@@ -539,7 +539,7 @@ extension EaseAlgorithms {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func circOut<T: Arithmetic>(b: T, c: T, t: Foundation.TimeInterval, d: Foundation.TimeInterval) -> T {
+    internal static func circOut<T: Arithmetic>(b: T, c: T, t: TimeInterval, d: TimeInterval) -> T {
         let n = (t/d) - 1.0
         let z = 1.0 - (n*n)
         let m = sqrt(z)
@@ -558,7 +558,7 @@ extension EaseAlgorithms {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func circInOut<T: Arithmetic>(b: T, c: T, t: Foundation.TimeInterval, d: Foundation.TimeInterval) -> T {
+    internal static func circInOut<T: Arithmetic>(b: T, c: T, t: TimeInterval, d: TimeInterval) -> T {
         let x = c/2.0
         var n = t/(d/2.0)
 
@@ -592,7 +592,7 @@ extension EaseAlgorithms {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func backIn<T: Arithmetic>(b: T, c: T, t: Foundation.TimeInterval, d: Foundation.TimeInterval) -> T {
+    internal static func backIn<T: Arithmetic>(b: T, c: T, t: TimeInterval, d: TimeInterval) -> T {
         let s = Defaults.overshoot
         let n = t/d
         let z = ((s + 1.0) * n) - s
@@ -612,7 +612,7 @@ extension EaseAlgorithms {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func backOut<T: Arithmetic>(b: T, c: T, t: Foundation.TimeInterval, d: Foundation.TimeInterval) -> T {
+    internal static func backOut<T: Arithmetic>(b: T, c: T, t: TimeInterval, d: TimeInterval) -> T {
         let s = Defaults.overshoot
         let n = (t/d) - 1.0
         let z = ((s + 1.0) * n) + s
@@ -632,7 +632,7 @@ extension EaseAlgorithms {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func backInOut<T: Arithmetic>(b: T, c: T, t: Foundation.TimeInterval, d: Foundation.TimeInterval) -> T {
+    internal static func backInOut<T: Arithmetic>(b: T, c: T, t: TimeInterval, d: TimeInterval) -> T {
         let s = Defaults.overshoot * 1.525
         let x = c/2.0
         var n = t/(d/2.0)
@@ -667,7 +667,7 @@ extension EaseAlgorithms {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func elasticIn<T: Arithmetic>(b: T, c: T, t: Foundation.TimeInterval, d: Foundation.TimeInterval) -> T {
+    internal static func elasticIn<T: Arithmetic>(b: T, c: T, t: TimeInterval, d: TimeInterval) -> T {
         var n = t/d
 
         if t == 0.0 {
@@ -703,7 +703,7 @@ extension EaseAlgorithms {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func elasticOut<T: Arithmetic>(b: T, c: T, t: Foundation.TimeInterval, d: Foundation.TimeInterval) -> T {
+    internal static func elasticOut<T: Arithmetic>(b: T, c: T, t: TimeInterval, d: TimeInterval) -> T {
         let n = t/d
 
         if t == 0.0 {
@@ -738,7 +738,7 @@ extension EaseAlgorithms {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func elasticInOut<T: Arithmetic>(b: T, c: T, t: Foundation.TimeInterval, d: Foundation.TimeInterval) -> T {
+    internal static func elasticInOut<T: Arithmetic>(b: T, c: T, t: TimeInterval, d: TimeInterval) -> T {
         var n = t/(d/2.0)
 
         if t == 0.0 {
@@ -794,7 +794,7 @@ extension EaseAlgorithms {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func bounceIn<T: Arithmetic>(b: T, c: T, t: Foundation.TimeInterval, d: Foundation.TimeInterval) -> T {
+    internal static func bounceIn<T: Arithmetic>(b: T, c: T, t: TimeInterval, d: TimeInterval) -> T {
         let m: T = EaseAlgorithms.bounceOut(b: T.identity, c: c, t: d-t, d: d)
         return c - m + b
     }
@@ -811,9 +811,9 @@ extension EaseAlgorithms {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func bounceOut<T: Arithmetic>(b: T, c: T, t: Foundation.TimeInterval, d: Foundation.TimeInterval) -> T {
+    internal static func bounceOut<T: Arithmetic>(b: T, c: T, t: TimeInterval, d: TimeInterval) -> T {
         var n = t/d
-        let z: Swift.Double
+        let z: Double
 
         if n < DIV1 {
             z = 0.0
@@ -844,7 +844,7 @@ extension EaseAlgorithms {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func bounceInOut<T: Arithmetic>(b: T, c: T, t: Foundation.TimeInterval, d: Foundation.TimeInterval) -> T {
+    internal static func bounceInOut<T: Arithmetic>(b: T, c: T, t: TimeInterval, d: TimeInterval) -> T {
         if t < (d/2.0) {
             let z = t*2.0
             let m: T = EaseAlgorithms.bounceIn(b: T.identity, c: c, t: z, d: d) * 0.5
