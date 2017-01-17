@@ -97,11 +97,8 @@ extension Interpolatable where Self: FloatingPoint {
                                    startValue: Self, endValue: Self,
                                    elapsed: TimeInterval, duration: TimeInterval) -> Self {
 
-        let _elapsed = Self(elapsed)
-        let _duration = Self(duration)
-
         return ease.interpolate(startValue: startValue, endValue: endValue,
-                                elapsed: _elapsed, duration: _duration)
+                                elapsed: Self(elapsed), duration: Self(duration))
     }
 
 }
@@ -123,8 +120,8 @@ extension Int64: Interpolatable {}
 extension Float32: Interpolatable {}
 extension Float64: Interpolatable {}
 extension Float80: Interpolatable {}
-extension CGFloat: Interpolatable {}
 
+extension CGFloat: Interpolatable {}
 extension CGPoint: Interpolatable {
 
     public static func interpolate(with ease: Ease,
