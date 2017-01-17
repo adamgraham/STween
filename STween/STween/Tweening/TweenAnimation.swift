@@ -131,9 +131,9 @@ extension TweenAnimation {
             let values: InterpolationValues<TweenableTarget.TweenProperty>
 
             if !self.reversed {
-                values = self.target.interpolationValues(for: property)
+                values = InterpolationValues(start: self.target.interpolationStartValue(for: property), end: property)
             } else {
-                values = self.target.interpolationValues(for: property).reversed
+                values = InterpolationValues(start: property, end: self.target.interpolationStartValue(for: property))
             }
             
             self.interpolationValues.append(values)

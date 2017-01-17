@@ -21,9 +21,9 @@ internal struct RGBA {
     /// The `UIColor` equivalant of `self`.
     internal var color: UIColor {
         return UIColor(red: self.red,
-                             green: self.green,
-                             blue: self.blue,
-                             alpha: self.alpha)
+                       green: self.green,
+                       blue: self.blue,
+                       alpha: self.alpha)
     }
 
 }

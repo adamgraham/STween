@@ -12,15 +12,15 @@ public protocol Tweenable {
     associatedtype TweenProperty
 
     /**
-     A method to retrieve the interpolation values (a start and end value) for a 
-     tweenable property on `self`.
+     A method to retrieve the interpolation start value for a tweenable 
+     property on `self`.
      
      - Parameters:
-        - property: The property for which the interpolation values should be retrieved.
+        - property: The property for which the start value should be retrieved.
      
-     - Returns: The interpolation values on `self` for the given `property`.
+     - Returns: The start value on `self` for the given `property`.
      */
-    func interpolationValues(for property: Self.TweenProperty) -> InterpolationValues<Self.TweenProperty>
+    func interpolationStartValue(for property: Self.TweenProperty) -> Self.TweenProperty
 
     /**
      A method to interpolate a set of values for a tweenable property on
