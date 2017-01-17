@@ -266,7 +266,7 @@
 			isa = PBXGroup;
 			children = (
 				9D88905D1E2883160023FE78 /* Color */,
-				9D9ECC911E2AECE7000CB955 /* Protocols */,
+				9D9ECC921E2AED4D000CB955 /* DoubleConvertible.swift */,
 				9D9ECC941E2B1C6B000CB955 /* FloatingPoint+Arithmetic.swift */,
 				9D8890601E2883160023FE78 /* Functions.swift */,
 			);
@@ -280,22 +280,6 @@
 				9D88905F1E2883160023FE78 /* UIColor+RGBA.swift */,
 			);
 			path = Color;
-			sourceTree = "<group>";
-		};
-		9D9135F41E2B254400394EBB /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				9D9135F51E2B255A00394EBB /* DoubleConvertibleTest.swift */,
-			);
-			path = Protocols;
-			sourceTree = "<group>";
-		};
-		9D9ECC911E2AECE7000CB955 /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				9D9ECC921E2AED4D000CB955 /* DoubleConvertible.swift */,
-			);
-			path = Protocols;
 			sourceTree = "<group>";
 		};
 		9DB3D62F1DAE686F00134C1D /* Core */ = {
@@ -312,7 +296,7 @@
 			isa = PBXGroup;
 			children = (
 				9DB3D63A1DAE688200134C1D /* Color */,
-				9D9135F41E2B254400394EBB /* Protocols */,
+				9D9135F51E2B255A00394EBB /* DoubleConvertibleTest.swift */,
 				9D0477AA1E2DB520003E17D9 /* FloatingPoint_ArithmeticTest.swift */,
 				9DB3D6431DAE758F00134C1D /* FunctionsTest.swift */,
 			);
