@@ -180,3 +180,65 @@ extension CGRect: Interpolatable {
     }
     
 }
+
+extension CGAffineTransform: Interpolatable {
+
+    public static func interpolate(with ease: Ease,
+                                   startValue: CGAffineTransform, endValue: CGAffineTransform,
+                                   elapsed: TimeInterval, duration: TimeInterval) -> CGAffineTransform {
+
+        let interpolate: (CGFloat, CGFloat) -> CGFloat = { (start, end) in
+            return ease.interpolate(startValue: start, endValue: end, elapsed: CGFloat(elapsed), duration: CGFloat(duration))
+        }
+
+        let a = interpolate(startValue.a, endValue.a)
+        let b = interpolate(startValue.b, endValue.b)
+        let c = interpolate(startValue.c, endValue.c)
+        let d = interpolate(startValue.d, endValue.d)
+        let tx = interpolate(startValue.tx, endValue.tx)
+        let ty = interpolate(startValue.ty, endValue.ty)
+
+        return CGAffineTransform(a: a, b: b, c: c, d: d, tx: tx, ty: ty)
+    }
+
+}
+
+extension UIEdgeInsets: Interpolatable {
+
+    public static func interpolate(with ease: Ease,
+                                   startValue: UIEdgeInsets, endValue: UIEdgeInsets,
+                                   elapsed: TimeInterval, duration: TimeInterval) -> UIEdgeInsets {
+
+        let interpolate: (CGFloat, CGFloat) -> CGFloat = { (start, end) in
+            return ease.interpolate(startValue: start, endValue: end, elapsed: CGFloat(elapsed), duration: CGFloat(duration))
+        }
+
+        let top = interpolate(startValue.top, endValue.top)
+        let left = interpolate(startValue.left, endValue.left)
+        let bottom = interpolate(startValue.bottom, endValue.bottom)
+        let right = interpolate(startValue.right, endValue.right)
+
+        return UIEdgeInsets(top: top, left: left, bottom: bottom, right: right)
+    }
+
+}
+
+extension RGBA: Interpolatable {
+
+    internal static func interpolate(with ease: Ease,
+                                     startValue: RGBA, endValue: RGBA,
+                                     elapsed: TimeInterval, duration: TimeInterval) -> RGBA {
+
+        let interpolate: (CGFloat, CGFloat) -> CGFloat = { (start, end) in
+            return ease.interpolate(startValue: start, endValue: end, elapsed: CGFloat(elapsed), duration: CGFloat(duration))
+        }
+
+        let red = interpolate(startValue.red, endValue.red)
+        let green = interpolate(startValue.green, endValue.green)
+        let blue = interpolate(startValue.blue, endValue.blue)
+        let alpha = interpolate(startValue.alpha, endValue.alpha)
+
+        return RGBA(red: red, green: green, blue: blue, alpha: alpha)
+    }
+
+}
