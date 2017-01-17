@@ -12,646 +12,707 @@ import XCTest
 
 class EaseAlgorithmsTest: XCTestCase {
 
-    // MARK: Linear Tests
-
-    func testLinear() {
-        let algorithm: EaseAlgorithm<Double> = EaseAlgorithms.linear
-        var value: Double
-
-        value = algorithm(0.0, 1.0, 0.00, 1.0) // 0%
-        XCTAssertEqualWithAccuracy(value, 0.0, accuracy: DBL_EPSILON)
-
-        value = algorithm(0.0, 1.0, 0.25, 1.0) // 25%
-        XCTAssertEqualWithAccuracy(value, 0.25, accuracy: DBL_EPSILON)
-
-        value = algorithm(0.0, 1.0, 0.50, 1.0) // 50%
-        XCTAssertEqualWithAccuracy(value, 0.5, accuracy: DBL_EPSILON)
-
-        value = algorithm(0.0, 1.0, 0.75, 1.0) // 75%
-        XCTAssertEqualWithAccuracy(value, 0.75, accuracy: DBL_EPSILON)
-
-        value = algorithm(0.0, 1.0, 1.00, 1.0) // 100%
-        XCTAssertEqualWithAccuracy(value, 1.00, accuracy: DBL_EPSILON)
+    func testFloat32() {
+        assertType(Float32.self, accuracy: Float32.ulpOfOne.double)
     }
 
-    // MARK: Sinusoidal Tests
-
-    func testSineIn() {
-        let algorithm: EaseAlgorithm<Double> = EaseAlgorithms.sineIn
-        var value: Double
-
-        value = algorithm(0.0, 1.0, 0.00, 1.0) // 0%
-        XCTAssertEqualWithAccuracy(value, 0.0, accuracy: DBL_EPSILON)
-
-        value = algorithm(0.0, 1.0, 0.25, 1.0) // 25%
-        XCTAssertEqualWithAccuracy(value, 0.07612046748871326, accuracy: DBL_EPSILON)
-
-        value = algorithm(0.0, 1.0, 0.50, 1.0) // 50%
-        XCTAssertEqualWithAccuracy(value, 0.2928932188134524, accuracy: DBL_EPSILON)
-
-        value = algorithm(0.0, 1.0, 0.75, 1.0) // 75%
-        XCTAssertEqualWithAccuracy(value, 0.6173165676349102, accuracy: DBL_EPSILON)
-
-        value = algorithm(0.0, 1.0, 1.00, 1.0) // 100%
-        XCTAssertEqualWithAccuracy(value, 1.00, accuracy: DBL_EPSILON)
+    func testFloat64() {
+        assertType(Float64.self, accuracy: Float64.ulpOfOne.double)
     }
 
-    func testSineOut() {
-        let algorithm: EaseAlgorithm<Double> = EaseAlgorithms.sineOut
-        var value: Double
-
-        value = algorithm(0.0, 1.0, 0.00, 1.0) // 0%
-        XCTAssertEqualWithAccuracy(value, 0.0, accuracy: DBL_EPSILON)
-
-        value = algorithm(0.0, 1.0, 0.25, 1.0) // 25%
-        XCTAssertEqualWithAccuracy(value, 0.3826834323650898, accuracy: DBL_EPSILON)
-
-        value = algorithm(0.0, 1.0, 0.50, 1.0) // 50%
-        XCTAssertEqualWithAccuracy(value, 0.7071067811865475, accuracy: DBL_EPSILON)
-
-        value = algorithm(0.0, 1.0, 0.75, 1.0) // 75%
-        XCTAssertEqualWithAccuracy(value, 0.9238795325112867, accuracy: DBL_EPSILON)
-
-        value = algorithm(0.0, 1.0, 1.00, 1.0) // 100%
-        XCTAssertEqualWithAccuracy(value, 1.00, accuracy: DBL_EPSILON)
+    func testFloat80() {
+        //iOS_BUG: XCTAssertEqualWithAccuracy using Float80 crashes
+        //assertType(Float80.self, accuracy: Float80.ulpOfOne.double)
     }
 
-    func testSineInOut() {
-        let algorithm: EaseAlgorithm<Double> = EaseAlgorithms.sineInOut
-        var value: Double
-
-        value = algorithm(0.0, 1.0, 0.00, 1.0) // 0%
-        XCTAssertEqualWithAccuracy(value, 0.0, accuracy: DBL_EPSILON)
-
-        value = algorithm(0.0, 1.0, 0.25, 1.0) // 25%
-        XCTAssertEqualWithAccuracy(value, 0.1464466094067262, accuracy: DBL_EPSILON)
-
-        value = algorithm(0.0, 1.0, 0.50, 1.0) // 50%
-        XCTAssertEqualWithAccuracy(value, 0.5, accuracy: DBL_EPSILON)
-
-        value = algorithm(0.0, 1.0, 0.75, 1.0) // 75%
-        XCTAssertEqualWithAccuracy(value, 0.8535533905932737, accuracy: DBL_EPSILON)
-
-        value = algorithm(0.0, 1.0, 1.00, 1.0) // 100%
-        XCTAssertEqualWithAccuracy(value, 1.00, accuracy: DBL_EPSILON)
+    func testCGFloat() {
+        assertType(CGFloat.self, accuracy: CGFloat.ulpOfOne.double)
     }
 
-    // MARK: Cubic Tests
+    private func assertType<T: FloatingPoint>(_ type: T.Type, accuracy: T) {
+        assertLinear(type, accuracy)
 
-    func testCubicIn() {
-        let algorithm: EaseAlgorithm<Double> = EaseAlgorithms.cubicIn
-        var value: Double
+        assertSineIn(type, accuracy)
+        assertSineOut(type, accuracy)
+        assertSineInOut(type, accuracy)
 
-        value = algorithm(0.0, 1.0, 0.00, 1.0) // 0%
-        XCTAssertEqualWithAccuracy(value, 0.0, accuracy: DBL_EPSILON)
+        assertCubicIn(type, accuracy)
+        assertCubicOut(type, accuracy)
+        assertCubicInOut(type, accuracy)
 
-        value = algorithm(0.0, 1.0, 0.25, 1.0) // 25%
-        XCTAssertEqualWithAccuracy(value, 0.015625, accuracy: DBL_EPSILON)
+        assertQuadIn(type, accuracy)
+        assertQuadOut(type, accuracy)
+        assertQuadInOut(type, accuracy)
 
-        value = algorithm(0.0, 1.0, 0.50, 1.0) // 50%
-        XCTAssertEqualWithAccuracy(value, 0.125, accuracy: DBL_EPSILON)
+        assertQuartIn(type, accuracy)
+        assertQuartOut(type, accuracy)
+        assertQuartInOut(type, accuracy)
 
-        value = algorithm(0.0, 1.0, 0.75, 1.0) // 75%
-        XCTAssertEqualWithAccuracy(value, 0.421875, accuracy: DBL_EPSILON)
+        assertQuintIn(type, accuracy)
+        assertQuintOut(type, accuracy)
+        assertQuintInOut(type, accuracy)
 
-        value = algorithm(0.0, 1.0, 1.00, 1.0) // 100%
-        XCTAssertEqualWithAccuracy(value, 1.00, accuracy: DBL_EPSILON)
+        assertExpoIn(type, accuracy)
+        assertExpoOut(type, accuracy)
+        assertExpoInOut(type, accuracy)
+
+        assertCircIn(type, accuracy)
+        assertCircOut(type, accuracy)
+        assertCircInOut(type, accuracy)
+
+        assertBackIn(type, accuracy)
+        assertBackOut(type, accuracy)
+        assertBackInOut(type, accuracy)
+
+        assertElasticIn(type, accuracy)
+        assertElasticOut(type, accuracy)
+        assertElasticInOut(type, accuracy)
+
+        assertBounceIn(type, accuracy)
+        assertBounceOut(type, accuracy)
+        assertBounceInOut(type, accuracy)
     }
 
-    func testCubicOut() {
-        let algorithm: EaseAlgorithm<Double> = EaseAlgorithms.cubicOut
-        var value: Double
+    // MARK: Linear Asserts
 
-        value = algorithm(0.0, 1.0, 0.00, 1.0) // 0%
-        XCTAssertEqualWithAccuracy(value, 0.0, accuracy: DBL_EPSILON)
+    private func assertLinear<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
+        let algorithm: EaseAlgorithm<T> = EaseAlgorithms.linear
+        var value: T
 
-        value = algorithm(0.0, 1.0, 0.25, 1.0) // 25%
-        XCTAssertEqualWithAccuracy(value, 0.578125, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.00), T(1)) // 0%
+        XCTAssertEqualWithAccuracy(value, T(0), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 0.50, 1.0) // 50%
-        XCTAssertEqualWithAccuracy(value, 0.875, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.25), T(1)) // 25%
+        XCTAssertEqualWithAccuracy(value, T(0.25), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 0.75, 1.0) // 75%
-        XCTAssertEqualWithAccuracy(value, 0.984375, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.50), T(1)) // 50%
+        XCTAssertEqualWithAccuracy(value, T(0.5), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 1.00, 1.0) // 100%
-        XCTAssertEqualWithAccuracy(value, 1.00, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.75), T(1)) // 75%
+        XCTAssertEqualWithAccuracy(value, T(0.75), accuracy: accuracy)
+
+        value = algorithm(T(0), T(1), T(1.00), T(1)) // 100%
+        XCTAssertEqualWithAccuracy(value, T(1.00), accuracy: accuracy)
     }
 
-    func testCubicInOut() {
-        let algorithm: EaseAlgorithm<Double> = EaseAlgorithms.cubicInOut
-        var value: Double
+    // MARK: Sinusoidal Asserts
 
-        value = algorithm(0.0, 1.0, 0.00, 1.0) // 0%
-        XCTAssertEqualWithAccuracy(value, 0.0, accuracy: DBL_EPSILON)
+    private func assertSineIn<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
+        let algorithm: EaseAlgorithm<T> = EaseAlgorithms.sineIn
+        var value: T
 
-        value = algorithm(0.0, 1.0, 0.25, 1.0) // 25%
-        XCTAssertEqualWithAccuracy(value, 0.0625, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.00), T(1)) // 0%
+        XCTAssertEqualWithAccuracy(value, T(0), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 0.50, 1.0) // 50%
-        XCTAssertEqualWithAccuracy(value, 0.5, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.25), T(1)) // 25%
+        XCTAssertEqualWithAccuracy(value, T(0.07612046748871326), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 0.75, 1.0) // 75%
-        XCTAssertEqualWithAccuracy(value, 0.9375, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.50), T(1)) // 50%
+        XCTAssertEqualWithAccuracy(value, T(0.2928932188134524), accuracy: accuracy)
+
+        value = algorithm(T(0), T(1), T(0.75), T(1)) // 75%
+        XCTAssertEqualWithAccuracy(value, T(0.6173165676349102), accuracy: accuracy)
+
+        value = algorithm(T(0), T(1), T(1.00), T(1)) // 100%
+        XCTAssertEqualWithAccuracy(value, T(1.00), accuracy: accuracy)
+    }
+
+    private func assertSineOut<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
+        let algorithm: EaseAlgorithm<T> = EaseAlgorithms.sineOut
+        var value: T
+
+        value = algorithm(T(0), T(1), T(0.00), T(1)) // 0%
+        XCTAssertEqualWithAccuracy(value, T(0), accuracy: accuracy)
+
+        value = algorithm(T(0), T(1), T(0.25), T(1)) // 25%
+        XCTAssertEqualWithAccuracy(value, T(0.3826834323650898), accuracy: accuracy)
+
+        value = algorithm(T(0), T(1), T(0.50), T(1)) // 50%
+        XCTAssertEqualWithAccuracy(value, T(0.7071067811865475), accuracy: accuracy)
+
+        value = algorithm(T(0), T(1), T(0.75), T(1)) // 75%
+        XCTAssertEqualWithAccuracy(value, T(0.9238795325112867), accuracy: accuracy)
+
+        value = algorithm(T(0), T(1), T(1.00), T(1)) // 100%
+        XCTAssertEqualWithAccuracy(value, T(1.00), accuracy: accuracy)
+    }
+
+    private func assertSineInOut<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
+        let algorithm: EaseAlgorithm<T> = EaseAlgorithms.sineInOut
+        var value: T
+
+        value = algorithm(T(0), T(1), T(0.00), T(1)) // 0%
+        XCTAssertEqualWithAccuracy(value, T(0), accuracy: accuracy)
+
+        value = algorithm(T(0), T(1), T(0.25), T(1)) // 25%
+        XCTAssertEqualWithAccuracy(value, T(0.1464466094067262), accuracy: accuracy)
+
+        value = algorithm(T(0), T(1), T(0.50), T(1)) // 50%
+        XCTAssertEqualWithAccuracy(value, T(0.5), accuracy: accuracy)
+
+        value = algorithm(T(0), T(1), T(0.75), T(1)) // 75%
+        XCTAssertEqualWithAccuracy(value, T(0.8535533905932737), accuracy: accuracy)
+
+        value = algorithm(T(0), T(1), T(1.00), T(1)) // 100%
+        XCTAssertEqualWithAccuracy(value, T(1.00), accuracy: accuracy)
+    }
+
+    // MARK: Cubic Asserts
+
+    private func assertCubicIn<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
+        let algorithm: EaseAlgorithm<T> = EaseAlgorithms.cubicIn
+        var value: T
+
+        value = algorithm(T(0), T(1), T(0.00), T(1)) // 0%
+        XCTAssertEqualWithAccuracy(value, T(0), accuracy: accuracy)
+
+        value = algorithm(T(0), T(1), T(0.25), T(1)) // 25%
+        XCTAssertEqualWithAccuracy(value, T(0.015625), accuracy: accuracy)
+
+        value = algorithm(T(0), T(1), T(0.50), T(1)) // 50%
+        XCTAssertEqualWithAccuracy(value, T(0.125), accuracy: accuracy)
+
+        value = algorithm(T(0), T(1), T(0.75), T(1)) // 75%
+        XCTAssertEqualWithAccuracy(value, T(0.421875), accuracy: accuracy)
+
+        value = algorithm(T(0), T(1), T(1.00), T(1)) // 100%
+        XCTAssertEqualWithAccuracy(value, T(1.00), accuracy: accuracy)
+    }
+
+    private func assertCubicOut<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
+        let algorithm: EaseAlgorithm<T> = EaseAlgorithms.cubicOut
+        var value: T
+
+        value = algorithm(T(0), T(1), T(0.00), T(1)) // 0%
+        XCTAssertEqualWithAccuracy(value, T(0), accuracy: accuracy)
+
+        value = algorithm(T(0), T(1), T(0.25), T(1)) // 25%
+        XCTAssertEqualWithAccuracy(value, T(0.578125), accuracy: accuracy)
+
+        value = algorithm(T(0), T(1), T(0.50), T(1)) // 50%
+        XCTAssertEqualWithAccuracy(value, T(0.875), accuracy: accuracy)
+
+        value = algorithm(T(0), T(1), T(0.75), T(1)) // 75%
+        XCTAssertEqualWithAccuracy(value, T(0.984375), accuracy: accuracy)
+
+        value = algorithm(T(0), T(1), T(1.00), T(1)) // 100%
+        XCTAssertEqualWithAccuracy(value, T(1.00), accuracy: accuracy)
+    }
+
+    private func assertCubicInOut<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
+        let algorithm: EaseAlgorithm<T> = EaseAlgorithms.cubicInOut
+        var value: T
+
+        value = algorithm(T(0), T(1), T(0.00), T(1)) // 0%
+        XCTAssertEqualWithAccuracy(value, T(0), accuracy: accuracy)
+
+        value = algorithm(T(0), T(1), T(0.25), T(1)) // 25%
+        XCTAssertEqualWithAccuracy(value, T(0.0625), accuracy: accuracy)
+
+        value = algorithm(T(0), T(1), T(0.50), T(1)) // 50%
+        XCTAssertEqualWithAccuracy(value, T(0.5), accuracy: accuracy)
+
+        value = algorithm(T(0), T(1), T(0.75), T(1)) // 75%
+        XCTAssertEqualWithAccuracy(value, T(0.9375), accuracy: accuracy)
         
-        value = algorithm(0.0, 1.0, 1.00, 1.0) // 100%
-        XCTAssertEqualWithAccuracy(value, 1.00, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(1.00), T(1)) // 100%
+        XCTAssertEqualWithAccuracy(value, T(1.00), accuracy: accuracy)
     }
 
-    // MARK: Quadratic Tests
+    // MARK: Quadratic Asserts
 
-    func testQuadIn() {
-        let algorithm: EaseAlgorithm<Double> = EaseAlgorithms.quadIn
-        var value: Double
+    private func assertQuadIn<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
+        let algorithm: EaseAlgorithm<T> = EaseAlgorithms.quadIn
+        var value: T
 
-        value = algorithm(0.0, 1.0, 0.00, 1.0) // 0%
-        XCTAssertEqualWithAccuracy(value, 0.0, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.00), T(1)) // 0%
+        XCTAssertEqualWithAccuracy(value, T(0), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 0.25, 1.0) // 25%
-        XCTAssertEqualWithAccuracy(value, 0.0625, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.25), T(1)) // 25%
+        XCTAssertEqualWithAccuracy(value, T(0.0625), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 0.50, 1.0) // 50%
-        XCTAssertEqualWithAccuracy(value, 0.25, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.50), T(1)) // 50%
+        XCTAssertEqualWithAccuracy(value, T(0.25), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 0.75, 1.0) // 75%
-        XCTAssertEqualWithAccuracy(value, 0.5625, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.75), T(1)) // 75%
+        XCTAssertEqualWithAccuracy(value, T(0.5625), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 1.00, 1.0) // 100%
-        XCTAssertEqualWithAccuracy(value, 1.00, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(1.00), T(1)) // 100%
+        XCTAssertEqualWithAccuracy(value, T(1.00), accuracy: accuracy)
     }
 
-    func testQuadOut() {
-        let algorithm: EaseAlgorithm<Double> = EaseAlgorithms.quadOut
-        var value: Double
+    private func assertQuadOut<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
+        let algorithm: EaseAlgorithm<T> = EaseAlgorithms.quadOut
+        var value: T
 
-        value = algorithm(0.0, 1.0, 0.00, 1.0) // 0%
-        XCTAssertEqualWithAccuracy(value, 0.0, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.00), T(1)) // 0%
+        XCTAssertEqualWithAccuracy(value, T(0), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 0.25, 1.0) // 25%
-        XCTAssertEqualWithAccuracy(value, 0.4375, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.25), T(1)) // 25%
+        XCTAssertEqualWithAccuracy(value, T(0.4375), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 0.50, 1.0) // 50%
-        XCTAssertEqualWithAccuracy(value, 0.75, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.50), T(1)) // 50%
+        XCTAssertEqualWithAccuracy(value, T(0.75), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 0.75, 1.0) // 75%
-        XCTAssertEqualWithAccuracy(value, 0.9375, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.75), T(1)) // 75%
+        XCTAssertEqualWithAccuracy(value, T(0.9375), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 1.00, 1.0) // 100%
-        XCTAssertEqualWithAccuracy(value, 1.00, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(1.00), T(1)) // 100%
+        XCTAssertEqualWithAccuracy(value, T(1.00), accuracy: accuracy)
     }
 
-    func testQuadInOut() {
-        let algorithm: EaseAlgorithm<Double> = EaseAlgorithms.quadInOut
-        var value: Double
+    private func assertQuadInOut<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
+        let algorithm: EaseAlgorithm<T> = EaseAlgorithms.quadInOut
+        var value: T
 
-        value = algorithm(0.0, 1.0, 0.00, 1.0) // 0%
-        XCTAssertEqualWithAccuracy(value, 0.0, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.00), T(1)) // 0%
+        XCTAssertEqualWithAccuracy(value, T(0), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 0.25, 1.0) // 25%
-        XCTAssertEqualWithAccuracy(value, 0.125, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.25), T(1)) // 25%
+        XCTAssertEqualWithAccuracy(value, T(0.125), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 0.50, 1.0) // 50%
-        XCTAssertEqualWithAccuracy(value, 0.5, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.50), T(1)) // 50%
+        XCTAssertEqualWithAccuracy(value, T(0.5), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 0.75, 1.0) // 75%
-        XCTAssertEqualWithAccuracy(value, 0.875, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.75), T(1)) // 75%
+        XCTAssertEqualWithAccuracy(value, T(0.875), accuracy: accuracy)
         
-        value = algorithm(0.0, 1.0, 1.00, 1.0) // 100%
-        XCTAssertEqualWithAccuracy(value, 1.00, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(1.00), T(1)) // 100%
+        XCTAssertEqualWithAccuracy(value, T(1.00), accuracy: accuracy)
     }
 
-    // MARK: Quartic Tests
+    // MARK: Quartic Asserts
 
-    func testQuartIn() {
-        let algorithm: EaseAlgorithm<Double> = EaseAlgorithms.quartIn
-        var value: Double
+    private func assertQuartIn<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
+        let algorithm: EaseAlgorithm<T> = EaseAlgorithms.quartIn
+        var value: T
 
-        value = algorithm(0.0, 1.0, 0.00, 1.0) // 0%
-        XCTAssertEqualWithAccuracy(value, 0.0, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.00), T(1)) // 0%
+        XCTAssertEqualWithAccuracy(value, T(0), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 0.25, 1.0) // 25%
-        XCTAssertEqualWithAccuracy(value, 0.00390625, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.25), T(1)) // 25%
+        XCTAssertEqualWithAccuracy(value, T(0.00390625), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 0.50, 1.0) // 50%
-        XCTAssertEqualWithAccuracy(value, 0.0625, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.50), T(1)) // 50%
+        XCTAssertEqualWithAccuracy(value, T(0.0625), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 0.75, 1.0) // 75%
-        XCTAssertEqualWithAccuracy(value, 0.31640625, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.75), T(1)) // 75%
+        XCTAssertEqualWithAccuracy(value, T(0.31640625), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 1.00, 1.0) // 100%
-        XCTAssertEqualWithAccuracy(value, 1.00, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(1.00), T(1)) // 100%
+        XCTAssertEqualWithAccuracy(value, T(1.00), accuracy: accuracy)
     }
 
-    func testQuartOut() {
-        let algorithm: EaseAlgorithm<Double> = EaseAlgorithms.quartOut
-        var value: Double
+    private func assertQuartOut<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
+        let algorithm: EaseAlgorithm<T> = EaseAlgorithms.quartOut
+        var value: T
 
-        value = algorithm(0.0, 1.0, 0.00, 1.0) // 0%
-        XCTAssertEqualWithAccuracy(value, 0.0, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.00), T(1)) // 0%
+        XCTAssertEqualWithAccuracy(value, T(0), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 0.25, 1.0) // 25%
-        XCTAssertEqualWithAccuracy(value, 0.68359375, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.25), T(1)) // 25%
+        XCTAssertEqualWithAccuracy(value, T(0.68359375), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 0.50, 1.0) // 50%
-        XCTAssertEqualWithAccuracy(value, 0.9375, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.50), T(1)) // 50%
+        XCTAssertEqualWithAccuracy(value, T(0.9375), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 0.75, 1.0) // 75%
-        XCTAssertEqualWithAccuracy(value, 0.99609375, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.75), T(1)) // 75%
+        XCTAssertEqualWithAccuracy(value, T(0.99609375), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 1.00, 1.0) // 100%
-        XCTAssertEqualWithAccuracy(value, 1.00, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(1.00), T(1)) // 100%
+        XCTAssertEqualWithAccuracy(value, T(1.00), accuracy: accuracy)
     }
 
-    func testQuartInOut() {
-        let algorithm: EaseAlgorithm<Double> = EaseAlgorithms.quartInOut
-        var value: Double
+    private func assertQuartInOut<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
+        let algorithm: EaseAlgorithm<T> = EaseAlgorithms.quartInOut
+        var value: T
 
-        value = algorithm(0.0, 1.0, 0.00, 1.0) // 0%
-        XCTAssertEqualWithAccuracy(value, 0.0, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.00), T(1)) // 0%
+        XCTAssertEqualWithAccuracy(value, T(0), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 0.25, 1.0) // 25%
-        XCTAssertEqualWithAccuracy(value, 0.03125, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.25), T(1)) // 25%
+        XCTAssertEqualWithAccuracy(value, T(0.03125), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 0.50, 1.0) // 50%
-        XCTAssertEqualWithAccuracy(value, 0.5, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.50), T(1)) // 50%
+        XCTAssertEqualWithAccuracy(value, T(0.5), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 0.75, 1.0) // 75%
-        XCTAssertEqualWithAccuracy(value, 0.96875, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.75), T(1)) // 75%
+        XCTAssertEqualWithAccuracy(value, T(0.96875), accuracy: accuracy)
         
-        value = algorithm(0.0, 1.0, 1.00, 1.0) // 100%
-        XCTAssertEqualWithAccuracy(value, 1.00, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(1.00), T(1)) // 100%
+        XCTAssertEqualWithAccuracy(value, T(1.00), accuracy: accuracy)
     }
 
-    // MARK: Quintic Tests
+    // MARK: Quintic Asserts
 
-    func testQuintIn() {
-        let algorithm: EaseAlgorithm<Double> = EaseAlgorithms.quintIn
-        var value: Double
+    private func assertQuintIn<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
+        let algorithm: EaseAlgorithm<T> = EaseAlgorithms.quintIn
+        var value: T
 
-        value = algorithm(0.0, 1.0, 0.00, 1.0) // 0%
-        XCTAssertEqualWithAccuracy(value, 0.0, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.00), T(1)) // 0%
+        XCTAssertEqualWithAccuracy(value, T(0), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 0.25, 1.0) // 25%
-        XCTAssertEqualWithAccuracy(value, 0.0009765625, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.25), T(1)) // 25%
+        XCTAssertEqualWithAccuracy(value, T(0.0009765625), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 0.50, 1.0) // 50%
-        XCTAssertEqualWithAccuracy(value, 0.03125, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.50), T(1)) // 50%
+        XCTAssertEqualWithAccuracy(value, T(0.03125), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 0.75, 1.0) // 75%
-        XCTAssertEqualWithAccuracy(value, 0.2373046875, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.75), T(1)) // 75%
+        XCTAssertEqualWithAccuracy(value, T(0.2373046875), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 1.00, 1.0) // 100%
-        XCTAssertEqualWithAccuracy(value, 1.00, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(1.00), T(1)) // 100%
+        XCTAssertEqualWithAccuracy(value, T(1.00), accuracy: accuracy)
     }
 
-    func testQuintOut() {
-        let algorithm: EaseAlgorithm<Double> = EaseAlgorithms.quintOut
-        var value: Double
+    private func assertQuintOut<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
+        let algorithm: EaseAlgorithm<T> = EaseAlgorithms.quintOut
+        var value: T
 
-        value = algorithm(0.0, 1.0, 0.00, 1.0) // 0%
-        XCTAssertEqualWithAccuracy(value, 0.0, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.00), T(1)) // 0%
+        XCTAssertEqualWithAccuracy(value, T(0), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 0.25, 1.0) // 25%
-        XCTAssertEqualWithAccuracy(value, 0.7626953125, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.25), T(1)) // 25%
+        XCTAssertEqualWithAccuracy(value, T(0.7626953125), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 0.50, 1.0) // 50%
-        XCTAssertEqualWithAccuracy(value, 0.96875, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.50), T(1)) // 50%
+        XCTAssertEqualWithAccuracy(value, T(0.96875), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 0.75, 1.0) // 75%
-        XCTAssertEqualWithAccuracy(value, 0.9990234375, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.75), T(1)) // 75%
+        XCTAssertEqualWithAccuracy(value, T(0.9990234375), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 1.00, 1.0) // 100%
-        XCTAssertEqualWithAccuracy(value, 1.00, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(1.00), T(1)) // 100%
+        XCTAssertEqualWithAccuracy(value, T(1.00), accuracy: accuracy)
     }
 
-    func testQuintInOut() {
-        let algorithm: EaseAlgorithm<Double> = EaseAlgorithms.quintInOut
-        var value: Double
+    private func assertQuintInOut<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
+        let algorithm: EaseAlgorithm<T> = EaseAlgorithms.quintInOut
+        var value: T
 
-        value = algorithm(0.0, 1.0, 0.00, 1.0) // 0%
-        XCTAssertEqualWithAccuracy(value, 0.0, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.00), T(1)) // 0%
+        XCTAssertEqualWithAccuracy(value, T(0), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 0.25, 1.0) // 25%
-        XCTAssertEqualWithAccuracy(value, 0.015625, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.25), T(1)) // 25%
+        XCTAssertEqualWithAccuracy(value, T(0.015625), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 0.50, 1.0) // 50%
-        XCTAssertEqualWithAccuracy(value, 0.5, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.50), T(1)) // 50%
+        XCTAssertEqualWithAccuracy(value, T(0.5), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 0.75, 1.0) // 75%
-        XCTAssertEqualWithAccuracy(value, 0.984375, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.75), T(1)) // 75%
+        XCTAssertEqualWithAccuracy(value, T(0.984375), accuracy: accuracy)
         
-        value = algorithm(0.0, 1.0, 1.00, 1.0) // 100%
-        XCTAssertEqualWithAccuracy(value, 1.00, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(1.00), T(1)) // 100%
+        XCTAssertEqualWithAccuracy(value, T(1.00), accuracy: accuracy)
     }
 
-    // MARK: Exponential Tests
+    // MARK: Exponential Asserts
 
-    func testExpoIn() {
-        let algorithm: EaseAlgorithm<Double> = EaseAlgorithms.expoIn
-        var value: Double
+    private func assertExpoIn<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
+        let algorithm: EaseAlgorithm<T> = EaseAlgorithms.expoIn
+        var value: T
 
-        value = algorithm(0.0, 1.0, 0.00, 1.0) // 0%
-        XCTAssertEqualWithAccuracy(value, 0.0, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.00), T(1)) // 0%
+        XCTAssertEqualWithAccuracy(value, T(0), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 0.25, 1.0) // 25%
-        XCTAssertEqualWithAccuracy(value, 0.005524271728019903, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.25), T(1)) // 25%
+        XCTAssertEqualWithAccuracy(value, T(0.005524271728019903), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 0.50, 1.0) // 50%
-        XCTAssertEqualWithAccuracy(value, 0.03125, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.50), T(1)) // 50%
+        XCTAssertEqualWithAccuracy(value, T(0.03125), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 0.75, 1.0) // 75%
-        XCTAssertEqualWithAccuracy(value, 0.1767766952966369, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.75), T(1)) // 75%
+        XCTAssertEqualWithAccuracy(value, T(0.1767766952966369), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 1.00, 1.0) // 100%
-        XCTAssertEqualWithAccuracy(value, 1.00, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(1.00), T(1)) // 100%
+        XCTAssertEqualWithAccuracy(value, T(1.00), accuracy: accuracy)
     }
 
-    func testExpoOut() {
-        let algorithm: EaseAlgorithm<Double> = EaseAlgorithms.expoOut
-        var value: Double
+    private func assertExpoOut<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
+        let algorithm: EaseAlgorithm<T> = EaseAlgorithms.expoOut
+        var value: T
 
-        value = algorithm(0.0, 1.0, 0.00, 1.0) // 0%
-        XCTAssertEqualWithAccuracy(value, 0.0, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.00), T(1)) // 0%
+        XCTAssertEqualWithAccuracy(value, T(0), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 0.25, 1.0) // 25%
-        XCTAssertEqualWithAccuracy(value, 0.8232233047033631, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.25), T(1)) // 25%
+        XCTAssertEqualWithAccuracy(value, T(0.8232233047033631), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 0.50, 1.0) // 50%
-        XCTAssertEqualWithAccuracy(value, 0.96875, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.50), T(1)) // 50%
+        XCTAssertEqualWithAccuracy(value, T(0.96875), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 0.75, 1.0) // 75%
-        XCTAssertEqualWithAccuracy(value, 0.99447572827198, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.75), T(1)) // 75%
+        XCTAssertEqualWithAccuracy(value, T(0.99447572827198), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 1.00, 1.0) // 100%
-        XCTAssertEqualWithAccuracy(value, 1.00, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(1.00), T(1)) // 100%
+        XCTAssertEqualWithAccuracy(value, T(1.00), accuracy: accuracy)
     }
 
-    func testExpoInOut() {
-        let algorithm: EaseAlgorithm<Double> = EaseAlgorithms.expoInOut
-        var value: Double
+    private func assertExpoInOut<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
+        let algorithm: EaseAlgorithm<T> = EaseAlgorithms.expoInOut
+        var value: T
 
-        value = algorithm(0.0, 1.0, 0.00, 1.0) // 0%
-        XCTAssertEqualWithAccuracy(value, 0.0, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.00), T(1)) // 0%
+        XCTAssertEqualWithAccuracy(value, T(0), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 0.25, 1.0) // 25%
-        XCTAssertEqualWithAccuracy(value, 0.015625, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.25), T(1)) // 25%
+        XCTAssertEqualWithAccuracy(value, T(0.015625), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 0.50, 1.0) // 50%
-        XCTAssertEqualWithAccuracy(value, 0.5, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.50), T(1)) // 50%
+        XCTAssertEqualWithAccuracy(value, T(0.5), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 0.75, 1.0) // 75%
-        XCTAssertEqualWithAccuracy(value, 0.984375, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.75), T(1)) // 75%
+        XCTAssertEqualWithAccuracy(value, T(0.984375), accuracy: accuracy)
         
-        value = algorithm(0.0, 1.0, 1.00, 1.0) // 100%
-        XCTAssertEqualWithAccuracy(value, 1.00, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(1.00), T(1)) // 100%
+        XCTAssertEqualWithAccuracy(value, T(1.00), accuracy: accuracy)
     }
 
-    // MARK: Circular Tests
+    // MARK: Circular Asserts
 
-    func testCircIn() {
-        let algorithm: EaseAlgorithm<Double> = EaseAlgorithms.circIn
-        var value: Double
+    private func assertCircIn<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
+        let algorithm: EaseAlgorithm<T> = EaseAlgorithms.circIn
+        var value: T
 
-        value = algorithm(0.0, 1.0, 0.00, 1.0) // 0%
-        XCTAssertEqualWithAccuracy(value, 0.0, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.00), T(1)) // 0%
+        XCTAssertEqualWithAccuracy(value, T(0), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 0.25, 1.0) // 25%
-        XCTAssertEqualWithAccuracy(value, 0.031754163448145745, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.25), T(1)) // 25%
+        XCTAssertEqualWithAccuracy(value, T(0.031754163448145745), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 0.50, 1.0) // 50%
-        XCTAssertEqualWithAccuracy(value, 0.1339745962155614, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.50), T(1)) // 50%
+        XCTAssertEqualWithAccuracy(value, T(0.1339745962155614), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 0.75, 1.0) // 75%
-        XCTAssertEqualWithAccuracy(value, 0.3385621722338523, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.75), T(1)) // 75%
+        XCTAssertEqualWithAccuracy(value, T(0.3385621722338523), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 1.00, 1.0) // 100%
-        XCTAssertEqualWithAccuracy(value, 1.00, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(1.00), T(1)) // 100%
+        XCTAssertEqualWithAccuracy(value, T(1.00), accuracy: accuracy)
     }
 
-    func testCircOut() {
-        let algorithm: EaseAlgorithm<Double> = EaseAlgorithms.circOut
-        var value: Double
+    private func assertCircOut<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
+        let algorithm: EaseAlgorithm<T> = EaseAlgorithms.circOut
+        var value: T
 
-        value = algorithm(0.0, 1.0, 0.00, 1.0) // 0%
-        XCTAssertEqualWithAccuracy(value, 0.0, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.00), T(1)) // 0%
+        XCTAssertEqualWithAccuracy(value, T(0), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 0.25, 1.0) // 25%
-        XCTAssertEqualWithAccuracy(value, 0.6614378277661477, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.25), T(1)) // 25%
+        XCTAssertEqualWithAccuracy(value, T(0.6614378277661477), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 0.50, 1.0) // 50%
-        XCTAssertEqualWithAccuracy(value, 0.8660254037844386, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.50), T(1)) // 50%
+        XCTAssertEqualWithAccuracy(value, T(0.8660254037844386), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 0.75, 1.0) // 75%
-        XCTAssertEqualWithAccuracy(value, 0.9682458365518543, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.75), T(1)) // 75%
+        XCTAssertEqualWithAccuracy(value, T(0.9682458365518543), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 1.00, 1.0) // 100%
-        XCTAssertEqualWithAccuracy(value, 1.00, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(1.00), T(1)) // 100%
+        XCTAssertEqualWithAccuracy(value, T(1.00), accuracy: accuracy)
     }
 
-    func testCircInOut() {
-        let algorithm: EaseAlgorithm<Double> = EaseAlgorithms.circInOut
-        var value: Double
+    private func assertCircInOut<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
+        let algorithm: EaseAlgorithm<T> = EaseAlgorithms.circInOut
+        var value: T
 
-        value = algorithm(0.0, 1.0, 0.00, 1.0) // 0%
-        XCTAssertEqualWithAccuracy(value, 0.0, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.00), T(1)) // 0%
+        XCTAssertEqualWithAccuracy(value, T(0), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 0.25, 1.0) // 25%
-        XCTAssertEqualWithAccuracy(value, 0.0669872981077807, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.25), T(1)) // 25%
+        XCTAssertEqualWithAccuracy(value, T(0.0669872981077807), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 0.50, 1.0) // 50%
-        XCTAssertEqualWithAccuracy(value, 0.5, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.50), T(1)) // 50%
+        XCTAssertEqualWithAccuracy(value, T(0.5), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 0.75, 1.0) // 75%
-        XCTAssertEqualWithAccuracy(value, 0.9330127018922193, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.75), T(1)) // 75%
+        XCTAssertEqualWithAccuracy(value, T(0.9330127018922193), accuracy: accuracy)
         
-        value = algorithm(0.0, 1.0, 1.00, 1.0) // 100%
-        XCTAssertEqualWithAccuracy(value, 1.00, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(1.00), T(1)) // 100%
+        XCTAssertEqualWithAccuracy(value, T(1.00), accuracy: accuracy)
     }
 
-    // MARK: Back Tests
+    // MARK: Back Asserts
 
-    func testBackIn() {
-        let algorithm: EaseAlgorithm<Double> = EaseAlgorithms.backIn
-        var value: Double
+    private func assertBackIn<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
+        let algorithm: EaseAlgorithm<T> = EaseAlgorithms.backIn
+        var value: T
 
-        value = algorithm(0.0, 1.0, 0.00, 1.0) // 0%
-        XCTAssertEqualWithAccuracy(value, 0.0, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.00), T(1)) // 0%
+        XCTAssertEqualWithAccuracy(value, T(0), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 0.25, 1.0) // 25%
-        XCTAssertEqualWithAccuracy(value, -0.06413656250000001, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.25), T(1)) // 25%
+        XCTAssertEqualWithAccuracy(value, T(-0.06413656250000001), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 0.50, 1.0) // 50%
-        XCTAssertEqualWithAccuracy(value, -0.08769750000000004, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.50), T(1)) // 50%
+        XCTAssertEqualWithAccuracy(value, T(-0.08769750000000004), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 0.75, 1.0) // 75%
-        XCTAssertEqualWithAccuracy(value, 0.1825903124999999, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.75), T(1)) // 75%
+        XCTAssertEqualWithAccuracy(value, T(0.1825903124999999), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 1.00, 1.0) // 100%
-        XCTAssertEqualWithAccuracy(value, 1.00, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(1.00), T(1)) // 100%
+        XCTAssertEqualWithAccuracy(value, T(1.00), accuracy: accuracy)
     }
 
-    func testBackOut() {
-        let algorithm: EaseAlgorithm<Double> = EaseAlgorithms.backOut
-        var value: Double
+    private func assertBackOut<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
+        let algorithm: EaseAlgorithm<T> = EaseAlgorithms.backOut
+        var value: T
 
-        value = algorithm(0.0, 1.0, 0.00, 1.0) // 0%
-        XCTAssertEqualWithAccuracy(value, 0.0, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.00), T(1)) // 0%
+        XCTAssertEqualWithAccuracy(value, T(0), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 0.25, 1.0) // 25%
-        XCTAssertEqualWithAccuracy(value, 0.8174096875000001, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.25), T(1)) // 25%
+        XCTAssertEqualWithAccuracy(value, T(0.8174096875000001), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 0.50, 1.0) // 50%
-        XCTAssertEqualWithAccuracy(value, 1.0876975, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.50), T(1)) // 50%
+        XCTAssertEqualWithAccuracy(value, T(1.0876975), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 0.75, 1.0) // 75%
-        XCTAssertEqualWithAccuracy(value, 1.0641365625, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.75), T(1)) // 75%
+        XCTAssertEqualWithAccuracy(value, T(1.0641365625), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 1.00, 1.0) // 100%
-        XCTAssertEqualWithAccuracy(value, 1.00, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(1.00), T(1)) // 100%
+        XCTAssertEqualWithAccuracy(value, T(1.00), accuracy: accuracy)
     }
 
-    func testBackInOut() {
-        let algorithm: EaseAlgorithm<Double> = EaseAlgorithms.backInOut
-        var value: Double
+    private func assertBackInOut<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
+        let algorithm: EaseAlgorithm<T> = EaseAlgorithms.backInOut
+        var value: T
 
-        value = algorithm(0.0, 1.0, 0.00, 1.0) // 0%
-        XCTAssertEqualWithAccuracy(value, 0.0, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.00), T(1)) // 0%
+        XCTAssertEqualWithAccuracy(value, T(0), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 0.25, 1.0) // 25%
-        XCTAssertEqualWithAccuracy(value, -0.09968184375, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.25), T(1)) // 25%
+        XCTAssertEqualWithAccuracy(value, T(-0.09968184375), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 0.50, 1.0) // 50%
-        XCTAssertEqualWithAccuracy(value, 0.5, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.50), T(1)) // 50%
+        XCTAssertEqualWithAccuracy(value, T(0.5), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 0.75, 1.0) // 75%
-        XCTAssertEqualWithAccuracy(value, 1.09968184375, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.75), T(1)) // 75%
+        XCTAssertEqualWithAccuracy(value, T(1.09968184375), accuracy: accuracy)
         
-        value = algorithm(0.0, 1.0, 1.00, 1.0) // 100%
-        XCTAssertEqualWithAccuracy(value, 1.00, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(1.00), T(1)) // 100%
+        XCTAssertEqualWithAccuracy(value, T(1.00), accuracy: accuracy)
     }
 
-    // MARK: Elastic Tests
+    // MARK: Elastic Asserts
 
-    func testElasticIn() {
-        let algorithm: EaseAlgorithm<Double> = EaseAlgorithms.elasticIn
-        var value: Double
+    private func assertElasticIn<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
+        let algorithm: EaseAlgorithm<T> = EaseAlgorithms.elasticIn
+        var value: T
 
-        value = algorithm(0.0, 1.0, 0.00, 1.0) // 0%
-        XCTAssertEqualWithAccuracy(value, 0.0, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.00), T(1)) // 0%
+        XCTAssertEqualWithAccuracy(value, T(0), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 0.25, 1.0) // 25%
-        XCTAssertEqualWithAccuracy(value, -0.005524271728019903, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.25), T(1)) // 25%
+        XCTAssertEqualWithAccuracy(value, T(-0.005524271728019903), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 0.50, 1.0) // 50%
-        XCTAssertEqualWithAccuracy(value, -0.015625000000000045, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.50), T(1)) // 50%
+        XCTAssertEqualWithAccuracy(value, T(-0.015625000000000045), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 0.75, 1.0) // 75%
-        XCTAssertEqualWithAccuracy(value, 0.08838834764831845, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.75), T(1)) // 75%
+        XCTAssertEqualWithAccuracy(value, T(0.08838834764831845), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 1.00, 1.0) // 100%
-        XCTAssertEqualWithAccuracy(value, 1.00, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(1.00), T(1)) // 100%
+        XCTAssertEqualWithAccuracy(value, T(1.00), accuracy: accuracy)
     }
 
-    func testElasticOut() {
-        let algorithm: EaseAlgorithm<Double> = EaseAlgorithms.elasticOut
-        var value: Double
+    private func assertElasticOut<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
+        let algorithm: EaseAlgorithm<T> = EaseAlgorithms.elasticOut
+        var value: T
 
-        value = algorithm(0.0, 1.0, 0.00, 1.0) // 0%
-        XCTAssertEqualWithAccuracy(value, 0.0, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.00), T(1)) // 0%
+        XCTAssertEqualWithAccuracy(value, T(0), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 0.25, 1.0) // 25%
-        XCTAssertEqualWithAccuracy(value, 0.9116116523516815, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.25), T(1)) // 25%
+        XCTAssertEqualWithAccuracy(value, T(0.9116116523516815), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 0.50, 1.0) // 50%
-        XCTAssertEqualWithAccuracy(value, 1.015625, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.50), T(1)) // 50%
+        XCTAssertEqualWithAccuracy(value, T(1.015625), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 0.75, 1.0) // 75%
-        XCTAssertEqualWithAccuracy(value, 1.00552427172802, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.75), T(1)) // 75%
+        XCTAssertEqualWithAccuracy(value, T(1.00552427172802), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 1.00, 1.0) // 100%
-        XCTAssertEqualWithAccuracy(value, 1.00, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(1.00), T(1)) // 100%
+        XCTAssertEqualWithAccuracy(value, T(1.00), accuracy: accuracy)
     }
 
-    func testElasticInOut() {
-        let algorithm: EaseAlgorithm<Double> = EaseAlgorithms.elasticInOut
-        var value: Double
+    private func assertElasticInOut<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
+        let algorithm: EaseAlgorithm<T> = EaseAlgorithms.elasticInOut
+        var value: T
 
-        value = algorithm(0.0, 1.0, 0.00, 1.0) // 0%
-        XCTAssertEqualWithAccuracy(value, 0.0, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.00), T(1)) // 0%
+        XCTAssertEqualWithAccuracy(value, T(0), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 0.25, 1.0) // 25%
-        XCTAssertEqualWithAccuracy(value, 0.011969444423734026, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.25), T(1)) // 25%
+        XCTAssertEqualWithAccuracy(value, T(0.011969444423734026), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 0.50, 1.0) // 50%
-        XCTAssertEqualWithAccuracy(value, 0.5, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.50), T(1)) // 50%
+        XCTAssertEqualWithAccuracy(value, T(0.5), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 0.75, 1.0) // 75%
-        XCTAssertEqualWithAccuracy(value, 0.988030555576266, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.75), T(1)) // 75%
+        XCTAssertEqualWithAccuracy(value, T(0.988030555576266), accuracy: accuracy)
         
-        value = algorithm(0.0, 1.0, 1.00, 1.0) // 100%
-        XCTAssertEqualWithAccuracy(value, 1.00, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(1.00), T(1)) // 100%
+        XCTAssertEqualWithAccuracy(value, T(1.00), accuracy: accuracy)
     }
 
-    // MARK: Bounce Tests
+    // MARK: Bounce Asserts
 
-    func testBounceIn() {
-        let algorithm: EaseAlgorithm<Double> = EaseAlgorithms.bounceIn
-        var value: Double
+    private func assertBounceIn<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
+        let algorithm: EaseAlgorithm<T> = EaseAlgorithms.bounceIn
+        var value: T
 
-        value = algorithm(0.0, 1.0, 0.00, 1.0) // 0%
-        XCTAssertEqualWithAccuracy(value, 0.0, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.00), T(1)) // 0%
+        XCTAssertEqualWithAccuracy(value, T(0), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 0.25, 1.0) // 25%
-        XCTAssertEqualWithAccuracy(value, 0.02734375, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.25), T(1)) // 25%
+        XCTAssertEqualWithAccuracy(value, T(0.02734375), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 0.50, 1.0) // 50%
-        XCTAssertEqualWithAccuracy(value, 0.234375, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.50), T(1)) // 50%
+        XCTAssertEqualWithAccuracy(value, T(0.234375), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 0.75, 1.0) // 75%
-        XCTAssertEqualWithAccuracy(value, 0.52734375, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.75), T(1)) // 75%
+        XCTAssertEqualWithAccuracy(value, T(0.52734375), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 1.00, 1.0) // 100%
-        XCTAssertEqualWithAccuracy(value, 1.00, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(1.00), T(1)) // 100%
+        XCTAssertEqualWithAccuracy(value, T(1.00), accuracy: accuracy)
     }
 
-    func testBounceOut() {
-        let algorithm: EaseAlgorithm<Double> = EaseAlgorithms.bounceOut
-        var value: Double
+    private func assertBounceOut<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
+        let algorithm: EaseAlgorithm<T> = EaseAlgorithms.bounceOut
+        var value: T
 
-        value = algorithm(0.0, 1.0, 0.00, 1.0) // 0%
-        XCTAssertEqualWithAccuracy(value, 0.0, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.00), T(1)) // 0%
+        XCTAssertEqualWithAccuracy(value, T(0), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 0.25, 1.0) // 25%
-        XCTAssertEqualWithAccuracy(value, 0.47265625, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.25), T(1)) // 25%
+        XCTAssertEqualWithAccuracy(value, T(0.47265625), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 0.50, 1.0) // 50%
-        XCTAssertEqualWithAccuracy(value, 0.765625, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.50), T(1)) // 50%
+        XCTAssertEqualWithAccuracy(value, T(0.765625), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 0.75, 1.0) // 75%
-        XCTAssertEqualWithAccuracy(value, 0.97265625, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.75), T(1)) // 75%
+        XCTAssertEqualWithAccuracy(value, T(0.97265625), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 1.00, 1.0) // 100%
-        XCTAssertEqualWithAccuracy(value, 1.00, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(1.00), T(1)) // 100%
+        XCTAssertEqualWithAccuracy(value, T(1.00), accuracy: accuracy)
     }
 
-    func testBounceInOut() {
-        let algorithm: EaseAlgorithm<Double> = EaseAlgorithms.bounceInOut
-        var value: Double
+    private func assertBounceInOut<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
+        let algorithm: EaseAlgorithm<T> = EaseAlgorithms.bounceInOut
+        var value: T
 
-        value = algorithm(0.0, 1.0, 0.00, 1.0) // 0%
-        XCTAssertEqualWithAccuracy(value, 0.0, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.00), T(1)) // 0%
+        XCTAssertEqualWithAccuracy(value, T(0), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 0.25, 1.0) // 25%
-        XCTAssertEqualWithAccuracy(value, 0.1171875, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.25), T(1)) // 25%
+        XCTAssertEqualWithAccuracy(value, T(0.1171875), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 0.50, 1.0) // 50%
-        XCTAssertEqualWithAccuracy(value, 0.5, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.50), T(1)) // 50%
+        XCTAssertEqualWithAccuracy(value, T(0.5), accuracy: accuracy)
 
-        value = algorithm(0.0, 1.0, 0.75, 1.0) // 75%
-        XCTAssertEqualWithAccuracy(value, 0.8828125, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(0.75), T(1)) // 75%
+        XCTAssertEqualWithAccuracy(value, T(0.8828125), accuracy: accuracy)
         
-        value = algorithm(0.0, 1.0, 1.00, 1.0) // 100%
-        XCTAssertEqualWithAccuracy(value, 1.00, accuracy: DBL_EPSILON)
+        value = algorithm(T(0), T(1), T(1.00), T(1)) // 100%
+        XCTAssertEqualWithAccuracy(value, T(1.00), accuracy: accuracy)
     }
 
 }

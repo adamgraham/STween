@@ -24,8 +24,7 @@ public protocol Interpolatable {
      */
     static func interpolate(with ease: Ease,
                             startValue: Self, endValue: Self,
-                            elapsed: TimeInterval,
-                            duration: TimeInterval) -> Self
+                            elapsed: TimeInterval, duration: TimeInterval) -> Self
 
 
     /**
@@ -42,8 +41,7 @@ public protocol Interpolatable {
      */
     static func interpolate(with ease: Ease,
                             values: InterpolationValues<Self>,
-                            elapsed: TimeInterval,
-                            duration: TimeInterval) -> Self
+                            elapsed: TimeInterval, duration: TimeInterval) -> Self
 
 }
 
@@ -53,8 +51,7 @@ extension Interpolatable {
 
     public static func interpolate(with ease: Ease,
                                    values: InterpolationValues<Self>,
-                                   elapsed: TimeInterval,
-                                   duration: TimeInterval) -> Self {
+                                   elapsed: TimeInterval, duration: TimeInterval) -> Self {
 
         return Self.interpolate(with: ease, startValue: values.start, endValue: values.end,
                                 elapsed: elapsed, duration: duration)
@@ -62,82 +59,80 @@ extension Interpolatable {
 
 }
 
+extension Interpolatable where Self: UnsignedInteger {
+
+    public static func interpolate(with ease: Ease,
+                                   startValue: Self, endValue: Self,
+                                   elapsed: TimeInterval, duration: TimeInterval) -> Self {
+
+        let start = Double(unsignedInteger: startValue)
+        let end = Double(unsignedInteger: endValue)
+        let value = ease.interpolate(startValue: start, endValue: end,
+                                     elapsed: elapsed, duration: duration)
+
+        return Self(UIntMax(value))
+    }
+    
+}
+
+extension Interpolatable where Self: SignedInteger {
+
+    public static func interpolate(with ease: Ease,
+                                   startValue: Self, endValue: Self,
+                                   elapsed: TimeInterval, duration: TimeInterval) -> Self {
+
+        let start = Double(signedInteger: startValue)
+        let end = Double(signedInteger: endValue)
+        let value = ease.interpolate(startValue: start, endValue: end,
+                                     elapsed: elapsed, duration: duration)
+
+        return Self(IntMax(value))
+    }
+    
+}
+
+extension Interpolatable where Self: FloatingPoint {
+
+    public static func interpolate(with ease: Ease,
+                                   startValue: Self, endValue: Self,
+                                   elapsed: TimeInterval, duration: TimeInterval) -> Self {
+
+        let _elapsed = Self(elapsed)
+        let _duration = Self(duration)
+
+        return ease.interpolate(startValue: startValue, endValue: endValue,
+                                elapsed: _elapsed, duration: _duration)
+    }
+
+}
+
 // MARK: - Conformance
 
-extension UInt: Interpolatable {
+extension UInt: Interpolatable {}
+extension UInt8: Interpolatable {}
+extension UInt16: Interpolatable {}
+extension UInt32: Interpolatable {}
+extension UInt64: Interpolatable {}
 
-    public static func interpolate(with ease: Ease,
-                                   startValue: UInt, endValue: UInt,
-                                   elapsed: TimeInterval,
-                                   duration: TimeInterval) -> UInt {
+extension Int: Interpolatable {}
+extension Int8: Interpolatable {}
+extension Int16: Interpolatable {}
+extension Int32: Interpolatable {}
+extension Int64: Interpolatable {}
 
-        return ease.interpolate(startValue: startValue, endValue: endValue,
-                                elapsed: elapsed, duration: duration)
-    }
-
-}
-
-extension Int: Interpolatable {
-
-    public static func interpolate(with ease: Ease,
-                                   startValue: Int, endValue: Int,
-                                   elapsed: TimeInterval,
-                                   duration: TimeInterval) -> Int {
-
-        return ease.interpolate(startValue: startValue, endValue: endValue,
-                                elapsed: elapsed, duration: duration)
-    }
-
-}
-
-extension Double: Interpolatable {
-
-    public static func interpolate(with ease: Ease,
-                                   startValue: Double, endValue: Double,
-                                   elapsed: TimeInterval,
-                                   duration: TimeInterval) -> Double {
-
-        return ease.interpolate(startValue: startValue, endValue: endValue,
-                                elapsed: elapsed, duration: duration)
-    }
-
-}
-
-extension Float: Interpolatable {
-
-    public static func interpolate(with ease: Ease,
-                                   startValue: Float, endValue: Float,
-                                   elapsed: TimeInterval,
-                                   duration: TimeInterval) -> Float {
-
-        return ease.interpolate(startValue: startValue, endValue: endValue,
-                                elapsed: elapsed, duration: duration)
-    }
-
-}
-
-extension CGFloat: Interpolatable {
-
-    public static func interpolate(with ease: Ease,
-                                   startValue: CGFloat, endValue: CGFloat,
-                                   elapsed: TimeInterval,
-                                   duration: TimeInterval) -> CGFloat {
-
-        return ease.interpolate(startValue: startValue, endValue: endValue,
-                                elapsed: elapsed, duration: duration)
-    }
-
-}
+extension Float32: Interpolatable {}
+extension Float64: Interpolatable {}
+extension Float80: Interpolatable {}
+extension CGFloat: Interpolatable {}
 
 extension CGPoint: Interpolatable {
 
     public static func interpolate(with ease: Ease,
                                    startValue: CGPoint, endValue: CGPoint,
-                                   elapsed: TimeInterval,
-                                   duration: TimeInterval) -> CGPoint {
+                                   elapsed: TimeInterval, duration: TimeInterval) -> CGPoint {
 
         let interpolate: (CGFloat, CGFloat) -> CGFloat = { (start, end) in
-            return ease.interpolate(startValue: start, endValue: end, elapsed: elapsed, duration: duration)
+            return ease.interpolate(startValue: start, endValue: end, elapsed: CGFloat(elapsed), duration: CGFloat(duration))
         }
 
         let x = interpolate(startValue.x, endValue.x)
@@ -152,11 +147,10 @@ extension CGSize: Interpolatable {
 
     public static func interpolate(with ease: Ease,
                                    startValue: CGSize, endValue: CGSize,
-                                   elapsed: TimeInterval,
-                                   duration: TimeInterval) -> CGSize {
+                                   elapsed: TimeInterval, duration: TimeInterval) -> CGSize {
 
         let interpolate: (CGFloat, CGFloat) -> CGFloat = { (start, end) in
-            return ease.interpolate(startValue: start, endValue: end, elapsed: elapsed, duration: duration)
+            return ease.interpolate(startValue: start, endValue: end, elapsed: CGFloat(elapsed), duration: CGFloat(duration))
         }
 
         let width = interpolate(startValue.width, endValue.width)
@@ -171,11 +165,10 @@ extension CGRect: Interpolatable {
 
     public static func interpolate(with ease: Ease,
                                    startValue: CGRect, endValue: CGRect,
-                                   elapsed: TimeInterval,
-                                   duration: TimeInterval) -> CGRect {
+                                   elapsed: TimeInterval, duration: TimeInterval) -> CGRect {
 
         let interpolate: (CGFloat, CGFloat) -> CGFloat = { (start, end) in
-            return ease.interpolate(startValue: start, endValue: end, elapsed: elapsed, duration: duration)
+            return ease.interpolate(startValue: start, endValue: end, elapsed: CGFloat(elapsed), duration: CGFloat(duration))
         }
 
         let x = interpolate(startValue.origin.x, endValue.origin.x)
