@@ -2,7 +2,7 @@
 //  FloatingPoint_ArithmeticTest.swift
 //  STween
 //
-//  Created by Adam Graham on 1/16/17.
+//  Created by Adam Graham on 1/14/17.
 //  Copyright © 2017 Adam Graham. All rights reserved.
 //
 
