@@ -147,6 +147,27 @@ class InterpolatableTest: XCTestCase {
         assertInterpolation(startValue: startValue, endValue: endValue, expectedValue: expectedValue)
     }
 
+    func testCGAffineTransformInterpolation() {
+        let startValue = CGAffineTransform(a: 0.0, b: 0.0, c: 0.0, d: 0.0, tx: 0.0, ty: 0.0)
+        let endValue = CGAffineTransform(a: 10.0, b: 10.0, c: 10.0, d: 10.0, tx: 10.0, ty: 10.0)
+        let expectedValue = CGAffineTransform(a: 5.0, b: 5.0, c: 5.0, d: 5.0, tx: 5.0, ty: 5.0)
+        assertInterpolation(startValue: startValue, endValue: endValue, expectedValue: expectedValue)
+    }
+
+    func testUIEdgeInsetsInterpolation() {
+        let startValue = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)
+        let endValue = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
+        let expectedValue = UIEdgeInsets(top: 5.0, left: 5.0, bottom: 5.0, right: 5.0)
+        assertInterpolation(startValue: startValue, endValue: endValue, expectedValue: expectedValue)
+    }
+
+    func testRGBAInterpolation() {
+        let startValue = RGBA(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
+        let endValue = RGBA(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        let expectedValue = RGBA(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
+        assertInterpolation(startValue: startValue, endValue: endValue, expectedValue: expectedValue)
+    }
+
     // MARK: Assertions
 
     private func assertInterpolation<T: Interpolatable & Equatable>(startValue: T, endValue: T, expectedValue: T) {
