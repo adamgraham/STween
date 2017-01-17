@@ -21,6 +21,34 @@ class InterpolatableTest: XCTestCase {
         assertInterpolation(startValue: startValue, endValue: endValue, expectedValue: expectedValue)
     }
 
+    func testUInt8Interpolation() {
+        let startValue: UInt8 = 0
+        let endValue: UInt8 = 10
+        let expectedValue: UInt8 = 5
+        assertInterpolation(startValue: startValue, endValue: endValue, expectedValue: expectedValue)
+    }
+
+    func testUInt16Interpolation() {
+        let startValue: UInt16 = 0
+        let endValue: UInt16 = 10
+        let expectedValue: UInt16 = 5
+        assertInterpolation(startValue: startValue, endValue: endValue, expectedValue: expectedValue)
+    }
+
+    func testUInt32Interpolation() {
+        let startValue: UInt32 = 0
+        let endValue: UInt32 = 10
+        let expectedValue: UInt32 = 5
+        assertInterpolation(startValue: startValue, endValue: endValue, expectedValue: expectedValue)
+    }
+
+    func testUInt64Interpolation() {
+        let startValue: UInt64 = 0
+        let endValue: UInt64 = 10
+        let expectedValue: UInt64 = 5
+        assertInterpolation(startValue: startValue, endValue: endValue, expectedValue: expectedValue)
+    }
+
     func testIntInterpolation() {
         let startValue: Int = 0
         let endValue: Int = 10
@@ -28,10 +56,31 @@ class InterpolatableTest: XCTestCase {
         assertInterpolation(startValue: startValue, endValue: endValue, expectedValue: expectedValue)
     }
 
-    func testDoubleInterpolation() {
-        let startValue: Double = 0.0
-        let endValue: Double = 10.0
-        let expectedValue: Double = 5.0
+    func testInt8Interpolation() {
+        let startValue: Int8 = 0
+        let endValue: Int8 = 10
+        let expectedValue: Int8 = 5
+        assertInterpolation(startValue: startValue, endValue: endValue, expectedValue: expectedValue)
+    }
+
+    func testInt16Interpolation() {
+        let startValue: Int16 = 0
+        let endValue: Int16 = 10
+        let expectedValue: Int16 = 5
+        assertInterpolation(startValue: startValue, endValue: endValue, expectedValue: expectedValue)
+    }
+
+    func testInt32Interpolation() {
+        let startValue: Int32 = 0
+        let endValue: Int32 = 10
+        let expectedValue: Int32 = 5
+        assertInterpolation(startValue: startValue, endValue: endValue, expectedValue: expectedValue)
+    }
+
+    func testInt64Interpolation() {
+        let startValue: Int64 = 0
+        let endValue: Int64 = 10
+        let expectedValue: Int64 = 5
         assertInterpolation(startValue: startValue, endValue: endValue, expectedValue: expectedValue)
     }
 
@@ -42,10 +91,38 @@ class InterpolatableTest: XCTestCase {
         assertInterpolation(startValue: startValue, endValue: endValue, expectedValue: expectedValue)
     }
 
+    func testFloat32Interpolation() {
+        let startValue: Float32 = 0.0
+        let endValue: Float32 = 10.0
+        let expectedValue: Float32 = 5.0
+        assertInterpolation(startValue: startValue, endValue: endValue, expectedValue: expectedValue)
+    }
+
+    func testFloat64Interpolation() {
+        let startValue: Float64 = 0.0
+        let endValue: Float64 = 10.0
+        let expectedValue: Float64 = 5.0
+        assertInterpolation(startValue: startValue, endValue: endValue, expectedValue: expectedValue)
+    }
+
+    func testFloat80Interpolation() {
+        let startValue: Float80 = 0.0
+        let endValue: Float80 = 10.0
+        let expectedValue: Float80 = 5.0
+        assertInterpolation(startValue: startValue, endValue: endValue, expectedValue: expectedValue)
+    }
+
     func testCGFloatInterpolation() {
         let startValue: CGFloat = 0.0
         let endValue: CGFloat = 10.0
         let expectedValue: CGFloat = 5.0
+        assertInterpolation(startValue: startValue, endValue: endValue, expectedValue: expectedValue)
+    }
+
+    func testDoubleInterpolation() {
+        let startValue: Double = 0.0
+        let endValue: Double = 10.0
+        let expectedValue: Double = 5.0
         assertInterpolation(startValue: startValue, endValue: endValue, expectedValue: expectedValue)
     }
 
