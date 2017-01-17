@@ -17,7 +17,9 @@ protocol TweenableTestable {
 extension TweenableTestable {
 
     func assertValidInterpolation<T: Tweenable>(tweenable: T, property: T.TweenProperty, interpolationAssert: (() -> Bool)) {
-        let values = tweenable.interpolationValues(for: property)
+        let startValue = tweenable.interpolationStartValue(for: property)
+        let endValue = property
+        let values = InterpolationValues(start: startValue, end: endValue)
 
         do {
             try tweenable.interpolate(with: .linear, values: values, elapsed: 1.0, duration: 1.0)

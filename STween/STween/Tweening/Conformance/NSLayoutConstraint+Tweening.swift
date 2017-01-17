@@ -20,12 +20,12 @@ extension NSLayoutConstraint: Tweenable {
         
     }
 
-    public func interpolationValues(for property: TweenProperty) -> InterpolationValues<TweenProperty> {
+    public func interpolationStartValue(for property: TweenProperty) -> TweenProperty {
         switch property {
-        case let .constant(endValue):
-            return InterpolationValues(start: .constant(self.constant), end: .constant(endValue))
-        case let .priority(endValue):
-            return InterpolationValues(start: .priority(self.priority), end: .priority(endValue))
+        case .constant:
+            return .constant(self.constant)
+        case .priority:
+            return .priority(self.priority)
         }
     }
 

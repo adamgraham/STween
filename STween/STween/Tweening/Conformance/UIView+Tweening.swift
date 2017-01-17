@@ -50,42 +50,42 @@ extension UIView: Tweenable {
 
     }
 
-    public func interpolationValues(for property: TweenProperty) -> InterpolationValues<TweenProperty> {
+    public func interpolationStartValue(for property: TweenProperty) -> TweenProperty {
         switch property {
-        case let .x(endValue):
-            return InterpolationValues(start: .x(self.frame.origin.x), end: .x(endValue))
-        case let .y(endValue):
-            return InterpolationValues(start: .y(self.frame.origin.y), end: .y(endValue))
-        case let .origin(endValue):
-            return InterpolationValues(start: .origin(self.frame.origin), end: .origin(endValue))
+        case .x:
+            return .x(self.frame.origin.x)
+        case .y:
+            return .y(self.frame.origin.y)
+        case .origin:
+            return .origin(self.frame.origin)
 
-        case let .width(endValue):
-            return InterpolationValues(start: .width(self.frame.width), end: .width(endValue))
-        case let .height(endValue):
-            return InterpolationValues(start: .height(self.frame.height), end: .height(endValue))
-        case let .size(endValue):
-            return InterpolationValues(start: .size(self.frame.size), end: .size(endValue))
+        case .width:
+            return .width(self.frame.width)
+        case .height:
+            return .height(self.frame.height)
+        case .size:
+            return .size(self.frame.size)
 
-        case let .left(endValue):
-            return InterpolationValues(start: .left(self.frame.minX), end: .left(endValue))
-        case let .right(endValue):
-            return InterpolationValues(start: .right(self.frame.maxX), end: .right(endValue))
-        case let .top(endValue):
-            return InterpolationValues(start: .top(self.frame.minY), end: .top(endValue))
-        case let .bottom(endValue):
-            return InterpolationValues(start: .bottom(self.frame.maxY), end: .bottom(endValue))
+        case .left:
+            return .left(self.frame.minX)
+        case .right:
+            return .right(self.frame.maxX)
+        case .top:
+            return .top(self.frame.minY)
+        case .bottom:
+            return .bottom(self.frame.maxY)
 
-        case let .frame(endValue):
-            return InterpolationValues(start: .frame(self.frame), end: .frame(endValue))
-        case let .bounds(endValue):
-            return InterpolationValues(start: .bounds(self.bounds), end: .bounds(endValue))
+        case .frame:
+            return .frame(self.frame)
+        case .bounds:
+            return .bounds(self.bounds)
 
-        case let .centerX(endValue):
-            return InterpolationValues(start: .centerX(self.center.x), end: .centerX(endValue))
-        case let .centerY(endValue):
-            return InterpolationValues(start: .centerY(self.center.y), end: .centerY(endValue))
-        case let .center(endValue):
-            return InterpolationValues(start: .center(self.center), end: .center(endValue))
+        case .centerX:
+            return .centerX(self.center.x)
+        case .centerY:
+            return .centerY(self.center.y)
+        case .center:
+            return .center(self.center)
         }
     }
 

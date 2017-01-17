@@ -337,12 +337,12 @@ fileprivate class InvalidTweenable: Tweenable {
 
     }
 
-    public func interpolationValues(for property: TweenProperty) -> InterpolationValues<TweenProperty> {
+    public func interpolationStartValue(for property: TweenProperty) -> TweenProperty {
         switch property {
-        case let .invalidA(endValue):
-            return InterpolationValues(start: .invalidA(0.0), end: .invalidA(endValue))
-        case let .invalidB(endValue):
-            return InterpolationValues(start: .invalidB(0.0), end: .invalidB(endValue))
+        case .invalidA:
+            return .invalidA(0.0)
+        case .invalidB:
+            return .invalidB(0.0)
         }
     }
 
