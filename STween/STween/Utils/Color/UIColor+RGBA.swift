@@ -6,12 +6,12 @@
 //  Copyright © 2016 Adam Graham. All rights reserved.
 //
 
-public extension UIColor {
 /// An extension to provide `UIColor` instances with additional computed 
 /// properties to retrieve color components.
+internal extension UIColor {
 
     /// The red, green, blue, and alpha components of `self`.
-    public var components: (
+    internal var components: (
         red: CGFloat,
         green: CGFloat,
         blue: CGFloat,
@@ -27,22 +27,22 @@ public extension UIColor {
     }
 
     /// The value of the red component of `self`.
-    public var red: CGFloat {
+    internal var red: CGFloat {
         return self.components.red
     }
 
     /// The value of the green component of `self`.
-    public var green: CGFloat {
+    internal var green: CGFloat {
         return self.components.green
     }
 
     /// The value of the blue component of `self`.
-    public var blue: CGFloat {
+    internal var blue: CGFloat {
         return self.components.blue
     }
 
     /// The value of the alpha component of `self`.
-    public var alpha: CGFloat {
+    internal var alpha: CGFloat {
         return self.components.alpha
     }
 
