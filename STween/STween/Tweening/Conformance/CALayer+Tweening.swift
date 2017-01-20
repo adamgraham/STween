@@ -6,35 +6,58 @@
 //  Copyright © 2017 Adam Graham. All rights reserved.
 //
 
+/// An extension to provide tweening animation functionality to `NSLayoutConstraint`.
 extension CALayer: Tweenable {
 
+    /// An enum to describe the properties that can be animated with a tween
+    /// on a `CALayer`.
     public enum TweenProperty {
 
+        /// A case to denote the `frame` property of a `CALayer`.
         case frame(CGRect)
+        /// A case to denote the `bounds` property of a `CALayer`.
         case bounds(CGRect)
 
+        /// A case to denote the `position` property of a `CALayer`.
         case position(CGPoint)
+        /// A case to denote the `zPosition` property of a `CALayer`.
         case zPosition(CGFloat)
+        /// A case to denote the `anchorPoint` property of a `CALayer`.
         case anchorPoint(CGPoint)
+        /// A case to denote the `anchorPointZ` property of a `CALayer`.
         case anchorPointZ(CGFloat)
 
+        /// A case to denote the `transform` property of a `CALayer`.
         case transform(CATransform3D)
+        /// A case to denote the `sublayerTransform` property of a `CALayer`.
         case sublayerTransform(CATransform3D)
 
+        /// A case to denote the `contentsRect` property of a `CALayer`.
         case contentsRect(CGRect)
+        /// A case to denote the `contentsCenter` property of a `CALayer`.
         case contentsCenter(CGRect)
         @available(iOS 4.0, *)
+        /// A case to denote the `contentsScale` property of a `CALayer`.
         case contentsScale(CGFloat)
 
+        /// A case to denote the `cornerRadius` property of a `CALayer`.
         case cornerRadius(CGFloat)
+        /// A case to denote the `borderWidth` property of a `CALayer`.
         case borderWidth(CGFloat)
+        /// A case to denote the `borderColor` property of a `CALayer`.
         case borderColor(CGColor)
+        /// A case to denote the `backgroundColor` property of a `CALayer`.
         case backgroundColor(CGColor)
+        /// A case to denote the `opacity` property of a `CALayer`.
         case opacity(Float)
 
+        /// A case to denote the `shadowColor` property of a `CALayer`.
         case shadowColor(CGColor)
+        /// A case to denote the `shadowOpacity` property of a `CALayer`.
         case shadowOpacity(Float)
+        /// A case to denote the `shadowOffset` property of a `CALayer`.
         case shadowOffset(CGSize)
+        /// A case to denote the `shadowRadius` property of a `CALayer`.
         case shadowRadius(CGFloat)
 
     }

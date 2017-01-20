@@ -24,7 +24,8 @@ internal func pow<T: FloatingPoint>(_ x: T, _ y: T) -> T {
 
 extension FloatingPoint {
 
-    init(_ v: Double) {
+    /// Initializes a `FloatingPoint` value from a `Double` value.
+    internal init(_ v: Double) {
         switch Self(0) {
         case is Float32:
             self = Float32(v) as! Self
@@ -46,14 +47,17 @@ extension FloatingPoint {
 
 extension FloatingPoint {
 
+    /// `Self(0)`
     internal static var zero: Self {
         return Self(0)
     }
 
+    /// `Self.pi` * 2
     internal static var pi_double: Self {
         return Self.pi.double
     }
 
+    /// `Self.pi` / 2
     internal static var pi_half: Self {
         return Self.pi.half
     }
@@ -64,10 +68,12 @@ extension FloatingPoint {
 
 extension FloatingPoint {
 
+    /// `self` * 2
     internal var double: Self {
         return self * Self(2)
     }
 
+    /// `self` / 2
     internal var half: Self {
         return self / Self(2)
     }

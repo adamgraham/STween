@@ -7,6 +7,8 @@
 //
 
 public extension UIColor {
+/// An extension to provide `UIColor` instances with additional computed 
+/// properties to retrieve color components.
 
     /// The red, green, blue, and alpha components of `self`.
     public var components: (
