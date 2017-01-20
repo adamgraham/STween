@@ -7,6 +7,7 @@
 //
 
 #import <CoreGraphics/CoreGraphics.h>
+#import <CoreImage/CoreImage.h>
 #import <Foundation/Foundation.h>
 #import <QuartzCore/CoreAnimation.h>
 #import <UIKit/UIKit.h>

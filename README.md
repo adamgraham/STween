@@ -15,12 +15,23 @@ This one line of code creates an animation that moves a view's vertical position
 Tweens are not just limited to the animation of visual elements, though. Tweening can be applied to virtually any type of data. See below for more information.
 
 ### Supported Types
-Tweening animations can be applied to any of the supported types below. If a type is not listed, you can add tweening support by conforming to the `Tweenable` protocol. Feel free to leave suggestions to new types you would like to see added.
+Tweening animations can be applied to any of the supported types below. If a type is not listed below, you can add tweening support by conforming to the `STween.Tweenable` protocol. Feel free to leave suggestions to new types you would like to see added.
 
 - `UIView`
 - `CALayer`
 - `NSLayoutConstraint`
-- Work in progress, more to come...
+- More to come...
+
+All of the following data types can be interpolated - the ability for a type to calculate the value between a starting and ending position at a specific point in time. If a type is not listed below, you can add interpolation support by conforming to the `STween.Interpolatable` protocol.
+
+- `UInt`, `UInt8`, `UInt16`, `UInt32`, `UInt64`
+- `Int`, `Int8`, `Int16`, `Int32`, `Int64`
+- `Float`, `Float32`, `Float64`, `Float80`, `Double`
+- `Date`
+- `CATransform3D`
+- `CGAffineTransform`, `CGColor`, `CGFloat`, `CGPoint`, `CGRect`, `CGSize`, `CGVector`
+- `CIColor`, `CIVector`
+- `UIColor`, `UIEdgeInsetes`, `UIOffset`
 
 ### Supported Algorithms
 The below algorithm classifications are supported. Each classification has 3 variations: `.in`, `.out`, `.inOut`.<br/>
