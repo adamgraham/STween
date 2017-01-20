@@ -15,10 +15,11 @@ This one line of code creates an animation that moves a view's vertical position
 Tweens are not just limited to the animation of visual elements, though. Tweening can be applied to virtually any type of data. See below for more information.
 
 ### Supported Types
-Tweening animations can be applied to any of the supported types below. If a type is not listed, you can add tweening support by conforming to the `STween.Tweenable` protocol. Feel free to leave suggestions to new types you would like to see added.
+Tweening animations can be applied to any of the supported types below. If a type is not listed, you can add tweening support by conforming to the `Tweenable` protocol. Feel free to leave suggestions to new types you would like to see added.
 
-- `UIKit.UIView`
-- `UIKit.NSLayoutConstraint`
+- `UIView`
+- `CALayer`
+- `NSLayoutConstraint`
 - Work in progress, more to come...
 
 ### Supported Algorithms

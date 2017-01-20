@@ -12,9 +12,9 @@ import XCTest
 
 class UIView_TweeningTest: XCTestCase, TweenableTestable {
 
-    // MARK: Tweenable Property Tests
+    // MARK: TweenProperty Tests
 
-    func testXTweenableProperty() {
+    func testXTweenProperty() {
         let view = UIView()
         let property = UIView.TweenProperty.x(100.0)
         assertValidInterpolation(tweenable: view, property: property) {
@@ -22,7 +22,7 @@ class UIView_TweeningTest: XCTestCase, TweenableTestable {
         }
     }
 
-    func testYTweenableProperty() {
+    func testYTweenProperty() {
         let view = UIView()
         let property = UIView.TweenProperty.y(100.0)
         assertValidInterpolation(tweenable: view, property: property) {
@@ -30,7 +30,7 @@ class UIView_TweeningTest: XCTestCase, TweenableTestable {
         }
     }
 
-    func testOriginTweenableProperty() {
+    func testOriginTweenProperty() {
         let view = UIView()
         let property = UIView.TweenProperty.origin(CGPoint(x: 100.0, y: 100.0))
         assertValidInterpolation(tweenable: view, property: property) {
@@ -38,7 +38,7 @@ class UIView_TweeningTest: XCTestCase, TweenableTestable {
         }
     }
 
-    func testWidthTweenableProperty() {
+    func testWidthTweenProperty() {
         let view = UIView()
         let property = UIView.TweenProperty.width(100.0)
         assertValidInterpolation(tweenable: view, property: property) {
@@ -46,7 +46,7 @@ class UIView_TweeningTest: XCTestCase, TweenableTestable {
         }
     }
 
-    func testHeightTweenableProperty() {
+    func testHeightTweenProperty() {
         let view = UIView()
         let property = UIView.TweenProperty.height(100.0)
         assertValidInterpolation(tweenable: view, property: property) {
@@ -54,7 +54,7 @@ class UIView_TweeningTest: XCTestCase, TweenableTestable {
         }
     }
 
-    func testSizeTweenableProperty() {
+    func testSizeTweenProperty() {
         let view = UIView()
         let property = UIView.TweenProperty.size(CGSize(width: 100.0, height: 100.0))
         assertValidInterpolation(tweenable: view, property: property) {
@@ -62,7 +62,7 @@ class UIView_TweeningTest: XCTestCase, TweenableTestable {
         }
     }
 
-    func testLeftTweenableProperty() {
+    func testLeftTweenProperty() {
         let view = UIView()
         let property = UIView.TweenProperty.left(100.0)
         assertValidInterpolation(tweenable: view, property: property) {
@@ -70,7 +70,7 @@ class UIView_TweeningTest: XCTestCase, TweenableTestable {
         }
     }
 
-    func testRightTweenableProperty() {
+    func testRightTweenProperty() {
         let view = UIView()
         view.frame.size.width = 100.0
         let property = UIView.TweenProperty.right(100.0)
@@ -79,7 +79,7 @@ class UIView_TweeningTest: XCTestCase, TweenableTestable {
         }
     }
 
-    func testTopTweenableProperty() {
+    func testTopTweenProperty() {
         let view = UIView()
         let property = UIView.TweenProperty.top(100.0)
         assertValidInterpolation(tweenable: view, property: property) {
@@ -87,7 +87,7 @@ class UIView_TweeningTest: XCTestCase, TweenableTestable {
         }
     }
 
-    func testBottomTweenableProperty() {
+    func testBottomTweenProperty() {
         let view = UIView()
         view.frame.size.height = 100.0
         let property = UIView.TweenProperty.bottom(100.0)
@@ -96,7 +96,7 @@ class UIView_TweeningTest: XCTestCase, TweenableTestable {
         }
     }
 
-    func testFrameTweenableProperty() {
+    func testFrameTweenProperty() {
         let view = UIView()
         let property = UIView.TweenProperty.frame(CGRect(x: 100.0, y: 100.0, width: 100.0, height: 100.0))
         assertValidInterpolation(tweenable: view, property: property) {
@@ -104,7 +104,7 @@ class UIView_TweeningTest: XCTestCase, TweenableTestable {
         }
     }
 
-    func testBoundsTweenableProperty() {
+    func testBoundsTweenProperty() {
         let view = UIView()
         let property = UIView.TweenProperty.bounds(CGRect(x: 100.0, y: 100.0, width: 100.0, height: 100.0))
         assertValidInterpolation(tweenable: view, property: property) {
@@ -112,7 +112,7 @@ class UIView_TweeningTest: XCTestCase, TweenableTestable {
         }
     }
 
-    func testTransformTweenableProperty() {
+    func testTransformTweenProperty() {
         let view = UIView()
         let property = UIView.TweenProperty.transform(CGAffineTransform(a: 1.0, b: 1.0, c: 1.0, d: 1.0, tx: 1.0, ty: 1.0))
         assertValidInterpolation(tweenable: view, property: property) {
@@ -120,7 +120,7 @@ class UIView_TweeningTest: XCTestCase, TweenableTestable {
         }
     }
 
-    func testCenterTweenableProperty() {
+    func testCenterTweenProperty() {
         let view = UIView()
         let property = UIView.TweenProperty.center(CGPoint(x: 100.0, y: 100.0))
         assertValidInterpolation(tweenable: view, property: property) {
@@ -128,7 +128,7 @@ class UIView_TweeningTest: XCTestCase, TweenableTestable {
         }
     }
 
-    func testCenterXTweenableProperty() {
+    func testCenterXTweenProperty() {
         let view = UIView()
         let property = UIView.TweenProperty.centerX(100.0)
         assertValidInterpolation(tweenable: view, property: property) {
@@ -136,7 +136,7 @@ class UIView_TweeningTest: XCTestCase, TweenableTestable {
         }
     }
 
-    func testCenterYTweenableProperty() {
+    func testCenterYTweenProperty() {
         let view = UIView()
         let property = UIView.TweenProperty.centerY(100.0)
         assertValidInterpolation(tweenable: view, property: property) {
@@ -144,7 +144,7 @@ class UIView_TweeningTest: XCTestCase, TweenableTestable {
         }
     }
 
-    func testAlphaTweenableProperty() {
+    func testAlphaTweenProperty() {
         let view = UIView()
         let property = UIView.TweenProperty.alpha(0.0)
         assertValidInterpolation(tweenable: view, property: property) {
@@ -152,7 +152,7 @@ class UIView_TweeningTest: XCTestCase, TweenableTestable {
         }
     }
 
-    func testBackgroundColorTweenableProperty() {
+    func testBackgroundColorTweenProperty() {
         let view = UIView()
         let property = UIView.TweenProperty.backgroundColor(UIColor.blue)
         assertValidInterpolation(tweenable: view, property: property) {
@@ -161,7 +161,7 @@ class UIView_TweeningTest: XCTestCase, TweenableTestable {
     }
 
     @available(iOS 7.0, *)
-    func testTintColorTweenableProperty() {
+    func testTintColorTweenProperty() {
         let view = UIView()
         let property = UIView.TweenProperty.tintColor(UIColor.red)
         assertValidInterpolation(tweenable: view, property: property) {
@@ -170,7 +170,7 @@ class UIView_TweeningTest: XCTestCase, TweenableTestable {
     }
 
     @available(iOS 4.0, *)
-    func testContentScaleFactorTweenableProperty() {
+    func testContentScaleFactorTweenProperty() {
         let view = UIView()
         let property = UIView.TweenProperty.contentScaleFactor(0.5)
         assertValidInterpolation(tweenable: view, property: property) {
@@ -179,7 +179,7 @@ class UIView_TweeningTest: XCTestCase, TweenableTestable {
     }
 
     @available(iOS 8.0, *)
-    func testLayoutMarginsTweenableProperty() {
+    func testLayoutMarginsTweenProperty() {
         let view = UIView()
         let property = UIView.TweenProperty.layoutMargins(UIEdgeInsets(top: 50.0, left: 50.0, bottom: 50.0, right: 50.0))
         assertValidInterpolation(tweenable: view, property: property) {
