@@ -139,6 +139,13 @@ class InterpolatableTest: XCTestCase {
         assertInterpolation(startValue: startValue, endValue: endValue, middleValue: middleValue)
     }
 
+    func testDate() {
+        let startValue = Date(timeIntervalSince1970: 0.0)
+        let endValue = Date(timeIntervalSince1970: 10.0)
+        let middleValue = Date(timeIntervalSince1970: 5.0)
+        assertInterpolation(startValue: startValue, endValue: endValue, middleValue: middleValue)
+    }
+
     // MARK: CoreAnimation Tests
 
     func testCATransform3D() {

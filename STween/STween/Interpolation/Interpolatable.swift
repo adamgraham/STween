@@ -94,6 +94,18 @@ extension Float32: Interpolatable {}
 extension Float64: Interpolatable {}
 extension Float80: Interpolatable {}
 
+extension Date: Interpolatable {
+
+    public static func interpolate(with ease: Ease,
+                                   startValue: Date, endValue: Date,
+                                   elapsed: TimeInterval, duration: TimeInterval) -> Date {
+
+        let timeInterval = ease.interpolate(startValue: startValue.timeIntervalSince1970, endValue: endValue.timeIntervalSince1970, elapsed: elapsed, duration: duration)
+        return Date(timeIntervalSince1970: timeInterval)
+    }
+    
+}
+
 // MARK: - Conformance: CoreAnimation
 
 extension CATransform3D: Interpolatable {
