@@ -76,7 +76,7 @@ extension Interpolatable where Self: FloatingPoint {
 
 }
 
-// MARK: - Conformance
+// MARK: - Conformance: Primitive
 
 extension UInt: Interpolatable {}
 extension UInt8: Interpolatable {}
@@ -94,7 +94,10 @@ extension Float32: Interpolatable {}
 extension Float64: Interpolatable {}
 extension Float80: Interpolatable {}
 
+// MARK: - Conformance: CoreGraphics
+
 extension CGFloat: Interpolatable {}
+
 extension CGPoint: Interpolatable {
 
     public static func interpolate(with ease: Ease,
@@ -151,6 +154,24 @@ extension CGRect: Interpolatable {
     
 }
 
+extension CGVector: Interpolatable {
+
+    public static func interpolate(with ease: Ease,
+                                   startValue: CGVector, endValue: CGVector,
+                                   elapsed: TimeInterval, duration: TimeInterval) -> CGVector {
+
+        let interpolate: (CGFloat, CGFloat) -> CGFloat = { (start, end) in
+            return ease.interpolate(startValue: start, endValue: end, elapsed: CGFloat(elapsed), duration: CGFloat(duration))
+        }
+
+        let dx = interpolate(startValue.dx, endValue.dx)
+        let dy = interpolate(startValue.dy, endValue.dy)
+
+        return CGVector(dx: dx, dy: dy)
+    }
+
+}
+
 extension CGAffineTransform: Interpolatable {
 
     public static func interpolate(with ease: Ease,
@@ -173,6 +194,72 @@ extension CGAffineTransform: Interpolatable {
 
 }
 
+extension CGColor: Interpolatable {
+
+    public static func interpolate(with ease: Ease,
+                                   startValue: CGColor, endValue: CGColor,
+                                   elapsed: TimeInterval, duration: TimeInterval) -> CGColor {
+
+        let interpolate: (CGFloat, CGFloat) -> CGFloat = { (start, end) in
+            return ease.interpolate(startValue: start, endValue: end, elapsed: CGFloat(elapsed), duration: CGFloat(duration))
+        }
+
+        var interpolatedComponents = [CGFloat]()
+
+        for (index, endComponent) in (endValue.components ?? []).enumerated() {
+            let startComponent = startValue.components?[index] ?? 0.0
+            let interpolatedComponent = interpolate(startComponent, endComponent)
+            interpolatedComponents.append(interpolatedComponent)
+        }
+
+        return CGColor(colorSpace: endValue.colorSpace ?? startValue.colorSpace ?? CGColorSpaceCreateDeviceRGB(),
+                       components: interpolatedComponents) ?? endValue
+    }
+
+}
+
+// MARK: - Conformance: CoreAnimation
+
+extension CATransform3D: Interpolatable {
+
+    public static func interpolate(with ease: Ease,
+                                   startValue: CATransform3D, endValue: CATransform3D,
+                                   elapsed: TimeInterval, duration: TimeInterval) -> CATransform3D {
+
+        let interpolate: (CGFloat, CGFloat) -> CGFloat = { (start, end) in
+            return ease.interpolate(startValue: start, endValue: end, elapsed: CGFloat(elapsed), duration: CGFloat(duration))
+        }
+
+        let m11 = interpolate(startValue.m11, endValue.m11)
+        let m12 = interpolate(startValue.m12, endValue.m12)
+        let m13 = interpolate(startValue.m13, endValue.m13)
+        let m14 = interpolate(startValue.m14, endValue.m14)
+
+        let m21 = interpolate(startValue.m21, endValue.m21)
+        let m22 = interpolate(startValue.m22, endValue.m22)
+        let m23 = interpolate(startValue.m23, endValue.m23)
+        let m24 = interpolate(startValue.m24, endValue.m24)
+
+        let m31 = interpolate(startValue.m31, endValue.m31)
+        let m32 = interpolate(startValue.m32, endValue.m32)
+        let m33 = interpolate(startValue.m33, endValue.m33)
+        let m34 = interpolate(startValue.m34, endValue.m34)
+
+        let m41 = interpolate(startValue.m41, endValue.m41)
+        let m42 = interpolate(startValue.m42, endValue.m42)
+        let m43 = interpolate(startValue.m43, endValue.m43)
+        let m44 = interpolate(startValue.m44, endValue.m44)
+
+        return CATransform3D(m11: m11, m12: m12, m13: m13, m14: m14,
+                             m21: m21, m22: m22, m23: m23, m24: m24,
+                             m31: m31, m32: m32, m33: m33, m34: m34,
+                             m41: m41, m42: m42, m43: m43, m44: m44)
+    }
+
+}
+
+// MARK: - Conformance: UIKit
+
 extension UIEdgeInsets: Interpolatable {
 
     public static func interpolate(with ease: Ease,
@@ -192,6 +279,17 @@ extension UIEdgeInsets: Interpolatable {
     }
 
 }
+
+extension UIColor: Interpolatable {
+
+    public static func interpolate(with ease: Ease, startValue: UIColor, endValue: UIColor, elapsed: TimeInterval, duration: TimeInterval) -> UIColor {
+        let rgba = RGBA.interpolate(with: ease, startValue: startValue.rgba, endValue: endValue.rgba, elapsed: elapsed, duration: duration)
+        return rgba.color
+    }
+
+}
+
+// MARK: - Conformance: Internal
 
 extension RGBA: Interpolatable {
 
