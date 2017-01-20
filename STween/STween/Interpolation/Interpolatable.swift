@@ -12,7 +12,7 @@ public protocol Interpolatable {
     associatedtype InterpolationType
 
     /**
-     A class method to calculate the value between a start and end value at a
+     A class method to calculate the value between a starting and ending position at a
      specific point in time.
 
      - Parameters:

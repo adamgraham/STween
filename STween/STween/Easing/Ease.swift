@@ -239,8 +239,8 @@ extension Ease {
 extension Ease {
 
     /**
-     A method to calculate the value between a start and end value at a
-     specific point in time.
+     A method to calculate the value between a starting and ending position 
+     at a specific point in time.
      
      - Parameters:
         - startValue: The start value passed to the `ease` algorithm.
