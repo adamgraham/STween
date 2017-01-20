@@ -8,6 +8,7 @@
 
 #import <CoreGraphics/CoreGraphics.h>
 #import <Foundation/Foundation.h>
+#import <QuartzCore/CoreAnimation.h>
 #import <UIKit/UIKit.h>
 
 //! Project version number for STween.
