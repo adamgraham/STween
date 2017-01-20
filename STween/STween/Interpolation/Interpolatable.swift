@@ -76,7 +76,7 @@ extension Interpolatable where Self: FloatingPoint {
 
 }
 
-// MARK: - Conformance: Primitive
+// MARK: - Conformance: Swift
 
 extension UInt: Interpolatable {}
 extension UInt8: Interpolatable {}
@@ -93,130 +93,6 @@ extension Int64: Interpolatable {}
 extension Float32: Interpolatable {}
 extension Float64: Interpolatable {}
 extension Float80: Interpolatable {}
-
-// MARK: - Conformance: CoreGraphics
-
-extension CGFloat: Interpolatable {}
-
-extension CGPoint: Interpolatable {
-
-    public static func interpolate(with ease: Ease,
-                                   startValue: CGPoint, endValue: CGPoint,
-                                   elapsed: TimeInterval, duration: TimeInterval) -> CGPoint {
-
-        let interpolate: (CGFloat, CGFloat) -> CGFloat = { (start, end) in
-            return ease.interpolate(startValue: start, endValue: end, elapsed: CGFloat(elapsed), duration: CGFloat(duration))
-        }
-
-        let x = interpolate(startValue.x, endValue.x)
-        let y = interpolate(startValue.y, endValue.y)
-
-        return CGPoint(x: x, y: y)
-    }
-
-}
-
-extension CGSize: Interpolatable {
-
-    public static func interpolate(with ease: Ease,
-                                   startValue: CGSize, endValue: CGSize,
-                                   elapsed: TimeInterval, duration: TimeInterval) -> CGSize {
-
-        let interpolate: (CGFloat, CGFloat) -> CGFloat = { (start, end) in
-            return ease.interpolate(startValue: start, endValue: end, elapsed: CGFloat(elapsed), duration: CGFloat(duration))
-        }
-
-        let width = interpolate(startValue.width, endValue.width)
-        let height = interpolate(startValue.height, endValue.height)
-
-        return CGSize(width: width, height: height)
-    }
-
-}
-
-extension CGRect: Interpolatable {
-
-    public static func interpolate(with ease: Ease,
-                                   startValue: CGRect, endValue: CGRect,
-                                   elapsed: TimeInterval, duration: TimeInterval) -> CGRect {
-
-        let interpolate: (CGFloat, CGFloat) -> CGFloat = { (start, end) in
-            return ease.interpolate(startValue: start, endValue: end, elapsed: CGFloat(elapsed), duration: CGFloat(duration))
-        }
-
-        let x = interpolate(startValue.origin.x, endValue.origin.x)
-        let y = interpolate(startValue.origin.y, endValue.origin.y)
-        let width = interpolate(startValue.size.width, endValue.size.width)
-        let height = interpolate(startValue.size.height, endValue.size.height)
-        
-        return CGRect(x: x, y: y, width: width, height: height)
-    }
-    
-}
-
-extension CGVector: Interpolatable {
-
-    public static func interpolate(with ease: Ease,
-                                   startValue: CGVector, endValue: CGVector,
-                                   elapsed: TimeInterval, duration: TimeInterval) -> CGVector {
-
-        let interpolate: (CGFloat, CGFloat) -> CGFloat = { (start, end) in
-            return ease.interpolate(startValue: start, endValue: end, elapsed: CGFloat(elapsed), duration: CGFloat(duration))
-        }
-
-        let dx = interpolate(startValue.dx, endValue.dx)
-        let dy = interpolate(startValue.dy, endValue.dy)
-
-        return CGVector(dx: dx, dy: dy)
-    }
-
-}
-
-extension CGAffineTransform: Interpolatable {
-
-    public static func interpolate(with ease: Ease,
-                                   startValue: CGAffineTransform, endValue: CGAffineTransform,
-                                   elapsed: TimeInterval, duration: TimeInterval) -> CGAffineTransform {
-
-        let interpolate: (CGFloat, CGFloat) -> CGFloat = { (start, end) in
-            return ease.interpolate(startValue: start, endValue: end, elapsed: CGFloat(elapsed), duration: CGFloat(duration))
-        }
-
-        let a = interpolate(startValue.a, endValue.a)
-        let b = interpolate(startValue.b, endValue.b)
-        let c = interpolate(startValue.c, endValue.c)
-        let d = interpolate(startValue.d, endValue.d)
-        let tx = interpolate(startValue.tx, endValue.tx)
-        let ty = interpolate(startValue.ty, endValue.ty)
-
-        return CGAffineTransform(a: a, b: b, c: c, d: d, tx: tx, ty: ty)
-    }
-
-}
-
-extension CGColor: Interpolatable {
-
-    public static func interpolate(with ease: Ease,
-                                   startValue: CGColor, endValue: CGColor,
-                                   elapsed: TimeInterval, duration: TimeInterval) -> CGColor {
-
-        let interpolate: (CGFloat, CGFloat) -> CGFloat = { (start, end) in
-            return ease.interpolate(startValue: start, endValue: end, elapsed: CGFloat(elapsed), duration: CGFloat(duration))
-        }
-
-        var interpolatedComponents = [CGFloat]()
-
-        for (index, endComponent) in (endValue.components ?? []).enumerated() {
-            let startComponent = startValue.components?[index] ?? 0.0
-            let interpolatedComponent = interpolate(startComponent, endComponent)
-            interpolatedComponents.append(interpolatedComponent)
-        }
-
-        return CGColor(colorSpace: endValue.colorSpace ?? startValue.colorSpace ?? CGColorSpaceCreateDeviceRGB(),
-                       components: interpolatedComponents) ?? endValue
-    }
-
-}
 
 // MARK: - Conformance: CoreAnimation
 
@@ -254,6 +130,130 @@ extension CATransform3D: Interpolatable {
                              m21: m21, m22: m22, m23: m23, m24: m24,
                              m31: m31, m32: m32, m33: m33, m34: m34,
                              m41: m41, m42: m42, m43: m43, m44: m44)
+    }
+    
+}
+
+// MARK: - Conformance: CoreGraphics
+
+extension CGAffineTransform: Interpolatable {
+
+    public static func interpolate(with ease: Ease,
+                                   startValue: CGAffineTransform, endValue: CGAffineTransform,
+                                   elapsed: TimeInterval, duration: TimeInterval) -> CGAffineTransform {
+
+        let interpolate: (CGFloat, CGFloat) -> CGFloat = { (start, end) in
+            return ease.interpolate(startValue: start, endValue: end, elapsed: CGFloat(elapsed), duration: CGFloat(duration))
+        }
+
+        let a = interpolate(startValue.a, endValue.a)
+        let b = interpolate(startValue.b, endValue.b)
+        let c = interpolate(startValue.c, endValue.c)
+        let d = interpolate(startValue.d, endValue.d)
+        let tx = interpolate(startValue.tx, endValue.tx)
+        let ty = interpolate(startValue.ty, endValue.ty)
+
+        return CGAffineTransform(a: a, b: b, c: c, d: d, tx: tx, ty: ty)
+    }
+    
+}
+
+extension CGColor: Interpolatable {
+
+    public static func interpolate(with ease: Ease,
+                                   startValue: CGColor, endValue: CGColor,
+                                   elapsed: TimeInterval, duration: TimeInterval) -> CGColor {
+
+        let interpolate: (CGFloat, CGFloat) -> CGFloat = { (start, end) in
+            return ease.interpolate(startValue: start, endValue: end, elapsed: CGFloat(elapsed), duration: CGFloat(duration))
+        }
+
+        var interpolatedComponents = [CGFloat]()
+
+        for (index, endComponent) in (endValue.components ?? []).enumerated() {
+            let startComponent = startValue.components?[index] ?? 0.0
+            let interpolatedComponent = interpolate(startComponent, endComponent)
+            interpolatedComponents.append(interpolatedComponent)
+        }
+
+        return CGColor(colorSpace: endValue.colorSpace ?? startValue.colorSpace ?? CGColorSpaceCreateDeviceRGB(),
+                       components: interpolatedComponents) ?? endValue
+    }
+    
+}
+
+extension CGFloat: Interpolatable {}
+
+extension CGPoint: Interpolatable {
+
+    public static func interpolate(with ease: Ease,
+                                   startValue: CGPoint, endValue: CGPoint,
+                                   elapsed: TimeInterval, duration: TimeInterval) -> CGPoint {
+
+        let interpolate: (CGFloat, CGFloat) -> CGFloat = { (start, end) in
+            return ease.interpolate(startValue: start, endValue: end, elapsed: CGFloat(elapsed), duration: CGFloat(duration))
+        }
+
+        let x = interpolate(startValue.x, endValue.x)
+        let y = interpolate(startValue.y, endValue.y)
+
+        return CGPoint(x: x, y: y)
+    }
+
+}
+
+extension CGRect: Interpolatable {
+
+    public static func interpolate(with ease: Ease,
+                                   startValue: CGRect, endValue: CGRect,
+                                   elapsed: TimeInterval, duration: TimeInterval) -> CGRect {
+
+        let interpolate: (CGFloat, CGFloat) -> CGFloat = { (start, end) in
+            return ease.interpolate(startValue: start, endValue: end, elapsed: CGFloat(elapsed), duration: CGFloat(duration))
+        }
+
+        let x = interpolate(startValue.origin.x, endValue.origin.x)
+        let y = interpolate(startValue.origin.y, endValue.origin.y)
+        let width = interpolate(startValue.size.width, endValue.size.width)
+        let height = interpolate(startValue.size.height, endValue.size.height)
+
+        return CGRect(x: x, y: y, width: width, height: height)
+    }
+    
+}
+
+extension CGSize: Interpolatable {
+
+    public static func interpolate(with ease: Ease,
+                                   startValue: CGSize, endValue: CGSize,
+                                   elapsed: TimeInterval, duration: TimeInterval) -> CGSize {
+
+        let interpolate: (CGFloat, CGFloat) -> CGFloat = { (start, end) in
+            return ease.interpolate(startValue: start, endValue: end, elapsed: CGFloat(elapsed), duration: CGFloat(duration))
+        }
+
+        let width = interpolate(startValue.width, endValue.width)
+        let height = interpolate(startValue.height, endValue.height)
+
+        return CGSize(width: width, height: height)
+    }
+
+}
+
+extension CGVector: Interpolatable {
+
+    public static func interpolate(with ease: Ease,
+                                   startValue: CGVector, endValue: CGVector,
+                                   elapsed: TimeInterval, duration: TimeInterval) -> CGVector {
+
+        let interpolate: (CGFloat, CGFloat) -> CGFloat = { (start, end) in
+            return ease.interpolate(startValue: start, endValue: end, elapsed: CGFloat(elapsed), duration: CGFloat(duration))
+        }
+
+        let dx = interpolate(startValue.dx, endValue.dx)
+        let dy = interpolate(startValue.dy, endValue.dy)
+
+        return CGVector(dx: dx, dy: dy)
     }
 
 }
@@ -302,6 +302,18 @@ extension CIVector: Interpolatable {
 
 // MARK: - Conformance: UIKit
 
+extension UIColor: Interpolatable {
+
+    public static func interpolate(with ease: Ease,
+                                   startValue: UIColor, endValue: UIColor,
+                                   elapsed: TimeInterval, duration: TimeInterval) -> UIColor {
+
+        let rgba = RGBA.interpolate(with: ease, startValue: startValue.rgba, endValue: endValue.rgba, elapsed: elapsed, duration: duration)
+        return rgba.color
+    }
+    
+}
+
 extension UIEdgeInsets: Interpolatable {
 
     public static func interpolate(with ease: Ease,
@@ -338,18 +350,6 @@ extension UIOffset: Interpolatable {
         return UIOffset(horizontal: horizontal, vertical: vertical)
     }
     
-}
-
-extension UIColor: Interpolatable {
-
-    public static func interpolate(with ease: Ease,
-                                   startValue: UIColor, endValue: UIColor,
-                                   elapsed: TimeInterval, duration: TimeInterval) -> UIColor {
-
-        let rgba = RGBA.interpolate(with: ease, startValue: startValue.rgba, endValue: endValue.rgba, elapsed: elapsed, duration: duration)
-        return rgba.color
-    }
-
 }
 
 // MARK: - Conformance: Internal
