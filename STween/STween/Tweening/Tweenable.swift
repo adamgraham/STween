@@ -84,8 +84,9 @@ extension Tweenable {
 
 extension Tweenable {
 
-    public final func interpolate<T: Interpolatable>(with ease: Ease, startValue: T, endValue: T,
-                                                     elapsed: TimeInterval, duration: TimeInterval) -> T {
+    public final func interpolate<T: Interpolatable>(
+        with ease: Ease, startValue: T, endValue: T,
+        elapsed: TimeInterval, duration: TimeInterval) -> T where T.InterpolationType == T {
 
         return T.interpolate(with: ease, startValue: startValue, endValue: endValue,
                              elapsed: elapsed, duration: duration)

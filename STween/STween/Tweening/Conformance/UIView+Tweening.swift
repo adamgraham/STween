@@ -166,11 +166,9 @@ extension UIView: Tweenable {
         case let (.alpha(startValue), .alpha(endValue)):
             self.alpha = interpolate(with: ease, startValue: startValue, endValue: endValue, elapsed: elapsed, duration: duration)
         case let (.backgroundColor(startValue), .backgroundColor(endValue)):
-            let rgba = interpolate(with: ease, startValue: startValue.rgba, endValue: endValue.rgba, elapsed: elapsed, duration: duration)
-            self.backgroundColor = rgba.color
+            self.backgroundColor = interpolate(with: ease, startValue: startValue, endValue: endValue, elapsed: elapsed, duration: duration)
         case let (.tintColor(startValue), .tintColor(endValue)):
-            let rgba = interpolate(with: ease, startValue: startValue.rgba, endValue: endValue.rgba, elapsed: elapsed, duration: duration)
-            self.tintColor = rgba.color
+            self.tintColor = interpolate(with: ease, startValue: startValue, endValue: endValue, elapsed: elapsed, duration: duration)
 
         case let (.contentScaleFactor(startValue), .contentScaleFactor(endValue)):
             self.contentScaleFactor = interpolate(with: ease, startValue: startValue, endValue: endValue, elapsed: elapsed, duration: duration)
