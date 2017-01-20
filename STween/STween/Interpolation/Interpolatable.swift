@@ -9,6 +9,8 @@
 /// A protocol to provide interpolation functionality.
 public protocol Interpolatable {
 
+    associatedtype InterpolationType
+
     /**
      A class method to calculate the value between a start and end value at a
      specific point in time.
@@ -23,41 +25,12 @@ public protocol Interpolatable {
      - Returns: The value interpolated between the start and end value.
      */
     static func interpolate(with ease: Ease,
-                            startValue: Self, endValue: Self,
-                            elapsed: TimeInterval, duration: TimeInterval) -> Self
-
-
-    /**
-     A class method to calculate the value between a set of values at a
-     specific point in time.
-
-     - Parameters:
-        - ease: The `Ease` used to interpolate values.
-        - values: The start and end value passed to the `ease` algorithm.
-        - elapsed: The elapsed amount of time passed to the `ease` algorithm.
-        - duration: The duration of time passed to the `ease` algorithm.
-
-     - Returns: The value interpolated between `values.start` and `values.end`.
-     */
-    static func interpolate(with ease: Ease,
-                            values: InterpolationValues<Self>,
-                            elapsed: TimeInterval, duration: TimeInterval) -> Self
+                            startValue: InterpolationType, endValue: InterpolationType,
+                            elapsed: TimeInterval, duration: TimeInterval) -> InterpolationType
 
 }
 
 // MARK: - Default Implementation
-
-extension Interpolatable {
-
-    public static func interpolate(with ease: Ease,
-                                   values: InterpolationValues<Self>,
-                                   elapsed: TimeInterval, duration: TimeInterval) -> Self {
-
-        return Self.interpolate(with: ease, startValue: values.start, endValue: values.end,
-                                elapsed: elapsed, duration: duration)
-    }
-
-}
 
 extension Interpolatable where Self: UnsignedInteger {
 
