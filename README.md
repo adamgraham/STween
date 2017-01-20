@@ -20,7 +20,18 @@ Tweening animations can be applied to any of the supported types below. If a typ
 - `UIView`
 - `CALayer`
 - `NSLayoutConstraint`
-- Work in progress, more to come...
+- More to come...
+
+All of the following data types can be interpolated - the ability for a type to calculate the value between a starting and ending position at a specific point in time.
+
+- `UInt`, `UInt8`, `UInt16`, `UInt32`, `UInt64`
+- `Int`, `Int8`, `Int16`, `Int32`, `Int64`
+- `Float`, `Float32`, `Float64`, `Float80`, `Double`
+- `Date`
+- `CATransform3D`
+- `CGAffineTransform`, `CGColor`, `CGFloat`, `CGPoint`, `CGRect`, `CGSize`, `CGVector`
+- `CIColor`, `CIVector`
+- `UIColor`, `UIEdgeInsetes`, `UIOffset`
 
 ### Supported Algorithms
 The below algorithm classifications are supported. Each classification has 3 variations: `.in`, `.out`, `.inOut`.<br/>
