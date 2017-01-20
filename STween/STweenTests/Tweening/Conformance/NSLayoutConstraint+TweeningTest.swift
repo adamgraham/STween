@@ -12,9 +12,9 @@ import XCTest
 
 class NSLayoutConstraint_TweeningTest: XCTestCase, TweenableTestable {
 
-    // MARK: Tweenable Property Tests
+    // MARK: TweenProperty Tests
 
-    func testConstantTweenableProperty() {
+    func testConstantTweenProperty() {
         let tweenable = NSLayoutConstraint()
         let property = NSLayoutConstraint.TweenProperty.constant(100.0)
         assertValidInterpolation(tweenable: tweenable, property: property) {
@@ -22,7 +22,7 @@ class NSLayoutConstraint_TweeningTest: XCTestCase, TweenableTestable {
         }
     }
 
-    func testPriorityTweenableProperty() {
+    func testPriorityTweenProperty() {
         let tweenable = NSLayoutConstraint()
         let property = NSLayoutConstraint.TweenProperty.priority(UILayoutPriorityDefaultHigh)
         assertValidInterpolation(tweenable: tweenable, property: property) {
