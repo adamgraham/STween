@@ -202,6 +202,13 @@ class InterpolatableTest: XCTestCase {
         assertInterpolation(startValue: startValue, endValue: endValue, middleValue: middleValue)
     }
 
+    func testUIOffsetInterpolation() {
+        let startValue = UIOffset(horizontal: 0.0, vertical: 0.0)
+        let endValue = UIOffset(horizontal: 10.0, vertical: 10.0)
+        let middleValue = UIOffset(horizontal: 5.0, vertical: 5.0)
+        assertInterpolation(startValue: startValue, endValue: endValue, middleValue: middleValue)
+    }
+
     func testUIColorInterpolation() {
         let startValue = UIColor.red
         let endValue = UIColor.blue

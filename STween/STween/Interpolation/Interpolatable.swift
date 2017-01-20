@@ -302,6 +302,24 @@ extension UIEdgeInsets: Interpolatable {
 
 }
 
+extension UIOffset: Interpolatable {
+
+    public static func interpolate(with ease: Ease,
+                                   startValue: UIOffset, endValue: UIOffset,
+                                   elapsed: TimeInterval, duration: TimeInterval) -> UIOffset {
+
+        let interpolate: (CGFloat, CGFloat) -> CGFloat = { (start, end) in
+            return ease.interpolate(startValue: start, endValue: end, elapsed: CGFloat(elapsed), duration: CGFloat(duration))
+        }
+
+        let horizontal = interpolate(startValue.horizontal, endValue.horizontal)
+        let vertical = interpolate(startValue.vertical, endValue.vertical)
+
+        return UIOffset(horizontal: horizontal, vertical: vertical)
+    }
+    
+}
+
 extension UIColor: Interpolatable {
 
     public static func interpolate(with ease: Ease,
