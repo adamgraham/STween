@@ -280,6 +280,26 @@ extension CIColor: Interpolatable {
 
 }
 
+extension CIVector: Interpolatable {
+
+    public static func interpolate(with ease: Ease,
+                                   startValue: CIVector, endValue: CIVector,
+                                   elapsed: TimeInterval, duration: TimeInterval) -> CIVector {
+
+        let interpolate: (CGFloat, CGFloat) -> CGFloat = { (start, end) in
+            return ease.interpolate(startValue: start, endValue: end, elapsed: CGFloat(elapsed), duration: CGFloat(duration))
+        }
+
+        let x = interpolate(startValue.x, endValue.x)
+        let y = interpolate(startValue.y, endValue.y)
+        let z = interpolate(startValue.z, endValue.z)
+        let w = interpolate(startValue.w, endValue.w)
+
+        return CIVector(x: x, y: y, z: z, w: w)
+    }
+
+}
+
 // MARK: - Conformance: UIKit
 
 extension UIEdgeInsets: Interpolatable {

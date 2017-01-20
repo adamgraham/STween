@@ -195,6 +195,13 @@ class InterpolatableTest: XCTestCase {
         }
     }
 
+    func testCIVectorInterpolation() {
+        let startValue = CIVector(x: 0.0, y: 0.0, z: 0.0, w: 1.0)
+        let endValue = CIVector(x: 10.0, y: 10.0, z: 10.0, w: 1.0)
+        let middleValue = CIVector(x: 5.0, y: 5.0, z: 5.0, w: 1.0)
+        assertInterpolation(startValue: startValue, endValue: endValue, middleValue: middleValue)
+    }
+
     func testUIEdgeInsetsInterpolation() {
         let startValue = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)
         let endValue = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
