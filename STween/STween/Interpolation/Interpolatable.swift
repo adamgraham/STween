@@ -258,6 +258,28 @@ extension CATransform3D: Interpolatable {
 
 }
 
+// MARK: - Conformance: CoreImage
+
+extension CIColor: Interpolatable {
+
+    public static func interpolate(with ease: Ease,
+                                   startValue: CIColor, endValue: CIColor,
+                                   elapsed: TimeInterval, duration: TimeInterval) -> CIColor {
+
+        let interpolate: (CGFloat, CGFloat) -> CGFloat = { (start, end) in
+            return ease.interpolate(startValue: start, endValue: end, elapsed: CGFloat(elapsed), duration: CGFloat(duration))
+        }
+
+        let red = interpolate(startValue.red, endValue.red)
+        let green = interpolate(startValue.green, endValue.green)
+        let blue = interpolate(startValue.blue, endValue.blue)
+        let alpha = interpolate(startValue.alpha, endValue.alpha)
+
+        return CIColor(red: red, green: green, blue: blue, alpha: alpha)
+    }
+
+}
+
 // MARK: - Conformance: UIKit
 
 extension UIEdgeInsets: Interpolatable {
@@ -282,7 +304,10 @@ extension UIEdgeInsets: Interpolatable {
 
 extension UIColor: Interpolatable {
 
-    public static func interpolate(with ease: Ease, startValue: UIColor, endValue: UIColor, elapsed: TimeInterval, duration: TimeInterval) -> UIColor {
+    public static func interpolate(with ease: Ease,
+                                   startValue: UIColor, endValue: UIColor,
+                                   elapsed: TimeInterval, duration: TimeInterval) -> UIColor {
+
         let rgba = RGBA.interpolate(with: ease, startValue: startValue.rgba, endValue: endValue.rgba, elapsed: elapsed, duration: duration)
         return rgba.color
     }
