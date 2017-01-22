@@ -49,7 +49,7 @@ public protocol Tweenable {
      
      - Returns: The `Tween` control for the animation.
      */
-    func tween(property: Self.TweenProperty, duration: TimeInterval, completion: Callback?) -> Tween
+    func tween(_ property: Self.TweenProperty, duration: TimeInterval, completion: Callback?) -> Tween
 
     /**
      A method to create an animation of an array of tweenable properties on 
@@ -62,7 +62,7 @@ public protocol Tweenable {
      
      - Returns: The `Tween` control for the animation.
      */
-    func tween(properties: [Self.TweenProperty], duration: TimeInterval, completion: Callback?) -> Tween
+    func tween(_ properties: [Self.TweenProperty], duration: TimeInterval, completion: Callback?) -> Tween
 
 }
 
@@ -70,11 +70,11 @@ public protocol Tweenable {
 
 extension Tweenable {
 
-    public final func tween(property: Self.TweenProperty, duration: TimeInterval, completion: Callback? = nil) -> Tween {
-        return tween(properties: [property], duration: duration, completion: completion)
+    public final func tween(_ property: Self.TweenProperty, duration: TimeInterval, completion: Callback? = nil) -> Tween {
+        return tween([property], duration: duration, completion: completion)
     }
 
-    public final func tween(properties: [Self.TweenProperty], duration: TimeInterval, completion: Callback? = nil) -> Tween {
+    public final func tween(_ properties: [Self.TweenProperty], duration: TimeInterval, completion: Callback? = nil) -> Tween {
         return Tweener.to(target: self, properties: properties, duration: duration, completion: completion)
     }
 
