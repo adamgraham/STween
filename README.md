@@ -20,7 +20,6 @@ Tweening animations can be applied to any of the supported types below. If a typ
 - `UIView`
 - `CALayer`
 - `NSLayoutConstraint`
-- More to come...
 
 All of the following data types can be interpolated - the ability for a type to calculate the value between a starting and ending position at a specific point in time. If a type is not listed below, you can add interpolation support by conforming to the `STween.Interpolatable` protocol.
 
