@@ -2,6 +2,8 @@
 > A Swift iOS animation framework based on [Robert Penner's Easing Functions](http://robertpenner.com/easing/).<br/>
 > Complex animations done simple. An easy-to-use interface.
 
+For detailed usage and documentation, please visit the [STween Wiki](https://github.com/adamgraham/STween/wiki).
+
 ### Tweening
 A Tween is an animation of a value from a start position to an end position with a given duration of time and a type of easing algorithm (linear, exponential, quadratic, etc).
 
@@ -46,12 +48,6 @@ A visualized cheat-sheet of the algorithms can be found at [easings.net](http://
 - Back
 - Elastic
 - Bounce
-
-### To Do
-
-- Detailed usage/documentation readme
-- Support for mutable structs
-- Example project
 
 ### License
 ```
