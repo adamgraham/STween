@@ -249,11 +249,11 @@
 				9D8890541E2883160023FE78 /* Tween.swift */,
 				9D8890571E2883160023FE78 /* TweenAnimation.swift */,
 				9D133AE71E289E320030B97E /* TweenError.swift */,
-				9D8890551E2883160023FE78 /* Tweenable.swift */,
-				9D8890581E2883160023FE78 /* Tweener.swift */,
 				9D8890591E2883160023FE78 /* TweenState.swift */,
 				9D88905A1E2883160023FE78 /* TweenStateChange.swift */,
 				9D88905B1E2883160023FE78 /* TweenTimer.swift */,
+				9D8890551E2883160023FE78 /* Tweenable.swift */,
+				9D8890581E2883160023FE78 /* Tweener.swift */,
 			);
 			path = Tweening;
 			sourceTree = "<group>";
