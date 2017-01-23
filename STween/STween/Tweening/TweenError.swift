@@ -16,9 +16,9 @@ public enum TweenError: Error {
 
 }
 
-// MARK: - CustomStringConvertible
-
 extension TweenError: CustomStringConvertible {
+
+    // MARK: CustomStringConvertible
 
     /// A textual representation of `self`.
     public var description: String {

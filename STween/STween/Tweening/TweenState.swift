@@ -24,9 +24,9 @@ public enum TweenState {
 
 }
 
-// MARK: - State Machine Helpers
-
 extension TweenState {
+
+    // MARK: State Machine Helpers
 
     /// The ability for a `Tween` to be started, based on the state of `self`.
     /// Returns `true` if `self` is `new` or `inactive`.

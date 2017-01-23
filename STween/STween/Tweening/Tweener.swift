@@ -31,9 +31,9 @@ public final class Tweener {
 
 }
 
-// MARK: - Factory Creation
-
 extension Tweener {
+
+    // MARK: Factory Creation
 
     /**
      A method to instantiate a `Tween` that animates an array of properties on 
@@ -93,9 +93,9 @@ extension Tweener {
 
 }
 
-// MARK: - Tracking
-
 extension Tweener {
+
+    // MARK: Tracking
 
     /// The number of tweens crrently being tracked.
     public static var count: Int {
@@ -148,9 +148,9 @@ extension Tweener {
 
 }
 
-// MARK: - Queueing
-
 extension Tweener {
+
+    // MARK: Queueing
 
     /// The number of tweens currently queued to start.
     internal static var queuedCount: Int {
@@ -188,9 +188,9 @@ extension Tweener {
 
 }
 
-// MARK: - Global State Control
-
 extension Tweener {
+
+    // MARK: Global State Control
 
     /**
      A method to invoke a change of state on all tracked tweens. An optional

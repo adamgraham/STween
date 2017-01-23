@@ -20,6 +20,8 @@
  */
 extension Tween {
 
+    // MARK: Chaining Methods
+
     /**
      A query chaining method to assign a value to `self.ease`.
      

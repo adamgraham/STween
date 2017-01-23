@@ -96,9 +96,10 @@ public enum EaseClassification {
 
 }
 
-// MARK: - Look-up Helpers
-
+/// An extension to provide ease look-up helper properties.
 extension EaseClassification {
+
+    // MARK: Look-up Helpers
 
     /// The `Ease` associated with `self` and `EaseCurve.in`.
     public var `in`: Ease {

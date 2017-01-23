@@ -2,15 +2,17 @@
 > A Swift iOS animation framework based on [Robert Penner's Easing Functions](http://robertpenner.com/easing/).<br/>
 > Complex animations done simple. An easy-to-use interface.
 
+For detailed usage and documentation, please visit the [STween Wiki](https://github.com/adamgraham/STween/wiki).
+
 ### Tweening
 A Tween is an animation of a value from a start position to an end position with a given duration of time and a type of easing algorithm (linear, exponential, quadratic, etc).
 
 Tweening engines make animations simple. Take the following, for example:
 
 ``` swift
-view.tween(property: .y(100.0), duration: 1.0)
+view.tween(.width(100.0), duration: 1.0)
 ```
-This one line of code creates an animation that moves a view's vertical position to the y-coordinate of `100.0` over a duration of `1.0` second.
+This one line of code creates an animation that changes a view's width to `100.0` over a duration of `1.0` second.
 
 Tweens are not just limited to the animation of visual elements, though. Tweening can be applied to virtually any type of data. See below for more information.
 
@@ -20,7 +22,6 @@ Tweening animations can be applied to any of the supported types below. If a typ
 - `UIView`
 - `CALayer`
 - `NSLayoutConstraint`
-- More to come...
 
 All of the following data types can be interpolated - the ability for a type to calculate the value between a starting and ending position at a specific point in time. If a type is not listed below, you can add interpolation support by conforming to the `STween.Interpolatable` protocol.
 
@@ -34,8 +35,7 @@ All of the following data types can be interpolated - the ability for a type to 
 - `UIColor`, `UIEdgeInsetes`, `UIOffset`
 
 ### Supported Algorithms
-The below algorithm classifications are supported. Each classification has 3 variations: `.in`, `.out`, `.inOut`.<br/>
-A visualized cheat-sheet of the algorithms can be found at [easings.net](http://easings.net/).
+The below algorithm classifications are supported. Each classification has 3 variations: `.in`, `.out`, `.inOut`. A visualized cheat-sheet of the algorithms can be found at [easings.net](http://easings.net/).
 
 - Linear
 - Cubic
@@ -47,12 +47,6 @@ A visualized cheat-sheet of the algorithms can be found at [easings.net](http://
 - Back
 - Elastic
 - Bounce
-
-### To Do
-
-- Detailed usage/documentation readme
-- Support for mutable structs
-- Example project
 
 ### License
 ```
