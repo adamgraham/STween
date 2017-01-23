@@ -35,8 +35,7 @@ All of the following data types can be interpolated - the ability for a type to 
 - `UIColor`, `UIEdgeInsetes`, `UIOffset`
 
 ### Supported Algorithms
-The below algorithm classifications are supported. Each classification has 3 variations: `.in`, `.out`, `.inOut`.<br/>
-A visualized cheat-sheet of the algorithms can be found at [easings.net](http://easings.net/).
+The below algorithm classifications are supported. Each classification has 3 variations: `.in`, `.out`, `.inOut`. A visualized cheat-sheet of the algorithms can be found at [easings.net](http://easings.net/).
 
 - Linear
 - Cubic
