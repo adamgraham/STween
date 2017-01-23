@@ -12,20 +12,21 @@ public final class FrameRate {
     // Prevent instantiation of the class.
     private init() {}
 
+    // MARK: Properties
+
     /// The rate at which every `Tween` will update. For example, a frame rate of
     /// 30 means the tween will update 30 times per second. The higher the
     /// number, the smoother the tween animation will be but at a higher
     /// computational cost.
-    ///
-    /// Default: 30.0
-    public static var targetFrameRate: Double = Defaults.frameRate
+    public static var targetFrameRate = Defaults.frameRate
 
-    /// The duration of a single frame, in seconds, based on the
-    /// `FrameRate.targetFrameRate`, calculated by dividing 1.0 over the
-    /// target frame rate.
+    /// The duration of a single frame, in seconds, calculated by dividing 1.0 
+    /// over the `FrameRate.targetFrameRate`.
     public static var targetFrameDuration: Double {
         return 1.0 / FrameRate.targetFrameRate
     }
+
+    // MARK: Methods
 
     /// A method to reset the target frame rate to its default value -
     /// `Defaults.frameRate`.

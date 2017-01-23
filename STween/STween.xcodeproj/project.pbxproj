@@ -199,9 +199,9 @@
 		9D77AC381D13B8D70033F88E /* STween */ = {
 			isa = PBXGroup;
 			children = (
-				9D8890401E2883160023FE78 /* Core */,
 				9D8890451E2883160023FE78 /* Easing */,
 				9D88904B1E2883160023FE78 /* Interpolation */,
+				9D8890401E2883160023FE78 /* Settings */,
 				9D88904F1E2883160023FE78 /* Tweening */,
 				9D88905C1E2883160023FE78 /* Utils */,
 				9D77AC391D13B8D70033F88E /* STween.h */,
@@ -210,14 +210,14 @@
 			path = STween;
 			sourceTree = "<group>";
 		};
-		9D8890401E2883160023FE78 /* Core */ = {
+		9D8890401E2883160023FE78 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
 				9D8890421E2883160023FE78 /* Callback.swift */,
 				9D8890431E2883160023FE78 /* Defaults.swift */,
 				9D8890441E2883160023FE78 /* FrameRate.swift */,
 			);
-			path = Core;
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		9D8890451E2883160023FE78 /* Easing */ = {
@@ -286,14 +286,14 @@
 			path = Color;
 			sourceTree = "<group>";
 		};
-		9DB3D62F1DAE686F00134C1D /* Core */ = {
+		9DB3D62F1DAE686F00134C1D /* Settings */ = {
 			isa = PBXGroup;
 			children = (
 				9DB3D6341DAE686F00134C1D /* CallbackTest.swift */,
 				9DB3D6301DAE686F00134C1D /* DefaultsTest.swift */,
 				9DB3D6311DAE686F00134C1D /* FrameRateTest.swift */,
 			);
-			path = Core;
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		9DB3D6391DAE688200134C1D /* Utils */ = {
@@ -350,9 +350,9 @@
 		9DCD64FB1D1687DD00C726E7 /* STweenTests */ = {
 			isa = PBXGroup;
 			children = (
-				9DB3D62F1DAE686F00134C1D /* Core */,
 				9DBF33F91DB8F4BA006C0D84 /* Easing */,
 				9DD240451DCD436A009C658F /* Interpolation */,
+				9DB3D62F1DAE686F00134C1D /* Settings */,
 				9D6A3DB11DDEB04E009B6352 /* Tweening */,
 				9DB3D6391DAE688200134C1D /* Utils */,
 				9DB3D63F1DAE6CCB00134C1D /* XCTestCase+Utils.swift */,
