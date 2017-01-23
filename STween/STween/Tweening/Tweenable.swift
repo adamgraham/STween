@@ -70,10 +70,32 @@ public protocol Tweenable {
 
 extension Tweenable {
 
+    /**
+     A method to create an animation of a tweenable property on `self` with a
+     given duration.
+
+     - Parameters:
+        - property: The property to be animated.
+        - duration: The amount of time, in seconds, the animation will run.
+        - completion: A callback invoked when the animation is finished.
+
+     - Returns: The `Tween` control for the animation.
+     */
     public final func tween(_ property: Self.TweenProperty, duration: TimeInterval, completion: Callback? = nil) -> Tween {
         return tween([property], duration: duration, completion: completion)
     }
 
+    /**
+     A method to create an animation of an array of tweenable properties on
+     `self` with a given duration.
+
+     - Parameters:
+        - properties: The array of properties to be animated.
+        - duration: The amount of time, in seconds, the animation will run.
+        - completion: A callback invoked when the animation is finished.
+
+     - Returns: The `Tween` control for the animation.
+     */
     public final func tween(_ properties: [Self.TweenProperty], duration: TimeInterval, completion: Callback? = nil) -> Tween {
         return Tweener.to(target: self, properties: properties, duration: duration, completion: completion)
     }
@@ -84,6 +106,7 @@ extension Tweenable {
 
 extension Tweenable {
 
+    /// :nodoc:
     public final func interpolate<T: Interpolatable>(
         with ease: Ease, startValue: T, endValue: T,
         elapsed: TimeInterval, duration: TimeInterval) -> T where T.InterpolationType == T {

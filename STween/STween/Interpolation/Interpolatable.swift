@@ -32,6 +32,7 @@ public protocol Interpolatable {
 
 // MARK: - Default Implementation
 
+/// :nodoc:
 extension Interpolatable where Self: UnsignedInteger {
 
     public static func interpolate(with ease: Ease,
@@ -48,6 +49,7 @@ extension Interpolatable where Self: UnsignedInteger {
     
 }
 
+/// :nodoc:
 extension Interpolatable where Self: SignedInteger {
 
     public static func interpolate(with ease: Ease,
@@ -64,6 +66,7 @@ extension Interpolatable where Self: SignedInteger {
     
 }
 
+/// :nodoc:
 extension Interpolatable where Self: FloatingPoint {
 
     public static func interpolate(with ease: Ease,
@@ -78,22 +81,36 @@ extension Interpolatable where Self: FloatingPoint {
 
 // MARK: - Conformance: Swift
 
+/// :nodoc:
 extension UInt: Interpolatable {}
+/// :nodoc:
 extension UInt8: Interpolatable {}
+/// :nodoc:
 extension UInt16: Interpolatable {}
+/// :nodoc:
 extension UInt32: Interpolatable {}
+/// :nodoc:
 extension UInt64: Interpolatable {}
 
+/// :nodoc:
 extension Int: Interpolatable {}
+/// :nodoc:
 extension Int8: Interpolatable {}
+/// :nodoc:
 extension Int16: Interpolatable {}
+/// :nodoc:
 extension Int32: Interpolatable {}
+/// :nodoc:
 extension Int64: Interpolatable {}
 
+/// :nodoc:
 extension Float32: Interpolatable {}
+/// :nodoc:
 extension Float64: Interpolatable {}
+/// :nodoc:
 extension Float80: Interpolatable {}
 
+/// :nodoc:
 extension Date: Interpolatable {
 
     public static func interpolate(with ease: Ease,
@@ -108,6 +125,7 @@ extension Date: Interpolatable {
 
 // MARK: - Conformance: CoreAnimation
 
+/// :nodoc:
 extension CATransform3D: Interpolatable {
 
     public static func interpolate(with ease: Ease,
@@ -148,6 +166,7 @@ extension CATransform3D: Interpolatable {
 
 // MARK: - Conformance: CoreGraphics
 
+/// :nodoc:
 extension CGAffineTransform: Interpolatable {
 
     public static func interpolate(with ease: Ease,
@@ -170,6 +189,7 @@ extension CGAffineTransform: Interpolatable {
     
 }
 
+/// :nodoc:
 extension CGColor: Interpolatable {
 
     public static func interpolate(with ease: Ease,
@@ -194,8 +214,10 @@ extension CGColor: Interpolatable {
     
 }
 
+/// :nodoc:
 extension CGFloat: Interpolatable {}
 
+/// :nodoc:
 extension CGPoint: Interpolatable {
 
     public static func interpolate(with ease: Ease,
@@ -214,6 +236,7 @@ extension CGPoint: Interpolatable {
 
 }
 
+/// :nodoc:
 extension CGRect: Interpolatable {
 
     public static func interpolate(with ease: Ease,
@@ -234,6 +257,7 @@ extension CGRect: Interpolatable {
     
 }
 
+/// :nodoc:
 extension CGSize: Interpolatable {
 
     public static func interpolate(with ease: Ease,
@@ -252,6 +276,7 @@ extension CGSize: Interpolatable {
 
 }
 
+/// :nodoc:
 extension CGVector: Interpolatable {
 
     public static func interpolate(with ease: Ease,
@@ -272,6 +297,7 @@ extension CGVector: Interpolatable {
 
 // MARK: - Conformance: CoreImage
 
+/// :nodoc:
 extension CIColor: Interpolatable {
 
     public static func interpolate(with ease: Ease,
@@ -292,6 +318,7 @@ extension CIColor: Interpolatable {
 
 }
 
+/// :nodoc:
 extension CIVector: Interpolatable {
 
     public static func interpolate(with ease: Ease,
@@ -314,6 +341,7 @@ extension CIVector: Interpolatable {
 
 // MARK: - Conformance: UIKit
 
+/// :nodoc:
 extension UIColor: Interpolatable {
 
     public static func interpolate(with ease: Ease,
@@ -326,6 +354,7 @@ extension UIColor: Interpolatable {
     
 }
 
+/// :nodoc:
 extension UIEdgeInsets: Interpolatable {
 
     public static func interpolate(with ease: Ease,
@@ -346,6 +375,7 @@ extension UIEdgeInsets: Interpolatable {
 
 }
 
+/// :nodoc:
 extension UIOffset: Interpolatable {
 
     public static func interpolate(with ease: Ease,
@@ -366,6 +396,7 @@ extension UIOffset: Interpolatable {
 
 // MARK: - Conformance: Internal
 
+/// :nodoc:
 extension RGBA: Interpolatable {
 
     internal static func interpolate(with ease: Ease,

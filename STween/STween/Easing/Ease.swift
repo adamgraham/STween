@@ -238,6 +238,7 @@ extension Ease {
 
     // MARK: Interpolation
 
+    /// :nodoc:
     internal func interpolate<T: FloatingPoint>(startValue: T, endValue: T,
                                                 elapsed: T, duration: T) -> T {
         let b = startValue

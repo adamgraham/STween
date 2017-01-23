@@ -50,6 +50,9 @@ internal final class TweenTimer {
         self.delegate = delegate
     }
 
+    /**
+     A method to deinitialize `self`.
+     */
     deinit {
         self.timer.invalidate()
     }
