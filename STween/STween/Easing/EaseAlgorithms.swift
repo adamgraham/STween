@@ -7,9 +7,13 @@
 //
 
 /**
- A typealias for the method signature of an easing function algorithm. 
- Easing algorithms calculate the value between a starting and ending 
- position at a specific point in time. In simpler terms, these algorithms 
+ A class to hold a collection of easing algorithms based upon
+ [Robert Penner's Easing Functions](http://robertpenner.com/easing/). 
+ A visualized cheat-sheet of these algorithms can be found at
+ [easings.net](http://easings.net/).
+
+ Easing algorithms calculate the value between a starting and ending
+ position at a specific point in time. In simpler terms, these algorithms
  determine what path is used to get from point "A" to point "B".
 
  > "The aspect of time is crucial to motion — things change over time.
@@ -20,29 +24,15 @@
  > Because position and time have this one-to-one relationship, we can say
  > that position is a function of time. This means that, given a specific point
  > in time, we can find one, and only one, corresponding position."
-
- \- [Robert Penner](http://robertpenner.com/easing/penner_chapter7_tweening.pdf)
+ > \- [Robert Penner](http://robertpenner.com/easing/penner_chapter7_tweening.pdf)
  
  - Parameters:
     - b: The start value (b = begin).
     - c: The change in value (c = change).
     - t: The amount of time elapsed since the start of the ease (t = time).
     - d: The total amount of time the ease will run (d = duration).
- 
+
  - Returns: The value at a specific point in time from the start value.
- */
-internal typealias EaseAlgorithm<T: FloatingPoint> = (
-    _ b: T,
-    _ c: T,
-    _ t: T,
-    _ d: T) -> T
-
-/**
- A class to hold a collection of easing algorithms based upon
- [Robert Penner's Easing Functions](http://robertpenner.com/easing/).
-
- A visualized cheat-sheet of these algorithms can be found at
- [easings.net](http://easings.net/).
  */
 internal final class EaseAlgorithms {
 
@@ -51,9 +41,9 @@ internal final class EaseAlgorithms {
 
 }
 
-// MARK: - Linear
-
 extension EaseAlgorithms {
+
+    // MARK: Linear
 
     /**
      The algorithmic function of a `linear` ease used to calculate a value
@@ -74,9 +64,9 @@ extension EaseAlgorithms {
 
 }
 
-// MARK: - Sinusoidal
-
 extension EaseAlgorithms {
+
+    // MARK: Sinusoidal
 
     /**
      The algorithmic function of a `sineIn` ease used to calculate a value
@@ -135,9 +125,9 @@ extension EaseAlgorithms {
 
 }
 
-// MARK: - Cubic
-
 extension EaseAlgorithms {
+
+    // MARK: Cubic
 
     /**
      The algorithmic function of a `cubicIn` ease used to calculate a value
@@ -205,9 +195,9 @@ extension EaseAlgorithms {
     
 }
 
-// MARK: - Quadratic
-
 extension EaseAlgorithms {
+
+    // MARK: Quadratic
 
     /**
      The algorithmic function of a `quadIn` ease used to calculate a value
@@ -274,9 +264,9 @@ extension EaseAlgorithms {
     
 }
 
-// MARK: - Quartic
-
 extension EaseAlgorithms {
+
+    // MARK: Quartic
 
     /**
      The algorithmic function of a `quartIn` ease used to calculate a value
@@ -344,9 +334,9 @@ extension EaseAlgorithms {
     
 }
 
-// MARK: - Quintic
-
 extension EaseAlgorithms {
+
+    // MARK: Quintic
 
     /**
      The algorithmic function of a `quintIn` ease used to calculate a value
@@ -414,9 +404,9 @@ extension EaseAlgorithms {
     
 }
 
-// MARK: - Exponential
-
 extension EaseAlgorithms {
+
+    // MARK: Exponential
 
     /**
      The algorithmic function of an `expoIn` ease used to calculate a value
@@ -502,9 +492,9 @@ extension EaseAlgorithms {
     
 }
 
-// MARK: - Circular
-
 extension EaseAlgorithms {
+
+    // MARK: Circular
 
     /**
      The algorithmic function of a `circIn` ease used to calculate a value
@@ -577,9 +567,9 @@ extension EaseAlgorithms {
     
 }
 
-// MARK: - Back
-
 extension EaseAlgorithms {
+
+    // MARK: Back
 
     /**
      The algorithmic function of a `backIn` ease used to calculate a value
@@ -655,9 +645,9 @@ extension EaseAlgorithms {
     
 }
 
-// MARK: - Elastic
-
 extension EaseAlgorithms {
+
+    // MARK: Elastic
 
     /**
      The algorithmic function of an `elasticIn` ease used to calculate a value
@@ -785,9 +775,9 @@ extension EaseAlgorithms {
     
 }
 
-// MARK: - Bounce
-
 extension EaseAlgorithms {
+
+    // MARK: Bounce
 
     /**
      The algorithmic function of a `bounceIn` ease used to calculate a value

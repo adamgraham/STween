@@ -43,6 +43,10 @@ public protocol Tween: class {
     /// duration.
     var elapsed: TimeInterval { get }
 
+    /// The percentage of `self`'s `elapsed` time over `self`'s `duration` of time,
+    /// in the range of `0.0` to `1.0`.
+    var percentComplete: Double { get }
+
     // MARK: Invocation Methods
 
     /**
@@ -89,13 +93,11 @@ public protocol Tween: class {
 
 }
 
-// MARK: - Helpers
+// MARK: - Default Implementation
 
 extension Tween {
 
-    /// The percentage of `self`'s `elapsed` time over `self`'s `duration` of time,
-    /// in the range of `0.0` to `1.0`.
-    var percentComplete: Double {
+    public final var percentComplete: Double {
         return clamp(value: self.elapsed / self.duration, lower: 0.0, upper: 1.0)
     }
     

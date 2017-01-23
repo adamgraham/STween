@@ -218,9 +218,9 @@ public enum Ease {
 
 }
 
-// MARK: - Properties
-
 extension Ease {
+
+    // MARK: Properties
 
     /// The `EaseClassification` associated with `self`.
     public var classification: EaseClassification {
@@ -234,22 +234,10 @@ extension Ease {
     
 }
 
-// MARK: - Interpolation
-
 extension Ease {
 
-    /**
-     A method to calculate the value between a starting and ending position 
-     at a specific point in time.
-     
-     - Parameters:
-        - startValue: The start value passed to the `ease` algorithm.
-        - endValue: The end value passed to the `ease` algorithm.
-        - elapsed: The elapsed amount of time passed to the `ease` algorithm.
-        - duration: The duration of time passed to the `ease` algorithm.
+    // MARK: Interpolation
 
-     - Returns: The value interpolated between the `startValue` and `endValue`.
-     */
     internal func interpolate<T: FloatingPoint>(startValue: T, endValue: T,
                                                 elapsed: T, duration: T) -> T {
         let b = startValue

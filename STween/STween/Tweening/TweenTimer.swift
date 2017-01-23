@@ -36,7 +36,7 @@ internal final class TweenTimer {
     /// The date/time of the last "tick" event.
     private var lastTickDate = Date()
 
-    // MARK: Initialization
+    // MARK: Initialization Methods
 
     /**
      A convenience initializer to create a `TweenTimer` and assign a delegate 
@@ -54,7 +54,7 @@ internal final class TweenTimer {
         self.timer.invalidate()
     }
 
-    // MARK: State Control
+    // MARK: State Control Methods
 
     /**
      A method to set `self.running` to `true`, causing the timer to start 
@@ -96,7 +96,7 @@ internal final class TweenTimer {
         start()
     }
 
-    // MARK: Timer Events
+    // MARK: Timer Event Methods
 
     /**
      A method invoked every update cycle that updates `self`'s elapsed time 
@@ -118,7 +118,7 @@ internal final class TweenTimer {
     
 }
 
-// MARK: - TweenTimerDelegate Declaration
+// MARK: -
 
 /// A protocol to inform a `TweenTimer`'s delegate of events.
 protocol TweenTimerDelegate: class {

@@ -47,7 +47,7 @@ internal final class TweenAnimation<TweenableTarget: Tweenable>: Tween {
         return self.state == .completed ? self.duration : self.timer.elapsed
     }
 
-    // MARK: Initialization
+    // MARK: Initialization Methods
 
     /**
      An initializer to create a `TweenAnimation` with a target object or data 
@@ -69,9 +69,9 @@ internal final class TweenAnimation<TweenableTarget: Tweenable>: Tween {
 
 }
 
-// MARK: - Tweening
-
 extension TweenAnimation {
+
+    // MARK: Tweening Methods
 
     /**
      A method to update all of `self`'s target properties by interpolating
@@ -142,9 +142,9 @@ extension TweenAnimation {
 
 }
 
-// MARK: - State Control
-
 extension TweenAnimation {
+
+    // MARK: State Control Methods
 
     /**
      A method to set `self` as active, starting from its beginning values.
@@ -373,9 +373,9 @@ extension TweenAnimation {
 
 }
 
-// MARK: - Invocation
-
 extension TweenAnimation {
+
+    // MARK: Invocation Methods
 
     @discardableResult internal func invoke(_ stateChange: TweenStateChange) -> Bool {
         switch stateChange {
@@ -402,9 +402,9 @@ extension TweenAnimation {
 
 }
 
-// MARK: - Callbacks
-
 extension TweenAnimation {
+
+    // MARK: Callback Methods
 
     internal func callback(get stateChange: TweenStateChange) -> Callback? {
         return self.callbacks[stateChange] ?? nil
@@ -431,9 +431,9 @@ extension TweenAnimation {
     
 }
 
-// MARK: - TweenTimerDelegate
-
 extension TweenAnimation: TweenTimerDelegate {
+
+    // MARK: TweenTimerDelegate
 
     internal func tweenTimer(_ timer: TweenTimer, didUpdateWithElapsedTime elapsed: TimeInterval) {
         update()
