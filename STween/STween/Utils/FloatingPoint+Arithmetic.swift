@@ -8,16 +8,16 @@
 
 // MARK: - Global Functions
 
-internal func cos<T: FloatingPoint>(_ x: T) -> T {
-    return T(cos(Double(floatingPoint: x)))
+internal func cos<Number: FloatingPoint>(_ x: Number) -> Number {
+    return Number(cos(Double(floatingPoint: x)))
 }
 
-internal func sin<T: FloatingPoint>(_ x: T) -> T {
-    return T(sin(Double(floatingPoint: x)))
+internal func sin<Number: FloatingPoint>(_ x: Number) -> Number {
+    return Number(sin(Double(floatingPoint: x)))
 }
 
-internal func pow<T: FloatingPoint>(_ x: T, _ y: T) -> T {
-    return T(pow(Double(floatingPoint: x), Double(floatingPoint: y)))
+internal func pow<Number: FloatingPoint>(_ x: Number, _ y: Number) -> Number {
+    return Number(pow(Double(floatingPoint: x), Double(floatingPoint: y)))
 }
 
 // MARK: - Extensions: Initializers

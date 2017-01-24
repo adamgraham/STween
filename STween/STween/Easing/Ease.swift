@@ -236,11 +236,24 @@ extension Ease {
 
 extension Ease {
 
-    // MARK: Interpolation
+    // MARK: Method
 
-    /// :nodoc:
-    internal func interpolate<T: FloatingPoint>(startValue: T, endValue: T,
-                                                elapsed: T, duration: T) -> T {
+    /**
+     A method to calculate the value between a starting and ending position at a
+     specific point in time using `self`'s easing algorithm.
+
+     - Parameters:
+        - startValue: The start value passed to the `ease` algorithm.
+        - endValue: The end value passed to the `ease` algorithm.
+        - elapsed: The elapsed amount of time passed to the `ease` algorithm.
+        - duration: The duration of time passed to the `ease` algorithm.
+
+     - Returns: The value interpolated between the start and end value.
+     */
+    public func interpolate<Number: FloatingPoint>(
+        startValue: Number, endValue: Number,
+        elapsed: Number, duration: Number) -> Number {
+
         let b = startValue
         let c = endValue - startValue
         let t = elapsed

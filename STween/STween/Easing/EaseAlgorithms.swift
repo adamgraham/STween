@@ -41,6 +41,14 @@ internal final class EaseAlgorithms {
 
 }
 
+/// :nodoc:
+internal typealias EaseAlgorithm<Number: FloatingPoint> = (
+    _ b: Number,
+    _ c: Number,
+    _ t: Number,
+    _ d: Number) -> Number
+
+/// An extension to add the linear easing algorithm.
 extension EaseAlgorithms {
 
     // MARK: Linear
@@ -57,13 +65,14 @@ extension EaseAlgorithms {
      
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func linear<T: FloatingPoint>(b: T, c: T, t: T, d: T) -> T {
+    internal static func linear<Number: FloatingPoint>(b: Number, c: Number, t: Number, d: Number) -> Number {
         let n = t/d
         return c * n + b
     }
 
 }
 
+/// An extension to add the sinusoidal easing algorithms.
 extension EaseAlgorithms {
 
     // MARK: Sinusoidal
@@ -80,9 +89,9 @@ extension EaseAlgorithms {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func sineIn<T: FloatingPoint>(b: T, c: T, t: T, d: T) -> T {
+    internal static func sineIn<Number: FloatingPoint>(b: Number, c: Number, t: Number, d: Number) -> Number {
         let n = t/d
-        let m = cos(n * T.pi_half)
+        let m = cos(n * Number.pi_half)
         return -c * m + c + b
     }
 
@@ -98,9 +107,9 @@ extension EaseAlgorithms {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func sineOut<T: FloatingPoint>(b: T, c: T, t: T, d: T) -> T {
+    internal static func sineOut<Number: FloatingPoint>(b: Number, c: Number, t: Number, d: Number) -> Number {
         let n = t/d
-        let m = sin(n * T.pi_half)
+        let m = sin(n * Number.pi_half)
         return c * m + b
     }
 
@@ -116,15 +125,16 @@ extension EaseAlgorithms {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func sineInOut<T: FloatingPoint>(b: T, c: T, t: T, d: T) -> T {
+    internal static func sineInOut<Number: FloatingPoint>(b: Number, c: Number, t: Number, d: Number) -> Number {
         let x = c.half
         let n = t/d
-        let m = cos(n * T.pi) - T(1)
+        let m = cos(n * Number.pi) - Number(1)
         return -x * m + b
     }
 
 }
 
+/// An extension to add the cubic easing algorithms.
 extension EaseAlgorithms {
 
     // MARK: Cubic
@@ -141,7 +151,7 @@ extension EaseAlgorithms {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func cubicIn<T: FloatingPoint>(b: T, c: T, t: T, d: T) -> T {
+    internal static func cubicIn<Number: FloatingPoint>(b: Number, c: Number, t: Number, d: Number) -> Number {
         let n = t/d
         let m = n*n*n
         return c * m + b
@@ -159,8 +169,8 @@ extension EaseAlgorithms {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func cubicOut<T: FloatingPoint>(b: T, c: T, t: T, d: T) -> T {
-        let one = T(1)
+    internal static func cubicOut<Number: FloatingPoint>(b: Number, c: Number, t: Number, d: Number) -> Number {
+        let one = Number(1)
         let n = (t/d) - one
         let m = (n*n*n) + one
         return c * m + b
@@ -178,15 +188,15 @@ extension EaseAlgorithms {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func cubicInOut<T: FloatingPoint>(b: T, c: T, t: T, d: T) -> T {
+    internal static func cubicInOut<Number: FloatingPoint>(b: Number, c: Number, t: Number, d: Number) -> Number {
         let x = c.half
         var n = t/(d.half)
 
-        if n < T(1) {
+        if n < Number(1) {
             let m = n*n*n
             return x * m + b
         } else {
-            let two = T(2)
+            let two = Number(2)
             n -= two
             let m = (n*n*n) + two
             return x * m + b
@@ -195,6 +205,7 @@ extension EaseAlgorithms {
     
 }
 
+/// An extension to add the quadratic easing algorithms.
 extension EaseAlgorithms {
 
     // MARK: Quadratic
@@ -211,7 +222,7 @@ extension EaseAlgorithms {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func quadIn<T: FloatingPoint>(b: T, c: T, t: T, d: T) -> T {
+    internal static func quadIn<Number: FloatingPoint>(b: Number, c: Number, t: Number, d: Number) -> Number {
         let n = t/d
         let m = n*n
         return c * m + b
@@ -229,9 +240,9 @@ extension EaseAlgorithms {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func quadOut<T: FloatingPoint>(b: T, c: T, t: T, d: T) -> T {
+    internal static func quadOut<Number: FloatingPoint>(b: Number, c: Number, t: Number, d: Number) -> Number {
         let n = t/d
-        let m = n*(n - T(2))
+        let m = n*(n - Number(2))
         return -c * m + b
     }
 
@@ -247,8 +258,8 @@ extension EaseAlgorithms {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func quadInOut<T: FloatingPoint>(b: T, c: T, t: T, d: T) -> T {
-        let one = T(1)
+    internal static func quadInOut<Number: FloatingPoint>(b: Number, c: Number, t: Number, d: Number) -> Number {
+        let one = Number(1)
         let x = c.half
         var n = t/(d.half)
 
@@ -257,13 +268,14 @@ extension EaseAlgorithms {
             return x * m + b
         } else {
             n -= one
-            let m = n*(n - T(2)) - one
+            let m = n*(n - Number(2)) - one
             return -x * m + b
         }
     }
     
 }
 
+/// An extension to add the quartic easing algorithms.
 extension EaseAlgorithms {
 
     // MARK: Quartic
@@ -280,7 +292,7 @@ extension EaseAlgorithms {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func quartIn<T: FloatingPoint>(b: T, c: T, t: T, d: T) -> T {
+    internal static func quartIn<Number: FloatingPoint>(b: Number, c: Number, t: Number, d: Number) -> Number {
         let n = t/d
         let m = n*n*n*n
         return c * m + b
@@ -298,8 +310,8 @@ extension EaseAlgorithms {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func quartOut<T: FloatingPoint>(b: T, c: T, t: T, d: T) -> T {
-        let one = T(1)
+    internal static func quartOut<Number: FloatingPoint>(b: Number, c: Number, t: Number, d: Number) -> Number {
+        let one = Number(1)
         let n = (t/d) - one
         let m = (n*n*n*n) - one
         return -c * m + b
@@ -317,15 +329,15 @@ extension EaseAlgorithms {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func quartInOut<T: FloatingPoint>(b: T, c: T, t: T, d: T) -> T {
+    internal static func quartInOut<Number: FloatingPoint>(b: Number, c: Number, t: Number, d: Number) -> Number {
         let x = c.half
         var n = t/(d.half)
 
-        if n < T(1) {
+        if n < Number(1) {
             let m = n*n*n*n
             return x * m + b
         } else {
-            let two = T(2)
+            let two = Number(2)
             n -= two
             let m = (n*n*n*n) - two
             return -x * m + b
@@ -334,6 +346,7 @@ extension EaseAlgorithms {
     
 }
 
+/// An extension to add the quintic easing algorithms.
 extension EaseAlgorithms {
 
     // MARK: Quintic
@@ -350,7 +363,7 @@ extension EaseAlgorithms {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func quintIn<T: FloatingPoint>(b: T, c: T, t: T, d: T) -> T {
+    internal static func quintIn<Number: FloatingPoint>(b: Number, c: Number, t: Number, d: Number) -> Number {
         let n = t/d
         let m = n*n*n*n*n
         return c * m + b
@@ -368,8 +381,8 @@ extension EaseAlgorithms {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func quintOut<T: FloatingPoint>(b: T, c: T, t: T, d: T) -> T {
-        let one = T(1)
+    internal static func quintOut<Number: FloatingPoint>(b: Number, c: Number, t: Number, d: Number) -> Number {
+        let one = Number(1)
         let n = (t/d) - one
         let m = (n*n*n*n*n) + one
         return c * m + b
@@ -387,15 +400,15 @@ extension EaseAlgorithms {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func quintInOut<T: FloatingPoint>(b: T, c: T, t: T, d: T) -> T {
+    internal static func quintInOut<Number: FloatingPoint>(b: Number, c: Number, t: Number, d: Number) -> Number {
         let x = c.half
         var n = t/(d.half)
 
-        if n < T(1) {
+        if n < Number(1) {
             let m = n*n*n*n*n
             return x * m + b
         } else {
-            let two = T(2)
+            let two = Number(2)
             n -= two
             let m = (n*n*n*n*n) + two
             return x * m + b
@@ -404,6 +417,7 @@ extension EaseAlgorithms {
     
 }
 
+/// An extension to add the exponential easing algorithms.
 extension EaseAlgorithms {
 
     // MARK: Exponential
@@ -420,13 +434,13 @@ extension EaseAlgorithms {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func expoIn<T: FloatingPoint>(b: T, c: T, t: T, d: T) -> T {
-        if t == T(0) {
+    internal static func expoIn<Number: FloatingPoint>(b: Number, c: Number, t: Number, d: Number) -> Number {
+        if t == Number(0) {
             return b
         } else {
             let n = t/d
-            let z = T(10) * (n - T(1))
-            let m = pow(T(2), z)
+            let z = Number(10) * (n - Number(1))
+            let m = pow(Number(2), z)
             return c * m + b
         }
     }
@@ -443,13 +457,13 @@ extension EaseAlgorithms {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func expoOut<T: FloatingPoint>(b: T, c: T, t: T, d: T) -> T {
+    internal static func expoOut<Number: FloatingPoint>(b: Number, c: Number, t: Number, d: Number) -> Number {
         if t == d {
             return b + c
         } else {
             let n = t/d
-            let z = -T(10) * n
-            let m = -pow(T(2), z) + T(1)
+            let z = -Number(10) * n
+            let m = -pow(Number(2), z) + Number(1)
             return c * m + b
         }
     }
@@ -466,25 +480,25 @@ extension EaseAlgorithms {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func expoInOut<T: FloatingPoint>(b: T, c: T, t: T, d: T) -> T {
-        if t == T(0) {
+    internal static func expoInOut<Number: FloatingPoint>(b: Number, c: Number, t: Number, d: Number) -> Number {
+        if t == Number(0) {
             return b
         } else if t == d {
             return b + c
         }
 
-        let one = T(1)
+        let one = Number(1)
         let x = c.half
         var n = t/(d.half)
 
         if n < one {
-            let z = T(10) * (n - one)
-            let m = pow(T(2), z)
+            let z = Number(10) * (n - one)
+            let m = pow(Number(2), z)
             return x * m + b
         } else {
             n -= one
-            let two = T(2)
-            let z = -T(10) * n
+            let two = Number(2)
+            let z = -Number(10) * n
             let m = -pow(two, z) + two
             return x * m + b
         }
@@ -492,6 +506,7 @@ extension EaseAlgorithms {
     
 }
 
+/// An extension to add the circular easing algorithms.
 extension EaseAlgorithms {
 
     // MARK: Circular
@@ -508,8 +523,8 @@ extension EaseAlgorithms {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func circIn<T: FloatingPoint>(b: T, c: T, t: T, d: T) -> T {
-        let one = T(1)
+    internal static func circIn<Number: FloatingPoint>(b: Number, c: Number, t: Number, d: Number) -> Number {
+        let one = Number(1)
         let n = t/d
         let z = one - (n*n)
         let m = sqrt(z) - one
@@ -528,8 +543,8 @@ extension EaseAlgorithms {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func circOut<T: FloatingPoint>(b: T, c: T, t: T, d: T) -> T {
-        let one = T(1)
+    internal static func circOut<Number: FloatingPoint>(b: Number, c: Number, t: Number, d: Number) -> Number {
+        let one = Number(1)
         let n = (t/d) - one
         let z = one - (n*n)
         let m = sqrt(z)
@@ -548,8 +563,8 @@ extension EaseAlgorithms {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func circInOut<T: FloatingPoint>(b: T, c: T, t: T, d: T) -> T {
-        let one = T(1)
+    internal static func circInOut<Number: FloatingPoint>(b: Number, c: Number, t: Number, d: Number) -> Number {
+        let one = Number(1)
         let x = c.half
         var n = t/(d.half)
 
@@ -558,7 +573,7 @@ extension EaseAlgorithms {
             let m = sqrt(z) - one
             return -x * m + b
         } else {
-            n -= T(2)
+            n -= Number(2)
             let z = one - (n*n)
             let m = sqrt(z) + one
             return x * m + b
@@ -567,6 +582,7 @@ extension EaseAlgorithms {
     
 }
 
+/// An extension to add the back easing algorithms.
 extension EaseAlgorithms {
 
     // MARK: Back
@@ -583,10 +599,10 @@ extension EaseAlgorithms {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func backIn<T: FloatingPoint>(b: T, c: T, t: T, d: T) -> T {
-        let s = T(Defaults.overshoot)
+    internal static func backIn<Number: FloatingPoint>(b: Number, c: Number, t: Number, d: Number) -> Number {
+        let s = Number(Defaults.overshoot)
         let n = t/d
-        let z = ((s + T(1)) * n) - s
+        let z = ((s + Number(1)) * n) - s
         let m = n*n*z
         return c * m + b
     }
@@ -603,9 +619,9 @@ extension EaseAlgorithms {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func backOut<T: FloatingPoint>(b: T, c: T, t: T, d: T) -> T {
-        let one = T(1)
-        let s = T(Defaults.overshoot)
+    internal static func backOut<Number: FloatingPoint>(b: Number, c: Number, t: Number, d: Number) -> Number {
+        let one = Number(1)
+        let s = Number(Defaults.overshoot)
         let n = (t/d) - one
         let z = ((s + one) * n) + s
         let m = (n*n*z) + one
@@ -624,9 +640,9 @@ extension EaseAlgorithms {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func backInOut<T: FloatingPoint>(b: T, c: T, t: T, d: T) -> T {
-        let one = T(1)
-        let s = T(Defaults.overshoot * 1.525)
+    internal static func backInOut<Number: FloatingPoint>(b: Number, c: Number, t: Number, d: Number) -> Number {
+        let one = Number(1)
+        let s = Number(Defaults.overshoot * 1.525)
         let x = c.half
         var n = t/(d.half)
 
@@ -635,7 +651,7 @@ extension EaseAlgorithms {
             let m = n*n*z
             return x * m + b
         } else {
-            let two = T(2)
+            let two = Number(2)
             n -= two
             let z = ((s + one) * n) + s
             let m = (n*n*z) + two
@@ -645,6 +661,7 @@ extension EaseAlgorithms {
     
 }
 
+/// An extension to add the elastic easing algorithms.
 extension EaseAlgorithms {
 
     // MARK: Elastic
@@ -661,26 +678,26 @@ extension EaseAlgorithms {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func elasticIn<T: FloatingPoint>(b: T, c: T, t: T, d: T) -> T {
-        let one = T(1)
+    internal static func elasticIn<Number: FloatingPoint>(b: Number, c: Number, t: Number, d: Number) -> Number {
+        let one = Number(1)
         var n = t/d
 
-        if t == T(0) {
+        if t == Number(0) {
             return b
         } else if n == one {
             return b + c
         }
 
-        let p = d * T(0.3) // period
+        let p = d * Number(0.3) // period
         let a = c // amplitude
-        let s = p * T(0.25)
+        let s = p * Number(0.25)
         n -= one
 
-        let m1_z = T(10) * n
-        let m1 = a * pow(T(2), m1_z)
+        let m1_z = Number(10) * n
+        let m1 = a * pow(Number(2), m1_z)
 
         let m2_z = (n*d) - s
-        let m2 = sin(m2_z * T.pi_double / p)
+        let m2 = sin(m2_z * Number.pi_double / p)
 
         let m = -(m1 * m2)
         return m + b
@@ -698,24 +715,24 @@ extension EaseAlgorithms {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func elasticOut<T: FloatingPoint>(b: T, c: T, t: T, d: T) -> T {
+    internal static func elasticOut<Number: FloatingPoint>(b: Number, c: Number, t: Number, d: Number) -> Number {
         let n = t/d
 
-        if t == T(0) {
+        if t == Number(0) {
             return b
-        } else if n == T(1) {
+        } else if n == Number(1) {
             return b + c
         }
 
-        let p = d * T(0.3) // period
+        let p = d * Number(0.3) // period
         let a = c // amplitude
-        let s = p * T(0.25)
+        let s = p * Number(0.25)
 
-        let m1_z = -T(10) * n
-        let m1 = a * pow(T(2), m1_z)
+        let m1_z = -Number(10) * n
+        let m1 = a * pow(Number(2), m1_z)
 
         let m2_z = (n*d) - s
-        let m2 = sin(m2_z * T.pi_double / p)
+        let m2 = sin(m2_z * Number.pi_double / p)
 
         let m = m1 * m2
         return c + m + b
@@ -733,40 +750,40 @@ extension EaseAlgorithms {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func elasticInOut<T: FloatingPoint>(b: T, c: T, t: T, d: T) -> T {
-        let two = T(2)
+    internal static func elasticInOut<Number: FloatingPoint>(b: Number, c: Number, t: Number, d: Number) -> Number {
+        let two = Number(2)
         var n = t/(d.half)
 
-        if t == T(0) {
+        if t == Number(0) {
             return b
         } else if n == two {
             return b + c
         }
 
-        let one = T(1)
-        let p = d * T(0.45) // period
+        let one = Number(1)
+        let p = d * Number(0.45) // period
         let a = c // amplitude
-        let s = p * T(0.25)
+        let s = p * Number(0.25)
 
         if n < one {
             n -= one
 
-            let m1_z = T(10) * n
-            let m1 = a * pow(T(2), m1_z)
+            let m1_z = Number(10) * n
+            let m1 = a * pow(Number(2), m1_z)
 
             let m2_z = (n*d) - s
-            let m2 = sin(m2_z * T.pi_double / p)
+            let m2 = sin(m2_z * Number.pi_double / p)
 
             let m = -(m1 * m2).half
             return m + b
         } else {
             n -= one
 
-            let m1_z = -T(10) * n
-            let m1 = a * pow(T(2), m1_z)
+            let m1_z = -Number(10) * n
+            let m1 = a * pow(Number(2), m1_z)
 
             let m2_z = (n*d) - s
-            let m2 = sin(m2_z * T.pi_double / p)
+            let m2 = sin(m2_z * Number.pi_double / p)
 
             let m = (m1 * m2).half
             return c + m + b
@@ -775,6 +792,7 @@ extension EaseAlgorithms {
     
 }
 
+/// An extension to add the bounce easing algorithms.
 extension EaseAlgorithms {
 
     // MARK: Bounce
@@ -791,8 +809,8 @@ extension EaseAlgorithms {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func bounceIn<T: FloatingPoint>(b: T, c: T, t: T, d: T) -> T {
-        let m: T = EaseAlgorithms.bounceOut(b: T(0), c: c, t: d-t, d: d)
+    internal static func bounceIn<Number: FloatingPoint>(b: Number, c: Number, t: Number, d: Number) -> Number {
+        let m = EaseAlgorithms.bounceOut(b: Number(0), c: c, t: d-t, d: d)
         return c - m + b
     }
 
@@ -808,24 +826,24 @@ extension EaseAlgorithms {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func bounceOut<T: FloatingPoint>(b: T, c: T, t: T, d: T) -> T {
+    internal static func bounceOut<Number: FloatingPoint>(b: Number, c: Number, t: Number, d: Number) -> Number {
         var n = t/d
-        let z: T
+        let z: Number
 
-        if n < T(1.000 / 2.750) {
-            z = T(0)
-        } else if n < T(2.000 / 2.750) {
-            n -= T(1.500 / 2.750)
-            z = T(0.75)
-        } else if n < T(2.500 / 2.750) {
-            n -= T(2.250 / 2.750)
-            z = T(0.9375)
+        if n < Number(1.000 / 2.750) {
+            z = Number(0)
+        } else if n < Number(2.000 / 2.750) {
+            n -= Number(1.500 / 2.750)
+            z = Number(0.75)
+        } else if n < Number(2.500 / 2.750) {
+            n -= Number(2.250 / 2.750)
+            z = Number(0.9375)
         } else {
-            n -= T(2.625 / 2.750)
-            z = T(0.984375)
+            n -= Number(2.625 / 2.750)
+            z = Number(0.984375)
         }
 
-        let m = (T(7.5625) * (n*n)) + z
+        let m = (Number(7.5625) * (n*n)) + z
         return c * m + b
     }
 
@@ -841,15 +859,15 @@ extension EaseAlgorithms {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func bounceInOut<T: FloatingPoint>(b: T, c: T, t: T, d: T) -> T {
+    internal static func bounceInOut<Number: FloatingPoint>(b: Number, c: Number, t: Number, d: Number) -> Number {
         if t < (d.half) {
             let z = t.double
-            let m: T = EaseAlgorithms.bounceIn(b: T(0), c: c, t: z, d: d).half
+            let m = EaseAlgorithms.bounceIn(b: Number(0), c: c, t: z, d: d).half
             return m + b
         } else {
             let x = c.half
             let z = (t.double)-d
-            let m: T = (EaseAlgorithms.bounceOut(b: T(0), c: c, t: z, d: d).half) + x
+            let m = (EaseAlgorithms.bounceOut(b: Number(0), c: c, t: z, d: d).half) + x
             return m + b
         }
     }
