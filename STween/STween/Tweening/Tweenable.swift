@@ -82,7 +82,7 @@ extension Tweenable {
      - Returns: The `Tween` control for the animation.
      */
     public final func tween(_ property: Self.TweenProperty, duration: TimeInterval, completion: Callback? = nil) -> Tween {
-        return tween([property], duration: duration, completion: completion)
+        return Tweener.to(target: self, properties: [property], duration: duration, completion: completion)
     }
 
     /**
