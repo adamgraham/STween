@@ -42,12 +42,13 @@ internal final class EaseAlgorithms {
 }
 
 /// :nodoc:
-typealias EaseAlgorithm<Number: FloatingPoint> = (
+internal typealias EaseAlgorithm<Number: FloatingPoint> = (
     _ b: Number,
     _ c: Number,
     _ t: Number,
     _ d: Number) -> Number
 
+/// An extension to add the linear easing algorithm.
 extension EaseAlgorithms {
 
     // MARK: Linear
@@ -71,6 +72,7 @@ extension EaseAlgorithms {
 
 }
 
+/// An extension to add the sinusoidal easing algorithms.
 extension EaseAlgorithms {
 
     // MARK: Sinusoidal
@@ -132,6 +134,7 @@ extension EaseAlgorithms {
 
 }
 
+/// An extension to add the cubic easing algorithms.
 extension EaseAlgorithms {
 
     // MARK: Cubic
@@ -202,6 +205,7 @@ extension EaseAlgorithms {
     
 }
 
+/// An extension to add the quadratic easing algorithms.
 extension EaseAlgorithms {
 
     // MARK: Quadratic
@@ -271,6 +275,7 @@ extension EaseAlgorithms {
     
 }
 
+/// An extension to add the quartic easing algorithms.
 extension EaseAlgorithms {
 
     // MARK: Quartic
@@ -341,6 +346,7 @@ extension EaseAlgorithms {
     
 }
 
+/// An extension to add the quintic easing algorithms.
 extension EaseAlgorithms {
 
     // MARK: Quintic
@@ -411,6 +417,7 @@ extension EaseAlgorithms {
     
 }
 
+/// An extension to add the exponential easing algorithms.
 extension EaseAlgorithms {
 
     // MARK: Exponential
@@ -499,6 +506,7 @@ extension EaseAlgorithms {
     
 }
 
+/// An extension to add the circular easing algorithms.
 extension EaseAlgorithms {
 
     // MARK: Circular
@@ -574,6 +582,7 @@ extension EaseAlgorithms {
     
 }
 
+/// An extension to add the back easing algorithms.
 extension EaseAlgorithms {
 
     // MARK: Back
@@ -652,6 +661,7 @@ extension EaseAlgorithms {
     
 }
 
+/// An extension to add the elastic easing algorithms.
 extension EaseAlgorithms {
 
     // MARK: Elastic
@@ -782,6 +792,7 @@ extension EaseAlgorithms {
     
 }
 
+/// An extension to add the bounce easing algorithms.
 extension EaseAlgorithms {
 
     // MARK: Bounce

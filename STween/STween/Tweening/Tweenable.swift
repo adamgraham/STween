@@ -66,9 +66,9 @@ public protocol Tweenable {
 
 }
 
-// MARK: - Default Implementation
-
 extension Tweenable {
+
+    // MARK: Default Implementation
 
     /**
      A method to create an animation of a tweenable property on `self` with a
@@ -102,17 +102,29 @@ extension Tweenable {
 
 }
 
-// MARK: - Helpers
-
 extension Tweenable {
 
-    /// :nodoc:
-    public final func interpolate<T: Interpolatable>(
-        with ease: Ease, startValue: T, endValue: T,
-        elapsed: TimeInterval, duration: TimeInterval) -> T where T.InterpolationType == T {
+    // MARK: Helper Methods
 
-        return T.interpolate(with: ease, startValue: startValue, endValue: endValue,
-                             elapsed: elapsed, duration: duration)
+    /**
+     A class method to calculate the value between a starting and ending position at a
+     specific point in time.
+
+     - Parameters:
+        - ease: The `Ease` used to interpolate values.
+        - startValue: The start value passed to the `ease` algorithm.
+        - endValue: The end value passed to the `ease` algorithm.
+        - elapsed: The elapsed amount of time passed to the `ease` algorithm.
+        - duration: The duration of time passed to the `ease` algorithm.
+
+     - Returns: The value interpolated between the start and end value.
+     */
+    public final func interpolate<Type: Interpolatable>(
+        with ease: Ease, startValue: Type, endValue: Type,
+        elapsed: TimeInterval, duration: TimeInterval) -> Type where Type.InterpolationType == Type {
+
+        return Type.interpolate(with: ease, startValue: startValue, endValue: endValue,
+                                elapsed: elapsed, duration: duration)
     }
 
 }
