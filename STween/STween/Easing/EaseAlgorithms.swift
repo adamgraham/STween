@@ -41,6 +41,13 @@ internal final class EaseAlgorithms {
 
 }
 
+/// :nodoc:
+typealias EaseAlgorithm<Number: FloatingPoint> = (
+    _ b: Number,
+    _ c: Number,
+    _ t: Number,
+    _ d: Number) -> Number
+
 extension EaseAlgorithms {
 
     // MARK: Linear
