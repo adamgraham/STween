@@ -9,15 +9,15 @@
 // MARK: - Global Functions
 
 internal func cos<Number: FloatingPoint>(_ x: Number) -> Number {
-    return Number(cos(Double(floatingPoint: x)))
+    return Number(cos(Double(x)))
 }
 
 internal func sin<Number: FloatingPoint>(_ x: Number) -> Number {
-    return Number(sin(Double(floatingPoint: x)))
+    return Number(sin(Double(x)))
 }
 
 internal func pow<Number: FloatingPoint>(_ x: Number, _ y: Number) -> Number {
-    return Number(pow(Double(floatingPoint: x), Double(floatingPoint: y)))
+    return Number(pow(Double(x), Double(y)))
 }
 
 // MARK: - Extensions: Initializers
