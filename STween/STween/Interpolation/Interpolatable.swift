@@ -9,24 +9,23 @@
 /// A protocol to provide interpolation functionality.
 public protocol Interpolatable {
 
-    associatedtype InterpolationType
+    associatedtype Value
 
     /**
-     A class method to calculate the value between a starting and ending position at a
-     specific point in time.
+     A class method to calculate the value between a starting and ending 
+     position at a specific point in time.
 
      - Parameters:
-        - ease: The `Ease` used to interpolate values.
         - startValue: The start value passed to the `ease` algorithm.
         - endValue: The end value passed to the `ease` algorithm.
+        - ease: The `Ease` used to interpolate values.
         - elapsed: The elapsed amount of time passed to the `ease` algorithm.
         - duration: The duration of time passed to the `ease` algorithm.
 
      - Returns: The value interpolated between the start and end value.
      */
-    static func interpolate(with ease: Ease,
-                            startValue: InterpolationType, endValue: InterpolationType,
-                            elapsed: TimeInterval, duration: TimeInterval) -> InterpolationType
+    static func interpolate(_ startValue: Value, to endValue: Value, with ease: Ease,
+                            elapsed: TimeInterval, duration: TimeInterval) -> Value
 
 }
 
@@ -35,12 +34,11 @@ public protocol Interpolatable {
 /// :nodoc:
 extension Interpolatable where Self: UnsignedInteger {
 
-    public static func interpolate(with ease: Ease,
-                                   startValue: Self, endValue: Self,
+    public static func interpolate(_ startValue: Self, to endValue: Self, with ease: Ease,
                                    elapsed: TimeInterval, duration: TimeInterval) -> Self {
 
-        let start = Double(unsignedInteger: startValue)
-        let end = Double(unsignedInteger: endValue)
+        let start = Double(startValue)
+        let end = Double(endValue)
         let value = ease.interpolate(startValue: start, endValue: end,
                                      elapsed: elapsed, duration: duration)
 
@@ -52,12 +50,11 @@ extension Interpolatable where Self: UnsignedInteger {
 /// :nodoc:
 extension Interpolatable where Self: SignedInteger {
 
-    public static func interpolate(with ease: Ease,
-                                   startValue: Self, endValue: Self,
+    public static func interpolate(_ startValue: Self, to endValue: Self, with ease: Ease,
                                    elapsed: TimeInterval, duration: TimeInterval) -> Self {
 
-        let start = Double(signedInteger: startValue)
-        let end = Double(signedInteger: endValue)
+        let start = Double(startValue)
+        let end = Double(endValue)
         let value = ease.interpolate(startValue: start, endValue: end,
                                      elapsed: elapsed, duration: duration)
 
@@ -69,8 +66,7 @@ extension Interpolatable where Self: SignedInteger {
 /// :nodoc:
 extension Interpolatable where Self: FloatingPoint {
 
-    public static func interpolate(with ease: Ease,
-                                   startValue: Self, endValue: Self,
+    public static func interpolate(_ startValue: Self, to endValue: Self, with ease: Ease,
                                    elapsed: TimeInterval, duration: TimeInterval) -> Self {
 
         return ease.interpolate(startValue: startValue, endValue: endValue,
@@ -113,8 +109,7 @@ extension Float80: Interpolatable {}
 /// :nodoc:
 extension Date: Interpolatable {
 
-    public static func interpolate(with ease: Ease,
-                                   startValue: Date, endValue: Date,
+    public static func interpolate(_ startValue: Date, to endValue: Date, with ease: Ease,
                                    elapsed: TimeInterval, duration: TimeInterval) -> Date {
 
         let timeInterval = ease.interpolate(startValue: startValue.timeIntervalSince1970, endValue: endValue.timeIntervalSince1970, elapsed: elapsed, duration: duration)
@@ -128,8 +123,7 @@ extension Date: Interpolatable {
 /// :nodoc:
 extension CATransform3D: Interpolatable {
 
-    public static func interpolate(with ease: Ease,
-                                   startValue: CATransform3D, endValue: CATransform3D,
+    public static func interpolate(_ startValue: CATransform3D, to endValue: CATransform3D, with ease: Ease,
                                    elapsed: TimeInterval, duration: TimeInterval) -> CATransform3D {
 
         let interpolate: (CGFloat, CGFloat) -> CGFloat = { (start, end) in
@@ -169,8 +163,7 @@ extension CATransform3D: Interpolatable {
 /// :nodoc:
 extension CGAffineTransform: Interpolatable {
 
-    public static func interpolate(with ease: Ease,
-                                   startValue: CGAffineTransform, endValue: CGAffineTransform,
+    public static func interpolate(_ startValue: CGAffineTransform, to endValue: CGAffineTransform, with ease: Ease,
                                    elapsed: TimeInterval, duration: TimeInterval) -> CGAffineTransform {
 
         let interpolate: (CGFloat, CGFloat) -> CGFloat = { (start, end) in
@@ -192,8 +185,7 @@ extension CGAffineTransform: Interpolatable {
 /// :nodoc:
 extension CGColor: Interpolatable {
 
-    public static func interpolate(with ease: Ease,
-                                   startValue: CGColor, endValue: CGColor,
+    public static func interpolate(_ startValue: CGColor, to endValue: CGColor, with ease: Ease,
                                    elapsed: TimeInterval, duration: TimeInterval) -> CGColor {
 
         let interpolate: (CGFloat, CGFloat) -> CGFloat = { (start, end) in
@@ -220,8 +212,7 @@ extension CGFloat: Interpolatable {}
 /// :nodoc:
 extension CGPoint: Interpolatable {
 
-    public static func interpolate(with ease: Ease,
-                                   startValue: CGPoint, endValue: CGPoint,
+    public static func interpolate(_ startValue: CGPoint, to endValue: CGPoint, with ease: Ease,
                                    elapsed: TimeInterval, duration: TimeInterval) -> CGPoint {
 
         let interpolate: (CGFloat, CGFloat) -> CGFloat = { (start, end) in
@@ -239,8 +230,7 @@ extension CGPoint: Interpolatable {
 /// :nodoc:
 extension CGRect: Interpolatable {
 
-    public static func interpolate(with ease: Ease,
-                                   startValue: CGRect, endValue: CGRect,
+    public static func interpolate(_ startValue: CGRect, to endValue: CGRect, with ease: Ease,
                                    elapsed: TimeInterval, duration: TimeInterval) -> CGRect {
 
         let interpolate: (CGFloat, CGFloat) -> CGFloat = { (start, end) in
@@ -260,8 +250,7 @@ extension CGRect: Interpolatable {
 /// :nodoc:
 extension CGSize: Interpolatable {
 
-    public static func interpolate(with ease: Ease,
-                                   startValue: CGSize, endValue: CGSize,
+    public static func interpolate(_ startValue: CGSize, to endValue: CGSize, with ease: Ease,
                                    elapsed: TimeInterval, duration: TimeInterval) -> CGSize {
 
         let interpolate: (CGFloat, CGFloat) -> CGFloat = { (start, end) in
@@ -279,8 +268,7 @@ extension CGSize: Interpolatable {
 /// :nodoc:
 extension CGVector: Interpolatable {
 
-    public static func interpolate(with ease: Ease,
-                                   startValue: CGVector, endValue: CGVector,
+    public static func interpolate(_ startValue: CGVector, to endValue: CGVector, with ease: Ease,
                                    elapsed: TimeInterval, duration: TimeInterval) -> CGVector {
 
         let interpolate: (CGFloat, CGFloat) -> CGFloat = { (start, end) in
@@ -300,8 +288,7 @@ extension CGVector: Interpolatable {
 /// :nodoc:
 extension CIColor: Interpolatable {
 
-    public static func interpolate(with ease: Ease,
-                                   startValue: CIColor, endValue: CIColor,
+    public static func interpolate(_ startValue: CIColor, to endValue: CIColor, with ease: Ease,
                                    elapsed: TimeInterval, duration: TimeInterval) -> CIColor {
 
         let interpolate: (CGFloat, CGFloat) -> CGFloat = { (start, end) in
@@ -321,8 +308,7 @@ extension CIColor: Interpolatable {
 /// :nodoc:
 extension CIVector: Interpolatable {
 
-    public static func interpolate(with ease: Ease,
-                                   startValue: CIVector, endValue: CIVector,
+    public static func interpolate(_ startValue: CIVector, to endValue: CIVector, with ease: Ease,
                                    elapsed: TimeInterval, duration: TimeInterval) -> CIVector {
 
         let interpolate: (CGFloat, CGFloat) -> CGFloat = { (start, end) in
@@ -344,11 +330,11 @@ extension CIVector: Interpolatable {
 /// :nodoc:
 extension UIColor: Interpolatable {
 
-    public static func interpolate(with ease: Ease,
-                                   startValue: UIColor, endValue: UIColor,
+    public static func interpolate(_ startValue: UIColor, to endValue: UIColor, with ease: Ease,
                                    elapsed: TimeInterval, duration: TimeInterval) -> UIColor {
 
-        let rgba = RGBA.interpolate(with: ease, startValue: startValue.rgba, endValue: endValue.rgba, elapsed: elapsed, duration: duration)
+        let rgba = RGBA.interpolate(startValue.rgba, to: endValue.rgba, with: ease,
+                                    elapsed: elapsed, duration: duration)
         return rgba.color
     }
     
@@ -357,8 +343,7 @@ extension UIColor: Interpolatable {
 /// :nodoc:
 extension UIEdgeInsets: Interpolatable {
 
-    public static func interpolate(with ease: Ease,
-                                   startValue: UIEdgeInsets, endValue: UIEdgeInsets,
+    public static func interpolate(_ startValue: UIEdgeInsets, to endValue: UIEdgeInsets, with ease: Ease,
                                    elapsed: TimeInterval, duration: TimeInterval) -> UIEdgeInsets {
 
         let interpolate: (CGFloat, CGFloat) -> CGFloat = { (start, end) in
@@ -378,8 +363,7 @@ extension UIEdgeInsets: Interpolatable {
 /// :nodoc:
 extension UIOffset: Interpolatable {
 
-    public static func interpolate(with ease: Ease,
-                                   startValue: UIOffset, endValue: UIOffset,
+    public static func interpolate(_ startValue: UIOffset, to endValue: UIOffset, with ease: Ease,
                                    elapsed: TimeInterval, duration: TimeInterval) -> UIOffset {
 
         let interpolate: (CGFloat, CGFloat) -> CGFloat = { (start, end) in
@@ -399,8 +383,7 @@ extension UIOffset: Interpolatable {
 /// :nodoc:
 extension RGBA: Interpolatable {
 
-    internal static func interpolate(with ease: Ease,
-                                     startValue: RGBA, endValue: RGBA,
+    internal static func interpolate(_ startValue: RGBA, to endValue: RGBA, with ease: Ease,
                                      elapsed: TimeInterval, duration: TimeInterval) -> RGBA {
 
         let interpolate: (CGFloat, CGFloat) -> CGFloat = { (start, end) in
