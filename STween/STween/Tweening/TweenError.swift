@@ -10,9 +10,9 @@
 /// animations.
 public enum TweenError: Error {
 
-    /// A case to denote a mismatched set of values could not be interpolated
-    /// on a tweenable type.
-    case invalidInterpolation(valueA: Any, valueB: Any, tweenable: Any)
+    /// A case to denote an unexpected `object` was found that is not
+    /// convertible `to` type.
+    case objectNotConvertible(Any, to: Any.Type)
 
 }
 
@@ -23,8 +23,8 @@ extension TweenError: CustomStringConvertible {
     /// A textual representation of `self`.
     public var description: String {
         switch self {
-        case let .invalidInterpolation(valueA, valueB, tweenable):
-            return "TweenError.invalidInterpolation: A mismatched set of values, \(valueA) and \(valueB), could not be interpolated on \(tweenable)."
+        case let .objectNotConvertible(object, type):
+            return "TweenError.objectNotConvertible: An unexpected \(object) was found that is not convertible to \(type)."
         }
     }
     

@@ -35,6 +35,9 @@
                 <a href="../Enums/Ease.html">Ease</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Easing.html#/s:6STween13EaseAlgorithm">EaseAlgorithm</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Classes/EaseAlgorithms.html">EaseAlgorithms</a>
               </li>
               <li class="nav-group-task">
@@ -53,17 +56,6 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/InterpolationValues.html">InterpolationValues</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-group-name">
-            <a href="../Settings.html">Settings</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a href="../Classes/Defaults.html">Defaults</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Classes/FrameRate.html">FrameRate</a>
               </li>
             </ul>
           </li>
@@ -95,7 +87,21 @@
                 <a href="../Protocols/Tweenable.html">Tweenable</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Protocols/TweenableProperty.html">TweenableProperty</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Classes/Tweener.html">Tweener</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Settings.html">Settings</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/Defaults.html">Defaults</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/FrameRate.html">FrameRate</a>
               </li>
             </ul>
           </li>
@@ -1227,6 +1233,125 @@
                           <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">curve</span><span class="p">:</span> <span class="kt"><a href="../Enums/EaseCurve.html">EaseCurve</a></span></code></pre>
 
                         </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Methods"></a>
+                <a name="//apple_ref/swift/Section/Methods" class="dashAnchor"></a>
+                <a href="#/Methods">
+                  <h3 class="section-name">Methods</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO6STween4Ease11interpolateuRxs13FloatingPointrFT10startValuex8endValuex7elapsedx8durationx_x"></a>
+                    <a name="//apple_ref/swift/Method/interpolate(startValue:endValue:elapsed:duration:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO6STween4Ease11interpolateuRxs13FloatingPointrFT10startValuex8endValuex7elapsedx8durationx_x">interpolate(startValue:endValue:elapsed:duration:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A method to calculate the value between a starting and ending position at a
+specific point in time using <code>self</code>&lsquo;s easing algorithm.</p>
+
+<p><li><p>Parameters:</p></p>
+
+<p><ul>
+<li>startValue: The start value passed to <code>self</code>&rsquo;s easing algorithm.</li>
+<li>endValue: The end value passed to <code>self</code>&rsquo;s easing algorithm.</li>
+<li>elapsed: The elapsed amount of time passed to <code>self</code>&rsquo;s easing algorithm.</li>
+<li>duration: The duration of time passed to <code>self</code>&rsquo;s easing algorithm.</li>
+</ul></li>
+<div class="aside aside-returns">
+    <p class="aside-title">Returns</p>
+    <p>The value interpolated between the start and end value.</p></p>
+
+<p></div></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="n">interpolate</span><span class="o">&lt;</span><span class="kt">Number</span><span class="p">:</span> <span class="kt">FloatingPoint</span><span class="o">&gt;</span><span class="p">(</span>
+        <span class="nv">startValue</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">endValue</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span>
+        <span class="nv">elapsed</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">duration</span><span class="p">:</span> <span class="kt">Number</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Number</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>startValue</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The start value passed to <code>self</code>’s easing algorithm.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>endValue</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The end value passed to <code>self</code>’s easing algorithm.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>elapsed</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The elapsed amount of time passed to <code>self</code>’s easing algorithm.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>duration</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The duration of time passed to <code>self</code>’s easing algorithm.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The value interpolated between the start and end value.</p>
+
                       </div>
                     </section>
                   </div>

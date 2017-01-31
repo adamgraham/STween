@@ -24,17 +24,17 @@ extension Double {
     }
 
     /// Initializes a `Double` value from an `UnsignedInteger` type.
-    internal init<U: UnsignedInteger>(unsignedInteger: U) {
+    internal init<U: UnsignedInteger>(_ unsignedInteger: U) {
         self = Double(unsignedInteger.toUIntMax())
     }
 
     /// Initializes a `Double` value from an `SignedInteger` type.
-    internal init<I: SignedInteger>(signedInteger: I) {
+    internal init<I: SignedInteger>(_ signedInteger: I) {
         self = Double(signedInteger.toIntMax())
     }
 
     /// Initializes a `Double` value from a `FloatingPoint` type.
-    internal init<F: FloatingPoint>(floatingPoint: F) {
+    internal init<F: FloatingPoint>(_ floatingPoint: F) {
         if let float80 = floatingPoint as? Float80 {
             self = Double(float80)
         } else if let float64 = floatingPoint as? Float64 {
@@ -55,7 +55,7 @@ extension Double {
 extension DoubleConvertible where Self: UnsignedInteger {
 
     internal var toDouble: Double {
-        return Double(unsignedInteger: self)
+        return Double(self)
     }
 
 }
@@ -63,7 +63,7 @@ extension DoubleConvertible where Self: UnsignedInteger {
 extension DoubleConvertible where Self: SignedInteger {
 
     internal var toDouble: Double {
-        return Double(signedInteger: self)
+        return Double(self)
     }
     
 }
@@ -71,7 +71,7 @@ extension DoubleConvertible where Self: SignedInteger {
 extension DoubleConvertible where Self: FloatingPoint {
 
     internal var toDouble: Double {
-        return Double(floatingPoint: self)
+        return Double(self)
     }
 
 }

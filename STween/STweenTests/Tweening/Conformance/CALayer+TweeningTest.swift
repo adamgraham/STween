@@ -192,11 +192,11 @@ class CALayer_TweeningTest: XCTestCase, TweenableTestable {
 
     // MARK: Invalid Interpolation Tests
 
-    func testInvalidInterpolation() {
-        let layer = UIView().layer
-        let propertyA = CALayer.TweenProperty.opacity(1.0)
-        let propertyB = CALayer.TweenProperty.shadowOpacity(1.0)
-        assertInvalidInterpolation(tweenable: layer, propertyA: propertyA, propertyB: propertyB)
-    }
+//    func testInvalidInterpolation() {
+//        let layer = UIView().layer
+//        let propertyA = CALayer.TweenProperty.opacity(1.0)
+//        let propertyB = CALayer.TweenProperty.shadowOpacity(1.0)
+//        assertInvalidInterpolation(tweenable: layer, propertyA: propertyA, propertyB: propertyB)
+//    }
 
 }

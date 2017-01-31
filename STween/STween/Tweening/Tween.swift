@@ -65,8 +65,7 @@ public protocol Tween: class {
      A method to retrieve the callback assigned to a change of state.
      
      - Parameters:
-        - stateChange: The change of state from which a callback will be
-                       retrieved.
+        - stateChange: The change of state from which a callback will be retrieved.
      
      - Returns: The callback retrieved from the `stateChange`.
      */
@@ -76,8 +75,7 @@ public protocol Tween: class {
      A method to assign a callback to a change of state.
      
      - Parameters:
-        - stateChange: The change of state to which a callback will be
-                       assigned.
+        - stateChange: The change of state to which a callback will be assigned.
         - value: The callback to be assigned to the `stateChange`.
      */
     func callback(set stateChange: TweenStateChange, value: Callback?)
@@ -86,8 +84,7 @@ public protocol Tween: class {
      A method to unassign the callback assigned to a change of state.
      
      - Parameters:
-        - stateChange: The change of state from which a callback will be
-                       unassigned.
+        - stateChange: The change of state from which a callback will be unassigned.
      */
     func callback(clear stateChange: TweenStateChange)
 

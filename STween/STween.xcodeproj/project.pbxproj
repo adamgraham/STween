@@ -65,6 +65,7 @@
 		9DCD64FF1D1687DD00C726E7 /* STween.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D77AC361D13B8D70033F88E /* STween.framework */; };
 		9DD2404A1DCD436A009C658F /* InterpolatableTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD240461DCD436A009C658F /* InterpolatableTest.swift */; };
 		9DD8CF181E31C721004A196D /* CALayer+TweeningTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD8CF171E31C721004A196D /* CALayer+TweeningTest.swift */; };
+		9DEDF79C1E36FCA7002E0CB9 /* TweenableProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEDF79B1E36FCA7002E0CB9 /* TweenableProperty.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -140,6 +141,7 @@
 		9DCD64FE1D1687DD00C726E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9DD240461DCD436A009C658F /* InterpolatableTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterpolatableTest.swift; sourceTree = "<group>"; };
 		9DD8CF171E31C721004A196D /* CALayer+TweeningTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CALayer+TweeningTest.swift"; sourceTree = "<group>"; };
+		9DEDF79B1E36FCA7002E0CB9 /* TweenableProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweenableProperty.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -253,6 +255,7 @@
 				9D88905A1E2883160023FE78 /* TweenStateChange.swift */,
 				9D88905B1E2883160023FE78 /* TweenTimer.swift */,
 				9D8890551E2883160023FE78 /* Tweenable.swift */,
+				9DEDF79B1E36FCA7002E0CB9 /* TweenableProperty.swift */,
 				9D8890581E2883160023FE78 /* Tweener.swift */,
 			);
 			path = Tweening;
@@ -438,7 +441,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Adam Graham";
 				TargetAttributes = {
 					9D77AC351D13B8D70033F88E = {
@@ -497,6 +500,7 @@
 				9D8890761E2883160023FE78 /* Tweener.swift in Sources */,
 				9D8890651E2883160023FE78 /* Defaults.swift in Sources */,
 				9D8890671E2883160023FE78 /* Ease.swift in Sources */,
+				9DEDF79C1E36FCA7002E0CB9 /* TweenableProperty.swift in Sources */,
 				9D88907C1E2883160023FE78 /* Functions.swift in Sources */,
 				9D8890701E2883160023FE78 /* Tween+Chaining.swift in Sources */,
 				9D88907B1E2883160023FE78 /* UIColor+RGBA.swift in Sources */,
@@ -668,6 +672,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -688,6 +693,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;

@@ -330,31 +330,34 @@ fileprivate class InvalidTweenable: Tweenable {
 
     }
 
-    enum TweenProperty {
+    enum TweenProperty: TweenableProperty {
 
         case invalidA(Double)
         case invalidB(Double)
 
-    }
-
-    public func interpolationStartValue(for property: TweenProperty) -> TweenProperty {
-        switch property {
-        case .invalidA:
-            return .invalidA(0.0)
-        case .invalidB:
-            return .invalidB(0.0)
+        func value<T: Tweenable>(from object: T) throws -> TweenProperty {
+            switch self {
+            case .invalidA:
+                return .invalidA(0.0)
+            case .invalidB:
+                return .invalidB(0.0)
+            }
         }
-    }
 
-    public func interpolate(with ease: Ease, values: InterpolationValues<TweenProperty>,
-                            elapsed: TimeInterval, duration: TimeInterval) throws {
-
-        switch (values.start, values.end) {
-        case let (.invalidA(startValue), .invalidA(endValue)):
-            throw TweenError.invalidInterpolation(valueA: startValue, valueB: endValue, tweenable: self)
-        default:
-            throw GenericError.error
+        func apply<T: Tweenable>(to object: T) throws {
+            switch self {
+            case .invalidA:
+                throw TweenError.objectNotConvertible(object, to: Double.self)
+            case .invalidB:
+                throw GenericError.error
+            }
         }
+
+        static func interpolate(_ startValue: TweenProperty, to endValue: TweenProperty, with ease: Ease,
+                                elapsed: TimeInterval, duration: TimeInterval) -> TweenProperty {
+            return endValue
+        }
+
     }
 
 }

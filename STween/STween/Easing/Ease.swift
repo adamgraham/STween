@@ -236,17 +236,17 @@ extension Ease {
 
 extension Ease {
 
-    // MARK: Method
+    // MARK: Methods
 
     /**
      A method to calculate the value between a starting and ending position at a
      specific point in time using `self`'s easing algorithm.
 
      - Parameters:
-        - startValue: The start value passed to the `ease` algorithm.
-        - endValue: The end value passed to the `ease` algorithm.
-        - elapsed: The elapsed amount of time passed to the `ease` algorithm.
-        - duration: The duration of time passed to the `ease` algorithm.
+        - startValue: The start value passed to `self`'s easing algorithm.
+        - endValue: The end value passed to `self`'s easing algorithm.
+        - elapsed: The elapsed amount of time passed to `self`'s easing algorithm.
+        - duration: The duration of time passed to `self`'s easing algorithm.
 
      - Returns: The value interpolated between the start and end value.
      */

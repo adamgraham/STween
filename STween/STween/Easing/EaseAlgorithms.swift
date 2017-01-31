@@ -41,7 +41,18 @@ internal final class EaseAlgorithms {
 
 }
 
-/// :nodoc:
+/**
+ A method to calculate a value between a starting and ending position at 
+ a specific point in time.
+
+ - Parameters:
+    - b: The start value (b = begin).
+    - c: The change in value (c = change).
+    - t: The amount of time elapsed since the start of the ease (t = time).
+    - d: The total amount of time the ease will run (d = duration).
+
+ - Returns: The value at a specific point in time from the start value.
+ */
 internal typealias EaseAlgorithm<Number: FloatingPoint> = (
     _ b: Number,
     _ c: Number,
@@ -592,10 +603,10 @@ extension EaseAlgorithms {
      between a starting and ending position at a specific point in time.
 
      - Parameters:
-     - b: The start value (b = begin).
-     - c: The change in value (c = change).
-     - t: The amount of time elapsed since the start of the ease (t = time).
-     - d: The total amount of time the ease will run (d = duration).
+        - b: The start value (b = begin).
+        - c: The change in value (c = change).
+        - t: The amount of time elapsed since the start of the ease (t = time).
+        - d: The total amount of time the ease will run (d = duration).
 
      - Returns: The value at a specific point in time from the start value.
      */

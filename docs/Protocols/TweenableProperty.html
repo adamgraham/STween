@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>FrameRate Class Reference</title>
+    <title>TweenableProperty Protocol Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -10,8 +10,8 @@
     
   </head>
   <body>
-    <a name="//apple_ref/swift/Class/FrameRate" class="dashAnchor"></a>
-    <a title="FrameRate Class Reference"></a>
+    <a name="//apple_ref/swift/Protocol/TweenableProperty" class="dashAnchor"></a>
+    <a title="TweenableProperty Protocol Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="../index.html"> Docs</a> (100% documented)</p>
@@ -22,7 +22,7 @@
       <p id="breadcrumbs">
         <a href="../index.html"> Reference</a>
         <img id="carat" src="../img/carat.png" />
-        FrameRate Class Reference
+        TweenableProperty Protocol Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -110,32 +110,25 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>FrameRate</h1>
+            <h1>TweenableProperty</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="kt">FrameRate</span></code></pre>
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">TweenableProperty</span><span class="p">:</span> <span class="kt"><a href="../Protocols/Interpolatable.html">Interpolatable</a></span></code></pre>
 
                 </div>
               </div>
-            <p>A class to store and calculate frame rate settings.</p>
+            <p>A protocol to describe a tweenable property.</p>
 
           </section>
           <section class="section task-group-section">
             <div class="task-group">
-              <div class="task-name-container">
-                <a name="/Properties"></a>
-                <a name="//apple_ref/swift/Section/Properties" class="dashAnchor"></a>
-                <a href="#/Properties">
-                  <h3 class="section-name">Properties</h3>
-                </a>
-              </div>
               <ul>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:ZvC6STween9FrameRate15targetFrameRateSd"></a>
-                    <a name="//apple_ref/swift/Variable/targetFrameRate" class="dashAnchor"></a>
-                    <a class="token" href="#/s:ZvC6STween9FrameRate15targetFrameRateSd">targetFrameRate</a>
+                    <a name="/s:FP6STween17TweenableProperty5valueuRd__S_9TweenablerFzT4fromqd___x"></a>
+                    <a name="//apple_ref/swift/Method/value(from:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FP6STween17TweenableProperty5valueuRd__S_9TweenablerFzT4fromqd___x">value(from:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -143,19 +136,58 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The rate at which every <code><a href="../Protocols/Tween.html">Tween</a></code> will update. For example, a frame rate of
-30 means the tween will update 30 times per second. The higher the
-number, the smoother the tween animation will be but at a higher
-computational cost.</p>
+                        <p>A method to retrieve the value of <code>self</code> from a tweenable object.</p>
+
+<p><li><p>Parameters:</p></p>
+
+<p><ul>
+<li>object: The tweenable object from which a value will be retrieved.</li>
+</ul></li>
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    <p><code><a href="../Enums/TweenError.html#/s:FO6STween10TweenError20objectNotConvertibleFMS0_FTP_2toPMP__S0_">TweenError.objectNotConvertible</a></code> if the <code>object</code> cannot be casted 
+       to an expected type.</p></p>
+
+<p></div>
+<div class="aside aside-returns">
+    <p class="aside-title">Returns</p>
+    <p>The value retrieved on the tweenable <code>object</code> for the property <code>self</code>.</p></p>
+
+<p></div></p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">var</span> <span class="nv">targetFrameRate</span> <span class="o">=</span> <span class="kt"><a href="../Classes/Defaults.html">Defaults</a></span><span class="o">.</span><span class="n">frameRate</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="n">value</span><span class="o">&lt;</span><span class="kt">T</span><span class="p">:</span> <span class="kt"><a href="../Protocols/Tweenable.html">Tweenable</a></span><span class="o">&gt;</span><span class="p">(</span><span class="n">from</span> <span class="nv">object</span><span class="p">:</span> <span class="kt">T</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="k">Self</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>object</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The tweenable object from which a value will be retrieved.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The value retrieved on the tweenable <code>object</code> for the property <code>self</code>.</p>
+
                       </div>
                     </section>
                   </div>
@@ -163,9 +195,9 @@ computational cost.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:ZvC6STween9FrameRate19targetFrameDurationSd"></a>
-                    <a name="//apple_ref/swift/Variable/targetFrameDuration" class="dashAnchor"></a>
-                    <a class="token" href="#/s:ZvC6STween9FrameRate19targetFrameDurationSd">targetFrameDuration</a>
+                    <a name="/s:FP6STween17TweenableProperty5applyuRd__S_9TweenablerFzT2toqd___T_"></a>
+                    <a name="//apple_ref/swift/Method/apply(to:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FP6STween17TweenableProperty5applyuRd__S_9TweenablerFzT2toqd___T_">apply(to:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -173,56 +205,48 @@ computational cost.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The duration of a single frame, in seconds, calculated by dividing 1.0 
-over the <code><a href="../Classes/FrameRate.html#/s:ZvC6STween9FrameRate15targetFrameRateSd">FrameRate.targetFrameRate</a></code>.</p>
+                        <p>A method to apply the value of <code>self</code> to a tweenable object.</p>
+
+<p><li><p>Parameters:</p></p>
+
+<p><ul>
+<li>object: The tweenable object to which <code>self</code> will be applied.</li>
+</ul></li>
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    <p><code><a href="../Enums/TweenError.html#/s:FO6STween10TweenError20objectNotConvertibleFMS0_FTP_2toPMP__S0_">TweenError.objectNotConvertible</a></code> if the <code>object</code> cannot be casted 
+       to an expected type.</p></p>
+
+<p></div></p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">var</span> <span class="nv">targetFrameDuration</span><span class="p">:</span> <span class="kt">Double</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="n">apply</span><span class="o">&lt;</span><span class="kt">T</span><span class="p">:</span> <span class="kt"><a href="../Protocols/Tweenable.html">Tweenable</a></span><span class="o">&gt;</span><span class="p">(</span><span class="n">to</span> <span class="nv">object</span><span class="p">:</span> <span class="kt">T</span><span class="p">)</span> <span class="k">throws</span></code></pre>
 
                         </div>
                       </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <div class="task-name-container">
-                <a name="/Methods"></a>
-                <a name="//apple_ref/swift/Section/Methods" class="dashAnchor"></a>
-                <a href="#/Methods">
-                  <h3 class="section-name">Methods</h3>
-                </a>
-              </div>
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:ZFC6STween9FrameRate5resetFT_T_"></a>
-                    <a name="//apple_ref/swift/Method/reset()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:ZFC6STween9FrameRate5resetFT_T_">reset()</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>A method to reset the target frame rate to its default value -
-<code><a href="../Classes/Defaults.html#/s:ZvC6STween8Defaults9frameRateSd">Defaults.frameRate</a></code>.</p>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>object</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The tweenable object to which <code>self</code> will be applied.</p>
 
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">reset</span><span class="p">()</span></code></pre>
-
-                        </div>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>

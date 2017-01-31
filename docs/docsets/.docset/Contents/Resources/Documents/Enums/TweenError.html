@@ -35,6 +35,9 @@
                 <a href="../Enums/Ease.html">Ease</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Easing.html#/s:6STween13EaseAlgorithm">EaseAlgorithm</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Classes/EaseAlgorithms.html">EaseAlgorithms</a>
               </li>
               <li class="nav-group-task">
@@ -53,17 +56,6 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/InterpolationValues.html">InterpolationValues</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-group-name">
-            <a href="../Settings.html">Settings</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a href="../Classes/Defaults.html">Defaults</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Classes/FrameRate.html">FrameRate</a>
               </li>
             </ul>
           </li>
@@ -95,7 +87,21 @@
                 <a href="../Protocols/Tweenable.html">Tweenable</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Protocols/TweenableProperty.html">TweenableProperty</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Classes/Tweener.html">Tweener</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Settings.html">Settings</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/Defaults.html">Defaults</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/FrameRate.html">FrameRate</a>
               </li>
             </ul>
           </li>
@@ -121,9 +127,9 @@ animations.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FO6STween10TweenError20invalidInterpolationFMS0_FT6valueAP_6valueBP_9tweenableP__S0_"></a>
-                    <a name="//apple_ref/swift/Element/invalidInterpolation" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FO6STween10TweenError20invalidInterpolationFMS0_FT6valueAP_6valueBP_9tweenableP__S0_">invalidInterpolation</a>
+                    <a name="/s:FO6STween10TweenError20objectNotConvertibleFMS0_FTP_2toPMP__S0_"></a>
+                    <a name="//apple_ref/swift/Element/objectNotConvertible" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO6STween10TweenError20objectNotConvertibleFMS0_FTP_2toPMP__S0_">objectNotConvertible</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -131,15 +137,15 @@ animations.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>A case to denote a mismatched set of values could not be interpolated
-on a tweenable type.</p>
+                        <p>A case to denote an unexpected <code>object</code> was found that is not
+convertible <code>to</code> type.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="k">case</span> <span class="nf">invalidInterpolation</span><span class="p">(</span><span class="nv">valueA</span><span class="p">:</span> <span class="kt">Any</span><span class="p">,</span> <span class="nv">valueB</span><span class="p">:</span> <span class="kt">Any</span><span class="p">,</span> <span class="nv">tweenable</span><span class="p">:</span> <span class="kt">Any</span><span class="p">)</span></code></pre>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="nf">objectNotConvertible</span><span class="p">(</span><span class="kt">Any</span><span class="p">,</span> <span class="nv">to</span><span class="p">:</span> <span class="kt">Any</span><span class="o">.</span><span class="k">Type</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
