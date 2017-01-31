@@ -189,11 +189,11 @@ class UIView_TweeningTest: XCTestCase, TweenableTestable {
 
     // MARK: Invalid Interpolation Tests
 
-    func testInvalidInterpolation() {
-        let view = UIView()
-        let propertyA = UIView.TweenProperty.x(100.0)
-        let propertyB = UIView.TweenProperty.y(100.0)
-        assertInvalidInterpolation(tweenable: view, propertyA: propertyA, propertyB: propertyB)
-    }
+//    func testInvalidInterpolation() {
+//        let view = UIView()
+//        let propertyA = UIView.TweenProperty.x(100.0)
+//        let propertyB = UIView.TweenProperty.y(100.0)
+//        assertInvalidInterpolation(tweenable: view, propertyA: propertyA, propertyB: propertyB)
+//    }
 
 }

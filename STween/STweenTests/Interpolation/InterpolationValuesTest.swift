@@ -13,12 +13,12 @@ import XCTest
 class InterpolationValuesTest: XCTestCase {
 
     func testValues() {
-        let values = InterpolationValues(start: "a", end: "b")
-        XCTAssertEqual(values.start, "a")
-        XCTAssertEqual(values.end, "b")
+        let values: InterpolationValues<Double> = InterpolationValues(start: 0.0, end: 1.0)
+        XCTAssertEqual(values.start, 0.0)
+        XCTAssertEqual(values.end, 1.0)
         let reversed = values.reversed
-        XCTAssertEqual(reversed.start, "b")
-        XCTAssertEqual(reversed.end, "a")
+        XCTAssertEqual(reversed.start, 1.0)
+        XCTAssertEqual(reversed.end, 0.0)
     }
 
 }

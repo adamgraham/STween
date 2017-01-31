@@ -32,11 +32,11 @@ class NSLayoutConstraint_TweeningTest: XCTestCase, TweenableTestable {
 
     // MARK: Invalid Interpolation Tests
 
-    func testInvalidInterpolation() {
-        let tweenable = NSLayoutConstraint()
-        let propertyA = NSLayoutConstraint.TweenProperty.constant(100.0)
-        let propertyB = NSLayoutConstraint.TweenProperty.priority(UILayoutPriorityDefaultHigh)
-        assertInvalidInterpolation(tweenable: tweenable, propertyA: propertyA, propertyB: propertyB)
-    }
+//    func testInvalidInterpolation() {
+//        let tweenable = NSLayoutConstraint()
+//        let propertyA = NSLayoutConstraint.TweenProperty.constant(100.0)
+//        let propertyB = NSLayoutConstraint.TweenProperty.priority(UILayoutPriorityDefaultHigh)
+//        assertInvalidInterpolation(tweenable: tweenable, propertyA: propertyA, propertyB: propertyB)
+//    }
 
 }
