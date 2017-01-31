@@ -16,6 +16,8 @@ internal struct InterpolationValues<T: Interpolatable> where T.Value == T {
     /// The end value to be interpolated.
     internal let end: T
 
+    // MARK: Computed Properties
+
     /// The reversed version of `self` where the start value is the end value, and 
     /// the end value is the start value.
     var reversed: InterpolationValues<T> {
