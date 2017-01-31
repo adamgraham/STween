@@ -236,7 +236,7 @@ extension Ease {
 
 extension Ease {
 
-    // MARK: Method
+    // MARK: Methods
 
     /**
      A method to calculate the value between a starting and ending position at a
