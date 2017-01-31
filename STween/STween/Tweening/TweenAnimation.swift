@@ -8,18 +8,21 @@
 
 /// A class to animate properties on a `Tweenable` object via interpolation
 /// and easing algorithms.
-internal final class TweenAnimation<TweenableTarget: Tweenable>: Tween {
+internal final class TweenAnimation<Target: Tweenable>: Tween
+    where Target.TweenProperty.Value == Target.TweenProperty {
+
+    internal typealias TargetProperty = Target.TweenProperty
 
     // MARK: Core Properties
 
     /// The object or data structure that properties are animated on.
-    internal let target: TweenableTarget
+    internal let target: Target
 
     /// The array of properties being animated.
-    internal let targetProperties: [TweenableTarget.TweenProperty]
+    internal let targetProperties: [TargetProperty]
 
     /// An array of values used to interpolate each property every update cycle.
-    fileprivate var interpolationValues = [InterpolationValues<TweenableTarget.TweenProperty>]()
+    fileprivate var interpolationValues = [InterpolationValues<TargetProperty>]()
 
     /// A dictionary storing the callbacks for each change of state.
     fileprivate var callbacks = [TweenStateChange: Callback?]()
@@ -58,8 +61,8 @@ internal final class TweenAnimation<TweenableTarget: Tweenable>: Tween {
         - properties: An array of properties to be animated on the `target`.
         - duration: The total amount of time, in seconds, the animation will run.
      */
-    internal init(target: TweenableTarget,
-                  properties: [TweenableTarget.TweenProperty],
+    internal init(target: Target,
+                  properties: [TargetProperty],
                   duration: TimeInterval) {
 
         self.target = target
@@ -108,7 +111,8 @@ extension TweenAnimation {
 
         for values in self.interpolationValues {
             do {
-                try self.target.interpolate(with: ease, values: values, elapsed: elapsed, duration: duration)
+                let interpolatedValue = values.interpolate(with: ease, elapsed: elapsed, duration: duration)
+                try interpolatedValue.apply(to: self.target)
             } catch let error {
                 if let stringConvertible = error as? CustomStringConvertible {
                     print(stringConvertible.description)
@@ -128,15 +132,25 @@ extension TweenAnimation {
         self.interpolationValues.removeAll()
 
         for property in self.targetProperties {
-            let values: InterpolationValues<TweenableTarget.TweenProperty>
+            do {
+                let values: InterpolationValues<TargetProperty>
+                let start = try property.value(from: self.target)
+                let end = property
 
-            if !self.reversed {
-                values = InterpolationValues(start: self.target.interpolationStartValue(for: property), end: property)
-            } else {
-                values = InterpolationValues(start: property, end: self.target.interpolationStartValue(for: property))
+                if !self.reversed {
+                    values = InterpolationValues(start: start, end: end)
+                } else {
+                    values = InterpolationValues(start: end, end: start)
+                }
+
+                self.interpolationValues.append(values)
+            } catch let error {
+                if let stringConvertible = error as? CustomStringConvertible {
+                    print(stringConvertible.description)
+                } else {
+                    print("ERROR: \(error.localizedDescription)")
+                }
             }
-            
-            self.interpolationValues.append(values)
         }
     }
 

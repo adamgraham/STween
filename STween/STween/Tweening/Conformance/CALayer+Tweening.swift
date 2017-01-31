@@ -11,7 +11,7 @@ extension CALayer: Tweenable {
 
     /// An enum to describe the properties that can be animated with a tween
     /// on a `CALayer`.
-    public enum TweenProperty {
+    public enum TweenProperty: TweenableProperty {
 
         /// A case to denote the `frame` property of a `CALayer`.
         case frame(CGRect)
@@ -60,111 +60,169 @@ extension CALayer: Tweenable {
         /// A case to denote the `shadowRadius` property of a `CALayer`.
         case shadowRadius(CGFloat)
 
-    }
+        public func value<T: Tweenable>(from object: T) throws -> TweenProperty {
+            guard let layer = object as? CALayer else {
+                throw TweenError.objectNotConvertible(object, to: CALayer.self)
+            }
 
-    public func interpolationStartValue(for property: TweenProperty) -> TweenProperty {
-        switch property {
-        case .frame:
-            return .frame(self.frame)
-        case .bounds:
-            return .bounds(self.bounds)
+            switch self {
+            case .frame:
+                return .frame(layer.frame)
+            case .bounds:
+                return .bounds(layer.bounds)
 
-        case .position:
-            return .position(self.position)
-        case .zPosition:
-            return .zPosition(self.zPosition)
-        case .anchorPoint:
-            return .anchorPoint(self.anchorPoint)
-        case .anchorPointZ:
-            return .anchorPointZ(self.anchorPointZ)
+            case .position:
+                return .position(layer.position)
+            case .zPosition:
+                return .zPosition(layer.zPosition)
+            case .anchorPoint:
+                return .anchorPoint(layer.anchorPoint)
+            case .anchorPointZ:
+                return .anchorPointZ(layer.anchorPointZ)
 
-        case .transform:
-            return .transform(self.transform)
-        case .sublayerTransform:
-            return .sublayerTransform(self.sublayerTransform)
+            case .transform:
+                return .transform(layer.transform)
+            case .sublayerTransform:
+                return .sublayerTransform(layer.sublayerTransform)
 
-        case .contentsRect:
-            return .contentsRect(self.contentsRect)
-        case .contentsCenter:
-            return .contentsCenter(self.contentsCenter)
-        case .contentsScale:
-            return .contentsScale(self.contentsScale)
+            case .contentsRect:
+                return .contentsRect(layer.contentsRect)
+            case .contentsCenter:
+                return .contentsCenter(layer.contentsCenter)
+            case .contentsScale:
+                return .contentsScale(layer.contentsScale)
 
-        case .cornerRadius:
-            return .cornerRadius(self.cornerRadius)
-        case .borderWidth:
-            return .borderWidth(self.borderWidth)
-        case .borderColor:
-            return .borderColor(self.borderColor ?? UIColor.clear.cgColor)
-        case .backgroundColor:
-            return .backgroundColor(self.backgroundColor ?? UIColor.clear.cgColor)
-        case .opacity:
-            return .opacity(self.opacity)
+            case .cornerRadius:
+                return .cornerRadius(layer.cornerRadius)
+            case .borderWidth:
+                return .borderWidth(layer.borderWidth)
+            case .borderColor:
+                return .borderColor(layer.borderColor ?? UIColor.clear.cgColor)
+            case .backgroundColor:
+                return .backgroundColor(layer.backgroundColor ?? UIColor.clear.cgColor)
+            case .opacity:
+                return .opacity(layer.opacity)
 
-        case .shadowColor:
-            return .shadowColor(self.shadowColor ?? UIColor.clear.cgColor)
-        case .shadowOpacity:
-            return .shadowOpacity(self.shadowOpacity)
-        case .shadowOffset:
-            return .shadowOffset(self.shadowOffset)
-        case .shadowRadius:
-            return .shadowRadius(self.shadowRadius)
+            case .shadowColor:
+                return .shadowColor(layer.shadowColor ?? UIColor.clear.cgColor)
+            case .shadowOpacity:
+                return .shadowOpacity(layer.shadowOpacity)
+            case .shadowOffset:
+                return .shadowOffset(layer.shadowOffset)
+            case .shadowRadius:
+                return .shadowRadius(layer.shadowRadius)
+            }
         }
-    }
 
-    public func interpolate(with ease: Ease, values: InterpolationValues<TweenProperty>,
-                            elapsed: TimeInterval, duration: TimeInterval) throws {
+        public func apply<T: Tweenable>(to object: T) throws {
+            guard let layer = object as? CALayer else {
+                throw TweenError.objectNotConvertible(object, to: CALayer.self)
+            }
 
-        switch (values.start, values.end) {
-        case let (.frame(startValue), .frame(endValue)):
-            self.frame = interpolate(with: ease, startValue: startValue, endValue: endValue, elapsed: elapsed, duration: duration)
-        case let (.bounds(startValue), .bounds(endValue)):
-            self.bounds = interpolate(with: ease, startValue: startValue, endValue: endValue, elapsed: elapsed, duration: duration)
+            switch self {
+            case let .frame(value):
+                layer.frame = value
+            case let .bounds(value):
+                layer.bounds = value
 
-        case let (.position(startValue), .position(endValue)):
-            self.position = interpolate(with: ease, startValue: startValue, endValue: endValue, elapsed: elapsed, duration: duration)
-        case let (.zPosition(startValue), .zPosition(endValue)):
-            self.zPosition = interpolate(with: ease, startValue: startValue, endValue: endValue, elapsed: elapsed, duration: duration)
-        case let (.anchorPoint(startValue), .anchorPoint(endValue)):
-            self.anchorPoint = interpolate(with: ease, startValue: startValue, endValue: endValue, elapsed: elapsed, duration: duration)
-        case let (.anchorPointZ(startValue), .anchorPointZ(endValue)):
-            self.anchorPointZ = interpolate(with: ease, startValue: startValue, endValue: endValue, elapsed: elapsed, duration: duration)
+            case let .position(value):
+                layer.position = value
+            case let .zPosition(value):
+                layer.zPosition = value
+            case let .anchorPoint(value):
+                layer.anchorPoint = value
+            case let .anchorPointZ(value):
+                layer.anchorPointZ = value
 
-        case let (.transform(startValue), .transform(endValue)):
-            self.transform = interpolate(with: ease, startValue: startValue, endValue: endValue, elapsed: elapsed, duration: duration)
-        case let (.sublayerTransform(startValue), .sublayerTransform(endValue)):
-            self.sublayerTransform = interpolate(with: ease, startValue: startValue, endValue: endValue, elapsed: elapsed, duration: duration)
+            case let .transform(value):
+                layer.transform = value
+            case let .sublayerTransform(value):
+                layer.sublayerTransform = value
 
-        case let (.contentsRect(startValue), .contentsRect(endValue)):
-            self.contentsRect = interpolate(with: ease, startValue: startValue, endValue: endValue, elapsed: elapsed, duration: duration)
-        case let (.contentsCenter(startValue), .contentsCenter(endValue)):
-            self.contentsCenter = interpolate(with: ease, startValue: startValue, endValue: endValue, elapsed: elapsed, duration: duration)
-        case let (.contentsScale(startValue), .contentsScale(endValue)):
-            self.contentsScale = interpolate(with: ease, startValue: startValue, endValue: endValue, elapsed: elapsed, duration: duration)
+            case let .contentsRect(value):
+                layer.contentsRect = value
+            case let .contentsCenter(value):
+                layer.contentsCenter = value
+            case let .contentsScale(value):
+                layer.contentsScale = value
 
-        case let (.cornerRadius(startValue), .cornerRadius(endValue)):
-            self.cornerRadius = interpolate(with: ease, startValue: startValue, endValue: endValue, elapsed: elapsed, duration: duration)
-        case let (.borderWidth(startValue), .borderWidth(endValue)):
-            self.borderWidth = interpolate(with: ease, startValue: startValue, endValue: endValue, elapsed: elapsed, duration: duration)
-        case let (.borderColor(startValue), .borderColor(endValue)):
-            self.borderColor = interpolate(with: ease, startValue: startValue, endValue: endValue, elapsed: elapsed, duration: duration)
-        case let (.backgroundColor(startValue), .backgroundColor(endValue)):
-            self.backgroundColor = interpolate(with: ease, startValue: startValue, endValue: endValue, elapsed: elapsed, duration: duration)
-        case let (.opacity(startValue), .opacity(endValue)):
-            self.opacity = interpolate(with: ease, startValue: startValue, endValue: endValue, elapsed: elapsed, duration: duration)
+            case let .cornerRadius(value):
+                layer.cornerRadius = value
+            case let .borderWidth(value):
+                layer.borderWidth = value
+            case let .borderColor(value):
+                layer.borderColor = value
+            case let .backgroundColor(value):
+                layer.backgroundColor = value
+            case let .opacity(value):
+                layer.opacity = value
 
-        case let (.shadowColor(startValue), .shadowColor(endValue)):
-            self.shadowColor = interpolate(with: ease, startValue: startValue, endValue: endValue, elapsed: elapsed, duration: duration)
-        case let (.shadowOpacity(startValue), .shadowOpacity(endValue)):
-            self.shadowOpacity = interpolate(with: ease, startValue: startValue, endValue: endValue, elapsed: elapsed, duration: duration)
-        case let (.shadowOffset(startValue), .shadowOffset(endValue)):
-            self.shadowOffset = interpolate(with: ease, startValue: startValue, endValue: endValue, elapsed: elapsed, duration: duration)
-        case let (.shadowRadius(startValue), .shadowRadius(endValue)):
-            self.shadowRadius = interpolate(with: ease, startValue: startValue, endValue: endValue, elapsed: elapsed, duration: duration)
-
-        default:
-            throw TweenError.invalidInterpolation(valueA: values.start, valueB: values.end, tweenable: self)
+            case let .shadowColor(value):
+                layer.shadowColor = value
+            case let .shadowOpacity(value):
+                layer.shadowOpacity = value
+            case let .shadowOffset(value):
+                layer.shadowOffset = value
+            case let .shadowRadius(value):
+                layer.shadowRadius = value
+            }
         }
+
+        public static func interpolate(_ startValue: TweenProperty, to endValue: TweenProperty, with ease: Ease,
+                                       elapsed: TimeInterval, duration: TimeInterval) -> TweenProperty {
+
+            switch (startValue, endValue) {
+            case let (.frame(start), .frame(end)):
+                return .frame(CGRect.interpolate(start, to: end, with: ease, elapsed: elapsed, duration: duration))
+            case let (.bounds(start), .bounds(end)):
+                return .bounds(CGRect.interpolate(start, to: end, with: ease, elapsed: elapsed, duration: duration))
+
+            case let (.position(start), .position(end)):
+                return .position(CGPoint.interpolate(start, to: end, with: ease, elapsed: elapsed, duration: duration))
+            case let (.zPosition(start), .zPosition(end)):
+                return .zPosition(CGFloat.interpolate(start, to: end, with: ease, elapsed: elapsed, duration: duration))
+            case let (.anchorPoint(start), .anchorPoint(end)):
+                return .anchorPoint(CGPoint.interpolate(start, to: end, with: ease, elapsed: elapsed, duration: duration))
+            case let (.anchorPointZ(start), .anchorPointZ(end)):
+                return .anchorPointZ(CGFloat.interpolate(start, to: end, with: ease, elapsed: elapsed, duration: duration))
+
+            case let (.transform(start), .transform(end)):
+                return .transform(CATransform3D.interpolate(start, to: end, with: ease, elapsed: elapsed, duration: duration))
+            case let (.sublayerTransform(start), .sublayerTransform(end)):
+                return .sublayerTransform(CATransform3D.interpolate(start, to: end, with: ease, elapsed: elapsed, duration: duration))
+
+            case let (.contentsRect(start), .contentsRect(end)):
+                return .contentsRect(CGRect.interpolate(start, to: end, with: ease, elapsed: elapsed, duration: duration))
+            case let (.contentsCenter(start), .contentsCenter(end)):
+                return .contentsCenter(CGRect.interpolate(start, to: end, with: ease, elapsed: elapsed, duration: duration))
+            case let (.contentsScale(start), .contentsScale(end)):
+                return .contentsScale(CGFloat.interpolate(start, to: end, with: ease, elapsed: elapsed, duration: duration))
+
+            case let (.cornerRadius(start), .cornerRadius(end)):
+                return .cornerRadius(CGFloat.interpolate(start, to: end, with: ease, elapsed: elapsed, duration: duration))
+            case let (.borderWidth(start), .borderWidth(end)):
+                return .borderWidth(CGFloat.interpolate(start, to: end, with: ease, elapsed: elapsed, duration: duration))
+            case let (.borderColor(start), .borderColor(end)):
+                return .borderColor(CGColor.interpolate(start, to: end, with: ease, elapsed: elapsed, duration: duration))
+            case let (.backgroundColor(start), .backgroundColor(end)):
+                return .backgroundColor(CGColor.interpolate(start, to: end, with: ease, elapsed: elapsed, duration: duration))
+            case let (.opacity(start), .opacity(end)):
+                return .opacity(Float.interpolate(start, to: end, with: ease, elapsed: elapsed, duration: duration))
+
+            case let (.shadowColor(start), .shadowColor(end)):
+                return .shadowColor(CGColor.interpolate(start, to: end, with: ease, elapsed: elapsed, duration: duration))
+            case let (.shadowOpacity(start), .shadowOpacity(end)):
+                return .shadowOpacity(Float.interpolate(start, to: end, with: ease, elapsed: elapsed, duration: duration))
+            case let (.shadowOffset(start), .shadowOffset(end)):
+                return .shadowOffset(CGSize.interpolate(start, to: end, with: ease, elapsed: elapsed, duration: duration))
+            case let (.shadowRadius(start), .shadowRadius(end)):
+                return .shadowRadius(CGFloat.interpolate(start, to: end, with: ease, elapsed: elapsed, duration: duration))
+
+            default:
+                return startValue
+            }
+        }
+
     }
 
 }
