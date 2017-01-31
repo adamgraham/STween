@@ -20,7 +20,7 @@ internal struct InterpolationValues<T: Interpolatable> where T.Value == T {
 
     /// The reversed version of `self` where the start value is the end value, and 
     /// the end value is the start value.
-    var reversed: InterpolationValues<T> {
+    internal var reversed: InterpolationValues<T> {
         return InterpolationValues(start: self.end, end: self.start)
     }
 
