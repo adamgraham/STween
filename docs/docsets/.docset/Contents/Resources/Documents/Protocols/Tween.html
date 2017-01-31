@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Tween Protocol Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Protocol/Tween" class="dashAnchor"></a>
+    <a title="Tween Protocol Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html"> Docs</a> (100% documented)</p>
+        <p class="header-right"><a href="https://github.com/adamgraham/STween"><img src="../img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html"> Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        Tween Protocol Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Easing.html">Easing</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/Ease.html">Ease</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Easing.html#/s:6STween13EaseAlgorithm">EaseAlgorithm</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/EaseAlgorithms.html">EaseAlgorithms</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/EaseClassification.html">EaseClassification</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/EaseCurve.html">EaseCurve</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Interpolation.html">Interpolation</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/Interpolatable.html">Interpolatable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/InterpolationValues.html">InterpolationValues</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Tweening.html">Tweening</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/Tween.html">Tween</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/TweenAnimation.html">TweenAnimation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/TweenError.html">TweenError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/TweenState.html">TweenState</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/TweenStateChange.html">TweenStateChange</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/TweenTimer.html">TweenTimer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/TweenTimerDelegate.html">TweenTimerDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Tweenable.html">Tweenable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/TweenableProperty.html">TweenableProperty</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Tweener.html">Tweener</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Settings.html">Settings</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/Defaults.html">Defaults</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/FrameRate.html">FrameRate</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>Tween</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">Tween</span><span class="p">:</span> <span class="kd">class</span></code></pre>
+
+                </div>
+              </div>
+            <p>A protocol to provide control and customization of a tween animation.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Animation%20&amp;%20State%20Properties"></a>
+                <a name="//apple_ref/swift/Section/Animation &amp; State Properties" class="dashAnchor"></a>
+                <a href="#/Animation%20&amp;%20State%20Properties">
+                  <h3 class="section-name">Animation &amp; State Properties</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vP6STween5Tween4easeOS_4Ease"></a>
+                    <a name="//apple_ref/swift/Property/ease" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vP6STween5Tween4easeOS_4Ease">ease</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The <code><a href="../Enums/Ease.html">Ease</a></code> represented by <code>self</code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">ease</span><span class="p">:</span> <span class="kt"><a href="../Enums/Ease.html">Ease</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vP6STween5Tween8reversedSb"></a>
+                    <a name="//apple_ref/swift/Property/reversed" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vP6STween5Tween8reversedSb">reversed</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The state of <code>self</code> animating <em>to</em> the target property values (<code>false</code>) or
+<em>from</em> the target property values (<code>true</code>).</p>
+
+<p><strong>Note:</strong> Has no effect once <code>self</code> is started.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">reversed</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vP6STween5Tween5stateOS_10TweenState"></a>
+                    <a name="//apple_ref/swift/Property/state" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vP6STween5Tween5stateOS_10TweenState">state</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The current state of <code>self</code> i.e. active, paused, etc.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">state</span><span class="p">:</span> <span class="kt"><a href="../Enums/TweenState.html">TweenState</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Time%20Properties"></a>
+                <a name="//apple_ref/swift/Section/Time Properties" class="dashAnchor"></a>
+                <a href="#/Time%20Properties">
+                  <h3 class="section-name">Time Properties</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vP6STween5Tween5delaySd"></a>
+                    <a name="//apple_ref/swift/Property/delay" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vP6STween5Tween5delaySd">delay</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The amount of time, in seconds, before <code>self</code> starts updating after
+starting.</p>
+
+<p><strong>Note:</strong> Assigning has no effect once <code>self</code> is started.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">delay</span><span class="p">:</span> <span class="kt">TimeInterval</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vP6STween5Tween8durationSd"></a>
+                    <a name="//apple_ref/swift/Property/duration" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vP6STween5Tween8durationSd">duration</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The total amount of time, in seconds, <code>self</code> is set to run.</p>
+
+<p><strong>Note:</strong> Assigning while <code>self</code> is active may cause undesired behavior.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">duration</span><span class="p">:</span> <span class="kt">TimeInterval</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vP6STween5Tween7elapsedSd"></a>
+                    <a name="//apple_ref/swift/Property/elapsed" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vP6STween5Tween7elapsedSd">elapsed</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The amount of time, in seconds, <code>self</code> has been active.</p>
+
+<p><strong>Note:</strong> Elapsed time is reset when <code>self</code> is stopped or restarted, but not
+paused. If <code>self</code> is completed, the elapsed time is the same as <code>self</code>&lsquo;s
+duration.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">elapsed</span><span class="p">:</span> <span class="kt">TimeInterval</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vP6STween5Tween15percentCompleteSd"></a>
+                    <a name="//apple_ref/swift/Property/percentComplete" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vP6STween5Tween15percentCompleteSd">percentComplete</a>
+                    </code>
+                      <span class="declaration-note">
+                        Default implementation
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The percentage of <code>self</code>&lsquo;s <code><a href="../Protocols/Tween.html#/s:vP6STween5Tween7elapsedSd">elapsed</a></code> time over <code>self</code>&rsquo;s <code><a href="../Protocols/Tween.html#/s:vP6STween5Tween8durationSd">duration</a></code> of time,
+in the range of <code>0.0</code> to <code>1.0</code>.</p>
+
+                      </div>
+                      <h4>Default Implementation</h4>
+                      <div class="default_impl abstract">
+                        <p>The percentage of <code>self</code>&lsquo;s <code>elapsed</code> time over <code>self</code>&rsquo;s <code>duration</code> of time,
+in the range of <code>0.0</code> to <code>1.0</code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">percentComplete</span><span class="p">:</span> <span class="kt">Double</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Invocation%20Methods"></a>
+                <a name="//apple_ref/swift/Section/Invocation Methods" class="dashAnchor"></a>
+                <a href="#/Invocation%20Methods">
+                  <h3 class="section-name">Invocation Methods</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FP6STween5Tween6invokeFOS_16TweenStateChangeSb"></a>
+                    <a name="//apple_ref/swift/Method/invoke(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FP6STween5Tween6invokeFOS_16TweenStateChangeSb">invoke(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A method to invoke a change of state on <code>self</code>.</p>
+
+<p><li><p>Parameters:</p></p>
+
+<p><ul>
+<li>stateChange: The change of state to be invoked on <code>self</code>.</li>
+</ul></li>
+<div class="aside aside-returns">
+    <p class="aside-title">Returns</p>
+    <p><code>true</code> if the state of <code>self</code> is changed successfully.</p></p>
+
+<p></div></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">@discardableResult</span> <span class="kd">func</span> <span class="nf">invoke</span><span class="p">(</span><span class="n">_</span> <span class="nv">stateChange</span><span class="p">:</span> <span class="kt"><a href="../Enums/TweenStateChange.html">TweenStateChange</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>stateChange</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The change of state to be invoked on <code>self</code>.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p><code>true</code> if the state of <code>self</code> is changed successfully.</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Callback%20Methods"></a>
+                <a name="//apple_ref/swift/Section/Callback Methods" class="dashAnchor"></a>
+                <a href="#/Callback%20Methods">
+                  <h3 class="section-name">Callback Methods</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FP6STween5Tween8callbackFT3getOS_16TweenStateChange_GSqFT_T__"></a>
+                    <a name="//apple_ref/swift/Method/callback(get:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FP6STween5Tween8callbackFT3getOS_16TweenStateChange_GSqFT_T__">callback(get:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A method to retrieve the callback assigned to a change of state.</p>
+
+<p><li><p>Parameters:</p></p>
+
+<p><ul>
+<li>stateChange: The change of state from which a callback will be retrieved.</li>
+</ul></li>
+<div class="aside aside-returns">
+    <p class="aside-title">Returns</p>
+    <p>The callback retrieved from the <code>stateChange</code>.</p></p>
+
+<p></div></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">callback</span><span class="p">(</span><span class="k">get</span> <span class="nv">stateChange</span><span class="p">:</span> <span class="kt"><a href="../Enums/TweenStateChange.html">TweenStateChange</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Callback</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>stateChange</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The change of state from which a callback will be retrieved.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The callback retrieved from the <code>stateChange</code>.</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FP6STween5Tween8callbackFT3setOS_16TweenStateChange5valueGSqFT_T___T_"></a>
+                    <a name="//apple_ref/swift/Method/callback(set:value:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FP6STween5Tween8callbackFT3setOS_16TweenStateChange5valueGSqFT_T___T_">callback(set:value:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A method to assign a callback to a change of state.</p>
+
+<ul>
+<li>Parameters:
+
+<ul>
+<li>stateChange: The change of state to which a callback will be assigned.</li>
+<li>value: The callback to be assigned to the <code>stateChange</code>.</li>
+</ul></li>
+</ul>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">callback</span><span class="p">(</span><span class="k">set</span> <span class="nv">stateChange</span><span class="p">:</span> <span class="kt"><a href="../Enums/TweenStateChange.html">TweenStateChange</a></span><span class="p">,</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">Callback</span><span class="p">?)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>stateChange</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The change of state to which a callback will be assigned.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>value</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The callback to be assigned to the <code>stateChange</code>.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FP6STween5Tween8callbackFT5clearOS_16TweenStateChange_T_"></a>
+                    <a name="//apple_ref/swift/Method/callback(clear:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FP6STween5Tween8callbackFT5clearOS_16TweenStateChange_T_">callback(clear:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A method to unassign the callback assigned to a change of state.</p>
+
+<ul>
+<li>Parameters:
+
+<ul>
+<li>stateChange: The change of state from which a callback will be unassigned.</li>
+</ul></li>
+</ul>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">callback</span><span class="p">(</span><span class="n">clear</span> <span class="nv">stateChange</span><span class="p">:</span> <span class="kt"><a href="../Enums/TweenStateChange.html">TweenStateChange</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>stateChange</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The change of state from which a callback will be unassigned.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Chaining%20Methods"></a>
+                <a name="//apple_ref/swift/Section/Chaining Methods" class="dashAnchor"></a>
+                <a href="#/Chaining%20Methods">
+                  <h3 class="section-name">Chaining Methods</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FE6STweenPS_5Tween3setFT4easeOS_4Ease_PS0__"></a>
+                    <a name="//apple_ref/swift/Method/set(ease:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FE6STweenPS_5Tween3setFT4easeOS_4Ease_PS0__">set(ease:)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Extension method
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A query chaining method to assign a value to <code>self.ease</code>.</p>
+
+<p><li><p>Parameters:</p></p>
+
+<p><ul>
+<li>ease: The <code><a href="../Enums/Ease.html">Ease</a></code> to be assigned to <code>self.ease</code>.</li>
+</ul></li>
+<div class="aside aside-returns">
+    <p class="aside-title">Returns</p>
+    <p><code>self</code> to allow for additional method chaining.</p></p>
+
+<p></div></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">@discardableResult</span> <span class="kd">public</span> <span class="kd">final</span> <span class="kd">func</span> <span class="nf">set</span><span class="p">(</span><span class="nv">ease</span><span class="p">:</span> <span class="kt"><a href="../Enums/Ease.html">Ease</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Tween</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>ease</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The <code>Ease</code> to be assigned to <code>self.ease</code>.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p><code>self</code> to allow for additional method chaining.</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FE6STweenPS_5Tween3setFT5delaySd_PS0__"></a>
+                    <a name="//apple_ref/swift/Method/set(delay:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FE6STweenPS_5Tween3setFT5delaySd_PS0__">set(delay:)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Extension method
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A query chaining method to assign a value to <code>self.delay</code>.</p>
+
+<p><li><p>Parameters:</p></p>
+
+<p><ul>
+<li>delay: The amount of time, in seconds, to be assigned to 
+    <code>self.delay</code>.</li>
+</ul></li>
+<div class="aside aside-returns">
+    <p class="aside-title">Returns</p>
+    <p><code>self</code> to allow for additional method chaining.</p></p>
+
+<p></div></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">@discardableResult</span> <span class="kd">public</span> <span class="kd">final</span> <span class="kd">func</span> <span class="nf">set</span><span class="p">(</span><span class="nv">delay</span><span class="p">:</span> <span class="kt">TimeInterval</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Tween</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>delay</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The amount of time, in seconds, to be assigned to <code>self.delay</code>.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p><code>self</code> to allow for additional method chaining.</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FE6STweenPS_5Tween3setFT8durationSd_PS0__"></a>
+                    <a name="//apple_ref/swift/Method/set(duration:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FE6STweenPS_5Tween3setFT8durationSd_PS0__">set(duration:)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Extension method
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A query chaining method to assign a value to <code>self.duration</code>.</p>
+
+<p><li><p>Parameters:</p></p>
+
+<p><ul>
+<li>duration: The amount of time, in seconds, to be assigned to 
+       <code>self.duration</code>.</li>
+</ul></li>
+<div class="aside aside-returns">
+    <p class="aside-title">Returns</p>
+    <p><code>self</code> to allow for additional method chaining.</p></p>
+
+<p></div></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">@discardableResult</span> <span class="kd">public</span> <span class="kd">final</span> <span class="kd">func</span> <span class="nf">set</span><span class="p">(</span><span class="nv">duration</span><span class="p">:</span> <span class="kt">TimeInterval</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Tween</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>duration</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The amount of time, in seconds, to be assigned to <code>self.duration</code>.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p><code>self</code> to allow for additional method chaining.</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FE6STweenPS_5Tween3setFT8reversedSb_PS0__"></a>
+                    <a name="//apple_ref/swift/Method/set(reversed:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FE6STweenPS_5Tween3setFT8reversedSb_PS0__">set(reversed:)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Extension method
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A query chaining method to assign a value to <code>self.reversed</code>.</p>
+
+<p><li><p>Parameters:</p></p>
+
+<p><ul>
+<li>reversed: The boolean value to be assigned to <code>self.reversed</code>.</li>
+</ul></li>
+<div class="aside aside-returns">
+    <p class="aside-title">Returns</p>
+    <p><code>self</code> to allow for additional method chaining.</p></p>
+
+<p></div></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">@discardableResult</span> <span class="kd">public</span> <span class="kd">final</span> <span class="kd">func</span> <span class="nf">set</span><span class="p">(</span><span class="nv">reversed</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Tween</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>reversed</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The boolean value to be assigned to <code>self.reversed</code>.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p><code>self</code> to allow for additional method chaining.</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FE6STweenPS_5Tween3setFT8callbackFT_T_3forOS_16TweenStateChange_PS0__"></a>
+                    <a name="//apple_ref/swift/Method/set(callback:for:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FE6STweenPS_5Tween3setFT8callbackFT_T_3forOS_16TweenStateChange_PS0__">set(callback:for:)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Extension method
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A query chaining method to assign a callback to a change of state on
+<code>self</code>. Any time <code>self</code> changes to the specified state, the callback is
+invoked.</p>
+
+<p><li><p>Parameters:</p></p>
+
+<p><ul>
+<li>callback: The callback to be assigned to a change of state on <code>self</code>.</li>
+<li>stateChange: The change of state the <code>callback</code> will be assigned to.</li>
+</ul></li>
+<div class="aside aside-returns">
+    <p class="aside-title">Returns</p>
+    <p><code>self</code> to allow for additional method chaining.</p></p>
+
+<p></div></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">@discardableResult</span> <span class="kd">public</span> <span class="kd">final</span> <span class="kd">func</span> <span class="nf">set</span><span class="p">(</span><span class="nv">callback</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt">Callback</span><span class="p">,</span> <span class="k">for</span> <span class="nv">stateChange</span><span class="p">:</span> <span class="kt"><a href="../Enums/TweenStateChange.html">TweenStateChange</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Tween</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>callback</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The callback to be assigned to a change of state on <code>self</code>.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>stateChange</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The change of state the <code>callback</code> will be assigned to.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p><code>self</code> to allow for additional method chaining.</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>Copyright (c) 2016 Adam Graham</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.3</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>
