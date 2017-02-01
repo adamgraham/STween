@@ -16,9 +16,9 @@ public protocol Interpolatable {
      position at a specific point in time.
 
      - Parameters:
+        - ease: The `Ease` used to interpolate values.
         - startValue: The start value passed to the `ease` algorithm.
         - endValue: The end value passed to the `ease` algorithm.
-        - ease: The `Ease` used to interpolate values.
         - elapsed: The elapsed amount of time passed to the `ease` algorithm.
         - duration: The duration of time passed to the `ease` algorithm.
 
