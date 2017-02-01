@@ -20,9 +20,8 @@ extension TweenableTestable {
         where T.TweenProperty.Value == T.TweenProperty {
         do {
             let startValue = try property.value(from: tweenable)
-            let endValue = property
-            let values: InterpolationValues<T.TweenProperty> = InterpolationValues(start: startValue, end: endValue)
-            let interpolatedValue: T.TweenProperty = values.interpolate(with: .linear, elapsed: 1.0, duration: 1.0)
+            let values = InterpolationValues(start: startValue, end: property)
+            let interpolatedValue = values.interpolate(with: .linear, elapsed: 1.0, duration: 1.0)
             try interpolatedValue.apply(to: tweenable)
             XCTAssertTrue(interpolationAssert())
         } catch {
@@ -30,17 +29,25 @@ extension TweenableTestable {
         }
     }
 
-//    func assertInvalidInterpolation<T: Tweenable>(tweenable: T, propertyA: T.TweenProperty, propertyB: T.TweenProperty) {
-//        let values = InterpolationValues(start: propertyA, end: propertyB)
-//
-//        do {
-//            try tweenable.interpolate(with: .linear, values: values, elapsed: 1.0, duration: 1.0)
-//            XCTFail("Unexpected success")
-//        } catch let error as TweenError {
-//            XCTAssertTrue(error.description.contains("TweenError.invalidInterpolation"))
-//        } catch {
-//            XCTFail("Unexpected exception")
-//        }
-//    }
+    func assertObjectNotConvertible<A: Tweenable, B: Tweenable>(tweenable: A, property: A.TweenProperty, unexpectedTweenable: B)
+        where A.TweenProperty.Value == A.TweenProperty {
+        do {
+            _ = try property.value(from: unexpectedTweenable)
+            XCTFail("Unexpected success")
+        } catch let error as TweenError {
+            XCTAssertTrue(error.description.contains("TweenError.objectNotConvertible"))
+        } catch {
+            XCTFail("Unexpected exception")
+        }
+
+        do {
+            try property.apply(to: unexpectedTweenable)
+            XCTFail("Unexpected success")
+        } catch let error as TweenError {
+            XCTAssertTrue(error.description.contains("TweenError.objectNotConvertible"))
+        } catch {
+            XCTFail("Unexpected exception")
+        }
+    }
 
 }

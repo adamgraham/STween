@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		9D0477AB1E2DB520003E17D9 /* FloatingPoint_ArithmeticTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0477AA1E2DB520003E17D9 /* FloatingPoint_ArithmeticTest.swift */; };
 		9D133AE81E289E320030B97E /* TweenError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D133AE71E289E320030B97E /* TweenError.swift */; };
+		9D17DC0A1E4199E000DC96A1 /* TweenablePropertyTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D17DC091E4199E000DC96A1 /* TweenablePropertyTest.swift */; };
 		9D3B6E151E2FA79E00B546DB /* CALayer+Tweening.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3B6E141E2FA79E00B546DB /* CALayer+Tweening.swift */; };
 		9D482BCD1DC22F55009A1CCD /* EaseClassificationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D482BCC1DC22F55009A1CCD /* EaseClassificationTest.swift */; };
 		9D6A3DB31DDEB05B009B6352 /* TweenTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6A3DB21DDEB05B009B6352 /* TweenTest.swift */; };
@@ -81,6 +82,7 @@
 /* Begin PBXFileReference section */
 		9D0477AA1E2DB520003E17D9 /* FloatingPoint_ArithmeticTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatingPoint_ArithmeticTest.swift; sourceTree = "<group>"; };
 		9D133AE71E289E320030B97E /* TweenError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweenError.swift; sourceTree = "<group>"; };
+		9D17DC091E4199E000DC96A1 /* TweenablePropertyTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweenablePropertyTest.swift; sourceTree = "<group>"; };
 		9D1D1E2A1D31C5AD00BF01E0 /* STweenTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "STweenTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		9D3B6E141E2FA79E00B546DB /* CALayer+Tweening.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CALayer+Tweening.swift"; sourceTree = "<group>"; };
 		9D482BCC1DC22F55009A1CCD /* EaseClassificationTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EaseClassificationTest.swift; sourceTree = "<group>"; };
@@ -171,11 +173,12 @@
 				9D6A3DB21DDEB05B009B6352 /* TweenTest.swift */,
 				9D6A3DB41DDEB073009B6352 /* TweenAnimationTest.swift */,
 				9D6A3DBC1DDEB0A2009B6352 /* TweenErrorTest.swift */,
-				9D6A3DB61DDEB07B009B6352 /* TweenableTest.swift */,
-				9D6A3DBA1DDEB095009B6352 /* TweenerTest.swift */,
 				9D6A3DBE1DDEB0AC009B6352 /* TweenStateTest.swift */,
 				9D6A3DC01DDEB0B5009B6352 /* TweenStateChangeTest.swift */,
 				9D6A3DC21DDEB0BE009B6352 /* TweenTimerTest.swift */,
+				9D6A3DB61DDEB07B009B6352 /* TweenableTest.swift */,
+				9D17DC091E4199E000DC96A1 /* TweenablePropertyTest.swift */,
+				9D6A3DBA1DDEB095009B6352 /* TweenerTest.swift */,
 			);
 			path = Tweening;
 			sourceTree = "<group>";
@@ -533,6 +536,7 @@
 				9DB3D6351DAE686F00134C1D /* DefaultsTest.swift in Sources */,
 				9DB3D63D1DAE688200134C1D /* RGBATest.swift in Sources */,
 				9DB3D6381DAE686F00134C1D /* CallbackTest.swift in Sources */,
+				9D17DC0A1E4199E000DC96A1 /* TweenablePropertyTest.swift in Sources */,
 				9D482BCD1DC22F55009A1CCD /* EaseClassificationTest.swift in Sources */,
 				9D6A3DB71DDEB07B009B6352 /* TweenableTest.swift in Sources */,
 				9D6A3DB51DDEB073009B6352 /* TweenAnimationTest.swift in Sources */,
