@@ -15,28 +15,21 @@ class NSLayoutConstraint_TweeningTest: XCTestCase, TweenableTestable {
     // MARK: TweenProperty Tests
 
     func testConstantTweenProperty() {
-        let tweenable = NSLayoutConstraint()
+        let constraint = NSLayoutConstraint()
         let property = NSLayoutConstraint.TweenProperty.constant(100.0)
-        assertValidInterpolation(tweenable: tweenable, property: property) {
-            return tweenable.constant == 100.0
+        assertObjectNotConvertible(tweenable: constraint, property: property, unexpectedTweenable: UIView())
+        assertValidInterpolation(tweenable: constraint, property: property) {
+            return constraint.constant == 100.0
         }
     }
 
     func testPriorityTweenProperty() {
-        let tweenable = NSLayoutConstraint()
+        let constraint = NSLayoutConstraint()
         let property = NSLayoutConstraint.TweenProperty.priority(UILayoutPriorityDefaultHigh)
-        assertValidInterpolation(tweenable: tweenable, property: property) {
-            return tweenable.priority == UILayoutPriorityDefaultHigh
+        assertObjectNotConvertible(tweenable: constraint, property: property, unexpectedTweenable: UIView())
+        assertValidInterpolation(tweenable: constraint, property: property) {
+            return constraint.priority == UILayoutPriorityDefaultHigh
         }
     }
-
-    // MARK: Invalid Interpolation Tests
-
-//    func testInvalidInterpolation() {
-//        let tweenable = NSLayoutConstraint()
-//        let propertyA = NSLayoutConstraint.TweenProperty.constant(100.0)
-//        let propertyB = NSLayoutConstraint.TweenProperty.priority(UILayoutPriorityDefaultHigh)
-//        assertInvalidInterpolation(tweenable: tweenable, propertyA: propertyA, propertyB: propertyB)
-//    }
 
 }

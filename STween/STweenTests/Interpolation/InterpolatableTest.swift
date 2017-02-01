@@ -15,20 +15,20 @@ class InterpolatableTest: XCTestCase {
     // MARK: Assertions
 
     private func assertInterpolation<T: Interpolatable & Equatable>(startValue: T, endValue: T, middleValue: T) where T.Value == T {
-        var interpolatedValue = T.interpolate(startValue, to: endValue, with: .linear, elapsed: 0.0, duration: 1.0)
+        var interpolatedValue = T.interpolate(from: startValue, to: endValue, withEase: .linear, elapsed: 0.0, duration: 1.0)
         XCTAssertEqual(interpolatedValue, startValue)
-        interpolatedValue = T.interpolate(startValue, to: endValue, with: .linear, elapsed: 0.5, duration: 1.0)
+        interpolatedValue = T.interpolate(from: startValue, to: endValue, withEase: .linear, elapsed: 0.5, duration: 1.0)
         XCTAssertEqual(interpolatedValue, middleValue)
-        interpolatedValue = T.interpolate(startValue, to: endValue, with: .linear, elapsed: 1.0, duration: 1.0)
+        interpolatedValue = T.interpolate(from: startValue, to: endValue, withEase: .linear, elapsed: 1.0, duration: 1.0)
         XCTAssertEqual(interpolatedValue, endValue)
     }
 
     private func assertInterpolation<T: Interpolatable>(startValue: T, endValue: T, middleValue: T, isEqual: (_ lhs: T, _ rhs: T) -> Bool) where T.Value == T {
-        var interpolatedValue = T.interpolate(startValue, to: endValue, with: .linear, elapsed: 0.0, duration: 1.0)
+        var interpolatedValue = T.interpolate(from: startValue, to: endValue, withEase: .linear, elapsed: 0.0, duration: 1.0)
         XCTAssertTrue(isEqual(interpolatedValue, startValue))
-        interpolatedValue = T.interpolate(startValue, to: endValue, with: .linear, elapsed: 0.5, duration: 1.0)
+        interpolatedValue = T.interpolate(from: startValue, to: endValue, withEase: .linear, elapsed: 0.5, duration: 1.0)
         XCTAssertTrue(isEqual(interpolatedValue, middleValue))
-        interpolatedValue = T.interpolate(startValue, to: endValue, with: .linear, elapsed: 1.0, duration: 1.0)
+        interpolatedValue = T.interpolate(from: startValue, to: endValue, withEase: .linear, elapsed: 1.0, duration: 1.0)
         XCTAssertTrue(isEqual(interpolatedValue, endValue))
     }
 

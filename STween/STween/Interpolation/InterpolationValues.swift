@@ -37,8 +37,8 @@ internal struct InterpolationValues<T: Interpolatable> where T.Value == T {
 
      - Returns: The value interpolated between the start and end value.
      */
-    internal func interpolate(with ease: Ease, elapsed: TimeInterval, duration: TimeInterval) -> T {
-        return T.interpolate(self.start, to: self.end, with: ease, elapsed: elapsed, duration: duration)
+    internal func interpolate(withEase ease: Ease, elapsed: TimeInterval, duration: TimeInterval) -> T {
+        return T.interpolate(from: self.start, to: self.end, withEase: ease, elapsed: elapsed, duration: duration)
     }
     
 }
