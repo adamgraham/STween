@@ -42,7 +42,7 @@ extension Tweener {
      start if `Defaults.autoStartTweens` is `true`.
      
      - Parameters:
-        - target: The object or data structure that properties are animated on.
+        - target: The object or data structure on which properties are animated.
         - properties: The array of properties to be animated on the `target`.
         - duration: The amount of time, in seconds, the animation will run.
         - completion: A callback invoked when the animation is finished.
@@ -70,7 +70,7 @@ extension Tweener {
      start if `Defaults.autoStartTweens` is `true`.
      
      - Parameters:
-        - target: The object or data structure that properties are animated on.
+        - target: The object or data structure on which properties are animated.
         - properties: The array of properties to be animated on the `target`.
         - duration: The amount of time, in seconds, the animation will run.
         - completion: A callback invoked when the animation is finished.
