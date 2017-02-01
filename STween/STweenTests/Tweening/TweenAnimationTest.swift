@@ -241,7 +241,7 @@ class TweenAnimationTest: XCTestCase {
     }
 
     func testKill() {
-        let tween = Tweener.to(target: UIView(), properties: [], duration: 1.0) as! TweenAnimation<UIView>
+        let tween = Tweener.to([], on: UIView(), duration: 1.0) as! TweenAnimation<UIView>
 
         var callbackInvoked = false
         tween.callback(set: .kill) {
@@ -306,7 +306,7 @@ class TweenAnimationTest: XCTestCase {
     // MARK: Callback Tests
 
     func testCallbackMethods() {
-        let tween = Tweener.to(target: UIView(), properties: [], duration: 1.0)
+        let tween = Tweener.to([], on: UIView(), duration: 1.0)
         let states: [TweenStateChange] = [.start, .stop, .restart, .pause, .resume, .complete, .kill, .reset, .update]
 
         for state in states {
@@ -353,7 +353,7 @@ fileprivate class InvalidTweenable: Tweenable {
             }
         }
 
-        static func interpolate(_ startValue: TweenProperty, to endValue: TweenProperty, with ease: Ease,
+        static func interpolate(from startValue: TweenProperty, to endValue: TweenProperty, withEase ease: Ease,
                                 elapsed: TimeInterval, duration: TimeInterval) -> TweenProperty {
             return endValue
         }

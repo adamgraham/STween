@@ -55,7 +55,7 @@ extension Tweenable {
      - Returns: The `Tween` control for the animation.
      */
     public final func tween(_ property: TweenProperty, duration: TimeInterval, completion: Callback? = nil) -> Tween {
-        return Tweener.to(target: self, properties: [property], duration: duration, completion: completion)
+        return Tweener.to([property], on: self, duration: duration, completion: completion)
     }
 
     /**
@@ -70,7 +70,7 @@ extension Tweenable {
      - Returns: The `Tween` control for the animation.
      */
     public final func tween(_ properties: [TweenProperty], duration: TimeInterval, completion: Callback? = nil) -> Tween {
-        return Tweener.to(target: self, properties: properties, duration: duration, completion: completion)
+        return Tweener.to(properties, on: self, duration: duration, completion: completion)
     }
 
 }

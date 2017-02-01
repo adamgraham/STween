@@ -17,7 +17,7 @@ class EaseTest: XCTestCase {
     func testLinearProperties() {
         XCTAssertEqual(Ease.linear.classification, EaseClassification.linear)
         XCTAssertEqual(Ease.linear.curve, EaseCurve.none)
-        XCTAssertEqual(Ease.linear.interpolate(startValue: 0.0, endValue: 0.0, elapsed: 0.0, duration: 1.0), 0.0)
+        XCTAssertEqual(Ease.linear.interpolate(from: 0.0, to: 0.0, elapsed: 0.0, duration: 1.0), 0.0)
     }
 
     // MARK: Sinusoidal Ease Tests
@@ -25,19 +25,19 @@ class EaseTest: XCTestCase {
     func testSineInProperties() {
         XCTAssertEqual(Ease.sineIn.classification, EaseClassification.sine)
         XCTAssertEqual(Ease.sineIn.curve, EaseCurve.in)
-        XCTAssertEqual(Ease.sineIn.interpolate(startValue: 0.0, endValue: 0.0, elapsed: 0.0, duration: 1.0), 0.0)
+        XCTAssertEqual(Ease.sineIn.interpolate(from: 0.0, to: 0.0, elapsed: 0.0, duration: 1.0), 0.0)
     }
 
     func testSineOutProperties() {
         XCTAssertEqual(Ease.sineOut.classification, EaseClassification.sine)
         XCTAssertEqual(Ease.sineOut.curve, EaseCurve.out)
-        XCTAssertEqual(Ease.sineOut.interpolate(startValue: 0.0, endValue: 0.0, elapsed: 0.0, duration: 1.0), 0.0)
+        XCTAssertEqual(Ease.sineOut.interpolate(from: 0.0, to: 0.0, elapsed: 0.0, duration: 1.0), 0.0)
     }
 
     func testSineInOutProperties() {
         XCTAssertEqual(Ease.sineInOut.classification, EaseClassification.sine)
         XCTAssertEqual(Ease.sineInOut.curve, EaseCurve.inOut)
-        XCTAssertEqual(Ease.sineInOut.interpolate(startValue: 0.0, endValue: 0.0, elapsed: 0.0, duration: 1.0), 0.0)
+        XCTAssertEqual(Ease.sineInOut.interpolate(from: 0.0, to: 0.0, elapsed: 0.0, duration: 1.0), 0.0)
     }
 
     // MARK: Cubic Ease Tests
@@ -45,19 +45,19 @@ class EaseTest: XCTestCase {
     func testCubicInProperties() {
         XCTAssertEqual(Ease.cubicIn.classification, EaseClassification.cubic)
         XCTAssertEqual(Ease.cubicIn.curve, EaseCurve.in)
-        XCTAssertEqual(Ease.cubicIn.interpolate(startValue: 0.0, endValue: 0.0, elapsed: 0.0, duration: 1.0), 0.0)
+        XCTAssertEqual(Ease.cubicIn.interpolate(from: 0.0, to: 0.0, elapsed: 0.0, duration: 1.0), 0.0)
     }
 
     func testCubicOutProperties() {
         XCTAssertEqual(Ease.cubicOut.classification, EaseClassification.cubic)
         XCTAssertEqual(Ease.cubicOut.curve, EaseCurve.out)
-        XCTAssertEqual(Ease.cubicOut.interpolate(startValue: 0.0, endValue: 0.0, elapsed: 0.0, duration: 1.0), 0.0)
+        XCTAssertEqual(Ease.cubicOut.interpolate(from: 0.0, to: 0.0, elapsed: 0.0, duration: 1.0), 0.0)
     }
 
     func testCubicInOutProperties() {
         XCTAssertEqual(Ease.cubicInOut.classification, EaseClassification.cubic)
         XCTAssertEqual(Ease.cubicInOut.curve, EaseCurve.inOut)
-        XCTAssertEqual(Ease.cubicInOut.interpolate(startValue: 0.0, endValue: 0.0, elapsed: 0.0, duration: 1.0), 0.0)
+        XCTAssertEqual(Ease.cubicInOut.interpolate(from: 0.0, to: 0.0, elapsed: 0.0, duration: 1.0), 0.0)
     }
 
     // MARK: Quadratic Ease Tests
@@ -65,19 +65,19 @@ class EaseTest: XCTestCase {
     func testQuadInProperties() {
         XCTAssertEqual(Ease.quadIn.classification, EaseClassification.quad)
         XCTAssertEqual(Ease.quadIn.curve, EaseCurve.in)
-        XCTAssertEqual(Ease.quadIn.interpolate(startValue: 0.0, endValue: 0.0, elapsed: 0.0, duration: 1.0), 0.0)
+        XCTAssertEqual(Ease.quadIn.interpolate(from: 0.0, to: 0.0, elapsed: 0.0, duration: 1.0), 0.0)
     }
 
     func testQuadOutProperties() {
         XCTAssertEqual(Ease.quadOut.classification, EaseClassification.quad)
         XCTAssertEqual(Ease.quadOut.curve, EaseCurve.out)
-        XCTAssertEqual(Ease.quadOut.interpolate(startValue: 0.0, endValue: 0.0, elapsed: 0.0, duration: 1.0), 0.0)
+        XCTAssertEqual(Ease.quadOut.interpolate(from: 0.0, to: 0.0, elapsed: 0.0, duration: 1.0), 0.0)
     }
 
     func testQuadInOutProperties() {
         XCTAssertEqual(Ease.quadInOut.classification, EaseClassification.quad)
         XCTAssertEqual(Ease.quadInOut.curve, EaseCurve.inOut)
-        XCTAssertEqual(Ease.quadInOut.interpolate(startValue: 0.0, endValue: 0.0, elapsed: 0.0, duration: 1.0), 0.0)
+        XCTAssertEqual(Ease.quadInOut.interpolate(from: 0.0, to: 0.0, elapsed: 0.0, duration: 1.0), 0.0)
     }
 
     // MARK: Quartic Ease Tests
@@ -85,19 +85,19 @@ class EaseTest: XCTestCase {
     func testQuartInProperties() {
         XCTAssertEqual(Ease.quartIn.classification, EaseClassification.quart)
         XCTAssertEqual(Ease.quartIn.curve, EaseCurve.in)
-        XCTAssertEqual(Ease.quartIn.interpolate(startValue: 0.0, endValue: 0.0, elapsed: 0.0, duration: 1.0), 0.0)
+        XCTAssertEqual(Ease.quartIn.interpolate(from: 0.0, to: 0.0, elapsed: 0.0, duration: 1.0), 0.0)
     }
 
     func testQuartOutProperties() {
         XCTAssertEqual(Ease.quartOut.classification, EaseClassification.quart)
         XCTAssertEqual(Ease.quartOut.curve, EaseCurve.out)
-        XCTAssertEqual(Ease.quartOut.interpolate(startValue: 0.0, endValue: 0.0, elapsed: 0.0, duration: 1.0), 0.0)
+        XCTAssertEqual(Ease.quartOut.interpolate(from: 0.0, to: 0.0, elapsed: 0.0, duration: 1.0), 0.0)
     }
 
     func testQuartInOutProperties() {
         XCTAssertEqual(Ease.quartInOut.classification, EaseClassification.quart)
         XCTAssertEqual(Ease.quartInOut.curve, EaseCurve.inOut)
-        XCTAssertEqual(Ease.quartInOut.interpolate(startValue: 0.0, endValue: 0.0, elapsed: 0.0, duration: 1.0), 0.0)
+        XCTAssertEqual(Ease.quartInOut.interpolate(from: 0.0, to: 0.0, elapsed: 0.0, duration: 1.0), 0.0)
     }
 
     // MARK: Quintic Ease Tests
@@ -105,19 +105,19 @@ class EaseTest: XCTestCase {
     func testQuintInProperties() {
         XCTAssertEqual(Ease.quintIn.classification, EaseClassification.quint)
         XCTAssertEqual(Ease.quintIn.curve, EaseCurve.in)
-        XCTAssertEqual(Ease.quintIn.interpolate(startValue: 0.0, endValue: 0.0, elapsed: 0.0, duration: 1.0), 0.0)
+        XCTAssertEqual(Ease.quintIn.interpolate(from: 0.0, to: 0.0, elapsed: 0.0, duration: 1.0), 0.0)
     }
 
     func testQuintOutProperties() {
         XCTAssertEqual(Ease.quintOut.classification, EaseClassification.quint)
         XCTAssertEqual(Ease.quintOut.curve, EaseCurve.out)
-        XCTAssertEqual(Ease.quintOut.interpolate(startValue: 0.0, endValue: 0.0, elapsed: 0.0, duration: 1.0), 0.0)
+        XCTAssertEqual(Ease.quintOut.interpolate(from: 0.0, to: 0.0, elapsed: 0.0, duration: 1.0), 0.0)
     }
 
     func testQuintInOutProperties() {
         XCTAssertEqual(Ease.quintInOut.classification, EaseClassification.quint)
         XCTAssertEqual(Ease.quintInOut.curve, EaseCurve.inOut)
-        XCTAssertEqual(Ease.quintInOut.interpolate(startValue: 0.0, endValue: 0.0, elapsed: 0.0, duration: 1.0), 0.0)
+        XCTAssertEqual(Ease.quintInOut.interpolate(from: 0.0, to: 0.0, elapsed: 0.0, duration: 1.0), 0.0)
     }
 
     // MARK: Exponential Ease Tests
@@ -125,19 +125,19 @@ class EaseTest: XCTestCase {
     func testExpoInProperties() {
         XCTAssertEqual(Ease.expoIn.classification, EaseClassification.expo)
         XCTAssertEqual(Ease.expoIn.curve, EaseCurve.in)
-        XCTAssertEqual(Ease.expoIn.interpolate(startValue: 0.0, endValue: 0.0, elapsed: 0.0, duration: 1.0), 0.0)
+        XCTAssertEqual(Ease.expoIn.interpolate(from: 0.0, to: 0.0, elapsed: 0.0, duration: 1.0), 0.0)
     }
 
     func testExpoOutProperties() {
         XCTAssertEqual(Ease.expoOut.classification, EaseClassification.expo)
         XCTAssertEqual(Ease.expoOut.curve, EaseCurve.out)
-        XCTAssertEqual(Ease.expoOut.interpolate(startValue: 0.0, endValue: 0.0, elapsed: 0.0, duration: 1.0), 0.0)
+        XCTAssertEqual(Ease.expoOut.interpolate(from: 0.0, to: 0.0, elapsed: 0.0, duration: 1.0), 0.0)
     }
 
     func testExpoInOutProperties() {
         XCTAssertEqual(Ease.expoInOut.classification, EaseClassification.expo)
         XCTAssertEqual(Ease.expoInOut.curve, EaseCurve.inOut)
-        XCTAssertEqual(Ease.expoInOut.interpolate(startValue: 0.0, endValue: 0.0, elapsed: 0.0, duration: 1.0), 0.0)
+        XCTAssertEqual(Ease.expoInOut.interpolate(from: 0.0, to: 0.0, elapsed: 0.0, duration: 1.0), 0.0)
     }
 
     // MARK: Circular Ease Tests
@@ -145,19 +145,19 @@ class EaseTest: XCTestCase {
     func testCircInProperties() {
         XCTAssertEqual(Ease.circIn.classification, EaseClassification.circ)
         XCTAssertEqual(Ease.circIn.curve, EaseCurve.in)
-        XCTAssertEqual(Ease.circIn.interpolate(startValue: 0.0, endValue: 0.0, elapsed: 0.0, duration: 1.0), 0.0)
+        XCTAssertEqual(Ease.circIn.interpolate(from: 0.0, to: 0.0, elapsed: 0.0, duration: 1.0), 0.0)
     }
 
     func testCircOutProperties() {
         XCTAssertEqual(Ease.circOut.classification, EaseClassification.circ)
         XCTAssertEqual(Ease.circOut.curve, EaseCurve.out)
-        XCTAssertEqual(Ease.circOut.interpolate(startValue: 0.0, endValue: 0.0, elapsed: 0.0, duration: 1.0), 0.0)
+        XCTAssertEqual(Ease.circOut.interpolate(from: 0.0, to: 0.0, elapsed: 0.0, duration: 1.0), 0.0)
     }
 
     func testCircInOutProperties() {
         XCTAssertEqual(Ease.circInOut.classification, EaseClassification.circ)
         XCTAssertEqual(Ease.circInOut.curve, EaseCurve.inOut)
-        XCTAssertEqual(Ease.circInOut.interpolate(startValue: 0.0, endValue: 0.0, elapsed: 0.0, duration: 1.0), 0.0)
+        XCTAssertEqual(Ease.circInOut.interpolate(from: 0.0, to: 0.0, elapsed: 0.0, duration: 1.0), 0.0)
     }
 
     // MARK: Back Ease Tests
@@ -165,19 +165,19 @@ class EaseTest: XCTestCase {
     func testBackInProperties() {
         XCTAssertEqual(Ease.backIn.classification, EaseClassification.back)
         XCTAssertEqual(Ease.backIn.curve, EaseCurve.in)
-        XCTAssertEqual(Ease.backIn.interpolate(startValue: 0.0, endValue: 0.0, elapsed: 0.0, duration: 1.0), 0.0)
+        XCTAssertEqual(Ease.backIn.interpolate(from: 0.0, to: 0.0, elapsed: 0.0, duration: 1.0), 0.0)
     }
 
     func testBackOutProperties() {
         XCTAssertEqual(Ease.backOut.classification, EaseClassification.back)
         XCTAssertEqual(Ease.backOut.curve, EaseCurve.out)
-        XCTAssertEqual(Ease.backOut.interpolate(startValue: 0.0, endValue: 0.0, elapsed: 0.0, duration: 1.0), 0.0)
+        XCTAssertEqual(Ease.backOut.interpolate(from: 0.0, to: 0.0, elapsed: 0.0, duration: 1.0), 0.0)
     }
 
     func testBackInOutProperties() {
         XCTAssertEqual(Ease.backInOut.classification, EaseClassification.back)
         XCTAssertEqual(Ease.backInOut.curve, EaseCurve.inOut)
-        XCTAssertEqual(Ease.backInOut.interpolate(startValue: 0.0, endValue: 0.0, elapsed: 0.0, duration: 1.0), 0.0)
+        XCTAssertEqual(Ease.backInOut.interpolate(from: 0.0, to: 0.0, elapsed: 0.0, duration: 1.0), 0.0)
     }
 
     // MARK: Elastic Ease Tests
@@ -185,19 +185,19 @@ class EaseTest: XCTestCase {
     func testElasticInProperties() {
         XCTAssertEqual(Ease.elasticIn.classification, EaseClassification.elastic)
         XCTAssertEqual(Ease.elasticIn.curve, EaseCurve.in)
-        XCTAssertEqual(Ease.elasticIn.interpolate(startValue: 0.0, endValue: 0.0, elapsed: 0.0, duration: 1.0), 0.0)
+        XCTAssertEqual(Ease.elasticIn.interpolate(from: 0.0, to: 0.0, elapsed: 0.0, duration: 1.0), 0.0)
     }
 
     func testElasticOutProperties() {
         XCTAssertEqual(Ease.elasticOut.classification, EaseClassification.elastic)
         XCTAssertEqual(Ease.elasticOut.curve, EaseCurve.out)
-        XCTAssertEqual(Ease.elasticOut.interpolate(startValue: 0.0, endValue: 0.0, elapsed: 0.0, duration: 1.0), 0.0)
+        XCTAssertEqual(Ease.elasticOut.interpolate(from: 0.0, to: 0.0, elapsed: 0.0, duration: 1.0), 0.0)
     }
 
     func testElasticInOutProperties() {
         XCTAssertEqual(Ease.elasticInOut.classification, EaseClassification.elastic)
         XCTAssertEqual(Ease.elasticInOut.curve, EaseCurve.inOut)
-        XCTAssertEqual(Ease.elasticInOut.interpolate(startValue: 0.0, endValue: 0.0, elapsed: 0.0, duration: 1.0), 0.0)
+        XCTAssertEqual(Ease.elasticInOut.interpolate(from: 0.0, to: 0.0, elapsed: 0.0, duration: 1.0), 0.0)
     }
 
     // MARK: Bounce Ease Tests
@@ -205,19 +205,19 @@ class EaseTest: XCTestCase {
     func testBounceInProperties() {
         XCTAssertEqual(Ease.bounceIn.classification, EaseClassification.bounce)
         XCTAssertEqual(Ease.bounceIn.curve, EaseCurve.in)
-        XCTAssertEqual(Ease.bounceIn.interpolate(startValue: 0.0, endValue: 0.0, elapsed: 0.0, duration: 1.0), 0.0)
+        XCTAssertEqual(Ease.bounceIn.interpolate(from: 0.0, to: 0.0, elapsed: 0.0, duration: 1.0), 0.0)
     }
 
     func testBounceOutProperties() {
         XCTAssertEqual(Ease.bounceOut.classification, EaseClassification.bounce)
         XCTAssertEqual(Ease.bounceOut.curve, EaseCurve.out)
-        XCTAssertEqual(Ease.bounceOut.interpolate(startValue: 0.0, endValue: 0.0, elapsed: 0.0, duration: 1.0), 0.0)
+        XCTAssertEqual(Ease.bounceOut.interpolate(from: 0.0, to: 0.0, elapsed: 0.0, duration: 1.0), 0.0)
     }
 
     func testBounceInOutProperties() {
         XCTAssertEqual(Ease.bounceInOut.classification, EaseClassification.bounce)
         XCTAssertEqual(Ease.bounceInOut.curve, EaseCurve.inOut)
-        XCTAssertEqual(Ease.bounceInOut.interpolate(startValue: 0.0, endValue: 0.0, elapsed: 0.0, duration: 1.0), 0.0)
+        XCTAssertEqual(Ease.bounceInOut.interpolate(from: 0.0, to: 0.0, elapsed: 0.0, duration: 1.0), 0.0)
     }
 
 }

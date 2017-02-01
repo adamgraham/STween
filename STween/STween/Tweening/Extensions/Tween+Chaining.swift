@@ -12,7 +12,7 @@
  For example,
 
  ```
- let tween = self.tween(property: .x(50.0), duration: 1.0)
+ let tween = self.tween(.width(50.0), duration: 1.0)
     .set(ease: Ease.backOut)
     .set(delay: 0.5)
     .set(callback: { ... }, for: TweenStateChange.complete)

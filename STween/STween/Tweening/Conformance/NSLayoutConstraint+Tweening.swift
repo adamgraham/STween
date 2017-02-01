@@ -44,14 +44,14 @@ extension NSLayoutConstraint: Tweenable {
             }
         }
 
-        public static func interpolate(_ startValue: TweenProperty, to endValue: TweenProperty, with ease: Ease,
+        public static func interpolate(from startValue: TweenProperty, to endValue: TweenProperty, withEase ease: Ease,
                                        elapsed: TimeInterval, duration: TimeInterval) -> TweenProperty {
 
             switch (startValue, endValue) {
             case let (.constant(start), .constant(end)):
-                return .constant(CGFloat.interpolate(start, to: end, with: ease, elapsed: elapsed, duration: duration))
+                return .constant(CGFloat.interpolate(from: start, to: end, withEase: ease, elapsed: elapsed, duration: duration))
             case let (.priority(start), .priority(end)):
-                return .priority(UILayoutPriority.interpolate(start, to: end, with: ease, elapsed: elapsed, duration: duration))
+                return .priority(UILayoutPriority.interpolate(from: start, to: end, withEase: ease, elapsed: elapsed, duration: duration))
             default:
                 return startValue
             }

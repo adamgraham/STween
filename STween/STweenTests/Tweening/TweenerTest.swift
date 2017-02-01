@@ -25,7 +25,7 @@ class TweenerTest: XCTestCase {
     // MARK: Factory Creation Tests
 
     func testToWithCallback() {
-        let tween = Tweener.to(target: UIView(), properties: [], duration: 1.0, completion: {})
+        let tween = Tweener.to([], on: UIView(), duration: 1.0, completion: {})
         XCTAssertEqual(tween.state, .new)
         XCTAssertFalse(tween.reversed)
         XCTAssertEqual(tween.duration, 1.0)
@@ -33,7 +33,7 @@ class TweenerTest: XCTestCase {
     }
 
     func testToWithoutCallback() {
-        let tween = Tweener.to(target: UIView(), properties: [], duration: 1.0)
+        let tween = Tweener.to([], on: UIView(), duration: 1.0)
         XCTAssertEqual(tween.state, .new)
         XCTAssertFalse(tween.reversed)
         XCTAssertEqual(tween.duration, 1.0)
@@ -41,7 +41,7 @@ class TweenerTest: XCTestCase {
     }
 
     func testFromWithCallback() {
-        let tween = Tweener.from(target: UIView(), properties: [], duration: 1.0, completion: {})
+        let tween = Tweener.from([], on: UIView(), duration: 1.0, completion: {})
         XCTAssertEqual(tween.state, .new)
         XCTAssertTrue(tween.reversed)
         XCTAssertEqual(tween.duration, 1.0)
@@ -49,7 +49,7 @@ class TweenerTest: XCTestCase {
     }
 
     func testFromWithoutCallback() {
-        let tween = Tweener.from(target: UIView(), properties: [], duration: 1.0)
+        let tween = Tweener.from([], on: UIView(), duration: 1.0)
         XCTAssertEqual(tween.state, .new)
         XCTAssertTrue(tween.reversed)
         XCTAssertEqual(tween.duration, 1.0)
@@ -124,8 +124,8 @@ class TweenerTest: XCTestCase {
     // MARK: Global State Control Tests
 
     func testInvokeGlobalStateChange() {
-        let tween = Tweener.to(target: UIView(), properties: [], duration: 1.0, completion: {})
-        let anotherTween = Tweener.to(target: UIView(), properties: [], duration: 1.0, completion: {})
+        let tween = Tweener.to([], on: UIView(), duration: 1.0, completion: {})
+        let anotherTween = Tweener.to([], on: UIView(), duration: 1.0, completion: {})
 
         Tweener.invokeStateChangeOnAllTweens(.kill)
 

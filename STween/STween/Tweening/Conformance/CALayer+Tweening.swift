@@ -168,55 +168,55 @@ extension CALayer: Tweenable {
             }
         }
 
-        public static func interpolate(_ startValue: TweenProperty, to endValue: TweenProperty, with ease: Ease,
+        public static func interpolate(from startValue: TweenProperty, to endValue: TweenProperty, withEase ease: Ease,
                                        elapsed: TimeInterval, duration: TimeInterval) -> TweenProperty {
 
             switch (startValue, endValue) {
             case let (.frame(start), .frame(end)):
-                return .frame(CGRect.interpolate(start, to: end, with: ease, elapsed: elapsed, duration: duration))
+                return .frame(CGRect.interpolate(from: start, to: end, withEase: ease, elapsed: elapsed, duration: duration))
             case let (.bounds(start), .bounds(end)):
-                return .bounds(CGRect.interpolate(start, to: end, with: ease, elapsed: elapsed, duration: duration))
+                return .bounds(CGRect.interpolate(from: start, to: end, withEase: ease, elapsed: elapsed, duration: duration))
 
             case let (.position(start), .position(end)):
-                return .position(CGPoint.interpolate(start, to: end, with: ease, elapsed: elapsed, duration: duration))
+                return .position(CGPoint.interpolate(from: start, to: end, withEase: ease, elapsed: elapsed, duration: duration))
             case let (.zPosition(start), .zPosition(end)):
-                return .zPosition(CGFloat.interpolate(start, to: end, with: ease, elapsed: elapsed, duration: duration))
+                return .zPosition(CGFloat.interpolate(from: start, to: end, withEase: ease, elapsed: elapsed, duration: duration))
             case let (.anchorPoint(start), .anchorPoint(end)):
-                return .anchorPoint(CGPoint.interpolate(start, to: end, with: ease, elapsed: elapsed, duration: duration))
+                return .anchorPoint(CGPoint.interpolate(from: start, to: end, withEase: ease, elapsed: elapsed, duration: duration))
             case let (.anchorPointZ(start), .anchorPointZ(end)):
-                return .anchorPointZ(CGFloat.interpolate(start, to: end, with: ease, elapsed: elapsed, duration: duration))
+                return .anchorPointZ(CGFloat.interpolate(from: start, to: end, withEase: ease, elapsed: elapsed, duration: duration))
 
             case let (.transform(start), .transform(end)):
-                return .transform(CATransform3D.interpolate(start, to: end, with: ease, elapsed: elapsed, duration: duration))
+                return .transform(CATransform3D.interpolate(from: start, to: end, withEase: ease, elapsed: elapsed, duration: duration))
             case let (.sublayerTransform(start), .sublayerTransform(end)):
-                return .sublayerTransform(CATransform3D.interpolate(start, to: end, with: ease, elapsed: elapsed, duration: duration))
+                return .sublayerTransform(CATransform3D.interpolate(from: start, to: end, withEase: ease, elapsed: elapsed, duration: duration))
 
             case let (.contentsRect(start), .contentsRect(end)):
-                return .contentsRect(CGRect.interpolate(start, to: end, with: ease, elapsed: elapsed, duration: duration))
+                return .contentsRect(CGRect.interpolate(from: start, to: end, withEase: ease, elapsed: elapsed, duration: duration))
             case let (.contentsCenter(start), .contentsCenter(end)):
-                return .contentsCenter(CGRect.interpolate(start, to: end, with: ease, elapsed: elapsed, duration: duration))
+                return .contentsCenter(CGRect.interpolate(from: start, to: end, withEase: ease, elapsed: elapsed, duration: duration))
             case let (.contentsScale(start), .contentsScale(end)):
-                return .contentsScale(CGFloat.interpolate(start, to: end, with: ease, elapsed: elapsed, duration: duration))
+                return .contentsScale(CGFloat.interpolate(from: start, to: end, withEase: ease, elapsed: elapsed, duration: duration))
 
             case let (.cornerRadius(start), .cornerRadius(end)):
-                return .cornerRadius(CGFloat.interpolate(start, to: end, with: ease, elapsed: elapsed, duration: duration))
+                return .cornerRadius(CGFloat.interpolate(from: start, to: end, withEase: ease, elapsed: elapsed, duration: duration))
             case let (.borderWidth(start), .borderWidth(end)):
-                return .borderWidth(CGFloat.interpolate(start, to: end, with: ease, elapsed: elapsed, duration: duration))
+                return .borderWidth(CGFloat.interpolate(from: start, to: end, withEase: ease, elapsed: elapsed, duration: duration))
             case let (.borderColor(start), .borderColor(end)):
-                return .borderColor(CGColor.interpolate(start, to: end, with: ease, elapsed: elapsed, duration: duration))
+                return .borderColor(CGColor.interpolate(from: start, to: end, withEase: ease, elapsed: elapsed, duration: duration))
             case let (.backgroundColor(start), .backgroundColor(end)):
-                return .backgroundColor(CGColor.interpolate(start, to: end, with: ease, elapsed: elapsed, duration: duration))
+                return .backgroundColor(CGColor.interpolate(from: start, to: end, withEase: ease, elapsed: elapsed, duration: duration))
             case let (.opacity(start), .opacity(end)):
-                return .opacity(Float.interpolate(start, to: end, with: ease, elapsed: elapsed, duration: duration))
+                return .opacity(Float.interpolate(from: start, to: end, withEase: ease, elapsed: elapsed, duration: duration))
 
             case let (.shadowColor(start), .shadowColor(end)):
-                return .shadowColor(CGColor.interpolate(start, to: end, with: ease, elapsed: elapsed, duration: duration))
+                return .shadowColor(CGColor.interpolate(from: start, to: end, withEase: ease, elapsed: elapsed, duration: duration))
             case let (.shadowOpacity(start), .shadowOpacity(end)):
-                return .shadowOpacity(Float.interpolate(start, to: end, with: ease, elapsed: elapsed, duration: duration))
+                return .shadowOpacity(Float.interpolate(from: start, to: end, withEase: ease, elapsed: elapsed, duration: duration))
             case let (.shadowOffset(start), .shadowOffset(end)):
-                return .shadowOffset(CGSize.interpolate(start, to: end, with: ease, elapsed: elapsed, duration: duration))
+                return .shadowOffset(CGSize.interpolate(from: start, to: end, withEase: ease, elapsed: elapsed, duration: duration))
             case let (.shadowRadius(start), .shadowRadius(end)):
-                return .shadowRadius(CGFloat.interpolate(start, to: end, with: ease, elapsed: elapsed, duration: duration))
+                return .shadowRadius(CGFloat.interpolate(from: start, to: end, withEase: ease, elapsed: elapsed, duration: duration))
 
             default:
                 return startValue

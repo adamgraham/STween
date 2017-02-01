@@ -23,42 +23,42 @@ class TweenTest: XCTestCase {
     }
 
     func testEase() {
-        let tween = Tweener.to(target: UIView(), properties: [], duration: 1.0)
+        let tween = Tweener.to([], on: UIView(), duration: 1.0)
         XCTAssertEqual(tween.ease, Defaults.ease)
         tween.ease = .backOut
         XCTAssertEqual(tween.ease, .backOut)
     }
 
     func testReversed() {
-        let tween = Tweener.to(target: UIView(), properties: [], duration: 1.0)
+        let tween = Tweener.to([], on: UIView(), duration: 1.0)
         XCTAssertFalse(tween.reversed)
         tween.reversed = true
         XCTAssertTrue(tween.reversed)
     }
 
     func testState() {
-        let tween = Tweener.to(target: UIView(), properties: [], duration: 1.0)
+        let tween = Tweener.to([], on: UIView(), duration: 1.0)
         XCTAssertEqual(tween.state, .new)
         tween.invoke(.kill)
         XCTAssertEqual(tween.state, .killed)
     }
 
     func testDelay() {
-        let tween = Tweener.to(target: UIView(), properties: [], duration: 1.0)
+        let tween = Tweener.to([], on: UIView(), duration: 1.0)
         XCTAssertEqual(tween.delay, 0.0)
         tween.delay = 1.0
         XCTAssertEqual(tween.delay, 1.0)
     }
 
     func testDuration() {
-        let tween = Tweener.to(target: UIView(), properties: [], duration: 1.0)
+        let tween = Tweener.to([], on: UIView(), duration: 1.0)
         XCTAssertEqual(tween.duration, 1.0)
         tween.duration = 2.0
         XCTAssertEqual(tween.duration, 2.0)
     }
 
     func testElapsed() {
-        let tween = Tweener.to(target: UIView(), properties: [], duration: 1.0)
+        let tween = Tweener.to([], on: UIView(), duration: 1.0)
         XCTAssertEqual(tween.elapsed, 0.0)
         tween.invoke(.start)
         tween.invoke(.complete)
@@ -66,7 +66,7 @@ class TweenTest: XCTestCase {
     }
 
     func testPercentComplete() {
-        let tween = Tweener.to(target: UIView(), properties: [], duration: 1.0)
+        let tween = Tweener.to([], on: UIView(), duration: 1.0)
         XCTAssertEqual(tween.percentComplete, 0.0)
         tween.invoke(.start)
         tween.invoke(.complete)
