@@ -60,7 +60,7 @@ class UIButton_TweeningTest: XCTestCase, TweenableTestable {
     @available(iOS 5.0, *)
     func testTintColor() {
         let button = UIButton()
-        let property = UIButton.UIButtonTweenProperty.tintColor(UIColor.blue)
+        let property = UIButtonTweenProperty.tintColor(UIColor.blue)
         assertObjectNotConvertible(tweenable: button, property: property, unexpectedTweenable: button.layer)
         assertValidInterpolation(tweenable: button, property: property) {
             return isEqual(button.tintColor, UIColor.blue)
