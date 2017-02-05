@@ -12,8 +12,6 @@ import XCTest
 
 class CALayer_TweeningTest: XCTestCase, TweenableTestable {
 
-    // MARK: TweenProperty Tests
-
     func testFrameTweenProperty() {
         let layer = UIView().layer
         let property = CALayer.TweenProperty.frame(CGRect(x: 100.0, y: 100.0, width: 100.0, height: 100.0))

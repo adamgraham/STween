@@ -9,9 +9,11 @@
 /// An extension to provide tweening animation functionality to `UIView`.
 extension UIView: Tweenable {
 
+    public typealias TweenProperty = UIViewTweenProperty
+
     /// An enum to describe the properties that can be animated with a tween
     /// on a `UIView`.
-    public enum TweenProperty: TweenableProperty {
+    public enum UIViewTweenProperty: TweenableProperty {
 
         /// A case to denote the `frame.origin.x` property of a `UIView`.
         case x(CGFloat)
@@ -54,6 +56,7 @@ extension UIView: Tweenable {
         case alpha(CGFloat)
         /// A case to denote the `backgroundColor` property of a `UIView`.
         case backgroundColor(UIColor)
+
         /// A case to denote the `tintColor` property of a `UIView`.
         @available(iOS 7.0, *)
         case tintColor(UIColor)
@@ -66,7 +69,7 @@ extension UIView: Tweenable {
         @available(iOS 8.0, *)
         case layoutMargins(UIEdgeInsets)
 
-        public func value<T: Tweenable>(from object: T) throws -> TweenProperty {
+        public func value<T: Tweenable>(from object: T) throws -> UIViewTweenProperty {
             guard let view = object as? UIView else {
                 throw TweenError.objectNotConvertible(object, to: UIView.self)
             }
@@ -113,6 +116,7 @@ extension UIView: Tweenable {
                 return .alpha(view.alpha)
             case .backgroundColor:
                 return .backgroundColor(view.backgroundColor ?? UIColor.clear)
+
             case .tintColor:
                 return .tintColor(view.tintColor)
                 
@@ -171,6 +175,7 @@ extension UIView: Tweenable {
                 view.alpha = value
             case let .backgroundColor(value):
                 view.backgroundColor = value
+
             case let .tintColor(value):
                 view.tintColor = value
 
@@ -182,8 +187,8 @@ extension UIView: Tweenable {
             }
         }
 
-        public static func interpolate(from startValue: TweenProperty, to endValue: TweenProperty, withEase ease: Ease,
-                                       elapsed: TimeInterval, duration: TimeInterval) -> TweenProperty {
+        public static func interpolate(from startValue: UIViewTweenProperty, to endValue: UIViewTweenProperty, withEase ease: Ease,
+                                       elapsed: TimeInterval, duration: TimeInterval) -> UIViewTweenProperty {
 
             switch (startValue, endValue) {
             case let (.x(start), .x(end)):
@@ -227,6 +232,7 @@ extension UIView: Tweenable {
                 return .alpha(CGFloat.interpolate(from: start, to: end, withEase: ease, elapsed: elapsed, duration: duration))
             case let (.backgroundColor(start), .backgroundColor(end)):
                 return .backgroundColor(UIColor.interpolate(from: start, to: end, withEase: ease, elapsed: elapsed, duration: duration))
+
             case let (.tintColor(start), .tintColor(end)):
                 return .tintColor(UIColor.interpolate(from: start, to: end, withEase: ease, elapsed: elapsed, duration: duration))
 

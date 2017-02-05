@@ -12,8 +12,6 @@ import XCTest
 
 class UIView_TweeningTest: XCTestCase, TweenableTestable {
 
-    // MARK: TweenProperty Tests
-
     func testXTweenProperty() {
         let view = UIView()
         let property = UIView.TweenProperty.x(100.0)

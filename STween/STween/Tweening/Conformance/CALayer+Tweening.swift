@@ -9,9 +9,11 @@
 /// An extension to provide tweening animation functionality to `NSLayoutConstraint`.
 extension CALayer: Tweenable {
 
+    public typealias TweenProperty = CALayerTweenProperty
+
     /// An enum to describe the properties that can be animated with a tween
     /// on a `CALayer`.
-    public enum TweenProperty: TweenableProperty {
+    public enum CALayerTweenProperty: TweenableProperty {
 
         /// A case to denote the `frame` property of a `CALayer`.
         case frame(CGRect)
@@ -60,7 +62,7 @@ extension CALayer: Tweenable {
         /// A case to denote the `shadowRadius` property of a `CALayer`.
         case shadowRadius(CGFloat)
 
-        public func value<T: Tweenable>(from object: T) throws -> TweenProperty {
+        public func value<T: Tweenable>(from object: T) throws -> CALayerTweenProperty {
             guard let layer = object as? CALayer else {
                 throw TweenError.objectNotConvertible(object, to: CALayer.self)
             }
@@ -168,8 +170,8 @@ extension CALayer: Tweenable {
             }
         }
 
-        public static func interpolate(from startValue: TweenProperty, to endValue: TweenProperty, withEase ease: Ease,
-                                       elapsed: TimeInterval, duration: TimeInterval) -> TweenProperty {
+        public static func interpolate(from startValue: CALayerTweenProperty, to endValue: CALayerTweenProperty, withEase ease: Ease,
+                                       elapsed: TimeInterval, duration: TimeInterval) -> CALayerTweenProperty {
 
             switch (startValue, endValue) {
             case let (.frame(start), .frame(end)):

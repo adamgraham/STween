@@ -9,16 +9,18 @@
 /// An extension to provide tweening animation functionality to `NSLayoutConstraint`.
 extension NSLayoutConstraint: Tweenable {
 
+    public typealias TweenProperty = NSLayoutConstraintTweenProperty
+
     /// An enum to describe the properties that can be animated with a tween
     /// on a `NSLayoutConstraint`.
-    public enum TweenProperty: TweenableProperty {
+    public enum NSLayoutConstraintTweenProperty: TweenableProperty {
 
         /// A case to denote the `constant` property of a `NSLayoutConstraint`.
         case constant(CGFloat)
         /// A case to denote the `priority` property of a `NSLayoutConstraint`.
         case priority(UILayoutPriority)
 
-        public func value<T: Tweenable>(from object: T) throws -> TweenProperty {
+        public func value<T: Tweenable>(from object: T) throws -> NSLayoutConstraintTweenProperty {
             guard let constraint = object as? NSLayoutConstraint else {
                 throw TweenError.objectNotConvertible(object, to: NSLayoutConstraint.self)
             }
@@ -44,8 +46,8 @@ extension NSLayoutConstraint: Tweenable {
             }
         }
 
-        public static func interpolate(from startValue: TweenProperty, to endValue: TweenProperty, withEase ease: Ease,
-                                       elapsed: TimeInterval, duration: TimeInterval) -> TweenProperty {
+        public static func interpolate(from startValue: NSLayoutConstraintTweenProperty, to endValue: NSLayoutConstraintTweenProperty, withEase ease: Ease,
+                                       elapsed: TimeInterval, duration: TimeInterval) -> NSLayoutConstraintTweenProperty {
 
             switch (startValue, endValue) {
             case let (.constant(start), .constant(end)):

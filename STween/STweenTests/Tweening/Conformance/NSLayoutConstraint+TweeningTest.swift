@@ -12,8 +12,6 @@ import XCTest
 
 class NSLayoutConstraint_TweeningTest: XCTestCase, TweenableTestable {
 
-    // MARK: TweenProperty Tests
-
     func testConstantTweenProperty() {
         let constraint = NSLayoutConstraint()
         let property = NSLayoutConstraint.TweenProperty.constant(100.0)
