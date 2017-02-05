@@ -11,6 +11,10 @@ import XCTest
 extension XCTestCase {
 
     func XCTAssertColor(_ lhs: UIColor, _ rhs: UIColor, includeAlpha: Bool = true) {
+        XCTAssertTrue(isEqual(lhs, rhs, includeAlpha: includeAlpha))
+    }
+
+    func isEqual(_ lhs: UIColor, _ rhs: UIColor, includeAlpha: Bool = true) -> Bool {
         var lhsRed: CGFloat = 0.0
         var lhsGreen: CGFloat = 0.0
         var lhsBlue: CGFloat = 0.0
@@ -25,12 +29,17 @@ extension XCTestCase {
 
         rhs.getRed(&rhsRed, green: &rhsGreen, blue: &rhsBlue, alpha: &rhsAlpha)
 
-        XCTAssertEqualWithAccuracy(lhsRed, rhsRed, accuracy: CGFloat(FLT_EPSILON))
-        XCTAssertEqualWithAccuracy(lhsGreen, rhsGreen, accuracy: CGFloat(FLT_EPSILON))
-        XCTAssertEqualWithAccuracy(lhsBlue, rhsBlue, accuracy: CGFloat(FLT_EPSILON))
+        let epsilon = CGFloat(FLT_EPSILON)
 
         if includeAlpha {
-            XCTAssertEqualWithAccuracy(lhsAlpha, rhsAlpha, accuracy: CGFloat(FLT_EPSILON))
+            return abs(lhsRed - rhsRed) <= epsilon &&
+                   abs(lhsGreen - rhsGreen) <= epsilon &&
+                   abs(lhsBlue - rhsBlue) <= epsilon &&
+                   abs(lhsAlpha - rhsAlpha) <= epsilon
+        } else {
+            return abs(lhsRed - rhsRed) <= epsilon &&
+                   abs(lhsGreen - rhsGreen) <= epsilon &&
+                   abs(lhsBlue - rhsBlue) <= epsilon
         }
     }
 
