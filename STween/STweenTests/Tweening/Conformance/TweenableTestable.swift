@@ -16,8 +16,7 @@ protocol TweenableTestable {
 
 extension TweenableTestable {
 
-    func assertValidInterpolation<T: Tweenable>(tweenable: T, property: T.TweenProperty, interpolationAssert: (() -> Bool))
-        where T.TweenProperty.Value == T.TweenProperty {
+    func assertValidInterpolation<T: Tweenable, P: TweenableProperty>(tweenable: T, property: P, interpolationAssert: (() -> Bool)) {
         do {
             let startValue = try property.value(from: tweenable)
             let values = InterpolationValues(start: startValue, end: property)
@@ -29,8 +28,7 @@ extension TweenableTestable {
         }
     }
 
-    func assertObjectNotConvertible<A: Tweenable, B: Tweenable>(tweenable: A, property: A.TweenProperty, unexpectedTweenable: B)
-        where A.TweenProperty.Value == A.TweenProperty {
+    func assertObjectNotConvertible<A: Tweenable, B: Tweenable, P: TweenableProperty>(tweenable: A, property: P, unexpectedTweenable: B) {
         do {
             _ = try property.value(from: unexpectedTweenable)
             XCTFail("Unexpected success")
