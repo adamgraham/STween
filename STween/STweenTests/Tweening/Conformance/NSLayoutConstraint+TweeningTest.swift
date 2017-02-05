@@ -14,7 +14,7 @@ class NSLayoutConstraint_TweeningTest: XCTestCase, TweenableTestable {
 
     func testConstantTweenProperty() {
         let constraint = NSLayoutConstraint()
-        let property = NSLayoutConstraint.TweenProperty.constant(100.0)
+        let property = NSLayoutConstraintTweenProperty.constant(100.0)
         assertObjectNotConvertible(tweenable: constraint, property: property, unexpectedTweenable: UIView())
         assertValidInterpolation(tweenable: constraint, property: property) {
             return constraint.constant == 100.0
@@ -23,7 +23,7 @@ class NSLayoutConstraint_TweeningTest: XCTestCase, TweenableTestable {
 
     func testPriorityTweenProperty() {
         let constraint = NSLayoutConstraint()
-        let property = NSLayoutConstraint.TweenProperty.priority(UILayoutPriorityDefaultHigh)
+        let property = NSLayoutConstraintTweenProperty.priority(UILayoutPriorityDefaultHigh)
         assertObjectNotConvertible(tweenable: constraint, property: property, unexpectedTweenable: UIView())
         assertValidInterpolation(tweenable: constraint, property: property) {
             return constraint.priority == UILayoutPriorityDefaultHigh

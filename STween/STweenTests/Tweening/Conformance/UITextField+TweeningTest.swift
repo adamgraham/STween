@@ -14,7 +14,7 @@ class UITextField_TweeningTest: XCTestCase, TweenableTestable {
 
     func testTextColor() {
         let textField = UITextField()
-        let property = UITextField.TweenProperty.textColor(UIColor.darkGray)
+        let property = UITextFieldTweenProperty.textColor(UIColor.darkGray)
         assertObjectNotConvertible(tweenable: textField, property: property, unexpectedTweenable: textField.layer)
         assertValidInterpolation(tweenable: textField, property: property) {
             return isEqual(textField.textColor ?? UIColor.clear, UIColor.darkGray)
@@ -23,7 +23,7 @@ class UITextField_TweeningTest: XCTestCase, TweenableTestable {
 
     func testMinimumFontSize() {
         let textField = UITextField()
-        let property = UITextField.TweenProperty.minimumFontSize(12.0)
+        let property = UITextFieldTweenProperty.minimumFontSize(12.0)
         assertObjectNotConvertible(tweenable: textField, property: property, unexpectedTweenable: textField.layer)
         assertValidInterpolation(tweenable: textField, property: property) {
             return textField.minimumFontSize == 12.0
