@@ -11,6 +11,8 @@ public protocol Tweenable {
 
     associatedtype TweenProperty: TweenableProperty
 
+    // MARK: Tweening Methods
+
     /**
      A method to create an animation of a tweenable property on `self` with a 
      given duration.
@@ -36,6 +38,8 @@ public protocol Tweenable {
      - Returns: The `Tween` control for the animation.
      */
     @discardableResult func tween(_ properties: [TweenProperty], duration: TimeInterval, completion: Callback?) -> Tween
+
+    // MARK: Property Methods
 
     /**
      A method to retrieve the value on `self` of a tweenable property.
