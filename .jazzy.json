@@ -1,7 +1,7 @@
 {
   "author": "Adam Graham",
   "author_url": "https://github.com/adamgraham",
-  "copyright": "Copyright (c) 2016 Adam Graham",
+  "copyright": "Copyright (c) 2017 Adam Graham",
   "github_url": "https://github.com/adamgraham/STween",
   "readme": "README.md",
   
@@ -13,6 +13,9 @@
     "./STween/STween/Easing/EaseMappings.swift",
     "./STween/STween/Tweening/Conformance/CALayer+Tweening.swift",
     "./STween/STween/Tweening/Conformance/NSLayoutConstraint+Tweening.swift",
+    "./STween/STween/Tweening/Conformance/UIButton+Tweening.swift",
+    "./STween/STween/Tweening/Conformance/UILabel+Tweening.swift",
+    "./STween/STween/Tweening/Conformance/UITextField+Tweening.swift",
     "./STween/STween/Tweening/Conformance/UIView+Tweening.swift",
     "./STween/STween/Utils/DoubleConvertible.swift",
     "./STween/STween/Utils/FloatingPoint+Arithmetic.swift",
