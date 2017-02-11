@@ -15,7 +15,6 @@ class UIButton_TweeningTest: XCTestCase, TweenableTestable {
     func testContentEdgeInsets() {
         let button = UIButton()
         let property = UIButtonTweenProperty.contentEdgeInsets(UIEdgeInsets(top: 5.0, left: 5.0, bottom: 5.0, right: 5.0))
-        assertObjectNotConvertible(tweenable: button, property: property, unexpectedTweenable: button.layer)
         assertValidInterpolation(tweenable: button, property: property) {
             return button.contentEdgeInsets == UIEdgeInsets(top: 5.0, left: 5.0, bottom: 5.0, right: 5.0)
         }
@@ -24,7 +23,6 @@ class UIButton_TweeningTest: XCTestCase, TweenableTestable {
     func testTitleEdgeInsets() {
         let button = UIButton()
         let property = UIButtonTweenProperty.titleEdgeInsets(UIEdgeInsets(top: 5.0, left: 5.0, bottom: 5.0, right: 5.0))
-        assertObjectNotConvertible(tweenable: button, property: property, unexpectedTweenable: button.layer)
         assertValidInterpolation(tweenable: button, property: property) {
             return button.titleEdgeInsets == UIEdgeInsets(top: 5.0, left: 5.0, bottom: 5.0, right: 5.0)
         }
@@ -33,7 +31,6 @@ class UIButton_TweeningTest: XCTestCase, TweenableTestable {
     func testImageEdgeInsets() {
         let button = UIButton()
         let property = UIButtonTweenProperty.imageEdgeInsets(UIEdgeInsets(top: 5.0, left: 5.0, bottom: 5.0, right: 5.0))
-        assertObjectNotConvertible(tweenable: button, property: property, unexpectedTweenable: button.layer)
         assertValidInterpolation(tweenable: button, property: property) {
             return button.imageEdgeInsets == UIEdgeInsets(top: 5.0, left: 5.0, bottom: 5.0, right: 5.0)
         }
@@ -42,7 +39,6 @@ class UIButton_TweeningTest: XCTestCase, TweenableTestable {
     func testTitleColor() {
         let button = UIButton()
         let property = UIButtonTweenProperty.titleColor(UIColor.lightGray, .normal)
-        assertObjectNotConvertible(tweenable: button, property: property, unexpectedTweenable: button.layer)
         assertValidInterpolation(tweenable: button, property: property) {
             return isEqual(button.titleColor(for: .normal) ?? UIColor.clear, UIColor.lightGray)
         }
@@ -51,7 +47,6 @@ class UIButton_TweeningTest: XCTestCase, TweenableTestable {
     func testTitleShadowColor() {
         let button = UIButton()
         let property = UIButtonTweenProperty.titleShadowColor(UIColor.darkGray, .normal)
-        assertObjectNotConvertible(tweenable: button, property: property, unexpectedTweenable: button.layer)
         assertValidInterpolation(tweenable: button, property: property) {
             return isEqual(button.titleShadowColor(for: .normal) ?? UIColor.clear, UIColor.darkGray)
         }
@@ -61,7 +56,6 @@ class UIButton_TweeningTest: XCTestCase, TweenableTestable {
     func testTintColor() {
         let button = UIButton()
         let property = UIButtonTweenProperty.tintColor(UIColor.blue)
-        assertObjectNotConvertible(tweenable: button, property: property, unexpectedTweenable: button.layer)
         assertValidInterpolation(tweenable: button, property: property) {
             return isEqual(button.tintColor, UIColor.blue)
         }

@@ -15,7 +15,6 @@ class UILabel_TweeningTest: XCTestCase, TweenableTestable {
     func testTextColor() {
         let label = UILabel()
         let property = UILabelTweenProperty.textColor(UIColor.lightGray)
-        assertObjectNotConvertible(tweenable: label, property: property, unexpectedTweenable: label.layer)
         assertValidInterpolation(tweenable: label, property: property) {
             return isEqual(label.textColor, UIColor.lightGray)
         }
@@ -24,7 +23,6 @@ class UILabel_TweeningTest: XCTestCase, TweenableTestable {
     func testHighlightedTextColor() {
         let label = UILabel()
         let property = UILabelTweenProperty.highlightedTextColor(UIColor.gray)
-        assertObjectNotConvertible(tweenable: label, property: property, unexpectedTweenable: label.layer)
         assertValidInterpolation(tweenable: label, property: property) {
             return isEqual(label.highlightedTextColor ?? UIColor.clear, UIColor.gray)
         }
@@ -33,7 +31,6 @@ class UILabel_TweeningTest: XCTestCase, TweenableTestable {
     func testShadowColor() {
         let label = UILabel()
         let property = UILabelTweenProperty.shadowColor(UIColor.darkGray)
-        assertObjectNotConvertible(tweenable: label, property: property, unexpectedTweenable: label.layer)
         assertValidInterpolation(tweenable: label, property: property) {
             return isEqual(label.shadowColor ?? UIColor.clear, UIColor.darkGray)
         }
@@ -42,7 +39,6 @@ class UILabel_TweeningTest: XCTestCase, TweenableTestable {
     func testShadowOffset() {
         let label = UILabel()
         let property = UILabelTweenProperty.shadowOffset(CGSize(width: 2.0, height: 2.0))
-        assertObjectNotConvertible(tweenable: label, property: property, unexpectedTweenable: label.layer)
         assertValidInterpolation(tweenable: label, property: property) {
             return label.shadowOffset == CGSize(width: 2.0, height: 2.0)
         }
@@ -52,7 +48,6 @@ class UILabel_TweeningTest: XCTestCase, TweenableTestable {
     func testMinimumScaleFactor() {
         let label = UILabel()
         let property = UILabelTweenProperty.minimumScaleFactor(0.5)
-        assertObjectNotConvertible(tweenable: label, property: property, unexpectedTweenable: label.layer)
         assertValidInterpolation(tweenable: label, property: property) {
             return label.minimumScaleFactor == 0.5
         }
@@ -62,7 +57,6 @@ class UILabel_TweeningTest: XCTestCase, TweenableTestable {
     func testPreferredMaxLayoutWidth() {
         let label = UILabel()
         let property = UILabelTweenProperty.preferredMaxLayoutWidth(100.0)
-        assertObjectNotConvertible(tweenable: label, property: property, unexpectedTweenable: label.layer)
         assertValidInterpolation(tweenable: label, property: property) {
             return label.preferredMaxLayoutWidth == 100.0
         }

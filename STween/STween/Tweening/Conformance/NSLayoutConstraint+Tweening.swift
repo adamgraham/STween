@@ -9,7 +9,23 @@
 /// An extension to provide tweening animation functionality to `NSLayoutConstraint`.
 extension NSLayoutConstraint: Tweenable {
 
-    public typealias TweenProperty = NSLayoutConstraintTweenProperty
+    public func value(of property: NSLayoutConstraintTweenProperty) -> NSLayoutConstraintTweenProperty {
+        switch property {
+        case .constant:
+            return .constant(self.constant)
+        case .priority:
+            return .priority(self.priority)
+        }
+    }
+
+    public func apply(_ property: NSLayoutConstraintTweenProperty) {
+        switch property {
+        case let .constant(value):
+            self.constant = value
+        case let .priority(value):
+            self.priority = value
+        }
+    }
     
 }
 
@@ -21,32 +37,6 @@ public enum NSLayoutConstraintTweenProperty: TweenableProperty {
     case constant(CGFloat)
     /// A case to denote the `priority` property of a `NSLayoutConstraint`.
     case priority(UILayoutPriority)
-
-    public func value<T: Tweenable>(from object: T) throws -> NSLayoutConstraintTweenProperty {
-        guard let constraint = object as? NSLayoutConstraint else {
-            throw TweenError.objectNotConvertible(object, to: NSLayoutConstraint.self)
-        }
-
-        switch self {
-        case .constant:
-            return .constant(constraint.constant)
-        case .priority:
-            return .priority(constraint.priority)
-        }
-    }
-
-    public func apply<T: Tweenable>(to object: T) throws {
-        guard let constraint = object as? NSLayoutConstraint else {
-            throw TweenError.objectNotConvertible(object, to: NSLayoutConstraint.self)
-        }
-
-        switch self {
-        case let .constant(value):
-            constraint.constant = value
-        case let .priority(value):
-            constraint.priority = value
-        }
-    }
 
     public static func interpolate(from startValue: NSLayoutConstraintTweenProperty, to endValue: NSLayoutConstraintTweenProperty, with ease: Ease,
                                    elapsed: TimeInterval, duration: TimeInterval) -> NSLayoutConstraintTweenProperty {

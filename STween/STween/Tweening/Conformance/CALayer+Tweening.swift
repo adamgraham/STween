@@ -9,7 +9,105 @@
 /// An extension to provide tweening animation functionality to `CALayer`.
 extension CALayer: Tweenable {
 
-    public typealias TweenProperty = CALayerTweenProperty
+    public func value(of property: CALayerTweenProperty) -> CALayerTweenProperty {
+        switch property {
+        case .frame:
+            return .frame(self.frame)
+        case .bounds:
+            return .bounds(self.bounds)
+
+        case .position:
+            return .position(self.position)
+        case .zPosition:
+            return .zPosition(self.zPosition)
+        case .anchorPoint:
+            return .anchorPoint(self.anchorPoint)
+        case .anchorPointZ:
+            return .anchorPointZ(self.anchorPointZ)
+
+        case .transform:
+            return .transform(self.transform)
+        case .sublayerTransform:
+            return .sublayerTransform(self.sublayerTransform)
+
+        case .contentsRect:
+            return .contentsRect(self.contentsRect)
+        case .contentsCenter:
+            return .contentsCenter(self.contentsCenter)
+        case .contentsScale:
+            return .contentsScale(self.contentsScale)
+
+        case .cornerRadius:
+            return .cornerRadius(self.cornerRadius)
+        case .borderWidth:
+            return .borderWidth(self.borderWidth)
+        case .borderColor:
+            return .borderColor(self.borderColor ?? UIColor.clear.cgColor)
+        case .backgroundColor:
+            return .backgroundColor(self.backgroundColor ?? UIColor.clear.cgColor)
+        case .opacity:
+            return .opacity(self.opacity)
+
+        case .shadowColor:
+            return .shadowColor(self.shadowColor ?? UIColor.clear.cgColor)
+        case .shadowOpacity:
+            return .shadowOpacity(self.shadowOpacity)
+        case .shadowOffset:
+            return .shadowOffset(self.shadowOffset)
+        case .shadowRadius:
+            return .shadowRadius(self.shadowRadius)
+        }
+    }
+
+    public func apply(_ property: CALayerTweenProperty) {
+        switch property {
+        case let .frame(value):
+            self.frame = value
+        case let .bounds(value):
+            self.bounds = value
+
+        case let .position(value):
+            self.position = value
+        case let .zPosition(value):
+            self.zPosition = value
+        case let .anchorPoint(value):
+            self.anchorPoint = value
+        case let .anchorPointZ(value):
+            self.anchorPointZ = value
+
+        case let .transform(value):
+            self.transform = value
+        case let .sublayerTransform(value):
+            self.sublayerTransform = value
+
+        case let .contentsRect(value):
+            self.contentsRect = value
+        case let .contentsCenter(value):
+            self.contentsCenter = value
+        case let .contentsScale(value):
+            self.contentsScale = value
+
+        case let .cornerRadius(value):
+            self.cornerRadius = value
+        case let .borderWidth(value):
+            self.borderWidth = value
+        case let .borderColor(value):
+            self.borderColor = value
+        case let .backgroundColor(value):
+            self.backgroundColor = value
+        case let .opacity(value):
+            self.opacity = value
+
+        case let .shadowColor(value):
+            self.shadowColor = value
+        case let .shadowOpacity(value):
+            self.shadowOpacity = value
+        case let .shadowOffset(value):
+            self.shadowOffset = value
+        case let .shadowRadius(value):
+            self.shadowRadius = value
+        }
+    }
 
 }
 
@@ -63,114 +161,6 @@ public enum CALayerTweenProperty: TweenableProperty {
     case shadowOffset(CGSize)
     /// A case to denote the `shadowRadius` property of a `CALayer`.
     case shadowRadius(CGFloat)
-
-    public func value<T: Tweenable>(from object: T) throws -> CALayerTweenProperty {
-        guard let layer = object as? CALayer else {
-            throw TweenError.objectNotConvertible(object, to: CALayer.self)
-        }
-
-        switch self {
-        case .frame:
-            return .frame(layer.frame)
-        case .bounds:
-            return .bounds(layer.bounds)
-
-        case .position:
-            return .position(layer.position)
-        case .zPosition:
-            return .zPosition(layer.zPosition)
-        case .anchorPoint:
-            return .anchorPoint(layer.anchorPoint)
-        case .anchorPointZ:
-            return .anchorPointZ(layer.anchorPointZ)
-
-        case .transform:
-            return .transform(layer.transform)
-        case .sublayerTransform:
-            return .sublayerTransform(layer.sublayerTransform)
-
-        case .contentsRect:
-            return .contentsRect(layer.contentsRect)
-        case .contentsCenter:
-            return .contentsCenter(layer.contentsCenter)
-        case .contentsScale:
-            return .contentsScale(layer.contentsScale)
-
-        case .cornerRadius:
-            return .cornerRadius(layer.cornerRadius)
-        case .borderWidth:
-            return .borderWidth(layer.borderWidth)
-        case .borderColor:
-            return .borderColor(layer.borderColor ?? UIColor.clear.cgColor)
-        case .backgroundColor:
-            return .backgroundColor(layer.backgroundColor ?? UIColor.clear.cgColor)
-        case .opacity:
-            return .opacity(layer.opacity)
-
-        case .shadowColor:
-            return .shadowColor(layer.shadowColor ?? UIColor.clear.cgColor)
-        case .shadowOpacity:
-            return .shadowOpacity(layer.shadowOpacity)
-        case .shadowOffset:
-            return .shadowOffset(layer.shadowOffset)
-        case .shadowRadius:
-            return .shadowRadius(layer.shadowRadius)
-        }
-    }
-
-    public func apply<T: Tweenable>(to object: T) throws {
-        guard let layer = object as? CALayer else {
-            throw TweenError.objectNotConvertible(object, to: CALayer.self)
-        }
-
-        switch self {
-        case let .frame(value):
-            layer.frame = value
-        case let .bounds(value):
-            layer.bounds = value
-
-        case let .position(value):
-            layer.position = value
-        case let .zPosition(value):
-            layer.zPosition = value
-        case let .anchorPoint(value):
-            layer.anchorPoint = value
-        case let .anchorPointZ(value):
-            layer.anchorPointZ = value
-
-        case let .transform(value):
-            layer.transform = value
-        case let .sublayerTransform(value):
-            layer.sublayerTransform = value
-
-        case let .contentsRect(value):
-            layer.contentsRect = value
-        case let .contentsCenter(value):
-            layer.contentsCenter = value
-        case let .contentsScale(value):
-            layer.contentsScale = value
-
-        case let .cornerRadius(value):
-            layer.cornerRadius = value
-        case let .borderWidth(value):
-            layer.borderWidth = value
-        case let .borderColor(value):
-            layer.borderColor = value
-        case let .backgroundColor(value):
-            layer.backgroundColor = value
-        case let .opacity(value):
-            layer.opacity = value
-
-        case let .shadowColor(value):
-            layer.shadowColor = value
-        case let .shadowOpacity(value):
-            layer.shadowOpacity = value
-        case let .shadowOffset(value):
-            layer.shadowOffset = value
-        case let .shadowRadius(value):
-            layer.shadowRadius = value
-        }
-    }
 
     public static func interpolate(from startValue: CALayerTweenProperty, to endValue: CALayerTweenProperty, with ease: Ease,
                                    elapsed: TimeInterval, duration: TimeInterval) -> CALayerTweenProperty {

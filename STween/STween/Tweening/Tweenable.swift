@@ -37,6 +37,24 @@ public protocol Tweenable {
      */
     @discardableResult func tween(_ properties: [TweenProperty], duration: TimeInterval, completion: Callback?) -> Tween
 
+    /**
+     A method to retrieve the value on `self` of a tweenable property.
+     
+     - Parameters:
+        - property: The property of which a value on `self` is to be retrieved.
+     
+     - Returns: The value on `self` of the tweenable `property`.
+     */
+    func value(of property: TweenProperty) -> TweenProperty
+
+    /**
+     A method to apply the value of a tweenable property on `self`.
+     
+     - Parameters:
+        - property: The property to be applied to `self`.
+     */
+    func apply(_ property: TweenProperty)
+
 }
 
 extension Tweenable {

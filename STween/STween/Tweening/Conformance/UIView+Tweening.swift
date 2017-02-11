@@ -11,6 +11,116 @@ extension UIView: Tweenable {
 
     public typealias TweenProperty = UIViewTweenProperty
 
+    public func value(of property: UIViewTweenProperty) -> UIViewTweenProperty {
+        switch property {
+        case .x:
+            return .x(self.frame.origin.x)
+        case .y:
+            return .y(self.frame.origin.y)
+        case .origin:
+            return .origin(self.frame.origin)
+
+        case .width:
+            return .width(self.frame.width)
+        case .height:
+            return .height(self.frame.height)
+        case .size:
+            return .size(self.frame.size)
+
+        case .left:
+            return .left(self.frame.minX)
+        case .right:
+            return .right(self.frame.maxX)
+        case .top:
+            return .top(self.frame.minY)
+        case .bottom:
+            return .bottom(self.frame.maxY)
+
+        case .frame:
+            return .frame(self.frame)
+        case .bounds:
+            return .bounds(self.bounds)
+        case .transform:
+            return .transform(self.transform)
+
+        case .center:
+            return .center(self.center)
+        case .centerX:
+            return .centerX(self.center.x)
+        case .centerY:
+            return .centerY(self.center.y)
+
+        case .alpha:
+            return .alpha(self.alpha)
+        case .backgroundColor:
+            return .backgroundColor(self.backgroundColor ?? UIColor.clear)
+
+        case .tintColor:
+            return .tintColor(self.tintColor)
+
+        case .contentScaleFactor:
+            return .contentScaleFactor(self.contentScaleFactor)
+
+        case .layoutMargins:
+            return .layoutMargins(self.layoutMargins)
+        }
+    }
+
+    public func apply(_ property: UIViewTweenProperty) {
+        switch property {
+        case let .x(value):
+            self.frame.origin.x = value
+        case let .y(value):
+            self.frame.origin.y = value
+        case let .origin(value):
+            self.frame.origin = value
+
+        case let .width(value):
+            self.frame.size.width = value
+        case let .height(value):
+            self.frame.size.height = value
+        case let .size(value):
+            self.frame.size = value
+
+        case let .left(value):
+            self.frame.origin.x = value
+        case let .right(value):
+            self.frame.origin.x = -self.frame.size.width + value
+        case let .top(value):
+            self.frame.origin.y = value
+        case let .bottom(value):
+            self.frame.origin.y = -self.frame.size.height + value
+
+        case let .frame(value):
+            self.frame = value
+        case let .bounds(value):
+            self.bounds = value
+        case let .transform(value):
+            self.transform = value
+
+        case let .center(value):
+            self.center = value
+        case let .centerX(value):
+            self.center.x = value
+        case let .centerY(value):
+            self.center.y = value
+
+        case let .alpha(value):
+            self.alpha = value
+        case let .backgroundColor(value):
+            self.backgroundColor = value
+
+        case let .tintColor(value):
+            self.tintColor = value
+
+        case let .contentScaleFactor(value):
+            self.contentScaleFactor = value
+
+        case let .layoutMargins(value):
+            self.layoutMargins = value
+        }
+    }
+
 }
 
 /// An enum to describe the properties that can be animated with a tween
@@ -70,124 +180,6 @@ public enum UIViewTweenProperty: TweenableProperty {
     /// A case to denote the `layoutMargins` property of a `UIView`.
     @available(iOS 8.0, *)
     case layoutMargins(UIEdgeInsets)
-
-    public func value<T: Tweenable>(from object: T) throws -> UIViewTweenProperty {
-        guard let view = object as? UIView else {
-            throw TweenError.objectNotConvertible(object, to: UIView.self)
-        }
-
-        switch self {
-        case .x:
-            return .x(view.frame.origin.x)
-        case .y:
-            return .y(view.frame.origin.y)
-        case .origin:
-            return .origin(view.frame.origin)
-
-        case .width:
-            return .width(view.frame.width)
-        case .height:
-            return .height(view.frame.height)
-        case .size:
-            return .size(view.frame.size)
-
-        case .left:
-            return .left(view.frame.minX)
-        case .right:
-            return .right(view.frame.maxX)
-        case .top:
-            return .top(view.frame.minY)
-        case .bottom:
-            return .bottom(view.frame.maxY)
-
-        case .frame:
-            return .frame(view.frame)
-        case .bounds:
-            return .bounds(view.bounds)
-        case .transform:
-            return .transform(view.transform)
-
-        case .center:
-            return .center(view.center)
-        case .centerX:
-            return .centerX(view.center.x)
-        case .centerY:
-            return .centerY(view.center.y)
-
-        case .alpha:
-            return .alpha(view.alpha)
-        case .backgroundColor:
-            return .backgroundColor(view.backgroundColor ?? UIColor.clear)
-
-        case .tintColor:
-            return .tintColor(view.tintColor)
-
-        case .contentScaleFactor:
-            return .contentScaleFactor(view.contentScaleFactor)
-
-        case .layoutMargins:
-            return .layoutMargins(view.layoutMargins)
-        }
-    }
-
-    public func apply<T: Tweenable>(to object: T) throws {
-        guard let view = object as? UIView else {
-            throw TweenError.objectNotConvertible(object, to: UIView.self)
-        }
-
-        switch self {
-        case let .x(value):
-            view.frame.origin.x = value
-        case let .y(value):
-            view.frame.origin.y = value
-        case let .origin(value):
-            view.frame.origin = value
-
-        case let .width(value):
-            view.frame.size.width = value
-        case let .height(value):
-            view.frame.size.height = value
-        case let .size(value):
-            view.frame.size = value
-
-        case let .left(value):
-            view.frame.origin.x = value
-        case let .right(value):
-            view.frame.origin.x = -view.frame.size.width + value
-        case let .top(value):
-            view.frame.origin.y = value
-        case let .bottom(value):
-            view.frame.origin.y = -view.frame.size.height + value
-
-        case let .frame(value):
-            view.frame = value
-        case let .bounds(value):
-            view.bounds = value
-        case let .transform(value):
-            view.transform = value
-
-        case let .center(value):
-            view.center = value
-        case let .centerX(value):
-            view.center.x = value
-        case let .centerY(value):
-            view.center.y = value
-
-        case let .alpha(value):
-            view.alpha = value
-        case let .backgroundColor(value):
-            view.backgroundColor = value
-
-        case let .tintColor(value):
-            view.tintColor = value
-
-        case let .contentScaleFactor(value):
-            view.contentScaleFactor = value
-
-        case let .layoutMargins(value):
-            view.layoutMargins = value
-        }
-    }
 
     public static func interpolate(from startValue: UIViewTweenProperty, to endValue: UIViewTweenProperty, with ease: Ease,
                                    elapsed: TimeInterval, duration: TimeInterval) -> UIViewTweenProperty {

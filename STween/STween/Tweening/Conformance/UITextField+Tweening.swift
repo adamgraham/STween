@@ -10,6 +10,24 @@
 extension UITextField {
 
     public typealias TweenProperty = UITextFieldTweenProperty
+
+    public func value(of property: UITextFieldTweenProperty) -> UITextFieldTweenProperty {
+        switch property {
+        case .textColor:
+            return .textColor(self.textColor ?? UIColor.clear)
+        case .minimumFontSize:
+            return .minimumFontSize(self.minimumFontSize)
+        }
+    }
+
+    public func apply(_ property: UITextFieldTweenProperty) {
+        switch property {
+        case let .textColor(value):
+            self.textColor = value
+        case let .minimumFontSize(value):
+            self.minimumFontSize = value
+        }
+    }
     
 }
 
@@ -21,32 +39,6 @@ public enum UITextFieldTweenProperty: TweenableProperty {
     case textColor(UIColor)
     /// A case to denote the `minimumFontSize` property of a `UITextField`.
     case minimumFontSize(CGFloat)
-
-    public func value<T: Tweenable>(from object: T) throws -> UITextFieldTweenProperty {
-        guard let textField = object as? UITextField else {
-            throw TweenError.objectNotConvertible(object, to: UITextField.self)
-        }
-
-        switch self {
-        case .textColor:
-            return .textColor(textField.textColor ?? UIColor.clear)
-        case .minimumFontSize:
-            return .minimumFontSize(textField.minimumFontSize)
-        }
-    }
-
-    public func apply<T: Tweenable>(to object: T) throws {
-        guard let textField = object as? UITextField else {
-            throw TweenError.objectNotConvertible(object, to: UITextField.self)
-        }
-
-        switch self {
-        case let .textColor(value):
-            textField.textColor = value
-        case let .minimumFontSize(value):
-            textField.minimumFontSize = value
-        }
-    }
 
     public static func interpolate(from startValue: UITextFieldTweenProperty, to endValue: UITextFieldTweenProperty, with ease: Ease,
                                    elapsed: TimeInterval, duration: TimeInterval) -> UITextFieldTweenProperty {

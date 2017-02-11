@@ -11,6 +11,44 @@ extension UILabel {
 
     public typealias TweenProperty = UILabelTweenProperty
 
+    public func value(of property: UILabelTweenProperty) -> UILabelTweenProperty {
+        switch property {
+        case .textColor:
+            return .textColor(self.textColor)
+        case .highlightedTextColor:
+            return .highlightedTextColor(self.highlightedTextColor ?? UIColor.clear)
+
+        case .shadowColor:
+            return .shadowColor(self.shadowColor ?? UIColor.clear)
+        case .shadowOffset:
+            return .shadowOffset(self.shadowOffset)
+
+        case .minimumScaleFactor:
+            return .minimumScaleFactor(self.minimumScaleFactor)
+        case .preferredMaxLayoutWidth:
+            return .preferredMaxLayoutWidth(self.preferredMaxLayoutWidth)
+        }
+    }
+
+    public func apply(_ property: UILabelTweenProperty) {
+        switch property {
+        case let .textColor(value):
+            self.textColor = value
+        case let .highlightedTextColor(value):
+            self.highlightedTextColor = value
+
+        case let .shadowColor(value):
+            self.shadowColor = value
+        case let .shadowOffset(value):
+            self.shadowOffset = value
+
+        case let .minimumScaleFactor(value):
+            self.minimumScaleFactor = value
+        case let .preferredMaxLayoutWidth(value):
+            self.preferredMaxLayoutWidth = value
+        }
+    }
+
 }
 
 /// An enum to describe the properties that can be animated with a tween
@@ -33,52 +71,6 @@ public enum UILabelTweenProperty: TweenableProperty {
     /// A case to denote the `preferredMaxLayoutWidth` property of a `UILabel`.
     @available(iOS 6.0, *)
     case preferredMaxLayoutWidth(CGFloat)
-
-    public func value<T: Tweenable>(from object: T) throws -> UILabelTweenProperty {
-        guard let label = object as? UILabel else {
-            throw TweenError.objectNotConvertible(object, to: UILabel.self)
-        }
-
-        switch self {
-        case .textColor:
-            return .textColor(label.textColor)
-        case .highlightedTextColor:
-            return .highlightedTextColor(label.highlightedTextColor ?? UIColor.clear)
-
-        case .shadowColor:
-            return .shadowColor(label.shadowColor ?? UIColor.clear)
-        case .shadowOffset:
-            return .shadowOffset(label.shadowOffset)
-
-        case .minimumScaleFactor:
-            return .minimumScaleFactor(label.minimumScaleFactor)
-        case .preferredMaxLayoutWidth:
-            return .preferredMaxLayoutWidth(label.preferredMaxLayoutWidth)
-        }
-    }
-
-    public func apply<T: Tweenable>(to object: T) throws {
-        guard let label = object as? UILabel else {
-            throw TweenError.objectNotConvertible(object, to: UILabel.self)
-        }
-
-        switch self {
-        case let .textColor(value):
-            label.textColor = value
-        case let .highlightedTextColor(value):
-            label.highlightedTextColor = value
-
-        case let .shadowColor(value):
-            label.shadowColor = value
-        case let .shadowOffset(value):
-            label.shadowOffset = value
-
-        case let .minimumScaleFactor(value):
-            label.minimumScaleFactor = value
-        case let .preferredMaxLayoutWidth(value):
-            label.preferredMaxLayoutWidth = value
-        }
-    }
 
     public static func interpolate(from startValue: UILabelTweenProperty, to endValue: UILabelTweenProperty, with ease: Ease,
                                    elapsed: TimeInterval, duration: TimeInterval) -> UILabelTweenProperty {
