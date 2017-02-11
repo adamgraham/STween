@@ -111,7 +111,7 @@ extension TweenAnimation {
 
         for values in self.interpolationValues {
             do {
-                let interpolatedValue = values.interpolate(withEase: ease, elapsed: elapsed, duration: duration)
+                let interpolatedValue = values.interpolate(with: ease, elapsed: elapsed, duration: duration)
                 try interpolatedValue.apply(to: self.target)
             } catch let error {
                 if let stringConvertible = error as? CustomStringConvertible {

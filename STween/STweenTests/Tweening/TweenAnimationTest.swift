@@ -353,7 +353,7 @@ fileprivate class InvalidTweenable: Tweenable {
             }
         }
 
-        static func interpolate(from startValue: TweenProperty, to endValue: TweenProperty, withEase ease: Ease,
+        static func interpolate(from startValue: TweenProperty, to endValue: TweenProperty, with ease: Ease,
                                 elapsed: TimeInterval, duration: TimeInterval) -> TweenProperty {
             return endValue
         }

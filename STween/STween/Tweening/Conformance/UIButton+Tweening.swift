@@ -79,24 +79,24 @@ public enum UIButtonTweenProperty: TweenableProperty {
         }
     }
 
-    public static func interpolate(from startValue: UIButtonTweenProperty, to endValue: UIButtonTweenProperty, withEase ease: Ease,
+    public static func interpolate(from startValue: UIButtonTweenProperty, to endValue: UIButtonTweenProperty, with ease: Ease,
                                    elapsed: TimeInterval, duration: TimeInterval) -> UIButtonTweenProperty {
 
         switch (startValue, endValue) {
         case let (.contentEdgeInsets(start), .contentEdgeInsets(end)):
-            return .contentEdgeInsets(UIEdgeInsets.interpolate(from: start, to: end, withEase: ease, elapsed: elapsed, duration: duration))
+            return .contentEdgeInsets(UIEdgeInsets.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
         case let (.titleEdgeInsets(start), .titleEdgeInsets(end)):
-            return .titleEdgeInsets(UIEdgeInsets.interpolate(from: start, to: end, withEase: ease, elapsed: elapsed, duration: duration))
+            return .titleEdgeInsets(UIEdgeInsets.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
         case let (.imageEdgeInsets(start), .imageEdgeInsets(end)):
-            return .imageEdgeInsets(UIEdgeInsets.interpolate(from: start, to: end, withEase: ease, elapsed: elapsed, duration: duration))
+            return .imageEdgeInsets(UIEdgeInsets.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
 
         case let (.titleColor(start), .titleColor(end)):
-            return .titleColor(UIColor.interpolate(from: start.0, to: end.0, withEase: ease, elapsed: elapsed, duration: duration), end.1)
+            return .titleColor(UIColor.interpolate(from: start.0, to: end.0, with: ease, elapsed: elapsed, duration: duration), end.1)
         case let (.titleShadowColor(start), .titleShadowColor(end)):
-            return .titleShadowColor(UIColor.interpolate(from: start.0, to: end.0, withEase: ease, elapsed: elapsed, duration: duration), end.1)
+            return .titleShadowColor(UIColor.interpolate(from: start.0, to: end.0, with: ease, elapsed: elapsed, duration: duration), end.1)
 
         case let (.tintColor(start), .tintColor(end)):
-            return .tintColor(UIColor.interpolate(from: start, to: end, withEase: ease, elapsed: elapsed, duration: duration))
+            return .tintColor(UIColor.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
 
         default:
             return startValue

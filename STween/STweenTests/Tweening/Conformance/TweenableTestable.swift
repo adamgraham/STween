@@ -20,7 +20,7 @@ extension TweenableTestable {
         do {
             let startValue = try property.value(from: tweenable)
             let values = InterpolationValues(start: startValue, end: property)
-            let interpolatedValue = values.interpolate(withEase: .linear, elapsed: 1.0, duration: 1.0)
+            let interpolatedValue = values.interpolate(with: .linear, elapsed: 1.0, duration: 1.0)
             try interpolatedValue.apply(to: tweenable)
             XCTAssertTrue(interpolationAssert())
         } catch {

@@ -189,60 +189,60 @@ public enum UIViewTweenProperty: TweenableProperty {
         }
     }
 
-    public static func interpolate(from startValue: UIViewTweenProperty, to endValue: UIViewTweenProperty, withEase ease: Ease,
+    public static func interpolate(from startValue: UIViewTweenProperty, to endValue: UIViewTweenProperty, with ease: Ease,
                                    elapsed: TimeInterval, duration: TimeInterval) -> UIViewTweenProperty {
 
         switch (startValue, endValue) {
         case let (.x(start), .x(end)):
-            return .x(CGFloat.interpolate(from: start, to: end, withEase: ease, elapsed: elapsed, duration: duration))
+            return .x(CGFloat.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
         case let (.y(start), .y(end)):
-            return .y(CGFloat.interpolate(from: start, to: end, withEase: ease, elapsed: elapsed, duration: duration))
+            return .y(CGFloat.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
         case let (.origin(start), .origin(end)):
-            return .origin(CGPoint.interpolate(from: start, to: end, withEase: ease, elapsed: elapsed, duration: duration))
+            return .origin(CGPoint.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
 
         case let (.width(start), .width(end)):
-            return .width(CGFloat.interpolate(from: start, to: end, withEase: ease, elapsed: elapsed, duration: duration))
+            return .width(CGFloat.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
         case let (.height(start), .height(end)):
-            return .height(CGFloat.interpolate(from: start, to: end, withEase: ease, elapsed: elapsed, duration: duration))
+            return .height(CGFloat.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
         case let (.size(start), .size(end)):
-            return .size(CGSize.interpolate(from: start, to: end, withEase: ease, elapsed: elapsed, duration: duration))
+            return .size(CGSize.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
 
         case let (.left(start), .left(end)):
-            return .left(CGFloat.interpolate(from: start, to: end, withEase: ease, elapsed: elapsed, duration: duration))
+            return .left(CGFloat.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
         case let (.right(start), .right(end)):
-            return .right(CGFloat.interpolate(from: start, to: end, withEase: ease, elapsed: elapsed, duration: duration))
+            return .right(CGFloat.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
         case let (.top(start), .top(end)):
-            return .top(CGFloat.interpolate(from: start, to: end, withEase: ease, elapsed: elapsed, duration: duration))
+            return .top(CGFloat.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
         case let (.bottom(start), .bottom(end)):
-            return .bottom(CGFloat.interpolate(from: start, to: end, withEase: ease, elapsed: elapsed, duration: duration))
+            return .bottom(CGFloat.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
 
         case let (.frame(start), .frame(end)):
-            return .frame(CGRect.interpolate(from: start, to: end, withEase: ease, elapsed: elapsed, duration: duration))
+            return .frame(CGRect.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
         case let (.bounds(start), .bounds(end)):
-            return .bounds(CGRect.interpolate(from: start, to: end, withEase: ease, elapsed: elapsed, duration: duration))
+            return .bounds(CGRect.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
         case let (.transform(start), .transform(end)):
-            return .transform(CGAffineTransform.interpolate(from: start, to: end, withEase: ease, elapsed: elapsed, duration: duration))
+            return .transform(CGAffineTransform.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
 
         case let (.center(start), .center(end)):
-            return .center(CGPoint.interpolate(from: start, to: end, withEase: ease, elapsed: elapsed, duration: duration))
+            return .center(CGPoint.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
         case let (.centerX(start), .centerX(end)):
-            return .centerX(CGFloat.interpolate(from: start, to: end, withEase: ease, elapsed: elapsed, duration: duration))
+            return .centerX(CGFloat.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
         case let (.centerY(start), .centerY(end)):
-            return .centerY(CGFloat.interpolate(from: start, to: end, withEase: ease, elapsed: elapsed, duration: duration))
+            return .centerY(CGFloat.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
 
         case let (.alpha(start), .alpha(end)):
-            return .alpha(CGFloat.interpolate(from: start, to: end, withEase: ease, elapsed: elapsed, duration: duration))
+            return .alpha(CGFloat.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
         case let (.backgroundColor(start), .backgroundColor(end)):
-            return .backgroundColor(UIColor.interpolate(from: start, to: end, withEase: ease, elapsed: elapsed, duration: duration))
+            return .backgroundColor(UIColor.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
 
         case let (.tintColor(start), .tintColor(end)):
-            return .tintColor(UIColor.interpolate(from: start, to: end, withEase: ease, elapsed: elapsed, duration: duration))
+            return .tintColor(UIColor.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
 
         case let (.contentScaleFactor(start), .contentScaleFactor(end)):
-            return .contentScaleFactor(CGFloat.interpolate(from: start, to: end, withEase: ease, elapsed: elapsed, duration: duration))
+            return .contentScaleFactor(CGFloat.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
 
         case let (.layoutMargins(start), .layoutMargins(end)):
-            return .layoutMargins(UIEdgeInsets.interpolate(from: start, to: end, withEase: ease, elapsed: elapsed, duration: duration))
+            return .layoutMargins(UIEdgeInsets.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
 
         default:
             return startValue

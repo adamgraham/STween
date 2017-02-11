@@ -80,24 +80,24 @@ public enum UILabelTweenProperty: TweenableProperty {
         }
     }
 
-    public static func interpolate(from startValue: UILabelTweenProperty, to endValue: UILabelTweenProperty, withEase ease: Ease,
+    public static func interpolate(from startValue: UILabelTweenProperty, to endValue: UILabelTweenProperty, with ease: Ease,
                                    elapsed: TimeInterval, duration: TimeInterval) -> UILabelTweenProperty {
 
         switch (startValue, endValue) {
         case let (.textColor(start), .textColor(end)):
-            return .textColor(UIColor.interpolate(from: start, to: end, withEase: ease, elapsed: elapsed, duration: duration))
+            return .textColor(UIColor.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
         case let (.highlightedTextColor(start), .highlightedTextColor(end)):
-            return .highlightedTextColor(UIColor.interpolate(from: start, to: end, withEase: ease, elapsed: elapsed, duration: duration))
+            return .highlightedTextColor(UIColor.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
 
         case let (.shadowColor(start), .shadowColor(end)):
-            return .shadowColor(UIColor.interpolate(from: start, to: end, withEase: ease, elapsed: elapsed, duration: duration))
+            return .shadowColor(UIColor.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
         case let (.shadowOffset(start), .shadowOffset(end)):
-            return .shadowOffset(CGSize.interpolate(from: start, to: end, withEase: ease, elapsed: elapsed, duration: duration))
+            return .shadowOffset(CGSize.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
 
         case let (.minimumScaleFactor(start), .minimumScaleFactor(end)):
-            return .minimumScaleFactor(CGFloat.interpolate(from: start, to: end, withEase: ease, elapsed: elapsed, duration: duration))
+            return .minimumScaleFactor(CGFloat.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
         case let (.preferredMaxLayoutWidth(start), .preferredMaxLayoutWidth(end)):
-            return .preferredMaxLayoutWidth(CGFloat.interpolate(from: start, to: end, withEase: ease, elapsed: elapsed, duration: duration))
+            return .preferredMaxLayoutWidth(CGFloat.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
 
         default:
             return startValue
