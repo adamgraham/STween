@@ -6,7 +6,7 @@
 //  Copyright © 2016 Adam Graham. All rights reserved.
 //
 
-/// A static factory class to create, queue, and manage `Tween` objects.
+/// A static factory class to create, queue, and manage `Tween` animations.
 public final class Tweener {
 
     // Prevent instantiation of the class.
@@ -42,14 +42,14 @@ extension Tweener {
      start if `Defaults.autoStartTweens` is `true`.
      
      - Parameters:
-        - target: The object or data structure that properties are animated on.
+        - target: The object or data structure on which properties are animated.
         - properties: The array of properties to be animated on the `target`.
         - duration: The amount of time, in seconds, the animation will run.
         - completion: A callback invoked when the animation is finished.
 
      - Returns: The `Tween` control for the animation.
      */
-    public static func to<Target: Tweenable>(_ properties: [Target.TweenProperty], on target: Target, duration: TimeInterval, completion: Callback? = nil) -> Tween {
+    @discardableResult public static func to<Target: Tweenable>(_ properties: [Target.TweenProperty], on target: Target, duration: TimeInterval, completion: Callback? = nil) -> Tween {
         let tween = TweenAnimation(target: target, properties: properties, duration: duration)
         tween.reversed = false
         tween.callback(set: .complete, value: completion)
@@ -70,14 +70,14 @@ extension Tweener {
      start if `Defaults.autoStartTweens` is `true`.
      
      - Parameters:
-        - target: The object or data structure that properties are animated on.
+        - target: The object or data structure on which properties are animated.
         - properties: The array of properties to be animated on the `target`.
         - duration: The amount of time, in seconds, the animation will run.
         - completion: A callback invoked when the animation is finished.
      
      - Returns: The `Tween` control for the animation.
      */
-    public static func from<Target: Tweenable>(_ properties: [Target.TweenProperty], on target: Target, duration: TimeInterval, completion: Callback? = nil) -> Tween {
+    @discardableResult public static func from<Target: Tweenable>(_ properties: [Target.TweenProperty], on target: Target, duration: TimeInterval, completion: Callback? = nil) -> Tween {
         let tween = TweenAnimation(target: target, properties: properties, duration: duration)
         tween.reversed = true
         tween.callback(set: .complete, value: completion)

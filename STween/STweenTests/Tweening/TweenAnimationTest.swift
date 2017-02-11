@@ -82,27 +82,6 @@ class TweenAnimationTest: XCTestCase {
         }
     }
 
-    func testTweeningWithInvalidData() {
-        let target = InvalidTweenable()
-        let tween = TweenAnimation<InvalidTweenable>(target: target, properties: [.invalidA(1.0), .invalidB(1.0)], duration: 1.0)
-        let tweeningExpectation = expectation(description: "tweening:invalid")
-
-        tween.callback(set: .complete) {
-            tweeningExpectation.fulfill()
-        }
-
-        tween.start()
-        tween.update()
-
-        var completed = false
-
-        waitForExpectations(timeout: 3.0) { error in
-            completed = true
-        }
-
-        XCTAssertTrue(completed)
-    }
-
     // MARK: State Control Tests
 
     func testStart() {
@@ -316,48 +295,6 @@ class TweenAnimationTest: XCTestCase {
             tween.callback(clear: state)
             XCTAssertNil(tween.callback(get: state))
         }
-    }
-
-}
-
-// MARK: - InvalidTweenable Test Class
-
-fileprivate class InvalidTweenable: Tweenable {
-
-    enum GenericError: Error {
-
-        case error
-
-    }
-
-    enum TweenProperty: TweenableProperty {
-
-        case invalidA(Double)
-        case invalidB(Double)
-
-        func value<T: Tweenable>(from object: T) throws -> TweenProperty {
-            switch self {
-            case .invalidA:
-                return .invalidA(0.0)
-            case .invalidB:
-                return .invalidB(0.0)
-            }
-        }
-
-        func apply<T: Tweenable>(to object: T) throws {
-            switch self {
-            case .invalidA:
-                throw TweenError.objectNotConvertible(object, to: Double.self)
-            case .invalidB:
-                throw GenericError.error
-            }
-        }
-
-        static func interpolate(from startValue: TweenProperty, to endValue: TweenProperty, withEase ease: Ease,
-                                elapsed: TimeInterval, duration: TimeInterval) -> TweenProperty {
-            return endValue
-        }
-
     }
 
 }

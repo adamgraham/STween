@@ -11,6 +11,8 @@ public protocol Tweenable {
 
     associatedtype TweenProperty: TweenableProperty
 
+    // MARK: Tweening Methods
+
     /**
      A method to create an animation of a tweenable property on `self` with a 
      given duration.
@@ -22,7 +24,7 @@ public protocol Tweenable {
      
      - Returns: The `Tween` control for the animation.
      */
-    func tween(_ property: TweenProperty, duration: TimeInterval, completion: Callback?) -> Tween
+    @discardableResult func tween(_ property: TweenProperty, duration: TimeInterval, completion: Callback?) -> Tween
 
     /**
      A method to create an animation of an array of tweenable properties on 
@@ -35,7 +37,27 @@ public protocol Tweenable {
      
      - Returns: The `Tween` control for the animation.
      */
-    func tween(_ properties: [TweenProperty], duration: TimeInterval, completion: Callback?) -> Tween
+    @discardableResult func tween(_ properties: [TweenProperty], duration: TimeInterval, completion: Callback?) -> Tween
+
+    // MARK: Property Methods
+
+    /**
+     A method to retrieve the value on `self` of a tweenable property.
+     
+     - Parameters:
+        - property: The property of which a value on `self` is to be retrieved.
+     
+     - Returns: The value on `self` of the tweenable `property`.
+     */
+    func value(of property: TweenProperty) -> TweenProperty
+
+    /**
+     A method to apply the value of a tweenable property on `self`.
+     
+     - Parameters:
+        - property: The property to be applied to `self`.
+     */
+    func apply(_ property: TweenProperty)
 
 }
 
@@ -54,7 +76,7 @@ extension Tweenable {
 
      - Returns: The `Tween` control for the animation.
      */
-    public final func tween(_ property: TweenProperty, duration: TimeInterval, completion: Callback? = nil) -> Tween {
+    @discardableResult public final func tween(_ property: TweenProperty, duration: TimeInterval, completion: Callback? = nil) -> Tween {
         return Tweener.to([property], on: self, duration: duration, completion: completion)
     }
 
@@ -69,7 +91,7 @@ extension Tweenable {
 
      - Returns: The `Tween` control for the animation.
      */
-    public final func tween(_ properties: [TweenProperty], duration: TimeInterval, completion: Callback? = nil) -> Tween {
+    @discardableResult public final func tween(_ properties: [TweenProperty], duration: TimeInterval, completion: Callback? = nil) -> Tween {
         return Tweener.to(properties, on: self, duration: duration, completion: completion)
     }
 

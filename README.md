@@ -19,7 +19,7 @@ Tweens are not just limited to the animation of visual elements, though. Tweenin
 ### Supported Types
 Tweening animations can be applied to any of the supported types below. If a type is not listed below, you can add tweening support by conforming to the `STween.Tweenable` protocol. Feel free to leave suggestions to new types you would like to see added.
 
-- `UIView`
+- `UIView`, `UIButton`, `UILabel`, `UITextField`
 - `CALayer`
 - `NSLayoutConstraint`
 

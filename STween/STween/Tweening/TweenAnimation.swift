@@ -110,16 +110,8 @@ extension TweenAnimation {
         let duration = self.duration
 
         for values in self.interpolationValues {
-            do {
-                let interpolatedValue = values.interpolate(withEase: ease, elapsed: elapsed, duration: duration)
-                try interpolatedValue.apply(to: self.target)
-            } catch let error {
-                if let stringConvertible = error as? CustomStringConvertible {
-                    print(stringConvertible.description)
-                } else {
-                    print("ERROR: \(error.localizedDescription)")
-                }
-            }
+            let interpolatedValue = values.interpolate(with: ease, elapsed: elapsed, duration: duration)
+            self.target.apply(interpolatedValue)
         }
     }
 
@@ -132,25 +124,17 @@ extension TweenAnimation {
         self.interpolationValues.removeAll()
 
         for property in self.targetProperties {
-            do {
-                let values: InterpolationValues<TargetProperty>
-                let start = try property.value(from: self.target)
-                let end = property
+            let values: InterpolationValues<TargetProperty>
+            let start = self.target.value(of: property)
+            let end = property
 
-                if !self.reversed {
-                    values = InterpolationValues(start: start, end: end)
-                } else {
-                    values = InterpolationValues(start: end, end: start)
-                }
-
-                self.interpolationValues.append(values)
-            } catch let error {
-                if let stringConvertible = error as? CustomStringConvertible {
-                    print(stringConvertible.description)
-                } else {
-                    print("ERROR: \(error.localizedDescription)")
-                }
+            if !self.reversed {
+                values = InterpolationValues(start: start, end: end)
+            } else {
+                values = InterpolationValues(start: end, end: start)
             }
+
+            self.interpolationValues.append(values)
         }
     }
 
