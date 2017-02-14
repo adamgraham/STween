@@ -10,7 +10,7 @@ A Tween is an animation of a value from a start position to an end position with
 Tweening engines make animations simple. Take the following, for example:
 
 ``` swift
-view.tween(.width(100.0), duration: 1.0)
+view.tween(to: .width(100.0), duration: 1.0)
 ```
 This one line of code creates an animation that changes a view's width to `100.0` over a duration of `1.0` second.
 
