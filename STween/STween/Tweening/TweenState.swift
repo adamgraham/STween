@@ -15,6 +15,8 @@ public enum TweenState {
     case inactive
     /// A case to denote a `Tween` has been started and is updating.
     case active
+    /// A case to denote a `Tween` is about to start, but is waiting for a delay to finish.
+    case delayed
     /// A case to denote a `Tween` has been started but is paused.
     case paused
     /// A case to denote a `Tween` has been completed.
@@ -40,10 +42,10 @@ extension TweenState {
     }
 
     /// The ability for a `Tween` to be stopped, based on the state of `self`.
-    /// Returns `true` if `self` is `active` or `paused`.
+    /// Returns `true` if `self` is `active`, `delayed`, or `paused`.
     internal var canStop: Bool {
         switch self {
-        case .active, .paused:
+        case .active, .delayed, .paused:
             return true
         default:
             return false
@@ -51,10 +53,11 @@ extension TweenState {
     }
 
     /// The ability for a `Tween` to be restarted, based on the state of `self`.
-    /// Returns `true` if `self` is `active`, `inactive`, `paused`, or `completed`.
+    /// Returns `true` if `self` is `active`, `inactive`, `delayed`, `paused`, or 
+    /// `completed`.
     internal var canRestart: Bool {
         switch self {
-        case .active, .inactive, .paused, .completed:
+        case .active, .inactive, .delayed, .paused, .completed:
             return true
         default:
             return false
@@ -62,10 +65,10 @@ extension TweenState {
     }
 
     /// The ability for a `Tween` to be paused, based on the state of `self`.
-    /// Returns `true` only if `self` is `active`.
+    /// Returns `true` only if `self` is `active` or `delayed`.
     internal var canPause: Bool {
         switch self {
-        case .active:
+        case .active, .delayed:
             return true
         default:
             return false
@@ -84,10 +87,10 @@ extension TweenState {
     }
 
     /// The ability for a `Tween` to be completed, based on the state of `self`.
-    /// Returns `true` if `self` is `active` or `paused`.
+    /// Returns `true` if `self` is `active`, `delayed`, or `paused`.
     internal var canComplete: Bool {
         switch self {
-        case .active, .paused:
+        case .active, .delayed, .paused:
             return true
         default:
             return false

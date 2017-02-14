@@ -44,10 +44,20 @@ internal final class TweenAnimation<Target: Tweenable>: Tween
     
     internal var delay = Defaults.delay
 
+    /// The amount of time, in seconds, `self` has been delayed.
+    fileprivate var delayElapsed = 0.0
+
     internal var duration: TimeInterval
 
     internal var elapsed: TimeInterval {
-        return self.state == .completed ? self.duration : self.timer.elapsed
+        switch self.state {
+        case .completed:
+            return self.duration
+        case .delayed:
+            return 0.0
+        default:
+            return self.timer.elapsed
+        }
     }
 
     // MARK: Initialization Methods
@@ -156,11 +166,20 @@ extension TweenAnimation {
             return false
         }
 
-        // Store property values
-        storeStartingAndEndingValues()
+        guard self.delayElapsed >= self.delay else {
+            startDelay()
+            return false
+        }
 
         // Set state
         self.state = .active
+
+        // Store property values
+        storeStartingAndEndingValues()
+
+        if self.reversed {
+            updateProperties()
+        }
 
         // Update timer
         self.timer.reset()
@@ -190,6 +209,7 @@ extension TweenAnimation {
         // Update timer
         self.timer.stop()
         self.timer.reset()
+        self.delayElapsed = 0.0
 
         // Callback event
         callback(invoke: .stop)
@@ -212,10 +232,7 @@ extension TweenAnimation {
         }
 
         stop()
-
-        // Callback event
         callback(invoke: .restart)
-
         start()
 
         return true
@@ -259,7 +276,11 @@ extension TweenAnimation {
         }
 
         // Update state
-        self.state = .active
+        if self.delayElapsed >= self.delay {
+            self.state = .active
+        } else {
+            self.state = .delayed
+        }
 
         // Update timer
         self.timer.start()
@@ -289,6 +310,7 @@ extension TweenAnimation {
         // Update timer
         self.timer.stop()
         self.timer.elapsed = self.duration
+        self.delayElapsed = 0.0
 
         // Update properties
         updateProperties()
@@ -354,6 +376,7 @@ extension TweenAnimation {
         self.reversed = Defaults.reversed
         self.ease = Defaults.ease
         self.delay = Defaults.delay
+        self.delayElapsed = 0.0
         
         // Update timer
         self.timer.stop()
@@ -429,12 +452,48 @@ extension TweenAnimation {
     
 }
 
+extension TweenAnimation {
+
+    // MARK: Delay Methods
+
+    /// :nodoc:
+    fileprivate func startDelay() {
+        guard self.state != .delayed else {
+            return
+        }
+
+        // Set state
+        self.state = .delayed
+        self.delayElapsed = 0.0
+
+        // Update timer
+        self.timer.reset()
+        self.timer.start()
+    }
+
+    /// :nodoc:
+    fileprivate func updateDelay(by elapsed: TimeInterval) {
+        self.delayElapsed += elapsed
+
+        if self.delayElapsed >= self.delay {
+            self.state = .inactive
+            start()
+        }
+    }
+
+}
+
 extension TweenAnimation: TweenTimerDelegate {
 
     // MARK: TweenTimerDelegate
 
     internal func tweenTimer(_ timer: TweenTimer, didUpdateWithElapsedTime elapsed: TimeInterval) {
-        update()
+        switch self.state {
+        case .delayed:
+            updateDelay(by: elapsed)
+        default:
+            update()
+        }
     }
 
 }
