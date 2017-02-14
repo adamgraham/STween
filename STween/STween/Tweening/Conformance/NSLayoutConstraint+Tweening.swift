@@ -13,8 +13,6 @@ extension NSLayoutConstraint: Tweenable {
         switch property {
         case .constant:
             return .constant(self.constant)
-        case .priority:
-            return .priority(self.priority)
         }
     }
 
@@ -22,8 +20,6 @@ extension NSLayoutConstraint: Tweenable {
         switch property {
         case let .constant(value):
             self.constant = value
-        case let .priority(value):
-            self.priority = value
         }
     }
     
@@ -35,8 +31,6 @@ public enum NSLayoutConstraintTweenProperty: TweenableProperty {
 
     /// A case to denote the `constant` property of a `NSLayoutConstraint`.
     case constant(CGFloat)
-    /// A case to denote the `priority` property of a `NSLayoutConstraint`.
-    case priority(UILayoutPriority)
 
     public static func interpolate(from startValue: NSLayoutConstraintTweenProperty, to endValue: NSLayoutConstraintTweenProperty, with ease: Ease,
                                    elapsed: TimeInterval, duration: TimeInterval) -> NSLayoutConstraintTweenProperty {
@@ -44,10 +38,6 @@ public enum NSLayoutConstraintTweenProperty: TweenableProperty {
         switch (startValue, endValue) {
         case let (.constant(start), .constant(end)):
             return .constant(CGFloat.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
-        case let (.priority(start), .priority(end)):
-            return .priority(UILayoutPriority.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
-        default:
-            return startValue
         }
     }
 

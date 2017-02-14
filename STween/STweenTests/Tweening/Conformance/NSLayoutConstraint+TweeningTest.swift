@@ -20,12 +20,4 @@ class NSLayoutConstraint_TweeningTest: XCTestCase, TweenableTestable {
         }
     }
 
-    func testPriorityTweenProperty() {
-        let constraint = NSLayoutConstraint()
-        let property = NSLayoutConstraintTweenProperty.priority(UILayoutPriorityDefaultHigh)
-        assertValidInterpolation(tweenable: constraint, property: property) {
-            return constraint.priority == UILayoutPriorityDefaultHigh
-        }
-    }
-
 }

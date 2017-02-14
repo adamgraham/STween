@@ -29,6 +29,9 @@ public final class Tweener {
         repeats: true
     )
 
+    /// The state of the queue timer being active.
+    fileprivate static var isQueueTimerRunning = false
+
 }
 
 extension Tweener {
@@ -49,7 +52,7 @@ extension Tweener {
 
      - Returns: The `Tween` control for the animation.
      */
-    @discardableResult public static func to<Target: Tweenable>(_ properties: [Target.TweenProperty], on target: Target, duration: TimeInterval, completion: Callback? = nil) -> Tween {
+    @discardableResult public static func animate<Target: Tweenable>(_ target: Target, to properties: [Target.TweenProperty], duration: TimeInterval, completion: Callback? = nil) -> Tween {
         let tween = TweenAnimation(target: target, properties: properties, duration: duration)
         tween.reversed = false
         tween.callback(set: .complete, value: completion)
@@ -77,7 +80,7 @@ extension Tweener {
      
      - Returns: The `Tween` control for the animation.
      */
-    @discardableResult public static func from<Target: Tweenable>(_ properties: [Target.TweenProperty], on target: Target, duration: TimeInterval, completion: Callback? = nil) -> Tween {
+    @discardableResult public static func animate<Target: Tweenable>(_ target: Target, from properties: [Target.TweenProperty], duration: TimeInterval, completion: Callback? = nil) -> Tween {
         let tween = TweenAnimation(target: target, properties: properties, duration: duration)
         tween.reversed = true
         tween.callback(set: .complete, value: completion)
@@ -170,6 +173,11 @@ extension Tweener {
             return
         }
 
+        if !self.isQueueTimerRunning {
+            self.queueTimer.fire()
+            self.isQueueTimerRunning = true
+        }
+
         self.queuedTweens.append(tween)
     }
 
@@ -179,6 +187,10 @@ extension Tweener {
      active state and removes it from the list of queued tweens.
      */
     @objc internal static func startQueuedTweens() {
+        guard self.isQueueTimerRunning else {
+            return
+        }
+
         for tween in self.queuedTweens {
             tween.invoke(.start)
         }
