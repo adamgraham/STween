@@ -14,7 +14,7 @@
     <a title="TweenState Enum Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html"> Docs</a> (100% documented)</p>
+        <p><a href="../index.html"> Docs</a> (98% documented)</p>
         <p class="header-right"><a href="https://github.com/adamgraham/STween"><img src="../img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
@@ -219,6 +219,37 @@
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/s:FO6STween10TweenState7delayedFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/delayed" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO6STween10TweenState7delayedFMS0_S0_">delayed</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A case to denote a <code><a href="../Protocols/Tween.html">Tween</a></code> is about to start, but is waiting for its delay to finish.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="n">delayed</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/s:FO6STween10TweenState6pausedFMS0_S0_"></a>
                     <a name="//apple_ref/swift/Element/paused" class="dashAnchor"></a>
                     <a class="token" href="#/s:FO6STween10TweenState6pausedFMS0_S0_">paused</a>
@@ -358,7 +389,7 @@ Returns <code>true</code> if <code>self</code> is <code><a href="../Enums/TweenS
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>The ability for a <code><a href="../Protocols/Tween.html">Tween</a></code> to be stopped, based on the state of <code>self</code>.
-Returns <code>true</code> if <code>self</code> is <code><a href="../Enums/TweenState.html#/s:FO6STween10TweenState6activeFMS0_S0_">active</a></code> or <code><a href="../Enums/TweenState.html#/s:FO6STween10TweenState6pausedFMS0_S0_">paused</a></code>.</p>
+Returns <code>true</code> if <code>self</code> is <code><a href="../Enums/TweenState.html#/s:FO6STween10TweenState6activeFMS0_S0_">active</a></code>, <code><a href="../Enums/TweenState.html#/s:FO6STween10TweenState7delayedFMS0_S0_">delayed</a></code>, or <code><a href="../Enums/TweenState.html#/s:FO6STween10TweenState6pausedFMS0_S0_">paused</a></code>.</p>
 
                       </div>
                       <div class="declaration">
@@ -386,7 +417,8 @@ Returns <code>true</code> if <code>self</code> is <code><a href="../Enums/TweenS
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>The ability for a <code><a href="../Protocols/Tween.html">Tween</a></code> to be restarted, based on the state of <code>self</code>.
-Returns <code>true</code> if <code>self</code> is <code><a href="../Enums/TweenState.html#/s:FO6STween10TweenState6activeFMS0_S0_">active</a></code>, <code><a href="../Enums/TweenState.html#/s:FO6STween10TweenState8inactiveFMS0_S0_">inactive</a></code>, <code><a href="../Enums/TweenState.html#/s:FO6STween10TweenState6pausedFMS0_S0_">paused</a></code>, or <code><a href="../Enums/TweenState.html#/s:FO6STween10TweenState9completedFMS0_S0_">completed</a></code>.</p>
+Returns <code>true</code> if <code>self</code> is <code><a href="../Enums/TweenState.html#/s:FO6STween10TweenState6activeFMS0_S0_">active</a></code>, <code><a href="../Enums/TweenState.html#/s:FO6STween10TweenState8inactiveFMS0_S0_">inactive</a></code>, <code><a href="../Enums/TweenState.html#/s:FO6STween10TweenState7delayedFMS0_S0_">delayed</a></code>, <code><a href="../Enums/TweenState.html#/s:FO6STween10TweenState6pausedFMS0_S0_">paused</a></code>, or 
+<code><a href="../Enums/TweenState.html#/s:FO6STween10TweenState9completedFMS0_S0_">completed</a></code>.</p>
 
                       </div>
                       <div class="declaration">
@@ -414,7 +446,7 @@ Returns <code>true</code> if <code>self</code> is <code><a href="../Enums/TweenS
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>The ability for a <code><a href="../Protocols/Tween.html">Tween</a></code> to be paused, based on the state of <code>self</code>.
-Returns <code>true</code> only if <code>self</code> is <code><a href="../Enums/TweenState.html#/s:FO6STween10TweenState6activeFMS0_S0_">active</a></code>.</p>
+Returns <code>true</code> only if <code>self</code> is <code><a href="../Enums/TweenState.html#/s:FO6STween10TweenState6activeFMS0_S0_">active</a></code> or <code><a href="../Enums/TweenState.html#/s:FO6STween10TweenState7delayedFMS0_S0_">delayed</a></code>.</p>
 
                       </div>
                       <div class="declaration">
@@ -470,7 +502,7 @@ Returns <code>true</code> only if <code>self</code> is <code><a href="../Enums/T
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>The ability for a <code><a href="../Protocols/Tween.html">Tween</a></code> to be completed, based on the state of <code>self</code>.
-Returns <code>true</code> if <code>self</code> is <code><a href="../Enums/TweenState.html#/s:FO6STween10TweenState6activeFMS0_S0_">active</a></code> or <code><a href="../Enums/TweenState.html#/s:FO6STween10TweenState6pausedFMS0_S0_">paused</a></code>.</p>
+Returns <code>true</code> if <code>self</code> is <code><a href="../Enums/TweenState.html#/s:FO6STween10TweenState6activeFMS0_S0_">active</a></code>, <code><a href="../Enums/TweenState.html#/s:FO6STween10TweenState7delayedFMS0_S0_">delayed</a></code>, or <code><a href="../Enums/TweenState.html#/s:FO6STween10TweenState6pausedFMS0_S0_">paused</a></code>.</p>
 
                       </div>
                       <div class="declaration">

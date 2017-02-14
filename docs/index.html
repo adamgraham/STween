@@ -13,7 +13,7 @@
     <a title="  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html"> Docs</a> (100% documented)</p>
+        <p><a href="index.html"> Docs</a> (98% documented)</p>
         <p class="header-right"><a href="https://github.com/adamgraham/STween"><img src="img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
@@ -123,7 +123,7 @@ Complex animations done simple. An easy-to-use interface.</p>
 <p>A Tween is an animation of a value from a start position to an end position with a given duration of time and a type of easing algorithm (linear, exponential, quadratic, etc).</p>
 
 <p>Tweening engines make animations simple. Take the following, for example:</p>
-<pre class="highlight swift"><code><span class="n">view</span><span class="o">.</span><span class="nf">tween</span><span class="p">(</span><span class="o">.</span><span class="nf">width</span><span class="p">(</span><span class="mf">100.0</span><span class="p">),</span> <span class="nv">duration</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">)</span>
+<pre class="highlight swift"><code><span class="n">view</span><span class="o">.</span><span class="nf">tween</span><span class="p">(</span><span class="nv">to</span><span class="p">:</span> <span class="o">.</span><span class="nf">width</span><span class="p">(</span><span class="mf">100.0</span><span class="p">),</span> <span class="nv">duration</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">)</span>
 </code></pre>
 
 <p>This one line of code creates an animation that changes a view&rsquo;s width to <code>100.0</code> over a duration of <code>1.0</code> second.</p>
@@ -134,7 +134,7 @@ Complex animations done simple. An easy-to-use interface.</p>
 <p>Tweening animations can be applied to any of the supported types below. If a type is not listed below, you can add tweening support by conforming to the <code>STween.Tweenable</code> protocol. Feel free to leave suggestions to new types you would like to see added.</p>
 
 <ul>
-<li><code>UIView</code></li>
+<li><code>UIView</code>, <code>UIButton</code>, <code>UILabel</code>, <code>UITextField</code></li>
 <li><code>CALayer</code></li>
 <li><code>NSLayoutConstraint</code></li>
 </ul>

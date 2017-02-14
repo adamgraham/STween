@@ -15,7 +15,7 @@ public enum TweenState {
     case inactive
     /// A case to denote a `Tween` has been started and is updating.
     case active
-    /// A case to denote a `Tween` is about to start, but is waiting for a delay to finish.
+    /// A case to denote a `Tween` is about to start, but is waiting for its delay to finish.
     case delayed
     /// A case to denote a `Tween` has been started but is paused.
     case paused

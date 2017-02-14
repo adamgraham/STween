@@ -87,6 +87,7 @@ public protocol Tweenable {
 
 }
 
+/// :nodoc:
 extension Tweenable {
 
     // MARK: Default Implementation
