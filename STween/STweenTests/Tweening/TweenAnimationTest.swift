@@ -220,7 +220,7 @@ class TweenAnimationTest: XCTestCase {
     }
 
     func testKill() {
-        let tween = Tweener.to([], on: UIView(), duration: 1.0) as! TweenAnimation<UIView>
+        let tween = Tweener.animate(UIView(), to: [], duration: 1.0) as! TweenAnimation<UIView>
 
         var callbackInvoked = false
         tween.callback(set: .kill) {
@@ -285,7 +285,7 @@ class TweenAnimationTest: XCTestCase {
     // MARK: Callback Tests
 
     func testCallbackMethods() {
-        let tween = Tweener.to([], on: UIView(), duration: 1.0)
+        let tween = Tweener.animate(UIView(), to: [], duration: 1.0)
         let states: [TweenStateChange] = [.start, .stop, .restart, .pause, .resume, .complete, .kill, .reset, .update]
 
         for state in states {

@@ -23,25 +23,25 @@ class Tween_ChainingTest: XCTestCase {
     }
 
     func testSetEase() {
-        let tween = Tweener.to([], on: UIView(), duration: 1.0, completion: {})
+        let tween = Tweener.animate(UIView(), to: [], duration: 1.0, completion: {})
             .set(ease: .backOut)
         XCTAssertEqual(tween.ease, .backOut)
     }
 
     func testSetDelay() {
-        let tween = Tweener.to([], on: UIView(), duration: 1.0, completion: {})
+        let tween = Tweener.animate(UIView(), to: [], duration: 1.0, completion: {})
             .set(delay: 1.0)
         XCTAssertEqual(tween.delay, 1.0)
     }
 
     func testSetDuration() {
-        let tween = Tweener.to([], on: UIView(), duration: 1.0, completion: {})
+        let tween = Tweener.animate(UIView(), to: [], duration: 1.0, completion: {})
             .set(duration: 2.0)
         XCTAssertEqual(tween.duration, 2.0)
     }
 
     func testSetReversed() {
-        let tween = Tweener.to([], on: UIView(), duration: 1.0, completion: {})
+        let tween = Tweener.animate(UIView(), to: [], duration: 1.0, completion: {})
             .set(reversed: true)
         XCTAssertTrue(tween.reversed)
     }
@@ -53,7 +53,7 @@ class Tween_ChainingTest: XCTestCase {
             invoked = true
         }
 
-        let tween = Tweener.to([], on: UIView(), duration: 1.0, completion: {})
+        let tween = Tweener.animate(UIView(), to: [], duration: 1.0, completion: {})
             .set(callback: callback, for: .kill)
 
         tween.invoke(.kill)
