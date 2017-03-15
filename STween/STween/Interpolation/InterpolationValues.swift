@@ -32,8 +32,8 @@ internal struct InterpolationValues<T: Interpolatable> where T.Value == T {
      
      - Parameters:
         - ease: The `Ease` used to interpolate values.
-        - elapsed: The elapsed amount of time passed to the `ease` algorithm.
-        - duration: The duration of time passed to the `ease` algorithm.
+        - elapsed: The elapsed amount of time passed to the `ease` function.
+        - duration: The duration of time passed to the `ease` function.
 
      - Returns: The value interpolated between the start and end value.
      */

@@ -5,7 +5,7 @@
 For detailed usage and documentation, please visit the [STween Wiki](https://github.com/adamgraham/STween/wiki).
 
 ### Tweening
-A Tween is an animation of a value from a start position to an end position with a given duration of time and a type of easing algorithm (linear, exponential, quadratic, etc).
+A Tween is an animation of a value from a start position to an end position with a given duration of time and a type of easing function (linear, exponential, quadratic, etc).
 
 Tweening engines make animations simple. Take the following, for example:
 
@@ -34,8 +34,8 @@ All of the following data types can be interpolated - the ability for a type to 
 - `CIColor`, `CIVector`
 - `UIColor`, `UIEdgeInsetes`, `UIOffset`
 
-### Supported Algorithms
-The below algorithm classifications are supported. Each classification has 3 variations: `.in`, `.out`, `.inOut`. A visualized cheat-sheet of the algorithms can be found at [easings.net](http://easings.net/).
+### Supported Functions
+The below easing function classifications are supported. Each classification has 3 variations: `.in`, `.out`, `.inOut`. A visualized cheat-sheet of these easing functions can be found at [easings.net](http://easings.net/).
 
 - Linear
 - Cubic

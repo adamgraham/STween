@@ -6,8 +6,8 @@
 //  Copyright © 2016 Adam Graham. All rights reserved.
 //
 
-/// A class to animate properties on a `Tweenable` object via interpolation
-/// and easing algorithms.
+/// A class to animate properties on a `Tweenable` object via easing 
+/// functions and interpolation.
 internal final class TweenAnimation<Target: Tweenable>: Tween
     where Target.TweenProperty.Value == Target.TweenProperty {
 
