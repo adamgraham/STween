@@ -17,10 +17,10 @@ public protocol Interpolatable {
 
      - Parameters:
         - ease: The `Ease` used to interpolate values.
-        - startValue: The start value passed to the `ease` algorithm.
-        - endValue: The end value passed to the `ease` algorithm.
-        - elapsed: The elapsed amount of time passed to the `ease` algorithm.
-        - duration: The duration of time passed to the `ease` algorithm.
+        - startValue: The start value passed to the `ease` function.
+        - endValue: The end value passed to the `ease` function.
+        - elapsed: The elapsed amount of time passed to the `ease` function.
+        - duration: The duration of time passed to the `ease` function.
 
      - Returns: The value interpolated between the start and end value.
      */

@@ -18,7 +18,7 @@ public final class Defaults {
     public static var frameRate = 30.0
     /// The default `Ease` assigned to every `Tween`.
     public static var ease = Ease.quadOut
-    /// The default overshoot value used in easing algorithms.
+    /// The default overshoot value used in easing functions.
     public static var overshoot = 1.70158
     /// The default amount of time, in seconds, before every `Tween` starts.
     public static var delay = 0.0

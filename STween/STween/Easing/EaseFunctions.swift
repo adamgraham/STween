@@ -1,5 +1,5 @@
 //
-//  EaseAlgorithms.swift
+//  EaseFunctions.swift
 //  STween
 //
 //  Created by Adam Graham on 6/15/16.
@@ -7,13 +7,13 @@
 //
 
 /**
- A class to hold a collection of easing algorithms based upon
+ A class to hold a collection of easing functions based upon
  [Robert Penner's Easing Functions](http://robertpenner.com/easing/). 
- A visualized cheat-sheet of these algorithms can be found at
+ A visualized cheat-sheet of these functions can be found at
  [easings.net](http://easings.net/).
 
- Easing algorithms calculate the value between a starting and ending
- position at a specific point in time. In simpler terms, these algorithms
+ Easing functions calculate the value between a starting and ending
+ position at a specific point in time. In simpler terms, these functions
  determine what path is used to get from point "A" to point "B".
 
  > "The aspect of time is crucial to motion — things change over time.
@@ -34,7 +34,7 @@
 
  - Returns: The value at a specific point in time from the start value.
  */
-internal final class EaseAlgorithms {
+internal final class EaseFunctions {
 
     // Prevent instantiation of the class.
     private init() {}
@@ -53,14 +53,14 @@ internal final class EaseAlgorithms {
 
  - Returns: The value at a specific point in time from the start value.
  */
-internal typealias EaseAlgorithm<Number: FloatingPoint> = (
+internal typealias EaseFunction<Number: FloatingPoint> = (
     _ b: Number,
     _ c: Number,
     _ t: Number,
     _ d: Number) -> Number
 
-/// An extension to add the linear easing algorithm.
-extension EaseAlgorithms {
+/// An extension to add the linear easing function.
+extension EaseFunctions {
 
     // MARK: Linear
 
@@ -83,8 +83,8 @@ extension EaseAlgorithms {
 
 }
 
-/// An extension to add the sinusoidal easing algorithms.
-extension EaseAlgorithms {
+/// An extension to add the sinusoidal easing functions.
+extension EaseFunctions {
 
     // MARK: Sinusoidal
 
@@ -145,8 +145,8 @@ extension EaseAlgorithms {
 
 }
 
-/// An extension to add the cubic easing algorithms.
-extension EaseAlgorithms {
+/// An extension to add the cubic easing functions.
+extension EaseFunctions {
 
     // MARK: Cubic
 
@@ -216,8 +216,8 @@ extension EaseAlgorithms {
     
 }
 
-/// An extension to add the quadratic easing algorithms.
-extension EaseAlgorithms {
+/// An extension to add the quadratic easing functions.
+extension EaseFunctions {
 
     // MARK: Quadratic
 
@@ -286,8 +286,8 @@ extension EaseAlgorithms {
     
 }
 
-/// An extension to add the quartic easing algorithms.
-extension EaseAlgorithms {
+/// An extension to add the quartic easing functions.
+extension EaseFunctions {
 
     // MARK: Quartic
 
@@ -357,8 +357,8 @@ extension EaseAlgorithms {
     
 }
 
-/// An extension to add the quintic easing algorithms.
-extension EaseAlgorithms {
+/// An extension to add the quintic easing functions.
+extension EaseFunctions {
 
     // MARK: Quintic
 
@@ -428,8 +428,8 @@ extension EaseAlgorithms {
     
 }
 
-/// An extension to add the exponential easing algorithms.
-extension EaseAlgorithms {
+/// An extension to add the exponential easing functions.
+extension EaseFunctions {
 
     // MARK: Exponential
 
@@ -517,8 +517,8 @@ extension EaseAlgorithms {
     
 }
 
-/// An extension to add the circular easing algorithms.
-extension EaseAlgorithms {
+/// An extension to add the circular easing functions.
+extension EaseFunctions {
 
     // MARK: Circular
 
@@ -593,8 +593,8 @@ extension EaseAlgorithms {
     
 }
 
-/// An extension to add the back easing algorithms.
-extension EaseAlgorithms {
+/// An extension to add the back easing functions.
+extension EaseFunctions {
 
     // MARK: Back
 
@@ -672,8 +672,8 @@ extension EaseAlgorithms {
     
 }
 
-/// An extension to add the elastic easing algorithms.
-extension EaseAlgorithms {
+/// An extension to add the elastic easing functions.
+extension EaseFunctions {
 
     // MARK: Elastic
 
@@ -803,8 +803,8 @@ extension EaseAlgorithms {
     
 }
 
-/// An extension to add the bounce easing algorithms.
-extension EaseAlgorithms {
+/// An extension to add the bounce easing functions.
+extension EaseFunctions {
 
     // MARK: Bounce
 
@@ -821,7 +821,7 @@ extension EaseAlgorithms {
      - Returns: The value at a specific point in time from the start value.
      */
     internal static func bounceIn<Number: FloatingPoint>(b: Number, c: Number, t: Number, d: Number) -> Number {
-        let m = EaseAlgorithms.bounceOut(b: Number(0), c: c, t: d-t, d: d)
+        let m = EaseFunctions.bounceOut(b: Number(0), c: c, t: d-t, d: d)
         return c - m + b
     }
 
@@ -873,12 +873,12 @@ extension EaseAlgorithms {
     internal static func bounceInOut<Number: FloatingPoint>(b: Number, c: Number, t: Number, d: Number) -> Number {
         if t < (d.half) {
             let z = t.double
-            let m = EaseAlgorithms.bounceIn(b: Number(0), c: c, t: z, d: d).half
+            let m = EaseFunctions.bounceIn(b: Number(0), c: c, t: z, d: d).half
             return m + b
         } else {
             let x = c.half
             let z = (t.double)-d
-            let m = (EaseAlgorithms.bounceOut(b: Number(0), c: c, t: z, d: d).half) + x
+            let m = (EaseFunctions.bounceOut(b: Number(0), c: c, t: z, d: d).half) + x
             return m + b
         }
     }
