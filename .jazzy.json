@@ -29,10 +29,10 @@
       "name": "Easing",
       "children": [
         "Ease",
-        "EaseAlgorithm",
-        "EaseAlgorithms",
         "EaseClassification",
-        "EaseCurve"
+        "EaseCurve",
+        "EaseFunction",
+        "EaseFunctions"
       ]
     },
     {

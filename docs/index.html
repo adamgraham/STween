@@ -34,16 +34,16 @@
                 <a href="Enums/Ease.html">Ease</a>
               </li>
               <li class="nav-group-task">
-                <a href="Easing.html#/s:6STween13EaseAlgorithm">EaseAlgorithm</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Classes/EaseAlgorithms.html">EaseAlgorithms</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="Enums/EaseClassification.html">EaseClassification</a>
               </li>
               <li class="nav-group-task">
                 <a href="Enums/EaseCurve.html">EaseCurve</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Easing.html#/s:6STween12EaseFunction">EaseFunction</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/EaseFunctions.html">EaseFunctions</a>
               </li>
             </ul>
           </li>
@@ -120,7 +120,7 @@ Complex animations done simple. An easy-to-use interface.</p>
 <p>For detailed usage and documentation, please visit the <a href="https://github.com/adamgraham/STween/wiki">STween Wiki</a>.</p>
 <a href='#tweening' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='tweening'>Tweening</h3>
 
-<p>A Tween is an animation of a value from a start position to an end position with a given duration of time and a type of easing algorithm (linear, exponential, quadratic, etc).</p>
+<p>A Tween is an animation of a value from a start position to an end position with a given duration of time and a type of easing function (linear, exponential, quadratic, etc).</p>
 
 <p>Tweening engines make animations simple. Take the following, for example:</p>
 <pre class="highlight swift"><code><span class="n">view</span><span class="o">.</span><span class="nf">tween</span><span class="p">(</span><span class="nv">to</span><span class="p">:</span> <span class="o">.</span><span class="nf">width</span><span class="p">(</span><span class="mf">100.0</span><span class="p">),</span> <span class="nv">duration</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">)</span>
@@ -151,9 +151,9 @@ Complex animations done simple. An easy-to-use interface.</p>
 <li><code>CIColor</code>, <code>CIVector</code></li>
 <li><code>UIColor</code>, <code>UIEdgeInsetes</code>, <code>UIOffset</code></li>
 </ul>
-<a href='#supported-algorithms' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='supported-algorithms'>Supported Algorithms</h3>
+<a href='#supported-functions' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='supported-functions'>Supported Functions</h3>
 
-<p>The below algorithm classifications are supported. Each classification has 3 variations: <code>.in</code>, <code>.out</code>, <code>.inOut</code>. A visualized cheat-sheet of the algorithms can be found at <a href="http://easings.net/">easings.net</a>.</p>
+<p>The below easing function classifications are supported. Each classification has 3 variations: <code>.in</code>, <code>.out</code>, <code>.inOut</code>. A visualized cheat-sheet of these easing functions can be found at <a href="http://easings.net/">easings.net</a>.</p>
 
 <ul>
 <li>Linear</li>
