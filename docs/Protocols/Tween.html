@@ -69,9 +69,6 @@
                 <a href="../Classes/TweenAnimation.html">TweenAnimation</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Enums/TweenError.html">TweenError</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="../Enums/TweenState.html">TweenState</a>
               </li>
               <li class="nav-group-task">
@@ -87,7 +84,7 @@
                 <a href="../Protocols/Tweenable.html">Tweenable</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Tweening.html#/s:P6STween17TweenableProperty">TweenableProperty</a>
+                <a href="../Protocols/TweenableProperty.html">TweenableProperty</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/Tweener.html">Tweener</a>
@@ -102,6 +99,14 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/FrameRate.html">FrameRate</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Other Typealiases.html">Other Typealiases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Other Typealiases.html#/s:6STween8Callback">Callback</a>
               </li>
             </ul>
           </li>
@@ -378,17 +383,6 @@ in the range of <code>0.0</code> to <code>1.0</code>.</p>
                       <div class="abstract">
                         <p>A method to invoke a change of state on <code>self</code>.</p>
 
-<p><li><p>Parameters:</p></p>
-
-<p><ul>
-<li>stateChange: The change of state to be invoked on <code>self</code>.</li>
-</ul></li>
-<div class="aside aside-returns">
-    <p class="aside-title">Returns</p>
-    <p><code>true</code> if the state of <code>self</code> is changed successfully.</p></p>
-
-<p></div></p>
-
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -452,23 +446,12 @@ in the range of <code>0.0</code> to <code>1.0</code>.</p>
                       <div class="abstract">
                         <p>A method to retrieve the callback assigned to a change of state.</p>
 
-<p><li><p>Parameters:</p></p>
-
-<p><ul>
-<li>stateChange: The change of state from which a callback will be retrieved.</li>
-</ul></li>
-<div class="aside aside-returns">
-    <p class="aside-title">Returns</p>
-    <p>The callback retrieved from the <code>stateChange</code>.</p></p>
-
-<p></div></p>
-
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">callback</span><span class="p">(</span><span class="k">get</span> <span class="nv">stateChange</span><span class="p">:</span> <span class="kt"><a href="../Enums/TweenStateChange.html">TweenStateChange</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Callback</span><span class="p">?</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">callback</span><span class="p">(</span><span class="k">get</span> <span class="nv">stateChange</span><span class="p">:</span> <span class="kt"><a href="../Enums/TweenStateChange.html">TweenStateChange</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Other Typealiases.html#/s:6STween8Callback">Callback</a></span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
@@ -515,21 +498,12 @@ in the range of <code>0.0</code> to <code>1.0</code>.</p>
                       <div class="abstract">
                         <p>A method to assign a callback to a change of state.</p>
 
-<ul>
-<li>Parameters:
-
-<ul>
-<li>stateChange: The change of state to which a callback will be assigned.</li>
-<li>value: The callback to be assigned to the <code>stateChange</code>.</li>
-</ul></li>
-</ul>
-
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">callback</span><span class="p">(</span><span class="k">set</span> <span class="nv">stateChange</span><span class="p">:</span> <span class="kt"><a href="../Enums/TweenStateChange.html">TweenStateChange</a></span><span class="p">,</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">Callback</span><span class="p">?)</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">callback</span><span class="p">(</span><span class="k">set</span> <span class="nv">stateChange</span><span class="p">:</span> <span class="kt"><a href="../Enums/TweenStateChange.html">TweenStateChange</a></span><span class="p">,</span> <span class="nv">value</span><span class="p">:</span> <span class="kt"><a href="../Other Typealiases.html#/s:6STween8Callback">Callback</a></span><span class="p">?)</span></code></pre>
 
                         </div>
                       </div>
@@ -583,14 +557,6 @@ in the range of <code>0.0</code> to <code>1.0</code>.</p>
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>A method to unassign the callback assigned to a change of state.</p>
-
-<ul>
-<li>Parameters:
-
-<ul>
-<li>stateChange: The change of state from which a callback will be unassigned.</li>
-</ul></li>
-</ul>
 
                       </div>
                       <div class="declaration">
@@ -653,17 +619,6 @@ in the range of <code>0.0</code> to <code>1.0</code>.</p>
                       <div class="abstract">
                         <p>A query chaining method to assign a value to <code>self.ease</code>.</p>
 
-<p><li><p>Parameters:</p></p>
-
-<p><ul>
-<li>ease: The <code><a href="../Enums/Ease.html">Ease</a></code> to be assigned to <code>self.ease</code>.</li>
-</ul></li>
-<div class="aside aside-returns">
-    <p class="aside-title">Returns</p>
-    <p><code>self</code> to allow for additional method chaining.</p></p>
-
-<p></div></p>
-
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -718,18 +673,6 @@ in the range of <code>0.0</code> to <code>1.0</code>.</p>
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>A query chaining method to assign a value to <code>self.delay</code>.</p>
-
-<p><li><p>Parameters:</p></p>
-
-<p><ul>
-<li>delay: The amount of time, in seconds, to be assigned to 
-    <code>self.delay</code>.</li>
-</ul></li>
-<div class="aside aside-returns">
-    <p class="aside-title">Returns</p>
-    <p><code>self</code> to allow for additional method chaining.</p></p>
-
-<p></div></p>
 
                       </div>
                       <div class="declaration">
@@ -786,18 +729,6 @@ in the range of <code>0.0</code> to <code>1.0</code>.</p>
                       <div class="abstract">
                         <p>A query chaining method to assign a value to <code>self.duration</code>.</p>
 
-<p><li><p>Parameters:</p></p>
-
-<p><ul>
-<li>duration: The amount of time, in seconds, to be assigned to 
-       <code>self.duration</code>.</li>
-</ul></li>
-<div class="aside aside-returns">
-    <p class="aside-title">Returns</p>
-    <p><code>self</code> to allow for additional method chaining.</p></p>
-
-<p></div></p>
-
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -852,17 +783,6 @@ in the range of <code>0.0</code> to <code>1.0</code>.</p>
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>A query chaining method to assign a value to <code>self.reversed</code>.</p>
-
-<p><li><p>Parameters:</p></p>
-
-<p><ul>
-<li>reversed: The boolean value to be assigned to <code>self.reversed</code>.</li>
-</ul></li>
-<div class="aside aside-returns">
-    <p class="aside-title">Returns</p>
-    <p><code>self</code> to allow for additional method chaining.</p></p>
-
-<p></div></p>
 
                       </div>
                       <div class="declaration">
@@ -921,24 +841,12 @@ in the range of <code>0.0</code> to <code>1.0</code>.</p>
 <code>self</code>. Any time <code>self</code> changes to the specified state, the callback is
 invoked.</p>
 
-<p><li><p>Parameters:</p></p>
-
-<p><ul>
-<li>callback: The callback to be assigned to a change of state on <code>self</code>.</li>
-<li>stateChange: The change of state the <code>callback</code> will be assigned to.</li>
-</ul></li>
-<div class="aside aside-returns">
-    <p class="aside-title">Returns</p>
-    <p><code>self</code> to allow for additional method chaining.</p></p>
-
-<p></div></p>
-
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">@discardableResult</span> <span class="kd">public</span> <span class="kd">final</span> <span class="kd">func</span> <span class="nf">set</span><span class="p">(</span><span class="nv">callback</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt">Callback</span><span class="p">,</span> <span class="k">for</span> <span class="nv">stateChange</span><span class="p">:</span> <span class="kt"><a href="../Enums/TweenStateChange.html">TweenStateChange</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Tween</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">@discardableResult</span> <span class="kd">public</span> <span class="kd">final</span> <span class="kd">func</span> <span class="nf">set</span><span class="p">(</span><span class="nv">callback</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Other Typealiases.html#/s:6STween8Callback">Callback</a></span><span class="p">,</span> <span class="k">for</span> <span class="nv">stateChange</span><span class="p">:</span> <span class="kt"><a href="../Enums/TweenStateChange.html">TweenStateChange</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Tween</span></code></pre>
 
                         </div>
                       </div>
@@ -989,7 +897,7 @@ invoked.</p>
         </section>
         <section id="footer">
           <p>Copyright (c) 2017 Adam Graham</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.3</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

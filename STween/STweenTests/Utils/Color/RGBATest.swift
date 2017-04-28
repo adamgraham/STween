@@ -43,20 +43,20 @@ class RGBATest: XCTestCase {
     // MARK: Equatable Tests
 
     func testEquatable() {
-        for rgba in RGBATest.rgba {
-            XCTAssertEqual(rgba, RGBA(red: rgba.red,
-                                      green: rgba.green,
-                                      blue: rgba.blue,
-                                      alpha: rgba.alpha))
+        RGBATest.rgba.forEach {
+            XCTAssertEqual($0, RGBA(red: $0.red,
+                                    green: $0.green,
+                                    blue: $0.blue,
+                                    alpha: $0.alpha))
         }
     }
 
     func testNotEquatable() {
-        for rgba in RGBATest.rgba {
-            XCTAssertNotEqual(rgba, RGBA(red: CGFloat.greatestFiniteMagnitude,
-                                         green: CGFloat.greatestFiniteMagnitude,
-                                         blue: CGFloat.greatestFiniteMagnitude,
-                                         alpha: CGFloat.greatestFiniteMagnitude))
+        RGBATest.rgba.forEach {
+            XCTAssertNotEqual($0, RGBA(red: CGFloat.greatestFiniteMagnitude,
+                                       green: CGFloat.greatestFiniteMagnitude,
+                                       blue: CGFloat.greatestFiniteMagnitude,
+                                       alpha: CGFloat.greatestFiniteMagnitude))
         }
     }
 

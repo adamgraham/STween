@@ -28,7 +28,7 @@ class TweenAnimationTest: XCTestCase {
 
     func testInit() {
         let target = UIView()
-        let tween = TweenAnimation<UIView>(target: target, properties: [], duration: 1.0)
+        let tween = TweenAnimation<UIViewTweenProperty>(target: target, properties: [], duration: 1.0)
 
         XCTAssertEqual(tween.target, target)
         XCTAssertEqual(tween.targetProperties.count, 0)
@@ -39,7 +39,7 @@ class TweenAnimationTest: XCTestCase {
 
     func testTweening() {
         let target = UIView()
-        let tween = TweenAnimation<UIView>(target: target, properties: [.x(100.0), .y(100.0)], duration: 1.0)
+        let tween = TweenAnimation<UIViewTweenProperty>(target: target, properties: [.x(100.0), .y(100.0)], duration: 1.0)
         let tweeningExpectation = expectation(description: "tweening")
 
         tween.callback(set: .complete) {
@@ -50,18 +50,18 @@ class TweenAnimationTest: XCTestCase {
         tween.start()
         tween.update()
 
-        XCTAssertEqualWithAccuracy(Double(target.frame.origin.x), 0.0, accuracy: DBL_EPSILON)
-        XCTAssertEqualWithAccuracy(Double(target.frame.origin.y), 0.0, accuracy: DBL_EPSILON)
+        XCTAssertEqualWithAccuracy(Double(target.frame.origin.x), 0.0, accuracy: .ulpOfOne)
+        XCTAssertEqualWithAccuracy(Double(target.frame.origin.y), 0.0, accuracy: .ulpOfOne)
 
         waitForExpectations(timeout: 3.0) { error in
-            XCTAssertEqualWithAccuracy(Double(target.frame.origin.x), 100.0, accuracy: DBL_EPSILON)
-            XCTAssertEqualWithAccuracy(Double(target.frame.origin.y), 100.0, accuracy: DBL_EPSILON)
+            XCTAssertEqualWithAccuracy(Double(target.frame.origin.x), 100.0, accuracy: .ulpOfOne)
+            XCTAssertEqualWithAccuracy(Double(target.frame.origin.y), 100.0, accuracy: .ulpOfOne)
         }
     }
 
     func testTweeningReversed() {
         let target = UIView()
-        let tween = TweenAnimation<UIView>(target: target, properties: [.x(100.0), .y(100.0)], duration: 1.0)
+        let tween = TweenAnimation<UIViewTweenProperty>(target: target, properties: [.x(100.0), .y(100.0)], duration: 1.0)
         let tweeningExpectation = expectation(description: "tweening:reversed")
 
         tween.callback(set: .complete) {
@@ -73,19 +73,19 @@ class TweenAnimationTest: XCTestCase {
         tween.start()
         tween.update()
 
-        XCTAssertEqualWithAccuracy(Double(target.frame.origin.x), 100.0, accuracy: DBL_EPSILON)
-        XCTAssertEqualWithAccuracy(Double(target.frame.origin.y), 100.0, accuracy: DBL_EPSILON)
+        XCTAssertEqualWithAccuracy(Double(target.frame.origin.x), 100.0, accuracy: .ulpOfOne)
+        XCTAssertEqualWithAccuracy(Double(target.frame.origin.y), 100.0, accuracy: .ulpOfOne)
 
         waitForExpectations(timeout: 3.0) { error in
-            XCTAssertEqualWithAccuracy(Double(target.frame.origin.x), 0.0, accuracy: DBL_EPSILON)
-            XCTAssertEqualWithAccuracy(Double(target.frame.origin.y), 0.0, accuracy: DBL_EPSILON)
+            XCTAssertEqualWithAccuracy(Double(target.frame.origin.x), 0.0, accuracy: .ulpOfOne)
+            XCTAssertEqualWithAccuracy(Double(target.frame.origin.y), 0.0, accuracy: .ulpOfOne)
         }
     }
 
     // MARK: State Control Tests
 
     func testStart() {
-        let tween = TweenAnimation<UIView>(target: UIView(), properties: [], duration: 1.0)
+        let tween = TweenAnimation<UIViewTweenProperty>(target: UIView(), properties: [], duration: 1.0)
 
         var callbackInvoked = false
         tween.callback(set: .start) {
@@ -100,7 +100,7 @@ class TweenAnimationTest: XCTestCase {
     }
 
     func testStop() {
-        let tween = TweenAnimation<UIView>(target: UIView(), properties: [], duration: 1.0)
+        let tween = TweenAnimation<UIViewTweenProperty>(target: UIView(), properties: [], duration: 1.0)
 
         var callbackInvoked = false
         tween.callback(set: .stop) {
@@ -118,7 +118,7 @@ class TweenAnimationTest: XCTestCase {
     }
 
     func testRestart() {
-        let tween = TweenAnimation<UIView>(target: UIView(), properties: [], duration: 1.0)
+        let tween = TweenAnimation<UIViewTweenProperty>(target: UIView(), properties: [], duration: 1.0)
 
         var callbackInvoked = false
         tween.callback(set: .restart) {
@@ -138,7 +138,7 @@ class TweenAnimationTest: XCTestCase {
     }
 
     func testPause() {
-        let tween = TweenAnimation<UIView>(target: UIView(), properties: [], duration: 1.0)
+        let tween = TweenAnimation<UIViewTweenProperty>(target: UIView(), properties: [], duration: 1.0)
 
         var callbackInvoked = false
         tween.callback(set: .pause) {
@@ -156,7 +156,7 @@ class TweenAnimationTest: XCTestCase {
     }
 
     func testResume() {
-        let tween = TweenAnimation<UIView>(target: UIView(), properties: [], duration: 1.0)
+        let tween = TweenAnimation<UIViewTweenProperty>(target: UIView(), properties: [], duration: 1.0)
 
         var callbackInvoked = false
         tween.callback(set: .resume) {
@@ -176,7 +176,7 @@ class TweenAnimationTest: XCTestCase {
     }
 
     func testCompleteWithAutoKillOn() {
-        let tween = TweenAnimation<UIView>(target: UIView(), properties: [.x(100.0)], duration: 1.0)
+        let tween = TweenAnimation<UIViewTweenProperty>(target: UIView(), properties: [.x(100.0)], duration: 1.0)
 
         var callbackInvoked = false
         tween.callback(set: .complete) {
@@ -198,7 +198,7 @@ class TweenAnimationTest: XCTestCase {
     }
 
     func testCompleteWithAutoKillOff() {
-        let tween = TweenAnimation<UIView>(target: UIView(), properties: [.x(100.0)], duration: 1.0)
+        let tween = TweenAnimation<UIViewTweenProperty>(target: UIView(), properties: [.x(100.0)], duration: 1.0)
 
         var callbackInvoked = false
         tween.callback(set: .complete) {
@@ -220,24 +220,22 @@ class TweenAnimationTest: XCTestCase {
     }
 
     func testKill() {
-        let tween = Tweener.animate(UIView(), to: [], duration: 1.0) as! TweenAnimation<UIView>
+        let tween = TweenAnimation<UIViewTweenProperty>(target: UIView(), properties: [], duration: 1.0)
 
         var callbackInvoked = false
         tween.callback(set: .kill) {
             callbackInvoked = true
         }
 
-        XCTAssertEqual(Tweener.count, 1)
         XCTAssertEqual(tween.state, .new)
         XCTAssertTrue(tween.invoke(.kill))
         XCTAssertEqual(tween.state, .killed)
         XCTAssertFalse(tween.invoke(.kill))
         XCTAssertTrue(callbackInvoked)
-        XCTAssertEqual(Tweener.count, 0)
     }
 
     func testReset() {
-        let tween = TweenAnimation<UIView>(target: UIView(), properties: [], duration: 1.0)
+        let tween = TweenAnimation<UIViewTweenProperty>(target: UIView(), properties: [], duration: 1.0)
         tween.reversed = !Defaults.reversed
         tween.ease = .backOut
         tween.delay = Defaults.delay + 1.0
@@ -264,8 +262,7 @@ class TweenAnimationTest: XCTestCase {
     }
 
     func testUpdate() {
-        let target = UIView()
-        let tween = TweenAnimation<UIView>(target: target, properties: [], duration: 1.0)
+        let tween = TweenAnimation<UIViewTweenProperty>(target: UIView(), properties: [], duration: 1.0)
 
         var callbackInvoked = false
         tween.callback(set: .update) {
@@ -285,7 +282,7 @@ class TweenAnimationTest: XCTestCase {
     // MARK: Callback Tests
 
     func testCallbackMethods() {
-        let tween = Tweener.animate(UIView(), to: [], duration: 1.0)
+        let tween = TweenAnimation<UIViewTweenProperty>(target: UIView(), properties: [], duration: 1.0)
         let states: [TweenStateChange] = [.start, .stop, .restart, .pause, .resume, .complete, .kill, .reset, .update]
 
         for state in states {

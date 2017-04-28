@@ -52,18 +52,22 @@ extension Tweener {
 
      - Returns: The `Tween` control for the animation.
      */
-    @discardableResult public static func animate<Target: Tweenable>(_ target: Target, to properties: [Target.TweenProperty], duration: TimeInterval, completion: Callback? = nil) -> Tween {
-        let tween = TweenAnimation(target: target, properties: properties, duration: duration)
-        tween.reversed = false
-        tween.callback(set: .complete, value: completion)
+    @discardableResult
+    public static func animate<TargetProperty: TweenableProperty>(
+        _ target: TargetProperty.TweenableType, to properties: [TargetProperty], duration: TimeInterval, completion: Callback? = nil) -> Tween
+            where TargetProperty.Value == TargetProperty {
 
-        add(tween)
+            let tween = TweenAnimation(target: target, properties: properties, duration: duration)
+            tween.reversed = false
+            tween.callback(set: .complete, value: completion)
 
-        if Defaults.autoStartTweens {
-            queue(tween)
-        }
+            add(tween)
 
-        return tween
+            if Defaults.autoStartTweens {
+                queue(tween)
+            }
+
+            return tween
     }
 
     /**
@@ -80,18 +84,22 @@ extension Tweener {
      
      - Returns: The `Tween` control for the animation.
      */
-    @discardableResult public static func animate<Target: Tweenable>(_ target: Target, from properties: [Target.TweenProperty], duration: TimeInterval, completion: Callback? = nil) -> Tween {
-        let tween = TweenAnimation(target: target, properties: properties, duration: duration)
-        tween.reversed = true
-        tween.callback(set: .complete, value: completion)
+    @discardableResult
+    public static func animate<TargetProperty: TweenableProperty>(
+        _ target: TargetProperty.TweenableType, from properties: [TargetProperty], duration: TimeInterval, completion: Callback? = nil) -> Tween
+            where TargetProperty.Value == TargetProperty {
 
-        add(tween)
+            let tween = TweenAnimation(target: target, properties: properties, duration: duration)
+            tween.reversed = true
+            tween.callback(set: .complete, value: completion)
 
-        if Defaults.autoStartTweens {
-            queue(tween)
-        }
+            add(tween)
 
-        return tween
+            if Defaults.autoStartTweens {
+                queue(tween)
+            }
+
+            return tween
     }
 
 }
@@ -191,8 +199,8 @@ extension Tweener {
             return
         }
 
-        for tween in self.queuedTweens {
-            tween.invoke(.start)
+        self.queuedTweens.forEach {
+            $0.invoke(.start)
         }
 
         self.queuedTweens.removeAll()
@@ -214,8 +222,8 @@ extension Tweener {
                       changed state.
      */
     public static func invokeStateChangeOnAllTweens(_ stateChange: TweenStateChange, completion: Callback? = nil) {
-        for tween in self.tweens {
-            tween.invoke(stateChange)
+        self.tweens.forEach {
+            $0.invoke(stateChange)
         }
 
         completion?()

@@ -14,7 +14,7 @@
 
  Easing functions calculate the value between a starting and ending
  position at a specific point in time. In simpler terms, these functions
- determine what path is used to get from point "A" to point "B".
+ determine the path/motion used to get from point "A" to point "B".
 
  > "The aspect of time is crucial to motion — things change over time.
  > Nothing can move in “zero time”, or be in two places at once. In other

@@ -9,51 +9,11 @@
 /// An extension to provide tweening animation functionality to `UILabel`.
 extension UILabel {
 
-    public typealias TweenProperty = UILabelTweenProperty
-
-    public func value(of property: UILabelTweenProperty) -> UILabelTweenProperty {
-        switch property {
-        case .textColor:
-            return .textColor(self.textColor)
-        case .highlightedTextColor:
-            return .highlightedTextColor(self.highlightedTextColor ?? UIColor.clear)
-
-        case .shadowColor:
-            return .shadowColor(self.shadowColor ?? UIColor.clear)
-        case .shadowOffset:
-            return .shadowOffset(self.shadowOffset)
-
-        case .minimumScaleFactor:
-            return .minimumScaleFactor(self.minimumScaleFactor)
-        case .preferredMaxLayoutWidth:
-            return .preferredMaxLayoutWidth(self.preferredMaxLayoutWidth)
-        }
-    }
-
-    public func apply(_ property: UILabelTweenProperty) {
-        switch property {
-        case let .textColor(value):
-            self.textColor = value
-        case let .highlightedTextColor(value):
-            self.highlightedTextColor = value
-
-        case let .shadowColor(value):
-            self.shadowColor = value
-        case let .shadowOffset(value):
-            self.shadowOffset = value
-
-        case let .minimumScaleFactor(value):
-            self.minimumScaleFactor = value
-        case let .preferredMaxLayoutWidth(value):
-            self.preferredMaxLayoutWidth = value
-        }
-    }
-
 }
 
 /// An enum to describe the properties that can be animated with a tween
 /// on a `UILabel`.
-public enum UILabelTweenProperty: TweenableProperty {
+public enum UILabelTweenProperty {
 
     /// A case to denote the `textColor` property of a `UILabel`.
     case textColor(UIColor)
@@ -71,6 +31,50 @@ public enum UILabelTweenProperty: TweenableProperty {
     /// A case to denote the `preferredMaxLayoutWidth` property of a `UILabel`.
     @available(iOS 6.0, *)
     case preferredMaxLayoutWidth(CGFloat)
+
+}
+
+extension UILabelTweenProperty: TweenableProperty {
+
+    public typealias TweenableType = UILabel
+
+    public func value(from object: UILabel) -> UILabelTweenProperty {
+        switch self {
+        case .textColor:
+            return .textColor(object.textColor)
+        case .highlightedTextColor:
+            return .highlightedTextColor(object.highlightedTextColor ?? UIColor.clear)
+
+        case .shadowColor:
+            return .shadowColor(object.shadowColor ?? UIColor.clear)
+        case .shadowOffset:
+            return .shadowOffset(object.shadowOffset)
+
+        case .minimumScaleFactor:
+            return .minimumScaleFactor(object.minimumScaleFactor)
+        case .preferredMaxLayoutWidth:
+            return .preferredMaxLayoutWidth(object.preferredMaxLayoutWidth)
+        }
+    }
+
+    public func apply(to object: UILabel) {
+        switch self {
+        case let .textColor(value):
+            object.textColor = value
+        case let .highlightedTextColor(value):
+            object.highlightedTextColor = value
+
+        case let .shadowColor(value):
+            object.shadowColor = value
+        case let .shadowOffset(value):
+            object.shadowOffset = value
+
+        case let .minimumScaleFactor(value):
+            object.minimumScaleFactor = value
+        case let .preferredMaxLayoutWidth(value):
+            object.preferredMaxLayoutWidth = value
+        }
+    }
 
     public static func interpolate(from startValue: UILabelTweenProperty, to endValue: UILabelTweenProperty, with ease: Ease,
                                    elapsed: TimeInterval, duration: TimeInterval) -> UILabelTweenProperty {
@@ -90,7 +94,7 @@ public enum UILabelTweenProperty: TweenableProperty {
             return .minimumScaleFactor(CGFloat.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
         case let (.preferredMaxLayoutWidth(start), .preferredMaxLayoutWidth(end)):
             return .preferredMaxLayoutWidth(CGFloat.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
-
+            
         default:
             return startValue
         }

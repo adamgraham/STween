@@ -8,37 +8,41 @@
 
 /// An extension to provide tweening animation functionality to `UITextField`.
 extension UITextField {
-
-    public typealias TweenProperty = UITextFieldTweenProperty
-
-    public func value(of property: UITextFieldTweenProperty) -> UITextFieldTweenProperty {
-        switch property {
-        case .textColor:
-            return .textColor(self.textColor ?? UIColor.clear)
-        case .minimumFontSize:
-            return .minimumFontSize(self.minimumFontSize)
-        }
-    }
-
-    public func apply(_ property: UITextFieldTweenProperty) {
-        switch property {
-        case let .textColor(value):
-            self.textColor = value
-        case let .minimumFontSize(value):
-            self.minimumFontSize = value
-        }
-    }
     
 }
 
 /// An enum to describe the properties that can be animated with a tween
 /// on a `UITextField`.
-public enum UITextFieldTweenProperty: TweenableProperty {
+public enum UITextFieldTweenProperty {
 
     /// A case to denote the `textColor` property of a `UITextField`.
     case textColor(UIColor)
     /// A case to denote the `minimumFontSize` property of a `UITextField`.
     case minimumFontSize(CGFloat)
+
+}
+
+extension UITextFieldTweenProperty: TweenableProperty {
+
+    public typealias TweenableType = UITextField
+
+    public func value(from object: UITextField) -> UITextFieldTweenProperty {
+        switch self {
+        case .textColor:
+            return .textColor(object.textColor ?? UIColor.clear)
+        case .minimumFontSize:
+            return .minimumFontSize(object.minimumFontSize)
+        }
+    }
+
+    public func apply(to object: UITextField) {
+        switch self {
+        case let .textColor(value):
+            object.textColor = value
+        case let .minimumFontSize(value):
+            object.minimumFontSize = value
+        }
+    }
 
     public static func interpolate(from startValue: UITextFieldTweenProperty, to endValue: UITextFieldTweenProperty, with ease: Ease,
                                    elapsed: TimeInterval, duration: TimeInterval) -> UITextFieldTweenProperty {
