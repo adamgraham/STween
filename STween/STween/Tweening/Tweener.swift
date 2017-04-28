@@ -199,8 +199,8 @@ extension Tweener {
             return
         }
 
-        for tween in self.queuedTweens {
-            tween.invoke(.start)
+        self.queuedTweens.forEach {
+            $0.invoke(.start)
         }
 
         self.queuedTweens.removeAll()
@@ -222,8 +222,8 @@ extension Tweener {
                       changed state.
      */
     public static func invokeStateChangeOnAllTweens(_ stateChange: TweenStateChange, completion: Callback? = nil) {
-        for tween in self.tweens {
-            tween.invoke(stateChange)
+        self.tweens.forEach {
+            $0.invoke(stateChange)
         }
 
         completion?()
