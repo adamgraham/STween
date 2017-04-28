@@ -69,9 +69,6 @@
                 <a href="../Classes/TweenAnimation.html">TweenAnimation</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Enums/TweenError.html">TweenError</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="../Enums/TweenState.html">TweenState</a>
               </li>
               <li class="nav-group-task">
@@ -87,7 +84,7 @@
                 <a href="../Protocols/Tweenable.html">Tweenable</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Tweening.html#/s:P6STween17TweenableProperty">TweenableProperty</a>
+                <a href="../Protocols/TweenableProperty.html">TweenableProperty</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/Tweener.html">Tweener</a>
@@ -102,6 +99,14 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/FrameRate.html">FrameRate</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Other Typealiases.html">Other Typealiases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Other Typealiases.html#/s:6STween8Callback">Callback</a>
               </li>
             </ul>
           </li>
@@ -124,7 +129,7 @@ A visualized cheat-sheet of these functions can be found at
 
 <p>Easing functions calculate the value between a starting and ending
 position at a specific point in time. In simpler terms, these functions
-determine what path is used to get from point <q>A</q> to point <q>B</q>.</p>
+determine the path/motion used to get from point <q>A</q> to point <q>B</q>.</p>
 
 <blockquote>
 <p>&ldquo;The aspect of time is crucial to motion — things change over time.
@@ -137,20 +142,6 @@ that position is a function of time. This means that, given a specific point
 in time, we can find one, and only one, corresponding position.&rdquo;
 - <a href="http://robertpenner.com/easing/penner_chapter7_tweening.pdf">Robert Penner</a></p>
 </blockquote>
-
-<p><li><p>Parameters:</p></p>
-
-<p><ul>
-<li>b: The start value (b = begin).</li>
-<li>c: The change in value (c = change).</li>
-<li>t: The amount of time elapsed since the start of the ease (t = time).</li>
-<li>d: The total amount of time the ease will run (d = duration).</li>
-</ul></li>
-<div class="aside aside-returns">
-    <p class="aside-title">Returns</p>
-    <p>The value at a specific point in time from the start value.</p></p>
-
-<p></div></p>
 
           </section>
           <section class="section task-group-section">
@@ -178,20 +169,6 @@ in time, we can find one, and only one, corresponding position.&rdquo;
                       <div class="abstract">
                         <p>The algorithmic function of a <code>linear</code> ease used to calculate a value
 between a starting and ending position at a specific point in time.</p>
-
-<p><li><p>Parameters:</p></p>
-
-<p><ul>
-<li>b: The start value (b = begin).</li>
-<li>c: The change in value (c = change).</li>
-<li>t: The amount of time elapsed since the start of the ease (t = time).</li>
-<li>d: The total amount of time the ease will run (d = duration).</li>
-</ul></li>
-<div class="aside aside-returns">
-    <p class="aside-title">Returns</p>
-    <p>The value at a specific point in time from the start value.</p></p>
-
-<p></div></p>
 
                       </div>
                       <div class="declaration">
@@ -296,20 +273,6 @@ between a starting and ending position at a specific point in time.</p>
                         <p>The algorithmic function of a <code>sineIn</code> ease used to calculate a value
 between a starting and ending position at a specific point in time.</p>
 
-<p><li><p>Parameters:</p></p>
-
-<p><ul>
-<li>b: The start value (b = begin).</li>
-<li>c: The change in value (c = change).</li>
-<li>t: The amount of time elapsed since the start of the ease (t = time).</li>
-<li>d: The total amount of time the ease will run (d = duration).</li>
-</ul></li>
-<div class="aside aside-returns">
-    <p class="aside-title">Returns</p>
-    <p>The value at a specific point in time from the start value.</p></p>
-
-<p></div></p>
-
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -402,20 +365,6 @@ between a starting and ending position at a specific point in time.</p>
                         <p>The algorithmic function of a <code>sineOut</code> ease used to calculate a value
 between a starting and ending position at a specific point in time.</p>
 
-<p><li><p>Parameters:</p></p>
-
-<p><ul>
-<li>b: The start value (b = begin).</li>
-<li>c: The change in value (c = change).</li>
-<li>t: The amount of time elapsed since the start of the ease (t = time).</li>
-<li>d: The total amount of time the ease will run (d = duration).</li>
-</ul></li>
-<div class="aside aside-returns">
-    <p class="aside-title">Returns</p>
-    <p>The value at a specific point in time from the start value.</p></p>
-
-<p></div></p>
-
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -507,20 +456,6 @@ between a starting and ending position at a specific point in time.</p>
                       <div class="abstract">
                         <p>The algorithmic function of a <code>sineInOut</code> ease used to calculate a value
 between a starting and ending position at a specific point in time.</p>
-
-<p><li><p>Parameters:</p></p>
-
-<p><ul>
-<li>b: The start value (b = begin).</li>
-<li>c: The change in value (c = change).</li>
-<li>t: The amount of time elapsed since the start of the ease (t = time).</li>
-<li>d: The total amount of time the ease will run (d = duration).</li>
-</ul></li>
-<div class="aside aside-returns">
-    <p class="aside-title">Returns</p>
-    <p>The value at a specific point in time from the start value.</p></p>
-
-<p></div></p>
 
                       </div>
                       <div class="declaration">
@@ -625,20 +560,6 @@ between a starting and ending position at a specific point in time.</p>
                         <p>The algorithmic function of a <code>cubicIn</code> ease used to calculate a value
 between a starting and ending position at a specific point in time.</p>
 
-<p><li><p>Parameters:</p></p>
-
-<p><ul>
-<li>b: The start value (b = begin).</li>
-<li>c: The change in value (c = change).</li>
-<li>t: The amount of time elapsed since the start of the ease (t = time).</li>
-<li>d: The total amount of time the ease will run (d = duration).</li>
-</ul></li>
-<div class="aside aside-returns">
-    <p class="aside-title">Returns</p>
-    <p>The value at a specific point in time from the start value.</p></p>
-
-<p></div></p>
-
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -731,20 +652,6 @@ between a starting and ending position at a specific point in time.</p>
                         <p>The algorithmic function of a <code>cubicOut</code> ease used to calculate a value
 between a starting and ending position at a specific point in time.</p>
 
-<p><li><p>Parameters:</p></p>
-
-<p><ul>
-<li>b: The start value (b = begin).</li>
-<li>c: The change in value (c = change).</li>
-<li>t: The amount of time elapsed since the start of the ease (t = time).</li>
-<li>d: The total amount of time the ease will run (d = duration).</li>
-</ul></li>
-<div class="aside aside-returns">
-    <p class="aside-title">Returns</p>
-    <p>The value at a specific point in time from the start value.</p></p>
-
-<p></div></p>
-
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -836,20 +743,6 @@ between a starting and ending position at a specific point in time.</p>
                       <div class="abstract">
                         <p>The algorithmic function of a <code>cubicInOut</code> ease used to calculate a value
 between a starting and ending position at a specific point in time.</p>
-
-<p><li><p>Parameters:</p></p>
-
-<p><ul>
-<li>b: The start value (b = begin).</li>
-<li>c: The change in value (c = change).</li>
-<li>t: The amount of time elapsed since the start of the ease (t = time).</li>
-<li>d: The total amount of time the ease will run (d = duration).</li>
-</ul></li>
-<div class="aside aside-returns">
-    <p class="aside-title">Returns</p>
-    <p>The value at a specific point in time from the start value.</p></p>
-
-<p></div></p>
 
                       </div>
                       <div class="declaration">
@@ -954,20 +847,6 @@ between a starting and ending position at a specific point in time.</p>
                         <p>The algorithmic function of a <code>quadIn</code> ease used to calculate a value
 between a starting and ending position at a specific point in time.</p>
 
-<p><li><p>Parameters:</p></p>
-
-<p><ul>
-<li>b: The start value (b = begin).</li>
-<li>c: The change in value (c = change).</li>
-<li>t: The amount of time elapsed since the start of the ease (t = time).</li>
-<li>d: The total amount of time the ease will run (d = duration).</li>
-</ul></li>
-<div class="aside aside-returns">
-    <p class="aside-title">Returns</p>
-    <p>The value at a specific point in time from the start value.</p></p>
-
-<p></div></p>
-
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -1060,20 +939,6 @@ between a starting and ending position at a specific point in time.</p>
                         <p>The algorithmic function of a <code>quadOut</code> ease used to calculate a value
 between a starting and ending position at a specific point in time.</p>
 
-<p><li><p>Parameters:</p></p>
-
-<p><ul>
-<li>b: The start value (b = begin).</li>
-<li>c: The change in value (c = change).</li>
-<li>t: The amount of time elapsed since the start of the ease (t = time).</li>
-<li>d: The total amount of time the ease will run (d = duration).</li>
-</ul></li>
-<div class="aside aside-returns">
-    <p class="aside-title">Returns</p>
-    <p>The value at a specific point in time from the start value.</p></p>
-
-<p></div></p>
-
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -1165,20 +1030,6 @@ between a starting and ending position at a specific point in time.</p>
                       <div class="abstract">
                         <p>The algorithmic function of a <code>quadInOut</code> ease used to calculate a value
 between a starting and ending position at a specific point in time.</p>
-
-<p><li><p>Parameters:</p></p>
-
-<p><ul>
-<li>b: The start value (b = begin).</li>
-<li>c: The change in value (c = change).</li>
-<li>t: The amount of time elapsed since the start of the ease (t = time).</li>
-<li>d: The total amount of time the ease will run (d = duration).</li>
-</ul></li>
-<div class="aside aside-returns">
-    <p class="aside-title">Returns</p>
-    <p>The value at a specific point in time from the start value.</p></p>
-
-<p></div></p>
 
                       </div>
                       <div class="declaration">
@@ -1283,20 +1134,6 @@ between a starting and ending position at a specific point in time.</p>
                         <p>The algorithmic function of a <code>quartIn</code> ease used to calculate a value
 between a starting and ending position at a specific point in time.</p>
 
-<p><li><p>Parameters:</p></p>
-
-<p><ul>
-<li>b: The start value (b = begin).</li>
-<li>c: The change in value (c = change).</li>
-<li>t: The amount of time elapsed since the start of the ease (t = time).</li>
-<li>d: The total amount of time the ease will run (d = duration).</li>
-</ul></li>
-<div class="aside aside-returns">
-    <p class="aside-title">Returns</p>
-    <p>The value at a specific point in time from the start value.</p></p>
-
-<p></div></p>
-
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -1389,20 +1226,6 @@ between a starting and ending position at a specific point in time.</p>
                         <p>The algorithmic function of a <code>quartOut</code> ease used to calculate a value
 between a starting and ending position at a specific point in time.</p>
 
-<p><li><p>Parameters:</p></p>
-
-<p><ul>
-<li>b: The start value (b = begin).</li>
-<li>c: The change in value (c = change).</li>
-<li>t: The amount of time elapsed since the start of the ease (t = time).</li>
-<li>d: The total amount of time the ease will run (d = duration).</li>
-</ul></li>
-<div class="aside aside-returns">
-    <p class="aside-title">Returns</p>
-    <p>The value at a specific point in time from the start value.</p></p>
-
-<p></div></p>
-
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -1494,20 +1317,6 @@ between a starting and ending position at a specific point in time.</p>
                       <div class="abstract">
                         <p>The algorithmic function of a <code>quartInOut</code> ease used to calculate a value
 between a starting and ending position at a specific point in time.</p>
-
-<p><li><p>Parameters:</p></p>
-
-<p><ul>
-<li>b: The start value (b = begin).</li>
-<li>c: The change in value (c = change).</li>
-<li>t: The amount of time elapsed since the start of the ease (t = time).</li>
-<li>d: The total amount of time the ease will run (d = duration).</li>
-</ul></li>
-<div class="aside aside-returns">
-    <p class="aside-title">Returns</p>
-    <p>The value at a specific point in time from the start value.</p></p>
-
-<p></div></p>
 
                       </div>
                       <div class="declaration">
@@ -1612,20 +1421,6 @@ between a starting and ending position at a specific point in time.</p>
                         <p>The algorithmic function of a <code>quintIn</code> ease used to calculate a value
 between a starting and ending position at a specific point in time.</p>
 
-<p><li><p>Parameters:</p></p>
-
-<p><ul>
-<li>b: The start value (b = begin).</li>
-<li>c: The change in value (c = change).</li>
-<li>t: The amount of time elapsed since the start of the ease (t = time).</li>
-<li>d: The total amount of time the ease will run (d = duration).</li>
-</ul></li>
-<div class="aside aside-returns">
-    <p class="aside-title">Returns</p>
-    <p>The value at a specific point in time from the start value.</p></p>
-
-<p></div></p>
-
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -1718,20 +1513,6 @@ between a starting and ending position at a specific point in time.</p>
                         <p>The algorithmic function of a <code>quintOut</code> ease used to calculate a value
 between a starting and ending position at a specific point in time.</p>
 
-<p><li><p>Parameters:</p></p>
-
-<p><ul>
-<li>b: The start value (b = begin).</li>
-<li>c: The change in value (c = change).</li>
-<li>t: The amount of time elapsed since the start of the ease (t = time).</li>
-<li>d: The total amount of time the ease will run (d = duration).</li>
-</ul></li>
-<div class="aside aside-returns">
-    <p class="aside-title">Returns</p>
-    <p>The value at a specific point in time from the start value.</p></p>
-
-<p></div></p>
-
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -1823,20 +1604,6 @@ between a starting and ending position at a specific point in time.</p>
                       <div class="abstract">
                         <p>The algorithmic function of a <code>quintInOut</code> ease used to calculate a value
 between a starting and ending position at a specific point in time.</p>
-
-<p><li><p>Parameters:</p></p>
-
-<p><ul>
-<li>b: The start value (b = begin).</li>
-<li>c: The change in value (c = change).</li>
-<li>t: The amount of time elapsed since the start of the ease (t = time).</li>
-<li>d: The total amount of time the ease will run (d = duration).</li>
-</ul></li>
-<div class="aside aside-returns">
-    <p class="aside-title">Returns</p>
-    <p>The value at a specific point in time from the start value.</p></p>
-
-<p></div></p>
 
                       </div>
                       <div class="declaration">
@@ -1941,20 +1708,6 @@ between a starting and ending position at a specific point in time.</p>
                         <p>The algorithmic function of an <code>expoIn</code> ease used to calculate a value
 between a starting and ending position at a specific point in time.</p>
 
-<p><li><p>Parameters:</p></p>
-
-<p><ul>
-<li>b: The start value (b = begin).</li>
-<li>c: The change in value (c = change).</li>
-<li>t: The amount of time elapsed since the start of the ease (t = time).</li>
-<li>d: The total amount of time the ease will run (d = duration).</li>
-</ul></li>
-<div class="aside aside-returns">
-    <p class="aside-title">Returns</p>
-    <p>The value at a specific point in time from the start value.</p></p>
-
-<p></div></p>
-
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -2047,20 +1800,6 @@ between a starting and ending position at a specific point in time.</p>
                         <p>The algorithmic function of an <code>expoOut</code> ease used to calculate a value
 between a starting and ending position at a specific point in time.</p>
 
-<p><li><p>Parameters:</p></p>
-
-<p><ul>
-<li>b: The start value (b = begin).</li>
-<li>c: The change in value (c = change).</li>
-<li>t: The amount of time elapsed since the start of the ease (t = time).</li>
-<li>d: The total amount of time the ease will run (d = duration).</li>
-</ul></li>
-<div class="aside aside-returns">
-    <p class="aside-title">Returns</p>
-    <p>The value at a specific point in time from the start value.</p></p>
-
-<p></div></p>
-
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -2152,20 +1891,6 @@ between a starting and ending position at a specific point in time.</p>
                       <div class="abstract">
                         <p>The algorithmic function of an <code>expoInOut</code> ease used to calculate a value
 between a starting and ending position at a specific point in time.</p>
-
-<p><li><p>Parameters:</p></p>
-
-<p><ul>
-<li>b: The start value (b = begin).</li>
-<li>c: The change in value (c = change).</li>
-<li>t: The amount of time elapsed since the start of the ease (t = time).</li>
-<li>d: The total amount of time the ease will run (d = duration).</li>
-</ul></li>
-<div class="aside aside-returns">
-    <p class="aside-title">Returns</p>
-    <p>The value at a specific point in time from the start value.</p></p>
-
-<p></div></p>
 
                       </div>
                       <div class="declaration">
@@ -2270,20 +1995,6 @@ between a starting and ending position at a specific point in time.</p>
                         <p>The algorithmic function of a <code>circIn</code> ease used to calculate a value
 between a starting and ending position at a specific point in time.</p>
 
-<p><li><p>Parameters:</p></p>
-
-<p><ul>
-<li>b: The start value (b = begin).</li>
-<li>c: The change in value (c = change).</li>
-<li>t: The amount of time elapsed since the start of the ease (t = time).</li>
-<li>d: The total amount of time the ease will run (d = duration).</li>
-</ul></li>
-<div class="aside aside-returns">
-    <p class="aside-title">Returns</p>
-    <p>The value at a specific point in time from the start value.</p></p>
-
-<p></div></p>
-
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -2376,20 +2087,6 @@ between a starting and ending position at a specific point in time.</p>
                         <p>The algorithmic function of a <code>circOut</code> ease used to calculate a value
 between a starting and ending position at a specific point in time.</p>
 
-<p><li><p>Parameters:</p></p>
-
-<p><ul>
-<li>b: The start value (b = begin).</li>
-<li>c: The change in value (c = change).</li>
-<li>t: The amount of time elapsed since the start of the ease (t = time).</li>
-<li>d: The total amount of time the ease will run (d = duration).</li>
-</ul></li>
-<div class="aside aside-returns">
-    <p class="aside-title">Returns</p>
-    <p>The value at a specific point in time from the start value.</p></p>
-
-<p></div></p>
-
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -2481,20 +2178,6 @@ between a starting and ending position at a specific point in time.</p>
                       <div class="abstract">
                         <p>The algorithmic function of a <code>circInOut</code> ease used to calculate a value
 between a starting and ending position at a specific point in time.</p>
-
-<p><li><p>Parameters:</p></p>
-
-<p><ul>
-<li>b: The start value (b = begin).</li>
-<li>c: The change in value (c = change).</li>
-<li>t: The amount of time elapsed since the start of the ease (t = time).</li>
-<li>d: The total amount of time the ease will run (d = duration).</li>
-</ul></li>
-<div class="aside aside-returns">
-    <p class="aside-title">Returns</p>
-    <p>The value at a specific point in time from the start value.</p></p>
-
-<p></div></p>
 
                       </div>
                       <div class="declaration">
@@ -2599,20 +2282,6 @@ between a starting and ending position at a specific point in time.</p>
                         <p>The algorithmic function of a <code>backIn</code> ease used to calculate a value
 between a starting and ending position at a specific point in time.</p>
 
-<p><li><p>Parameters:</p></p>
-
-<p><ul>
-<li>b: The start value (b = begin).</li>
-<li>c: The change in value (c = change).</li>
-<li>t: The amount of time elapsed since the start of the ease (t = time).</li>
-<li>d: The total amount of time the ease will run (d = duration).</li>
-</ul></li>
-<div class="aside aside-returns">
-    <p class="aside-title">Returns</p>
-    <p>The value at a specific point in time from the start value.</p></p>
-
-<p></div></p>
-
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -2705,20 +2374,6 @@ between a starting and ending position at a specific point in time.</p>
                         <p>The algorithmic function of a <code>backOut</code> ease used to calculate a value
 between a starting and ending position at a specific point in time.</p>
 
-<p><li><p>Parameters:</p></p>
-
-<p><ul>
-<li>b: The start value (b = begin).</li>
-<li>c: The change in value (c = change).</li>
-<li>t: The amount of time elapsed since the start of the ease (t = time).</li>
-<li>d: The total amount of time the ease will run (d = duration).</li>
-</ul></li>
-<div class="aside aside-returns">
-    <p class="aside-title">Returns</p>
-    <p>The value at a specific point in time from the start value.</p></p>
-
-<p></div></p>
-
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -2810,20 +2465,6 @@ between a starting and ending position at a specific point in time.</p>
                       <div class="abstract">
                         <p>The algorithmic function of a <code>backInOut</code> ease used to calculate a value
 between a starting and ending position at a specific point in time.</p>
-
-<p><li><p>Parameters:</p></p>
-
-<p><ul>
-<li>b: The start value (b = begin).</li>
-<li>c: The change in value (c = change).</li>
-<li>t: The amount of time elapsed since the start of the ease (t = time).</li>
-<li>d: The total amount of time the ease will run (d = duration).</li>
-</ul></li>
-<div class="aside aside-returns">
-    <p class="aside-title">Returns</p>
-    <p>The value at a specific point in time from the start value.</p></p>
-
-<p></div></p>
 
                       </div>
                       <div class="declaration">
@@ -2928,20 +2569,6 @@ between a starting and ending position at a specific point in time.</p>
                         <p>The algorithmic function of an <code>elasticIn</code> ease used to calculate a value
 between a starting and ending position at a specific point in time.</p>
 
-<p><li><p>Parameters:</p></p>
-
-<p><ul>
-<li>b: The start value (b = begin).</li>
-<li>c: The change in value (c = change).</li>
-<li>t: The amount of time elapsed since the start of the ease (t = time).</li>
-<li>d: The total amount of time the ease will run (d = duration).</li>
-</ul></li>
-<div class="aside aside-returns">
-    <p class="aside-title">Returns</p>
-    <p>The value at a specific point in time from the start value.</p></p>
-
-<p></div></p>
-
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -3034,20 +2661,6 @@ between a starting and ending position at a specific point in time.</p>
                         <p>The algorithmic function of an <code>elasticOut</code> ease used to calculate a value
 between a starting and ending position at a specific point in time.</p>
 
-<p><li><p>Parameters:</p></p>
-
-<p><ul>
-<li>b: The start value (b = begin).</li>
-<li>c: The change in value (c = change).</li>
-<li>t: The amount of time elapsed since the start of the ease (t = time).</li>
-<li>d: The total amount of time the ease will run (d = duration).</li>
-</ul></li>
-<div class="aside aside-returns">
-    <p class="aside-title">Returns</p>
-    <p>The value at a specific point in time from the start value.</p></p>
-
-<p></div></p>
-
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -3139,20 +2752,6 @@ between a starting and ending position at a specific point in time.</p>
                       <div class="abstract">
                         <p>The algorithmic function of an <code>elasticInOut</code> ease used to calculate a value
 between a starting and ending position at a specific point in time.</p>
-
-<p><li><p>Parameters:</p></p>
-
-<p><ul>
-<li>b: The start value (b = begin).</li>
-<li>c: The change in value (c = change).</li>
-<li>t: The amount of time elapsed since the start of the ease (t = time).</li>
-<li>d: The total amount of time the ease will run (d = duration).</li>
-</ul></li>
-<div class="aside aside-returns">
-    <p class="aside-title">Returns</p>
-    <p>The value at a specific point in time from the start value.</p></p>
-
-<p></div></p>
 
                       </div>
                       <div class="declaration">
@@ -3257,20 +2856,6 @@ between a starting and ending position at a specific point in time.</p>
                         <p>The algorithmic function of a <code>bounceIn</code> ease used to calculate a value
 between a starting and ending position at a specific point in time.</p>
 
-<p><li><p>Parameters:</p></p>
-
-<p><ul>
-<li>b: The start value (b = begin).</li>
-<li>c: The change in value (c = change).</li>
-<li>t: The amount of time elapsed since the start of the ease (t = time).</li>
-<li>d: The total amount of time the ease will run (d = duration).</li>
-</ul></li>
-<div class="aside aside-returns">
-    <p class="aside-title">Returns</p>
-    <p>The value at a specific point in time from the start value.</p></p>
-
-<p></div></p>
-
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -3362,20 +2947,6 @@ between a starting and ending position at a specific point in time.</p>
                       <div class="abstract">
                         <p>The algorithmic function of a <code>bounceOut</code> ease used to calculate a value
 between a starting and ending position at a specific point in time.</p>
-
-<p><li><p>Parameters:</p></p>
-
-<p><ul>
-<li>b: The start value (b = begin).</li>
-<li>c: The change in value (c = change).</li>
-<li>t: The amount of time elapsed since the start of the ease (t = time).</li>
-<li>d: The total amount of time the ease will run (d = duration).</li>
-</ul></li>
-<div class="aside aside-returns">
-    <p class="aside-title">Returns</p>
-    <p>The value at a specific point in time from the start value.</p></p>
-
-<p></div></p>
 
                       </div>
                       <div class="declaration">
@@ -3469,20 +3040,6 @@ between a starting and ending position at a specific point in time.</p>
                         <p>The algorithmic function of a <code>bounceInOut</code> ease used to calculate a value
 between a starting and ending position at a specific point in time.</p>
 
-<p><li><p>Parameters:</p></p>
-
-<p><ul>
-<li>b: The start value (b = begin).</li>
-<li>c: The change in value (c = change).</li>
-<li>t: The amount of time elapsed since the start of the ease (t = time).</li>
-<li>d: The total amount of time the ease will run (d = duration).</li>
-</ul></li>
-<div class="aside aside-returns">
-    <p class="aside-title">Returns</p>
-    <p>The value at a specific point in time from the start value.</p></p>
-
-<p></div></p>
-
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -3565,7 +3122,7 @@ between a starting and ending position at a specific point in time.</p>
         </section>
         <section id="footer">
           <p>Copyright (c) 2017 Adam Graham</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.3</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

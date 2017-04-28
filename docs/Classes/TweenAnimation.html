@@ -69,9 +69,6 @@
                 <a href="../Classes/TweenAnimation.html">TweenAnimation</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Enums/TweenError.html">TweenError</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="../Enums/TweenState.html">TweenState</a>
               </li>
               <li class="nav-group-task">
@@ -87,7 +84,7 @@
                 <a href="../Protocols/Tweenable.html">Tweenable</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Tweening.html#/s:P6STween17TweenableProperty">TweenableProperty</a>
+                <a href="../Protocols/TweenableProperty.html">TweenableProperty</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/Tweener.html">Tweener</a>
@@ -105,6 +102,14 @@
               </li>
             </ul>
           </li>
+          <li class="nav-group-name">
+            <a href="../Other Typealiases.html">Other Typealiases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Other Typealiases.html#/s:6STween8Callback">Callback</a>
+              </li>
+            </ul>
+          </li>
         </ul>
       </nav>
       <article class="main-content">
@@ -113,8 +118,8 @@
             <h1>TweenAnimation</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight"><code><span class="kd">internal</span> <span class="kd">final</span> <span class="kd">class</span> <span class="kt">TweenAnimation</span><span class="o">&lt;</span><span class="kt">Target</span><span class="p">:</span> <span class="kt"><a href="../Protocols/Tweenable.html">Tweenable</a></span><span class="o">&gt;</span><span class="p">:</span> <span class="kt"><a href="../Protocols/Tween.html">Tween</a></span>
-    <span class="k">where</span> <span class="kt">Target</span><span class="o">.</span><span class="kt">TweenProperty</span><span class="o">.</span><span class="kt">Value</span> <span class="o">==</span> <span class="kt">Target</span><span class="o">.</span><span class="kt">TweenProperty</span></code></pre>
+                  <pre class="highlight"><code><span class="kd">internal</span> <span class="kd">final</span> <span class="kd">class</span> <span class="kt">TweenAnimation</span><span class="o">&lt;</span><span class="kt">TargetProperty</span><span class="p">:</span> <span class="kt"><a href="../Protocols/TweenableProperty.html">TweenableProperty</a></span><span class="o">&gt;</span><span class="p">:</span> <span class="kt"><a href="../Protocols/Tween.html">Tween</a></span>
+    <span class="k">where</span> <span class="kt">TargetProperty</span><span class="o">.</span><span class="kt">Value</span> <span class="o">==</span> <span class="kt">TargetProperty</span></code></pre>
 
                 </div>
               </div>
@@ -135,9 +140,9 @@ functions and interpolation.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:vC6STween14TweenAnimation6targetx"></a>
+                    <a name="/s:vC6STween14TweenAnimation6targetwx13TweenableType"></a>
                     <a name="//apple_ref/swift/Property/target" class="dashAnchor"></a>
-                    <a class="token" href="#/s:vC6STween14TweenAnimation6targetx">target</a>
+                    <a class="token" href="#/s:vC6STween14TweenAnimation6targetwx13TweenableType">target</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -162,9 +167,9 @@ functions and interpolation.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:vC6STween14TweenAnimation16targetPropertiesGSawx13TweenProperty_"></a>
+                    <a name="/s:vC6STween14TweenAnimation16targetPropertiesGSax_"></a>
                     <a name="//apple_ref/swift/Property/targetProperties" class="dashAnchor"></a>
-                    <a class="token" href="#/s:vC6STween14TweenAnimation16targetPropertiesGSawx13TweenProperty_">targetProperties</a>
+                    <a class="token" href="#/s:vC6STween14TweenAnimation16targetPropertiesGSax_">targetProperties</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -383,9 +388,9 @@ fire update cycles. The rate at which the timer updates is based on
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC6STween14TweenAnimationcFT6targetx10propertiesGSawx13TweenProperty_8durationSd_GS0_x_"></a>
+                    <a name="/s:FC6STween14TweenAnimationcFT6targetwx13TweenableType10propertiesGSax_8durationSd_GS0_x_"></a>
                     <a name="//apple_ref/swift/Method/init(target:properties:duration:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC6STween14TweenAnimationcFT6targetx10propertiesGSawx13TweenProperty_8durationSd_GS0_x_">init(target:properties:duration:)</a>
+                    <a class="token" href="#/s:FC6STween14TweenAnimationcFT6targetwx13TweenableType10propertiesGSax_8durationSd_GS0_x_">init(target:properties:duration:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -395,16 +400,6 @@ fire update cycles. The rate at which the timer updates is based on
                       <div class="abstract">
                         <p>An initializer to create a <code>TweenAnimation</code> with a target object or data 
 structure, an array of properties to be animated, and a duration.</p>
-
-<ul>
-<li>Parameters:
-
-<ul>
-<li>target: The object or data structure that properties are updated on.</li>
-<li>properties: An array of properties to be animated on the <code><a href="../Classes/TweenAnimation.html#/s:vC6STween14TweenAnimation6targetx">target</a></code>.</li>
-<li>duration: The total amount of time, in seconds, the animation will run.</li>
-</ul></li>
-</ul>
 
                       </div>
                       <div class="declaration">
@@ -496,12 +491,6 @@ reached or exceeded its duration.</p>
 
 <p><strong>Note:</strong> <code>self</code> can only be updated if in an active state.</p>
 
-<div class="aside aside-returns">
-    <p class="aside-title">Returns</p>
-    <code>true</code> if <code>self</code> is successfully updated.
-
-</div>
-
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -547,12 +536,6 @@ reached or exceeded its duration.</p>
 
 <p><strong>Note:</strong> <code>self</code> can only be started if in a new or inactive state.</p>
 
-<div class="aside aside-returns">
-    <p class="aside-title">Returns</p>
-    <code>true</code> if <code>self</code> is successfully started.
-
-</div>
-
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -586,12 +569,6 @@ reached or exceeded its duration.</p>
                         <p>A method to set <code>self</code> as inactive, resetting to its beginning values.</p>
 
 <p><strong>Note:</strong> <code>self</code> can only be stopped if in an active or paused state.</p>
-
-<div class="aside aside-returns">
-    <p class="aside-title">Returns</p>
-    <code>true</code> if <code>self</code> is successfully stopped.
-
-</div>
 
                       </div>
                       <div class="declaration">
@@ -629,12 +606,6 @@ values.</p>
 <p><strong>Note:</strong> <code>self</code> can only be restarted if in an active, paused, or completed 
 state.</p>
 
-<div class="aside aside-returns">
-    <p class="aside-title">Returns</p>
-    <code>true</code> if <code>self</code> is successfully restarted.
-
-</div>
-
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -668,12 +639,6 @@ state.</p>
                         <p>A method to set <code>self</code> as paused, maintaining its current values.</p>
 
 <p><strong>Note:</strong> <code>self</code> can only be paused if in an active state.</p>
-
-<div class="aside aside-returns">
-    <p class="aside-title">Returns</p>
-    <code>true</code> if <code>self</code> is successfully paused.
-
-</div>
 
                       </div>
                       <div class="declaration">
@@ -710,12 +675,6 @@ paused.</p>
 
 <p><strong>Note:</strong> <code>self</code> can only be resumed if in a paused state.</p>
 
-<div class="aside aside-returns">
-    <p class="aside-title">Returns</p>
-    <code>true</code> if <code>self</code> is successfully resumed.
-
-</div>
-
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -750,12 +709,6 @@ paused.</p>
 will be killed if <code><a href="../Classes/Defaults.html#/s:ZvC6STween8Defaults23autoKillCompletedTweensSb">Defaults.autoKillCompletedTweens</a></code> is <code>true</code>.</p>
 
 <p><strong>Note:</strong> <code>self</code> can only be completed if in an active or paused state.</p>
-
-<div class="aside aside-returns">
-    <p class="aside-title">Returns</p>
-    <code>true</code> if <code>self</code> is successfully completed.
-
-</div>
 
                       </div>
                       <div class="declaration">
@@ -792,12 +745,6 @@ remove it from <code><a href="../Classes/Tweener.html">Tweener</a></code>&lsquo;
 
 <p><strong>Note:</strong> <code>self</code> can only be killed if <em>not</em> already in a killed state.</p>
 
-<div class="aside aside-returns">
-    <p class="aside-title">Returns</p>
-    <code>true</code> if <code>self</code> is successfully killed.
-
-</div>
-
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -833,12 +780,6 @@ values, and re-adding <code>self</code> to <code><a href="../Classes/Tweener.htm
 the only way to revive a killed <code>self</code>.</p>
 
 <p><strong>Note:</strong> <code>self</code> can only be reset if <em>not</em> already in a new state.</p>
-
-<div class="aside aside-returns">
-    <p class="aside-title">Returns</p>
-    <code>true</code> if <code>self</code> is successfully reset.
-
-</div>
 
                       </div>
                       <div class="declaration">
@@ -949,7 +890,7 @@ the only way to revive a killed <code>self</code>.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">internal</span> <span class="kd">func</span> <span class="nf">callback</span><span class="p">(</span><span class="k">get</span> <span class="nv">stateChange</span><span class="p">:</span> <span class="kt"><a href="../Enums/TweenStateChange.html">TweenStateChange</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Callback</span><span class="p">?</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">internal</span> <span class="kd">func</span> <span class="nf">callback</span><span class="p">(</span><span class="k">get</span> <span class="nv">stateChange</span><span class="p">:</span> <span class="kt"><a href="../Enums/TweenStateChange.html">TweenStateChange</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Other Typealiases.html#/s:6STween8Callback">Callback</a></span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
@@ -1000,7 +941,7 @@ the only way to revive a killed <code>self</code>.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">internal</span> <span class="kd">func</span> <span class="nf">callback</span><span class="p">(</span><span class="k">set</span> <span class="nv">stateChange</span><span class="p">:</span> <span class="kt"><a href="../Enums/TweenStateChange.html">TweenStateChange</a></span><span class="p">,</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">Callback</span><span class="p">?)</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">internal</span> <span class="kd">func</span> <span class="nf">callback</span><span class="p">(</span><span class="k">set</span> <span class="nv">stateChange</span><span class="p">:</span> <span class="kt"><a href="../Enums/TweenStateChange.html">TweenStateChange</a></span><span class="p">,</span> <span class="nv">value</span><span class="p">:</span> <span class="kt"><a href="../Other Typealiases.html#/s:6STween8Callback">Callback</a></span><span class="p">?)</span></code></pre>
 
                         </div>
                       </div>
@@ -1162,7 +1103,7 @@ the only way to revive a killed <code>self</code>.</p>
         </section>
         <section id="footer">
           <p>Copyright (c) 2017 Adam Graham</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.3</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

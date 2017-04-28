@@ -9,6 +9,8 @@
 /// A protocol to provide tweening animation functionality.
 public protocol Tweenable {
 
+    // MARK: Methods
+
     /**
      A method to create an animation on `self` animating *to* a tweenable 
      property value.
@@ -74,19 +76,8 @@ public protocol Tweenable {
 /// :nodoc:
 extension Tweenable {
 
-    // MARK: Tweening Methods
+    // MARK: Default Implementation
 
-    /**
-     A method to create an animation on `self` animating *to* a tweenable
-     property value.
-
-     - Parameters:
-        - property: The property to be animated.
-        - duration: The amount of time, in seconds, the animation will run.
-        - completion: A callback invoked when the animation is finished.
-
-     - Returns: The `Tween` control for the animation.
-     */
     @discardableResult
     public final func tween<TweenProperty: TweenableProperty>(to property: TweenProperty, duration: TimeInterval, completion: Callback? = nil) -> Tween
         where TweenProperty.TweenableType == Self, TweenProperty.Value == TweenProperty {
@@ -96,17 +87,6 @@ extension Tweenable {
                                    completion: completion)
     }
 
-    /**
-     A method to create an animation on `self` animating *to* an array of
-     tweenable property values.
-
-     - Parameters:
-        - properties: The array of properties to be animated.
-        - duration: The amount of time, in seconds, the animation will run.
-        - completion: A callback invoked when the animation is finished.
-
-     - Returns: The `Tween` control for the animation.
-     */
     @discardableResult
     public final func tween<TweenProperty: TweenableProperty>(to properties: [TweenProperty], duration: TimeInterval, completion: Callback? = nil) -> Tween
         where TweenProperty.TweenableType == Self, TweenProperty.Value == TweenProperty {
@@ -116,17 +96,6 @@ extension Tweenable {
                                    completion: completion)
     }
 
-    /**
-     A method to create an animation on `self` animating *from* a tweenable
-     property value.
-
-     - Parameters:
-        - property: The property to be animated.
-        - duration: The amount of time, in seconds, the animation will run.
-        - completion: A callback invoked when the animation is finished.
-
-     - Returns: The `Tween` control for the animation.
-     */
     @discardableResult
     public final func tween<TweenProperty: TweenableProperty>(from property: TweenProperty, duration: TimeInterval, completion: Callback? = nil) -> Tween
         where TweenProperty.TweenableType == Self, TweenProperty.Value == TweenProperty {
@@ -136,17 +105,6 @@ extension Tweenable {
                                    completion: completion)
     }
 
-    /**
-     A method to create an animation on `self` animating *from* an array of
-     tweenable property values.
-
-     - Parameters:
-        - properties: The array of properties to be animated.
-        - duration: The amount of time, in seconds, the animation will run.
-        - completion: A callback invoked when the animation is finished.
-
-     - Returns: The `Tween` control for the animation.
-     */
     @discardableResult
     public final func tween<TweenProperty: TweenableProperty>(from properties: [TweenProperty], duration: TimeInterval, completion: Callback? = nil) -> Tween
         where TweenProperty.TweenableType == Self, TweenProperty.Value == TweenProperty {

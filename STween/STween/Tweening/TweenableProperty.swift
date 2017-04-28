@@ -13,6 +13,8 @@ public protocol TweenableProperty: Interpolatable {
 
     typealias Value = Self
 
+    // MARK: Methods
+
     /**
      A method to retrieve the value of `self` from an object.
      

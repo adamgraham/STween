@@ -8,6 +8,7 @@
   "source_directory": "./STween",
   "min_acl": "internal",
   "skip_undocumented": true,
+  "clean": true,
 
   "exclude": [
     "./STween/STween/Easing/EaseMappings.swift",
@@ -47,7 +48,6 @@
       "children": [
         "Tween",
         "TweenAnimation",
-        "TweenError",
         "TweenState",
         "TweenStateChange",
         "TweenTimer",
