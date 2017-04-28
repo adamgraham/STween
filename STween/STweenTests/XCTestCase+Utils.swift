@@ -29,7 +29,7 @@ extension XCTestCase {
 
         rhs.getRed(&rhsRed, green: &rhsGreen, blue: &rhsBlue, alpha: &rhsAlpha)
 
-        let epsilon = CGFloat(FLT_EPSILON)
+        let epsilon = CGFloat(Float.ulpOfOne)
 
         if includeAlpha {
             return abs(lhsRed - rhsRed) <= epsilon &&
