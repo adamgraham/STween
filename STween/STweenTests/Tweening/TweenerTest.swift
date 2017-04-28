@@ -25,7 +25,7 @@ class TweenerTest: XCTestCase {
     // MARK: Factory Creation Tests
 
     func testToWithCallback() {
-        let tween = Tweener.animate(UIView(), to: [], duration: 1.0, completion: {})
+        let tween = Tweener.animate(UIView(), to: [UIViewTweenProperty](), duration: 1.0, completion: {})
         XCTAssertEqual(tween.state, .new)
         XCTAssertFalse(tween.reversed)
         XCTAssertEqual(tween.duration, 1.0)
@@ -33,7 +33,7 @@ class TweenerTest: XCTestCase {
     }
 
     func testToWithoutCallback() {
-        let tween = Tweener.animate(UIView(), to: [], duration: 1.0)
+        let tween = Tweener.animate(UIView(), to: [UIViewTweenProperty](), duration: 1.0)
         XCTAssertEqual(tween.state, .new)
         XCTAssertFalse(tween.reversed)
         XCTAssertEqual(tween.duration, 1.0)
@@ -41,7 +41,7 @@ class TweenerTest: XCTestCase {
     }
 
     func testFromWithCallback() {
-        let tween = Tweener.animate(UIView(), from: [], duration: 1.0, completion: {})
+        let tween = Tweener.animate(UIView(), from: [UIViewTweenProperty](), duration: 1.0, completion: {})
         XCTAssertEqual(tween.state, .new)
         XCTAssertTrue(tween.reversed)
         XCTAssertEqual(tween.duration, 1.0)
@@ -49,7 +49,7 @@ class TweenerTest: XCTestCase {
     }
 
     func testFromWithoutCallback() {
-        let tween = Tweener.animate(UIView(), from: [], duration: 1.0)
+        let tween = Tweener.animate(UIView(), from: [UIViewTweenProperty](), duration: 1.0)
         XCTAssertEqual(tween.state, .new)
         XCTAssertTrue(tween.reversed)
         XCTAssertEqual(tween.duration, 1.0)
@@ -61,8 +61,8 @@ class TweenerTest: XCTestCase {
     func testTracking() {
         XCTAssertEqual(Tweener.count, 0)
 
-        let tween = TweenAnimation(target: UIView(), properties: [], duration: 1.0)
-        let anotherTween = TweenAnimation(target: UIView(), properties: [], duration: 1.0)
+        let tween = TweenAnimation<UIViewTweenProperty>(target: UIView(), properties: [], duration: 1.0)
+        let anotherTween = TweenAnimation<UIViewTweenProperty>(target: UIView(), properties: [], duration: 1.0)
 
         // Add
 
@@ -96,10 +96,10 @@ class TweenerTest: XCTestCase {
     func testQueueing() {
         XCTAssertEqual(Tweener.queuedCount, 0)
 
-        let tween = TweenAnimation(target: UIView(), properties: [], duration: 1.0)
+        let tween = TweenAnimation(target: UIView(), properties: [UIViewTweenProperty](), duration: 1.0)
         XCTAssertEqual(tween.state, .new)
 
-        let anotherTween = TweenAnimation(target: UIView(), properties: [], duration: 1.0)
+        let anotherTween = TweenAnimation<UIViewTweenProperty>(target: UIView(), properties: [], duration: 1.0)
         XCTAssertEqual(anotherTween.state, .new)
 
         // Queue
@@ -124,8 +124,8 @@ class TweenerTest: XCTestCase {
     // MARK: Global State Control Tests
 
     func testInvokeGlobalStateChange() {
-        let tween = Tweener.animate(UIView(), to: [], duration: 1.0, completion: {})
-        let anotherTween = Tweener.animate(UIView(), from: [], duration: 1.0, completion: {})
+        let tween = Tweener.animate(UIView(), to: [UIViewTweenProperty](), duration: 1.0, completion: {})
+        let anotherTween = Tweener.animate(UIView(), from: [UIViewTweenProperty](), duration: 1.0, completion: {})
 
         Tweener.invokeStateChangeOnAllTweens(.kill)
 

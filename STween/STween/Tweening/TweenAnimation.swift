@@ -8,10 +8,10 @@
 
 /// A class to animate properties on a `Tweenable` object via easing 
 /// functions and interpolation.
-internal final class TweenAnimation<Target: Tweenable>: Tween
-    where Target.TweenProperty.Value == Target.TweenProperty {
+internal final class TweenAnimation<TargetProperty: TweenableProperty>: Tween
+    where TargetProperty.Value == TargetProperty {
 
-    internal typealias TargetProperty = Target.TweenProperty
+    internal typealias Target = TargetProperty.TweenableType
 
     // MARK: Core Properties
 
@@ -25,7 +25,7 @@ internal final class TweenAnimation<Target: Tweenable>: Tween
     fileprivate var interpolationValues = [InterpolationValues<TargetProperty>]()
 
     /// A dictionary storing the callbacks for each change of state.
-    fileprivate var callbacks = [TweenStateChange: Callback?]()
+    fileprivate var callbacks = [TweenStateChange : Callback?]()
 
     // MARK: Animation & State Properties
 
@@ -119,9 +119,9 @@ extension TweenAnimation {
         let elapsed = self.elapsed
         let duration = self.duration
 
-        for values in self.interpolationValues {
-            let interpolatedValue = values.interpolate(with: ease, elapsed: elapsed, duration: duration)
-            self.target.apply(interpolatedValue)
+        self.interpolationValues.forEach {
+            let interpolatedValue = $0.interpolate(with: ease, elapsed: elapsed, duration: duration)
+            interpolatedValue.apply(to: self.target)
         }
     }
 
@@ -131,20 +131,15 @@ extension TweenAnimation {
      flipped with each other.
      */
     fileprivate func storeStartingAndEndingValues() {
-        self.interpolationValues.removeAll()
-
-        for property in self.targetProperties {
-            let values: InterpolationValues<TargetProperty>
-            let start = self.target.value(of: property)
-            let end = property
+        self.interpolationValues = self.targetProperties.map {
+            let start = $0.value(from: self.target)
+            let end = $0
 
             if !self.reversed {
-                values = InterpolationValues(start: start, end: end)
+                return InterpolationValues(start: start, end: end)
             } else {
-                values = InterpolationValues(start: end, end: start)
+                return InterpolationValues(start: end, end: start)
             }
-
-            self.interpolationValues.append(values)
         }
     }
 

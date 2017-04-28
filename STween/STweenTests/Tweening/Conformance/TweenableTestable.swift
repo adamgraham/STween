@@ -16,11 +16,14 @@ protocol TweenableTestable {
 
 extension TweenableTestable {
 
-    func assertValidInterpolation<T: Tweenable>(tweenable: T, property: T.TweenProperty, interpolationAssert: (() -> Bool)) {
-        let startValue = tweenable.value(of: property)
+    func assertValidInterpolation<Target: Tweenable, TargetProperty: TweenableProperty>(
+        tweenable: Target, property: TargetProperty, interpolationAssert: (() -> Bool))
+        where TargetProperty.TweenableType == Target, TargetProperty.Value == TargetProperty {
+
+        let startValue = property.value(from: tweenable)
         let values = InterpolationValues(start: startValue, end: property)
         let interpolatedValue = values.interpolate(with: .linear, elapsed: 1.0, duration: 1.0)
-        tweenable.apply(interpolatedValue)
+        interpolatedValue.apply(to: tweenable)
         XCTAssertTrue(interpolationAssert())
     }
 
