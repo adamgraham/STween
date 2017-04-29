@@ -12,7 +12,7 @@ public final class FrameRate {
     // Prevent instantiation of the class.
     private init() {}
 
-    // MARK: Properties
+    // MARK: Computed Properties
 
     /// The rate at which every `Tween` will update. For example, a frame rate of
     /// 30 means the tween will update 30 times per second. The higher the
