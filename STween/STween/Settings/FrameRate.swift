@@ -18,20 +18,14 @@ public final class FrameRate {
     /// 30 means the tween will update 30 times per second. The higher the
     /// number, the smoother the tween animation will be but at a higher
     /// computational cost.
-    public static var targetFrameRate = Defaults.frameRate
+    public static var targetFrameRate: Double {
+        return Defaults.frameRate
+    }
 
     /// The duration of a single frame, in seconds, calculated by dividing 1.0 
     /// over the `FrameRate.targetFrameRate`.
     public static var targetFrameDuration: Double {
         return 1.0 / FrameRate.targetFrameRate
-    }
-
-    // MARK: Methods
-
-    /// A method to reset the target frame rate to its default value -
-    /// `Defaults.frameRate`.
-    public static func reset() {
-        FrameRate.targetFrameRate = Defaults.frameRate
     }
 
 }
