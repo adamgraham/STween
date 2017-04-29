@@ -35,9 +35,13 @@ extension Double {
 
     /// Initializes a `Double` value from a `FloatingPoint` type.
     internal init<F: FloatingPoint>(_ floatingPoint: F) {
+        #if arch(i386) || arch(x86_64)
         if let float80 = floatingPoint as? Float80 {
             self = Double(float80)
-        } else if let float64 = floatingPoint as? Float64 {
+            return
+        }
+        #endif
+        if let float64 = floatingPoint as? Float64 {
             self = Double(float64)
         } else if let float32 = floatingPoint as? Float32 {
             self = Double(float32)
@@ -92,5 +96,8 @@ extension Int64: DoubleConvertible {}
 
 extension Float32: DoubleConvertible {}
 extension Float64: DoubleConvertible {}
-extension Float80: DoubleConvertible {}
 extension CGFloat: DoubleConvertible {}
+
+#if arch(i386) || arch(x86_64)
+    extension Float80: DoubleConvertible {}
+#endif

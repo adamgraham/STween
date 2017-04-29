@@ -11,7 +11,7 @@
 internal final class TweenAnimation<TargetProperty: TweenableProperty>: Tween
     where TargetProperty.Value == TargetProperty {
 
-    internal typealias Target = TargetProperty.TweenableType
+    internal typealias Target = TargetProperty.Target
 
     // MARK: Core Properties
 
@@ -468,7 +468,7 @@ extension TweenAnimation {
 
     /// :nodoc:
     fileprivate func updateDelay(by elapsed: TimeInterval) {
-        self.delayElapsed += elapsed
+        self.delayElapsed = elapsed
 
         if self.delayElapsed >= self.delay {
             self.state = .inactive

@@ -9,7 +9,7 @@
 /// A protocol to describe a tweenable property.
 public protocol TweenableProperty: Interpolatable {
 
-    associatedtype TweenableType: Tweenable
+    associatedtype Target: Tweenable
 
     typealias Value = Self
 
@@ -23,7 +23,7 @@ public protocol TweenableProperty: Interpolatable {
 
      - Returns: The value of `self` from the `object`.
      */
-    func value(from object: TweenableType) -> Self.Value
+    func value(from object: Target) -> Self.Value
 
     /**
      A method to apply the value of `self` to an object.
@@ -31,6 +31,6 @@ public protocol TweenableProperty: Interpolatable {
      - Parameters:
         - object: The object to which a value will be applied.
      */
-    func apply(to object: TweenableType)
+    func apply(to object: Target)
 
 }

@@ -79,10 +79,12 @@ class DoubleConvertibleTest: XCTestCase {
         XCTAssertEqual(Double(convertible: value), 1.0)
     }
 
+    #if arch(i386) || arch(x86_64)
     func testFloat80DoubleConvertibleInit() {
         let value: Float80 = 1.0
         XCTAssertEqual(Double(convertible: value), 1.0)
     }
+    #endif
 
     func testCGFloatDoubleConvertibleInit() {
         let value: CGFloat = 1.0
@@ -161,10 +163,12 @@ class DoubleConvertibleTest: XCTestCase {
         XCTAssertEqual(value.toDouble, 1.0)
     }
 
+    #if arch(i386) || arch(x86_64)
     func testFloat80DoubleValueGetter() {
         let value: Float80 = 1.0
         XCTAssertEqual(value.toDouble, 1.0)
     }
+    #endif
 
     func testCGFloatDoubleValueGetter() {
         let value: CGFloat = 1.0

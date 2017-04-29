@@ -125,12 +125,14 @@ class InterpolatableTest: XCTestCase {
         assertInterpolation(startValue: startValue, endValue: endValue, middleValue: middleValue)
     }
 
+    #if arch(i386) || arch(x86_64)
     func testFloat80() {
         let startValue: Float80 = 0.0
         let endValue: Float80 = 10.0
         let middleValue: Float80 = 5.0
         assertInterpolation(startValue: startValue, endValue: endValue, middleValue: middleValue)
     }
+    #endif
 
     func testDouble() {
         let startValue: Double = 0.0

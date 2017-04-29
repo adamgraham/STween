@@ -18,7 +18,7 @@ extension TweenableTestable {
 
     func assertValidInterpolation<Target: Tweenable, TargetProperty: TweenableProperty>(
         tweenable: Target, property: TargetProperty, interpolationAssert: (() -> Bool))
-        where TargetProperty.TweenableType == Target, TargetProperty.Value == TargetProperty {
+        where TargetProperty.Target == Target, TargetProperty.Value == TargetProperty {
 
         let startValue = property.value(from: tweenable)
         let values = InterpolationValues(start: startValue, end: property)
