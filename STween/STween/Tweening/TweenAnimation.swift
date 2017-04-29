@@ -468,7 +468,7 @@ extension TweenAnimation {
 
     /// :nodoc:
     fileprivate func updateDelay(by elapsed: TimeInterval) {
-        self.delayElapsed += elapsed
+        self.delayElapsed = elapsed
 
         if self.delayElapsed >= self.delay {
             self.state = .inactive
