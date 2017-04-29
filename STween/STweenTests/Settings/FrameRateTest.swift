@@ -12,24 +12,23 @@ import XCTest
 
 class FrameRateTest: XCTestCase {
 
+    override func tearDown() {
+        Defaults.reset()
+        super.tearDown()
+    }
+
     func testTargetFrameRate() {
-        FrameRate.targetFrameRate = 30.0
+        Defaults.frameRate = 30.0
         XCTAssertEqual(FrameRate.targetFrameRate, 30.0)
-        FrameRate.targetFrameRate = 24.0
+        Defaults.frameRate = 24.0
         XCTAssertEqual(FrameRate.targetFrameRate, 24.0)
     }
 
     func testTargetFrameDuration() {
-        FrameRate.targetFrameRate = 30.0
+        Defaults.frameRate = 30.0
         XCTAssertEqual(FrameRate.targetFrameDuration, 1.0 / 30.0)
-        FrameRate.targetFrameRate = 24.0
+        Defaults.frameRate = 24.0
         XCTAssertEqual(FrameRate.targetFrameDuration, 1.0 / 24.0)
-    }
-
-    func testReset() {
-        FrameRate.targetFrameRate = Defaults.frameRate * 2.0
-        FrameRate.reset()
-        XCTAssertEqual(FrameRate.targetFrameRate, Defaults.frameRate)
     }
 
 }
