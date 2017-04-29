@@ -103,8 +103,11 @@ extension Int64: Interpolatable {}
 extension Float32: Interpolatable {}
 /// :nodoc:
 extension Float64: Interpolatable {}
+
+#if arch(i386) || arch(x86_64)
 /// :nodoc:
 extension Float80: Interpolatable {}
+#endif
 
 /// :nodoc:
 extension Date: Interpolatable {

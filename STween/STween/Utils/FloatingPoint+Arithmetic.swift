@@ -26,6 +26,7 @@ extension FloatingPoint {
 
     /// Initializes a `FloatingPoint` value from a `Double` value.
     internal init(_ v: Double) {
+        #if arch(i386) || arch(x86_64)
         switch Self(0) {
         case is Float32:
             self = Float32(v) as! Self
@@ -36,9 +37,20 @@ extension FloatingPoint {
         case is CGFloat:
             self = CGFloat(v) as! Self
         default:
-            // possible precision loss
-            self = Self(IntMax(v))
+            self = Self(IntMax(v)) // possible precision loss
         }
+        #else
+        switch Self(0) {
+        case is Float32:
+            self = Float32(v) as! Self
+        case is Float64:
+            self = Float64(v) as! Self
+        case is CGFloat:
+            self = CGFloat(v) as! Self
+        default:
+            self = Self(IntMax(v)) // possible precision loss
+        }
+        #endif
     }
 
 }

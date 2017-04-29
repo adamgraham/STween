@@ -20,10 +20,12 @@ class EaseFunctionsTest: XCTestCase {
         assertType(Float64.self, accuracy: Float64.ulpOfOne.double)
     }
 
+    #if arch(i386) || arch(x86_64)
     func testFloat80() {
         //iOS_BUG: XCTAssertEqualWithAccuracy using Float80 crashes
         //assertType(Float80.self, accuracy: Float80.ulpOfOne.double)
     }
+    #endif
 
     func testCGFloat() {
         assertType(CGFloat.self, accuracy: CGFloat.ulpOfOne.double)

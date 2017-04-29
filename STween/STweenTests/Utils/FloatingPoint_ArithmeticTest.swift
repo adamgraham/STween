@@ -24,10 +24,12 @@ class FloatingPoint_ArithmeticTest: XCTestCase {
         assert(Float64.self, accuracy: Float64.ulpOfOne.double)
     }
 
+    #if arch(i386) || arch(x86_64)
     func testFloat80() {
         //iOS_BUG: XCTAssertEqualWithAccuracy using Float80 crashes
         //assert(Float80.self, accuracy: Float80.ulpOfOne.double)
     }
+    #endif
 
     func testCGFloat() {
         assert(CGFloat.self, accuracy: CGFloat.ulpOfOne.double)
