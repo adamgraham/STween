@@ -11,7 +11,7 @@
 internal final class TweenAnimation<TargetProperty: TweenableProperty>: Tween
     where TargetProperty.Value == TargetProperty {
 
-    internal typealias Target = TargetProperty.TweenableType
+    internal typealias Target = TargetProperty.Target
 
     // MARK: Core Properties
 
