@@ -21,7 +21,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
 
         Defaults.overshoot /= 2.0
-        Defaults.frameRate = 30.0
+        Defaults.frameRate = 60.0
     }
 
     // MARK: IBOutlets
@@ -54,11 +54,6 @@ class ViewController: UIViewController {
     @IBOutlet private weak var purchaseModalYConstraint: NSLayoutConstraint!
     @IBOutlet private weak var purchaseModalView: UIView! {
         didSet {
-//            self.purchaseModalView.layer.shadowColor = UIColor.black.cgColor
-//            self.purchaseModalView.layer.shadowOffset = CGSize(width: 3.0, height: 3.0)
-//            self.purchaseModalView.layer.shadowRadius = 5.0
-//            self.purchaseModalView.layer.shadowOpacity = 0.35
-//            self.purchaseModalView.layer.shadowPath = UIBezierPath(rect: self.purchaseModalView.bounds).cgPath
             self.purchaseModalView.layer.cornerRadius = 10.0
         }
     }
@@ -121,7 +116,7 @@ class ViewController: UIViewController {
         self.backgroundOverlayView.tween(to: UIViewTweenProperty.alpha(0.5), duration: 0.75)
             .set(delay: delay)
 
-        self.purchaseModalYConstraint.tween(from: NSLayoutConstraintTweenProperty.constant(self.view.frame.height), duration: 0.65)
+        self.purchaseModalYConstraint.tween(from: NSLayoutConstraintTweenProperty.constant(self.view.frame.height), duration: 0.6)
             .set(ease: .backOut)
             .set(delay: delay + 0.5)
             .set(callback: { self.purchaseModalView.isHidden = false }, for: .start)
@@ -133,7 +128,7 @@ class ViewController: UIViewController {
             .set(callback: { self.backgroundOverlayView.isHidden = true }, for: .complete)
 
         let originalPosition = self.purchaseModalYConstraint.constant
-        self.purchaseModalYConstraint.tween(to: NSLayoutConstraintTweenProperty.constant(self.view.frame.height), duration: 0.65)
+        self.purchaseModalYConstraint.tween(to: NSLayoutConstraintTweenProperty.constant(self.view.frame.height), duration: 0.6)
             .set(ease: .backIn)
             .set(callback: { self.purchaseModalView.isHidden = true
                              self.purchaseModalYConstraint.constant = originalPosition }, for: .complete)
