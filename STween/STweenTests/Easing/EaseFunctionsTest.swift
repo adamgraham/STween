@@ -22,7 +22,7 @@ class EaseFunctionsTest: XCTestCase {
 
     #if arch(i386) || arch(x86_64)
     func testFloat80() {
-        //iOS_BUG: XCTAssertEqual using Float80 crashes
+        //iOS_BUG: XCTAssertEqual(_, _, accuracy:) using Float80 crashes
         //assertType(Float80.self, accuracy: Float80.ulpOfOne.double)
     }
     #endif

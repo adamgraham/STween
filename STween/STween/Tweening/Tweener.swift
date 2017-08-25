@@ -52,21 +52,20 @@ extension Tweener {
 
      - Returns: The `Tween` control for the animation.
      */
-    @discardableResult
-    public static func animate<TargetProperty: TweenableProperty>(
+    @discardableResult public static func animate<TargetProperty: TweenableProperty>(
         _ target: TargetProperty.Target, to properties: [TargetProperty], duration: TimeInterval, completion: Callback? = nil) -> Tween {
 
-            let tween = TweenAnimation(target: target, properties: properties, duration: duration)
-            tween.reversed = false
-            tween.callback(set: .complete, value: completion)
+        let tween = TweenAnimation(target: target, properties: properties, duration: duration)
+        tween.reversed = false
+        tween.callback(set: .complete, value: completion)
 
-            add(tween)
+        add(tween)
 
-            if Defaults.autoStartTweens {
-                queue(tween)
-            }
+        if Defaults.autoStartTweens {
+            queue(tween)
+        }
 
-            return tween
+        return tween
     }
 
     /**
@@ -83,21 +82,20 @@ extension Tweener {
      
      - Returns: The `Tween` control for the animation.
      */
-    @discardableResult
-    public static func animate<TargetProperty: TweenableProperty>(
+    @discardableResult public static func animate<TargetProperty: TweenableProperty>(
         _ target: TargetProperty.Target, from properties: [TargetProperty], duration: TimeInterval, completion: Callback? = nil) -> Tween {
 
-            let tween = TweenAnimation(target: target, properties: properties, duration: duration)
-            tween.reversed = true
-            tween.callback(set: .complete, value: completion)
+        let tween = TweenAnimation(target: target, properties: properties, duration: duration)
+        tween.reversed = true
+        tween.callback(set: .complete, value: completion)
 
-            add(tween)
+        add(tween)
 
-            if Defaults.autoStartTweens {
-                queue(tween)
-            }
+        if Defaults.autoStartTweens {
+            queue(tween)
+        }
 
-            return tween
+        return tween
     }
 
 }
