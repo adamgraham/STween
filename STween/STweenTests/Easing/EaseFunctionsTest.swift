@@ -22,7 +22,7 @@ class EaseFunctionsTest: XCTestCase {
 
     #if arch(i386) || arch(x86_64)
     func testFloat80() {
-        //iOS_BUG: XCTAssertEqualWithAccuracy using Float80 crashes
+        //iOS_BUG: XCTAssertEqual using Float80 crashes
         //assertType(Float80.self, accuracy: Float80.ulpOfOne.double)
     }
     #endif
@@ -82,19 +82,19 @@ class EaseFunctionsTest: XCTestCase {
         var value: T
 
         value = function(T(0), T(1), T(0.00), T(1)) // 0%
-        XCTAssertEqualWithAccuracy(value, T(0), accuracy: accuracy)
+        XCTAssertEqual(value, T(0), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.25), T(1)) // 25%
-        XCTAssertEqualWithAccuracy(value, T(0.25), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.25), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.50), T(1)) // 50%
-        XCTAssertEqualWithAccuracy(value, T(0.5), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.5), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.75), T(1)) // 75%
-        XCTAssertEqualWithAccuracy(value, T(0.75), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.75), accuracy: accuracy)
 
         value = function(T(0), T(1), T(1.00), T(1)) // 100%
-        XCTAssertEqualWithAccuracy(value, T(1.00), accuracy: accuracy)
+        XCTAssertEqual(value, T(1.00), accuracy: accuracy)
     }
 
     // MARK: Sinusoidal Asserts
@@ -104,19 +104,19 @@ class EaseFunctionsTest: XCTestCase {
         var value: T
 
         value = function(T(0), T(1), T(0.00), T(1)) // 0%
-        XCTAssertEqualWithAccuracy(value, T(0), accuracy: accuracy)
+        XCTAssertEqual(value, T(0), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.25), T(1)) // 25%
-        XCTAssertEqualWithAccuracy(value, T(0.07612046748871326), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.07612046748871326), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.50), T(1)) // 50%
-        XCTAssertEqualWithAccuracy(value, T(0.2928932188134524), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.2928932188134524), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.75), T(1)) // 75%
-        XCTAssertEqualWithAccuracy(value, T(0.6173165676349102), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.6173165676349102), accuracy: accuracy)
 
         value = function(T(0), T(1), T(1.00), T(1)) // 100%
-        XCTAssertEqualWithAccuracy(value, T(1.00), accuracy: accuracy)
+        XCTAssertEqual(value, T(1.00), accuracy: accuracy)
     }
 
     private func assertSineOut<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
@@ -124,19 +124,19 @@ class EaseFunctionsTest: XCTestCase {
         var value: T
 
         value = function(T(0), T(1), T(0.00), T(1)) // 0%
-        XCTAssertEqualWithAccuracy(value, T(0), accuracy: accuracy)
+        XCTAssertEqual(value, T(0), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.25), T(1)) // 25%
-        XCTAssertEqualWithAccuracy(value, T(0.3826834323650898), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.3826834323650898), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.50), T(1)) // 50%
-        XCTAssertEqualWithAccuracy(value, T(0.7071067811865475), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.7071067811865475), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.75), T(1)) // 75%
-        XCTAssertEqualWithAccuracy(value, T(0.9238795325112867), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.9238795325112867), accuracy: accuracy)
 
         value = function(T(0), T(1), T(1.00), T(1)) // 100%
-        XCTAssertEqualWithAccuracy(value, T(1.00), accuracy: accuracy)
+        XCTAssertEqual(value, T(1.00), accuracy: accuracy)
     }
 
     private func assertSineInOut<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
@@ -144,19 +144,19 @@ class EaseFunctionsTest: XCTestCase {
         var value: T
 
         value = function(T(0), T(1), T(0.00), T(1)) // 0%
-        XCTAssertEqualWithAccuracy(value, T(0), accuracy: accuracy)
+        XCTAssertEqual(value, T(0), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.25), T(1)) // 25%
-        XCTAssertEqualWithAccuracy(value, T(0.1464466094067262), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.1464466094067262), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.50), T(1)) // 50%
-        XCTAssertEqualWithAccuracy(value, T(0.5), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.5), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.75), T(1)) // 75%
-        XCTAssertEqualWithAccuracy(value, T(0.8535533905932737), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.8535533905932737), accuracy: accuracy)
 
         value = function(T(0), T(1), T(1.00), T(1)) // 100%
-        XCTAssertEqualWithAccuracy(value, T(1.00), accuracy: accuracy)
+        XCTAssertEqual(value, T(1.00), accuracy: accuracy)
     }
 
     // MARK: Cubic Asserts
@@ -166,19 +166,19 @@ class EaseFunctionsTest: XCTestCase {
         var value: T
 
         value = function(T(0), T(1), T(0.00), T(1)) // 0%
-        XCTAssertEqualWithAccuracy(value, T(0), accuracy: accuracy)
+        XCTAssertEqual(value, T(0), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.25), T(1)) // 25%
-        XCTAssertEqualWithAccuracy(value, T(0.015625), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.015625), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.50), T(1)) // 50%
-        XCTAssertEqualWithAccuracy(value, T(0.125), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.125), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.75), T(1)) // 75%
-        XCTAssertEqualWithAccuracy(value, T(0.421875), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.421875), accuracy: accuracy)
 
         value = function(T(0), T(1), T(1.00), T(1)) // 100%
-        XCTAssertEqualWithAccuracy(value, T(1.00), accuracy: accuracy)
+        XCTAssertEqual(value, T(1.00), accuracy: accuracy)
     }
 
     private func assertCubicOut<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
@@ -186,19 +186,19 @@ class EaseFunctionsTest: XCTestCase {
         var value: T
 
         value = function(T(0), T(1), T(0.00), T(1)) // 0%
-        XCTAssertEqualWithAccuracy(value, T(0), accuracy: accuracy)
+        XCTAssertEqual(value, T(0), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.25), T(1)) // 25%
-        XCTAssertEqualWithAccuracy(value, T(0.578125), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.578125), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.50), T(1)) // 50%
-        XCTAssertEqualWithAccuracy(value, T(0.875), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.875), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.75), T(1)) // 75%
-        XCTAssertEqualWithAccuracy(value, T(0.984375), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.984375), accuracy: accuracy)
 
         value = function(T(0), T(1), T(1.00), T(1)) // 100%
-        XCTAssertEqualWithAccuracy(value, T(1.00), accuracy: accuracy)
+        XCTAssertEqual(value, T(1.00), accuracy: accuracy)
     }
 
     private func assertCubicInOut<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
@@ -206,19 +206,19 @@ class EaseFunctionsTest: XCTestCase {
         var value: T
 
         value = function(T(0), T(1), T(0.00), T(1)) // 0%
-        XCTAssertEqualWithAccuracy(value, T(0), accuracy: accuracy)
+        XCTAssertEqual(value, T(0), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.25), T(1)) // 25%
-        XCTAssertEqualWithAccuracy(value, T(0.0625), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.0625), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.50), T(1)) // 50%
-        XCTAssertEqualWithAccuracy(value, T(0.5), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.5), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.75), T(1)) // 75%
-        XCTAssertEqualWithAccuracy(value, T(0.9375), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.9375), accuracy: accuracy)
         
         value = function(T(0), T(1), T(1.00), T(1)) // 100%
-        XCTAssertEqualWithAccuracy(value, T(1.00), accuracy: accuracy)
+        XCTAssertEqual(value, T(1.00), accuracy: accuracy)
     }
 
     // MARK: Quadratic Asserts
@@ -228,19 +228,19 @@ class EaseFunctionsTest: XCTestCase {
         var value: T
 
         value = function(T(0), T(1), T(0.00), T(1)) // 0%
-        XCTAssertEqualWithAccuracy(value, T(0), accuracy: accuracy)
+        XCTAssertEqual(value, T(0), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.25), T(1)) // 25%
-        XCTAssertEqualWithAccuracy(value, T(0.0625), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.0625), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.50), T(1)) // 50%
-        XCTAssertEqualWithAccuracy(value, T(0.25), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.25), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.75), T(1)) // 75%
-        XCTAssertEqualWithAccuracy(value, T(0.5625), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.5625), accuracy: accuracy)
 
         value = function(T(0), T(1), T(1.00), T(1)) // 100%
-        XCTAssertEqualWithAccuracy(value, T(1.00), accuracy: accuracy)
+        XCTAssertEqual(value, T(1.00), accuracy: accuracy)
     }
 
     private func assertQuadOut<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
@@ -248,19 +248,19 @@ class EaseFunctionsTest: XCTestCase {
         var value: T
 
         value = function(T(0), T(1), T(0.00), T(1)) // 0%
-        XCTAssertEqualWithAccuracy(value, T(0), accuracy: accuracy)
+        XCTAssertEqual(value, T(0), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.25), T(1)) // 25%
-        XCTAssertEqualWithAccuracy(value, T(0.4375), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.4375), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.50), T(1)) // 50%
-        XCTAssertEqualWithAccuracy(value, T(0.75), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.75), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.75), T(1)) // 75%
-        XCTAssertEqualWithAccuracy(value, T(0.9375), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.9375), accuracy: accuracy)
 
         value = function(T(0), T(1), T(1.00), T(1)) // 100%
-        XCTAssertEqualWithAccuracy(value, T(1.00), accuracy: accuracy)
+        XCTAssertEqual(value, T(1.00), accuracy: accuracy)
     }
 
     private func assertQuadInOut<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
@@ -268,19 +268,19 @@ class EaseFunctionsTest: XCTestCase {
         var value: T
 
         value = function(T(0), T(1), T(0.00), T(1)) // 0%
-        XCTAssertEqualWithAccuracy(value, T(0), accuracy: accuracy)
+        XCTAssertEqual(value, T(0), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.25), T(1)) // 25%
-        XCTAssertEqualWithAccuracy(value, T(0.125), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.125), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.50), T(1)) // 50%
-        XCTAssertEqualWithAccuracy(value, T(0.5), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.5), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.75), T(1)) // 75%
-        XCTAssertEqualWithAccuracy(value, T(0.875), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.875), accuracy: accuracy)
         
         value = function(T(0), T(1), T(1.00), T(1)) // 100%
-        XCTAssertEqualWithAccuracy(value, T(1.00), accuracy: accuracy)
+        XCTAssertEqual(value, T(1.00), accuracy: accuracy)
     }
 
     // MARK: Quartic Asserts
@@ -290,19 +290,19 @@ class EaseFunctionsTest: XCTestCase {
         var value: T
 
         value = function(T(0), T(1), T(0.00), T(1)) // 0%
-        XCTAssertEqualWithAccuracy(value, T(0), accuracy: accuracy)
+        XCTAssertEqual(value, T(0), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.25), T(1)) // 25%
-        XCTAssertEqualWithAccuracy(value, T(0.00390625), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.00390625), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.50), T(1)) // 50%
-        XCTAssertEqualWithAccuracy(value, T(0.0625), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.0625), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.75), T(1)) // 75%
-        XCTAssertEqualWithAccuracy(value, T(0.31640625), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.31640625), accuracy: accuracy)
 
         value = function(T(0), T(1), T(1.00), T(1)) // 100%
-        XCTAssertEqualWithAccuracy(value, T(1.00), accuracy: accuracy)
+        XCTAssertEqual(value, T(1.00), accuracy: accuracy)
     }
 
     private func assertQuartOut<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
@@ -310,19 +310,19 @@ class EaseFunctionsTest: XCTestCase {
         var value: T
 
         value = function(T(0), T(1), T(0.00), T(1)) // 0%
-        XCTAssertEqualWithAccuracy(value, T(0), accuracy: accuracy)
+        XCTAssertEqual(value, T(0), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.25), T(1)) // 25%
-        XCTAssertEqualWithAccuracy(value, T(0.68359375), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.68359375), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.50), T(1)) // 50%
-        XCTAssertEqualWithAccuracy(value, T(0.9375), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.9375), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.75), T(1)) // 75%
-        XCTAssertEqualWithAccuracy(value, T(0.99609375), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.99609375), accuracy: accuracy)
 
         value = function(T(0), T(1), T(1.00), T(1)) // 100%
-        XCTAssertEqualWithAccuracy(value, T(1.00), accuracy: accuracy)
+        XCTAssertEqual(value, T(1.00), accuracy: accuracy)
     }
 
     private func assertQuartInOut<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
@@ -330,19 +330,19 @@ class EaseFunctionsTest: XCTestCase {
         var value: T
 
         value = function(T(0), T(1), T(0.00), T(1)) // 0%
-        XCTAssertEqualWithAccuracy(value, T(0), accuracy: accuracy)
+        XCTAssertEqual(value, T(0), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.25), T(1)) // 25%
-        XCTAssertEqualWithAccuracy(value, T(0.03125), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.03125), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.50), T(1)) // 50%
-        XCTAssertEqualWithAccuracy(value, T(0.5), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.5), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.75), T(1)) // 75%
-        XCTAssertEqualWithAccuracy(value, T(0.96875), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.96875), accuracy: accuracy)
         
         value = function(T(0), T(1), T(1.00), T(1)) // 100%
-        XCTAssertEqualWithAccuracy(value, T(1.00), accuracy: accuracy)
+        XCTAssertEqual(value, T(1.00), accuracy: accuracy)
     }
 
     // MARK: Quintic Asserts
@@ -352,19 +352,19 @@ class EaseFunctionsTest: XCTestCase {
         var value: T
 
         value = function(T(0), T(1), T(0.00), T(1)) // 0%
-        XCTAssertEqualWithAccuracy(value, T(0), accuracy: accuracy)
+        XCTAssertEqual(value, T(0), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.25), T(1)) // 25%
-        XCTAssertEqualWithAccuracy(value, T(0.0009765625), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.0009765625), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.50), T(1)) // 50%
-        XCTAssertEqualWithAccuracy(value, T(0.03125), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.03125), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.75), T(1)) // 75%
-        XCTAssertEqualWithAccuracy(value, T(0.2373046875), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.2373046875), accuracy: accuracy)
 
         value = function(T(0), T(1), T(1.00), T(1)) // 100%
-        XCTAssertEqualWithAccuracy(value, T(1.00), accuracy: accuracy)
+        XCTAssertEqual(value, T(1.00), accuracy: accuracy)
     }
 
     private func assertQuintOut<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
@@ -372,19 +372,19 @@ class EaseFunctionsTest: XCTestCase {
         var value: T
 
         value = function(T(0), T(1), T(0.00), T(1)) // 0%
-        XCTAssertEqualWithAccuracy(value, T(0), accuracy: accuracy)
+        XCTAssertEqual(value, T(0), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.25), T(1)) // 25%
-        XCTAssertEqualWithAccuracy(value, T(0.7626953125), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.7626953125), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.50), T(1)) // 50%
-        XCTAssertEqualWithAccuracy(value, T(0.96875), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.96875), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.75), T(1)) // 75%
-        XCTAssertEqualWithAccuracy(value, T(0.9990234375), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.9990234375), accuracy: accuracy)
 
         value = function(T(0), T(1), T(1.00), T(1)) // 100%
-        XCTAssertEqualWithAccuracy(value, T(1.00), accuracy: accuracy)
+        XCTAssertEqual(value, T(1.00), accuracy: accuracy)
     }
 
     private func assertQuintInOut<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
@@ -392,19 +392,19 @@ class EaseFunctionsTest: XCTestCase {
         var value: T
 
         value = function(T(0), T(1), T(0.00), T(1)) // 0%
-        XCTAssertEqualWithAccuracy(value, T(0), accuracy: accuracy)
+        XCTAssertEqual(value, T(0), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.25), T(1)) // 25%
-        XCTAssertEqualWithAccuracy(value, T(0.015625), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.015625), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.50), T(1)) // 50%
-        XCTAssertEqualWithAccuracy(value, T(0.5), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.5), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.75), T(1)) // 75%
-        XCTAssertEqualWithAccuracy(value, T(0.984375), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.984375), accuracy: accuracy)
         
         value = function(T(0), T(1), T(1.00), T(1)) // 100%
-        XCTAssertEqualWithAccuracy(value, T(1.00), accuracy: accuracy)
+        XCTAssertEqual(value, T(1.00), accuracy: accuracy)
     }
 
     // MARK: Exponential Asserts
@@ -414,19 +414,19 @@ class EaseFunctionsTest: XCTestCase {
         var value: T
 
         value = function(T(0), T(1), T(0.00), T(1)) // 0%
-        XCTAssertEqualWithAccuracy(value, T(0), accuracy: accuracy)
+        XCTAssertEqual(value, T(0), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.25), T(1)) // 25%
-        XCTAssertEqualWithAccuracy(value, T(0.005524271728019903), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.005524271728019903), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.50), T(1)) // 50%
-        XCTAssertEqualWithAccuracy(value, T(0.03125), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.03125), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.75), T(1)) // 75%
-        XCTAssertEqualWithAccuracy(value, T(0.1767766952966369), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.1767766952966369), accuracy: accuracy)
 
         value = function(T(0), T(1), T(1.00), T(1)) // 100%
-        XCTAssertEqualWithAccuracy(value, T(1.00), accuracy: accuracy)
+        XCTAssertEqual(value, T(1.00), accuracy: accuracy)
     }
 
     private func assertExpoOut<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
@@ -434,19 +434,19 @@ class EaseFunctionsTest: XCTestCase {
         var value: T
 
         value = function(T(0), T(1), T(0.00), T(1)) // 0%
-        XCTAssertEqualWithAccuracy(value, T(0), accuracy: accuracy)
+        XCTAssertEqual(value, T(0), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.25), T(1)) // 25%
-        XCTAssertEqualWithAccuracy(value, T(0.8232233047033631), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.8232233047033631), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.50), T(1)) // 50%
-        XCTAssertEqualWithAccuracy(value, T(0.96875), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.96875), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.75), T(1)) // 75%
-        XCTAssertEqualWithAccuracy(value, T(0.99447572827198), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.99447572827198), accuracy: accuracy)
 
         value = function(T(0), T(1), T(1.00), T(1)) // 100%
-        XCTAssertEqualWithAccuracy(value, T(1.00), accuracy: accuracy)
+        XCTAssertEqual(value, T(1.00), accuracy: accuracy)
     }
 
     private func assertExpoInOut<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
@@ -454,19 +454,19 @@ class EaseFunctionsTest: XCTestCase {
         var value: T
 
         value = function(T(0), T(1), T(0.00), T(1)) // 0%
-        XCTAssertEqualWithAccuracy(value, T(0), accuracy: accuracy)
+        XCTAssertEqual(value, T(0), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.25), T(1)) // 25%
-        XCTAssertEqualWithAccuracy(value, T(0.015625), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.015625), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.50), T(1)) // 50%
-        XCTAssertEqualWithAccuracy(value, T(0.5), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.5), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.75), T(1)) // 75%
-        XCTAssertEqualWithAccuracy(value, T(0.984375), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.984375), accuracy: accuracy)
         
         value = function(T(0), T(1), T(1.00), T(1)) // 100%
-        XCTAssertEqualWithAccuracy(value, T(1.00), accuracy: accuracy)
+        XCTAssertEqual(value, T(1.00), accuracy: accuracy)
     }
 
     // MARK: Circular Asserts
@@ -476,19 +476,19 @@ class EaseFunctionsTest: XCTestCase {
         var value: T
 
         value = function(T(0), T(1), T(0.00), T(1)) // 0%
-        XCTAssertEqualWithAccuracy(value, T(0), accuracy: accuracy)
+        XCTAssertEqual(value, T(0), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.25), T(1)) // 25%
-        XCTAssertEqualWithAccuracy(value, T(0.031754163448145745), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.031754163448145745), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.50), T(1)) // 50%
-        XCTAssertEqualWithAccuracy(value, T(0.1339745962155614), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.1339745962155614), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.75), T(1)) // 75%
-        XCTAssertEqualWithAccuracy(value, T(0.3385621722338523), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.3385621722338523), accuracy: accuracy)
 
         value = function(T(0), T(1), T(1.00), T(1)) // 100%
-        XCTAssertEqualWithAccuracy(value, T(1.00), accuracy: accuracy)
+        XCTAssertEqual(value, T(1.00), accuracy: accuracy)
     }
 
     private func assertCircOut<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
@@ -496,19 +496,19 @@ class EaseFunctionsTest: XCTestCase {
         var value: T
 
         value = function(T(0), T(1), T(0.00), T(1)) // 0%
-        XCTAssertEqualWithAccuracy(value, T(0), accuracy: accuracy)
+        XCTAssertEqual(value, T(0), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.25), T(1)) // 25%
-        XCTAssertEqualWithAccuracy(value, T(0.6614378277661477), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.6614378277661477), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.50), T(1)) // 50%
-        XCTAssertEqualWithAccuracy(value, T(0.8660254037844386), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.8660254037844386), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.75), T(1)) // 75%
-        XCTAssertEqualWithAccuracy(value, T(0.9682458365518543), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.9682458365518543), accuracy: accuracy)
 
         value = function(T(0), T(1), T(1.00), T(1)) // 100%
-        XCTAssertEqualWithAccuracy(value, T(1.00), accuracy: accuracy)
+        XCTAssertEqual(value, T(1.00), accuracy: accuracy)
     }
 
     private func assertCircInOut<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
@@ -516,19 +516,19 @@ class EaseFunctionsTest: XCTestCase {
         var value: T
 
         value = function(T(0), T(1), T(0.00), T(1)) // 0%
-        XCTAssertEqualWithAccuracy(value, T(0), accuracy: accuracy)
+        XCTAssertEqual(value, T(0), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.25), T(1)) // 25%
-        XCTAssertEqualWithAccuracy(value, T(0.0669872981077807), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.0669872981077807), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.50), T(1)) // 50%
-        XCTAssertEqualWithAccuracy(value, T(0.5), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.5), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.75), T(1)) // 75%
-        XCTAssertEqualWithAccuracy(value, T(0.9330127018922193), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.9330127018922193), accuracy: accuracy)
         
         value = function(T(0), T(1), T(1.00), T(1)) // 100%
-        XCTAssertEqualWithAccuracy(value, T(1.00), accuracy: accuracy)
+        XCTAssertEqual(value, T(1.00), accuracy: accuracy)
     }
 
     // MARK: Back Asserts
@@ -538,19 +538,19 @@ class EaseFunctionsTest: XCTestCase {
         var value: T
 
         value = function(T(0), T(1), T(0.00), T(1)) // 0%
-        XCTAssertEqualWithAccuracy(value, T(0), accuracy: accuracy)
+        XCTAssertEqual(value, T(0), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.25), T(1)) // 25%
-        XCTAssertEqualWithAccuracy(value, T(-0.06413656250000001), accuracy: accuracy)
+        XCTAssertEqual(value, T(-0.06413656250000001), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.50), T(1)) // 50%
-        XCTAssertEqualWithAccuracy(value, T(-0.08769750000000004), accuracy: accuracy)
+        XCTAssertEqual(value, T(-0.08769750000000004), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.75), T(1)) // 75%
-        XCTAssertEqualWithAccuracy(value, T(0.1825903124999999), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.1825903124999999), accuracy: accuracy)
 
         value = function(T(0), T(1), T(1.00), T(1)) // 100%
-        XCTAssertEqualWithAccuracy(value, T(1.00), accuracy: accuracy)
+        XCTAssertEqual(value, T(1.00), accuracy: accuracy)
     }
 
     private func assertBackOut<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
@@ -558,19 +558,19 @@ class EaseFunctionsTest: XCTestCase {
         var value: T
 
         value = function(T(0), T(1), T(0.00), T(1)) // 0%
-        XCTAssertEqualWithAccuracy(value, T(0), accuracy: accuracy)
+        XCTAssertEqual(value, T(0), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.25), T(1)) // 25%
-        XCTAssertEqualWithAccuracy(value, T(0.8174096875000001), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.8174096875000001), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.50), T(1)) // 50%
-        XCTAssertEqualWithAccuracy(value, T(1.0876975), accuracy: accuracy)
+        XCTAssertEqual(value, T(1.0876975), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.75), T(1)) // 75%
-        XCTAssertEqualWithAccuracy(value, T(1.0641365625), accuracy: accuracy)
+        XCTAssertEqual(value, T(1.0641365625), accuracy: accuracy)
 
         value = function(T(0), T(1), T(1.00), T(1)) // 100%
-        XCTAssertEqualWithAccuracy(value, T(1.00), accuracy: accuracy)
+        XCTAssertEqual(value, T(1.00), accuracy: accuracy)
     }
 
     private func assertBackInOut<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
@@ -578,19 +578,19 @@ class EaseFunctionsTest: XCTestCase {
         var value: T
 
         value = function(T(0), T(1), T(0.00), T(1)) // 0%
-        XCTAssertEqualWithAccuracy(value, T(0), accuracy: accuracy)
+        XCTAssertEqual(value, T(0), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.25), T(1)) // 25%
-        XCTAssertEqualWithAccuracy(value, T(-0.09968184375), accuracy: accuracy)
+        XCTAssertEqual(value, T(-0.09968184375), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.50), T(1)) // 50%
-        XCTAssertEqualWithAccuracy(value, T(0.5), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.5), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.75), T(1)) // 75%
-        XCTAssertEqualWithAccuracy(value, T(1.09968184375), accuracy: accuracy)
+        XCTAssertEqual(value, T(1.09968184375), accuracy: accuracy)
         
         value = function(T(0), T(1), T(1.00), T(1)) // 100%
-        XCTAssertEqualWithAccuracy(value, T(1.00), accuracy: accuracy)
+        XCTAssertEqual(value, T(1.00), accuracy: accuracy)
     }
 
     // MARK: Elastic Asserts
@@ -600,19 +600,19 @@ class EaseFunctionsTest: XCTestCase {
         var value: T
 
         value = function(T(0), T(1), T(0.00), T(1)) // 0%
-        XCTAssertEqualWithAccuracy(value, T(0), accuracy: accuracy)
+        XCTAssertEqual(value, T(0), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.25), T(1)) // 25%
-        XCTAssertEqualWithAccuracy(value, T(-0.005524271728019903), accuracy: accuracy)
+        XCTAssertEqual(value, T(-0.005524271728019903), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.50), T(1)) // 50%
-        XCTAssertEqualWithAccuracy(value, T(-0.015625000000000045), accuracy: accuracy)
+        XCTAssertEqual(value, T(-0.015625000000000045), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.75), T(1)) // 75%
-        XCTAssertEqualWithAccuracy(value, T(0.08838834764831845), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.08838834764831845), accuracy: accuracy)
 
         value = function(T(0), T(1), T(1.00), T(1)) // 100%
-        XCTAssertEqualWithAccuracy(value, T(1.00), accuracy: accuracy)
+        XCTAssertEqual(value, T(1.00), accuracy: accuracy)
     }
 
     private func assertElasticOut<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
@@ -620,19 +620,19 @@ class EaseFunctionsTest: XCTestCase {
         var value: T
 
         value = function(T(0), T(1), T(0.00), T(1)) // 0%
-        XCTAssertEqualWithAccuracy(value, T(0), accuracy: accuracy)
+        XCTAssertEqual(value, T(0), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.25), T(1)) // 25%
-        XCTAssertEqualWithAccuracy(value, T(0.9116116523516815), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.9116116523516815), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.50), T(1)) // 50%
-        XCTAssertEqualWithAccuracy(value, T(1.015625), accuracy: accuracy)
+        XCTAssertEqual(value, T(1.015625), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.75), T(1)) // 75%
-        XCTAssertEqualWithAccuracy(value, T(1.00552427172802), accuracy: accuracy)
+        XCTAssertEqual(value, T(1.00552427172802), accuracy: accuracy)
 
         value = function(T(0), T(1), T(1.00), T(1)) // 100%
-        XCTAssertEqualWithAccuracy(value, T(1.00), accuracy: accuracy)
+        XCTAssertEqual(value, T(1.00), accuracy: accuracy)
     }
 
     private func assertElasticInOut<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
@@ -640,19 +640,19 @@ class EaseFunctionsTest: XCTestCase {
         var value: T
 
         value = function(T(0), T(1), T(0.00), T(1)) // 0%
-        XCTAssertEqualWithAccuracy(value, T(0), accuracy: accuracy)
+        XCTAssertEqual(value, T(0), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.25), T(1)) // 25%
-        XCTAssertEqualWithAccuracy(value, T(0.011969444423734026), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.011969444423734026), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.50), T(1)) // 50%
-        XCTAssertEqualWithAccuracy(value, T(0.5), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.5), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.75), T(1)) // 75%
-        XCTAssertEqualWithAccuracy(value, T(0.988030555576266), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.988030555576266), accuracy: accuracy)
         
         value = function(T(0), T(1), T(1.00), T(1)) // 100%
-        XCTAssertEqualWithAccuracy(value, T(1.00), accuracy: accuracy)
+        XCTAssertEqual(value, T(1.00), accuracy: accuracy)
     }
 
     // MARK: Bounce Asserts
@@ -662,19 +662,19 @@ class EaseFunctionsTest: XCTestCase {
         var value: T
 
         value = function(T(0), T(1), T(0.00), T(1)) // 0%
-        XCTAssertEqualWithAccuracy(value, T(0), accuracy: accuracy)
+        XCTAssertEqual(value, T(0), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.25), T(1)) // 25%
-        XCTAssertEqualWithAccuracy(value, T(0.02734375), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.02734375), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.50), T(1)) // 50%
-        XCTAssertEqualWithAccuracy(value, T(0.234375), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.234375), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.75), T(1)) // 75%
-        XCTAssertEqualWithAccuracy(value, T(0.52734375), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.52734375), accuracy: accuracy)
 
         value = function(T(0), T(1), T(1.00), T(1)) // 100%
-        XCTAssertEqualWithAccuracy(value, T(1.00), accuracy: accuracy)
+        XCTAssertEqual(value, T(1.00), accuracy: accuracy)
     }
 
     private func assertBounceOut<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
@@ -682,19 +682,19 @@ class EaseFunctionsTest: XCTestCase {
         var value: T
 
         value = function(T(0), T(1), T(0.00), T(1)) // 0%
-        XCTAssertEqualWithAccuracy(value, T(0), accuracy: accuracy)
+        XCTAssertEqual(value, T(0), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.25), T(1)) // 25%
-        XCTAssertEqualWithAccuracy(value, T(0.47265625), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.47265625), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.50), T(1)) // 50%
-        XCTAssertEqualWithAccuracy(value, T(0.765625), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.765625), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.75), T(1)) // 75%
-        XCTAssertEqualWithAccuracy(value, T(0.97265625), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.97265625), accuracy: accuracy)
 
         value = function(T(0), T(1), T(1.00), T(1)) // 100%
-        XCTAssertEqualWithAccuracy(value, T(1.00), accuracy: accuracy)
+        XCTAssertEqual(value, T(1.00), accuracy: accuracy)
     }
 
     private func assertBounceInOut<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
@@ -702,19 +702,19 @@ class EaseFunctionsTest: XCTestCase {
         var value: T
 
         value = function(T(0), T(1), T(0.00), T(1)) // 0%
-        XCTAssertEqualWithAccuracy(value, T(0), accuracy: accuracy)
+        XCTAssertEqual(value, T(0), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.25), T(1)) // 25%
-        XCTAssertEqualWithAccuracy(value, T(0.1171875), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.1171875), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.50), T(1)) // 50%
-        XCTAssertEqualWithAccuracy(value, T(0.5), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.5), accuracy: accuracy)
 
         value = function(T(0), T(1), T(0.75), T(1)) // 75%
-        XCTAssertEqualWithAccuracy(value, T(0.8828125), accuracy: accuracy)
+        XCTAssertEqual(value, T(0.8828125), accuracy: accuracy)
         
         value = function(T(0), T(1), T(1.00), T(1)) // 100%
-        XCTAssertEqualWithAccuracy(value, T(1.00), accuracy: accuracy)
+        XCTAssertEqual(value, T(1.00), accuracy: accuracy)
     }
 
 }

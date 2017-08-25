@@ -54,8 +54,7 @@ extension Tweener {
      */
     @discardableResult
     public static func animate<TargetProperty: TweenableProperty>(
-        _ target: TargetProperty.Target, to properties: [TargetProperty], duration: TimeInterval, completion: Callback? = nil) -> Tween
-            where TargetProperty.Value == TargetProperty {
+        _ target: TargetProperty.Target, to properties: [TargetProperty], duration: TimeInterval, completion: Callback? = nil) -> Tween {
 
             let tween = TweenAnimation(target: target, properties: properties, duration: duration)
             tween.reversed = false
@@ -86,8 +85,7 @@ extension Tweener {
      */
     @discardableResult
     public static func animate<TargetProperty: TweenableProperty>(
-        _ target: TargetProperty.Target, from properties: [TargetProperty], duration: TimeInterval, completion: Callback? = nil) -> Tween
-            where TargetProperty.Value == TargetProperty {
+        _ target: TargetProperty.Target, from properties: [TargetProperty], duration: TimeInterval, completion: Callback? = nil) -> Tween {
 
             let tween = TweenAnimation(target: target, properties: properties, duration: duration)
             tween.reversed = true

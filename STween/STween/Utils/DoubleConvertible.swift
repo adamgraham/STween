@@ -25,12 +25,12 @@ extension Double {
 
     /// Initializes a `Double` value from an `UnsignedInteger` type.
     internal init<U: UnsignedInteger>(_ unsignedInteger: U) {
-        self = Double(unsignedInteger.toUIntMax())
+        self = Double(UInt64(unsignedInteger))
     }
 
     /// Initializes a `Double` value from an `SignedInteger` type.
     internal init<I: SignedInteger>(_ signedInteger: I) {
-        self = Double(signedInteger.toIntMax())
+        self = Double(Int64(signedInteger))
     }
 
     /// Initializes a `Double` value from a `FloatingPoint` type.

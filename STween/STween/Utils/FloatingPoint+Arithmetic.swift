@@ -37,7 +37,7 @@ extension FloatingPoint {
         case is CGFloat:
             self = CGFloat(v) as! Self
         default:
-            self = Self(IntMax(v)) // possible precision loss
+            self = Self(Int64(v)) // possible precision loss
         }
         #else
         switch Self(0) {
@@ -48,7 +48,7 @@ extension FloatingPoint {
         case is CGFloat:
             self = CGFloat(v) as! Self
         default:
-            self = Self(IntMax(v)) // possible precision loss
+            self = Self(Int64(v)) // possible precision loss
         }
         #endif
     }

@@ -42,7 +42,7 @@ extension Interpolatable where Self: UnsignedInteger {
         let value = ease.interpolate(from: start, to: end,
                                      elapsed: elapsed, duration: duration)
 
-        return Self(UIntMax(value))
+        return Self(UInt64(value))
     }
     
 }
@@ -58,7 +58,7 @@ extension Interpolatable where Self: SignedInteger {
         let value = ease.interpolate(from: start, to: end,
                                      elapsed: elapsed, duration: duration)
 
-        return Self(IntMax(value))
+        return Self(Int64(value))
     }
     
 }

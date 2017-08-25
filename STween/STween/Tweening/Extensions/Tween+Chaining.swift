@@ -30,7 +30,7 @@ extension Tween {
     
      - Returns: `self` to allow for additional method chaining.
      */
-    @discardableResult public final func set(ease: Ease) -> Tween {
+    @discardableResult public func set(ease: Ease) -> Tween {
         self.ease = ease
         return self
     }
@@ -44,7 +44,7 @@ extension Tween {
 
      - Returns: `self` to allow for additional method chaining.
      */
-    @discardableResult public final func set(delay: TimeInterval) -> Tween {
+    @discardableResult public func set(delay: TimeInterval) -> Tween {
         self.delay = delay
         return self
     }
@@ -58,7 +58,7 @@ extension Tween {
 
      - Returns: `self` to allow for additional method chaining.
      */
-    @discardableResult public final func set(duration: TimeInterval) -> Tween {
+    @discardableResult public func set(duration: TimeInterval) -> Tween {
         self.duration = duration
         return self
     }
@@ -71,7 +71,7 @@ extension Tween {
 
      - Returns: `self` to allow for additional method chaining.
      */
-    @discardableResult public final func set(reversed: Bool) -> Tween {
+    @discardableResult public func set(reversed: Bool) -> Tween {
         self.reversed = reversed
         return self
     }
@@ -87,7 +87,7 @@ extension Tween {
 
      - Returns: `self` to allow for additional method chaining.
      */
-    @discardableResult public final func set(callback: @escaping Callback, for stateChange: TweenStateChange) -> Tween {
+    @discardableResult public func set(callback: @escaping Callback, for stateChange: TweenStateChange) -> Tween {
         self.callback(set: stateChange, value: callback)
         return self
     }

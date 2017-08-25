@@ -50,12 +50,12 @@ class TweenAnimationTest: XCTestCase {
         tween.start()
         tween.update()
 
-        XCTAssertEqualWithAccuracy(Double(target.frame.origin.x), 0.0, accuracy: .ulpOfOne)
-        XCTAssertEqualWithAccuracy(Double(target.frame.origin.y), 0.0, accuracy: .ulpOfOne)
+        XCTAssertEqual(Double(target.frame.origin.x), 0.0, accuracy: .ulpOfOne)
+        XCTAssertEqual(Double(target.frame.origin.y), 0.0, accuracy: .ulpOfOne)
 
         waitForExpectations(timeout: 3.0) { error in
-            XCTAssertEqualWithAccuracy(Double(target.frame.origin.x), 100.0, accuracy: .ulpOfOne)
-            XCTAssertEqualWithAccuracy(Double(target.frame.origin.y), 100.0, accuracy: .ulpOfOne)
+            XCTAssertEqual(Double(target.frame.origin.x), 100.0, accuracy: .ulpOfOne)
+            XCTAssertEqual(Double(target.frame.origin.y), 100.0, accuracy: .ulpOfOne)
         }
     }
 
@@ -73,12 +73,12 @@ class TweenAnimationTest: XCTestCase {
         tween.start()
         tween.update()
 
-        XCTAssertEqualWithAccuracy(Double(target.frame.origin.x), 100.0, accuracy: .ulpOfOne)
-        XCTAssertEqualWithAccuracy(Double(target.frame.origin.y), 100.0, accuracy: .ulpOfOne)
+        XCTAssertEqual(Double(target.frame.origin.x), 100.0, accuracy: .ulpOfOne)
+        XCTAssertEqual(Double(target.frame.origin.y), 100.0, accuracy: .ulpOfOne)
 
         waitForExpectations(timeout: 3.0) { error in
-            XCTAssertEqualWithAccuracy(Double(target.frame.origin.x), 0.0, accuracy: .ulpOfOne)
-            XCTAssertEqualWithAccuracy(Double(target.frame.origin.y), 0.0, accuracy: .ulpOfOne)
+            XCTAssertEqual(Double(target.frame.origin.x), 0.0, accuracy: .ulpOfOne)
+            XCTAssertEqual(Double(target.frame.origin.y), 0.0, accuracy: .ulpOfOne)
         }
     }
 

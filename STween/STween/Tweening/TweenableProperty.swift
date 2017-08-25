@@ -7,11 +7,9 @@
 //
 
 /// A protocol to describe a tweenable property.
-public protocol TweenableProperty: Interpolatable {
+public protocol TweenableProperty: Interpolatable where Value == Self {
 
     associatedtype Target: Tweenable
-
-    typealias Value = Self
 
     // MARK: Methods
 

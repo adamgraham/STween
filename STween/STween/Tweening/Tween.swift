@@ -96,7 +96,7 @@ extension Tween {
 
     /// The percentage of `self`'s `elapsed` time over `self`'s `duration` of time,
     /// in the range of `0.0` to `1.0`.
-    public final var percentComplete: Double {
+    public var percentComplete: Double {
         return clamp(value: self.elapsed / self.duration, lower: 0.0, upper: 1.0)
     }
     

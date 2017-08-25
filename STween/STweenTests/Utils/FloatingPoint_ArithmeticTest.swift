@@ -37,14 +37,14 @@ class FloatingPoint_ArithmeticTest: XCTestCase {
 
     private func assert<T: FloatingPoint>(_ type: T.Type, accuracy: T) {
         let value: T = T.pi
-        XCTAssertEqualWithAccuracy(cos(value), T(-1.0), accuracy: accuracy)
-        XCTAssertEqualWithAccuracy(sin(value), T(0.0), accuracy: accuracy)
-        XCTAssertEqualWithAccuracy(pow(value, T(2.0)), T.pi * T.pi, accuracy: accuracy)
-        XCTAssertEqualWithAccuracy(value.double, T.pi_double, accuracy: accuracy)
-        XCTAssertEqualWithAccuracy(value.half, T.pi_half, accuracy: accuracy)
-        XCTAssertEqualWithAccuracy(T.zero, T(0.0), accuracy: accuracy)
-        XCTAssertEqualWithAccuracy(T.pi_double, T.pi * T(2.0), accuracy: accuracy)
-        XCTAssertEqualWithAccuracy(T.pi_half, T.pi / T(2.0), accuracy: accuracy)
+        XCTAssertEqual(cos(value), T(-1.0), accuracy: accuracy)
+        XCTAssertEqual(sin(value), T(0.0), accuracy: accuracy)
+        XCTAssertEqual(pow(value, T(2.0)), T.pi * T.pi, accuracy: accuracy)
+        XCTAssertEqual(value.double, T.pi_double, accuracy: accuracy)
+        XCTAssertEqual(value.half, T.pi_half, accuracy: accuracy)
+        XCTAssertEqual(T.zero, T(0.0), accuracy: accuracy)
+        XCTAssertEqual(T.pi_double, T.pi * T(2.0), accuracy: accuracy)
+        XCTAssertEqual(T.pi_half, T.pi / T(2.0), accuracy: accuracy)
     }
 
 }

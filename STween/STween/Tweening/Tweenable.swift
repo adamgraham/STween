@@ -24,7 +24,7 @@ public protocol Tweenable {
      */
     @discardableResult
     func tween<TweenProperty: TweenableProperty>(to property: TweenProperty, duration: TimeInterval, completion: Callback?) -> Tween
-        where TweenProperty.Target == Self, TweenProperty.Value == TweenProperty
+        where TweenProperty.Target == Self
 
     /**
      A method to create an animation on `self` animating *to* an array of 
@@ -39,7 +39,7 @@ public protocol Tweenable {
      */
     @discardableResult
     func tween<TweenProperty: TweenableProperty>(to properties: [TweenProperty], duration: TimeInterval, completion: Callback?) -> Tween
-        where TweenProperty.Target == Self, TweenProperty.Value == TweenProperty
+        where TweenProperty.Target == Self
 
     /**
      A method to create an animation on `self` animating *from* a tweenable 
@@ -54,7 +54,7 @@ public protocol Tweenable {
      */
     @discardableResult
     func tween<TweenProperty: TweenableProperty>(from property: TweenProperty, duration: TimeInterval, completion: Callback?) -> Tween
-        where TweenProperty.Target == Self, TweenProperty.Value == TweenProperty
+        where TweenProperty.Target == Self
 
     /**
      A method to create an animation on `self` animating *from* an array of 
@@ -69,7 +69,7 @@ public protocol Tweenable {
      */
     @discardableResult
     func tween<TweenProperty: TweenableProperty>(from properties: [TweenProperty], duration: TimeInterval, completion: Callback?) -> Tween
-        where TweenProperty.Target == Self, TweenProperty.Value == TweenProperty
+        where TweenProperty.Target == Self
 
 }
 
@@ -79,8 +79,8 @@ extension Tweenable {
     // MARK: Default Implementation
 
     @discardableResult
-    public final func tween<TweenProperty: TweenableProperty>(to property: TweenProperty, duration: TimeInterval, completion: Callback? = nil) -> Tween
-        where TweenProperty.Target == Self, TweenProperty.Value == TweenProperty {
+    public func tween<TweenProperty: TweenableProperty>(to property: TweenProperty, duration: TimeInterval, completion: Callback? = nil) -> Tween
+        where TweenProperty.Target == Self {
 
             return Tweener.animate(self, to: [property],
                                    duration: duration,
@@ -88,8 +88,8 @@ extension Tweenable {
     }
 
     @discardableResult
-    public final func tween<TweenProperty: TweenableProperty>(to properties: [TweenProperty], duration: TimeInterval, completion: Callback? = nil) -> Tween
-        where TweenProperty.Target == Self, TweenProperty.Value == TweenProperty {
+    public func tween<TweenProperty: TweenableProperty>(to properties: [TweenProperty], duration: TimeInterval, completion: Callback? = nil) -> Tween
+        where TweenProperty.Target == Self {
 
             return Tweener.animate(self, to: properties,
                                    duration: duration,
@@ -97,8 +97,8 @@ extension Tweenable {
     }
 
     @discardableResult
-    public final func tween<TweenProperty: TweenableProperty>(from property: TweenProperty, duration: TimeInterval, completion: Callback? = nil) -> Tween
-        where TweenProperty.Target == Self, TweenProperty.Value == TweenProperty {
+    public func tween<TweenProperty: TweenableProperty>(from property: TweenProperty, duration: TimeInterval, completion: Callback? = nil) -> Tween
+        where TweenProperty.Target == Self {
 
             return Tweener.animate(self, from: [property],
                                    duration: duration,
@@ -106,8 +106,8 @@ extension Tweenable {
     }
 
     @discardableResult
-    public final func tween<TweenProperty: TweenableProperty>(from properties: [TweenProperty], duration: TimeInterval, completion: Callback? = nil) -> Tween
-        where TweenProperty.Target == Self, TweenProperty.Value == TweenProperty {
+    public func tween<TweenProperty: TweenableProperty>(from properties: [TweenProperty], duration: TimeInterval, completion: Callback? = nil) -> Tween
+        where TweenProperty.Target == Self {
 
             return Tweener.animate(self, from: properties,
                                    duration: duration,

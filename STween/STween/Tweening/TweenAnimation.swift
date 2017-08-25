@@ -8,8 +8,7 @@
 
 /// A class to animate properties on a `Tweenable` object via easing 
 /// functions and interpolation.
-internal final class TweenAnimation<TargetProperty: TweenableProperty>: Tween
-    where TargetProperty.Value == TargetProperty {
+internal final class TweenAnimation<TargetProperty: TweenableProperty>: Tween {
 
     internal typealias Target = TargetProperty.Target
 

@@ -109,10 +109,10 @@ class UIColor_RGBATest: XCTestCase {
     func testComponentsGetter() {
         for (index, color) in UIColor_RGBATest.colors.enumerated() {
             let components = color.components
-            XCTAssertEqualWithAccuracy(components.red, UIColor_RGBATest.reds[index], accuracy: CGFloat(Float.ulpOfOne))
-            XCTAssertEqualWithAccuracy(components.green, UIColor_RGBATest.greens[index], accuracy: CGFloat(Float.ulpOfOne))
-            XCTAssertEqualWithAccuracy(components.blue, UIColor_RGBATest.blues[index], accuracy: CGFloat(Float.ulpOfOne))
-            XCTAssertEqualWithAccuracy(components.alpha, UIColor_RGBATest.alphas[index], accuracy: CGFloat(Float.ulpOfOne))
+            XCTAssertEqual(components.red, UIColor_RGBATest.reds[index], accuracy: CGFloat(Float.ulpOfOne))
+            XCTAssertEqual(components.green, UIColor_RGBATest.greens[index], accuracy: CGFloat(Float.ulpOfOne))
+            XCTAssertEqual(components.blue, UIColor_RGBATest.blues[index], accuracy: CGFloat(Float.ulpOfOne))
+            XCTAssertEqual(components.alpha, UIColor_RGBATest.alphas[index], accuracy: CGFloat(Float.ulpOfOne))
         }
     }
 
@@ -120,7 +120,7 @@ class UIColor_RGBATest: XCTestCase {
         XCTAssertEqual(UIColor_RGBATest.colors.count, UIColor_RGBATest.reds.count)
 
         for (index, color) in UIColor_RGBATest.colors.enumerated() {
-            XCTAssertEqualWithAccuracy(color.red, UIColor_RGBATest.reds[index], accuracy: CGFloat(Float.ulpOfOne))
+            XCTAssertEqual(color.red, UIColor_RGBATest.reds[index], accuracy: CGFloat(Float.ulpOfOne))
         }
     }
 
@@ -128,7 +128,7 @@ class UIColor_RGBATest: XCTestCase {
         XCTAssertEqual(UIColor_RGBATest.colors.count, UIColor_RGBATest.greens.count)
 
         for (index, color) in UIColor_RGBATest.colors.enumerated() {
-            XCTAssertEqualWithAccuracy(color.green, UIColor_RGBATest.greens[index], accuracy: CGFloat(Float.ulpOfOne))
+            XCTAssertEqual(color.green, UIColor_RGBATest.greens[index], accuracy: CGFloat(Float.ulpOfOne))
         }
     }
 
@@ -136,7 +136,7 @@ class UIColor_RGBATest: XCTestCase {
         XCTAssertEqual(UIColor_RGBATest.colors.count, UIColor_RGBATest.blues.count)
 
         for (index, color) in UIColor_RGBATest.colors.enumerated() {
-            XCTAssertEqualWithAccuracy(color.blue, UIColor_RGBATest.blues[index], accuracy: CGFloat(Float.ulpOfOne))
+            XCTAssertEqual(color.blue, UIColor_RGBATest.blues[index], accuracy: CGFloat(Float.ulpOfOne))
         }
     }
 
@@ -144,7 +144,7 @@ class UIColor_RGBATest: XCTestCase {
         XCTAssertEqual(UIColor_RGBATest.colors.count, UIColor_RGBATest.alphas.count)
 
         for (index, color) in UIColor_RGBATest.colors.enumerated() {
-            XCTAssertEqualWithAccuracy(color.alpha, UIColor_RGBATest.alphas[index], accuracy: CGFloat(Float.ulpOfOne))
+            XCTAssertEqual(color.alpha, UIColor_RGBATest.alphas[index], accuracy: CGFloat(Float.ulpOfOne))
         }
     }
 
