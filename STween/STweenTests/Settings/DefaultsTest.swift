@@ -22,10 +22,6 @@ class DefaultsTest: XCTestCase {
         super.tearDown()
     }
 
-    func testDefaultFrameRate() {
-        XCTAssertEqual(Defaults.frameRate, 30.0)
-    }
-
     func testDefaultEase() {
         XCTAssertEqual(Defaults.ease, .quadOut)
     }
@@ -51,7 +47,6 @@ class DefaultsTest: XCTestCase {
     }
 
     func testRestDefaults() {
-        Defaults.frameRate = 60.0
         Defaults.ease = .backOut
         Defaults.overshoot = 1.0
         Defaults.delay = 1.0
@@ -60,7 +55,6 @@ class DefaultsTest: XCTestCase {
         Defaults.autoKillCompletedTweens = false
         Defaults.reset()
 
-        XCTAssertEqual(Defaults.frameRate, 30.0)
         XCTAssertEqual(Defaults.ease, .quadOut)
         XCTAssertEqual(Defaults.overshoot, 1.70158)
         XCTAssertEqual(Defaults.delay, 0.0)

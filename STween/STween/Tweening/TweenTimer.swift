@@ -14,14 +14,12 @@ internal final class TweenTimer {
     /// A weak reference to the delegate listening to `self`.
     internal weak var delegate: TweenTimerDelegate?
 
-    /// The timer object that invokes scheduled "tick" events.
-    private lazy var timer: Timer = Timer.scheduledTimer(
-        timeInterval: FrameRate.targetFrameDuration,
-        target: self,
-        selector: #selector(tick),
-        userInfo: nil,
-        repeats: true
-    )
+    /// The timer object that invokes "tick" events based on display vsync.
+    private lazy var timer: CADisplayLink = {
+        let displayLink = CADisplayLink(target: self, selector: #selector(tick))
+        displayLink.add(to: .main, forMode: .defaultRunLoopMode)
+        return displayLink
+    }()
 
     // MARK: State Properties
 
@@ -64,9 +62,13 @@ internal final class TweenTimer {
      firing "tick" events.
      */
     internal func start() {
-        self.timer.fire()
+        guard !self.running else {
+            return
+        }
+
         self.lastTickDate = Date()
         self.running = true
+        self.timer.isPaused = false
     }
 
     /**
@@ -74,7 +76,12 @@ internal final class TweenTimer {
      firing "tick" events.
      */
     internal func stop() {
+        guard self.running else {
+            return
+        }
+
         self.running = false
+        self.timer.isPaused = true
     }
 
     /**

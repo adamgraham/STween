@@ -13,9 +13,7 @@ public final class Defaults {
     private init() {}
 
     // MARK: Properties
-
-    /// The default rate at which every `Tween` updates.
-    public static var frameRate = 30.0
+    
     /// The default `Ease` assigned to every `Tween`.
     public static var ease = Ease.quadOut
     /// The default overshoot value used in easing functions.
@@ -33,7 +31,6 @@ public final class Defaults {
 
     /// A method to reset all defaults to their original values.
     public static func reset() {
-        self.frameRate = 30.0
         self.ease = .quadOut
         self.overshoot = 1.70158
         self.delay = 0.0

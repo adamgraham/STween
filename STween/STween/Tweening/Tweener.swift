@@ -20,14 +20,8 @@ public final class Tweener {
     /// An array of every instantiated `Tween` that is waiting to be started.
     fileprivate static var queuedTweens = [Tween]()
 
-    /// The timer object used to start any queued `Tween`s every frame.
-    fileprivate static let queueTimer = Timer.scheduledTimer(
-        timeInterval: FrameRate.targetFrameDuration,
-        target: Tweener.self,
-        selector: #selector(Tweener.startQueuedTweens),
-        userInfo: nil,
-        repeats: true
-    )
+    /// The timer object used to start any queued `Tween`s.
+    fileprivate static let queueTimer = CADisplayLink(target: Tweener.self, selector: #selector(Tweener.startQueuedTweens))
 
     /// The state of the queue timer being active.
     fileprivate static var isQueueTimerRunning = false
@@ -178,7 +172,7 @@ extension Tweener {
         }
 
         if !self.isQueueTimerRunning {
-            self.queueTimer.fire()
+            self.queueTimer.add(to: .main, forMode: .defaultRunLoopMode)
             self.isQueueTimerRunning = true
         }
 

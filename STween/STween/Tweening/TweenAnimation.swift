@@ -37,8 +37,7 @@ internal final class TweenAnimation<TargetProperty: TweenableProperty>: Tween {
     // MARK: Time Properties
 
     /// The internal timer of `self` used to keep track of total elapsed time and
-    /// fire update cycles. The rate at which the timer updates is based on
-    /// `FrameRate.targetFrameRate`.
+    /// fire update cycles.
     fileprivate lazy var timer: TweenTimer = TweenTimer(delegate: self)
     
     internal var delay = Defaults.delay
