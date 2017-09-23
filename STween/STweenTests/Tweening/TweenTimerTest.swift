@@ -112,7 +112,7 @@ class TweenTimerTest: XCTestCase {
 
 }
 
-fileprivate class TestDelegateClass: TweenTimerDelegate {
+private class TestDelegateClass: TweenTimerDelegate {
 
     var callback: (() -> Void)?
 

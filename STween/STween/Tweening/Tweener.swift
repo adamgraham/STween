@@ -15,16 +15,16 @@ public final class Tweener {
     // MARK: Properties
 
     /// An array of every instantiated `Tween`.
-    fileprivate static var tweens = [Tween]()
+    private static var tweens = [Tween]()
 
     /// An array of every instantiated `Tween` that is waiting to be started.
-    fileprivate static var queuedTweens = [Tween]()
+    private static var queuedTweens = [Tween]()
 
     /// The timer object used to start any queued `Tween`s.
-    fileprivate static let queueTimer = CADisplayLink(target: Tweener.self, selector: #selector(Tweener.startQueuedTweens))
+    private static let queueTimer = CADisplayLink(target: Tweener.self, selector: #selector(Tweener.startQueuedTweens))
 
     /// The state of the queue timer being active.
-    fileprivate static var isQueueTimerRunning = false
+    private static var isQueueTimerRunning = false
 
 }
 

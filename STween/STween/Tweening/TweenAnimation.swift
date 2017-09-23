@@ -21,10 +21,10 @@ internal final class TweenAnimation<TargetProperty: TweenableProperty>: Tween {
     internal let targetProperties: [TargetProperty]
 
     /// An array of values used to interpolate each property every update cycle.
-    fileprivate var interpolationValues = [InterpolationValues<TargetProperty>]()
+    private var interpolationValues = [InterpolationValues<TargetProperty>]()
 
     /// A dictionary storing the callbacks for each change of state.
-    fileprivate var callbacks = [TweenStateChange : Callback?]()
+    private var callbacks = [TweenStateChange : Callback?]()
 
     // MARK: Animation & State Properties
 
@@ -32,18 +32,18 @@ internal final class TweenAnimation<TargetProperty: TweenableProperty>: Tween {
 
     internal var reversed = Defaults.reversed
     
-    internal fileprivate(set) var state = TweenState.new
+    internal private(set) var state = TweenState.new
 
     // MARK: Time Properties
 
     /// The internal timer of `self` used to keep track of total elapsed time and
     /// fire update cycles.
-    fileprivate lazy var timer: TweenTimer = TweenTimer(delegate: self)
+    private lazy var timer: TweenTimer = TweenTimer(delegate: self)
     
     internal var delay = Defaults.delay
 
     /// The amount of time, in seconds, `self` has been delayed.
-    fileprivate var delayElapsed = 0.0
+    private var delayElapsed = 0.0
 
     internal var duration: TimeInterval
 
@@ -112,7 +112,7 @@ extension TweenAnimation {
      A method to interpolate all of `self`'s target properties, based on its
      current state, and assign the interpolated values to the target.
      */
-    fileprivate func updateProperties() {
+    private func updateProperties() {
         let ease = self.ease
         let elapsed = self.elapsed
         let duration = self.duration
@@ -128,7 +128,7 @@ extension TweenAnimation {
      target property. If `self` is reversed, the start and end value will be
      flipped with each other.
      */
-    fileprivate func storeStartingAndEndingValues() {
+    private func storeStartingAndEndingValues() {
         self.interpolationValues = self.targetProperties.map {
             let start = $0.value(from: self.target)
             let end = $0
@@ -439,7 +439,7 @@ extension TweenAnimation {
         - stateChange: The change of state to which its callback will be
                        invoked.
      */
-    fileprivate func callback(invoke stateChange: TweenStateChange) {
+    private func callback(invoke stateChange: TweenStateChange) {
         callback(get: stateChange)?()
     }
     
@@ -450,7 +450,7 @@ extension TweenAnimation {
     // MARK: Delay Methods
 
     /// :nodoc:
-    fileprivate func startDelay() {
+    private func startDelay() {
         guard self.state != .delayed else {
             return
         }
@@ -465,7 +465,7 @@ extension TweenAnimation {
     }
 
     /// :nodoc:
-    fileprivate func updateDelay(by elapsed: TimeInterval) {
+    private func updateDelay(by elapsed: TimeInterval) {
         self.delayElapsed = elapsed
 
         if self.delayElapsed >= self.delay {

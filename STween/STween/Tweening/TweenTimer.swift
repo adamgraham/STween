@@ -113,7 +113,7 @@ internal final class TweenTimer {
      by the amount of time passed since the last update cycle. The duration
      between update cycles is determined by the timer's `timeInterval`.
      */
-    @objc fileprivate func tick() {
+    @objc private func tick() {
         guard self.running else {
             return
         }
