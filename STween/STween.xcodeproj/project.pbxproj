@@ -221,7 +221,6 @@
 		9D8890401E2883160023FE78 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				9D8890421E2883160023FE78 /* Callback.swift */,
 				9D8890431E2883160023FE78 /* Defaults.swift */,
 			);
 			path = Settings;
@@ -277,6 +276,7 @@
 			isa = PBXGroup;
 			children = (
 				9D88905D1E2883160023FE78 /* Color */,
+				9D8890421E2883160023FE78 /* Callback.swift */,
 				9D9ECC921E2AED4D000CB955 /* DoubleConvertible.swift */,
 				9D9ECC941E2B1C6B000CB955 /* FloatingPoint+Arithmetic.swift */,
 				9D8890601E2883160023FE78 /* Functions.swift */,
@@ -296,7 +296,6 @@
 		9DB3D62F1DAE686F00134C1D /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				9DB3D6341DAE686F00134C1D /* CallbackTest.swift */,
 				9DB3D6301DAE686F00134C1D /* DefaultsTest.swift */,
 			);
 			path = Settings;
@@ -306,6 +305,7 @@
 			isa = PBXGroup;
 			children = (
 				9DB3D63A1DAE688200134C1D /* Color */,
+				9DB3D6341DAE686F00134C1D /* CallbackTest.swift */,
 				9D9135F51E2B255A00394EBB /* DoubleConvertibleTest.swift */,
 				9D0477AA1E2DB520003E17D9 /* FloatingPoint_ArithmeticTest.swift */,
 				9DB3D6431DAE758F00134C1D /* FunctionsTest.swift */,
