@@ -53,7 +53,7 @@ internal final class EaseFunctions {
 
  - Returns: The value at a specific point in time from the start value.
  */
-internal typealias EaseFunction<Number: FloatingPoint> = (
+public typealias EaseFunction<Number: FloatingPoint> = (
     _ b: Number,
     _ c: Number,
     _ t: Number,
