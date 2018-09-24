@@ -7,7 +7,7 @@
 //
 
 /// A protocol to provide interpolation functionality.
-public protocol Interpolatable {
+public protocol Interpolatable: Equatable {
 
     associatedtype Value = Self
 
@@ -127,7 +127,7 @@ extension Date: Interpolatable {
 // MARK: - Conformance: CoreAnimation
 
 /// :nodoc:
-extension CATransform3D: Interpolatable {
+extension CATransform3D: Interpolatable, Equatable {
 
     public static func interpolate(from startValue: CATransform3D, to endValue: CATransform3D, with ease: Ease,
                                    elapsed: TimeInterval, duration: TimeInterval) -> CATransform3D {
@@ -160,6 +160,25 @@ extension CATransform3D: Interpolatable {
                              m21: m21, m22: m22, m23: m23, m24: m24,
                              m31: m31, m32: m32, m33: m33, m34: m34,
                              m41: m41, m42: m42, m43: m43, m44: m44)
+    }
+
+    public static func ==(lhs: CATransform3D, rhs: CATransform3D) -> Bool {
+        return lhs.m11 == rhs.m11 &&
+               lhs.m12 == rhs.m12 &&
+               lhs.m13 == rhs.m13 &&
+               lhs.m14 == rhs.m14 &&
+               lhs.m21 == rhs.m21 &&
+               lhs.m22 == rhs.m22 &&
+               lhs.m23 == rhs.m23 &&
+               lhs.m24 == rhs.m24 &&
+               lhs.m31 == rhs.m31 &&
+               lhs.m32 == rhs.m32 &&
+               lhs.m33 == rhs.m33 &&
+               lhs.m34 == rhs.m34 &&
+               lhs.m41 == rhs.m41 &&
+               lhs.m42 == rhs.m42 &&
+               lhs.m43 == rhs.m43 &&
+               lhs.m44 == rhs.m44
     }
     
 }

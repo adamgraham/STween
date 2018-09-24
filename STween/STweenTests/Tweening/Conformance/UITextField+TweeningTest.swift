@@ -16,16 +16,28 @@ class UITextField_TweeningTest: XCTestCase, TweenableTestable {
         let textField = UITextField()
         let property = UITextFieldTweenProperty.textColor(UIColor.darkGray)
         assertValidInterpolation(of: property, on: textField) {
-            return isEqual(textField.textColor ?? UIColor.clear, UIColor.darkGray)
+            (lhs: UITextFieldTweenProperty, rhs: UITextFieldTweenProperty) -> Bool in
+
+            switch (lhs, rhs) {
+            case (.textColor(let lhsColor), .textColor(let rhsColor)):
+                return self.isEqual(lhsColor, rhsColor)
+            default:
+                return false
+            }
         }
     }
 
     func testMinimumFontSize() {
         let textField = UITextField()
         let property = UITextFieldTweenProperty.minimumFontSize(12.0)
-        assertValidInterpolation(of: property, on: textField) {
-            return textField.minimumFontSize == 12.0
-        }
+        assertValidInterpolation(of: property, on: textField)
+    }
+
+    func testInvalidInterpolation() {
+        let textField = UITextField()
+        let property = UITextFieldTweenProperty.minimumFontSize(12.0)
+        let otherProperty = UITextFieldTweenProperty.textColor(UIColor.darkGray)
+        assertInvalidInterpolation(of: property, to: otherProperty, on: textField)
     }
 
 }

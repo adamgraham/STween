@@ -13,7 +13,7 @@ extension UILabel {
 
 /// An enum to describe the properties that can be animated with a tween
 /// on a `UILabel`.
-public enum UILabelTweenProperty {
+public enum UILabelTweenProperty: Equatable {
 
     /// A case to denote the `textColor` property of a `UILabel`.
     case textColor(UIColor)

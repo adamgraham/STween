@@ -13,7 +13,7 @@ extension CALayer: Tweenable {
 
 /// An enum to describe the properties that can be animated with a tween
 /// on a `CALayer`.
-public enum CALayerTweenProperty {
+public enum CALayerTweenProperty: Equatable {
 
     /// A case to denote the `frame` property of a `CALayer`.
     case frame(CGRect)

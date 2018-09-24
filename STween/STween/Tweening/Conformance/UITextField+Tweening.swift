@@ -13,7 +13,7 @@ extension UITextField {
 
 /// An enum to describe the properties that can be animated with a tween
 /// on a `UITextField`.
-public enum UITextFieldTweenProperty {
+public enum UITextFieldTweenProperty: Equatable {
 
     /// A case to denote the `textColor` property of a `UITextField`.
     case textColor(UIColor)

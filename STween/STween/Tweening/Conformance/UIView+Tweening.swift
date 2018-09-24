@@ -13,7 +13,7 @@ extension UIView: Tweenable {
 
 /// An enum to describe the properties that can be animated with a tween
 /// on a `UIView`.
-public enum UIViewTweenProperty {
+public enum UIViewTweenProperty: Equatable {
 
     /// A case to denote the `frame.origin.x` property of a `UIView`.
     case x(CGFloat)

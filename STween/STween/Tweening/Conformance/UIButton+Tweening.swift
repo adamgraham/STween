@@ -13,7 +13,7 @@ extension UIButton {
 
 /// An enum to describe the properties that can be animated with a tween
 /// on a `UIButton`.
-public enum UIButtonTweenProperty {
+public enum UIButtonTweenProperty: Equatable {
 
     /// A case to denote the `contentEdgeInsets` property of a `UIButton`.
     case contentEdgeInsets(UIEdgeInsets)
