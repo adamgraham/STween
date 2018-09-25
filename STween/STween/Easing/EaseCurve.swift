@@ -9,7 +9,7 @@
 /// An enum to describe the acceleration pattern of an ease.
 public enum EaseCurve {
 
-    /// A case to denote no acceleration pattern i.e. linear.
+    /// A case to denote no acceleration pattern, i.e., linear.
     case none
 
     /// A case to denote an acceleration pattern that is more condensed in the

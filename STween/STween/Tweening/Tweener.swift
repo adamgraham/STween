@@ -21,7 +21,8 @@ public final class Tweener {
     private static var queuedTweens = [Tween]()
 
     /// The timer object used to start any queued `Tween`s.
-    private static let queueTimer = CADisplayLink(target: Tweener.self, selector: #selector(Tweener.startQueuedTweens))
+    private static let queueTimer = CADisplayLink(
+        target: Tweener.self, selector: #selector(Tweener.startQueuedTweens))
 
     /// The state of the queue timer being active.
     private static var isQueueTimerRunning = false

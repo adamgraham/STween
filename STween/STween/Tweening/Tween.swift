@@ -20,7 +20,7 @@ public protocol Tween: class {
     /// **Note:** Has no effect once `self` is started.
     var reversed: Bool { get set }
 
-    /// The current state of `self` i.e. active, paused, etc.
+    /// The current state of `self`, i.e., active, paused, etc.
     var state: TweenState { get }
 
     // MARK: Time Properties

@@ -6,7 +6,7 @@
 //  Copyright © 2016 Adam Graham. All rights reserved.
 //
 
-/// A struct to represent an RGBA color i.e. red, green, blue, and alpha.
+/// A struct to represent an RGBA color, i.e., red, green, blue, and alpha.
 internal struct RGBA {
 
     /// The value of the red component of `self`.
