@@ -12,10 +12,10 @@
  For example,
 
  ```
- let tween = self.tween(.width(50.0), duration: 1.0)
-    .set(ease: Ease.backOut)
+ let tween = self.tween(to: .width(50.0), duration: 1.0)
+    .set(ease: .backOut)
     .set(delay: 0.5)
-    .set(callback: { ... }, for: TweenStateChange.complete)
+    .set(onComplete: { ... })
  ```
  */
 extension Tween {
@@ -77,18 +77,119 @@ extension Tween {
     }
 
     /**
-     A query chaining method to assign a callback to a change of state on
-     `self`. Any time `self` changes to the specified state, the callback is
-     invoked.
+     A query chaining method to assign a value to `self.onUpdate`.
 
      - Parameters:
-        - callback: The callback to be assigned to a change of state on `self`.
-        - stateChange: The change of state the `callback` will be assigned to.
+        - callback: The callback to be assigned to `self.onUpdate`.
 
      - Returns: `self` to allow for additional method chaining.
      */
-    @discardableResult public func set(callback: @escaping Callback, for stateChange: TweenStateChange) -> Tween {
-        self.callback(set: stateChange, value: callback)
+    @discardableResult public func set(onUpdate callback: @escaping Callback) -> Tween {
+        self.onUpdate = callback
+        return self
+    }
+
+    /**
+     A query chaining method to assign a value to `self.onStart`.
+
+     - Parameters:
+        - callback: The callback to be assigned to `self.onStart`.
+
+     - Returns: `self` to allow for additional method chaining.
+     */
+    @discardableResult public func set(onStart callback: @escaping Callback) -> Tween {
+        self.onStart = callback
+        return self
+    }
+
+    /**
+     A query chaining method to assign a value to `self.onStop`.
+
+     - Parameters:
+        - callback: The callback to be assigned to `self.onStop`.
+
+     - Returns: `self` to allow for additional method chaining.
+     */
+    @discardableResult public func set(onStop callback: @escaping Callback) -> Tween {
+        self.onStop = callback
+        return self
+    }
+
+    /**
+     A query chaining method to assign a value to `self.onRestart`.
+
+     - Parameters:
+        - callback: The callback to be assigned to `self.onRestart`.
+
+     - Returns: `self` to allow for additional method chaining.
+     */
+    @discardableResult public func set(onRestart callback: @escaping Callback) -> Tween {
+        self.onRestart = callback
+        return self
+    }
+
+    /**
+     A query chaining method to assign a value to `self.onPause`.
+
+     - Parameters:
+        - callback: The callback to be assigned to `self.onPause`.
+
+     - Returns: `self` to allow for additional method chaining.
+     */
+    @discardableResult public func set(onPause callback: @escaping Callback) -> Tween {
+        self.onPause = callback
+        return self
+    }
+
+    /**
+     A query chaining method to assign a value to `self.onResume`.
+
+     - Parameters:
+        - callback: The callback to be assigned to `self.onResume`.
+
+     - Returns: `self` to allow for additional method chaining.
+     */
+    @discardableResult public func set(onResume callback: @escaping Callback) -> Tween {
+        self.onResume = callback
+        return self
+    }
+
+    /**
+     A query chaining method to assign a value to `self.onComplete`.
+
+     - Parameters:
+        - callback: The callback to be assigned to `self.onComplete`.
+
+     - Returns: `self` to allow for additional method chaining.
+     */
+    @discardableResult public func set(onComplete callback: @escaping Callback) -> Tween {
+        self.onComplete = callback
+        return self
+    }
+
+    /**
+     A query chaining method to assign a value to `self.onKill`.
+
+     - Parameters:
+        - callback: The callback to be assigned to `self.onKill`.
+
+     - Returns: `self` to allow for additional method chaining.
+     */
+    @discardableResult public func set(onKill callback: @escaping Callback) -> Tween {
+        self.onKill = callback
+        return self
+    }
+
+    /**
+     A query chaining method to assign a value to `self.onReset`.
+
+     - Parameters:
+        - callback: The callback to be assigned to `self.onReset`.
+
+     - Returns: `self` to allow for additional method chaining.
+     */
+    @discardableResult public func set(onReset callback: @escaping Callback) -> Tween {
+        self.onReset = callback
         return self
     }
 

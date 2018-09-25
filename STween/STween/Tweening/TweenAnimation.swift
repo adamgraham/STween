@@ -23,9 +23,6 @@ internal final class TweenAnimation<TargetProperty: TweenableProperty>: Tween {
     /// An array of values used to interpolate each property every update cycle.
     private var interpolationValues = [InterpolationValues<TargetProperty>]()
 
-    /// A dictionary storing the callbacks for each change of state.
-    private var callbacks = [TweenStateChange : Callback?]()
-
     // MARK: Animation & State Properties
 
     internal var ease = Defaults.ease
@@ -57,6 +54,18 @@ internal final class TweenAnimation<TargetProperty: TweenableProperty>: Tween {
             return self.timer.elapsed
         }
     }
+
+    // MARK: Callback Properties
+
+    internal var onUpdate: Callback?
+    internal var onStart: Callback?
+    internal var onStop: Callback?
+    internal var onRestart: Callback?
+    internal var onPause: Callback?
+    internal var onResume: Callback?
+    internal var onComplete: Callback?
+    internal var onKill: Callback?
+    internal var onReset: Callback?
 
     // MARK: Initialization Methods
 
@@ -99,7 +108,7 @@ extension TweenAnimation {
         }
 
         updateProperties()
-        callback(invoke: .update)
+        self.onUpdate?()
 
         if self.elapsed >= self.duration {
             complete()
@@ -147,13 +156,6 @@ extension TweenAnimation {
 
     // MARK: State Control Methods
 
-    /**
-     A method to set `self` as active, starting from its beginning values.
-
-     **Note:** `self` can only be started if in a new or inactive state.
-     
-     - Returns: `true` if `self` is successfully started.
-     */
     @discardableResult internal func start() -> Bool {
         guard self.state.canStart else {
             return false
@@ -179,18 +181,11 @@ extension TweenAnimation {
         self.timer.start()
 
         // Callback event
-        callback(invoke: .start)
+        self.onStart?()
 
         return true
     }
 
-    /**
-     A method to set `self` as inactive, resetting to its beginning values.
-
-     **Note:** `self` can only be stopped if in an active or paused state.
-     
-     - Returns: `true` if `self` is successfully stopped.
-     */
     @discardableResult internal func stop() -> Bool {
         guard self.state.canStop else {
             return false
@@ -205,39 +200,23 @@ extension TweenAnimation {
         self.delayElapsed = 0.0
 
         // Callback event
-        callback(invoke: .stop)
+        self.onStop?()
 
         return true
     }
 
-    /**
-     A method to stop `self`, then immediately start `self` from its beginning
-     values.
-
-     **Note:** `self` can only be restarted if in an active, paused, or completed 
-     state.
-     
-     - Returns: `true` if `self` is successfully restarted.
-     */
     @discardableResult internal func restart() -> Bool {
         guard self.state.canRestart else {
             return false
         }
 
         stop()
-        callback(invoke: .restart)
+        self.onRestart?()
         start()
 
         return true
     }
 
-    /**
-     A method to set `self` as paused, maintaining its current values.
-
-     **Note:** `self` can only be paused if in an active state.
-     
-     - Returns: `true` if `self` is successfully paused.
-     */
     @discardableResult internal func pause() -> Bool {
         guard self.state.canPause else {
             return false
@@ -250,19 +229,11 @@ extension TweenAnimation {
         self.timer.stop()
 
         // Callback event
-        callback(invoke: .pause)
+        self.onPause?()
 
         return true
     }
 
-    /**
-     A method to set `self` as active, maintaining its values from when it was
-     paused.
-
-     **Note:** `self` can only be resumed if in a paused state.
-     
-     - Returns: `true` if `self` is successfully resumed.
-     */
     @discardableResult internal func resume() -> Bool {
         guard self.state.canResume else {
             return false
@@ -279,19 +250,11 @@ extension TweenAnimation {
         self.timer.start()
 
         // Callback event
-        callback(invoke: .resume)
+        self.onResume?()
 
         return true
     }
 
-    /**
-     A method to set `self` as completed, jumping to its ending values. `self`
-     will be killed if `Defaults.autoKillCompletedTweens` is `true`.
-
-     **Note:** `self` can only be completed if in an active or paused state.
-     
-     - Returns: `true` if `self` is successfully completed.
-     */
     @discardableResult internal func complete() -> Bool {
         guard self.state.canComplete else {
             return false
@@ -309,7 +272,7 @@ extension TweenAnimation {
         updateProperties()
 
         // Callback event
-        callback(invoke: .complete)
+        self.onComplete?()
 
         // Kill, if necessary
         if Defaults.autoKillCompletedTweens {
@@ -319,14 +282,6 @@ extension TweenAnimation {
         return true
     }
 
-    /**
-     A method to set `self` as killed, haulting at its current values, and
-     remove it from `Tweener`'s list of tracked tweens.
-
-     **Note:** `self` can only be killed if *not* already in a killed state.
-     
-     - Returns: `true` if `self` is successfully killed.
-     */
     @discardableResult internal func kill() -> Bool {
         guard self.state.canKill else {
             return false
@@ -342,20 +297,11 @@ extension TweenAnimation {
         Tweener.remove(self)
 
         // Callback event
-        callback(invoke: .kill)
+        self.onKill?()
 
         return true
     }
 
-    /**
-     A method to set `self` as new, resetting all properties to their default
-     values, and re-adding `self` to `Tweener`'s list of tracked tweens. This is
-     the only way to revive a killed `self`.
-
-     **Note:** `self` can only be reset if *not* already in a new state.
-     
-     - Returns: `true` if `self` is successfully reset.
-     */
     @discardableResult internal func reset() -> Bool {
         guard self.state.canReset else {
             return false
@@ -379,8 +325,8 @@ extension TweenAnimation {
         Tweener.add(self)
         
         // Callback event
-        callback(invoke: .reset)
-        self.callbacks.removeAll()
+        self.onReset?()
+        clearAllCallbacks()
 
         return true
     }
@@ -389,58 +335,19 @@ extension TweenAnimation {
 
 extension TweenAnimation {
 
-    // MARK: Invocation Methods
-
-    @discardableResult internal func invoke(_ stateChange: TweenStateChange) -> Bool {
-        switch stateChange {
-        case .start:
-            return start()
-        case .stop:
-            return stop()
-        case .restart:
-            return restart()
-        case .pause:
-            return pause()
-        case .resume:
-            return resume()
-        case .complete:
-            return complete()
-        case .kill:
-            return kill()
-        case .reset:
-            return reset()
-        case .update:
-            return update()
-        }
-    }
-
-}
-
-extension TweenAnimation {
-
     // MARK: Callback Methods
 
-    internal func callback(get stateChange: TweenStateChange) -> Callback? {
-        return self.callbacks[stateChange] ?? nil
-    }
-
-    internal func callback(set stateChange: TweenStateChange, value: Callback?) {
-        self.callbacks[stateChange] = value
-    }
-
-    internal func callback(clear stateChange: TweenStateChange) {
-        callback(set: stateChange, value: nil)
-    }
-
-    /**
-     A method to invoke the callback assigned to a change of state.
-
-     - Parameters:
-        - stateChange: The change of state to which its callback will be
-                       invoked.
-     */
-    private func callback(invoke stateChange: TweenStateChange) {
-        callback(get: stateChange)?()
+    /// :nodoc:
+    private func clearAllCallbacks() {
+        self.onUpdate = nil
+        self.onStart = nil
+        self.onStop = nil
+        self.onRestart = nil
+        self.onPause = nil
+        self.onResume = nil
+        self.onComplete = nil
+        self.onKill = nil
+        self.onReset = nil
     }
     
 }

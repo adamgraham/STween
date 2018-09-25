@@ -14,11 +14,11 @@ class TweenerTest: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        Tweener.invokeStateChangeOnAllTweens(.kill)
+        Tweener.killAll()
     }
 
     override func tearDown() {
-        Tweener.invokeStateChangeOnAllTweens(.kill)
+        Tweener.killAll()
         super.tearDown()
     }
 
@@ -29,7 +29,7 @@ class TweenerTest: XCTestCase {
         XCTAssertEqual(tween.state, .new)
         XCTAssertFalse(tween.reversed)
         XCTAssertEqual(tween.duration, 1.0)
-        XCTAssertNotNil(tween.callback(get: .complete))
+        XCTAssertNotNil(tween.onComplete)
     }
 
     func testToWithoutCallback() {
@@ -37,7 +37,7 @@ class TweenerTest: XCTestCase {
         XCTAssertEqual(tween.state, .new)
         XCTAssertFalse(tween.reversed)
         XCTAssertEqual(tween.duration, 1.0)
-        XCTAssertNil(tween.callback(get: .complete))
+        XCTAssertNil(tween.onComplete)
     }
 
     func testFromWithCallback() {
@@ -45,7 +45,7 @@ class TweenerTest: XCTestCase {
         XCTAssertEqual(tween.state, .new)
         XCTAssertTrue(tween.reversed)
         XCTAssertEqual(tween.duration, 1.0)
-        XCTAssertNotNil(tween.callback(get: .complete))
+        XCTAssertNotNil(tween.onComplete)
     }
 
     func testFromWithoutCallback() {
@@ -53,7 +53,7 @@ class TweenerTest: XCTestCase {
         XCTAssertEqual(tween.state, .new)
         XCTAssertTrue(tween.reversed)
         XCTAssertEqual(tween.duration, 1.0)
-        XCTAssertNil(tween.callback(get: .complete))
+        XCTAssertNil(tween.onComplete)
     }
 
     // MARK: Tracking Tests
@@ -123,11 +123,11 @@ class TweenerTest: XCTestCase {
 
     // MARK: Global State Control Tests
 
-    func testInvokeGlobalStateChange() {
+    func testKillAll() {
         let tween = Tweener.animate(UIView(), to: [UIViewTweenProperty](), duration: 1.0, completion: {})
         let anotherTween = Tweener.animate(UIView(), from: [UIViewTweenProperty](), duration: 1.0, completion: {})
 
-        Tweener.invokeStateChangeOnAllTweens(.kill)
+        Tweener.killAll()
 
         XCTAssertEqual(tween.state, .killed)
         XCTAssertEqual(anotherTween.state, .killed)

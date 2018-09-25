@@ -14,12 +14,12 @@ class TweenAnimationTest: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        Tweener.invokeStateChangeOnAllTweens(.kill)
+        Tweener.killAll()
         Defaults.reset()
     }
 
     override func tearDown() {
-        Tweener.invokeStateChangeOnAllTweens(.kill)
+        Tweener.killAll()
         Defaults.reset()
         super.tearDown()
     }
@@ -41,8 +41,8 @@ class TweenAnimationTest: XCTestCase {
         let target = UIView()
         let tween = TweenAnimation<UIViewTweenProperty>(target: target, properties: [.x(100.0), .y(100.0)], duration: 1.0)
         let tweeningExpectation = expectation(description: "tweening")
-
-        tween.callback(set: .complete) {
+        
+        tween.onComplete = {
             tweeningExpectation.fulfill()
         }
 
@@ -64,7 +64,7 @@ class TweenAnimationTest: XCTestCase {
         let tween = TweenAnimation<UIViewTweenProperty>(target: target, properties: [.x(100.0), .y(100.0)], duration: 1.0)
         let tweeningExpectation = expectation(description: "tweening:reversed")
 
-        tween.callback(set: .complete) {
+        tween.onComplete = {
             tweeningExpectation.fulfill()
         }
 
@@ -88,14 +88,14 @@ class TweenAnimationTest: XCTestCase {
         let tween = TweenAnimation<UIViewTweenProperty>(target: UIView(), properties: [], duration: 1.0)
 
         var callbackInvoked = false
-        tween.callback(set: .start) {
+        tween.onStart = {
             callbackInvoked = true
         }
 
         XCTAssertEqual(tween.state, .new)
-        XCTAssertTrue(tween.invoke(.start))
+        XCTAssertTrue(tween.start())
         XCTAssertEqual(tween.state, .active)
-        XCTAssertFalse(tween.invoke(.start))
+        XCTAssertFalse(tween.start())
         XCTAssertTrue(callbackInvoked)
     }
 
@@ -103,16 +103,16 @@ class TweenAnimationTest: XCTestCase {
         let tween = TweenAnimation<UIViewTweenProperty>(target: UIView(), properties: [], duration: 1.0)
 
         var callbackInvoked = false
-        tween.callback(set: .stop) {
+        tween.onStop = {
             callbackInvoked = true
         }
 
         XCTAssertEqual(tween.state, .new)
-        XCTAssertFalse(tween.invoke(.stop))
+        XCTAssertFalse(tween.stop())
         XCTAssertEqual(tween.state, .new)
-        XCTAssertTrue(tween.invoke(.start))
+        XCTAssertTrue(tween.start())
         XCTAssertEqual(tween.state, .active)
-        XCTAssertTrue(tween.invoke(.stop))
+        XCTAssertTrue(tween.stop())
         XCTAssertEqual(tween.state, .inactive)
         XCTAssertTrue(callbackInvoked)
     }
@@ -121,18 +121,18 @@ class TweenAnimationTest: XCTestCase {
         let tween = TweenAnimation<UIViewTweenProperty>(target: UIView(), properties: [], duration: 1.0)
 
         var callbackInvoked = false
-        tween.callback(set: .restart) {
+        tween.onRestart = {
             callbackInvoked = true
         }
 
         XCTAssertEqual(tween.state, .new)
-        XCTAssertFalse(tween.invoke(.restart))
+        XCTAssertFalse(tween.restart())
         XCTAssertEqual(tween.state, .new)
-        XCTAssertTrue(tween.invoke(.start))
+        XCTAssertTrue(tween.start())
         XCTAssertEqual(tween.state, .active)
-        XCTAssertTrue(tween.invoke(.stop))
+        XCTAssertTrue(tween.stop())
         XCTAssertEqual(tween.state, .inactive)
-        XCTAssertTrue(tween.invoke(.restart))
+        XCTAssertTrue(tween.restart())
         XCTAssertEqual(tween.state, .active)
         XCTAssertTrue(callbackInvoked)
     }
@@ -141,16 +141,16 @@ class TweenAnimationTest: XCTestCase {
         let tween = TweenAnimation<UIViewTweenProperty>(target: UIView(), properties: [], duration: 1.0)
 
         var callbackInvoked = false
-        tween.callback(set: .pause) {
+        tween.onPause = {
             callbackInvoked = true
         }
 
         XCTAssertEqual(tween.state, .new)
-        XCTAssertFalse(tween.invoke(.pause))
+        XCTAssertFalse(tween.pause())
         XCTAssertEqual(tween.state, .new)
-        XCTAssertTrue(tween.invoke(.start))
+        XCTAssertTrue(tween.start())
         XCTAssertEqual(tween.state, .active)
-        XCTAssertTrue(tween.invoke(.pause))
+        XCTAssertTrue(tween.pause())
         XCTAssertEqual(tween.state, .paused)
         XCTAssertTrue(callbackInvoked)
     }
@@ -159,18 +159,18 @@ class TweenAnimationTest: XCTestCase {
         let tween = TweenAnimation<UIViewTweenProperty>(target: UIView(), properties: [], duration: 1.0)
 
         var callbackInvoked = false
-        tween.callback(set: .resume) {
+        tween.onResume = {
             callbackInvoked = true
         }
 
         XCTAssertEqual(tween.state, .new)
-        XCTAssertFalse(tween.invoke(.resume))
+        XCTAssertFalse(tween.resume())
         XCTAssertEqual(tween.state, .new)
-        XCTAssertTrue(tween.invoke(.start))
+        XCTAssertTrue(tween.start())
         XCTAssertEqual(tween.state, .active)
-        XCTAssertTrue(tween.invoke(.pause))
+        XCTAssertTrue(tween.pause())
         XCTAssertEqual(tween.state, .paused)
-        XCTAssertTrue(tween.invoke(.resume))
+        XCTAssertTrue(tween.resume())
         XCTAssertEqual(tween.state, .active)
         XCTAssertTrue(callbackInvoked)
     }
@@ -179,18 +179,18 @@ class TweenAnimationTest: XCTestCase {
         let tween = TweenAnimation<UIViewTweenProperty>(target: UIView(), properties: [.x(100.0)], duration: 1.0)
 
         var callbackInvoked = false
-        tween.callback(set: .complete) {
+        tween.onComplete = {
             callbackInvoked = true
         }
 
         Defaults.autoKillCompletedTweens = true
 
         XCTAssertEqual(tween.state, .new)
-        XCTAssertFalse(tween.invoke(.complete))
+        XCTAssertFalse(tween.complete())
         XCTAssertEqual(tween.state, .new)
-        XCTAssertTrue(tween.invoke(.start))
+        XCTAssertTrue(tween.start())
         XCTAssertEqual(tween.state, .active)
-        XCTAssertTrue(tween.invoke(.complete))
+        XCTAssertTrue(tween.complete())
         XCTAssertEqual(tween.state, .killed)
         XCTAssertEqual(tween.elapsed, 1.0)
         XCTAssertEqual(tween.target.frame.origin.x, 100.0)
@@ -201,18 +201,18 @@ class TweenAnimationTest: XCTestCase {
         let tween = TweenAnimation<UIViewTweenProperty>(target: UIView(), properties: [.x(100.0)], duration: 1.0)
 
         var callbackInvoked = false
-        tween.callback(set: .complete) {
+        tween.onComplete = {
             callbackInvoked = true
         }
 
         Defaults.autoKillCompletedTweens = false
 
         XCTAssertEqual(tween.state, .new)
-        XCTAssertFalse(tween.invoke(.complete))
+        XCTAssertFalse(tween.complete())
         XCTAssertEqual(tween.state, .new)
-        XCTAssertTrue(tween.invoke(.start))
+        XCTAssertTrue(tween.start())
         XCTAssertEqual(tween.state, .active)
-        XCTAssertTrue(tween.invoke(.complete))
+        XCTAssertTrue(tween.complete())
         XCTAssertEqual(tween.state, .completed)
         XCTAssertEqual(tween.elapsed, 1.0)
         XCTAssertEqual(tween.target.frame.origin.x, 100.0)
@@ -223,14 +223,14 @@ class TweenAnimationTest: XCTestCase {
         let tween = TweenAnimation<UIViewTweenProperty>(target: UIView(), properties: [], duration: 1.0)
 
         var callbackInvoked = false
-        tween.callback(set: .kill) {
+        tween.onKill = {
             callbackInvoked = true
         }
 
         XCTAssertEqual(tween.state, .new)
-        XCTAssertTrue(tween.invoke(.kill))
+        XCTAssertTrue(tween.kill())
         XCTAssertEqual(tween.state, .killed)
-        XCTAssertFalse(tween.invoke(.kill))
+        XCTAssertFalse(tween.kill())
         XCTAssertTrue(callbackInvoked)
     }
 
@@ -241,22 +241,22 @@ class TweenAnimationTest: XCTestCase {
         tween.delay = Defaults.delay + 1.0
 
         var callbackInvoked = false
-        tween.callback(set: .reset) {
+        tween.onReset = {
             callbackInvoked = true
         }
 
         XCTAssertEqual(Tweener.count, 0)
         XCTAssertEqual(tween.state, .new)
-        XCTAssertFalse(tween.invoke(.reset))
+        XCTAssertFalse(tween.reset())
         XCTAssertEqual(tween.state, .new)
-        XCTAssertFalse(tween.invoke(.start))
+        XCTAssertFalse(tween.start())
         XCTAssertEqual(tween.state, .delayed)
-        XCTAssertTrue(tween.invoke(.reset))
+        XCTAssertTrue(tween.reset())
         XCTAssertEqual(tween.state, .new)
         XCTAssertEqual(tween.reversed, Defaults.reversed)
         XCTAssertEqual(tween.ease, Defaults.ease)
         XCTAssertEqual(tween.delay, Defaults.delay)
-        XCTAssertNil(tween.callback(get: .reset))
+        XCTAssertNil(tween.onReset)
         XCTAssertTrue(callbackInvoked)
         XCTAssertEqual(Tweener.count, 1)
     }
@@ -265,33 +265,18 @@ class TweenAnimationTest: XCTestCase {
         let tween = TweenAnimation<UIViewTweenProperty>(target: UIView(), properties: [], duration: 1.0)
 
         var callbackInvoked = false
-        tween.callback(set: .update) {
+        tween.onUpdate = {
             callbackInvoked = true
         }
 
         XCTAssertEqual(tween.state, .new)
-        XCTAssertFalse(tween.invoke(.update))
+        XCTAssertFalse(tween.update())
         XCTAssertEqual(tween.state, .new)
-        XCTAssertTrue(tween.invoke(.start))
+        XCTAssertTrue(tween.start())
         XCTAssertEqual(tween.state, .active)
-        XCTAssertTrue(tween.invoke(.update))
+        XCTAssertTrue(tween.update())
         XCTAssertEqual(tween.state, .active)
         XCTAssertTrue(callbackInvoked)
-    }
-
-    // MARK: Callback Tests
-
-    func testCallbackMethods() {
-        let tween = TweenAnimation<UIViewTweenProperty>(target: UIView(), properties: [], duration: 1.0)
-        let states: [TweenStateChange] = [.start, .stop, .restart, .pause, .resume, .complete, .kill, .reset, .update]
-
-        for state in states {
-            XCTAssertNil(tween.callback(get: state))
-            tween.callback(set: state, value: {})
-            XCTAssertNotNil(tween.callback(get: state))
-            tween.callback(clear: state)
-            XCTAssertNil(tween.callback(get: state))
-        }
     }
 
 }

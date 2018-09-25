@@ -17,7 +17,6 @@
 		9D6A3DB71DDEB07B009B6352 /* TweenableTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6A3DB61DDEB07B009B6352 /* TweenableTest.swift */; };
 		9D6A3DBB1DDEB095009B6352 /* TweenerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6A3DBA1DDEB095009B6352 /* TweenerTest.swift */; };
 		9D6A3DBF1DDEB0AC009B6352 /* TweenStateTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6A3DBE1DDEB0AC009B6352 /* TweenStateTest.swift */; };
-		9D6A3DC11DDEB0B5009B6352 /* TweenStateChangeTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6A3DC01DDEB0B5009B6352 /* TweenStateChangeTest.swift */; };
 		9D6A3DC31DDEB0BE009B6352 /* TweenTimerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6A3DC21DDEB0BE009B6352 /* TweenTimerTest.swift */; };
 		9D77AC3A1D13B8D70033F88E /* STween.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D77AC391D13B8D70033F88E /* STween.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9D8890641E2883160023FE78 /* Callback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8890421E2883160023FE78 /* Callback.swift */; };
@@ -37,7 +36,6 @@
 		9D8890751E2883160023FE78 /* TweenAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8890571E2883160023FE78 /* TweenAnimation.swift */; };
 		9D8890761E2883160023FE78 /* Tweener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8890581E2883160023FE78 /* Tweener.swift */; };
 		9D8890771E2883160023FE78 /* TweenState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8890591E2883160023FE78 /* TweenState.swift */; };
-		9D8890781E2883160023FE78 /* TweenStateChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D88905A1E2883160023FE78 /* TweenStateChange.swift */; };
 		9D8890791E2883160023FE78 /* TweenTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D88905B1E2883160023FE78 /* TweenTimer.swift */; };
 		9D88907A1E2883160023FE78 /* RGBA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D88905E1E2883160023FE78 /* RGBA.swift */; };
 		9D88907B1E2883160023FE78 /* UIColor+RGBA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D88905F1E2883160023FE78 /* UIColor+RGBA.swift */; };
@@ -93,7 +91,6 @@
 		9D6A3DB61DDEB07B009B6352 /* TweenableTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweenableTest.swift; sourceTree = "<group>"; };
 		9D6A3DBA1DDEB095009B6352 /* TweenerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweenerTest.swift; sourceTree = "<group>"; };
 		9D6A3DBE1DDEB0AC009B6352 /* TweenStateTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweenStateTest.swift; sourceTree = "<group>"; };
-		9D6A3DC01DDEB0B5009B6352 /* TweenStateChangeTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweenStateChangeTest.swift; sourceTree = "<group>"; };
 		9D6A3DC21DDEB0BE009B6352 /* TweenTimerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweenTimerTest.swift; sourceTree = "<group>"; };
 		9D77AC361D13B8D70033F88E /* STween.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = STween.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D77AC391D13B8D70033F88E /* STween.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STween.h; sourceTree = "<group>"; };
@@ -115,7 +112,6 @@
 		9D8890571E2883160023FE78 /* TweenAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweenAnimation.swift; sourceTree = "<group>"; };
 		9D8890581E2883160023FE78 /* Tweener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweener.swift; sourceTree = "<group>"; };
 		9D8890591E2883160023FE78 /* TweenState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweenState.swift; sourceTree = "<group>"; };
-		9D88905A1E2883160023FE78 /* TweenStateChange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweenStateChange.swift; sourceTree = "<group>"; };
 		9D88905B1E2883160023FE78 /* TweenTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweenTimer.swift; sourceTree = "<group>"; };
 		9D88905E1E2883160023FE78 /* RGBA.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RGBA.swift; sourceTree = "<group>"; };
 		9D88905F1E2883160023FE78 /* UIColor+RGBA.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+RGBA.swift"; sourceTree = "<group>"; };
@@ -177,7 +173,6 @@
 				9D6A3DB21DDEB05B009B6352 /* TweenTest.swift */,
 				9D6A3DB41DDEB073009B6352 /* TweenAnimationTest.swift */,
 				9D6A3DBE1DDEB0AC009B6352 /* TweenStateTest.swift */,
-				9D6A3DC01DDEB0B5009B6352 /* TweenStateChangeTest.swift */,
 				9D6A3DC21DDEB0BE009B6352 /* TweenTimerTest.swift */,
 				9D6A3DB61DDEB07B009B6352 /* TweenableTest.swift */,
 				9D17DC091E4199E000DC96A1 /* TweenablePropertyTest.swift */,
@@ -255,7 +250,6 @@
 				9D8890541E2883160023FE78 /* Tween.swift */,
 				9D8890571E2883160023FE78 /* TweenAnimation.swift */,
 				9D8890591E2883160023FE78 /* TweenState.swift */,
-				9D88905A1E2883160023FE78 /* TweenStateChange.swift */,
 				9D88905B1E2883160023FE78 /* TweenTimer.swift */,
 				9D8890551E2883160023FE78 /* Tweenable.swift */,
 				9DEDF79B1E36FCA7002E0CB9 /* TweenableProperty.swift */,
@@ -526,7 +520,6 @@
 				9DF7248A1E4799F800A0BDB9 /* UIButton+Tweening.swift in Sources */,
 				9D88907A1E2883160023FE78 /* RGBA.swift in Sources */,
 				9D8890681E2883160023FE78 /* EaseFunctions.swift in Sources */,
-				9D8890781E2883160023FE78 /* TweenStateChange.swift in Sources */,
 				9D9ECC951E2B1C6B000CB955 /* FloatingPoint+Arithmetic.swift in Sources */,
 				9D88906C1E2883160023FE78 /* Interpolatable.swift in Sources */,
 				9D8890791E2883160023FE78 /* TweenTimer.swift in Sources */,
@@ -548,7 +541,6 @@
 				9D6A3DB71DDEB07B009B6352 /* TweenableTest.swift in Sources */,
 				9D6A3DB51DDEB073009B6352 /* TweenAnimationTest.swift in Sources */,
 				9DD2404A1DCD436A009C658F /* InterpolatableTest.swift in Sources */,
-				9D6A3DC11DDEB0B5009B6352 /* TweenStateChangeTest.swift in Sources */,
 				9DB46B1B1E29EB6000CB21F9 /* UIView+TweeningTest.swift in Sources */,
 				9DBF34031DB8F4BA006C0D84 /* EaseCurveTest.swift in Sources */,
 				9DB3D63E1DAE688200134C1D /* UIColor+RGBATest.swift in Sources */,

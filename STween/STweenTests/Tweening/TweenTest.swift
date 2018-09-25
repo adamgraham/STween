@@ -14,11 +14,11 @@ class TweenTest: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        Tweener.invokeStateChangeOnAllTweens(.kill)
+        Tweener.killAll()
     }
 
     override func tearDown() {
-        Tweener.invokeStateChangeOnAllTweens(.kill)
+        Tweener.killAll()
         super.tearDown()
     }
 
@@ -39,13 +39,13 @@ class TweenTest: XCTestCase {
     func testState() {
         let tween = Tweener.animate(UIView(), to: [UIViewTweenProperty](), duration: 1.0)
         XCTAssertEqual(tween.state, .new)
-        tween.invoke(.kill)
+        tween.kill()
         XCTAssertEqual(tween.state, .killed)
     }
 
     func testDelay() {
         let tween = Tweener.animate(UIView(), to: [UIViewTweenProperty](), duration: 1.0)
-        XCTAssertEqual(tween.delay, 0.0)
+        XCTAssertEqual(tween.delay, Defaults.delay)
         tween.delay = 1.0
         XCTAssertEqual(tween.delay, 1.0)
     }
@@ -60,16 +60,16 @@ class TweenTest: XCTestCase {
     func testElapsed() {
         let tween = Tweener.animate(UIView(), to: [UIViewTweenProperty](), duration: 1.0)
         XCTAssertEqual(tween.elapsed, 0.0)
-        tween.invoke(.start)
-        tween.invoke(.complete)
+        tween.start()
+        tween.complete()
         XCTAssertEqual(tween.elapsed, tween.duration)
     }
 
     func testPercentComplete() {
         let tween = Tweener.animate(UIView(), to: [UIViewTweenProperty](), duration: 1.0)
         XCTAssertEqual(tween.percentComplete, 0.0)
-        tween.invoke(.start)
-        tween.invoke(.complete)
+        tween.start()
+        tween.complete()
         XCTAssertEqual(tween.percentComplete, 1.0)
     }
 

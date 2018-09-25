@@ -47,46 +47,123 @@ public protocol Tween: class {
     /// in the range of `0.0` to `1.0`.
     var percentComplete: Double { get }
 
-    // MARK: Invocation Methods
+    // MARK: Callback Properties
+
+    /// The callback invoked every time `self` is successfully updated.
+    var onUpdate: Callback? { get set }
+
+    /// The callback invoked when the state control method, `start`, is
+    /// successful.
+    var onStart: Callback? { get set }
+
+    /// The callback invoked when the state control method, `stop`, is
+    /// successful.
+    var onStop: Callback? { get set }
+
+    /// The callback invoked when the state control method, `restart`, is
+    /// successful.
+    var onRestart: Callback? { get set }
+
+    /// The callback invoked when the state control method, `pause`, is
+    /// successful.
+    var onPause: Callback? { get set }
+
+    /// The callback invoked when the state control method, `resume`, is
+    /// successful.
+    var onResume: Callback? { get set }
+
+    /// The callback invoked when the state control method, `complete`, is
+    /// successful.
+    var onComplete: Callback? { get set }
+
+    /// The callback invoked when the state control method, `kill`, is
+    /// successful.
+    var onKill: Callback? { get set }
+
+    /// The callback invoked when the state control method, `reset`, is
+    /// successful.
+    var onReset: Callback? { get set }
+
+    // MARK: State Control Methods
 
     /**
-     A method to invoke a change of state on `self`.
-     
-     - Parameters:
-        - stateChange: The change of state to be invoked on `self`.
-     
-     - Returns: `true` if the state of `self` is changed successfully.
-     */
-    @discardableResult func invoke(_ stateChange: TweenStateChange) -> Bool
+     A method to set `self` as active, starting from its beginning values.
 
-    // MARK: Callback Methods
+     **Note:** `self` can only be started if in a new or inactive state.
+
+     - Returns: `true` if `self` is successfully started.
+     */
+    @discardableResult func start() -> Bool
 
     /**
-     A method to retrieve the callback assigned to a change of state.
-     
-     - Parameters:
-        - stateChange: The change of state from which a callback will be retrieved.
-     
-     - Returns: The callback retrieved from the `stateChange`.
+     A method to set `self` as inactive, resetting to its beginning values.
+
+     **Note:** `self` can only be stopped if in an active or paused state.
+
+     - Returns: `true` if `self` is successfully stopped.
      */
-    func callback(get stateChange: TweenStateChange) -> Callback?
+    @discardableResult func stop() -> Bool
 
     /**
-     A method to assign a callback to a change of state.
-     
-     - Parameters:
-        - stateChange: The change of state to which a callback will be assigned.
-        - value: The callback to be assigned to the `stateChange`.
+     A method to stop `self`, then immediately start `self` from its beginning
+     values.
+
+     **Note:** `self` can only be restarted if in an active, paused, or completed
+     state.
+
+     - Returns: `true` if `self` is successfully restarted.
      */
-    func callback(set stateChange: TweenStateChange, value: Callback?)
+    @discardableResult func restart() -> Bool
 
     /**
-     A method to unassign the callback assigned to a change of state.
-     
-     - Parameters:
-        - stateChange: The change of state from which a callback will be unassigned.
+     A method to set `self` as paused, maintaining its current values.
+
+     **Note:** `self` can only be paused if in an active state.
+
+     - Returns: `true` if `self` is successfully paused.
      */
-    func callback(clear stateChange: TweenStateChange)
+    @discardableResult func pause() -> Bool
+
+    /**
+     A method to set `self` as active, maintaining its values from when it was
+     paused.
+
+     **Note:** `self` can only be resumed if in a paused state.
+
+     - Returns: `true` if `self` is successfully resumed.
+     */
+    @discardableResult func resume() -> Bool
+
+    /**
+     A method to set `self` as completed, jumping to its ending values. `self`
+     will be killed if `Defaults.autoKillCompletedTweens` is `true`.
+
+     **Note:** `self` can only be completed if in an active or paused state.
+
+     - Returns: `true` if `self` is successfully completed.
+     */
+    @discardableResult func complete() -> Bool
+
+    /**
+     A method to set `self` as killed, haulting at its current values, and
+     remove it from `Tweener`'s list of tracked tweens.
+
+     **Note:** `self` can only be killed if *not* already in a killed state.
+
+     - Returns: `true` if `self` is successfully killed.
+     */
+    @discardableResult func kill() -> Bool
+
+    /**
+     A method to set `self` as new, resetting all properties to their default
+     values, and re-adding `self` to `Tweener`'s list of tracked tweens. This is
+     the only way to revive a killed `self`.
+
+     **Note:** `self` can only be reset if *not* already in a new state.
+
+     - Returns: `true` if `self` is successfully reset.
+     */
+    @discardableResult func reset() -> Bool
 
 }
 

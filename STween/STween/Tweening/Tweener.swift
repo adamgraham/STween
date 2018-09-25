@@ -51,7 +51,7 @@ extension Tweener {
 
         let tween = TweenAnimation(target: target, properties: properties, duration: duration)
         tween.reversed = false
-        tween.callback(set: .complete, value: completion)
+        tween.onComplete = completion
 
         add(tween)
 
@@ -81,7 +81,7 @@ extension Tweener {
 
         let tween = TweenAnimation(target: target, properties: properties, duration: duration)
         tween.reversed = true
-        tween.callback(set: .complete, value: completion)
+        tween.onComplete = completion
 
         add(tween)
 
@@ -180,9 +180,9 @@ extension Tweener {
     }
 
     /**
-     A method to start all queued tweens by invoking 
-     `TweenStateChange.start` on each one. This puts the tween in an 
-     active state and removes it from the list of queued tweens.
+     A method to start all queued tweens by invoking `start` on each one.
+     This puts the tween in an active state and removes it from the list of
+     queued tweens.
      */
     @objc internal static func startQueuedTweens() {
         guard self.isQueueTimerRunning else {
@@ -190,7 +190,7 @@ extension Tweener {
         }
 
         self.queuedTweens.forEach {
-            $0.invoke(.start)
+            $0.start()
         }
 
         self.queuedTweens.removeAll()
@@ -203,20 +203,12 @@ extension Tweener {
     // MARK: Global State Control
 
     /**
-     A method to invoke a change of state on all tracked tweens. An optional
-     callback will be invoked after all the tweens have changed state.
-
-     - Parameters:
-        - stateChange: The change of state to be invoked on each tween.
-        - completion: An optional callback invoked after all the tweens have
-                      changed state.
+     A method to kill all currently tracked tweens.
      */
-    public static func invokeStateChangeOnAllTweens(_ stateChange: TweenStateChange, completion: Callback? = nil) {
+    public static func killAll() {
         self.tweens.forEach {
-            $0.invoke(stateChange)
+            $0.kill()
         }
-
-        completion?()
     }
 
 }

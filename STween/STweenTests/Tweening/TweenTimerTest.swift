@@ -36,6 +36,8 @@ class TweenTimerTest: XCTestCase {
         XCTAssertFalse(timer.running)
         timer.start()
         XCTAssertTrue(timer.running)
+        timer.start()
+        XCTAssertTrue(timer.running)
     }
 
     func testStop() {
@@ -43,6 +45,8 @@ class TweenTimerTest: XCTestCase {
         XCTAssertFalse(timer.running)
         timer.start()
         XCTAssertTrue(timer.running)
+        timer.stop()
+        XCTAssertFalse(timer.running)
         timer.stop()
         XCTAssertFalse(timer.running)
     }
