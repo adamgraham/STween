@@ -31,7 +31,7 @@ public final class Tweener {
     private lazy var queueTimer: CADisplayLink = {
         let selector = #selector(self.startQueuedTweens)
         let timer = CADisplayLink(target: self, selector: selector)
-        timer.add(to: .main, forMode: .defaultRunLoopMode)
+        timer.add(to: .main, forMode: RunLoop.Mode.default)
         timer.isPaused = true
         return timer
     }()
@@ -57,7 +57,8 @@ extension Tweener {
      - Returns: The `Tween` control for the animation.
      */
     @discardableResult public func animate<TargetProperty: TweenableProperty>(
-        _ target: TargetProperty.Target, to properties: [TargetProperty], duration: TimeInterval, completion: Callback? = nil) -> Tween {
+        _ target: TargetProperty.Target, to properties: [TargetProperty],
+        duration: TimeInterval, completion: Callback? = nil) -> Tween {
 
         let tween = TweenAnimation(target: target, properties: properties, duration: duration)
         tween.reversed = false
@@ -87,7 +88,8 @@ extension Tweener {
      - Returns: The `Tween` control for the animation.
      */
     @discardableResult public func animate<TargetProperty: TweenableProperty>(
-        _ target: TargetProperty.Target, from properties: [TargetProperty], duration: TimeInterval, completion: Callback? = nil) -> Tween {
+        _ target: TargetProperty.Target, from properties: [TargetProperty],
+        duration: TimeInterval, completion: Callback? = nil) -> Tween {
 
         let tween = TweenAnimation(target: target, properties: properties, duration: duration)
         tween.reversed = true

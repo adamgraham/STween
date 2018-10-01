@@ -17,7 +17,7 @@ internal final class TweenTimer {
     /// The timer object that invokes "tick" events based on display vsync.
     private lazy var timer: CADisplayLink = {
         let displayLink = CADisplayLink(target: self, selector: #selector(tick))
-        displayLink.add(to: .main, forMode: .defaultRunLoopMode)
+        displayLink.add(to: .main, forMode: RunLoop.Mode.default)
         return displayLink
     }()
 

@@ -23,9 +23,9 @@ public enum UIButtonTweenProperty: Equatable {
     case imageEdgeInsets(UIEdgeInsets)
 
     /// A case to denote the `titleColor(state:)` function of a `UIButton`.
-    case titleColor(UIColor, UIControlState)
+    case titleColor(UIColor, UIControl.State)
     /// A case to denote the `titleShadowColor(state:)` function of a `UIButton`.
-    case titleShadowColor(UIColor, UIControlState)
+    case titleShadowColor(UIColor, UIControl.State)
 
     /// A case to denote the `tintColor` property of a `UIButton`.
     @available(iOS 5.0, *)
