@@ -18,14 +18,22 @@ public final class Tweener {
     private static var tweens = [Tween]()
 
     /// An array of every instantiated `Tween` that is waiting to be started.
-    private static var queuedTweens = [Tween]()
+    private static var queuedTweens = [Tween]() {
+        didSet {
+            self.queueTimer.isPaused = self.queuedTweens.isEmpty
+        }
+    }
 
     /// The timer object used to start any queued `Tween`s.
-    private static let queueTimer = CADisplayLink(
-        target: Tweener.self, selector: #selector(Tweener.startQueuedTweens))
-
-    /// The state of the queue timer being active.
-    private static var isQueueTimerRunning = false
+    private static let queueTimer: CADisplayLink = {
+        let timer = CADisplayLink(
+            target: Tweener.self,
+            selector: #selector(Tweener.startQueuedTweens)
+        )
+        timer.add(to: .main, forMode: .defaultRunLoopMode)
+        timer.isPaused = true
+        return timer
+    }()
 
 }
 
@@ -172,11 +180,6 @@ extension Tweener {
             return
         }
 
-        if !self.isQueueTimerRunning {
-            self.queueTimer.add(to: .main, forMode: .defaultRunLoopMode)
-            self.isQueueTimerRunning = true
-        }
-
         self.queuedTweens.append(tween)
     }
 
@@ -186,10 +189,6 @@ extension Tweener {
      queued tweens.
      */
     @objc internal static func startQueuedTweens() {
-        guard self.isQueueTimerRunning else {
-            return
-        }
-
         self.queuedTweens.forEach {
             $0.start()
         }
@@ -210,6 +209,9 @@ extension Tweener {
         self.tweens.forEach {
             $0.kill()
         }
+
+        self.tweens.removeAll()
+        self.queuedTweens.removeAll()
     }
 
 }
