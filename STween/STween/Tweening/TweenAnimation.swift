@@ -14,7 +14,7 @@ internal final class TweenAnimation<TargetProperty: TweenableProperty>: Tween {
 
     // MARK: Core Properties
 
-    /// The object or data structure that properties are animated on.
+    /// The object or data structure on which properties are animated.
     internal let target: Target
 
     /// The array of properties being animated.
@@ -70,11 +70,11 @@ internal final class TweenAnimation<TargetProperty: TweenableProperty>: Tween {
     // MARK: Initialization Methods
 
     /**
-     An initializer to create a `TweenAnimation` with a target object or data 
-     structure, an array of properties to be animated, and a duration.
+     An initializer to create a `TweenAnimation` to animate an array of
+     properties on a target object or data structure with a given duration.
      
      - Parameters:
-        - target: The object or data structure that properties are updated on.
+        - target: The object or data structure on which `properties` will be animated.
         - properties: An array of properties to be animated on the `target`.
         - duration: The total amount of time, in seconds, the animation will run.
      */

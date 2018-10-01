@@ -17,7 +17,8 @@ public protocol Tween: class {
     /// The state of `self` animating *to* the target property values (`false`) or
     /// *from* the target property values (`true`).
     ///
-    /// **Note:** Has no effect once `self` is started.
+    /// **Note:** Assigning this will not take effect until `self` is started. If `self` has
+    /// already been started, `self` must be restarted before taking effect.
     var reversed: Bool { get set }
 
     /// The current state of `self`, i.e., active, paused, etc.
@@ -28,17 +29,18 @@ public protocol Tween: class {
     /// The amount of time, in seconds, before `self` starts updating after
     /// starting.
     ///
-    /// **Note:** Assigning has no effect once `self` is started.
+    /// **Note:** Assigning this will not take effect until `self` is started. If `self` has
+    /// already been started, `self` must be restarted before taking effect.
     var delay: TimeInterval { get set }
 
     /// The total amount of time, in seconds, `self` is set to run.
     ///
-    /// **Note:** Assigning while `self` is active may cause undesired behavior.
+    /// **Note:** Assigning this while `self` is active may cause undesired behavior.
     var duration: TimeInterval { get set }
 
     /// The amount of time, in seconds, `self` has been active.
     ///
-    /// **Note:** Elapsed time is reset when `self` is stopped or restarted, but not
+    /// **Note:** Elapsed time is reset when `self` is stopped or restarted but not
     /// paused. If `self` is completed, the elapsed time is the same as `self`'s
     /// duration.
     var elapsed: TimeInterval { get }
