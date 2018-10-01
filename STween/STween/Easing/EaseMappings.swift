@@ -9,7 +9,7 @@
 /// An enum to store mapping collections for easing look-up.
 internal enum EaseMappings {
 
-    /// A typealias for a tuple representing all the data that defines an `Ease`.
+    /// A typealias for a tuple representing all of the data that defines an `Ease`.
     internal typealias EaseDefinition = (classification: EaseClassification,
                                          curve: EaseCurve)
 
@@ -54,7 +54,7 @@ internal enum EaseMappings {
 
     /// A dictionary containing every `EaseClassification` and its associated
     /// `EaseCurveMappings`.
-    internal static let classificationMappings: [EaseClassification: EaseCurveMappings] = [
+    internal static let classifications: [EaseClassification: EaseCurveMappings] = [
         .linear: [
             .in: .linear,
             .out: .linear,

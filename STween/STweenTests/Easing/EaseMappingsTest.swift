@@ -193,81 +193,81 @@ class EasingMappingsTest: XCTestCase {
 
     // MARK: Classification Mapping Tests
 
-    func testLinearClassificationMappings() {
-        XCTAssertEqual(EaseMappings.classificationMappings[.linear]?[.in], Ease.linear)
-        XCTAssertEqual(EaseMappings.classificationMappings[.linear]?[.out], Ease.linear)
-        XCTAssertEqual(EaseMappings.classificationMappings[.linear]?[.inOut], Ease.linear)
-        XCTAssertNil(EaseMappings.classificationMappings[.linear]?[.none])
+    func testLinearClassifications() {
+        XCTAssertEqual(EaseMappings.classifications[.linear]?[.in], Ease.linear)
+        XCTAssertEqual(EaseMappings.classifications[.linear]?[.out], Ease.linear)
+        XCTAssertEqual(EaseMappings.classifications[.linear]?[.inOut], Ease.linear)
+        XCTAssertNil(EaseMappings.classifications[.linear]?[.none])
     }
 
-    func testSineClassificationMappings() {
-        XCTAssertEqual(EaseMappings.classificationMappings[.sine]?[.in], Ease.sineIn)
-        XCTAssertEqual(EaseMappings.classificationMappings[.sine]?[.out], Ease.sineOut)
-        XCTAssertEqual(EaseMappings.classificationMappings[.sine]?[.inOut], Ease.sineInOut)
-        XCTAssertNil(EaseMappings.classificationMappings[.sine]?[.none])
+    func testSineClassifications() {
+        XCTAssertEqual(EaseMappings.classifications[.sine]?[.in], Ease.sineIn)
+        XCTAssertEqual(EaseMappings.classifications[.sine]?[.out], Ease.sineOut)
+        XCTAssertEqual(EaseMappings.classifications[.sine]?[.inOut], Ease.sineInOut)
+        XCTAssertNil(EaseMappings.classifications[.sine]?[.none])
     }
 
-    func testCubicClassificationMappings() {
-        XCTAssertEqual(EaseMappings.classificationMappings[.cubic]?[.in], Ease.cubicIn)
-        XCTAssertEqual(EaseMappings.classificationMappings[.cubic]?[.out], Ease.cubicOut)
-        XCTAssertEqual(EaseMappings.classificationMappings[.cubic]?[.inOut], Ease.cubicInOut)
-        XCTAssertNil(EaseMappings.classificationMappings[.cubic]?[.none])
+    func testCubicClassifications() {
+        XCTAssertEqual(EaseMappings.classifications[.cubic]?[.in], Ease.cubicIn)
+        XCTAssertEqual(EaseMappings.classifications[.cubic]?[.out], Ease.cubicOut)
+        XCTAssertEqual(EaseMappings.classifications[.cubic]?[.inOut], Ease.cubicInOut)
+        XCTAssertNil(EaseMappings.classifications[.cubic]?[.none])
     }
 
-    func testQuadClassificationMappings() {
-        XCTAssertEqual(EaseMappings.classificationMappings[.quad]?[.in], Ease.quadIn)
-        XCTAssertEqual(EaseMappings.classificationMappings[.quad]?[.out], Ease.quadOut)
-        XCTAssertEqual(EaseMappings.classificationMappings[.quad]?[.inOut], Ease.quadInOut)
-        XCTAssertNil(EaseMappings.classificationMappings[.quad]?[.none])
+    func testQuadClassifications() {
+        XCTAssertEqual(EaseMappings.classifications[.quad]?[.in], Ease.quadIn)
+        XCTAssertEqual(EaseMappings.classifications[.quad]?[.out], Ease.quadOut)
+        XCTAssertEqual(EaseMappings.classifications[.quad]?[.inOut], Ease.quadInOut)
+        XCTAssertNil(EaseMappings.classifications[.quad]?[.none])
     }
 
-    func testQuartClassificationMappings() {
-        XCTAssertEqual(EaseMappings.classificationMappings[.quart]?[.in], Ease.quartIn)
-        XCTAssertEqual(EaseMappings.classificationMappings[.quart]?[.out], Ease.quartOut)
-        XCTAssertEqual(EaseMappings.classificationMappings[.quart]?[.inOut], Ease.quartInOut)
-        XCTAssertNil(EaseMappings.classificationMappings[.quart]?[.none])
+    func testQuartClassifications() {
+        XCTAssertEqual(EaseMappings.classifications[.quart]?[.in], Ease.quartIn)
+        XCTAssertEqual(EaseMappings.classifications[.quart]?[.out], Ease.quartOut)
+        XCTAssertEqual(EaseMappings.classifications[.quart]?[.inOut], Ease.quartInOut)
+        XCTAssertNil(EaseMappings.classifications[.quart]?[.none])
     }
 
-    func testQuintClassificationMappings() {
-        XCTAssertEqual(EaseMappings.classificationMappings[.quint]?[.in], Ease.quintIn)
-        XCTAssertEqual(EaseMappings.classificationMappings[.quint]?[.out], Ease.quintOut)
-        XCTAssertEqual(EaseMappings.classificationMappings[.quint]?[.inOut], Ease.quintInOut)
-        XCTAssertNil(EaseMappings.classificationMappings[.quint]?[.none])
+    func testQuintClassifications() {
+        XCTAssertEqual(EaseMappings.classifications[.quint]?[.in], Ease.quintIn)
+        XCTAssertEqual(EaseMappings.classifications[.quint]?[.out], Ease.quintOut)
+        XCTAssertEqual(EaseMappings.classifications[.quint]?[.inOut], Ease.quintInOut)
+        XCTAssertNil(EaseMappings.classifications[.quint]?[.none])
     }
 
-    func testExpoClassificationMappings() {
-        XCTAssertEqual(EaseMappings.classificationMappings[.expo]?[.in], Ease.expoIn)
-        XCTAssertEqual(EaseMappings.classificationMappings[.expo]?[.out], Ease.expoOut)
-        XCTAssertEqual(EaseMappings.classificationMappings[.expo]?[.inOut], Ease.expoInOut)
-        XCTAssertNil(EaseMappings.classificationMappings[.expo]?[.none])
+    func testExpoClassifications() {
+        XCTAssertEqual(EaseMappings.classifications[.expo]?[.in], Ease.expoIn)
+        XCTAssertEqual(EaseMappings.classifications[.expo]?[.out], Ease.expoOut)
+        XCTAssertEqual(EaseMappings.classifications[.expo]?[.inOut], Ease.expoInOut)
+        XCTAssertNil(EaseMappings.classifications[.expo]?[.none])
     }
 
-    func testCircClassificationMappings() {
-        XCTAssertEqual(EaseMappings.classificationMappings[.circ]?[.in], Ease.circIn)
-        XCTAssertEqual(EaseMappings.classificationMappings[.circ]?[.out], Ease.circOut)
-        XCTAssertEqual(EaseMappings.classificationMappings[.circ]?[.inOut], Ease.circInOut)
-        XCTAssertNil(EaseMappings.classificationMappings[.circ]?[.none])
+    func testCircClassifications() {
+        XCTAssertEqual(EaseMappings.classifications[.circ]?[.in], Ease.circIn)
+        XCTAssertEqual(EaseMappings.classifications[.circ]?[.out], Ease.circOut)
+        XCTAssertEqual(EaseMappings.classifications[.circ]?[.inOut], Ease.circInOut)
+        XCTAssertNil(EaseMappings.classifications[.circ]?[.none])
     }
 
-    func testBackClassificationMappings() {
-        XCTAssertEqual(EaseMappings.classificationMappings[.back]?[.in], Ease.backIn)
-        XCTAssertEqual(EaseMappings.classificationMappings[.back]?[.out], Ease.backOut)
-        XCTAssertEqual(EaseMappings.classificationMappings[.back]?[.inOut], Ease.backInOut)
-        XCTAssertNil(EaseMappings.classificationMappings[.back]?[.none])
+    func testBackClassifications() {
+        XCTAssertEqual(EaseMappings.classifications[.back]?[.in], Ease.backIn)
+        XCTAssertEqual(EaseMappings.classifications[.back]?[.out], Ease.backOut)
+        XCTAssertEqual(EaseMappings.classifications[.back]?[.inOut], Ease.backInOut)
+        XCTAssertNil(EaseMappings.classifications[.back]?[.none])
     }
 
-    func testElasticClassificationMappings() {
-        XCTAssertEqual(EaseMappings.classificationMappings[.elastic]?[.in], Ease.elasticIn)
-        XCTAssertEqual(EaseMappings.classificationMappings[.elastic]?[.out], Ease.elasticOut)
-        XCTAssertEqual(EaseMappings.classificationMappings[.elastic]?[.inOut], Ease.elasticInOut)
-        XCTAssertNil(EaseMappings.classificationMappings[.elastic]?[.none])
+    func testElasticClassifications() {
+        XCTAssertEqual(EaseMappings.classifications[.elastic]?[.in], Ease.elasticIn)
+        XCTAssertEqual(EaseMappings.classifications[.elastic]?[.out], Ease.elasticOut)
+        XCTAssertEqual(EaseMappings.classifications[.elastic]?[.inOut], Ease.elasticInOut)
+        XCTAssertNil(EaseMappings.classifications[.elastic]?[.none])
     }
 
-    func testBounceClassificationMappings() {
-        XCTAssertEqual(EaseMappings.classificationMappings[.bounce]?[.in], Ease.bounceIn)
-        XCTAssertEqual(EaseMappings.classificationMappings[.bounce]?[.out], Ease.bounceOut)
-        XCTAssertEqual(EaseMappings.classificationMappings[.bounce]?[.inOut], Ease.bounceInOut)
-        XCTAssertNil(EaseMappings.classificationMappings[.bounce]?[.none])
+    func testBounceClassifications() {
+        XCTAssertEqual(EaseMappings.classifications[.bounce]?[.in], Ease.bounceIn)
+        XCTAssertEqual(EaseMappings.classifications[.bounce]?[.out], Ease.bounceOut)
+        XCTAssertEqual(EaseMappings.classifications[.bounce]?[.inOut], Ease.bounceInOut)
+        XCTAssertNil(EaseMappings.classifications[.bounce]?[.none])
     }
 
 }

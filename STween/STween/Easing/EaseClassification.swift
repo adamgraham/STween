@@ -103,17 +103,17 @@ extension EaseClassification {
 
     /// The `Ease` associated with `self` and `EaseCurve.in`.
     public var `in`: Ease {
-        return EaseMappings.classificationMappings[self]![.in]!
+        return EaseMappings.classifications[self]![.in]!
     }
 
     /// The `Ease` associated with `self` and `EaseCurve.out`.
     public var out: Ease {
-        return EaseMappings.classificationMappings[self]![.out]!
+        return EaseMappings.classifications[self]![.out]!
     }
 
     /// The `Ease` associated with `self` and `EaseCurve.inOut`.
     public var inOut: Ease {
-        return EaseMappings.classificationMappings[self]![.inOut]!
+        return EaseMappings.classifications[self]![.inOut]!
     }
 
 }
