@@ -6,11 +6,8 @@
 //  Copyright © 2016 Adam Graham. All rights reserved.
 //
 
-/// A class to store default tweening and easing settings.
-public final class Defaults {
-
-    // Prevent instantiation of the class.
-    private init() {}
+/// An enum to store default tweening and easing settings.
+public enum Defaults {
 
     // MARK: Properties
     

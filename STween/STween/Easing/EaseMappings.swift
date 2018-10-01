@@ -6,11 +6,8 @@
 //  Copyright © 2016 Adam Graham. All rights reserved.
 //
 
-/// A class to store mapping collections for easing look-up.
-internal final class EaseMappings {
-
-    // Prevent instantiation of the class.
-    private init() {}
+/// An enum to store mapping collections for easing look-up.
+internal enum EaseMappings {
 
     /// A typealias for a tuple representing all the data that defines an `Ease`.
     internal typealias EaseDefinition = (classification: EaseClassification,

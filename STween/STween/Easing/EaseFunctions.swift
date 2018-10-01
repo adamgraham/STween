@@ -7,7 +7,7 @@
 //
 
 /**
- A class to hold a collection of easing functions based upon
+ An enum to hold a collection of easing functions based upon
  [Robert Penner's Easing Functions](http://robertpenner.com/easing/). 
  A visualized cheat-sheet of these functions can be found at
  [easings.net](http://easings.net/).
@@ -34,12 +34,7 @@
 
  - Returns: The value at a specific point in time from the start value.
  */
-internal final class EaseFunctions {
-
-    // Prevent instantiation of the class.
-    private init() {}
-
-}
+internal enum EaseFunctions {}
 
 /**
  A method to calculate a value between a starting and ending position at 
