@@ -293,7 +293,7 @@ extension TweenAnimation {
         self.timer.stop()
 
         // Remove from Tweener
-        Tweener.remove(self)
+        Tweener.default.remove(self)
 
         // Callback event
         self.onKill?()
@@ -321,7 +321,7 @@ extension TweenAnimation {
         self.timer.reset()
         
         // Add to Tweener
-        Tweener.add(self)
+        Tweener.default.add(self)
         
         // Callback event
         self.onReset?()

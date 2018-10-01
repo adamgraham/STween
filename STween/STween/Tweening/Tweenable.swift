@@ -82,36 +82,36 @@ extension Tweenable {
     public func tween<TweenProperty: TweenableProperty>(to property: TweenProperty, duration: TimeInterval, completion: Callback? = nil) -> Tween
         where TweenProperty.Target == Self {
 
-            return Tweener.animate(self, to: [property],
-                                   duration: duration,
-                                   completion: completion)
+            return Tweener.default.animate(self, to: [property],
+                                           duration: duration,
+                                           completion: completion)
     }
 
     @discardableResult
     public func tween<TweenProperty: TweenableProperty>(to properties: [TweenProperty], duration: TimeInterval, completion: Callback? = nil) -> Tween
         where TweenProperty.Target == Self {
 
-            return Tweener.animate(self, to: properties,
-                                   duration: duration,
-                                   completion: completion)
+            return Tweener.default.animate(self, to: properties,
+                                           duration: duration,
+                                           completion: completion)
     }
 
     @discardableResult
     public func tween<TweenProperty: TweenableProperty>(from property: TweenProperty, duration: TimeInterval, completion: Callback? = nil) -> Tween
         where TweenProperty.Target == Self {
 
-            return Tweener.animate(self, from: [property],
-                                   duration: duration,
-                                   completion: completion)
+            return Tweener.default.animate(self, from: [property],
+                                           duration: duration,
+                                           completion: completion)
     }
 
     @discardableResult
     public func tween<TweenProperty: TweenableProperty>(from properties: [TweenProperty], duration: TimeInterval, completion: Callback? = nil) -> Tween
         where TweenProperty.Target == Self {
 
-            return Tweener.animate(self, from: properties,
-                                   duration: duration,
-                                   completion: completion)
+            return Tweener.default.animate(self, from: properties,
+                                           duration: duration,
+                                           completion: completion)
     }
 
 }

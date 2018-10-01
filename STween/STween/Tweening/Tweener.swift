@@ -6,30 +6,31 @@
 //  Copyright © 2016 Adam Graham. All rights reserved.
 //
 
-/// A static factory class to create, queue, and manage `Tween` animations.
+/// A singleton, factory class to create, queue, and manage `Tween` animations.
 public final class Tweener {
 
-    // Prevent instantiation of the class.
+    /// The default, single instance of `Tweener`.
+    public static let `default` = Tweener()
+
+    // Prevent outside instantiation of the singleton.
     private init() {}
 
     // MARK: Properties
 
     /// An array of every instantiated `Tween`.
-    private static var tweens = [Tween]()
+    private var tweens = [Tween]()
 
     /// An array of every instantiated `Tween` that is waiting to be started.
-    private static var queuedTweens = [Tween]() {
+    private var queuedTweens = [Tween]() {
         didSet {
             self.queueTimer.isPaused = self.queuedTweens.isEmpty
         }
     }
 
     /// The timer object used to start any queued `Tween`s.
-    private static let queueTimer: CADisplayLink = {
-        let timer = CADisplayLink(
-            target: Tweener.self,
-            selector: #selector(Tweener.startQueuedTweens)
-        )
+    private lazy var queueTimer: CADisplayLink = {
+        let selector = #selector(self.startQueuedTweens)
+        let timer = CADisplayLink(target: self, selector: selector)
         timer.add(to: .main, forMode: .defaultRunLoopMode)
         timer.isPaused = true
         return timer
@@ -55,7 +56,7 @@ extension Tweener {
 
      - Returns: The `Tween` control for the animation.
      */
-    @discardableResult public static func animate<TargetProperty: TweenableProperty>(
+    @discardableResult public func animate<TargetProperty: TweenableProperty>(
         _ target: TargetProperty.Target, to properties: [TargetProperty], duration: TimeInterval, completion: Callback? = nil) -> Tween {
 
         let tween = TweenAnimation(target: target, properties: properties, duration: duration)
@@ -85,7 +86,7 @@ extension Tweener {
      
      - Returns: The `Tween` control for the animation.
      */
-    @discardableResult public static func animate<TargetProperty: TweenableProperty>(
+    @discardableResult public func animate<TargetProperty: TweenableProperty>(
         _ target: TargetProperty.Target, from properties: [TargetProperty], duration: TimeInterval, completion: Callback? = nil) -> Tween {
 
         let tween = TweenAnimation(target: target, properties: properties, duration: duration)
@@ -108,7 +109,7 @@ extension Tweener {
     // MARK: Tracking
 
     /// The number of tweens crrently being tracked.
-    public static var count: Int {
+    public var count: Int {
         return self.tweens.count
     }
 
@@ -118,7 +119,7 @@ extension Tweener {
      - Parameters:
         - tween: The tween to be added to the list of tracked tweens.
      */
-    internal static func add(_ tween: Tween) {
+    internal func add(_ tween: Tween) {
         guard self.tweens.index(where: { $0 === tween }) == nil else {
             return
         }
@@ -132,7 +133,7 @@ extension Tweener {
      - Parameters:
         - tween: The tween to be removed from the list of tracked tweens.
      */
-    internal static func remove(_ tween: Tween) {
+    internal func remove(_ tween: Tween) {
         if let index = self.tweens.index(where: { $0 === tween }),
             index >= 0 && index < self.tweens.count {
                 self.tweens.remove(at: index)
@@ -152,7 +153,7 @@ extension Tweener {
      
      - Returns: `true` if the `tween` is in the list of tracked tweens.
      */
-    internal static func contains(_ tween: Tween) -> Bool {
+    internal func contains(_ tween: Tween) -> Bool {
         return self.tweens.contains(where: { $0 === tween })
     }
 
@@ -163,7 +164,7 @@ extension Tweener {
     // MARK: Queueing
 
     /// The number of tweens currently queued to start.
-    internal static var queuedCount: Int {
+    internal var queuedCount: Int {
         return self.queuedTweens.count
     }
 
@@ -175,7 +176,7 @@ extension Tweener {
      - Parameters:
         - tween: The tween to be queued for start.
      */
-    internal static func queue(_ tween: Tween) {
+    internal func queue(_ tween: Tween) {
         guard self.queuedTweens.index(where: { $0 === tween }) == nil else {
             return
         }
@@ -188,7 +189,7 @@ extension Tweener {
      This puts the tween in an active state and removes it from the list of
      queued tweens.
      */
-    @objc internal static func startQueuedTweens() {
+    @objc internal func startQueuedTweens() {
         self.queuedTweens.forEach {
             $0.start()
         }
@@ -205,7 +206,7 @@ extension Tweener {
     /**
      A method to kill all currently tracked tweens.
      */
-    public static func killAll() {
+    public func killAll() {
         self.tweens.forEach {
             $0.kill()
         }

@@ -14,12 +14,12 @@ class TweenAnimationTest: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        Tweener.killAll()
+        Tweener.default.killAll()
         Defaults.reset()
     }
 
     override func tearDown() {
-        Tweener.killAll()
+        Tweener.default.killAll()
         Defaults.reset()
         super.tearDown()
     }
@@ -323,7 +323,7 @@ class TweenAnimationTest: XCTestCase {
             callbackInvoked = true
         }
 
-        XCTAssertEqual(Tweener.count, 0)
+        XCTAssertEqual(Tweener.default.count, 0)
         XCTAssertEqual(tween.state, .new)
         XCTAssertFalse(tween.reset())
         XCTAssertEqual(tween.state, .new)
@@ -336,7 +336,7 @@ class TweenAnimationTest: XCTestCase {
         XCTAssertEqual(tween.delay, Defaults.delay)
         XCTAssertNil(tween.onReset)
         XCTAssertTrue(callbackInvoked)
-        XCTAssertEqual(Tweener.count, 1)
+        XCTAssertEqual(Tweener.default.count, 1)
     }
 
     func testUpdate() {
