@@ -19,20 +19,13 @@ class TweenerTest: XCTestCase {
 
     override func tearDown() {
         Tweener.killAll()
+        Defaults.reset()
         super.tearDown()
     }
 
     // MARK: Factory Creation Tests
 
-    func testToWithCallback() {
-        let tween = Tweener.animate(UIView(), to: [UIViewTweenProperty](), duration: 1.0, completion: {})
-        XCTAssertEqual(tween.state, .new)
-        XCTAssertFalse(tween.reversed)
-        XCTAssertEqual(tween.duration, 1.0)
-        XCTAssertNotNil(tween.onComplete)
-    }
-
-    func testToWithoutCallback() {
+    func testAnimateToWithoutCallback() {
         let tween = Tweener.animate(UIView(), to: [UIViewTweenProperty](), duration: 1.0)
         XCTAssertEqual(tween.state, .new)
         XCTAssertFalse(tween.reversed)
@@ -40,7 +33,43 @@ class TweenerTest: XCTestCase {
         XCTAssertNil(tween.onComplete)
     }
 
-    func testFromWithCallback() {
+    func testAnimateToWithCallback() {
+        let tween = Tweener.animate(UIView(), to: [UIViewTweenProperty](), duration: 1.0, completion: {})
+        XCTAssertEqual(tween.state, .new)
+        XCTAssertFalse(tween.reversed)
+        XCTAssertEqual(tween.duration, 1.0)
+        XCTAssertNotNil(tween.onComplete)
+    }
+
+    func testAnimateToWithoutAutoStart() {
+        Defaults.autoStartTweens = false
+        let tween = Tweener.animate(UIView(), to: [UIViewTweenProperty](), duration: 1.0, completion: {})
+        XCTAssertEqual(tween.state, .new)
+        XCTAssertFalse(tween.reversed)
+        XCTAssertEqual(tween.duration, 1.0)
+        XCTAssertNotNil(tween.onComplete)
+        XCTAssertEqual(Tweener.queuedCount, 0)
+    }
+
+    func testAnimateToWithAutoStart() {
+        Defaults.autoStartTweens = true
+        let tween = Tweener.animate(UIView(), to: [UIViewTweenProperty](), duration: 1.0, completion: {})
+        XCTAssertEqual(tween.state, .new)
+        XCTAssertFalse(tween.reversed)
+        XCTAssertEqual(tween.duration, 1.0)
+        XCTAssertNotNil(tween.onComplete)
+        XCTAssertEqual(Tweener.queuedCount, 1)
+    }
+
+    func testAnimateFromWithoutCallback() {
+        let tween = Tweener.animate(UIView(), from: [UIViewTweenProperty](), duration: 1.0)
+        XCTAssertEqual(tween.state, .new)
+        XCTAssertTrue(tween.reversed)
+        XCTAssertEqual(tween.duration, 1.0)
+        XCTAssertNil(tween.onComplete)
+    }
+
+    func testAnimateFromWithCallback() {
         let tween = Tweener.animate(UIView(), from: [UIViewTweenProperty](), duration: 1.0, completion: {})
         XCTAssertEqual(tween.state, .new)
         XCTAssertTrue(tween.reversed)
@@ -48,12 +77,24 @@ class TweenerTest: XCTestCase {
         XCTAssertNotNil(tween.onComplete)
     }
 
-    func testFromWithoutCallback() {
-        let tween = Tweener.animate(UIView(), from: [UIViewTweenProperty](), duration: 1.0)
+    func testAnimateFromWithoutAutoStart() {
+        Defaults.autoStartTweens = false
+        let tween = Tweener.animate(UIView(), from: [UIViewTweenProperty](), duration: 1.0, completion: {})
         XCTAssertEqual(tween.state, .new)
         XCTAssertTrue(tween.reversed)
         XCTAssertEqual(tween.duration, 1.0)
-        XCTAssertNil(tween.onComplete)
+        XCTAssertNotNil(tween.onComplete)
+        XCTAssertEqual(Tweener.queuedCount, 0)
+    }
+
+    func testAnimateFromWithAutoStart() {
+        Defaults.autoStartTweens = true
+        let tween = Tweener.animate(UIView(), from: [UIViewTweenProperty](), duration: 1.0, completion: {})
+        XCTAssertEqual(tween.state, .new)
+        XCTAssertTrue(tween.reversed)
+        XCTAssertEqual(tween.duration, 1.0)
+        XCTAssertNotNil(tween.onComplete)
+        XCTAssertEqual(Tweener.queuedCount, 1)
     }
 
     // MARK: Tracking Tests
@@ -74,7 +115,7 @@ class TweenerTest: XCTestCase {
         XCTAssertTrue(Tweener.contains(anotherTween))
         XCTAssertEqual(Tweener.count, 2)
 
-        Tweener.add(anotherTween)
+        Tweener.add(anotherTween) // test same tween cannot be added multiple times
         XCTAssertEqual(Tweener.count, 2)
 
         // Remove
@@ -87,7 +128,7 @@ class TweenerTest: XCTestCase {
         XCTAssertFalse(Tweener.contains(anotherTween))
         XCTAssertEqual(Tweener.count, 0)
 
-        Tweener.remove(anotherTween)
+        Tweener.remove(anotherTween) // test same tween cannot be removed multiple times
         XCTAssertEqual(Tweener.count, 0)
     }
 
@@ -109,8 +150,8 @@ class TweenerTest: XCTestCase {
 
         Tweener.queue(anotherTween)
         XCTAssertEqual(Tweener.queuedCount, 2)
-
-        Tweener.queue(anotherTween)
+    
+        Tweener.queue(anotherTween) // test same tween cannot be queued multiple times
         XCTAssertEqual(Tweener.queuedCount, 2)
 
         // Start

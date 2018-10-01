@@ -220,12 +220,12 @@ extension EaseFunctions {
         if n < Number(1) {
             let m = n*n*n
             return x * m + b
-        } else {
-            let two = Number(2)
-            n -= two
-            let m = (n*n*n) + two
-            return x * m + b
         }
+
+        let two = Number(2)
+        n -= two
+        let m = (n*n*n) + two
+        return x * m + b
     }
     
 }
@@ -297,11 +297,11 @@ extension EaseFunctions {
         if n < one {
             let m = n*n
             return x * m + b
-        } else {
-            n -= one
-            let m = n*(n - Number(2)) - one
-            return -x * m + b
         }
+
+        n -= one
+        let m = n*(n - Number(2)) - one
+        return -x * m + b
     }
     
 }
@@ -373,12 +373,12 @@ extension EaseFunctions {
         if n < Number(1) {
             let m = n*n*n*n
             return x * m + b
-        } else {
-            let two = Number(2)
-            n -= two
-            let m = (n*n*n*n) - two
-            return -x * m + b
         }
+
+        let two = Number(2)
+        n -= two
+        let m = (n*n*n*n) - two
+        return -x * m + b
     }
     
 }
@@ -450,12 +450,12 @@ extension EaseFunctions {
         if n < Number(1) {
             let m = n*n*n*n*n
             return x * m + b
-        } else {
-            let two = Number(2)
-            n -= two
-            let m = (n*n*n*n*n) + two
-            return x * m + b
         }
+
+        let two = Number(2)
+        n -= two
+        let m = (n*n*n*n*n) + two
+        return x * m + b
     }
     
 }
@@ -482,12 +482,12 @@ extension EaseFunctions {
 
         if t == Number(0) {
             return b
-        } else {
-            let n = t/d
-            let z = Number(10) * (n - Number(1))
-            let m = pow(Number(2), z)
-            return c * m + b
         }
+
+        let n = t/d
+        let z = Number(10) * (n - Number(1))
+        let m = pow(Number(2), z)
+        return c * m + b
     }
 
     /**
@@ -507,12 +507,12 @@ extension EaseFunctions {
 
         if t == d {
             return b + c
-        } else {
-            let n = t/d
-            let z = -Number(10) * n
-            let m = -pow(Number(2), z) + Number(1)
-            return c * m + b
         }
+
+        let n = t/d
+        let z = -Number(10) * n
+        let m = -pow(Number(2), z) + Number(1)
+        return c * m + b
     }
 
     /**
@@ -544,13 +544,13 @@ extension EaseFunctions {
             let z = Number(10) * (n - one)
             let m = pow(Number(2), z)
             return x * m + b
-        } else {
-            n -= one
-            let two = Number(2)
-            let z = -Number(10) * n
-            let m = -pow(two, z) + two
-            return x * m + b
         }
+
+        n -= one
+        let two = Number(2)
+        let z = -Number(10) * n
+        let m = -pow(two, z) + two
+        return x * m + b
     }
     
 }
@@ -627,12 +627,12 @@ extension EaseFunctions {
             let z = one - (n*n)
             let m = sqrt(z) - one
             return -x * m + b
-        } else {
-            n -= Number(2)
-            let z = one - (n*n)
-            let m = sqrt(z) + one
-            return x * m + b
         }
+
+        n -= Number(2)
+        let z = one - (n*n)
+        let m = sqrt(z) + one
+        return x * m + b
     }
     
 }
@@ -711,13 +711,13 @@ extension EaseFunctions {
             let z = ((s + one) * n) - s
             let m = n*n*z
             return x * m + b
-        } else {
-            let two = Number(2)
-            n -= two
-            let z = ((s + one) * n) + s
-            let m = (n*n*z) + two
-            return x * m + b
         }
+
+        let two = Number(2)
+        n -= two
+        let z = ((s + one) * n) + s
+        let m = (n*n*z) + two
+        return x * m + b
     }
     
 }
@@ -843,18 +843,18 @@ extension EaseFunctions {
 
             let m = -(m1 * m2).half
             return m + b
-        } else {
-            n -= one
-
-            let m1_z = -Number(10) * n
-            let m1 = a * pow(Number(2), m1_z)
-
-            let m2_z = (n*d) - s
-            let m2 = sin(m2_z * Number.pi_double / p)
-
-            let m = (m1 * m2).half
-            return c + m + b
         }
+
+        n -= one
+
+        let m1_z = -Number(10) * n
+        let m1 = a * pow(Number(2), m1_z)
+
+        let m2_z = (n*d) - s
+        let m2 = sin(m2_z * Number.pi_double / p)
+
+        let m = (m1 * m2).half
+        return c + m + b
     }
     
 }
@@ -937,12 +937,12 @@ extension EaseFunctions {
             let z = t.double
             let m = EaseFunctions.bounceIn(b: Number(0), c: c, t: z, d: d).half
             return m + b
-        } else {
-            let x = c.half
-            let z = (t.double)-d
-            let m = (EaseFunctions.bounceOut(b: Number(0), c: c, t: z, d: d).half) + x
-            return m + b
         }
+
+        let x = c.half
+        let z = (t.double)-d
+        let m = (EaseFunctions.bounceOut(b: Number(0), c: c, t: z, d: d).half) + x
+        return m + b
     }
     
 }

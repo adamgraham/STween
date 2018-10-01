@@ -142,11 +142,11 @@ extension TweenAnimation {
             let start = $0.value(from: self.target)
             let end = $0
 
-            if !self.reversed {
-                return InterpolationValues(start: start, end: end)
-            } else {
+            if self.reversed {
                 return InterpolationValues(start: end, end: start)
             }
+
+            return InterpolationValues(start: start, end: end)
         }
     }
 
@@ -162,8 +162,7 @@ extension TweenAnimation {
         }
 
         guard self.delayElapsed >= self.delay else {
-            startDelay()
-            return false
+            return startDelay()
         }
 
         // Set state
@@ -357,9 +356,9 @@ extension TweenAnimation {
     // MARK: Delay Methods
 
     /// :nodoc:
-    private func startDelay() {
+    @discardableResult private func startDelay() -> Bool {
         guard self.state != .delayed else {
-            return
+            return false
         }
 
         // Set state
@@ -369,6 +368,8 @@ extension TweenAnimation {
         // Update timer
         self.timer.reset()
         self.timer.start()
+
+        return true
     }
 
     /// :nodoc:

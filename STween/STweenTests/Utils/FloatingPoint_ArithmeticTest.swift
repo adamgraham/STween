@@ -35,6 +35,10 @@ class FloatingPoint_ArithmeticTest: XCTestCase {
         assert(CGFloat.self, accuracy: CGFloat.ulpOfOne.double)
     }
 
+    func testDouble() {
+        assert(Double.self, accuracy: Double.ulpOfOne.double)
+    }
+
     private func assert<T: FloatingPoint>(_ type: T.Type, accuracy: T) {
         let value: T = T.pi
         XCTAssertEqual(cos(value), T(-1.0), accuracy: accuracy)
