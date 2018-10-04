@@ -6,8 +6,8 @@
 //  Copyright © 2016 Adam Graham. All rights reserved.
 //
 
-/// An extension to provide `UIColor` instances with additional computed 
-/// properties to retrieve color components.
+/// An extension to provide `UIColor` instances with additional computed properties to
+/// retrieve color components.
 internal extension UIColor {
 
     /// The red, green, blue, and alpha components of `self`.

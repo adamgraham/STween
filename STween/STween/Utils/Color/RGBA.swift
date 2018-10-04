@@ -30,8 +30,8 @@ internal struct RGBA {
 
 // MARK: - Equatable
 
-/// An epsilon value used to compare floating-point values in order to avoid
-/// floating-point precision errors.
+/// An epsilon value used to compare floating-point numbers in order to avoid precision
+/// errors.
 private let epsilon = CGFloat(Float.ulpOfOne)
 
 extension RGBA: Equatable {

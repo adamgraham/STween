@@ -7,12 +7,9 @@
 //
 
 /// An extension to provide tweening animation functionality to `UIView`.
-extension UIView: Tweenable {
+extension UIView: Tweenable {}
 
-}
-
-/// An enum to describe the properties that can be animated with a tween
-/// on a `UIView`.
+/// An enum to describe the properties that can be animated with a tween on a `UIView`.
 public enum UIViewTweenProperty: Equatable {
 
     /// A case to denote the `frame.origin.x` property of a `UIView`.

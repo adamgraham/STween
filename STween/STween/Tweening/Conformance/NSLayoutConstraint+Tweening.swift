@@ -7,12 +7,9 @@
 //
 
 /// An extension to provide tweening animation functionality to `NSLayoutConstraint`.
-extension NSLayoutConstraint: Tweenable {
-    
-}
+extension NSLayoutConstraint: Tweenable {}
 
-/// An enum to describe the properties that can be animated with a tween
-/// on a `NSLayoutConstraint`.
+/// An enum to describe the properties that can be animated with a tween on a `NSLayoutConstraint`.
 public enum NSLayoutConstraintTweenProperty: Equatable {
 
     /// A case to denote the `constant` property of a `NSLayoutConstraint`.

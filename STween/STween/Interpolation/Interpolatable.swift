@@ -12,8 +12,8 @@ public protocol Interpolatable: Equatable {
     associatedtype Value = Self
 
     /**
-     A class method to calculate the value between a starting and ending 
-     position at a specific point in time.
+     A class method to calculate the value between a starting and ending position at a
+     specific point in time.
 
      - Parameters:
         - ease: The `Ease` used to interpolate values.

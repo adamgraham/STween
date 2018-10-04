@@ -7,12 +7,9 @@
 //
 
 /// An extension to provide tweening animation functionality to `UILabel`.
-extension UILabel {
+extension UILabel {}
 
-}
-
-/// An enum to describe the properties that can be animated with a tween
-/// on a `UILabel`.
+/// An enum to describe the properties that can be animated with a tween on a `UILabel`.
 public enum UILabelTweenProperty: Equatable {
 
     /// A case to denote the `textColor` property of a `UILabel`.

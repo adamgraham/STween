@@ -14,8 +14,8 @@ public protocol Tween: class {
     /// The `Ease` represented by `self`.
     var ease: Ease { get set }
 
-    /// The state of `self` animating *to* the target property values (`false`) or
-    /// *from* the target property values (`true`).
+    /// The state of `self` animating *to* the target property values (`false`) or *from* the
+    /// target property values (`true`).
     ///
     /// **Note:** Assigning this will not take effect until `self` is started. If `self` has
     /// already been started, `self` must be restarted before taking effect.
@@ -26,8 +26,7 @@ public protocol Tween: class {
 
     // MARK: Time Properties
 
-    /// The amount of time, in seconds, before `self` starts updating after
-    /// starting.
+    /// The amount of time, in seconds, before `self` starts updating after being started.
     ///
     /// **Note:** Assigning this will not take effect until `self` is started. If `self` has
     /// already been started, `self` must be restarted before taking effect.
@@ -40,13 +39,12 @@ public protocol Tween: class {
 
     /// The amount of time, in seconds, `self` has been active.
     ///
-    /// **Note:** Elapsed time is reset when `self` is stopped or restarted but not
-    /// paused. If `self` is completed, the elapsed time is the same as `self`'s
-    /// duration.
+    /// **Note:** Elapsed time is reset when `self` is stopped or restarted but not paused.
+    /// If `self` is completed, the elapsed time is the same as `self`'s duration.
     var elapsed: TimeInterval { get }
 
-    /// The percentage of `self`'s `elapsed` time over `self`'s `duration` of time,
-    /// in the range of `0.0` to `1.0`.
+    /// The percentage of `elapsed` time of `self` in relation to its `duration`.
+    /// Returns within the range of `0.0` and `1.0`.
     var percentComplete: Double { get }
 
     // MARK: Callback Properties
@@ -54,36 +52,28 @@ public protocol Tween: class {
     /// The callback invoked every time `self` is successfully updated.
     var onUpdate: Callback? { get set }
 
-    /// The callback invoked when the state control method, `start`, is
-    /// successful.
+    /// The callback invoked when the state control method, `start`, is successful.
     var onStart: Callback? { get set }
 
-    /// The callback invoked when the state control method, `stop`, is
-    /// successful.
+    /// The callback invoked when the state control method, `stop`, is successful.
     var onStop: Callback? { get set }
 
-    /// The callback invoked when the state control method, `restart`, is
-    /// successful.
+    /// The callback invoked when the state control method, `restart`, is successful.
     var onRestart: Callback? { get set }
 
-    /// The callback invoked when the state control method, `pause`, is
-    /// successful.
+    /// The callback invoked when the state control method, `pause`, is successful.
     var onPause: Callback? { get set }
 
-    /// The callback invoked when the state control method, `resume`, is
-    /// successful.
+    /// The callback invoked when the state control method, `resume`, is successful.
     var onResume: Callback? { get set }
 
-    /// The callback invoked when the state control method, `complete`, is
-    /// successful.
+    /// The callback invoked when the state control method, `complete`, is successful.
     var onComplete: Callback? { get set }
 
-    /// The callback invoked when the state control method, `kill`, is
-    /// successful.
+    /// The callback invoked when the state control method, `kill`, is successful.
     var onKill: Callback? { get set }
 
-    /// The callback invoked when the state control method, `reset`, is
-    /// successful.
+    /// The callback invoked when the state control method, `reset`, is successful.
     var onReset: Callback? { get set }
 
     // MARK: State Control Methods
@@ -107,11 +97,9 @@ public protocol Tween: class {
     @discardableResult func stop() -> Bool
 
     /**
-     A method to stop `self`, then immediately start `self` from its beginning
-     values.
+     A method to stop `self`, then immediately start `self` from its beginning values.
 
-     **Note:** `self` can only be restarted if in an active, paused, or completed
-     state.
+     **Note:** `self` can only be restarted if in an active, paused, or completed state.
 
      - Returns: `true` if `self` is successfully restarted.
      */
@@ -127,8 +115,7 @@ public protocol Tween: class {
     @discardableResult func pause() -> Bool
 
     /**
-     A method to set `self` as active, maintaining its values from when it was
-     paused.
+     A method to set `self` as active, maintaining its values from when it was paused.
 
      **Note:** `self` can only be resumed if in a paused state.
 
@@ -137,8 +124,8 @@ public protocol Tween: class {
     @discardableResult func resume() -> Bool
 
     /**
-     A method to set `self` as completed, jumping to its ending values. `self`
-     will be killed if `Defaults.autoKillCompletedTweens` is `true`.
+     A method to set `self` as completed, jumping to its ending values. `self` will be killed if
+     `Defaults.autoKillCompletedTweens` is `true`.
 
      **Note:** `self` can only be completed if in an active or paused state.
 
@@ -147,8 +134,8 @@ public protocol Tween: class {
     @discardableResult func complete() -> Bool
 
     /**
-     A method to set `self` as killed, haulting at its current values, and
-     remove it from `Tweener`'s list of tracked tweens.
+     A method to set `self` as killed, haulting at its current values, and remove it from
+     `Tweener`'s list of tracked tweens.
 
      **Note:** `self` can only be killed if *not* already in a killed state.
 
@@ -157,9 +144,9 @@ public protocol Tween: class {
     @discardableResult func kill() -> Bool
 
     /**
-     A method to set `self` as new, resetting all properties to their default
-     values, and re-adding `self` to `Tweener`'s list of tracked tweens. This is
-     the only way to revive a killed `self`.
+     A method to set `self` as new, resetting all properties to their default values, and
+     re-adding `self` to `Tweener`'s list of tracked tweens. This is the only way to revive a
+     killed `self`.
 
      **Note:** `self` can only be reset if *not* already in a new state.
 
@@ -169,12 +156,10 @@ public protocol Tween: class {
 
 }
 
-// MARK: - Default Implementation
-
 extension Tween {
 
-    /// The percentage of `self`'s `elapsed` time over `self`'s `duration` of time,
-    /// in the range of `0.0` to `1.0`.
+    // MARK: Default Implementation
+
     public var percentComplete: Double {
         return clamp(value: self.elapsed / self.duration, lower: 0.0, upper: 1.0)
     }

@@ -239,8 +239,8 @@ extension Ease {
     // MARK: Methods
 
     /**
-     A method to calculate the value between a starting and ending position at a
-     specific point in time using `self`'s easing function.
+     A method to calculate the value between a starting and ending position at a specific
+     point in time using `self`'s easing function.
 
      - Parameters:
         - startValue: The start value passed to `self`'s easing function.

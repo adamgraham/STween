@@ -6,8 +6,8 @@
 //  Copyright © 2016 Adam Graham. All rights reserved.
 //
 
-/// A class to animate properties on a `Tweenable` object via easing 
-/// functions and interpolation.
+/// A class to animate properties on a `Tweenable` object using an easing function and
+/// interpolation.
 internal final class TweenAnimation<TargetProperty: TweenableProperty>: Tween {
 
     internal typealias Target = TargetProperty.Target
@@ -33,8 +33,8 @@ internal final class TweenAnimation<TargetProperty: TweenableProperty>: Tween {
 
     // MARK: Time Properties
 
-    /// The internal timer of `self` used to keep track of total elapsed time and
-    /// fire update cycles.
+    /// The internal timer of `self` used to keep track of total elapsed time and fire update
+    /// cycles.
     private lazy var timer: TweenTimer = TweenTimer(delegate: self)
     
     internal var delay = Defaults.delay
@@ -70,18 +70,15 @@ internal final class TweenAnimation<TargetProperty: TweenableProperty>: Tween {
     // MARK: Initialization Methods
 
     /**
-     An initializer to create a `TweenAnimation` to animate an array of
-     properties on a target object or data structure with a given duration.
+     An initializer to create a `TweenAnimation` that animates an array of properties on a
+     target object or data structure with a given duration.
      
      - Parameters:
         - target: The object or data structure on which `properties` will be animated.
         - properties: An array of properties to be animated on the `target`.
         - duration: The total amount of time, in seconds, the animation will run.
      */
-    internal init(target: Target,
-                  properties: [TargetProperty],
-                  duration: TimeInterval) {
-
+    internal init(target: Target, properties: [TargetProperty], duration: TimeInterval) {
         self.target = target
         self.duration = duration
         self.targetProperties = properties
@@ -94,9 +91,9 @@ extension TweenAnimation {
     // MARK: Tweening Methods
 
     /**
-     A method to update all of `self`'s target properties by interpolating
-     new values. `self` will be completed if its elapsed time has
-     reached or exceeded its duration.
+     A method to update all target properties of `self` by interpolating new values.
+
+     `self` will be completed if its elapsed time has reached or exceeded its duration.
 
      **Note:** `self` can only be updated if in an active state.
      
@@ -118,8 +115,8 @@ extension TweenAnimation {
     }
 
     /**
-     A method to interpolate all of `self`'s target properties, based on its
-     current state, and assign the interpolated values to the target.
+     A method to interpolate all target properties of `self`, based on its current state, and
+     assign the interpolated values to the target.
      */
     private func updateProperties() {
         let ease = self.ease
@@ -133,9 +130,8 @@ extension TweenAnimation {
     }
 
     /**
-     A method to store all the necessary data needed to interpolate each
-     target property. If `self` is reversed, the start and end value will be
-     flipped with each other.
+     A method to store all the necessary data needed to interpolate each target property. If
+     `self` is reversed, the start and end value will be flipped with each other.
      */
     private func storeStartingAndEndingValues() {
         self.interpolationValues = self.targetProperties.map {
@@ -336,7 +332,9 @@ extension TweenAnimation {
 
     // MARK: Callback Methods
 
-    /// :nodoc:
+    /**
+     A method to set all callback properties to `nil`, i.e., `onStart`, `onUpdate`, etc.
+     */
     private func clearAllCallbacks() {
         self.onUpdate = nil
         self.onStart = nil
@@ -355,7 +353,11 @@ extension TweenAnimation {
 
     // MARK: Delay Methods
 
-    /// :nodoc:
+    /**
+     A method to mark self as delayed, starting the delay timer from zero.
+
+     - Returns: `true` if `self` is successfully marked as delayed.
+     */
     @discardableResult private func startDelay() -> Bool {
         guard self.state != .delayed else {
             return false
@@ -372,7 +374,11 @@ extension TweenAnimation {
         return true
     }
 
-    /// :nodoc:
+    /**
+     A method to update the elapsed delay time and check if the delay has finished.
+
+     If the delay has finished, `start` will be called on `self`.
+     */
     private func updateDelay(by elapsed: TimeInterval) {
         self.delayElapsed = elapsed
 

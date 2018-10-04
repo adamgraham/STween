@@ -7,12 +7,9 @@
 //
 
 /// An extension to provide tweening animation functionality to `UITextField`.
-extension UITextField {
-    
-}
+extension UITextField {}
 
-/// An enum to describe the properties that can be animated with a tween
-/// on a `UITextField`.
+/// An enum to describe the properties that can be animated with a tween on a `UITextField`.
 public enum UITextFieldTweenProperty: Equatable {
 
     /// A case to denote the `textColor` property of a `UITextField`.

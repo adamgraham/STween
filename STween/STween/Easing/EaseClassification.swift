@@ -11,7 +11,7 @@ public enum EaseClassification {
 
     /// A case to denote a linear algorithmic classification.
     ///
-    /// Sometimes referred to as no ease.
+    /// This can also be considered as "none" or "no ease".
     case linear
 
     /// A case to denote a sinusoidal algorithmic classification.
@@ -96,7 +96,6 @@ public enum EaseClassification {
 
 }
 
-/// An extension to provide ease look-up helper properties.
 extension EaseClassification {
 
     // MARK: Look-up Helpers

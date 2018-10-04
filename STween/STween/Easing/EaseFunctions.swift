@@ -12,18 +12,19 @@
  A visualized cheat-sheet of these functions can be found at
  [easings.net](http://easings.net/).
 
- Easing functions calculate the value between a starting and ending
- position at a specific point in time. In simpler terms, these functions
- determine the path/motion used to get from point "A" to point "B".
+ Easing functions calculate the value between a starting and ending position at a
+ specific point in time. In simpler terms, these functions determine the path/motion used
+ to get from point *A* to point *B*.
 
- > "The aspect of time is crucial to motion — things change over time.
- > Nothing can move in “zero time”, or be in two places at once. In other
- > words, a position needs time to change, and it can have only one value
- > at a specific point in time.
+ * * * * *
+
+ > *The aspect of time is crucial to motion — things change over time. Nothing can move in
+ > “zero time”, or be in two places at once. In other words, a position needs time to
+ > change, and it can have only one value at a specific point in time.*
  >
- > Because position and time have this one-to-one relationship, we can say
- > that position is a function of time. This means that, given a specific point
- > in time, we can find one, and only one, corresponding position."
+ > *Because position and time have this one-to-one relationship, we can say that position
+ > is a function of time. This means that, given a specific point in time, we can find one,
+ > and only one, corresponding position.*
  > \- [Robert Penner](http://robertpenner.com/easing/penner_chapter7_tweening.pdf)
  
  - Parameters:
@@ -37,8 +38,8 @@
 internal enum EaseFunctions {}
 
 /**
- A method to calculate a value between a starting and ending position at 
- a specific point in time.
+ A method to calculate a value between a starting and ending position at a specific point
+ in time.
 
  - Parameters:
     - b: The start value (b = begin).
@@ -60,8 +61,8 @@ extension EaseFunctions {
     // MARK: Linear
 
     /**
-     The algorithmic function of a `linear` ease used to calculate a value
-     between a starting and ending position at a specific point in time.
+     The algorithmic function of a `linear` ease used to calculate a value between a
+     starting and ending position at a specific point in time.
      
      - Parameters:
         - b: The start value (b = begin).
@@ -86,8 +87,8 @@ extension EaseFunctions {
     // MARK: Sinusoidal
 
     /**
-     The algorithmic function of a `sineIn` ease used to calculate a value
-     between a starting and ending position at a specific point in time.
+     The algorithmic function of a `sineIn` ease used to calculate a value between a
+     starting and ending position at a specific point in time.
 
      - Parameters:
         - b: The start value (b = begin).
@@ -106,8 +107,8 @@ extension EaseFunctions {
     }
 
     /**
-     The algorithmic function of a `sineOut` ease used to calculate a value
-     between a starting and ending position at a specific point in time.
+     The algorithmic function of a `sineOut` ease used to calculate a value between a
+     starting and ending position at a specific point in time.
 
      - Parameters:
         - b: The start value (b = begin).
@@ -126,8 +127,8 @@ extension EaseFunctions {
     }
 
     /**
-     The algorithmic function of a `sineInOut` ease used to calculate a value
-     between a starting and ending position at a specific point in time.
+     The algorithmic function of a `sineInOut` ease used to calculate a value between a
+     starting and ending position at a specific point in time.
 
      - Parameters:
         - b: The start value (b = begin).
@@ -154,8 +155,8 @@ extension EaseFunctions {
     // MARK: Cubic
 
     /**
-     The algorithmic function of a `cubicIn` ease used to calculate a value
-     between a starting and ending position at a specific point in time.
+     The algorithmic function of a `cubicIn` ease used to calculate a value between a
+     starting and ending position at a specific point in time.
 
      - Parameters:
         - b: The start value (b = begin).
@@ -174,8 +175,8 @@ extension EaseFunctions {
     }
 
     /**
-     The algorithmic function of a `cubicOut` ease used to calculate a value
-     between a starting and ending position at a specific point in time.
+     The algorithmic function of a `cubicOut` ease used to calculate a value between a
+     starting and ending position at a specific point in time.
 
      - Parameters:
         - b: The start value (b = begin).
@@ -195,8 +196,8 @@ extension EaseFunctions {
     }
 
     /**
-     The algorithmic function of a `cubicInOut` ease used to calculate a value
-     between a starting and ending position at a specific point in time.
+     The algorithmic function of a `cubicInOut` ease used to calculate a value between a
+     starting and ending position at a specific point in time.
 
      - Parameters:
         - b: The start value (b = begin).
@@ -231,8 +232,8 @@ extension EaseFunctions {
     // MARK: Quadratic
 
     /**
-     The algorithmic function of a `quadIn` ease used to calculate a value
-     between a starting and ending position at a specific point in time.
+     The algorithmic function of a `quadIn` ease used to calculate a value between a
+     starting and ending position at a specific point in time.
 
      - Parameters:
         - b: The start value (b = begin).
@@ -251,8 +252,8 @@ extension EaseFunctions {
     }
 
     /**
-     The algorithmic function of a `quadOut` ease used to calculate a value
-     between a starting and ending position at a specific point in time.
+     The algorithmic function of a `quadOut` ease used to calculate a value between a
+     starting and ending position at a specific point in time.
 
      - Parameters:
         - b: The start value (b = begin).
@@ -271,8 +272,8 @@ extension EaseFunctions {
     }
 
     /**
-     The algorithmic function of a `quadInOut` ease used to calculate a value
-     between a starting and ending position at a specific point in time.
+     The algorithmic function of a `quadInOut` ease used to calculate a value between a
+     starting and ending position at a specific point in time.
 
      - Parameters:
         - b: The start value (b = begin).
@@ -307,8 +308,8 @@ extension EaseFunctions {
     // MARK: Quartic
 
     /**
-     The algorithmic function of a `quartIn` ease used to calculate a value
-     between a starting and ending position at a specific point in time.
+     The algorithmic function of a `quartIn` ease used to calculate a value between a
+     starting and ending position at a specific point in time.
 
      - Parameters:
         - b: The start value (b = begin).
@@ -327,8 +328,8 @@ extension EaseFunctions {
     }
 
     /**
-     The algorithmic function of a `quartOut` ease used to calculate a value
-     between a starting and ending position at a specific point in time.
+     The algorithmic function of a `quartOut` ease used to calculate a value between a
+     starting and ending position at a specific point in time.
 
      - Parameters:
         - b: The start value (b = begin).
@@ -348,8 +349,8 @@ extension EaseFunctions {
     }
 
     /**
-     The algorithmic function of a `quartInOut` ease used to calculate a value
-     between a starting and ending position at a specific point in time.
+     The algorithmic function of a `quartInOut` ease used to calculate a value between a
+     starting and ending position at a specific point in time.
 
      - Parameters:
         - b: The start value (b = begin).
@@ -384,8 +385,8 @@ extension EaseFunctions {
     // MARK: Quintic
 
     /**
-     The algorithmic function of a `quintIn` ease used to calculate a value
-     between a starting and ending position at a specific point in time.
+     The algorithmic function of a `quintIn` ease used to calculate a value between a
+     starting and ending position at a specific point in time.
 
      - Parameters:
         - b: The start value (b = begin).
@@ -404,8 +405,8 @@ extension EaseFunctions {
     }
 
     /**
-     The algorithmic function of a `quintOut` ease used to calculate a value
-     between a starting and ending position at a specific point in time.
+     The algorithmic function of a `quintOut` ease used to calculate a value between a
+     starting and ending position at a specific point in time.
 
      - Parameters:
         - b: The start value (b = begin).
@@ -425,8 +426,8 @@ extension EaseFunctions {
     }
 
     /**
-     The algorithmic function of a `quintInOut` ease used to calculate a value
-     between a starting and ending position at a specific point in time.
+     The algorithmic function of a `quintInOut` ease used to calculate a value between a
+     starting and ending position at a specific point in time.
 
      - Parameters:
         - b: The start value (b = begin).
@@ -461,8 +462,8 @@ extension EaseFunctions {
     // MARK: Exponential
 
     /**
-     The algorithmic function of an `expoIn` ease used to calculate a value
-     between a starting and ending position at a specific point in time.
+     The algorithmic function of an `expoIn` ease used to calculate a value between a
+     starting and ending position at a specific point in time.
 
      - Parameters:
         - b: The start value (b = begin).
@@ -486,8 +487,8 @@ extension EaseFunctions {
     }
 
     /**
-     The algorithmic function of an `expoOut` ease used to calculate a value
-     between a starting and ending position at a specific point in time.
+     The algorithmic function of an `expoOut` ease used to calculate a value between a
+     starting and ending position at a specific point in time.
 
      - Parameters:
         - b: The start value (b = begin).
@@ -511,8 +512,8 @@ extension EaseFunctions {
     }
 
     /**
-     The algorithmic function of an `expoInOut` ease used to calculate a value
-     between a starting and ending position at a specific point in time.
+     The algorithmic function of an `expoInOut` ease used to calculate a value between a
+     starting and ending position at a specific point in time.
 
      - Parameters:
         - b: The start value (b = begin).
@@ -556,8 +557,8 @@ extension EaseFunctions {
     // MARK: Circular
 
     /**
-     The algorithmic function of a `circIn` ease used to calculate a value
-     between a starting and ending position at a specific point in time.
+     The algorithmic function of a `circIn` ease used to calculate a value between a
+     starting and ending position at a specific point in time.
 
      - Parameters:
         - b: The start value (b = begin).
@@ -578,8 +579,8 @@ extension EaseFunctions {
     }
 
     /**
-     The algorithmic function of a `circOut` ease used to calculate a value
-     between a starting and ending position at a specific point in time.
+     The algorithmic function of a `circOut` ease used to calculate a value between a
+     starting and ending position at a specific point in time.
 
      - Parameters:
         - b: The start value (b = begin).
@@ -600,8 +601,8 @@ extension EaseFunctions {
     }
 
     /**
-     The algorithmic function of a `circInOut` ease used to calculate a value
-     between a starting and ending position at a specific point in time.
+     The algorithmic function of a `circInOut` ease used to calculate a value between a
+     starting and ending position at a specific point in time.
 
      - Parameters:
         - b: The start value (b = begin).
@@ -638,8 +639,8 @@ extension EaseFunctions {
     // MARK: Back
 
     /**
-     The algorithmic function of a `backIn` ease used to calculate a value
-     between a starting and ending position at a specific point in time.
+     The algorithmic function of a `backIn` ease used to calculate a value between a
+     starting and ending position at a specific point in time.
 
      - Parameters:
         - b: The start value (b = begin).
@@ -660,8 +661,8 @@ extension EaseFunctions {
     }
 
     /**
-     The algorithmic function of a `backOut` ease used to calculate a value
-     between a starting and ending position at a specific point in time.
+     The algorithmic function of a `backOut` ease used to calculate a value between a
+     starting and ending position at a specific point in time.
 
      - Parameters:
         - b: The start value (b = begin).
@@ -683,8 +684,8 @@ extension EaseFunctions {
     }
 
     /**
-     The algorithmic function of a `backInOut` ease used to calculate a value
-     between a starting and ending position at a specific point in time.
+     The algorithmic function of a `backInOut` ease used to calculate a value between a
+     starting and ending position at a specific point in time.
 
      - Parameters:
         - b: The start value (b = begin).
@@ -723,8 +724,8 @@ extension EaseFunctions {
     // MARK: Elastic
 
     /**
-     The algorithmic function of an `elasticIn` ease used to calculate a value
-     between a starting and ending position at a specific point in time.
+     The algorithmic function of an `elasticIn` ease used to calculate a value between a
+     starting and ending position at a specific point in time.
 
      - Parameters:
         - b: The start value (b = begin).
@@ -762,8 +763,8 @@ extension EaseFunctions {
     }
 
     /**
-     The algorithmic function of an `elasticOut` ease used to calculate a value
-     between a starting and ending position at a specific point in time.
+     The algorithmic function of an `elasticOut` ease used to calculate a value between a
+     starting and ending position at a specific point in time.
 
      - Parameters:
         - b: The start value (b = begin).
@@ -799,8 +800,8 @@ extension EaseFunctions {
     }
 
     /**
-     The algorithmic function of an `elasticInOut` ease used to calculate a value
-     between a starting and ending position at a specific point in time.
+     The algorithmic function of an `elasticInOut` ease used to calculate a value between a
+     starting and ending position at a specific point in time.
 
      - Parameters:
         - b: The start value (b = begin).
@@ -860,8 +861,8 @@ extension EaseFunctions {
     // MARK: Bounce
 
     /**
-     The algorithmic function of a `bounceIn` ease used to calculate a value
-     between a starting and ending position at a specific point in time.
+     The algorithmic function of a `bounceIn` ease used to calculate a value between a
+     starting and ending position at a specific point in time.
 
      - Parameters:
         - b: The start value (b = begin).
@@ -879,8 +880,8 @@ extension EaseFunctions {
     }
 
     /**
-     The algorithmic function of a `bounceOut` ease used to calculate a value
-     between a starting and ending position at a specific point in time.
+     The algorithmic function of a `bounceOut` ease used to calculate a value between a
+     starting and ending position at a specific point in time.
 
      - Parameters:
         - b: The start value (b = begin).
@@ -914,8 +915,8 @@ extension EaseFunctions {
     }
 
     /**
-     The algorithmic function of a `bounceInOut` ease used to calculate a value
-     between a starting and ending position at a specific point in time.
+     The algorithmic function of a `bounceInOut` ease used to calculate a value between a
+     starting and ending position at a specific point in time.
 
      - Parameters:
         - b: The start value (b = begin).

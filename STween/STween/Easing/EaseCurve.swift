@@ -12,19 +12,17 @@ public enum EaseCurve {
     /// A case to denote no acceleration pattern, i.e., linear.
     case none
 
-    /// A case to denote an acceleration pattern that is more condensed in the
-    /// beginning and expands as the ease continues. This gives the illusion of
-    /// starting slow and speeding up.
+    /// A case to denote an acceleration pattern that is more condensed in the beginning and
+    /// expands as it continues. This mimics the motion of starting slow then speeding up.
     case `in`
 
-    /// A case to denote an acceleration pattern that is more expanded in the
-    /// beginning and condenses as the ease continues. This gives the illusion
-    /// of starting fast and slowing down.
+    /// A case to denote an acceleration pattern that is more expanded in the beginning and
+    /// condenses as it continues. This mimics the motion of starting fast then slowing down.
     case out
 
-    /// A case to denote an acceleration pattern that is both an `EaseCurve.in`
-    /// and `EaseCurve.out`. This gives the illusion of starting slow, speeding
-    /// up, then slowing down.
+    /// A case to denote an acceleration pattern that is more condensed in the beginning,
+    /// expands as it continues, then condenses again near the end. This mimics the motion of
+    /// starting slow, speeding up, then slowing down.
     case inOut
 
 }

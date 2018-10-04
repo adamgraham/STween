@@ -7,9 +7,8 @@
 //
 
 /**
- An extension of `Tween` to provide query method chaining. This allows
- multiple properties to be set on `self` in a simpler and more readable way.
- For example,
+ An extension of `Tween` to provide query method chaining. This allows multiple
+ properties to be set on `self` in a simpler and more readable way.
 
  ```
  let tween = self.tween(to: .width(50.0), duration: 1.0)
@@ -39,8 +38,7 @@ extension Tween {
      A query chaining method to assign a value to `self.delay`.
 
      - Parameters:
-        - delay: The amount of time, in seconds, to be assigned to 
-                 `self.delay`.
+        - delay: The amount of time, in seconds, to be assigned to `self.delay`.
 
      - Returns: `self` to allow for additional method chaining.
      */
@@ -53,8 +51,7 @@ extension Tween {
      A query chaining method to assign a value to `self.duration`.
 
      - Parameters:
-        - duration: The amount of time, in seconds, to be assigned to 
-                    `self.duration`.
+        - duration: The amount of time, in seconds, to be assigned to `self.duration`.
 
      - Returns: `self` to allow for additional method chaining.
      */

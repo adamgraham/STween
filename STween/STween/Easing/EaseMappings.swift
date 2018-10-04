@@ -13,7 +13,7 @@ internal enum EaseMappings {
     internal typealias EaseDefinition = (classification: EaseClassification,
                                          curve: EaseCurve)
 
-    /// A dictionary containing every `Ease` and its `EaseDefinition` data.
+    /// A dictionary containing each `Ease` and its associated `EaseDefinition` data.
     internal static let eases: [Ease: EaseDefinition] = [
         .linear:       (.linear,  .none),
         .sineIn:       (.sine,    .in),
@@ -48,13 +48,11 @@ internal enum EaseMappings {
         .bounceInOut:  (.bounce,  .inOut)
     ]
 
-    /// A typealias for a dictionary containing each `EaseCurve` and an
-    /// associated `Ease`.
-    internal typealias EaseCurveMappings = [EaseCurve: Ease]
+    /// A typealias for a dictionary containing an `EaseCurve` and its associated `Ease`.
+    internal typealias EaseCurveMapping = [EaseCurve: Ease]
 
-    /// A dictionary containing every `EaseClassification` and its associated
-    /// `EaseCurveMappings`.
-    internal static let classifications: [EaseClassification: EaseCurveMappings] = [
+    /// A dictionary containing each `EaseClassification` and its associated `EaseCurveMapping`.
+    internal static let classifications: [EaseClassification: EaseCurveMapping] = [
         .linear: [
             .in: .linear,
             .out: .linear,

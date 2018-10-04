@@ -37,8 +37,7 @@ internal final class TweenTimer {
     // MARK: Initialization Methods
 
     /**
-     A convenience initializer to create a `TweenTimer` and assign a delegate 
-     to it.
+     A convenience initializer to create a `TweenTimer` and assign a delegate to it.
      
      - Parameters:
         - delegate: The delegate to be assigned to the initialized timer.
@@ -58,8 +57,7 @@ internal final class TweenTimer {
     // MARK: State Control Methods
 
     /**
-     A method to set `self.running` to `true`, causing the timer to start 
-     firing "tick" events.
+     A method to set `self.running` to `true`, causing the timer to start firing "tick" events.
      */
     internal func start() {
         guard !self.running else {
@@ -72,8 +70,7 @@ internal final class TweenTimer {
     }
 
     /**
-     A method to set `self.running` to `false`, causing the timer to stop 
-     firing "tick" events.
+     A method to set `self.running` to `false`, causing the timer to stop firing "tick" events.
      */
     internal func stop() {
         guard self.running else {
@@ -95,7 +92,7 @@ internal final class TweenTimer {
     }
 
     /**
-     A method to reset, then start `self`.
+     A method to reset then start `self`.
 
      See also, the following methods:
         - `reset()`
@@ -109,9 +106,9 @@ internal final class TweenTimer {
     // MARK: Timer Event Methods
 
     /**
-     A method invoked every update cycle that updates `self`'s elapsed time 
-     by the amount of time passed since the last update cycle. The duration
-     between update cycles is determined by the timer's `timeInterval`.
+     A method invoked every update cycle that updates `self`'s elapsed time by the amount
+     of time passed since the last update cycle. The duration between update cycles is
+     determined by the timer's `timeInterval`.
      */
     @objc private func tick() {
         guard self.running else {
@@ -134,8 +131,8 @@ internal final class TweenTimer {
 protocol TweenTimerDelegate: class {
 
     /**
-     A delegate method to inform the listener that a timer invoked a "tick" 
-     event and has updated the elapsed time.
+     A delegate method to inform the listener that a timer invoked a "tick" event and has
+     updated the elapsed time.
      
      - Parameters:
         - timer: The timer the "tick" event was invoked on.

@@ -18,8 +18,8 @@ internal struct InterpolationValues<T: Interpolatable> where T.Value == T {
 
     // MARK: Computed Properties
 
-    /// The reversed version of `self` where the start value is the end value, and 
-    /// the end value is the start value.
+    /// The reversed version of `self` where the start value is the end value, and the end value
+    /// is the start value.
     internal var reversed: InterpolationValues<T> {
         return InterpolationValues(start: self.end, end: self.start)
     }
@@ -27,8 +27,8 @@ internal struct InterpolationValues<T: Interpolatable> where T.Value == T {
     // MARK: Methods
 
     /**
-     A method to calculate the value between `self.start` and `self.end` at 
-     a specific point in time.
+     A method to calculate the value between `self.start` and `self.end` at a specific
+     point in time.
      
      - Parameters:
         - ease: The `Ease` used to interpolate values.
@@ -37,8 +37,11 @@ internal struct InterpolationValues<T: Interpolatable> where T.Value == T {
 
      - Returns: The value interpolated between the start and end value.
      */
-    internal func interpolate(with ease: Ease, elapsed: TimeInterval, duration: TimeInterval) -> T {
-        return T.interpolate(from: self.start, to: self.end, with: ease, elapsed: elapsed, duration: duration)
+    internal func interpolate(with ease: Ease,
+                              elapsed: TimeInterval, duration: TimeInterval) -> T {
+
+        return T.interpolate(from: self.start, to: self.end, with: ease,
+                             elapsed: elapsed, duration: duration)
     }
     
 }

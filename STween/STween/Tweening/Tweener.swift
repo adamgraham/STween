@@ -43,10 +43,11 @@ extension Tweener {
     // MARK: Factory Creation
 
     /**
-     A method to instantiate a `Tween` that animates an array of properties on 
-     a `Tweenable` target *to* their desired values from their current values, 
-     with a given duration. The created tween will automatically be queued to
-     start if `Defaults.autoStartTweens` is `true`.
+     A method to create a `Tween` that animates an array of properties on a `Tweenable`
+     target *to* their desired values from their current values, with a given duration.
+
+     The created tween will automatically be queued to start if
+     `Defaults.autoStartTweens` is `true`.
      
      - Parameters:
         - target: The object or data structure on which properties are animated.
@@ -74,10 +75,11 @@ extension Tweener {
     }
 
     /**
-     A method to instantiate a `Tween` that animates an array of properties on
-     a `Tweenable` target *from* their desired values to their current values, 
-     with a given duration. The created tween will automatically be queued to
-     start if `Defaults.autoStartTweens` is `true`.
+     A method to create a `Tween` that animates an array of properties on a `Tweenable`
+     target *from* their desired values to their current values, with a given duration.
+
+     The created tween will automatically be queued to start if
+     `Defaults.autoStartTweens` is `true`.
      
      - Parameters:
         - target: The object or data structure on which properties are animated.
@@ -171,9 +173,8 @@ extension Tweener {
     }
 
     /**
-     A method to queue a tween to be started. Tweens are started one frame 
-     after being created in order for all necessarily properties to be applied 
-     before starting.
+     A method to queue a tween to be started. Tweens are started one frame after being
+     created in order for all necessarily properties to be applied before starting.
      
      - Parameters:
         - tween: The tween to be queued for start.
@@ -187,9 +188,8 @@ extension Tweener {
     }
 
     /**
-     A method to start all queued tweens by invoking `start` on each one.
-     This puts the tween in an active state and removes it from the list of
-     queued tweens.
+     A method to start all queued tweens by invoking `start` on each one. This puts the
+     tween in an active state and removes it from the list of queued tweens.
      */
     @objc internal func startQueuedTweens() {
         self.queuedTweens.forEach {
