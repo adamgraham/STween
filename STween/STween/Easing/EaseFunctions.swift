@@ -75,8 +75,8 @@ extension EaseFunctions {
     internal static func linear<Number: FloatingPoint>(
         b: Number, c: Number, t: Number, d: Number) -> Number {
 
-        let n = t/d
-        return c * n + b
+        let x = t/d
+        return c * x + b
     }
 
 }
@@ -101,8 +101,8 @@ extension EaseFunctions {
     internal static func sineIn<Number: FloatingPoint>(
         b: Number, c: Number, t: Number, d: Number) -> Number {
 
-        let n = t/d
-        let m = cos(n * Number.pi_half)
+        let x = t/d
+        let m = cos(x * Number.pi_half)
         return -c * m + c + b
     }
 
@@ -121,8 +121,8 @@ extension EaseFunctions {
     internal static func sineOut<Number: FloatingPoint>(
         b: Number, c: Number, t: Number, d: Number) -> Number {
 
-        let n = t/d
-        let m = sin(n * Number.pi_half)
+        let x = t/d
+        let m = sin(x * Number.pi_half)
         return c * m + b
     }
 
@@ -141,10 +141,9 @@ extension EaseFunctions {
     internal static func sineInOut<Number: FloatingPoint>(
         b: Number, c: Number, t: Number, d: Number) -> Number {
 
-        let x = c.half
-        let n = t/d
-        let m = cos(n * Number.pi) - Number(1)
-        return -x * m + b
+        let x = t/d
+        let m = cos(x * Number.pi) - Number(1)
+        return -c.half * m + b
     }
 
 }
@@ -169,8 +168,8 @@ extension EaseFunctions {
     internal static func cubicIn<Number: FloatingPoint>(
         b: Number, c: Number, t: Number, d: Number) -> Number {
 
-        let n = t/d
-        let m = n*n*n
+        let x = t/d
+        let m = x*x*x
         return c * m + b
     }
 
@@ -190,8 +189,8 @@ extension EaseFunctions {
         b: Number, c: Number, t: Number, d: Number) -> Number {
 
         let one = Number(1)
-        let n = (t/d) - one
-        let m = (n*n*n) + one
+        let x = (t/d) - one
+        let m = (x*x*x) + one
         return c * m + b
     }
 
@@ -210,18 +209,17 @@ extension EaseFunctions {
     internal static func cubicInOut<Number: FloatingPoint>(
         b: Number, c: Number, t: Number, d: Number) -> Number {
 
-        let x = c.half
-        var n = t/(d.half)
+        var x = t/(d.half)
 
-        if n < Number(1) {
-            let m = n*n*n
-            return x * m + b
+        if x < Number(1) {
+            let m = x*x*x
+            return c.half * m + b
         }
 
         let two = Number(2)
-        n -= two
-        let m = (n*n*n) + two
-        return x * m + b
+        x -= two
+        let m = (x*x*x) + two
+        return c.half * m + b
     }
     
 }
@@ -246,8 +244,8 @@ extension EaseFunctions {
     internal static func quadIn<Number: FloatingPoint>(
         b: Number, c: Number, t: Number, d: Number) -> Number {
 
-        let n = t/d
-        let m = n*n
+        let x = t/d
+        let m = x*x
         return c * m + b
     }
 
@@ -266,8 +264,8 @@ extension EaseFunctions {
     internal static func quadOut<Number: FloatingPoint>(
         b: Number, c: Number, t: Number, d: Number) -> Number {
 
-        let n = t/d
-        let m = n*(n - Number(2))
+        let x = t/d
+        let m = x*(x - Number(2))
         return -c * m + b
     }
 
@@ -287,17 +285,16 @@ extension EaseFunctions {
         b: Number, c: Number, t: Number, d: Number) -> Number {
 
         let one = Number(1)
-        let x = c.half
-        var n = t/(d.half)
+        var x = t/(d.half)
 
-        if n < one {
-            let m = n*n
-            return x * m + b
+        if x < one {
+            let m = x*x
+            return c.half * m + b
         }
 
-        n -= one
-        let m = n*(n - Number(2)) - one
-        return -x * m + b
+        x -= one
+        let m = x*(x - Number(2)) - one
+        return -c.half * m + b
     }
     
 }
@@ -322,8 +319,8 @@ extension EaseFunctions {
     internal static func quartIn<Number: FloatingPoint>(
         b: Number, c: Number, t: Number, d: Number) -> Number {
 
-        let n = t/d
-        let m = n*n*n*n
+        let x = t/d
+        let m = x*x*x*x
         return c * m + b
     }
 
@@ -343,8 +340,8 @@ extension EaseFunctions {
         b: Number, c: Number, t: Number, d: Number) -> Number {
 
         let one = Number(1)
-        let n = (t/d) - one
-        let m = (n*n*n*n) - one
+        let x = (t/d) - one
+        let m = (x*x*x*x) - one
         return -c * m + b
     }
 
@@ -363,18 +360,17 @@ extension EaseFunctions {
     internal static func quartInOut<Number: FloatingPoint>(
         b: Number, c: Number, t: Number, d: Number) -> Number {
 
-        let x = c.half
-        var n = t/(d.half)
+        var x = t/(d.half)
 
-        if n < Number(1) {
-            let m = n*n*n*n
-            return x * m + b
+        if x < Number(1) {
+            let m = x*x*x*x
+            return c.half * m + b
         }
 
         let two = Number(2)
-        n -= two
-        let m = (n*n*n*n) - two
-        return -x * m + b
+        x -= two
+        let m = (x*x*x*x) - two
+        return -c.half * m + b
     }
     
 }
@@ -399,8 +395,8 @@ extension EaseFunctions {
     internal static func quintIn<Number: FloatingPoint>(
         b: Number, c: Number, t: Number, d: Number) -> Number {
 
-        let n = t/d
-        let m = n*n*n*n*n
+        let x = t/d
+        let m = x*x*x*x*x
         return c * m + b
     }
 
@@ -420,8 +416,8 @@ extension EaseFunctions {
         b: Number, c: Number, t: Number, d: Number) -> Number {
 
         let one = Number(1)
-        let n = (t/d) - one
-        let m = (n*n*n*n*n) + one
+        let x = (t/d) - one
+        let m = (x*x*x*x*x) + one
         return c * m + b
     }
 
@@ -440,18 +436,17 @@ extension EaseFunctions {
     internal static func quintInOut<Number: FloatingPoint>(
         b: Number, c: Number, t: Number, d: Number) -> Number {
 
-        let x = c.half
-        var n = t/(d.half)
+        var x = t/(d.half)
 
-        if n < Number(1) {
-            let m = n*n*n*n*n
-            return x * m + b
+        if x < Number(1) {
+            let m = x*x*x*x*x
+            return c.half * m + b
         }
 
         let two = Number(2)
-        n -= two
-        let m = (n*n*n*n*n) + two
-        return x * m + b
+        x -= two
+        let m = (x*x*x*x*x) + two
+        return c.half * m + b
     }
     
 }
@@ -480,9 +475,9 @@ extension EaseFunctions {
             return b
         }
 
-        let n = t/d
-        let z = Number(10) * (n - Number(1))
-        let m = pow(Number(2), z)
+        let x = t/d
+        let e = Number(10) * (x - Number(1))
+        let m = pow(Number(2), e)
         return c * m + b
     }
 
@@ -505,9 +500,9 @@ extension EaseFunctions {
             return b + c
         }
 
-        let n = t/d
-        let z = -Number(10) * n
-        let m = -pow(Number(2), z) + Number(1)
+        let x = t/d
+        let e = -Number(10) * x
+        let m = -pow(Number(2), e) + Number(1)
         return c * m + b
     }
 
@@ -533,20 +528,19 @@ extension EaseFunctions {
         }
 
         let one = Number(1)
-        let x = c.half
-        var n = t/(d.half)
+        var x = t/(d.half)
 
-        if n < one {
-            let z = Number(10) * (n - one)
-            let m = pow(Number(2), z)
-            return x * m + b
+        if x < one {
+            let e = Number(10) * (x - one)
+            let m = pow(Number(2), e)
+            return c.half * m + b
         }
 
-        n -= one
+        x -= one
         let two = Number(2)
-        let z = -Number(10) * n
-        let m = -pow(two, z) + two
-        return x * m + b
+        let e = -Number(10) * x
+        let m = -pow(two, e) + two
+        return c.half * m + b
     }
     
 }
@@ -572,9 +566,8 @@ extension EaseFunctions {
         b: Number, c: Number, t: Number, d: Number) -> Number {
 
         let one = Number(1)
-        let n = t/d
-        let z = one - (n*n)
-        let m = sqrt(z) - one
+        let x = t/d
+        let m = sqrt(one - (x*x)) - one
         return -c * m + b
     }
 
@@ -594,9 +587,8 @@ extension EaseFunctions {
         b: Number, c: Number, t: Number, d: Number) -> Number {
 
         let one = Number(1)
-        let n = (t/d) - one
-        let z = one - (n*n)
-        let m = sqrt(z)
+        let x = (t/d) - one
+        let m = sqrt(one - (x*x))
         return c * m + b
     }
 
@@ -616,19 +608,16 @@ extension EaseFunctions {
         b: Number, c: Number, t: Number, d: Number) -> Number {
 
         let one = Number(1)
-        let x = c.half
-        var n = t/(d.half)
+        var x = t/(d.half)
 
-        if n < one {
-            let z = one - (n*n)
-            let m = sqrt(z) - one
-            return -x * m + b
+        if x < one {
+            let m = sqrt(one - (x*x)) - one
+            return -c.half * m + b
         }
 
-        n -= Number(2)
-        let z = one - (n*n)
-        let m = sqrt(z) + one
-        return x * m + b
+        x -= Number(2)
+        let m = sqrt(one - (x*x)) + one
+        return c.half * m + b
     }
     
 }
@@ -654,9 +643,9 @@ extension EaseFunctions {
         b: Number, c: Number, t: Number, d: Number) -> Number {
 
         let s = Number(Defaults.overshoot)
-        let n = t/d
-        let z = ((s + Number(1)) * n) - s
-        let m = n*n*z
+        let x = t/d
+        let e = ((s + Number(1)) * x) - s
+        let m = x*x*e
         return c * m + b
     }
 
@@ -677,9 +666,9 @@ extension EaseFunctions {
 
         let one = Number(1)
         let s = Number(Defaults.overshoot)
-        let n = (t/d) - one
-        let z = ((s + one) * n) + s
-        let m = (n*n*z) + one
+        let x = (t/d) - one
+        let e = ((s + one) * x) + s
+        let m = (x*x*e) + one
         return c * m + b
     }
 
@@ -700,20 +689,19 @@ extension EaseFunctions {
 
         let one = Number(1)
         let s = Number(Defaults.overshoot * 1.525)
-        let x = c.half
-        var n = t/(d.half)
+        var x = t/(d.half)
 
-        if n < one {
-            let z = ((s + one) * n) - s
-            let m = n*n*z
-            return x * m + b
+        if x < one {
+            let e = ((s + one) * x) - s
+            let m = x*x*e
+            return c.half * m + b
         }
 
         let two = Number(2)
-        n -= two
-        let z = ((s + one) * n) + s
-        let m = (n*n*z) + two
-        return x * m + b
+        x -= two
+        let e = ((s + one) * x) + s
+        let m = (x*x*e) + two
+        return c.half * m + b
     }
     
 }
@@ -739,27 +727,26 @@ extension EaseFunctions {
         b: Number, c: Number, t: Number, d: Number) -> Number {
 
         let one = Number(1)
-        var n = t/d
+        var x = t/d
 
         if t == Number(0) {
             return b
-        } else if n == one {
+        } else if x == one {
             return b + c
         }
 
         let p = d * Number(0.3) // period
         let a = c // amplitude
         let s = p * Number(0.25)
-        n -= one
+        x -= one
 
-        let m1_z = Number(10) * n
-        let m1 = a * pow(Number(2), m1_z)
+        let e1 = Number(10) * x
+        let m1 = a * pow(Number(2), e1)
 
-        let m2_z = (n*d) - s
-        let m2 = sin(m2_z * Number.pi_double / p)
+        let e2 = (x*d) - s
+        let m2 = sin(e2 * Number.pi_double / p)
 
-        let m = -(m1 * m2)
-        return m + b
+        return -(m1 * m2) + b
     }
 
     /**
@@ -777,11 +764,11 @@ extension EaseFunctions {
     internal static func elasticOut<Number: FloatingPoint>(
         b: Number, c: Number, t: Number, d: Number) -> Number {
 
-        let n = t/d
+        let x = t/d
 
         if t == Number(0) {
             return b
-        } else if n == Number(1) {
+        } else if x == Number(1) {
             return b + c
         }
 
@@ -789,14 +776,13 @@ extension EaseFunctions {
         let a = c // amplitude
         let s = p * Number(0.25)
 
-        let m1_z = -Number(10) * n
-        let m1 = a * pow(Number(2), m1_z)
+        let e1 = -Number(10) * x
+        let m1 = a * pow(Number(2), e1)
 
-        let m2_z = (n*d) - s
-        let m2 = sin(m2_z * Number.pi_double / p)
+        let e2 = (x*d) - s
+        let m2 = sin(e2 * Number.pi_double / p)
 
-        let m = m1 * m2
-        return c + m + b
+        return c + (m1 * m2) + b
     }
 
     /**
@@ -815,11 +801,11 @@ extension EaseFunctions {
         b: Number, c: Number, t: Number, d: Number) -> Number {
 
         let two = Number(2)
-        var n = t/(d.half)
+        var x = t/(d.half)
 
         if t == Number(0) {
             return b
-        } else if n == two {
+        } else if x == two {
             return b + c
         }
 
@@ -828,29 +814,27 @@ extension EaseFunctions {
         let a = c // amplitude
         let s = p * Number(0.25)
 
-        if n < one {
-            n -= one
+        if x < one {
+            x -= one
 
-            let m1_z = Number(10) * n
-            let m1 = a * pow(Number(2), m1_z)
+            let e1 = Number(10) * x
+            let m1 = a * pow(Number(2), e1)
 
-            let m2_z = (n*d) - s
-            let m2 = sin(m2_z * Number.pi_double / p)
+            let e2 = (x*d) - s
+            let m2 = sin(e2 * Number.pi_double / p)
 
-            let m = -(m1 * m2).half
-            return m + b
+            return -(m1 * m2).half + b
         }
 
-        n -= one
+        x -= one
 
-        let m1_z = -Number(10) * n
-        let m1 = a * pow(Number(2), m1_z)
+        let e1 = -Number(10) * x
+        let m1 = a * pow(Number(2), e1)
 
-        let m2_z = (n*d) - s
-        let m2 = sin(m2_z * Number.pi_double / p)
+        let e2 = (x*d) - s
+        let m2 = sin(e2 * Number.pi_double / p)
 
-        let m = (m1 * m2).half
-        return c + m + b
+        return c + (m1 * m2).half + b
     }
     
 }
@@ -894,23 +878,23 @@ extension EaseFunctions {
     internal static func bounceOut<Number: FloatingPoint>(
         b: Number, c: Number, t: Number, d: Number) -> Number {
 
-        var n = t/d
-        let z: Number
+        var x = t/d
+        let e: Number
 
-        if n < Number(1.000 / 2.750) {
-            z = Number(0)
-        } else if n < Number(2.000 / 2.750) {
-            n -= Number(1.500 / 2.750)
-            z = Number(0.75)
-        } else if n < Number(2.500 / 2.750) {
-            n -= Number(2.250 / 2.750)
-            z = Number(0.9375)
+        if x < Number(1.000 / 2.750) {
+            e = Number(0)
+        } else if x < Number(2.000 / 2.750) {
+            x -= Number(1.500 / 2.750)
+            e = Number(0.75)
+        } else if x < Number(2.500 / 2.750) {
+            x -= Number(2.250 / 2.750)
+            e = Number(0.9375)
         } else {
-            n -= Number(2.625 / 2.750)
-            z = Number(0.984375)
+            x -= Number(2.625 / 2.750)
+            e = Number(0.984375)
         }
 
-        let m = (Number(7.5625) * (n*n)) + z
+        let m = (Number(7.5625) * (x*x)) + e
         return c * m + b
     }
 
@@ -930,14 +914,11 @@ extension EaseFunctions {
         b: Number, c: Number, t: Number, d: Number) -> Number {
         
         if t < (d.half) {
-            let z = t.double
-            let m = EaseFunctions.bounceIn(b: Number(0), c: c, t: z, d: d).half
+            let m = EaseFunctions.bounceIn(b: Number(0), c: c, t: t.double, d: d).half
             return m + b
         }
 
-        let x = c.half
-        let z = (t.double)-d
-        let m = (EaseFunctions.bounceOut(b: Number(0), c: c, t: z, d: d).half) + x
+        let m = (EaseFunctions.bounceOut(b: Number(0), c: c, t: (t.double)-d, d: d).half) + c.half
         return m + b
     }
     
