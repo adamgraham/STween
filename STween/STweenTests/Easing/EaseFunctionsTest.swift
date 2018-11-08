@@ -31,7 +31,7 @@ class EaseFunctionsTest: XCTestCase {
         assertType(CGFloat.self, accuracy: CGFloat.ulpOfOne.double)
     }
 
-    private func assertType<T: FloatingPoint>(_ type: T.Type, accuracy: T) {
+    private func assertType<Number: InterpolatableNumber>(_ type: Number.Type, accuracy: Number) {
         assertLinear(type, accuracy)
 
         assertSineIn(type, accuracy)
@@ -77,644 +77,644 @@ class EaseFunctionsTest: XCTestCase {
 
     // MARK: Linear Asserts
 
-    private func assertLinear<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
-        let function: EaseFunction<T> = EaseFunctions.linear
-        var value: T
+    private func assertLinear<Number: InterpolatableNumber>(_ type: Number.Type, _ accuracy: Number) {
+        let function: EaseFunction<Number> = EaseFunctions.linear
+        var value: Number
 
-        value = function(T(0), T(1), T(0.00), T(1)) // 0%
-        XCTAssertEqual(value, T(0), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.00), Number(1)) // 0%
+        XCTAssertEqual(value, Number(0), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.25), T(1)) // 25%
-        XCTAssertEqual(value, T(0.25), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.25), Number(1)) // 25%
+        XCTAssertEqual(value, Number(0.25), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.50), T(1)) // 50%
-        XCTAssertEqual(value, T(0.5), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.50), Number(1)) // 50%
+        XCTAssertEqual(value, Number(0.5), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.75), T(1)) // 75%
-        XCTAssertEqual(value, T(0.75), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.75), Number(1)) // 75%
+        XCTAssertEqual(value, Number(0.75), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(1.00), T(1)) // 100%
-        XCTAssertEqual(value, T(1.00), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(1.00), Number(1)) // 100%
+        XCTAssertEqual(value, Number(1.00), accuracy: accuracy)
     }
 
     // MARK: Sinusoidal Asserts
 
-    private func assertSineIn<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
-        let function: EaseFunction<T> = EaseFunctions.sineIn
-        var value: T
+    private func assertSineIn<Number: InterpolatableNumber>(_ type: Number.Type, _ accuracy: Number) {
+        let function: EaseFunction<Number> = EaseFunctions.sineIn
+        var value: Number
 
-        value = function(T(0), T(1), T(0.00), T(1)) // 0%
-        XCTAssertEqual(value, T(0), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.00), Number(1)) // 0%
+        XCTAssertEqual(value, Number(0), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.25), T(1)) // 25%
-        XCTAssertEqual(value, T(0.07612046748871326), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.25), Number(1)) // 25%
+        XCTAssertEqual(value, Number(0.07612046748871326), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.50), T(1)) // 50%
-        XCTAssertEqual(value, T(0.2928932188134524), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.50), Number(1)) // 50%
+        XCTAssertEqual(value, Number(0.2928932188134524), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.75), T(1)) // 75%
-        XCTAssertEqual(value, T(0.6173165676349102), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.75), Number(1)) // 75%
+        XCTAssertEqual(value, Number(0.6173165676349102), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(1.00), T(1)) // 100%
-        XCTAssertEqual(value, T(1.00), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(1.00), Number(1)) // 100%
+        XCTAssertEqual(value, Number(1.00), accuracy: accuracy)
     }
 
-    private func assertSineOut<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
-        let function: EaseFunction<T> = EaseFunctions.sineOut
-        var value: T
+    private func assertSineOut<Number: InterpolatableNumber>(_ type: Number.Type, _ accuracy: Number) {
+        let function: EaseFunction<Number> = EaseFunctions.sineOut
+        var value: Number
 
-        value = function(T(0), T(1), T(0.00), T(1)) // 0%
-        XCTAssertEqual(value, T(0), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.00), Number(1)) // 0%
+        XCTAssertEqual(value, Number(0), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.25), T(1)) // 25%
-        XCTAssertEqual(value, T(0.3826834323650898), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.25), Number(1)) // 25%
+        XCTAssertEqual(value, Number(0.3826834323650898), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.50), T(1)) // 50%
-        XCTAssertEqual(value, T(0.7071067811865475), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.50), Number(1)) // 50%
+        XCTAssertEqual(value, Number(0.7071067811865475), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.75), T(1)) // 75%
-        XCTAssertEqual(value, T(0.9238795325112867), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.75), Number(1)) // 75%
+        XCTAssertEqual(value, Number(0.9238795325112867), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(1.00), T(1)) // 100%
-        XCTAssertEqual(value, T(1.00), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(1.00), Number(1)) // 100%
+        XCTAssertEqual(value, Number(1.00), accuracy: accuracy)
     }
 
-    private func assertSineInOut<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
-        let function: EaseFunction<T> = EaseFunctions.sineInOut
-        var value: T
+    private func assertSineInOut<Number: InterpolatableNumber>(_ type: Number.Type, _ accuracy: Number) {
+        let function: EaseFunction<Number> = EaseFunctions.sineInOut
+        var value: Number
 
-        value = function(T(0), T(1), T(0.00), T(1)) // 0%
-        XCTAssertEqual(value, T(0), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.00), Number(1)) // 0%
+        XCTAssertEqual(value, Number(0), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.25), T(1)) // 25%
-        XCTAssertEqual(value, T(0.1464466094067262), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.25), Number(1)) // 25%
+        XCTAssertEqual(value, Number(0.1464466094067262), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.50), T(1)) // 50%
-        XCTAssertEqual(value, T(0.5), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.50), Number(1)) // 50%
+        XCTAssertEqual(value, Number(0.5), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.75), T(1)) // 75%
-        XCTAssertEqual(value, T(0.8535533905932737), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.75), Number(1)) // 75%
+        XCTAssertEqual(value, Number(0.8535533905932737), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(1.00), T(1)) // 100%
-        XCTAssertEqual(value, T(1.00), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(1.00), Number(1)) // 100%
+        XCTAssertEqual(value, Number(1.00), accuracy: accuracy)
     }
 
     // MARK: Cubic Asserts
 
-    private func assertCubicIn<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
-        let function: EaseFunction<T> = EaseFunctions.cubicIn
-        var value: T
+    private func assertCubicIn<Number: InterpolatableNumber>(_ type: Number.Type, _ accuracy: Number) {
+        let function: EaseFunction<Number> = EaseFunctions.cubicIn
+        var value: Number
 
-        value = function(T(0), T(1), T(0.00), T(1)) // 0%
-        XCTAssertEqual(value, T(0), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.00), Number(1)) // 0%
+        XCTAssertEqual(value, Number(0), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.25), T(1)) // 25%
-        XCTAssertEqual(value, T(0.015625), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.25), Number(1)) // 25%
+        XCTAssertEqual(value, Number(0.015625), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.50), T(1)) // 50%
-        XCTAssertEqual(value, T(0.125), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.50), Number(1)) // 50%
+        XCTAssertEqual(value, Number(0.125), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.75), T(1)) // 75%
-        XCTAssertEqual(value, T(0.421875), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.75), Number(1)) // 75%
+        XCTAssertEqual(value, Number(0.421875), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(1.00), T(1)) // 100%
-        XCTAssertEqual(value, T(1.00), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(1.00), Number(1)) // 100%
+        XCTAssertEqual(value, Number(1.00), accuracy: accuracy)
     }
 
-    private func assertCubicOut<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
-        let function: EaseFunction<T> = EaseFunctions.cubicOut
-        var value: T
+    private func assertCubicOut<Number: InterpolatableNumber>(_ type: Number.Type, _ accuracy: Number) {
+        let function: EaseFunction<Number> = EaseFunctions.cubicOut
+        var value: Number
 
-        value = function(T(0), T(1), T(0.00), T(1)) // 0%
-        XCTAssertEqual(value, T(0), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.00), Number(1)) // 0%
+        XCTAssertEqual(value, Number(0), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.25), T(1)) // 25%
-        XCTAssertEqual(value, T(0.578125), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.25), Number(1)) // 25%
+        XCTAssertEqual(value, Number(0.578125), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.50), T(1)) // 50%
-        XCTAssertEqual(value, T(0.875), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.50), Number(1)) // 50%
+        XCTAssertEqual(value, Number(0.875), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.75), T(1)) // 75%
-        XCTAssertEqual(value, T(0.984375), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.75), Number(1)) // 75%
+        XCTAssertEqual(value, Number(0.984375), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(1.00), T(1)) // 100%
-        XCTAssertEqual(value, T(1.00), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(1.00), Number(1)) // 100%
+        XCTAssertEqual(value, Number(1.00), accuracy: accuracy)
     }
 
-    private func assertCubicInOut<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
-        let function: EaseFunction<T> = EaseFunctions.cubicInOut
-        var value: T
+    private func assertCubicInOut<Number: InterpolatableNumber>(_ type: Number.Type, _ accuracy: Number) {
+        let function: EaseFunction<Number> = EaseFunctions.cubicInOut
+        var value: Number
 
-        value = function(T(0), T(1), T(0.00), T(1)) // 0%
-        XCTAssertEqual(value, T(0), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.00), Number(1)) // 0%
+        XCTAssertEqual(value, Number(0), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.25), T(1)) // 25%
-        XCTAssertEqual(value, T(0.0625), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.25), Number(1)) // 25%
+        XCTAssertEqual(value, Number(0.0625), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.50), T(1)) // 50%
-        XCTAssertEqual(value, T(0.5), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.50), Number(1)) // 50%
+        XCTAssertEqual(value, Number(0.5), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.75), T(1)) // 75%
-        XCTAssertEqual(value, T(0.9375), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.75), Number(1)) // 75%
+        XCTAssertEqual(value, Number(0.9375), accuracy: accuracy)
         
-        value = function(T(0), T(1), T(1.00), T(1)) // 100%
-        XCTAssertEqual(value, T(1.00), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(1.00), Number(1)) // 100%
+        XCTAssertEqual(value, Number(1.00), accuracy: accuracy)
     }
 
     // MARK: Quadratic Asserts
 
-    private func assertQuadIn<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
-        let function: EaseFunction<T> = EaseFunctions.quadIn
-        var value: T
+    private func assertQuadIn<Number: InterpolatableNumber>(_ type: Number.Type, _ accuracy: Number) {
+        let function: EaseFunction<Number> = EaseFunctions.quadIn
+        var value: Number
 
-        value = function(T(0), T(1), T(0.00), T(1)) // 0%
-        XCTAssertEqual(value, T(0), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.00), Number(1)) // 0%
+        XCTAssertEqual(value, Number(0), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.25), T(1)) // 25%
-        XCTAssertEqual(value, T(0.0625), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.25), Number(1)) // 25%
+        XCTAssertEqual(value, Number(0.0625), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.50), T(1)) // 50%
-        XCTAssertEqual(value, T(0.25), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.50), Number(1)) // 50%
+        XCTAssertEqual(value, Number(0.25), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.75), T(1)) // 75%
-        XCTAssertEqual(value, T(0.5625), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.75), Number(1)) // 75%
+        XCTAssertEqual(value, Number(0.5625), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(1.00), T(1)) // 100%
-        XCTAssertEqual(value, T(1.00), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(1.00), Number(1)) // 100%
+        XCTAssertEqual(value, Number(1.00), accuracy: accuracy)
     }
 
-    private func assertQuadOut<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
-        let function: EaseFunction<T> = EaseFunctions.quadOut
-        var value: T
+    private func assertQuadOut<Number: InterpolatableNumber>(_ type: Number.Type, _ accuracy: Number) {
+        let function: EaseFunction<Number> = EaseFunctions.quadOut
+        var value: Number
 
-        value = function(T(0), T(1), T(0.00), T(1)) // 0%
-        XCTAssertEqual(value, T(0), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.00), Number(1)) // 0%
+        XCTAssertEqual(value, Number(0), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.25), T(1)) // 25%
-        XCTAssertEqual(value, T(0.4375), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.25), Number(1)) // 25%
+        XCTAssertEqual(value, Number(0.4375), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.50), T(1)) // 50%
-        XCTAssertEqual(value, T(0.75), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.50), Number(1)) // 50%
+        XCTAssertEqual(value, Number(0.75), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.75), T(1)) // 75%
-        XCTAssertEqual(value, T(0.9375), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.75), Number(1)) // 75%
+        XCTAssertEqual(value, Number(0.9375), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(1.00), T(1)) // 100%
-        XCTAssertEqual(value, T(1.00), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(1.00), Number(1)) // 100%
+        XCTAssertEqual(value, Number(1.00), accuracy: accuracy)
     }
 
-    private func assertQuadInOut<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
-        let function: EaseFunction<T> = EaseFunctions.quadInOut
-        var value: T
+    private func assertQuadInOut<Number: InterpolatableNumber>(_ type: Number.Type, _ accuracy: Number) {
+        let function: EaseFunction<Number> = EaseFunctions.quadInOut
+        var value: Number
 
-        value = function(T(0), T(1), T(0.00), T(1)) // 0%
-        XCTAssertEqual(value, T(0), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.00), Number(1)) // 0%
+        XCTAssertEqual(value, Number(0), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.25), T(1)) // 25%
-        XCTAssertEqual(value, T(0.125), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.25), Number(1)) // 25%
+        XCTAssertEqual(value, Number(0.125), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.50), T(1)) // 50%
-        XCTAssertEqual(value, T(0.5), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.50), Number(1)) // 50%
+        XCTAssertEqual(value, Number(0.5), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.75), T(1)) // 75%
-        XCTAssertEqual(value, T(0.875), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.75), Number(1)) // 75%
+        XCTAssertEqual(value, Number(0.875), accuracy: accuracy)
         
-        value = function(T(0), T(1), T(1.00), T(1)) // 100%
-        XCTAssertEqual(value, T(1.00), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(1.00), Number(1)) // 100%
+        XCTAssertEqual(value, Number(1.00), accuracy: accuracy)
     }
 
     // MARK: Quartic Asserts
 
-    private func assertQuartIn<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
-        let function: EaseFunction<T> = EaseFunctions.quartIn
-        var value: T
+    private func assertQuartIn<Number: InterpolatableNumber>(_ type: Number.Type, _ accuracy: Number) {
+        let function: EaseFunction<Number> = EaseFunctions.quartIn
+        var value: Number
 
-        value = function(T(0), T(1), T(0.00), T(1)) // 0%
-        XCTAssertEqual(value, T(0), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.00), Number(1)) // 0%
+        XCTAssertEqual(value, Number(0), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.25), T(1)) // 25%
-        XCTAssertEqual(value, T(0.00390625), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.25), Number(1)) // 25%
+        XCTAssertEqual(value, Number(0.00390625), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.50), T(1)) // 50%
-        XCTAssertEqual(value, T(0.0625), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.50), Number(1)) // 50%
+        XCTAssertEqual(value, Number(0.0625), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.75), T(1)) // 75%
-        XCTAssertEqual(value, T(0.31640625), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.75), Number(1)) // 75%
+        XCTAssertEqual(value, Number(0.31640625), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(1.00), T(1)) // 100%
-        XCTAssertEqual(value, T(1.00), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(1.00), Number(1)) // 100%
+        XCTAssertEqual(value, Number(1.00), accuracy: accuracy)
     }
 
-    private func assertQuartOut<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
-        let function: EaseFunction<T> = EaseFunctions.quartOut
-        var value: T
+    private func assertQuartOut<Number: InterpolatableNumber>(_ type: Number.Type, _ accuracy: Number) {
+        let function: EaseFunction<Number> = EaseFunctions.quartOut
+        var value: Number
 
-        value = function(T(0), T(1), T(0.00), T(1)) // 0%
-        XCTAssertEqual(value, T(0), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.00), Number(1)) // 0%
+        XCTAssertEqual(value, Number(0), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.25), T(1)) // 25%
-        XCTAssertEqual(value, T(0.68359375), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.25), Number(1)) // 25%
+        XCTAssertEqual(value, Number(0.68359375), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.50), T(1)) // 50%
-        XCTAssertEqual(value, T(0.9375), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.50), Number(1)) // 50%
+        XCTAssertEqual(value, Number(0.9375), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.75), T(1)) // 75%
-        XCTAssertEqual(value, T(0.99609375), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.75), Number(1)) // 75%
+        XCTAssertEqual(value, Number(0.99609375), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(1.00), T(1)) // 100%
-        XCTAssertEqual(value, T(1.00), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(1.00), Number(1)) // 100%
+        XCTAssertEqual(value, Number(1.00), accuracy: accuracy)
     }
 
-    private func assertQuartInOut<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
-        let function: EaseFunction<T> = EaseFunctions.quartInOut
-        var value: T
+    private func assertQuartInOut<Number: InterpolatableNumber>(_ type: Number.Type, _ accuracy: Number) {
+        let function: EaseFunction<Number> = EaseFunctions.quartInOut
+        var value: Number
 
-        value = function(T(0), T(1), T(0.00), T(1)) // 0%
-        XCTAssertEqual(value, T(0), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.00), Number(1)) // 0%
+        XCTAssertEqual(value, Number(0), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.25), T(1)) // 25%
-        XCTAssertEqual(value, T(0.03125), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.25), Number(1)) // 25%
+        XCTAssertEqual(value, Number(0.03125), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.50), T(1)) // 50%
-        XCTAssertEqual(value, T(0.5), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.50), Number(1)) // 50%
+        XCTAssertEqual(value, Number(0.5), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.75), T(1)) // 75%
-        XCTAssertEqual(value, T(0.96875), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.75), Number(1)) // 75%
+        XCTAssertEqual(value, Number(0.96875), accuracy: accuracy)
         
-        value = function(T(0), T(1), T(1.00), T(1)) // 100%
-        XCTAssertEqual(value, T(1.00), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(1.00), Number(1)) // 100%
+        XCTAssertEqual(value, Number(1.00), accuracy: accuracy)
     }
 
     // MARK: Quintic Asserts
 
-    private func assertQuintIn<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
-        let function: EaseFunction<T> = EaseFunctions.quintIn
-        var value: T
+    private func assertQuintIn<Number: InterpolatableNumber>(_ type: Number.Type, _ accuracy: Number) {
+        let function: EaseFunction<Number> = EaseFunctions.quintIn
+        var value: Number
 
-        value = function(T(0), T(1), T(0.00), T(1)) // 0%
-        XCTAssertEqual(value, T(0), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.00), Number(1)) // 0%
+        XCTAssertEqual(value, Number(0), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.25), T(1)) // 25%
-        XCTAssertEqual(value, T(0.0009765625), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.25), Number(1)) // 25%
+        XCTAssertEqual(value, Number(0.0009765625), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.50), T(1)) // 50%
-        XCTAssertEqual(value, T(0.03125), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.50), Number(1)) // 50%
+        XCTAssertEqual(value, Number(0.03125), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.75), T(1)) // 75%
-        XCTAssertEqual(value, T(0.2373046875), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.75), Number(1)) // 75%
+        XCTAssertEqual(value, Number(0.2373046875), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(1.00), T(1)) // 100%
-        XCTAssertEqual(value, T(1.00), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(1.00), Number(1)) // 100%
+        XCTAssertEqual(value, Number(1.00), accuracy: accuracy)
     }
 
-    private func assertQuintOut<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
-        let function: EaseFunction<T> = EaseFunctions.quintOut
-        var value: T
+    private func assertQuintOut<Number: InterpolatableNumber>(_ type: Number.Type, _ accuracy: Number) {
+        let function: EaseFunction<Number> = EaseFunctions.quintOut
+        var value: Number
 
-        value = function(T(0), T(1), T(0.00), T(1)) // 0%
-        XCTAssertEqual(value, T(0), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.00), Number(1)) // 0%
+        XCTAssertEqual(value, Number(0), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.25), T(1)) // 25%
-        XCTAssertEqual(value, T(0.7626953125), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.25), Number(1)) // 25%
+        XCTAssertEqual(value, Number(0.7626953125), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.50), T(1)) // 50%
-        XCTAssertEqual(value, T(0.96875), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.50), Number(1)) // 50%
+        XCTAssertEqual(value, Number(0.96875), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.75), T(1)) // 75%
-        XCTAssertEqual(value, T(0.9990234375), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.75), Number(1)) // 75%
+        XCTAssertEqual(value, Number(0.9990234375), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(1.00), T(1)) // 100%
-        XCTAssertEqual(value, T(1.00), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(1.00), Number(1)) // 100%
+        XCTAssertEqual(value, Number(1.00), accuracy: accuracy)
     }
 
-    private func assertQuintInOut<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
-        let function: EaseFunction<T> = EaseFunctions.quintInOut
-        var value: T
+    private func assertQuintInOut<Number: InterpolatableNumber>(_ type: Number.Type, _ accuracy: Number) {
+        let function: EaseFunction<Number> = EaseFunctions.quintInOut
+        var value: Number
 
-        value = function(T(0), T(1), T(0.00), T(1)) // 0%
-        XCTAssertEqual(value, T(0), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.00), Number(1)) // 0%
+        XCTAssertEqual(value, Number(0), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.25), T(1)) // 25%
-        XCTAssertEqual(value, T(0.015625), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.25), Number(1)) // 25%
+        XCTAssertEqual(value, Number(0.015625), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.50), T(1)) // 50%
-        XCTAssertEqual(value, T(0.5), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.50), Number(1)) // 50%
+        XCTAssertEqual(value, Number(0.5), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.75), T(1)) // 75%
-        XCTAssertEqual(value, T(0.984375), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.75), Number(1)) // 75%
+        XCTAssertEqual(value, Number(0.984375), accuracy: accuracy)
         
-        value = function(T(0), T(1), T(1.00), T(1)) // 100%
-        XCTAssertEqual(value, T(1.00), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(1.00), Number(1)) // 100%
+        XCTAssertEqual(value, Number(1.00), accuracy: accuracy)
     }
 
     // MARK: Exponential Asserts
 
-    private func assertExpoIn<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
-        let function: EaseFunction<T> = EaseFunctions.expoIn
-        var value: T
+    private func assertExpoIn<Number: InterpolatableNumber>(_ type: Number.Type, _ accuracy: Number) {
+        let function: EaseFunction<Number> = EaseFunctions.expoIn
+        var value: Number
 
-        value = function(T(0), T(1), T(0.00), T(1)) // 0%
-        XCTAssertEqual(value, T(0), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.00), Number(1)) // 0%
+        XCTAssertEqual(value, Number(0), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.25), T(1)) // 25%
-        XCTAssertEqual(value, T(0.005524271728019903), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.25), Number(1)) // 25%
+        XCTAssertEqual(value, Number(0.005524271728019903), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.50), T(1)) // 50%
-        XCTAssertEqual(value, T(0.03125), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.50), Number(1)) // 50%
+        XCTAssertEqual(value, Number(0.03125), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.75), T(1)) // 75%
-        XCTAssertEqual(value, T(0.1767766952966369), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.75), Number(1)) // 75%
+        XCTAssertEqual(value, Number(0.1767766952966369), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(1.00), T(1)) // 100%
-        XCTAssertEqual(value, T(1.00), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(1.00), Number(1)) // 100%
+        XCTAssertEqual(value, Number(1.00), accuracy: accuracy)
     }
 
-    private func assertExpoOut<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
-        let function: EaseFunction<T> = EaseFunctions.expoOut
-        var value: T
+    private func assertExpoOut<Number: InterpolatableNumber>(_ type: Number.Type, _ accuracy: Number) {
+        let function: EaseFunction<Number> = EaseFunctions.expoOut
+        var value: Number
 
-        value = function(T(0), T(1), T(0.00), T(1)) // 0%
-        XCTAssertEqual(value, T(0), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.00), Number(1)) // 0%
+        XCTAssertEqual(value, Number(0), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.25), T(1)) // 25%
-        XCTAssertEqual(value, T(0.8232233047033631), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.25), Number(1)) // 25%
+        XCTAssertEqual(value, Number(0.8232233047033631), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.50), T(1)) // 50%
-        XCTAssertEqual(value, T(0.96875), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.50), Number(1)) // 50%
+        XCTAssertEqual(value, Number(0.96875), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.75), T(1)) // 75%
-        XCTAssertEqual(value, T(0.99447572827198), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.75), Number(1)) // 75%
+        XCTAssertEqual(value, Number(0.99447572827198), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(1.00), T(1)) // 100%
-        XCTAssertEqual(value, T(1.00), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(1.00), Number(1)) // 100%
+        XCTAssertEqual(value, Number(1.00), accuracy: accuracy)
     }
 
-    private func assertExpoInOut<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
-        let function: EaseFunction<T> = EaseFunctions.expoInOut
-        var value: T
+    private func assertExpoInOut<Number: InterpolatableNumber>(_ type: Number.Type, _ accuracy: Number) {
+        let function: EaseFunction<Number> = EaseFunctions.expoInOut
+        var value: Number
 
-        value = function(T(0), T(1), T(0.00), T(1)) // 0%
-        XCTAssertEqual(value, T(0), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.00), Number(1)) // 0%
+        XCTAssertEqual(value, Number(0), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.25), T(1)) // 25%
-        XCTAssertEqual(value, T(0.015625), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.25), Number(1)) // 25%
+        XCTAssertEqual(value, Number(0.015625), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.50), T(1)) // 50%
-        XCTAssertEqual(value, T(0.5), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.50), Number(1)) // 50%
+        XCTAssertEqual(value, Number(0.5), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.75), T(1)) // 75%
-        XCTAssertEqual(value, T(0.984375), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.75), Number(1)) // 75%
+        XCTAssertEqual(value, Number(0.984375), accuracy: accuracy)
         
-        value = function(T(0), T(1), T(1.00), T(1)) // 100%
-        XCTAssertEqual(value, T(1.00), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(1.00), Number(1)) // 100%
+        XCTAssertEqual(value, Number(1.00), accuracy: accuracy)
     }
 
     // MARK: Circular Asserts
 
-    private func assertCircIn<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
-        let function: EaseFunction<T> = EaseFunctions.circIn
-        var value: T
+    private func assertCircIn<Number: InterpolatableNumber>(_ type: Number.Type, _ accuracy: Number) {
+        let function: EaseFunction<Number> = EaseFunctions.circIn
+        var value: Number
 
-        value = function(T(0), T(1), T(0.00), T(1)) // 0%
-        XCTAssertEqual(value, T(0), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.00), Number(1)) // 0%
+        XCTAssertEqual(value, Number(0), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.25), T(1)) // 25%
-        XCTAssertEqual(value, T(0.031754163448145745), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.25), Number(1)) // 25%
+        XCTAssertEqual(value, Number(0.031754163448145745), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.50), T(1)) // 50%
-        XCTAssertEqual(value, T(0.1339745962155614), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.50), Number(1)) // 50%
+        XCTAssertEqual(value, Number(0.1339745962155614), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.75), T(1)) // 75%
-        XCTAssertEqual(value, T(0.3385621722338523), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.75), Number(1)) // 75%
+        XCTAssertEqual(value, Number(0.3385621722338523), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(1.00), T(1)) // 100%
-        XCTAssertEqual(value, T(1.00), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(1.00), Number(1)) // 100%
+        XCTAssertEqual(value, Number(1.00), accuracy: accuracy)
     }
 
-    private func assertCircOut<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
-        let function: EaseFunction<T> = EaseFunctions.circOut
-        var value: T
+    private func assertCircOut<Number: InterpolatableNumber>(_ type: Number.Type, _ accuracy: Number) {
+        let function: EaseFunction<Number> = EaseFunctions.circOut
+        var value: Number
 
-        value = function(T(0), T(1), T(0.00), T(1)) // 0%
-        XCTAssertEqual(value, T(0), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.00), Number(1)) // 0%
+        XCTAssertEqual(value, Number(0), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.25), T(1)) // 25%
-        XCTAssertEqual(value, T(0.6614378277661477), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.25), Number(1)) // 25%
+        XCTAssertEqual(value, Number(0.6614378277661477), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.50), T(1)) // 50%
-        XCTAssertEqual(value, T(0.8660254037844386), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.50), Number(1)) // 50%
+        XCTAssertEqual(value, Number(0.8660254037844386), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.75), T(1)) // 75%
-        XCTAssertEqual(value, T(0.9682458365518543), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.75), Number(1)) // 75%
+        XCTAssertEqual(value, Number(0.9682458365518543), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(1.00), T(1)) // 100%
-        XCTAssertEqual(value, T(1.00), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(1.00), Number(1)) // 100%
+        XCTAssertEqual(value, Number(1.00), accuracy: accuracy)
     }
 
-    private func assertCircInOut<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
-        let function: EaseFunction<T> = EaseFunctions.circInOut
-        var value: T
+    private func assertCircInOut<Number: InterpolatableNumber>(_ type: Number.Type, _ accuracy: Number) {
+        let function: EaseFunction<Number> = EaseFunctions.circInOut
+        var value: Number
 
-        value = function(T(0), T(1), T(0.00), T(1)) // 0%
-        XCTAssertEqual(value, T(0), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.00), Number(1)) // 0%
+        XCTAssertEqual(value, Number(0), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.25), T(1)) // 25%
-        XCTAssertEqual(value, T(0.0669872981077807), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.25), Number(1)) // 25%
+        XCTAssertEqual(value, Number(0.0669872981077807), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.50), T(1)) // 50%
-        XCTAssertEqual(value, T(0.5), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.50), Number(1)) // 50%
+        XCTAssertEqual(value, Number(0.5), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.75), T(1)) // 75%
-        XCTAssertEqual(value, T(0.9330127018922193), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.75), Number(1)) // 75%
+        XCTAssertEqual(value, Number(0.9330127018922193), accuracy: accuracy)
         
-        value = function(T(0), T(1), T(1.00), T(1)) // 100%
-        XCTAssertEqual(value, T(1.00), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(1.00), Number(1)) // 100%
+        XCTAssertEqual(value, Number(1.00), accuracy: accuracy)
     }
 
     // MARK: Back Asserts
 
-    private func assertBackIn<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
-        let function: EaseFunction<T> = EaseFunctions.backIn
-        var value: T
+    private func assertBackIn<Number: InterpolatableNumber>(_ type: Number.Type, _ accuracy: Number) {
+        let function: EaseFunction<Number> = EaseFunctions.backIn
+        var value: Number
 
-        value = function(T(0), T(1), T(0.00), T(1)) // 0%
-        XCTAssertEqual(value, T(0), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.00), Number(1)) // 0%
+        XCTAssertEqual(value, Number(0), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.25), T(1)) // 25%
-        XCTAssertEqual(value, T(-0.06413656250000001), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.25), Number(1)) // 25%
+        XCTAssertEqual(value, Number(-0.06413656250000001), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.50), T(1)) // 50%
-        XCTAssertEqual(value, T(-0.08769750000000004), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.50), Number(1)) // 50%
+        XCTAssertEqual(value, Number(-0.08769750000000004), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.75), T(1)) // 75%
-        XCTAssertEqual(value, T(0.1825903124999999), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.75), Number(1)) // 75%
+        XCTAssertEqual(value, Number(0.1825903124999999), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(1.00), T(1)) // 100%
-        XCTAssertEqual(value, T(1.00), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(1.00), Number(1)) // 100%
+        XCTAssertEqual(value, Number(1.00), accuracy: accuracy)
     }
 
-    private func assertBackOut<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
-        let function: EaseFunction<T> = EaseFunctions.backOut
-        var value: T
+    private func assertBackOut<Number: InterpolatableNumber>(_ type: Number.Type, _ accuracy: Number) {
+        let function: EaseFunction<Number> = EaseFunctions.backOut
+        var value: Number
 
-        value = function(T(0), T(1), T(0.00), T(1)) // 0%
-        XCTAssertEqual(value, T(0), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.00), Number(1)) // 0%
+        XCTAssertEqual(value, Number(0), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.25), T(1)) // 25%
-        XCTAssertEqual(value, T(0.8174096875000001), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.25), Number(1)) // 25%
+        XCTAssertEqual(value, Number(0.8174096875000001), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.50), T(1)) // 50%
-        XCTAssertEqual(value, T(1.0876975), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.50), Number(1)) // 50%
+        XCTAssertEqual(value, Number(1.0876975), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.75), T(1)) // 75%
-        XCTAssertEqual(value, T(1.0641365625), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.75), Number(1)) // 75%
+        XCTAssertEqual(value, Number(1.0641365625), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(1.00), T(1)) // 100%
-        XCTAssertEqual(value, T(1.00), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(1.00), Number(1)) // 100%
+        XCTAssertEqual(value, Number(1.00), accuracy: accuracy)
     }
 
-    private func assertBackInOut<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
-        let function: EaseFunction<T> = EaseFunctions.backInOut
-        var value: T
+    private func assertBackInOut<Number: InterpolatableNumber>(_ type: Number.Type, _ accuracy: Number) {
+        let function: EaseFunction<Number> = EaseFunctions.backInOut
+        var value: Number
 
-        value = function(T(0), T(1), T(0.00), T(1)) // 0%
-        XCTAssertEqual(value, T(0), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.00), Number(1)) // 0%
+        XCTAssertEqual(value, Number(0), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.25), T(1)) // 25%
-        XCTAssertEqual(value, T(-0.09968184375), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.25), Number(1)) // 25%
+        XCTAssertEqual(value, Number(-0.09968184375), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.50), T(1)) // 50%
-        XCTAssertEqual(value, T(0.5), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.50), Number(1)) // 50%
+        XCTAssertEqual(value, Number(0.5), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.75), T(1)) // 75%
-        XCTAssertEqual(value, T(1.09968184375), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.75), Number(1)) // 75%
+        XCTAssertEqual(value, Number(1.09968184375), accuracy: accuracy)
         
-        value = function(T(0), T(1), T(1.00), T(1)) // 100%
-        XCTAssertEqual(value, T(1.00), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(1.00), Number(1)) // 100%
+        XCTAssertEqual(value, Number(1.00), accuracy: accuracy)
     }
 
     // MARK: Elastic Asserts
 
-    private func assertElasticIn<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
-        let function: EaseFunction<T> = EaseFunctions.elasticIn
-        var value: T
+    private func assertElasticIn<Number: InterpolatableNumber>(_ type: Number.Type, _ accuracy: Number) {
+        let function: EaseFunction<Number> = EaseFunctions.elasticIn
+        var value: Number
 
-        value = function(T(0), T(1), T(0.00), T(1)) // 0%
-        XCTAssertEqual(value, T(0), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.00), Number(1)) // 0%
+        XCTAssertEqual(value, Number(0), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.25), T(1)) // 25%
-        XCTAssertEqual(value, T(-0.005524271728019903), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.25), Number(1)) // 25%
+        XCTAssertEqual(value, Number(-0.005524271728019903), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.50), T(1)) // 50%
-        XCTAssertEqual(value, T(-0.015625000000000045), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.50), Number(1)) // 50%
+        XCTAssertEqual(value, Number(-0.015625000000000045), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.75), T(1)) // 75%
-        XCTAssertEqual(value, T(0.08838834764831845), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.75), Number(1)) // 75%
+        XCTAssertEqual(value, Number(0.08838834764831845), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(1.00), T(1)) // 100%
-        XCTAssertEqual(value, T(1.00), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(1.00), Number(1)) // 100%
+        XCTAssertEqual(value, Number(1.00), accuracy: accuracy)
     }
 
-    private func assertElasticOut<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
-        let function: EaseFunction<T> = EaseFunctions.elasticOut
-        var value: T
+    private func assertElasticOut<Number: InterpolatableNumber>(_ type: Number.Type, _ accuracy: Number) {
+        let function: EaseFunction<Number> = EaseFunctions.elasticOut
+        var value: Number
 
-        value = function(T(0), T(1), T(0.00), T(1)) // 0%
-        XCTAssertEqual(value, T(0), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.00), Number(1)) // 0%
+        XCTAssertEqual(value, Number(0), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.25), T(1)) // 25%
-        XCTAssertEqual(value, T(0.9116116523516815), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.25), Number(1)) // 25%
+        XCTAssertEqual(value, Number(0.9116116523516815), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.50), T(1)) // 50%
-        XCTAssertEqual(value, T(1.015625), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.50), Number(1)) // 50%
+        XCTAssertEqual(value, Number(1.015625), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.75), T(1)) // 75%
-        XCTAssertEqual(value, T(1.00552427172802), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.75), Number(1)) // 75%
+        XCTAssertEqual(value, Number(1.00552427172802), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(1.00), T(1)) // 100%
-        XCTAssertEqual(value, T(1.00), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(1.00), Number(1)) // 100%
+        XCTAssertEqual(value, Number(1.00), accuracy: accuracy)
     }
 
-    private func assertElasticInOut<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
-        let function: EaseFunction<T> = EaseFunctions.elasticInOut
-        var value: T
+    private func assertElasticInOut<Number: InterpolatableNumber>(_ type: Number.Type, _ accuracy: Number) {
+        let function: EaseFunction<Number> = EaseFunctions.elasticInOut
+        var value: Number
 
-        value = function(T(0), T(1), T(0.00), T(1)) // 0%
-        XCTAssertEqual(value, T(0), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.00), Number(1)) // 0%
+        XCTAssertEqual(value, Number(0), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.25), T(1)) // 25%
-        XCTAssertEqual(value, T(0.011969444423734026), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.25), Number(1)) // 25%
+        XCTAssertEqual(value, Number(0.011969444423734026), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.50), T(1)) // 50%
-        XCTAssertEqual(value, T(0.5), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.50), Number(1)) // 50%
+        XCTAssertEqual(value, Number(0.5), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.75), T(1)) // 75%
-        XCTAssertEqual(value, T(0.988030555576266), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.75), Number(1)) // 75%
+        XCTAssertEqual(value, Number(0.988030555576266), accuracy: accuracy)
         
-        value = function(T(0), T(1), T(1.00), T(1)) // 100%
-        XCTAssertEqual(value, T(1.00), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(1.00), Number(1)) // 100%
+        XCTAssertEqual(value, Number(1.00), accuracy: accuracy)
     }
 
     // MARK: Bounce Asserts
 
-    private func assertBounceIn<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
-        let function: EaseFunction<T> = EaseFunctions.bounceIn
-        var value: T
+    private func assertBounceIn<Number: InterpolatableNumber>(_ type: Number.Type, _ accuracy: Number) {
+        let function: EaseFunction<Number> = EaseFunctions.bounceIn
+        var value: Number
 
-        value = function(T(0), T(1), T(0.00), T(1)) // 0%
-        XCTAssertEqual(value, T(0), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.00), Number(1)) // 0%
+        XCTAssertEqual(value, Number(0), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.25), T(1)) // 25%
-        XCTAssertEqual(value, T(0.02734375), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.25), Number(1)) // 25%
+        XCTAssertEqual(value, Number(0.02734375), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.50), T(1)) // 50%
-        XCTAssertEqual(value, T(0.234375), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.50), Number(1)) // 50%
+        XCTAssertEqual(value, Number(0.234375), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.75), T(1)) // 75%
-        XCTAssertEqual(value, T(0.52734375), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.75), Number(1)) // 75%
+        XCTAssertEqual(value, Number(0.52734375), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(1.00), T(1)) // 100%
-        XCTAssertEqual(value, T(1.00), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(1.00), Number(1)) // 100%
+        XCTAssertEqual(value, Number(1.00), accuracy: accuracy)
     }
 
-    private func assertBounceOut<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
-        let function: EaseFunction<T> = EaseFunctions.bounceOut
-        var value: T
+    private func assertBounceOut<Number: InterpolatableNumber>(_ type: Number.Type, _ accuracy: Number) {
+        let function: EaseFunction<Number> = EaseFunctions.bounceOut
+        var value: Number
 
-        value = function(T(0), T(1), T(0.00), T(1)) // 0%
-        XCTAssertEqual(value, T(0), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.00), Number(1)) // 0%
+        XCTAssertEqual(value, Number(0), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.25), T(1)) // 25%
-        XCTAssertEqual(value, T(0.47265625), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.25), Number(1)) // 25%
+        XCTAssertEqual(value, Number(0.47265625), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.50), T(1)) // 50%
-        XCTAssertEqual(value, T(0.765625), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.50), Number(1)) // 50%
+        XCTAssertEqual(value, Number(0.765625), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.75), T(1)) // 75%
-        XCTAssertEqual(value, T(0.97265625), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.75), Number(1)) // 75%
+        XCTAssertEqual(value, Number(0.97265625), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(1.00), T(1)) // 100%
-        XCTAssertEqual(value, T(1.00), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(1.00), Number(1)) // 100%
+        XCTAssertEqual(value, Number(1.00), accuracy: accuracy)
     }
 
-    private func assertBounceInOut<T: FloatingPoint>(_ type: T.Type, _ accuracy: T) {
-        let function: EaseFunction<T> = EaseFunctions.bounceInOut
-        var value: T
+    private func assertBounceInOut<Number: InterpolatableNumber>(_ type: Number.Type, _ accuracy: Number) {
+        let function: EaseFunction<Number> = EaseFunctions.bounceInOut
+        var value: Number
 
-        value = function(T(0), T(1), T(0.00), T(1)) // 0%
-        XCTAssertEqual(value, T(0), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.00), Number(1)) // 0%
+        XCTAssertEqual(value, Number(0), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.25), T(1)) // 25%
-        XCTAssertEqual(value, T(0.1171875), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.25), Number(1)) // 25%
+        XCTAssertEqual(value, Number(0.1171875), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.50), T(1)) // 50%
-        XCTAssertEqual(value, T(0.5), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.50), Number(1)) // 50%
+        XCTAssertEqual(value, Number(0.5), accuracy: accuracy)
 
-        value = function(T(0), T(1), T(0.75), T(1)) // 75%
-        XCTAssertEqual(value, T(0.8828125), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(0.75), Number(1)) // 75%
+        XCTAssertEqual(value, Number(0.8828125), accuracy: accuracy)
         
-        value = function(T(0), T(1), T(1.00), T(1)) // 100%
-        XCTAssertEqual(value, T(1.00), accuracy: accuracy)
+        value = function(Number(0), Number(1), Number(1.00), Number(1)) // 100%
+        XCTAssertEqual(value, Number(1.00), accuracy: accuracy)
     }
 
 }

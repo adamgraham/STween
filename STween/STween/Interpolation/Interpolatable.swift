@@ -42,7 +42,7 @@ extension Interpolatable where Self: UnsignedInteger {
         let value = ease.interpolate(from: start, to: end,
                                      elapsed: elapsed, duration: duration)
 
-        return Self(UInt64(value))
+        return Self(value)
     }
     
 }
@@ -58,13 +58,13 @@ extension Interpolatable where Self: SignedInteger {
         let value = ease.interpolate(from: start, to: end,
                                      elapsed: elapsed, duration: duration)
 
-        return Self(Int64(value))
+        return Self(value)
     }
     
 }
 
 /// :nodoc:
-extension Interpolatable where Self: FloatingPoint {
+extension Interpolatable where Self: InterpolatableNumber {
 
     public static func interpolate(from startValue: Self, to endValue: Self, with ease: Ease,
                                    elapsed: TimeInterval, duration: TimeInterval) -> Self {

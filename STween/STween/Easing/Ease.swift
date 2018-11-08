@@ -250,7 +250,7 @@ extension Ease {
 
      - Returns: The value interpolated between the start and end value.
      */
-    public func interpolate<Number: FloatingPoint>(
+    public func interpolate<Number: InterpolatableNumber>(
         from startValue: Number, to endValue: Number,
         elapsed: Number, duration: Number) -> Number {
 
