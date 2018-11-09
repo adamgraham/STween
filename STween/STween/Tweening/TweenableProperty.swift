@@ -6,7 +6,7 @@
 //  Copyright © 2017 Adam Graham. All rights reserved.
 //
 
-/// A protocol to describe a tweenable property.
+/// A property that is tweenable on a target object.
 public protocol TweenableProperty: Interpolatable where Value == Self {
 
     associatedtype Target: Tweenable

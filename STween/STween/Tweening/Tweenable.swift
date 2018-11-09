@@ -6,7 +6,7 @@
 //  Copyright © 2016 Adam Graham. All rights reserved.
 //
 
-/// A protocol to provide tweening animation functionality.
+/// A type that can animate tweenable properties on itself.
 public protocol Tweenable {
 
     // MARK: Methods

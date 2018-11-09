@@ -6,7 +6,7 @@
 //  Copyright © 2016 Adam Graham. All rights reserved.
 //
 
-/// A protocol to provide interpolation functionality.
+/// A type that can be interpolated from a starting and ending value.
 public protocol Interpolatable: Equatable {
 
     associatedtype Value = Self
@@ -16,7 +16,7 @@ public protocol Interpolatable: Equatable {
      specific point in time.
 
      - Parameters:
-        - ease: The `Ease` used to interpolate values.
+        - ease: The `Ease` function used to interpolate values.
         - startValue: The start value passed to the `ease` function.
         - endValue: The end value passed to the `ease` function.
         - elapsed: The elapsed amount of time passed to the `ease` function.

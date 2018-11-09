@@ -31,7 +31,7 @@ internal struct InterpolationValues<T: Interpolatable> where T.Value == T {
      point in time.
      
      - Parameters:
-        - ease: The `Ease` used to interpolate values.
+        - ease: The `Ease` function used to interpolate values.
         - elapsed: The elapsed amount of time passed to the `ease` function.
         - duration: The duration of time passed to the `ease` function.
 
