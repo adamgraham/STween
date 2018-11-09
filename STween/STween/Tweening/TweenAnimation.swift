@@ -6,6 +6,8 @@
 //  Copyright © 2016 Adam Graham. All rights reserved.
 //
 
+import Foundation
+
 /// A class to animate properties on a `Tweenable` object using an easing function and
 /// interpolation.
 internal final class TweenAnimation<TargetProperty: TweenableProperty>: Tween {

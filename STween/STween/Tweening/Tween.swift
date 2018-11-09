@@ -6,6 +6,8 @@
 //  Copyright © 2016 Adam Graham. All rights reserved.
 //
 
+import Foundation
+
 /// A protocol to provide control and customization of a tween animation.
 public protocol Tween: class {
 

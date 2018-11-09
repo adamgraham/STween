@@ -6,6 +6,11 @@
 //  Copyright © 2017 Adam Graham. All rights reserved.
 //
 
+import CoreGraphics
+import Foundation
+import QuartzCore
+import UIKit
+
 /// An extension to provide tweening animation functionality to `CALayer`.
 extension CALayer: Tweenable {}
 

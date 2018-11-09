@@ -6,9 +6,12 @@
 //  Copyright © 2016 Adam Graham. All rights reserved.
 //
 
+import CoreGraphics
+import UIKit
+
 /// An extension to provide `UIColor` instances with additional computed properties to
 /// retrieve color components.
-internal extension UIColor {
+extension UIColor {
 
     /// The red, green, blue, and alpha components of `self`.
     internal var components: (

@@ -6,6 +6,9 @@
 //  Copyright © 2017 Adam Graham. All rights reserved.
 //
 
+import Foundation
+import UIKit
+
 /// An extension to provide tweening animation functionality to `UIButton`.
 extension UIButton {}
 

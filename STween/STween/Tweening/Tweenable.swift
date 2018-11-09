@@ -6,6 +6,8 @@
 //  Copyright © 2016 Adam Graham. All rights reserved.
 //
 
+import Foundation
+
 /// A type that can animate tweenable properties on itself.
 public protocol Tweenable {
 

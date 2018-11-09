@@ -6,6 +6,9 @@
 //  Copyright © 2016 Adam Graham. All rights reserved.
 //
 
+import Foundation
+import QuartzCore
+
 /// A singleton, factory class to create, queue, and manage `Tween` animations.
 public final class Tweener {
 

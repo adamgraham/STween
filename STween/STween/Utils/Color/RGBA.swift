@@ -6,6 +6,9 @@
 //  Copyright © 2016 Adam Graham. All rights reserved.
 //
 
+import CoreGraphics
+import UIKit
+
 /// A struct to represent an RGBA color, i.e., red, green, blue, and alpha.
 internal struct RGBA {
 

@@ -6,6 +6,9 @@
 //  Copyright © 2016 Adam Graham. All rights reserved.
 //
 
+import CoreGraphics
+import Foundation
+
 /// An extension to provide tweening animation functionality to `NSLayoutConstraint`.
 extension NSLayoutConstraint: Tweenable {}
 

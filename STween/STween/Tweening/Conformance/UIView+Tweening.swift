@@ -6,6 +6,10 @@
 //  Copyright © 2016 Adam Graham. All rights reserved.
 //
 
+import CoreGraphics
+import Foundation
+import UIKit
+
 /// An extension to provide tweening animation functionality to `UIView`.
 extension UIView: Tweenable {}
 

@@ -6,6 +6,8 @@
 //  Copyright © 2016 Adam Graham. All rights reserved.
 //
 
+import Foundation
+
 /**
  An extension of `Tween` to provide query method chaining. This allows multiple
  properties to be set on `self` in a simpler and more readable way.

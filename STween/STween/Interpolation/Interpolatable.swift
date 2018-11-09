@@ -6,6 +6,12 @@
 //  Copyright © 2016 Adam Graham. All rights reserved.
 //
 
+import CoreGraphics
+import CoreImage
+import Foundation
+import QuartzCore
+import UIKit
+
 /// A type that can be interpolated from a starting and ending value.
 public protocol Interpolatable: Equatable {
 

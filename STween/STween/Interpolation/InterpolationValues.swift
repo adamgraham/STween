@@ -6,6 +6,8 @@
 //  Copyright © 2017 Adam Graham. All rights reserved.
 //
 
+import Foundation
+
 /// A struct to store a start and end value for interpolation purposes.
 internal struct InterpolationValues<T: Interpolatable> where T.Value == T {
 

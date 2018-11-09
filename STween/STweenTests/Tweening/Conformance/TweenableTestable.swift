@@ -10,9 +10,7 @@ import XCTest
 
 @testable import STween
 
-protocol TweenableTestable {
-
-}
+protocol TweenableTestable {}
 
 extension TweenableTestable {
 
