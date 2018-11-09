@@ -139,8 +139,7 @@ protocol TweenTimerDelegate: class {
      
      - Parameters:
         - timer: The timer the "tick" event was invoked on.
-        - elapsed: The amount of time, in seconds, the `timer` has been 
-                   running.
+        - elapsed: The amount of time, in seconds, the `timer` has been running.
      */
     func tweenTimer(_ timer: TweenTimer, didUpdateWithElapsedTime elapsed: TimeInterval)
 

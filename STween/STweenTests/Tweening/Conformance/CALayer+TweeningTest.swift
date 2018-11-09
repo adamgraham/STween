@@ -95,11 +95,15 @@ class CALayer_TweeningTest: XCTestCase, TweenableTestable {
         let layer = UIView().layer
         let property = CALayerTweenProperty.borderColor(UIColor.lightGray.cgColor)
         assertValidInterpolation(of: property, on: layer)
+        layer.borderColor = nil
+        assertValidInterpolation(of: property, on: layer)
     }
 
     func testBackgroundColorTweenProperty() {
         let layer = UIView().layer
         let property = CALayerTweenProperty.backgroundColor(UIColor.gray.cgColor)
+        assertValidInterpolation(of: property, on: layer)
+        layer.backgroundColor = nil
         assertValidInterpolation(of: property, on: layer)
     }
 
@@ -112,6 +116,8 @@ class CALayer_TweeningTest: XCTestCase, TweenableTestable {
     func testShadowColorTweenProperty() {
         let layer = UIView().layer
         let property = CALayerTweenProperty.shadowColor(UIColor.darkGray.cgColor)
+        assertValidInterpolation(of: property, on: layer)
+        layer.shadowColor = nil
         assertValidInterpolation(of: property, on: layer)
     }
 

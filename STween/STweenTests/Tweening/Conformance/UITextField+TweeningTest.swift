@@ -14,6 +14,7 @@ class UITextField_TweeningTest: XCTestCase, TweenableTestable {
 
     func testTextColor() {
         let textField = UITextField()
+        textField.textColor = nil
         let property = UITextFieldTweenProperty.textColor(UIColor.darkGray)
         assertValidInterpolation(of: property, on: textField) {
             (lhs: UITextFieldTweenProperty, rhs: UITextFieldTweenProperty) -> Bool in

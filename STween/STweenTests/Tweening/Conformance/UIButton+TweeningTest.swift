@@ -32,6 +32,7 @@ class UIButton_TweeningTest: XCTestCase, TweenableTestable {
 
     func testTitleColor() {
         let button = UIButton()
+        button.setTitleColor(nil, for: .normal)
         let property = UIButtonTweenProperty.titleColor(UIColor.lightGray, .normal)
         assertValidInterpolation(of: property, on: button) {
             (lhs: UIButtonTweenProperty, rhs: UIButtonTweenProperty) -> Bool in
@@ -47,6 +48,7 @@ class UIButton_TweeningTest: XCTestCase, TweenableTestable {
 
     func testTitleShadowColor() {
         let button = UIButton()
+        button.setTitleShadowColor(nil, for: .normal)
         let property = UIButtonTweenProperty.titleShadowColor(UIColor.darkGray, .normal)
         assertValidInterpolation(of: property, on: button) {
             (lhs: UIButtonTweenProperty, rhs: UIButtonTweenProperty) -> Bool in
