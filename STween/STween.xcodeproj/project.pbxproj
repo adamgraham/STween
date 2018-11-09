@@ -23,7 +23,7 @@
 		9D8890641E2883160023FE78 /* Callback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8890421E2883160023FE78 /* Callback.swift */; };
 		9D8890651E2883160023FE78 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8890431E2883160023FE78 /* Defaults.swift */; };
 		9D8890671E2883160023FE78 /* Ease.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8890461E2883160023FE78 /* Ease.swift */; };
-		9D8890681E2883160023FE78 /* EaseFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8890471E2883160023FE78 /* EaseFunctions.swift */; };
+		9D8890681E2883160023FE78 /* EaseFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8890471E2883160023FE78 /* EaseFunction.swift */; };
 		9D8890691E2883160023FE78 /* EaseClassification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8890481E2883160023FE78 /* EaseClassification.swift */; };
 		9D88906A1E2883160023FE78 /* EaseCurve.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8890491E2883160023FE78 /* EaseCurve.swift */; };
 		9D88906B1E2883160023FE78 /* EaseMappings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D88904A1E2883160023FE78 /* EaseMappings.swift */; };
@@ -53,7 +53,7 @@
 		9DB46B1B1E29EB6000CB21F9 /* UIView+TweeningTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB46B161E29EB6000CB21F9 /* UIView+TweeningTest.swift */; };
 		9DB46B1C1E29EB6000CB21F9 /* Tween+ChainingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB46B181E29EB6000CB21F9 /* Tween+ChainingTest.swift */; };
 		9DBF34011DB8F4BA006C0D84 /* EaseTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBF33FB1DB8F4BA006C0D84 /* EaseTest.swift */; };
-		9DBF34021DB8F4BA006C0D84 /* EaseFunctionsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBF33FC1DB8F4BA006C0D84 /* EaseFunctionsTest.swift */; };
+		9DBF34021DB8F4BA006C0D84 /* EaseFunctionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBF33FC1DB8F4BA006C0D84 /* EaseFunctionTest.swift */; };
 		9DBF34031DB8F4BA006C0D84 /* EaseCurveTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBF33FD1DB8F4BA006C0D84 /* EaseCurveTest.swift */; };
 		9DBF34051DB8F4BA006C0D84 /* EaseMappingsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBF33FF1DB8F4BA006C0D84 /* EaseMappingsTest.swift */; };
 		9DCD64FF1D1687DD00C726E7 /* STween.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D77AC361D13B8D70033F88E /* STween.framework */; };
@@ -97,7 +97,7 @@
 		9D8890421E2883160023FE78 /* Callback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Callback.swift; sourceTree = "<group>"; };
 		9D8890431E2883160023FE78 /* Defaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
 		9D8890461E2883160023FE78 /* Ease.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ease.swift; sourceTree = "<group>"; };
-		9D8890471E2883160023FE78 /* EaseFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = EaseFunctions.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		9D8890471E2883160023FE78 /* EaseFunction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = EaseFunction.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		9D8890481E2883160023FE78 /* EaseClassification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EaseClassification.swift; sourceTree = "<group>"; };
 		9D8890491E2883160023FE78 /* EaseCurve.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EaseCurve.swift; sourceTree = "<group>"; };
 		9D88904A1E2883160023FE78 /* EaseMappings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EaseMappings.swift; sourceTree = "<group>"; };
@@ -127,7 +127,7 @@
 		9DB46B161E29EB6000CB21F9 /* UIView+TweeningTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+TweeningTest.swift"; sourceTree = "<group>"; };
 		9DB46B181E29EB6000CB21F9 /* Tween+ChainingTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tween+ChainingTest.swift"; sourceTree = "<group>"; };
 		9DBF33FB1DB8F4BA006C0D84 /* EaseTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EaseTest.swift; sourceTree = "<group>"; };
-		9DBF33FC1DB8F4BA006C0D84 /* EaseFunctionsTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EaseFunctionsTest.swift; sourceTree = "<group>"; };
+		9DBF33FC1DB8F4BA006C0D84 /* EaseFunctionTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EaseFunctionTest.swift; sourceTree = "<group>"; };
 		9DBF33FD1DB8F4BA006C0D84 /* EaseCurveTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EaseCurveTest.swift; sourceTree = "<group>"; };
 		9DBF33FF1DB8F4BA006C0D84 /* EaseMappingsTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EaseMappingsTest.swift; sourceTree = "<group>"; };
 		9DCD64FA1D1687DD00C726E7 /* STweenTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = STweenTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -224,7 +224,7 @@
 				9D8890481E2883160023FE78 /* EaseClassification.swift */,
 				9D8890491E2883160023FE78 /* EaseCurve.swift */,
 				9D88904A1E2883160023FE78 /* EaseMappings.swift */,
-				9D8890471E2883160023FE78 /* EaseFunctions.swift */,
+				9D8890471E2883160023FE78 /* EaseFunction.swift */,
 			);
 			path = Easing;
 			sourceTree = "<group>";
@@ -338,7 +338,7 @@
 				9D482BCC1DC22F55009A1CCD /* EaseClassificationTest.swift */,
 				9DBF33FD1DB8F4BA006C0D84 /* EaseCurveTest.swift */,
 				9DBF33FF1DB8F4BA006C0D84 /* EaseMappingsTest.swift */,
-				9DBF33FC1DB8F4BA006C0D84 /* EaseFunctionsTest.swift */,
+				9DBF33FC1DB8F4BA006C0D84 /* EaseFunctionTest.swift */,
 			);
 			path = Easing;
 			sourceTree = "<group>";
@@ -513,7 +513,7 @@
 				9D88906A1E2883160023FE78 /* EaseCurve.swift in Sources */,
 				9DF7248A1E4799F800A0BDB9 /* UIButton+Tweening.swift in Sources */,
 				9D88907A1E2883160023FE78 /* RGBA.swift in Sources */,
-				9D8890681E2883160023FE78 /* EaseFunctions.swift in Sources */,
+				9D8890681E2883160023FE78 /* EaseFunction.swift in Sources */,
 				9D88906C1E2883160023FE78 /* Interpolatable.swift in Sources */,
 				9D8890791E2883160023FE78 /* TweenTimer.swift in Sources */,
 				9D8890731E2883160023FE78 /* Tweenable.swift in Sources */,
@@ -538,7 +538,7 @@
 				9DBF34031DB8F4BA006C0D84 /* EaseCurveTest.swift in Sources */,
 				9DB3D63E1DAE688200134C1D /* UIColor+RGBATest.swift in Sources */,
 				9D6A3DBB1DDEB095009B6352 /* TweenerTest.swift in Sources */,
-				9DBF34021DB8F4BA006C0D84 /* EaseFunctionsTest.swift in Sources */,
+				9DBF34021DB8F4BA006C0D84 /* EaseFunctionTest.swift in Sources */,
 				9D6A3DB31DDEB05B009B6352 /* TweenTest.swift in Sources */,
 				9D889D2A1E29D48C00B3207E /* InterpolationValuesTest.swift in Sources */,
 				9DF7248E1E47A51000A0BDB9 /* UITextField+TweeningTest.swift in Sources */,

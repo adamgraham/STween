@@ -261,77 +261,77 @@ extension Ease {
 
         switch self {
         case .linear:
-            return EaseFunctions.linear(b: b, c: c, t: t, d: d)
+            return EaseFunction.linear(b: b, c: c, t: t, d: d)
 
         case .sineIn:
-            return EaseFunctions.sineIn(b: b, c: c, t: t, d: d)
+            return EaseFunction.sineIn(b: b, c: c, t: t, d: d)
         case .sineOut:
-            return EaseFunctions.sineOut(b: b, c: c, t: t, d: d)
+            return EaseFunction.sineOut(b: b, c: c, t: t, d: d)
         case .sineInOut:
-            return EaseFunctions.sineInOut(b: b, c: c, t: t, d: d)
+            return EaseFunction.sineInOut(b: b, c: c, t: t, d: d)
 
         case .cubicIn:
-            return EaseFunctions.cubicIn(b: b, c: c, t: t, d: d)
+            return EaseFunction.cubicIn(b: b, c: c, t: t, d: d)
         case .cubicOut:
-            return EaseFunctions.cubicOut(b: b, c: c, t: t, d: d)
+            return EaseFunction.cubicOut(b: b, c: c, t: t, d: d)
         case .cubicInOut:
-            return EaseFunctions.cubicInOut(b: b, c: c, t: t, d: d)
+            return EaseFunction.cubicInOut(b: b, c: c, t: t, d: d)
 
         case .quadIn:
-            return EaseFunctions.quadIn(b: b, c: c, t: t, d: d)
+            return EaseFunction.quadIn(b: b, c: c, t: t, d: d)
         case .quadOut:
-            return EaseFunctions.quadOut(b: b, c: c, t: t, d: d)
+            return EaseFunction.quadOut(b: b, c: c, t: t, d: d)
         case .quadInOut:
-            return EaseFunctions.quadInOut(b: b, c: c, t: t, d: d)
+            return EaseFunction.quadInOut(b: b, c: c, t: t, d: d)
 
         case .quartIn:
-            return EaseFunctions.quartIn(b: b, c: c, t: t, d: d)
+            return EaseFunction.quartIn(b: b, c: c, t: t, d: d)
         case .quartOut:
-            return EaseFunctions.quartOut(b: b, c: c, t: t, d: d)
+            return EaseFunction.quartOut(b: b, c: c, t: t, d: d)
         case .quartInOut:
-            return EaseFunctions.quartInOut(b: b, c: c, t: t, d: d)
+            return EaseFunction.quartInOut(b: b, c: c, t: t, d: d)
 
         case .quintIn:
-            return EaseFunctions.quintIn(b: b, c: c, t: t, d: d)
+            return EaseFunction.quintIn(b: b, c: c, t: t, d: d)
         case .quintOut:
-            return EaseFunctions.quintOut(b: b, c: c, t: t, d: d)
+            return EaseFunction.quintOut(b: b, c: c, t: t, d: d)
         case .quintInOut:
-            return EaseFunctions.quintInOut(b: b, c: c, t: t, d: d)
+            return EaseFunction.quintInOut(b: b, c: c, t: t, d: d)
 
         case .expoIn:
-            return EaseFunctions.expoIn(b: b, c: c, t: t, d: d)
+            return EaseFunction.expoIn(b: b, c: c, t: t, d: d)
         case .expoOut:
-            return EaseFunctions.expoOut(b: b, c: c, t: t, d: d)
+            return EaseFunction.expoOut(b: b, c: c, t: t, d: d)
         case .expoInOut:
-            return EaseFunctions.expoInOut(b: b, c: c, t: t, d: d)
+            return EaseFunction.expoInOut(b: b, c: c, t: t, d: d)
 
         case .circIn:
-            return EaseFunctions.circIn(b: b, c: c, t: t, d: d)
+            return EaseFunction.circIn(b: b, c: c, t: t, d: d)
         case .circOut:
-            return EaseFunctions.circOut(b: b, c: c, t: t, d: d)
+            return EaseFunction.circOut(b: b, c: c, t: t, d: d)
         case .circInOut:
-            return EaseFunctions.circInOut(b: b, c: c, t: t, d: d)
+            return EaseFunction.circInOut(b: b, c: c, t: t, d: d)
 
         case .backIn:
-            return EaseFunctions.backIn(b: b, c: c, t: t, d: d)
+            return EaseFunction.backIn(b: b, c: c, t: t, d: d)
         case .backOut:
-            return EaseFunctions.backOut(b: b, c: c, t: t, d: d)
+            return EaseFunction.backOut(b: b, c: c, t: t, d: d)
         case .backInOut:
-            return EaseFunctions.backInOut(b: b, c: c, t: t, d: d)
+            return EaseFunction.backInOut(b: b, c: c, t: t, d: d)
 
         case .elasticIn:
-            return EaseFunctions.elasticIn(b: b, c: c, t: t, d: d)
+            return EaseFunction.elasticIn(b: b, c: c, t: t, d: d)
         case .elasticOut:
-            return EaseFunctions.elasticOut(b: b, c: c, t: t, d: d)
+            return EaseFunction.elasticOut(b: b, c: c, t: t, d: d)
         case .elasticInOut:
-            return EaseFunctions.elasticInOut(b: b, c: c, t: t, d: d)
+            return EaseFunction.elasticInOut(b: b, c: c, t: t, d: d)
 
         case .bounceIn:
-            return EaseFunctions.bounceIn(b: b, c: c, t: t, d: d)
+            return EaseFunction.bounceIn(b: b, c: c, t: t, d: d)
         case .bounceOut:
-            return EaseFunctions.bounceOut(b: b, c: c, t: t, d: d)
+            return EaseFunction.bounceOut(b: b, c: c, t: t, d: d)
         case .bounceInOut:
-            return EaseFunctions.bounceInOut(b: b, c: c, t: t, d: d)
+            return EaseFunction.bounceInOut(b: b, c: c, t: t, d: d)
         }
     }
 

@@ -1,5 +1,5 @@
 //
-//  EaseFunctionsTest.swift
+//  EaseFunctionTest.swift
 //  STween
 //
 //  Created by Adam Graham on 6/15/16.
@@ -10,7 +10,7 @@ import XCTest
 
 @testable import STween
 
-class EaseFunctionsTest: XCTestCase {
+class EaseFunctionTest: XCTestCase {
 
     func testFloat32() {
         assertType(Float32.self, accuracy: Float32.ulpOfOne.double)
@@ -22,8 +22,8 @@ class EaseFunctionsTest: XCTestCase {
 
     #if arch(i386) || arch(x86_64)
     func testFloat80() {
-        //iOS_BUG: XCTAssertEqual(_, _, accuracy:) using Float80 crashes
-        //assertType(Float80.self, accuracy: Float80.ulpOfOne.double)
+        // using XCTAssertEqual(_, _, accuracy:) crashes with Float80
+        // assertType(Float80.self, accuracy: Float80.ulpOfOne.double)
     }
     #endif
 
@@ -78,7 +78,7 @@ class EaseFunctionsTest: XCTestCase {
     // MARK: Linear Asserts
 
     private func assertLinear<Number: InterpolatableNumber>(_ type: Number.Type, _ accuracy: Number) {
-        let function: EaseFunction<Number> = EaseFunctions.linear
+        let function: EaseFunction.Definition<Number> = EaseFunction.linear
         var value: Number
 
         value = function(Number(0), Number(1), Number(0.00), Number(1)) // 0%
@@ -100,7 +100,7 @@ class EaseFunctionsTest: XCTestCase {
     // MARK: Sinusoidal Asserts
 
     private func assertSineIn<Number: InterpolatableNumber>(_ type: Number.Type, _ accuracy: Number) {
-        let function: EaseFunction<Number> = EaseFunctions.sineIn
+        let function: EaseFunction.Definition<Number> = EaseFunction.sineIn
         var value: Number
 
         value = function(Number(0), Number(1), Number(0.00), Number(1)) // 0%
@@ -120,7 +120,7 @@ class EaseFunctionsTest: XCTestCase {
     }
 
     private func assertSineOut<Number: InterpolatableNumber>(_ type: Number.Type, _ accuracy: Number) {
-        let function: EaseFunction<Number> = EaseFunctions.sineOut
+        let function: EaseFunction.Definition<Number> = EaseFunction.sineOut
         var value: Number
 
         value = function(Number(0), Number(1), Number(0.00), Number(1)) // 0%
@@ -140,7 +140,7 @@ class EaseFunctionsTest: XCTestCase {
     }
 
     private func assertSineInOut<Number: InterpolatableNumber>(_ type: Number.Type, _ accuracy: Number) {
-        let function: EaseFunction<Number> = EaseFunctions.sineInOut
+        let function: EaseFunction.Definition<Number> = EaseFunction.sineInOut
         var value: Number
 
         value = function(Number(0), Number(1), Number(0.00), Number(1)) // 0%
@@ -162,7 +162,7 @@ class EaseFunctionsTest: XCTestCase {
     // MARK: Cubic Asserts
 
     private func assertCubicIn<Number: InterpolatableNumber>(_ type: Number.Type, _ accuracy: Number) {
-        let function: EaseFunction<Number> = EaseFunctions.cubicIn
+        let function: EaseFunction.Definition<Number> = EaseFunction.cubicIn
         var value: Number
 
         value = function(Number(0), Number(1), Number(0.00), Number(1)) // 0%
@@ -182,7 +182,7 @@ class EaseFunctionsTest: XCTestCase {
     }
 
     private func assertCubicOut<Number: InterpolatableNumber>(_ type: Number.Type, _ accuracy: Number) {
-        let function: EaseFunction<Number> = EaseFunctions.cubicOut
+        let function: EaseFunction.Definition<Number> = EaseFunction.cubicOut
         var value: Number
 
         value = function(Number(0), Number(1), Number(0.00), Number(1)) // 0%
@@ -202,7 +202,7 @@ class EaseFunctionsTest: XCTestCase {
     }
 
     private func assertCubicInOut<Number: InterpolatableNumber>(_ type: Number.Type, _ accuracy: Number) {
-        let function: EaseFunction<Number> = EaseFunctions.cubicInOut
+        let function: EaseFunction.Definition<Number> = EaseFunction.cubicInOut
         var value: Number
 
         value = function(Number(0), Number(1), Number(0.00), Number(1)) // 0%
@@ -224,7 +224,7 @@ class EaseFunctionsTest: XCTestCase {
     // MARK: Quadratic Asserts
 
     private func assertQuadIn<Number: InterpolatableNumber>(_ type: Number.Type, _ accuracy: Number) {
-        let function: EaseFunction<Number> = EaseFunctions.quadIn
+        let function: EaseFunction.Definition<Number> = EaseFunction.quadIn
         var value: Number
 
         value = function(Number(0), Number(1), Number(0.00), Number(1)) // 0%
@@ -244,7 +244,7 @@ class EaseFunctionsTest: XCTestCase {
     }
 
     private func assertQuadOut<Number: InterpolatableNumber>(_ type: Number.Type, _ accuracy: Number) {
-        let function: EaseFunction<Number> = EaseFunctions.quadOut
+        let function: EaseFunction.Definition<Number> = EaseFunction.quadOut
         var value: Number
 
         value = function(Number(0), Number(1), Number(0.00), Number(1)) // 0%
@@ -264,7 +264,7 @@ class EaseFunctionsTest: XCTestCase {
     }
 
     private func assertQuadInOut<Number: InterpolatableNumber>(_ type: Number.Type, _ accuracy: Number) {
-        let function: EaseFunction<Number> = EaseFunctions.quadInOut
+        let function: EaseFunction.Definition<Number> = EaseFunction.quadInOut
         var value: Number
 
         value = function(Number(0), Number(1), Number(0.00), Number(1)) // 0%
@@ -286,7 +286,7 @@ class EaseFunctionsTest: XCTestCase {
     // MARK: Quartic Asserts
 
     private func assertQuartIn<Number: InterpolatableNumber>(_ type: Number.Type, _ accuracy: Number) {
-        let function: EaseFunction<Number> = EaseFunctions.quartIn
+        let function: EaseFunction.Definition<Number> = EaseFunction.quartIn
         var value: Number
 
         value = function(Number(0), Number(1), Number(0.00), Number(1)) // 0%
@@ -306,7 +306,7 @@ class EaseFunctionsTest: XCTestCase {
     }
 
     private func assertQuartOut<Number: InterpolatableNumber>(_ type: Number.Type, _ accuracy: Number) {
-        let function: EaseFunction<Number> = EaseFunctions.quartOut
+        let function: EaseFunction.Definition<Number> = EaseFunction.quartOut
         var value: Number
 
         value = function(Number(0), Number(1), Number(0.00), Number(1)) // 0%
@@ -326,7 +326,7 @@ class EaseFunctionsTest: XCTestCase {
     }
 
     private func assertQuartInOut<Number: InterpolatableNumber>(_ type: Number.Type, _ accuracy: Number) {
-        let function: EaseFunction<Number> = EaseFunctions.quartInOut
+        let function: EaseFunction.Definition<Number> = EaseFunction.quartInOut
         var value: Number
 
         value = function(Number(0), Number(1), Number(0.00), Number(1)) // 0%
@@ -348,7 +348,7 @@ class EaseFunctionsTest: XCTestCase {
     // MARK: Quintic Asserts
 
     private func assertQuintIn<Number: InterpolatableNumber>(_ type: Number.Type, _ accuracy: Number) {
-        let function: EaseFunction<Number> = EaseFunctions.quintIn
+        let function: EaseFunction.Definition<Number> = EaseFunction.quintIn
         var value: Number
 
         value = function(Number(0), Number(1), Number(0.00), Number(1)) // 0%
@@ -368,7 +368,7 @@ class EaseFunctionsTest: XCTestCase {
     }
 
     private func assertQuintOut<Number: InterpolatableNumber>(_ type: Number.Type, _ accuracy: Number) {
-        let function: EaseFunction<Number> = EaseFunctions.quintOut
+        let function: EaseFunction.Definition<Number> = EaseFunction.quintOut
         var value: Number
 
         value = function(Number(0), Number(1), Number(0.00), Number(1)) // 0%
@@ -388,7 +388,7 @@ class EaseFunctionsTest: XCTestCase {
     }
 
     private func assertQuintInOut<Number: InterpolatableNumber>(_ type: Number.Type, _ accuracy: Number) {
-        let function: EaseFunction<Number> = EaseFunctions.quintInOut
+        let function: EaseFunction.Definition<Number> = EaseFunction.quintInOut
         var value: Number
 
         value = function(Number(0), Number(1), Number(0.00), Number(1)) // 0%
@@ -410,7 +410,7 @@ class EaseFunctionsTest: XCTestCase {
     // MARK: Exponential Asserts
 
     private func assertExpoIn<Number: InterpolatableNumber>(_ type: Number.Type, _ accuracy: Number) {
-        let function: EaseFunction<Number> = EaseFunctions.expoIn
+        let function: EaseFunction.Definition<Number> = EaseFunction.expoIn
         var value: Number
 
         value = function(Number(0), Number(1), Number(0.00), Number(1)) // 0%
@@ -430,7 +430,7 @@ class EaseFunctionsTest: XCTestCase {
     }
 
     private func assertExpoOut<Number: InterpolatableNumber>(_ type: Number.Type, _ accuracy: Number) {
-        let function: EaseFunction<Number> = EaseFunctions.expoOut
+        let function: EaseFunction.Definition<Number> = EaseFunction.expoOut
         var value: Number
 
         value = function(Number(0), Number(1), Number(0.00), Number(1)) // 0%
@@ -450,7 +450,7 @@ class EaseFunctionsTest: XCTestCase {
     }
 
     private func assertExpoInOut<Number: InterpolatableNumber>(_ type: Number.Type, _ accuracy: Number) {
-        let function: EaseFunction<Number> = EaseFunctions.expoInOut
+        let function: EaseFunction.Definition<Number> = EaseFunction.expoInOut
         var value: Number
 
         value = function(Number(0), Number(1), Number(0.00), Number(1)) // 0%
@@ -472,7 +472,7 @@ class EaseFunctionsTest: XCTestCase {
     // MARK: Circular Asserts
 
     private func assertCircIn<Number: InterpolatableNumber>(_ type: Number.Type, _ accuracy: Number) {
-        let function: EaseFunction<Number> = EaseFunctions.circIn
+        let function: EaseFunction.Definition<Number> = EaseFunction.circIn
         var value: Number
 
         value = function(Number(0), Number(1), Number(0.00), Number(1)) // 0%
@@ -492,7 +492,7 @@ class EaseFunctionsTest: XCTestCase {
     }
 
     private func assertCircOut<Number: InterpolatableNumber>(_ type: Number.Type, _ accuracy: Number) {
-        let function: EaseFunction<Number> = EaseFunctions.circOut
+        let function: EaseFunction.Definition<Number> = EaseFunction.circOut
         var value: Number
 
         value = function(Number(0), Number(1), Number(0.00), Number(1)) // 0%
@@ -512,7 +512,7 @@ class EaseFunctionsTest: XCTestCase {
     }
 
     private func assertCircInOut<Number: InterpolatableNumber>(_ type: Number.Type, _ accuracy: Number) {
-        let function: EaseFunction<Number> = EaseFunctions.circInOut
+        let function: EaseFunction.Definition<Number> = EaseFunction.circInOut
         var value: Number
 
         value = function(Number(0), Number(1), Number(0.00), Number(1)) // 0%
@@ -534,7 +534,7 @@ class EaseFunctionsTest: XCTestCase {
     // MARK: Back Asserts
 
     private func assertBackIn<Number: InterpolatableNumber>(_ type: Number.Type, _ accuracy: Number) {
-        let function: EaseFunction<Number> = EaseFunctions.backIn
+        let function: EaseFunction.Definition<Number> = EaseFunction.backIn
         var value: Number
 
         value = function(Number(0), Number(1), Number(0.00), Number(1)) // 0%
@@ -554,7 +554,7 @@ class EaseFunctionsTest: XCTestCase {
     }
 
     private func assertBackOut<Number: InterpolatableNumber>(_ type: Number.Type, _ accuracy: Number) {
-        let function: EaseFunction<Number> = EaseFunctions.backOut
+        let function: EaseFunction.Definition<Number> = EaseFunction.backOut
         var value: Number
 
         value = function(Number(0), Number(1), Number(0.00), Number(1)) // 0%
@@ -574,7 +574,7 @@ class EaseFunctionsTest: XCTestCase {
     }
 
     private func assertBackInOut<Number: InterpolatableNumber>(_ type: Number.Type, _ accuracy: Number) {
-        let function: EaseFunction<Number> = EaseFunctions.backInOut
+        let function: EaseFunction.Definition<Number> = EaseFunction.backInOut
         var value: Number
 
         value = function(Number(0), Number(1), Number(0.00), Number(1)) // 0%
@@ -596,7 +596,7 @@ class EaseFunctionsTest: XCTestCase {
     // MARK: Elastic Asserts
 
     private func assertElasticIn<Number: InterpolatableNumber>(_ type: Number.Type, _ accuracy: Number) {
-        let function: EaseFunction<Number> = EaseFunctions.elasticIn
+        let function: EaseFunction.Definition<Number> = EaseFunction.elasticIn
         var value: Number
 
         value = function(Number(0), Number(1), Number(0.00), Number(1)) // 0%
@@ -616,7 +616,7 @@ class EaseFunctionsTest: XCTestCase {
     }
 
     private func assertElasticOut<Number: InterpolatableNumber>(_ type: Number.Type, _ accuracy: Number) {
-        let function: EaseFunction<Number> = EaseFunctions.elasticOut
+        let function: EaseFunction.Definition<Number> = EaseFunction.elasticOut
         var value: Number
 
         value = function(Number(0), Number(1), Number(0.00), Number(1)) // 0%
@@ -636,7 +636,7 @@ class EaseFunctionsTest: XCTestCase {
     }
 
     private func assertElasticInOut<Number: InterpolatableNumber>(_ type: Number.Type, _ accuracy: Number) {
-        let function: EaseFunction<Number> = EaseFunctions.elasticInOut
+        let function: EaseFunction.Definition<Number> = EaseFunction.elasticInOut
         var value: Number
 
         value = function(Number(0), Number(1), Number(0.00), Number(1)) // 0%
@@ -658,7 +658,7 @@ class EaseFunctionsTest: XCTestCase {
     // MARK: Bounce Asserts
 
     private func assertBounceIn<Number: InterpolatableNumber>(_ type: Number.Type, _ accuracy: Number) {
-        let function: EaseFunction<Number> = EaseFunctions.bounceIn
+        let function: EaseFunction.Definition<Number> = EaseFunction.bounceIn
         var value: Number
 
         value = function(Number(0), Number(1), Number(0.00), Number(1)) // 0%
@@ -678,7 +678,7 @@ class EaseFunctionsTest: XCTestCase {
     }
 
     private func assertBounceOut<Number: InterpolatableNumber>(_ type: Number.Type, _ accuracy: Number) {
-        let function: EaseFunction<Number> = EaseFunctions.bounceOut
+        let function: EaseFunction.Definition<Number> = EaseFunction.bounceOut
         var value: Number
 
         value = function(Number(0), Number(1), Number(0.00), Number(1)) // 0%
@@ -698,7 +698,7 @@ class EaseFunctionsTest: XCTestCase {
     }
 
     private func assertBounceInOut<Number: InterpolatableNumber>(_ type: Number.Type, _ accuracy: Number) {
-        let function: EaseFunction<Number> = EaseFunctions.bounceInOut
+        let function: EaseFunction.Definition<Number> = EaseFunction.bounceInOut
         var value: Number
 
         value = function(Number(0), Number(1), Number(0.00), Number(1)) // 0%

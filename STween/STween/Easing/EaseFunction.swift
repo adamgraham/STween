@@ -1,5 +1,5 @@
 //
-//  EaseFunctions.swift
+//  EaseFunction.swift
 //  STween
 //
 //  Created by Adam Graham on 6/15/16.
@@ -35,28 +35,29 @@
 
  - Returns: The value at a specific point in time from the start value.
  */
-internal enum EaseFunctions {}
+public enum EaseFunction {
 
-/**
- A method to calculate a value between a starting and ending position at a specific point
- in time.
+    /**
+     Calculates a value between a starting and ending position at a specific point in time.
 
- - Parameters:
-    - b: The start value (b = begin).
-    - c: The change in value (c = change).
-    - t: The amount of time elapsed since the start of the ease (t = time).
-    - d: The total amount of time the ease will run (d = duration).
+     - Parameters:
+         - b: The start value (b = begin).
+         - c: The change in value (c = change).
+         - t: The amount of time elapsed since the start of the ease (t = time).
+         - d: The total amount of time the ease will run (d = duration).
 
- - Returns: The value at a specific point in time from the start value.
- */
-public typealias EaseFunction<Number: InterpolatableNumber> = (
-    _ b: Number,
-    _ c: Number,
-    _ t: Number,
-    _ d: Number) -> Number
+     - Returns: The value at a specific point in time from the start value.
+     */
+    public typealias Definition<Number: InterpolatableNumber> = (
+        _ b: Number,
+        _ c: Number,
+        _ t: Number,
+        _ d: Number) -> Number
+
+}
 
 /// An extension to add the linear easing function.
-extension EaseFunctions {
+extension EaseFunction {
 
     // MARK: Linear
 
@@ -72,7 +73,7 @@ extension EaseFunctions {
      
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func linear<Number: InterpolatableNumber>(
+    public static func linear<Number: InterpolatableNumber>(
         b: Number, c: Number, t: Number, d: Number) -> Number {
 
         let x = t/d
@@ -82,7 +83,7 @@ extension EaseFunctions {
 }
 
 /// An extension to add the sinusoidal easing functions.
-extension EaseFunctions {
+extension EaseFunction {
 
     // MARK: Sinusoidal
 
@@ -98,7 +99,7 @@ extension EaseFunctions {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func sineIn<Number: InterpolatableNumber>(
+    public static func sineIn<Number: InterpolatableNumber>(
         b: Number, c: Number, t: Number, d: Number) -> Number {
 
         let x = t/d
@@ -118,7 +119,7 @@ extension EaseFunctions {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func sineOut<Number: InterpolatableNumber>(
+    public static func sineOut<Number: InterpolatableNumber>(
         b: Number, c: Number, t: Number, d: Number) -> Number {
 
         let x = t/d
@@ -138,7 +139,7 @@ extension EaseFunctions {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func sineInOut<Number: InterpolatableNumber>(
+    public static func sineInOut<Number: InterpolatableNumber>(
         b: Number, c: Number, t: Number, d: Number) -> Number {
 
         let x = t/d
@@ -149,7 +150,7 @@ extension EaseFunctions {
 }
 
 /// An extension to add the cubic easing functions.
-extension EaseFunctions {
+extension EaseFunction {
 
     // MARK: Cubic
 
@@ -165,7 +166,7 @@ extension EaseFunctions {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func cubicIn<Number: InterpolatableNumber>(
+    public static func cubicIn<Number: InterpolatableNumber>(
         b: Number, c: Number, t: Number, d: Number) -> Number {
 
         let x = t/d
@@ -185,7 +186,7 @@ extension EaseFunctions {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func cubicOut<Number: InterpolatableNumber>(
+    public static func cubicOut<Number: InterpolatableNumber>(
         b: Number, c: Number, t: Number, d: Number) -> Number {
 
         let x = (t/d) - Number.const.one
@@ -205,7 +206,7 @@ extension EaseFunctions {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func cubicInOut<Number: InterpolatableNumber>(
+    public static func cubicInOut<Number: InterpolatableNumber>(
         b: Number, c: Number, t: Number, d: Number) -> Number {
 
         var x = t/(d.half)
@@ -223,7 +224,7 @@ extension EaseFunctions {
 }
 
 /// An extension to add the quadratic easing functions.
-extension EaseFunctions {
+extension EaseFunction {
 
     // MARK: Quadratic
 
@@ -239,7 +240,7 @@ extension EaseFunctions {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func quadIn<Number: InterpolatableNumber>(
+    public static func quadIn<Number: InterpolatableNumber>(
         b: Number, c: Number, t: Number, d: Number) -> Number {
 
         let x = t/d
@@ -259,7 +260,7 @@ extension EaseFunctions {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func quadOut<Number: InterpolatableNumber>(
+    public static func quadOut<Number: InterpolatableNumber>(
         b: Number, c: Number, t: Number, d: Number) -> Number {
 
         let x = t/d
@@ -279,7 +280,7 @@ extension EaseFunctions {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func quadInOut<Number: InterpolatableNumber>(
+    public static func quadInOut<Number: InterpolatableNumber>(
         b: Number, c: Number, t: Number, d: Number) -> Number {
 
         var x = t/(d.half)
@@ -297,7 +298,7 @@ extension EaseFunctions {
 }
 
 /// An extension to add the quartic easing functions.
-extension EaseFunctions {
+extension EaseFunction {
 
     // MARK: Quartic
 
@@ -313,7 +314,7 @@ extension EaseFunctions {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func quartIn<Number: InterpolatableNumber>(
+    public static func quartIn<Number: InterpolatableNumber>(
         b: Number, c: Number, t: Number, d: Number) -> Number {
 
         let x = t/d
@@ -333,7 +334,7 @@ extension EaseFunctions {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func quartOut<Number: InterpolatableNumber>(
+    public static func quartOut<Number: InterpolatableNumber>(
         b: Number, c: Number, t: Number, d: Number) -> Number {
 
         let x = (t/d) - Number.const.one
@@ -353,7 +354,7 @@ extension EaseFunctions {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func quartInOut<Number: InterpolatableNumber>(
+    public static func quartInOut<Number: InterpolatableNumber>(
         b: Number, c: Number, t: Number, d: Number) -> Number {
 
         var x = t/(d.half)
@@ -371,7 +372,7 @@ extension EaseFunctions {
 }
 
 /// An extension to add the quintic easing functions.
-extension EaseFunctions {
+extension EaseFunction {
 
     // MARK: Quintic
 
@@ -387,7 +388,7 @@ extension EaseFunctions {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func quintIn<Number: InterpolatableNumber>(
+    public static func quintIn<Number: InterpolatableNumber>(
         b: Number, c: Number, t: Number, d: Number) -> Number {
 
         let x = t/d
@@ -407,7 +408,7 @@ extension EaseFunctions {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func quintOut<Number: InterpolatableNumber>(
+    public static func quintOut<Number: InterpolatableNumber>(
         b: Number, c: Number, t: Number, d: Number) -> Number {
 
         let x = (t/d) - Number.const.one
@@ -427,7 +428,7 @@ extension EaseFunctions {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func quintInOut<Number: InterpolatableNumber>(
+    public static func quintInOut<Number: InterpolatableNumber>(
         b: Number, c: Number, t: Number, d: Number) -> Number {
 
         var x = t/(d.half)
@@ -445,7 +446,7 @@ extension EaseFunctions {
 }
 
 /// An extension to add the exponential easing functions.
-extension EaseFunctions {
+extension EaseFunction {
 
     // MARK: Exponential
 
@@ -461,7 +462,7 @@ extension EaseFunctions {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func expoIn<Number: InterpolatableNumber>(
+    public static func expoIn<Number: InterpolatableNumber>(
         b: Number, c: Number, t: Number, d: Number) -> Number {
 
         if t.isZero {
@@ -486,7 +487,7 @@ extension EaseFunctions {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func expoOut<Number: InterpolatableNumber>(
+    public static func expoOut<Number: InterpolatableNumber>(
         b: Number, c: Number, t: Number, d: Number) -> Number {
 
         if t == d {
@@ -511,7 +512,7 @@ extension EaseFunctions {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func expoInOut<Number: InterpolatableNumber>(
+    public static func expoInOut<Number: InterpolatableNumber>(
         b: Number, c: Number, t: Number, d: Number) -> Number {
 
         if t.isZero {
@@ -537,7 +538,7 @@ extension EaseFunctions {
 }
 
 /// An extension to add the circular easing functions.
-extension EaseFunctions {
+extension EaseFunction {
 
     // MARK: Circular
 
@@ -553,7 +554,7 @@ extension EaseFunctions {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func circIn<Number: InterpolatableNumber>(
+    public static func circIn<Number: InterpolatableNumber>(
         b: Number, c: Number, t: Number, d: Number) -> Number {
 
         let x = t/d
@@ -573,7 +574,7 @@ extension EaseFunctions {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func circOut<Number: InterpolatableNumber>(
+    public static func circOut<Number: InterpolatableNumber>(
         b: Number, c: Number, t: Number, d: Number) -> Number {
 
         let x = (t/d) - Number.const.one
@@ -593,7 +594,7 @@ extension EaseFunctions {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func circInOut<Number: InterpolatableNumber>(
+    public static func circInOut<Number: InterpolatableNumber>(
         b: Number, c: Number, t: Number, d: Number) -> Number {
 
         var x = t/(d.half)
@@ -611,7 +612,7 @@ extension EaseFunctions {
 }
 
 /// An extension to add the back easing functions.
-extension EaseFunctions {
+extension EaseFunction {
 
     // MARK: Back
 
@@ -627,7 +628,7 @@ extension EaseFunctions {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func backIn<Number: InterpolatableNumber>(
+    public static func backIn<Number: InterpolatableNumber>(
         b: Number, c: Number, t: Number, d: Number) -> Number {
 
         let s = Number(Defaults.overshoot)
@@ -649,7 +650,7 @@ extension EaseFunctions {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func backOut<Number: InterpolatableNumber>(
+    public static func backOut<Number: InterpolatableNumber>(
         b: Number, c: Number, t: Number, d: Number) -> Number {
 
         let s = Number(Defaults.overshoot)
@@ -671,7 +672,7 @@ extension EaseFunctions {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func backInOut<Number: InterpolatableNumber>(
+    public static func backInOut<Number: InterpolatableNumber>(
         b: Number, c: Number, t: Number, d: Number) -> Number {
 
         let s = Number(Defaults.overshoot * 1.525)
@@ -692,7 +693,7 @@ extension EaseFunctions {
 }
 
 /// An extension to add the elastic easing functions.
-extension EaseFunctions {
+extension EaseFunction {
 
     // MARK: Elastic
 
@@ -708,7 +709,7 @@ extension EaseFunctions {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func elasticIn<Number: InterpolatableNumber>(
+    public static func elasticIn<Number: InterpolatableNumber>(
         b: Number, c: Number, t: Number, d: Number) -> Number {
 
         var x = t/d
@@ -745,7 +746,7 @@ extension EaseFunctions {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func elasticOut<Number: InterpolatableNumber>(
+    public static func elasticOut<Number: InterpolatableNumber>(
         b: Number, c: Number, t: Number, d: Number) -> Number {
 
         let x = t/d
@@ -781,7 +782,7 @@ extension EaseFunctions {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func elasticInOut<Number: InterpolatableNumber>(
+    public static func elasticInOut<Number: InterpolatableNumber>(
         b: Number, c: Number, t: Number, d: Number) -> Number {
 
         var x = t/(d.half)
@@ -822,7 +823,7 @@ extension EaseFunctions {
 }
 
 /// An extension to add the bounce easing functions.
-extension EaseFunctions {
+extension EaseFunction {
 
     // MARK: Bounce
 
@@ -838,10 +839,10 @@ extension EaseFunctions {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func bounceIn<Number: InterpolatableNumber>(
+    public static func bounceIn<Number: InterpolatableNumber>(
         b: Number, c: Number, t: Number, d: Number) -> Number {
 
-        let m = EaseFunctions.bounceOut(b: Number.const.zero, c: c, t: d-t, d: d)
+        let m = EaseFunction.bounceOut(b: Number.const.zero, c: c, t: d-t, d: d)
         return c - m + b
     }
 
@@ -857,7 +858,7 @@ extension EaseFunctions {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func bounceOut<Number: InterpolatableNumber>(
+    public static func bounceOut<Number: InterpolatableNumber>(
         b: Number, c: Number, t: Number, d: Number) -> Number {
 
         var x = t/d
@@ -892,15 +893,15 @@ extension EaseFunctions {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    internal static func bounceInOut<Number: InterpolatableNumber>(
+    public static func bounceInOut<Number: InterpolatableNumber>(
         b: Number, c: Number, t: Number, d: Number) -> Number {
 
         if t < (d.half) {
-            let m = EaseFunctions.bounceIn(b: Number.const.zero, c: c, t: t.double, d: d).half
+            let m = EaseFunction.bounceIn(b: Number.const.zero, c: c, t: t.double, d: d).half
             return m + b
         }
 
-        let m = (EaseFunctions.bounceOut(b: Number.const.zero, c: c, t: (t.double)-d, d: d).half) + c.half
+        let m = (EaseFunction.bounceOut(b: Number.const.zero, c: c, t: (t.double)-d, d: d).half) + c.half
         return m + b
     }
     
