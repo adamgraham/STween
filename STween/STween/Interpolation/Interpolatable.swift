@@ -364,11 +364,36 @@ extension UIColor: Interpolatable {
     public static func interpolate(from startValue: UIColor, to endValue: UIColor, with ease: Ease,
                                    elapsed: TimeInterval, duration: TimeInterval) -> UIColor {
 
-        let rgba = RGBA.interpolate(from: startValue.rgba, to: endValue.rgba, with: ease,
-                                    elapsed: elapsed, duration: duration)
-        return rgba.color
+        let interpolate: (CGFloat, CGFloat) -> CGFloat = { (start, end) in
+            return ease.interpolate(from: start, to: end, elapsed: CGFloat(elapsed), duration: CGFloat(duration))
+        }
+
+        let startComponents = startValue.components
+        let endComponents = endValue.components
+
+        let red = interpolate(startComponents.red, endComponents.red)
+        let green = interpolate(startComponents.green, endComponents.green)
+        let blue = interpolate(startComponents.blue, endComponents.blue)
+        let alpha = interpolate(startComponents.alpha, endComponents.alpha)
+
+        return UIColor(red: red, green: green, blue: blue, alpha: alpha)
     }
     
+}
+
+private extension UIColor {
+
+    /// The red, green, blue, and alpha components of `self`.
+    private var components: (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
+        var red: CGFloat = 0.0
+        var green: CGFloat = 0.0
+        var blue: CGFloat = 0.0
+        var alpha: CGFloat = 0.0
+
+        self.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
+        return (red: red, green: green, blue: blue, alpha: alpha)
+    }
+
 }
 
 /// :nodoc:
@@ -407,26 +432,4 @@ extension UIOffset: Interpolatable {
         return UIOffset(horizontal: horizontal, vertical: vertical)
     }
     
-}
-
-// MARK: - Conformance: Internal
-
-/// :nodoc:
-extension RGBA: Interpolatable {
-
-    internal static func interpolate(from startValue: RGBA, to endValue: RGBA, with ease: Ease,
-                                     elapsed: TimeInterval, duration: TimeInterval) -> RGBA {
-
-        let interpolate: (CGFloat, CGFloat) -> CGFloat = { (start, end) in
-            return ease.interpolate(from: start, to: end, elapsed: CGFloat(elapsed), duration: CGFloat(duration))
-        }
-
-        let red = interpolate(startValue.red, endValue.red)
-        let green = interpolate(startValue.green, endValue.green)
-        let blue = interpolate(startValue.blue, endValue.blue)
-        let alpha = interpolate(startValue.alpha, endValue.alpha)
-
-        return RGBA(red: red, green: green, blue: blue, alpha: alpha)
-    }
-
 }

@@ -285,15 +285,6 @@ class InterpolatableTest: XCTestCase {
         assertInterpolation(startValue: startValue, endValue: endValue, middleValue: middleValue)
     }
 
-    // MARK: Internal Tests
-
-    func testRGBA() {
-        let startValue = RGBA(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
-        let endValue = RGBA(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        let middleValue = RGBA(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
-        assertInterpolation(startValue: startValue, endValue: endValue, middleValue: middleValue)
-    }
-
 }
 
 // MARK: - Equatable Helpers

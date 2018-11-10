@@ -38,14 +38,10 @@
 		9D8890761E2883160023FE78 /* Tweener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8890581E2883160023FE78 /* Tweener.swift */; };
 		9D8890771E2883160023FE78 /* TweenState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8890591E2883160023FE78 /* TweenState.swift */; };
 		9D8890791E2883160023FE78 /* TweenTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D88905B1E2883160023FE78 /* TweenTimer.swift */; };
-		9D88907A1E2883160023FE78 /* RGBA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D88905E1E2883160023FE78 /* RGBA.swift */; };
-		9D88907B1E2883160023FE78 /* UIColor+RGBA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D88905F1E2883160023FE78 /* UIColor+RGBA.swift */; };
 		9D88907C1E2883160023FE78 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8890601E2883160023FE78 /* Functions.swift */; };
 		9D889D2A1E29D48C00B3207E /* InterpolationValuesTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D889D291E29D48C00B3207E /* InterpolationValuesTest.swift */; };
 		9DB3D6351DAE686F00134C1D /* DefaultsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB3D6301DAE686F00134C1D /* DefaultsTest.swift */; };
 		9DB3D6381DAE686F00134C1D /* CallbackTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB3D6341DAE686F00134C1D /* CallbackTest.swift */; };
-		9DB3D63D1DAE688200134C1D /* RGBATest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB3D63B1DAE688200134C1D /* RGBATest.swift */; };
-		9DB3D63E1DAE688200134C1D /* UIColor+RGBATest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB3D63C1DAE688200134C1D /* UIColor+RGBATest.swift */; };
 		9DB3D6401DAE6CCB00134C1D /* XCTestCase+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB3D63F1DAE6CCB00134C1D /* XCTestCase+Utils.swift */; };
 		9DB3D6441DAE758F00134C1D /* FunctionsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB3D6431DAE758F00134C1D /* FunctionsTest.swift */; };
 		9DB46B191E29EB6000CB21F9 /* NSLayoutConstraint+TweeningTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB46B141E29EB6000CB21F9 /* NSLayoutConstraint+TweeningTest.swift */; };
@@ -112,14 +108,10 @@
 		9D8890581E2883160023FE78 /* Tweener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweener.swift; sourceTree = "<group>"; };
 		9D8890591E2883160023FE78 /* TweenState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweenState.swift; sourceTree = "<group>"; };
 		9D88905B1E2883160023FE78 /* TweenTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweenTimer.swift; sourceTree = "<group>"; };
-		9D88905E1E2883160023FE78 /* RGBA.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RGBA.swift; sourceTree = "<group>"; };
-		9D88905F1E2883160023FE78 /* UIColor+RGBA.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+RGBA.swift"; sourceTree = "<group>"; };
 		9D8890601E2883160023FE78 /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		9D889D291E29D48C00B3207E /* InterpolationValuesTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterpolationValuesTest.swift; sourceTree = "<group>"; };
 		9DB3D6301DAE686F00134C1D /* DefaultsTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultsTest.swift; sourceTree = "<group>"; };
 		9DB3D6341DAE686F00134C1D /* CallbackTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallbackTest.swift; sourceTree = "<group>"; };
-		9DB3D63B1DAE688200134C1D /* RGBATest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RGBATest.swift; sourceTree = "<group>"; };
-		9DB3D63C1DAE688200134C1D /* UIColor+RGBATest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+RGBATest.swift"; sourceTree = "<group>"; };
 		9DB3D63F1DAE6CCB00134C1D /* XCTestCase+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Utils.swift"; sourceTree = "<group>"; };
 		9DB3D6431DAE758F00134C1D /* FunctionsTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FunctionsTest.swift; sourceTree = "<group>"; };
 		9DB46B141E29EB6000CB21F9 /* NSLayoutConstraint+TweeningTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+TweeningTest.swift"; sourceTree = "<group>"; };
@@ -266,20 +258,10 @@
 		9D88905C1E2883160023FE78 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				9D88905D1E2883160023FE78 /* Color */,
 				9D8890421E2883160023FE78 /* Callback.swift */,
 				9D8890601E2883160023FE78 /* Functions.swift */,
 			);
 			path = Utils;
-			sourceTree = "<group>";
-		};
-		9D88905D1E2883160023FE78 /* Color */ = {
-			isa = PBXGroup;
-			children = (
-				9D88905E1E2883160023FE78 /* RGBA.swift */,
-				9D88905F1E2883160023FE78 /* UIColor+RGBA.swift */,
-			);
-			path = Color;
 			sourceTree = "<group>";
 		};
 		9DB3D62F1DAE686F00134C1D /* Settings */ = {
@@ -293,20 +275,10 @@
 		9DB3D6391DAE688200134C1D /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				9DB3D63A1DAE688200134C1D /* Color */,
 				9DB3D6341DAE686F00134C1D /* CallbackTest.swift */,
 				9DB3D6431DAE758F00134C1D /* FunctionsTest.swift */,
 			);
 			path = Utils;
-			sourceTree = "<group>";
-		};
-		9DB3D63A1DAE688200134C1D /* Color */ = {
-			isa = PBXGroup;
-			children = (
-				9DB3D63B1DAE688200134C1D /* RGBATest.swift */,
-				9DB3D63C1DAE688200134C1D /* UIColor+RGBATest.swift */,
-			);
-			path = Color;
 			sourceTree = "<group>";
 		};
 		9DB46B131E29EB6000CB21F9 /* Conformance */ = {
@@ -499,7 +471,6 @@
 				9DEDF79C1E36FCA7002E0CB9 /* TweenableProperty.swift in Sources */,
 				9D88907C1E2883160023FE78 /* Functions.swift in Sources */,
 				9D8890701E2883160023FE78 /* Tween+Chaining.swift in Sources */,
-				9D88907B1E2883160023FE78 /* UIColor+RGBA.swift in Sources */,
 				9D88906E1E2883160023FE78 /* InterpolationValues.swift in Sources */,
 				9D8890711E2883160023FE78 /* UIView+Tweening.swift in Sources */,
 				9D88906B1E2883160023FE78 /* EaseMappings.swift in Sources */,
@@ -512,7 +483,6 @@
 				9D8890751E2883160023FE78 /* TweenAnimation.swift in Sources */,
 				9D88906A1E2883160023FE78 /* EaseCurve.swift in Sources */,
 				9DF7248A1E4799F800A0BDB9 /* UIButton+Tweening.swift in Sources */,
-				9D88907A1E2883160023FE78 /* RGBA.swift in Sources */,
 				9D8890681E2883160023FE78 /* EaseFunction.swift in Sources */,
 				9D88906C1E2883160023FE78 /* Interpolatable.swift in Sources */,
 				9D8890791E2883160023FE78 /* TweenTimer.swift in Sources */,
@@ -527,7 +497,6 @@
 			files = (
 				9DB46B191E29EB6000CB21F9 /* NSLayoutConstraint+TweeningTest.swift in Sources */,
 				9DB3D6351DAE686F00134C1D /* DefaultsTest.swift in Sources */,
-				9DB3D63D1DAE688200134C1D /* RGBATest.swift in Sources */,
 				9DB3D6381DAE686F00134C1D /* CallbackTest.swift in Sources */,
 				9D17DC0A1E4199E000DC96A1 /* TweenablePropertyTest.swift in Sources */,
 				9D482BCD1DC22F55009A1CCD /* EaseClassificationTest.swift in Sources */,
@@ -536,7 +505,6 @@
 				9DD2404A1DCD436A009C658F /* InterpolatableTest.swift in Sources */,
 				9DB46B1B1E29EB6000CB21F9 /* UIView+TweeningTest.swift in Sources */,
 				9DBF34031DB8F4BA006C0D84 /* EaseCurveTest.swift in Sources */,
-				9DB3D63E1DAE688200134C1D /* UIColor+RGBATest.swift in Sources */,
 				9D6A3DBB1DDEB095009B6352 /* TweenerTest.swift in Sources */,
 				9DBF34021DB8F4BA006C0D84 /* EaseFunctionTest.swift in Sources */,
 				9D6A3DB31DDEB05B009B6352 /* TweenTest.swift in Sources */,
