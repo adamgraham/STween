@@ -10,71 +10,69 @@ import CoreGraphics
 import Foundation
 import UIKit
 
-/// An extension to provide tweening animation functionality to `UIView`.
+/// Provides tweening animation functionality to `UIView`.
 extension UIView: Tweenable {}
 
-/// An enum to describe the properties that can be animated with a tween on a `UIView`.
+/// The properties of a `UIView` that can be animated with a tween.
 public enum UIViewTweenProperty: Equatable {
 
-    /// A case to denote the `frame.origin.x` property of a `UIView`.
+    /// The `frame.origin.x` property of a `UIView`.
     case x(CGFloat)
-    /// A case to denote the `frame.origin.y` property of a `UIView`.
+    /// The `frame.origin.y` property of a `UIView`.
     case y(CGFloat)
-    /// A case to denote the `frame.origin` property of a `UIView`.
+    /// The `frame.origin` property of a `UIView`.
     case origin(CGPoint)
 
-    /// A case to denote the `frame.size.width` property of a `UIView`.
+    /// The `frame.size.width` property of a `UIView`.
     case width(CGFloat)
-    /// A case to denote the `frame.size.height` property of a `UIView`.
+    /// The `frame.size.height` property of a `UIView`.
     case height(CGFloat)
-    /// A case to denote the `frame.size` property of a `UIView`.
+    /// The `frame.size` property of a `UIView`.
     case size(CGSize)
 
-    /// A case to denote the `frame.minX` property of a `UIView`.
+    /// The `frame.minX` property of a `UIView`.
     case left(CGFloat)
-    /// A case to denote the `frame.maxX` property of a `UIView`.
+    /// The `frame.maxX` property of a `UIView`.
     case right(CGFloat)
-    /// A case to denote the `frame.minY` property of a `UIView`.
+    /// The `frame.minY` property of a `UIView`.
     case top(CGFloat)
-    /// A case to denote the `frame.maxY` property of a `UIView`.
+    /// The `frame.maxY` property of a `UIView`.
     case bottom(CGFloat)
 
-    /// A case to denote the `frame` property of a `UIView`.
+    /// The `frame` property of a `UIView`.
     case frame(CGRect)
-    /// A case to denote the `bounds` property of a `UIView`.
+    /// The `bounds` property of a `UIView`.
     case bounds(CGRect)
-    /// A case to denote the `transform` property of a `UIView`.
+    /// The `transform` property of a `UIView`.
     case transform(CGAffineTransform)
 
-    /// A case to denote the `center` property of a `UIView`.
+    /// The `center` property of a `UIView`.
     case center(CGPoint)
-    /// A case to denote the `center.x` property of a `UIView`.
+    /// The `center.x` property of a `UIView`.
     case centerX(CGFloat)
-    /// A case to denote the `center.y` property of a `UIView`.
+    /// The `center.y` property of a `UIView`.
     case centerY(CGFloat)
 
-    /// A case to denote the `alpha` property of a `UIView`.
+    /// The `alpha` property of a `UIView`.
     case alpha(CGFloat)
-    /// A case to denote the `backgroundColor` property of a `UIView`.
+    /// The `backgroundColor` property of a `UIView`.
     case backgroundColor(UIColor)
 
-    /// A case to denote the `tintColor` property of a `UIView`.
+    /// The `tintColor` property of a `UIView`.
     @available(iOS 7.0, *)
     case tintColor(UIColor)
 
-    /// A case to denote the `contentScaleFactor` property of a `UIView`.
+    /// The `contentScaleFactor` property of a `UIView`.
     @available(iOS 4.0, *)
     case contentScaleFactor(CGFloat)
 
-    /// A case to denote the `layoutMargins` property of a `UIView`.
+    /// The `layoutMargins` property of a `UIView`.
     @available(iOS 8.0, *)
     case layoutMargins(UIEdgeInsets)
 
 }
 
 extension UIViewTweenProperty: TweenableProperty {
-
-    public typealias TweenableType = UIView
 
     public func value(from object: UIView) -> UIViewTweenProperty {
         switch self {

@@ -10,34 +10,32 @@ import CoreGraphics
 import Foundation
 import UIKit
 
-/// An extension to provide tweening animation functionality to `UILabel`.
+/// Provides tweening animation functionality to `UILabel`.
 extension UILabel {}
 
-/// An enum to describe the properties that can be animated with a tween on a `UILabel`.
+/// The properties of a `UILabel` that can be animated with a tween.
 public enum UILabelTweenProperty: Equatable {
 
-    /// A case to denote the `textColor` property of a `UILabel`.
+    /// The `textColor` property of a `UILabel`.
     case textColor(UIColor)
-    /// A case to denote the `highlightedTextColor` property of a `UILabel`.
+    /// The `highlightedTextColor` property of a `UILabel`.
     case highlightedTextColor(UIColor)
 
-    /// A case to denote the `shadowColor` property of a `UILabel`.
+    /// The `shadowColor` property of a `UILabel`.
     case shadowColor(UIColor)
-    /// A case to denote the `shadowOffset` property of a `UILabel`.
+    /// The `shadowOffset` property of a `UILabel`.
     case shadowOffset(CGSize)
 
-    /// A case to denote the `minimumScaleFactor` property of a `UILabel`.
+    /// The `minimumScaleFactor` property of a `UILabel`.
     @available(iOS 6.0, *)
     case minimumScaleFactor(CGFloat)
-    /// A case to denote the `preferredMaxLayoutWidth` property of a `UILabel`.
+    /// The `preferredMaxLayoutWidth` property of a `UILabel`.
     @available(iOS 6.0, *)
     case preferredMaxLayoutWidth(CGFloat)
 
 }
 
 extension UILabelTweenProperty: TweenableProperty {
-
-    public typealias TweenableType = UILabel
 
     public func value(from object: UILabel) -> UILabelTweenProperty {
         switch self {

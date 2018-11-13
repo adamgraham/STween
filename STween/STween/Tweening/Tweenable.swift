@@ -14,12 +14,12 @@ public protocol Tweenable {
     // MARK: Methods
 
     /**
-     A method to animate *to* a tweenable property value of `self`.
+     Animates a tweenable property from its current value *to* the desired value.
 
      - Parameters:
-        - property: The property to be animated.
-        - duration: The amount of time, in seconds, the animation will run.
-        - completion: A callback invoked when the animation is finished.
+        - property: The property to animate.
+        - duration: The amount of seconds the animation takes to complete.
+        - completion: The callback invoked when the animation is finished (optional).
 
      - Returns: The `Tween` control for the animation.
      */
@@ -28,12 +28,12 @@ public protocol Tweenable {
         where TweenProperty.Target == Self
 
     /**
-     A method to animate *to* an array of tweenable property values on `self`.
+     Animates an array of tweenable properties from its current values *to* the desired values.
 
      - Parameters:
-        - properties: The array of properties to be animated.
-        - duration: The amount of time, in seconds, the animation will run.
-        - completion: A callback invoked when the animation is finished.
+        - properties: The array of properties to animate.
+        - duration: The amount of seconds the animation takes to complete.
+        - completion: The callback invoked when the animation is finished (optional).
 
      - Returns: The `Tween` control for the animation.
      */
@@ -42,12 +42,12 @@ public protocol Tweenable {
         where TweenProperty.Target == Self
 
     /**
-     A method to animate *from* a tweenable property value of `self`.
+     Animates a tweenable property *from* the desired value to its current value.
 
      - Parameters:
-        - property: The property to be animated.
-        - duration: The amount of time, in seconds, the animation will run.
-        - completion: A callback invoked when the animation is finished.
+        - property: The property to animate.
+        - duration: The amount of seconds the animation takes to complete.
+        - completion: The callback invoked when the animation is finished (optional).
 
      - Returns: The `Tween` control for the animation.
      */
@@ -56,12 +56,12 @@ public protocol Tweenable {
         where TweenProperty.Target == Self
 
     /**
-     A method to animate *from* an array of tweenable property values on `self`.
+     Animates an array of tweenable properties *from* the desired values to its current values.
 
      - Parameters:
-        - properties: The array of properties to be animated.
-        - duration: The amount of time, in seconds, the animation will run.
-        - completion: A callback invoked when the animation is finished.
+        - properties: The array of properties to animate.
+        - duration: The amount of seconds the animation takes to complete.
+        - completion: The callback invoked when the animation is finished (optional).
 
      - Returns: The `Tween` control for the animation.
      */

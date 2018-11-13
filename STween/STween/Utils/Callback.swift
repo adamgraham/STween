@@ -6,7 +6,6 @@
 //  Copyright © 2016 Adam Graham. All rights reserved.
 //
 
-/// A typealias for the method signature of a "callback" closure. Callbacks are invoked
-/// upon completion of many different events, such as when a `Tween` has finished
-/// animating.
+/// The method signature of a "callback" closure. Callbacks are invoked upon completion
+/// of many different events, such as when a tween has finished animating.
 public typealias Callback = () -> Void

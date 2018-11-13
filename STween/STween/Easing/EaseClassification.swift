@@ -6,92 +6,42 @@
 //  Copyright © 2016 Adam Graham. All rights reserved.
 //
 
-/// An enum to describe the algorithmic classification of an ease.
+/// The algorithmic classification of an ease.
 public enum EaseClassification {
 
-    /// A case to denote a linear algorithmic classification.
+    /// A "linear" algorithmic classification – a 1st degree polynomial.
     ///
-    /// This can also be considered as "none" or "no ease".
+    /// This is also considered "none" or "no ease".
     case linear
 
-    /// A case to denote a sinusoidal algorithmic classification.
-    ///
-    /// - *Visualized References*:
-    ///   - [EaseCurve.in](http://easings.net/#easeInSine)
-    ///   - [EaseCurve.out](http://easings.net/#easeOutSine)
-    ///   - [EaseCurve.inOut](http://easings.net/#easeInOutSine)
+    /// A "sinusoidal" algorithmic classification.
     case sine
 
-    /// A case to denote a cubic algorithmic classification.
-    ///
-    /// - *Visualized References*:
-    ///   - [EaseCurve.in](http://easings.net/#easeInCubic)
-    ///   - [EaseCurve.out](http://easings.net/#easeOutCubic)
-    ///   - [EaseCurve.inOut](http://easings.net/#easeInOutCubic)
+    /// A "cubic" algorithmic classification – a 3rd degree polynomial.
     case cubic
 
-    /// A case to denote a quadratic algorithmic classification.
-    ///
-    /// - *Visualized References*:
-    ///   - [EaseCurve.in](http://easings.net/#easeInQuad)
-    ///   - [EaseCurve.out](http://easings.net/#easeOutQuad)
-    ///   - [EaseCurve.inOut](http://easings.net/#easeInOutQuad)
+    /// A "quadratic" algorithmic classification – a 2nd degree polynomial.
     case quad
 
-    /// A case to denote a quartic algorithmic classification.
-    ///
-    /// - *Visualized References*:
-    ///   - [EaseCurve.in](http://easings.net/#easeInQuart)
-    ///   - [EaseCurve.out](http://easings.net/#easeOutQuart)
-    ///   - [EaseCurve.inOut](http://easings.net/#easeInOutQuart)
+    /// A "quartic" algorithmic classification – a 4th degree polynomial.
     case quart
 
-    /// A case to denote a quintic algorithmic classification.
-    ///
-    /// - *Visualized References*:
-    ///   - [EaseCurve.in](http://easings.net/#easeInQuint)
-    ///   - [EaseCurve.out](http://easings.net/#easeOutQuint)
-    ///   - [EaseCurve.inOut](http://easings.net/#easeInOutQuint)
+    /// A "quintic" algorithmic classification – a 5th degree polynomial.
     case quint
 
-    /// A case to denote an exponential algorithmic classification.
-    ///
-    /// - *Visualized References*:
-    ///   - [EaseCurve.in](http://easings.net/#easeInExpo)
-    ///   - [EaseCurve.out](http://easings.net/#easeOutExpo)
-    ///   - [EaseCurve.inOut](http://easings.net/#easeInOutExpo)
+    /// An "exponential" algorithmic classification.
     case expo
 
-    /// A case to denote a circular algorithmic classification.
-    ///
-    /// - *Visualized References*:
-    ///   - [EaseCurve.in](http://easings.net/#easeInCirc)
-    ///   - [EaseCurve.out](http://easings.net/#easeOutCirc)
-    ///   - [EaseCurve.inOut](http://easings.net/#easeInOutCirc)
+    /// A "circular" algorithmic classification.
     case circ
 
-    /// A case to denote a back algorithmic classification.
-    ///
-    /// - *Visualized References*:
-    ///   - [EaseCurve.in](http://easings.net/#easeInBack)
-    ///   - [EaseCurve.out](http://easings.net/#easeOutBack)
-    ///   - [EaseCurve.inOut](http://easings.net/#easeInOutBack)
+    /// A "back" algorithmic classification.
     case back
 
-    /// A case to denote an elastic algorithmic classification.
-    ///
-    /// - *Visualized References*:
-    ///   - [EaseCurve.in](http://easings.net/#easeInElastic)
-    ///   - [EaseCurve.out](http://easings.net/#easeOutElastic)
-    ///   - [EaseCurve.inOut](http://easings.net/#easeInOutElastic)
+    /// An "elastic" algorithmic classification.
     case elastic
 
-    /// A case to denote a bounce algorithmic classification.
-    ///
-    /// - *Visualized References*:
-    ///   - [EaseCurve.in](http://easings.net/#easeInBounce)
-    ///   - [EaseCurve.out](http://easings.net/#easeOutBounce)
-    ///   - [EaseCurve.inOut](http://easings.net/#easeInOutBounce)
+    /// A "bounce" algorithmic classification.
     case bounce
 
 }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-/// A struct to store a start and end value for interpolation purposes.
+/// A start and end value used for interpolation.
 internal struct InterpolationValues<T: Interpolatable> where T.Value == T {
 
     // MARK: Stored Properties
@@ -20,8 +20,8 @@ internal struct InterpolationValues<T: Interpolatable> where T.Value == T {
 
     // MARK: Computed Properties
 
-    /// The reversed version of `self` where the start value is the end value, and the end value
-    /// is the start value.
+    /// The reversal of the start and end values –
+    /// the end becomes the start, the start becomes the end.
     internal var reversed: InterpolationValues<T> {
         return InterpolationValues(start: self.end, end: self.start)
     }
@@ -29,11 +29,10 @@ internal struct InterpolationValues<T: Interpolatable> where T.Value == T {
     // MARK: Methods
 
     /**
-     A method to calculate the value between `self.start` and `self.end` at a specific
-     point in time.
+     Calculates the value between the start and end value at a specific point in time.
      
      - Parameters:
-        - ease: The `Ease` function used to interpolate values.
+        - ease: The `Ease` used to interpolate values.
         - elapsed: The elapsed amount of time passed to the `ease` function.
         - duration: The duration of time passed to the `ease` function.
 

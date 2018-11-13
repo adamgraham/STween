@@ -10,22 +10,20 @@ import CoreGraphics
 import Foundation
 import UIKit
 
-/// An extension to provide tweening animation functionality to `UITextField`.
+/// Provides tweening animation functionality to `UITextField`.
 extension UITextField {}
 
-/// An enum to describe the properties that can be animated with a tween on a `UITextField`.
+/// The properties of a `UITextField` that can be animated with a tween.
 public enum UITextFieldTweenProperty: Equatable {
 
-    /// A case to denote the `textColor` property of a `UITextField`.
+    /// The `textColor` property of a `UITextField`.
     case textColor(UIColor)
-    /// A case to denote the `minimumFontSize` property of a `UITextField`.
+    /// The `minimumFontSize` property of a `UITextField`.
     case minimumFontSize(CGFloat)
 
 }
 
 extension UITextFieldTweenProperty: TweenableProperty {
-
-    public typealias TweenableType = UITextField
 
     public func value(from object: UITextField) -> UITextFieldTweenProperty {
         switch self {

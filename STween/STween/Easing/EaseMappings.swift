@@ -6,15 +6,11 @@
 //  Copyright © 2016 Adam Graham. All rights reserved.
 //
 
-/// An enum to store mapping collections for easing look-up.
+/// Maps ease properties for quick look-up.
 internal enum EaseMappings {
 
-    /// A typealias for a tuple representing all of the data that defines an `Ease`.
-    internal typealias EaseDefinition = (classification: EaseClassification,
-                                         curve: EaseCurve)
-
-    /// A dictionary containing each `Ease` and its associated `EaseDefinition` data.
-    internal static let eases: [Ease: EaseDefinition] = [
+    /// The mapping of every `Ease` to its `EaseClassification` and `EaseCurve`.
+    internal static let eases: [Ease: (classification: EaseClassification, curve: EaseCurve)] = [
         .linear:       (.linear,  .none),
         .sineIn:       (.sine,    .in),
         .sineOut:      (.sine,    .out),

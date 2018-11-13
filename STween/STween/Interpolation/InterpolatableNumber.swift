@@ -15,10 +15,10 @@ public protocol InterpolatableNumber: FloatingPoint {
     static var const: InterpolatableNumberConstants<Self> { get }
 
     /**
-     A static function to return an interpolatable number raised to a given power.
+     Calculates an interpolatable number raised to a given power.
 
      - Parameters:
-        - x: The base number that will be raised to the power of some exponent.
+        - x: The base number that is raised to the power of some exponent.
         - y: The exponent that is raised against the base number.
 
      - Returns: The value of the base number (`x`) raised to the exponent (`y`).
@@ -34,7 +34,7 @@ public protocol InterpolatableNumber: FloatingPoint {
 
 }
 
-/// A struct to store constant values that are used to optimize interpolation functions.
+/// A set of constant values that are used to optimize interpolation functions.
 public struct InterpolatableNumberConstants<Number: InterpolatableNumber> {
 
     // MARK: Whole Numbers
@@ -183,10 +183,10 @@ extension CGFloat: InterpolatableNumber {
 // MARK: - Global Functions
 
 /**
- A global function to return the cosine of an interpolatable number.
+ Calculates the cosine of an interpolatable number.
 
  - Parameters:
-    - x: The interpolatable number of which the cosine will be returned.
+    - x: The interpolatable number of which the cosine is calculated.
 
  - Returns: The cosine of the interpolatable number.
  */
@@ -195,10 +195,10 @@ public func cos<Number: InterpolatableNumber>(_ x: Number) -> Number {
 }
 
 /**
- A global function to return the sine of an interpolatable number.
+ Calculates the sine of an interpolatable number.
 
  - Parameters:
-    - x: The interpolatable number of which the sine will be returned.
+    - x: The interpolatable number of which the sine is calculated.
 
  - Returns: The sine of the interpolatable number.
  */
@@ -207,10 +207,10 @@ public func sin<Number: InterpolatableNumber>(_ x: Number) -> Number {
 }
 
 /**
- A global function to return an interpolatable number raised to a given power.
+ Calculates an interpolatable number raised to a given power.
 
  - Parameters:
-    - x: The base number that will be raised to the power of some exponent.
+    - x: The base number that is raised to the power of some exponent.
     - y: The exponent that is raised against the base number.
 
  - Returns: The value of the base number (`x`) raised to the exponent (`y`).

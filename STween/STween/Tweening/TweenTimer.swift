@@ -9,15 +9,15 @@
 import Foundation
 import QuartzCore
 
-/// A class to schedule timed interval events for a `Tween`.
+/// A timer that schedules interval events for a tween.
 internal final class TweenTimer {
 
     // MARK: References
 
-    /// A weak reference to the delegate listening to `self`.
+    /// The object listening to the timer events.
     internal weak var delegate: TweenTimerDelegate?
 
-    /// The timer object that invokes "tick" events based on display vsync.
+    /// The timer that invokes "tick" events based on display vsync.
     private lazy var timer: CADisplayLink = {
         let displayLink = CADisplayLink(target: self, selector: #selector(tick))
         displayLink.add(to: .main, forMode: RunLoop.Mode.default)
@@ -26,33 +26,31 @@ internal final class TweenTimer {
 
     // MARK: State Properties
 
-    /// The state of `self` being active.
+    /// The state of the timer being "active".
     internal var running = false
 
     // MARK: Time Properties
 
-    /// The amount of time, in seconds, `self` has been running.
+    /// The amount of seconds the timer has been running.
     internal var elapsed: TimeInterval = 0.0
 
     /// The date/time of the last "tick" event.
     private var lastTickDate = Date()
 
-    // MARK: Initialization Methods
+    // MARK: Initialization
 
     /**
-     A convenience initializer to create a `TweenTimer` and assign a delegate to it.
+     Initializes a `TweenTimer` and assigns a delegate to it.
      
      - Parameters:
-        - delegate: The delegate to be assigned to the initialized timer.
+        - delegate: The delegate assigned to the timer.
      */
     internal convenience init(delegate: TweenTimerDelegate) {
         self.init()
         self.delegate = delegate
     }
 
-    /**
-     A method to deinitialize `self`.
-     */
+    /// :nodoc:
     deinit {
         self.timer.invalidate()
     }
@@ -60,7 +58,7 @@ internal final class TweenTimer {
     // MARK: State Control Methods
 
     /**
-     A method to set `self.running` to `true`, causing the timer to start firing "tick" events.
+     Starts running the timer, enabling "tick" events to be fired.
      */
     internal func start() {
         guard !self.running else {
@@ -73,7 +71,7 @@ internal final class TweenTimer {
     }
 
     /**
-     A method to set `self.running` to `false`, causing the timer to stop firing "tick" events.
+     Stops running the timer, disabling "tick" events from being fired.
      */
     internal func stop() {
         guard self.running else {
@@ -85,9 +83,10 @@ internal final class TweenTimer {
     }
 
     /**
-     A method to reset `self.elapsed` to zero.
+     Resets the elapsed time of the timer.
  
-     **Note:** This has no effect on the state of `self`.
+     This has no effect on the current state of the timer, i.e., it will continue to run if it was
+     previously running.
      */
     internal func reset() {
         self.elapsed = 0.0
@@ -97,9 +96,8 @@ internal final class TweenTimer {
     // MARK: Timer Event Methods
 
     /**
-     A method invoked every update cycle that updates `self`'s elapsed time by the amount
-     of time passed since the last update cycle. The duration between update cycles is
-     determined by the timer's `timeInterval`.
+     Updates the elapsed time of the timer by the amount of seconds passed since the last
+     update cycle. Informs the delegate of the updated time.
      */
     @objc private func tick() {
         guard self.running else {
@@ -119,15 +117,14 @@ internal final class TweenTimer {
 // MARK: -
 
 /// A type to which `TweenTimer` events can be delegated.
-protocol TweenTimerDelegate: class {
+internal protocol TweenTimerDelegate: AnyObject {
 
     /**
-     A delegate method to inform the listener that a timer invoked a "tick" event and has
-     updated the elapsed time.
+     Informs the listener that a timer triggered an event that updated its elapsed time.
      
      - Parameters:
-        - timer: The timer the "tick" event was invoked on.
-        - elapsed: The amount of time, in seconds, the `timer` has been running.
+        - timer: The `TweenTimer` the event was invoked on.
+        - elapsed: The amount of seconds the `timer` has been running.
      */
     func tweenTimer(_ timer: TweenTimer, didUpdateWithElapsedTime elapsed: TimeInterval)
 

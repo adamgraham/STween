@@ -12,17 +12,16 @@ import Foundation
 import QuartzCore
 import UIKit
 
-/// A type that can be interpolated from a starting and ending value.
+/// A type that can be interpolated from a start and end value.
 public protocol Interpolatable: Equatable {
 
     associatedtype Value = Self
 
     /**
-     A class method to calculate the value between a starting and ending position at a
-     specific point in time.
+     Calculates the value between a start and end value at a specific point in time.
 
      - Parameters:
-        - ease: The `Ease` function used to interpolate values.
+        - ease: The `Ease` used to interpolate values.
         - startValue: The start value passed to the `ease` function.
         - endValue: The end value passed to the `ease` function.
         - elapsed: The elapsed amount of time passed to the `ease` function.
@@ -383,7 +382,7 @@ extension UIColor: Interpolatable {
 
 private extension UIColor {
 
-    /// The red, green, blue, and alpha components of `self`.
+    /// The red, green, blue, and alpha components of the color.
     private var components: (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
         var red: CGFloat = 0.0
         var green: CGFloat = 0.0

@@ -20,17 +20,17 @@ public final class Tweener {
 
     // MARK: Properties
 
-    /// An array of every instantiated `Tween`.
+    /// An array of every instantiated tween.
     private var tweens = [Tween]()
 
-    /// An array of every instantiated `Tween` that is waiting to be started.
+    /// An array of every instantiated tween that is waiting to be started.
     private var queuedTweens = [Tween]() {
         didSet {
             self.queueTimer.isPaused = self.queuedTweens.isEmpty
         }
     }
 
-    /// The timer object used to start any queued `Tween`s.
+    /// The timer used to start any queued tweens.
     private lazy var queueTimer: CADisplayLink = {
         let selector = #selector(self.startQueuedTweens)
         let timer = CADisplayLink(target: self, selector: selector)
@@ -46,17 +46,17 @@ extension Tweener {
     // MARK: Factory Creation
 
     /**
-     A method to create a `Tween` that animates an array of properties on a `Tweenable`
-     target *to* their desired values from their current values, with a given duration.
+     Creates a `Tween` that animates an array of properties on a `Tweenable` type *to* the
+     desired values from its current values over a set duration.
 
      The created tween will automatically be queued to start if
      `Defaults.autoStartTweens` is `true`.
      
      - Parameters:
-        - target: The object or data structure on which properties are animated.
-        - properties: The array of properties to be animated on the `target`.
-        - duration: The amount of time, in seconds, the animation will run.
-        - completion: A callback invoked when the animation is finished.
+        - target: The object on which properties are animated.
+        - properties: The array of properties to be animated.
+        - duration: The amount of seconds the animation takes to complete.
+        - completion: The callback invoked when the animation is finished (optional).
 
      - Returns: The `Tween` control for the animation.
      */
@@ -78,17 +78,17 @@ extension Tweener {
     }
 
     /**
-     A method to create a `Tween` that animates an array of properties on a `Tweenable`
-     target *from* their desired values to their current values, with a given duration.
+     Creates a `Tween` that animates an array of properties on a `Tweenable` type *from* the
+     desired values to its current values over a set duration.
 
      The created tween will automatically be queued to start if
      `Defaults.autoStartTweens` is `true`.
      
      - Parameters:
-        - target: The object or data structure on which properties are animated.
-        - properties: The array of properties to be animated on the `target`.
-        - duration: The amount of time, in seconds, the animation will run.
-        - completion: A callback invoked when the animation is finished.
+        - target: The object on which properties are animated.
+        - properties: The array of properties to be animated.
+        - duration: The amount of seconds the animation takes to complete.
+        - completion: The callback invoked when the animation is finished (optional).
      
      - Returns: The `Tween` control for the animation.
      */
@@ -121,10 +121,10 @@ extension Tweener {
     }
 
     /**
-     A method to add a tween to the list of tracked tweens.
+     Adds a tween to the list of tracked tweens.
      
      - Parameters:
-        - tween: The tween to be added to the list of tracked tweens.
+        - tween: The `Tween` to be added.
      */
     internal func add(_ tween: Tween) {
         guard self.tweens.index(where: { $0 === tween }) == nil else {
@@ -135,10 +135,10 @@ extension Tweener {
     }
 
     /**
-     A method to remove a tween from the list of tracked tweens.
+     Removes a tween from the list of tracked tweens.
      
      - Parameters:
-        - tween: The tween to be removed from the list of tracked tweens.
+        - tween: The `Tween` to be removed.
      */
     internal func remove(_ tween: Tween) {
         if let index = self.tweens.index(where: { $0 === tween }),
@@ -153,12 +153,12 @@ extension Tweener {
     }
 
     /**
-     A method to check if a tween is in the list of tracked tweens.
+     Checks if a tween is being tracked.
 
      - Parameters:
-        - tween: The tween to be checked if in the list of tracked tweens.
+        - tween: The `Tween` to be checked.
      
-     - Returns: `true` if the `tween` is in the list of tracked tweens.
+     - Returns: `true` if the tween is contained in the list of tracked tweens.
      */
     internal func contains(_ tween: Tween) -> Bool {
         return self.tweens.contains(where: { $0 === tween })
@@ -176,11 +176,13 @@ extension Tweener {
     }
 
     /**
-     A method to queue a tween to be started. Tweens are started one frame after being
-     created in order for all necessarily properties to be applied before starting.
+     Queues a tween to be started.
+
+     Tweens are started one frame after being created in order for all necessarily properties
+     to be applied before starting.
      
      - Parameters:
-        - tween: The tween to be queued for start.
+        - tween: The `Tween` to be queued.
      */
     internal func queue(_ tween: Tween) {
         guard self.queuedTweens.index(where: { $0 === tween }) == nil else {
@@ -191,8 +193,8 @@ extension Tweener {
     }
 
     /**
-     A method to start all queued tweens by invoking `start` on each one. This puts the
-     tween in an active state and removes it from the list of queued tweens.
+     Starts all queued tweens by invoking `start` on each one – putting the tweens in an
+     `active` state and removing them from the list of queued tweens.
      */
     @objc internal func startQueuedTweens() {
         self.queuedTweens.forEach {

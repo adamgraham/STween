@@ -7,14 +7,12 @@
 //
 
 /**
- An enum to hold a collection of easing functions based upon
- [Robert Penner's Easing Functions](http://robertpenner.com/easing/). 
- A visualized cheat-sheet of these functions can be found at
- [easings.net](http://easings.net/).
+ Calculates the number between a start and end value at a specific point in time.
+ In simpler terms, an easing function determines the path/motion used to get from point *A*
+ to point *B*.
 
- Easing functions calculate the value between a starting and ending position at a
- specific point in time. In simpler terms, these functions determine the path/motion used
- to get from point *A* to point *B*.
+ These easing functions are based upon [Robert Penner's Easing Functions](http://robertpenner.com/easing/).
+ A visualized cheat-sheet of these functions can be found at [easings.net](http://easings.net/).
 
  * * * * *
 
@@ -26,27 +24,19 @@
  > is a function of time. This means that, given a specific point in time, we can find one,
  > and only one, corresponding position.*
  > \- [Robert Penner](http://robertpenner.com/easing/penner_chapter7_tweening.pdf)
- 
- - Parameters:
-    - b: The start value (b = begin).
-    - c: The change in value (c = change).
-    - t: The amount of time elapsed since the start of the ease (t = time).
-    - d: The total amount of time the ease will run (d = duration).
-
- - Returns: The value at a specific point in time from the start value.
  */
 public enum EaseFunction<Number: InterpolatableNumber> {
 
     /**
-     Calculates a value between a starting and ending position at a specific point in time.
+     Calculates the number between a start and end value at a specific point in time.
 
      - Parameters:
          - b: The start value (b = begin).
          - c: The change in value (c = change).
-         - t: The amount of time elapsed since the start of the ease (t = time).
-         - d: The total amount of time the ease will run (d = duration).
+         - t: The elapsed time of the ease (t = time).
+         - d: The duration of the ease (d = duration).
 
-     - Returns: The value at a specific point in time from the start value.
+     - Returns: The number between the start and end value at a specific point in time.
      */
     public typealias Definition = (
         _ b: Number,
@@ -56,22 +46,22 @@ public enum EaseFunction<Number: InterpolatableNumber> {
 
 }
 
-/// An extension to add the linear easing function.
+/// The "linear" easing function.
 extension EaseFunction {
 
     // MARK: Linear
 
     /**
-     The algorithmic function of a `linear` ease used to calculate a value between a
-     starting and ending position at a specific point in time.
+     The algorithmic function of a `linear` ease that calculates the number between a
+     start and end value at a specific point in time.
      
      - Parameters:
         - b: The start value (b = begin).
         - c: The change in value (c = change).
-        - t: The amount of time elapsed since the start of the ease (t = time).
-        - d: The total amount of time the ease will run (d = duration).
+        - t: The elapsed time of the ease (t = time).
+        - d: The duration of the ease (d = duration).
      
-     - Returns: The value at a specific point in time from the start value.
+     - Returns: The number between the start and end value at a specific point in time.
      */
     public static func linear(b: Number, c: Number, t: Number, d: Number) -> Number {
         let x = t/d
@@ -80,22 +70,22 @@ extension EaseFunction {
 
 }
 
-/// An extension to add the sinusoidal easing functions.
+/// The "sinusoidal" easing functions.
 extension EaseFunction {
 
     // MARK: Sinusoidal
 
     /**
-     The algorithmic function of a `sineIn` ease used to calculate a value between a
-     starting and ending position at a specific point in time.
+     The algorithmic function of a `sineIn` ease that calculates the number between a
+     start and end value at a specific point in time.
 
      - Parameters:
         - b: The start value (b = begin).
         - c: The change in value (c = change).
-        - t: The amount of time elapsed since the start of the ease (t = time).
-        - d: The total amount of time the ease will run (d = duration).
+        - t: The elapsed time of the ease (t = time).
+        - d: The duration of the ease (d = duration).
 
-     - Returns: The value at a specific point in time from the start value.
+     - Returns: The number between the start and end value at a specific point in time.
      */
     public static func sineIn(b: Number, c: Number, t: Number, d: Number) -> Number {
         let x = t/d
@@ -104,16 +94,16 @@ extension EaseFunction {
     }
 
     /**
-     The algorithmic function of a `sineOut` ease used to calculate a value between a
-     starting and ending position at a specific point in time.
+     The algorithmic function of a `sineOut` ease that calculates the number between a
+     start and end value at a specific point in time.
 
      - Parameters:
         - b: The start value (b = begin).
         - c: The change in value (c = change).
-        - t: The amount of time elapsed since the start of the ease (t = time).
-        - d: The total amount of time the ease will run (d = duration).
+        - t: The elapsed time of the ease (t = time).
+        - d: The duration of the ease (d = duration).
 
-     - Returns: The value at a specific point in time from the start value.
+     - Returns: The number between the start and end value at a specific point in time.
      */
     public static func sineOut(b: Number, c: Number, t: Number, d: Number) -> Number {
         let x = t/d
@@ -122,16 +112,16 @@ extension EaseFunction {
     }
 
     /**
-     The algorithmic function of a `sineInOut` ease used to calculate a value between a
-     starting and ending position at a specific point in time.
+     The algorithmic function of a `sineInOut` ease that calculates the number between a
+     start and end value at a specific point in time.
 
      - Parameters:
         - b: The start value (b = begin).
         - c: The change in value (c = change).
-        - t: The amount of time elapsed since the start of the ease (t = time).
-        - d: The total amount of time the ease will run (d = duration).
+        - t: The elapsed time of the ease (t = time).
+        - d: The duration of the ease (d = duration).
 
-     - Returns: The value at a specific point in time from the start value.
+     - Returns: The number between the start and end value at a specific point in time.
      */
     public static func sineInOut(b: Number, c: Number, t: Number, d: Number) -> Number {
         let x = t/d
@@ -141,22 +131,22 @@ extension EaseFunction {
 
 }
 
-/// An extension to add the cubic easing functions.
+/// The "cubic" easing functions.
 extension EaseFunction {
 
     // MARK: Cubic
 
     /**
-     The algorithmic function of a `cubicIn` ease used to calculate a value between a
-     starting and ending position at a specific point in time.
+     The algorithmic function of a `cubicIn` ease that calculates the number between a
+     start and end value at a specific point in time.
 
      - Parameters:
         - b: The start value (b = begin).
         - c: The change in value (c = change).
-        - t: The amount of time elapsed since the start of the ease (t = time).
-        - d: The total amount of time the ease will run (d = duration).
+        - t: The elapsed time of the ease (t = time).
+        - d: The duration of the ease (d = duration).
 
-     - Returns: The value at a specific point in time from the start value.
+     - Returns: The number between the start and end value at a specific point in time.
      */
     public static func cubicIn(b: Number, c: Number, t: Number, d: Number) -> Number {
         let x = t/d
@@ -165,16 +155,16 @@ extension EaseFunction {
     }
 
     /**
-     The algorithmic function of a `cubicOut` ease used to calculate a value between a
-     starting and ending position at a specific point in time.
+     The algorithmic function of a `cubicOut` ease that calculates the number between a
+     start and end value at a specific point in time.
 
      - Parameters:
         - b: The start value (b = begin).
         - c: The change in value (c = change).
-        - t: The amount of time elapsed since the start of the ease (t = time).
-        - d: The total amount of time the ease will run (d = duration).
+        - t: The elapsed time of the ease (t = time).
+        - d: The duration of the ease (d = duration).
 
-     - Returns: The value at a specific point in time from the start value.
+     - Returns: The number between the start and end value at a specific point in time.
      */
     public static func cubicOut(b: Number, c: Number, t: Number, d: Number) -> Number {
         let x = (t/d) - Number.const.one
@@ -183,16 +173,16 @@ extension EaseFunction {
     }
 
     /**
-     The algorithmic function of a `cubicInOut` ease used to calculate a value between a
-     starting and ending position at a specific point in time.
+     The algorithmic function of a `cubicInOut` ease that calculates the number between a
+     start and end value at a specific point in time.
 
      - Parameters:
         - b: The start value (b = begin).
         - c: The change in value (c = change).
-        - t: The amount of time elapsed since the start of the ease (t = time).
-        - d: The total amount of time the ease will run (d = duration).
+        - t: The elapsed time of the ease (t = time).
+        - d: The duration of the ease (d = duration).
 
-     - Returns: The value at a specific point in time from the start value.
+     - Returns: The number between the start and end value at a specific point in time.
      */
     public static func cubicInOut(b: Number, c: Number, t: Number, d: Number) -> Number {
         var x = t/(d.half)
@@ -209,22 +199,22 @@ extension EaseFunction {
     
 }
 
-/// An extension to add the quadratic easing functions.
+/// The "quadratic" easing functions.
 extension EaseFunction {
 
     // MARK: Quadratic
 
     /**
-     The algorithmic function of a `quadIn` ease used to calculate a value between a
-     starting and ending position at a specific point in time.
+     The algorithmic function of a `quadIn` ease that calculates the number between a
+     start and end value at a specific point in time.
 
      - Parameters:
         - b: The start value (b = begin).
         - c: The change in value (c = change).
-        - t: The amount of time elapsed since the start of the ease (t = time).
-        - d: The total amount of time the ease will run (d = duration).
+        - t: The elapsed time of the ease (t = time).
+        - d: The duration of the ease (d = duration).
 
-     - Returns: The value at a specific point in time from the start value.
+     - Returns: The number between the start and end value at a specific point in time.
      */
     public static func quadIn(b: Number, c: Number, t: Number, d: Number) -> Number {
         let x = t/d
@@ -233,16 +223,16 @@ extension EaseFunction {
     }
 
     /**
-     The algorithmic function of a `quadOut` ease used to calculate a value between a
-     starting and ending position at a specific point in time.
+     The algorithmic function of a `quadOut` ease that calculates the number between a
+     start and end value at a specific point in time.
 
      - Parameters:
         - b: The start value (b = begin).
         - c: The change in value (c = change).
-        - t: The amount of time elapsed since the start of the ease (t = time).
-        - d: The total amount of time the ease will run (d = duration).
+        - t: The elapsed time of the ease (t = time).
+        - d: The duration of the ease (d = duration).
 
-     - Returns: The value at a specific point in time from the start value.
+     - Returns: The number between the start and end value at a specific point in time.
      */
     public static func quadOut(b: Number, c: Number, t: Number, d: Number) -> Number {
         let x = t/d
@@ -251,16 +241,16 @@ extension EaseFunction {
     }
 
     /**
-     The algorithmic function of a `quadInOut` ease used to calculate a value between a
-     starting and ending position at a specific point in time.
+     The algorithmic function of a `quadInOut` ease that calculates the number between a
+     start and end value at a specific point in time.
 
      - Parameters:
         - b: The start value (b = begin).
         - c: The change in value (c = change).
-        - t: The amount of time elapsed since the start of the ease (t = time).
-        - d: The total amount of time the ease will run (d = duration).
+        - t: The elapsed time of the ease (t = time).
+        - d: The duration of the ease (d = duration).
 
-     - Returns: The value at a specific point in time from the start value.
+     - Returns: The number between the start and end value at a specific point in time.
      */
     public static func quadInOut(b: Number, c: Number, t: Number, d: Number) -> Number {
         var x = t/(d.half)
@@ -277,22 +267,22 @@ extension EaseFunction {
     
 }
 
-/// An extension to add the quartic easing functions.
+/// The "quartic" easing functions.
 extension EaseFunction {
 
     // MARK: Quartic
 
     /**
-     The algorithmic function of a `quartIn` ease used to calculate a value between a
-     starting and ending position at a specific point in time.
+     The algorithmic function of a `quartIn` ease that calculates the number between a
+     start and end value at a specific point in time.
 
      - Parameters:
         - b: The start value (b = begin).
         - c: The change in value (c = change).
-        - t: The amount of time elapsed since the start of the ease (t = time).
-        - d: The total amount of time the ease will run (d = duration).
+        - t: The elapsed time of the ease (t = time).
+        - d: The duration of the ease (d = duration).
 
-     - Returns: The value at a specific point in time from the start value.
+     - Returns: The number between the start and end value at a specific point in time.
      */
     public static func quartIn(b: Number, c: Number, t: Number, d: Number) -> Number {
         let x = t/d
@@ -301,16 +291,16 @@ extension EaseFunction {
     }
 
     /**
-     The algorithmic function of a `quartOut` ease used to calculate a value between a
-     starting and ending position at a specific point in time.
+     The algorithmic function of a `quartOut` ease that calculates the number between a
+     start and end value at a specific point in time.
 
      - Parameters:
         - b: The start value (b = begin).
         - c: The change in value (c = change).
-        - t: The amount of time elapsed since the start of the ease (t = time).
-        - d: The total amount of time the ease will run (d = duration).
+        - t: The elapsed time of the ease (t = time).
+        - d: The duration of the ease (d = duration).
 
-     - Returns: The value at a specific point in time from the start value.
+     - Returns: The number between the start and end value at a specific point in time.
      */
     public static func quartOut(b: Number, c: Number, t: Number, d: Number) -> Number {
         let x = (t/d) - Number.const.one
@@ -319,16 +309,16 @@ extension EaseFunction {
     }
 
     /**
-     The algorithmic function of a `quartInOut` ease used to calculate a value between a
-     starting and ending position at a specific point in time.
+     The algorithmic function of a `quartInOut` ease that calculates the number between a
+     start and end value at a specific point in time.
 
      - Parameters:
         - b: The start value (b = begin).
         - c: The change in value (c = change).
-        - t: The amount of time elapsed since the start of the ease (t = time).
-        - d: The total amount of time the ease will run (d = duration).
+        - t: The elapsed time of the ease (t = time).
+        - d: The duration of the ease (d = duration).
 
-     - Returns: The value at a specific point in time from the start value.
+     - Returns: The number between the start and end value at a specific point in time.
      */
     public static func quartInOut(b: Number, c: Number, t: Number, d: Number) -> Number {
         var x = t/(d.half)
@@ -345,22 +335,22 @@ extension EaseFunction {
     
 }
 
-/// An extension to add the quintic easing functions.
+/// The "quintic" easing functions.
 extension EaseFunction {
 
     // MARK: Quintic
 
     /**
-     The algorithmic function of a `quintIn` ease used to calculate a value between a
-     starting and ending position at a specific point in time.
+     The algorithmic function of a `quintIn` ease that calculates the number between a
+     start and end value at a specific point in time.
 
      - Parameters:
         - b: The start value (b = begin).
         - c: The change in value (c = change).
-        - t: The amount of time elapsed since the start of the ease (t = time).
-        - d: The total amount of time the ease will run (d = duration).
+        - t: The elapsed time of the ease (t = time).
+        - d: The duration of the ease (d = duration).
 
-     - Returns: The value at a specific point in time from the start value.
+     - Returns: The number between the start and end value at a specific point in time.
      */
     public static func quintIn(b: Number, c: Number, t: Number, d: Number) -> Number {
         let x = t/d
@@ -369,16 +359,16 @@ extension EaseFunction {
     }
 
     /**
-     The algorithmic function of a `quintOut` ease used to calculate a value between a
-     starting and ending position at a specific point in time.
+     The algorithmic function of a `quintOut` ease that calculates the number between a
+     start and end value at a specific point in time.
 
      - Parameters:
         - b: The start value (b = begin).
         - c: The change in value (c = change).
-        - t: The amount of time elapsed since the start of the ease (t = time).
-        - d: The total amount of time the ease will run (d = duration).
+        - t: The elapsed time of the ease (t = time).
+        - d: The duration of the ease (d = duration).
 
-     - Returns: The value at a specific point in time from the start value.
+     - Returns: The number between the start and end value at a specific point in time.
      */
     public static func quintOut(b: Number, c: Number, t: Number, d: Number) -> Number {
         let x = (t/d) - Number.const.one
@@ -387,16 +377,16 @@ extension EaseFunction {
     }
 
     /**
-     The algorithmic function of a `quintInOut` ease used to calculate a value between a
-     starting and ending position at a specific point in time.
+     The algorithmic function of a `quintInOut` ease that calculates the number between a
+     start and end value at a specific point in time.
 
      - Parameters:
         - b: The start value (b = begin).
         - c: The change in value (c = change).
-        - t: The amount of time elapsed since the start of the ease (t = time).
-        - d: The total amount of time the ease will run (d = duration).
+        - t: The elapsed time of the ease (t = time).
+        - d: The duration of the ease (d = duration).
 
-     - Returns: The value at a specific point in time from the start value.
+     - Returns: The number between the start and end value at a specific point in time.
      */
     public static func quintInOut(b: Number, c: Number, t: Number, d: Number) -> Number {
         var x = t/(d.half)
@@ -413,22 +403,22 @@ extension EaseFunction {
     
 }
 
-/// An extension to add the exponential easing functions.
+/// The "exponential" easing functions.
 extension EaseFunction {
 
     // MARK: Exponential
 
     /**
-     The algorithmic function of an `expoIn` ease used to calculate a value between a
-     starting and ending position at a specific point in time.
+     The algorithmic function of an `expoIn` ease that calculates the number between a
+     start and end value at a specific point in time.
 
      - Parameters:
         - b: The start value (b = begin).
         - c: The change in value (c = change).
-        - t: The amount of time elapsed since the start of the ease (t = time).
-        - d: The total amount of time the ease will run (d = duration).
+        - t: The elapsed time of the ease (t = time).
+        - d: The duration of the ease (d = duration).
 
-     - Returns: The value at a specific point in time from the start value.
+     - Returns: The number between the start and end value at a specific point in time.
      */
     public static func expoIn(b: Number, c: Number, t: Number, d: Number) -> Number {
         if t.isZero {
@@ -442,16 +432,16 @@ extension EaseFunction {
     }
 
     /**
-     The algorithmic function of an `expoOut` ease used to calculate a value between a
-     starting and ending position at a specific point in time.
+     The algorithmic function of an `expoOut` ease that calculates the number between a
+     start and end value at a specific point in time.
 
      - Parameters:
         - b: The start value (b = begin).
         - c: The change in value (c = change).
-        - t: The amount of time elapsed since the start of the ease (t = time).
-        - d: The total amount of time the ease will run (d = duration).
+        - t: The elapsed time of the ease (t = time).
+        - d: The duration of the ease (d = duration).
 
-     - Returns: The value at a specific point in time from the start value.
+     - Returns: The number between the start and end value at a specific point in time.
      */
     public static func expoOut(b: Number, c: Number, t: Number, d: Number) -> Number {
         if t == d {
@@ -465,16 +455,16 @@ extension EaseFunction {
     }
 
     /**
-     The algorithmic function of an `expoInOut` ease used to calculate a value between a
-     starting and ending position at a specific point in time.
+     The algorithmic function of an `expoInOut` ease that calculates the number between a
+     start and end value at a specific point in time.
 
      - Parameters:
         - b: The start value (b = begin).
         - c: The change in value (c = change).
-        - t: The amount of time elapsed since the start of the ease (t = time).
-        - d: The total amount of time the ease will run (d = duration).
+        - t: The elapsed time of the ease (t = time).
+        - d: The duration of the ease (d = duration).
 
-     - Returns: The value at a specific point in time from the start value.
+     - Returns: The number between the start and end value at a specific point in time.
      */
     public static func expoInOut(b: Number, c: Number, t: Number, d: Number) -> Number {
         if t.isZero {
@@ -499,22 +489,22 @@ extension EaseFunction {
     
 }
 
-/// An extension to add the circular easing functions.
+/// The "circular" easing functions.
 extension EaseFunction {
 
     // MARK: Circular
 
     /**
-     The algorithmic function of a `circIn` ease used to calculate a value between a
-     starting and ending position at a specific point in time.
+     The algorithmic function of a `circIn` ease that calculates the number between a
+     start and end value at a specific point in time.
 
      - Parameters:
         - b: The start value (b = begin).
         - c: The change in value (c = change).
-        - t: The amount of time elapsed since the start of the ease (t = time).
-        - d: The total amount of time the ease will run (d = duration).
+        - t: The elapsed time of the ease (t = time).
+        - d: The duration of the ease (d = duration).
 
-     - Returns: The value at a specific point in time from the start value.
+     - Returns: The number between the start and end value at a specific point in time.
      */
     public static func circIn(b: Number, c: Number, t: Number, d: Number) -> Number {
         let x = t/d
@@ -523,16 +513,16 @@ extension EaseFunction {
     }
 
     /**
-     The algorithmic function of a `circOut` ease used to calculate a value between a
-     starting and ending position at a specific point in time.
+     The algorithmic function of a `circOut` ease that calculates the number between a
+     start and end value at a specific point in time.
 
      - Parameters:
         - b: The start value (b = begin).
         - c: The change in value (c = change).
-        - t: The amount of time elapsed since the start of the ease (t = time).
-        - d: The total amount of time the ease will run (d = duration).
+        - t: The elapsed time of the ease (t = time).
+        - d: The duration of the ease (d = duration).
 
-     - Returns: The value at a specific point in time from the start value.
+     - Returns: The number between the start and end value at a specific point in time.
      */
     public static func circOut(b: Number, c: Number, t: Number, d: Number) -> Number {
         let x = (t/d) - Number.const.one
@@ -541,16 +531,16 @@ extension EaseFunction {
     }
 
     /**
-     The algorithmic function of a `circInOut` ease used to calculate a value between a
-     starting and ending position at a specific point in time.
+     The algorithmic function of a `circInOut` ease that calculates the number between a
+     start and end value at a specific point in time.
 
      - Parameters:
         - b: The start value (b = begin).
         - c: The change in value (c = change).
-        - t: The amount of time elapsed since the start of the ease (t = time).
-        - d: The total amount of time the ease will run (d = duration).
+        - t: The elapsed time of the ease (t = time).
+        - d: The duration of the ease (d = duration).
 
-     - Returns: The value at a specific point in time from the start value.
+     - Returns: The number between the start and end value at a specific point in time.
      */
     public static func circInOut(b: Number, c: Number, t: Number, d: Number) -> Number {
         var x = t/(d.half)
@@ -567,22 +557,22 @@ extension EaseFunction {
     
 }
 
-/// An extension to add the back easing functions.
+/// The "back" easing functions.
 extension EaseFunction {
 
     // MARK: Back
 
     /**
-     The algorithmic function of a `backIn` ease used to calculate a value between a
-     starting and ending position at a specific point in time.
+     The algorithmic function of a `backIn` ease that calculates the number between a
+     start and end value at a specific point in time.
 
      - Parameters:
         - b: The start value (b = begin).
         - c: The change in value (c = change).
-        - t: The amount of time elapsed since the start of the ease (t = time).
-        - d: The total amount of time the ease will run (d = duration).
+        - t: The elapsed time of the ease (t = time).
+        - d: The duration of the ease (d = duration).
 
-     - Returns: The value at a specific point in time from the start value.
+     - Returns: The number between the start and end value at a specific point in time.
      */
     public static func backIn(b: Number, c: Number, t: Number, d: Number) -> Number {
         let s = Number(Defaults.overshoot)
@@ -593,16 +583,16 @@ extension EaseFunction {
     }
 
     /**
-     The algorithmic function of a `backOut` ease used to calculate a value between a
-     starting and ending position at a specific point in time.
+     The algorithmic function of a `backOut` ease that calculates the number between a
+     start and end value at a specific point in time.
 
      - Parameters:
         - b: The start value (b = begin).
         - c: The change in value (c = change).
-        - t: The amount of time elapsed since the start of the ease (t = time).
-        - d: The total amount of time the ease will run (d = duration).
+        - t: The elapsed time of the ease (t = time).
+        - d: The duration of the ease (d = duration).
 
-     - Returns: The value at a specific point in time from the start value.
+     - Returns: The number between the start and end value at a specific point in time.
      */
     public static func backOut(b: Number, c: Number, t: Number, d: Number) -> Number {
         let s = Number(Defaults.overshoot)
@@ -613,16 +603,16 @@ extension EaseFunction {
     }
 
     /**
-     The algorithmic function of a `backInOut` ease used to calculate a value between a
-     starting and ending position at a specific point in time.
+     The algorithmic function of a `backInOut` ease that calculates the number between a
+     start and end value at a specific point in time.
 
      - Parameters:
         - b: The start value (b = begin).
         - c: The change in value (c = change).
-        - t: The amount of time elapsed since the start of the ease (t = time).
-        - d: The total amount of time the ease will run (d = duration).
+        - t: The elapsed time of the ease (t = time).
+        - d: The duration of the ease (d = duration).
 
-     - Returns: The value at a specific point in time from the start value.
+     - Returns: The number between the start and end value at a specific point in time.
      */
     public static func backInOut(b: Number, c: Number, t: Number, d: Number) -> Number {
         let s = Number(Defaults.overshoot * 1.525)
@@ -642,22 +632,22 @@ extension EaseFunction {
     
 }
 
-/// An extension to add the elastic easing functions.
+/// The "elastic" easing functions.
 extension EaseFunction {
 
     // MARK: Elastic
 
     /**
-     The algorithmic function of an `elasticIn` ease used to calculate a value between a
-     starting and ending position at a specific point in time.
+     The algorithmic function of an `elasticIn` ease that calculates the number between a
+     start and end value at a specific point in time.
 
      - Parameters:
         - b: The start value (b = begin).
         - c: The change in value (c = change).
-        - t: The amount of time elapsed since the start of the ease (t = time).
-        - d: The total amount of time the ease will run (d = duration).
+        - t: The elapsed time of the ease (t = time).
+        - d: The duration of the ease (d = duration).
 
-     - Returns: The value at a specific point in time from the start value.
+     - Returns: The number between the start and end value at a specific point in time.
      */
     public static func elasticIn(b: Number, c: Number, t: Number, d: Number) -> Number {
         var x = t/d
@@ -683,16 +673,16 @@ extension EaseFunction {
     }
 
     /**
-     The algorithmic function of an `elasticOut` ease used to calculate a value between a
-     starting and ending position at a specific point in time.
+     The algorithmic function of an `elasticOut` ease that calculates the number between a
+     start and end value at a specific point in time.
 
      - Parameters:
         - b: The start value (b = begin).
         - c: The change in value (c = change).
-        - t: The amount of time elapsed since the start of the ease (t = time).
-        - d: The total amount of time the ease will run (d = duration).
+        - t: The elapsed time of the ease (t = time).
+        - d: The duration of the ease (d = duration).
 
-     - Returns: The value at a specific point in time from the start value.
+     - Returns: The number between the start and end value at a specific point in time.
      */
     public static func elasticOut(b: Number, c: Number, t: Number, d: Number) -> Number {
         let x = t/d
@@ -717,16 +707,16 @@ extension EaseFunction {
     }
 
     /**
-     The algorithmic function of an `elasticInOut` ease used to calculate a value between a
-     starting and ending position at a specific point in time.
+     The algorithmic function of an `elasticInOut` ease that calculates the number between a
+     start and end value at a specific point in time.
 
      - Parameters:
         - b: The start value (b = begin).
         - c: The change in value (c = change).
-        - t: The amount of time elapsed since the start of the ease (t = time).
-        - d: The total amount of time the ease will run (d = duration).
+        - t: The elapsed time of the ease (t = time).
+        - d: The duration of the ease (d = duration).
 
-     - Returns: The value at a specific point in time from the start value.
+     - Returns: The number between the start and end value at a specific point in time.
      */
     public static func elasticInOut(b: Number, c: Number, t: Number, d: Number) -> Number {
         var x = t/(d.half)
@@ -766,22 +756,22 @@ extension EaseFunction {
     
 }
 
-/// An extension to add the bounce easing functions.
+/// The "bounce" easing functions.
 extension EaseFunction {
 
     // MARK: Bounce
 
     /**
-     The algorithmic function of a `bounceIn` ease used to calculate a value between a
-     starting and ending position at a specific point in time.
+     The algorithmic function of a `bounceIn` ease that calculates the number between a
+     start and end value at a specific point in time.
 
      - Parameters:
         - b: The start value (b = begin).
         - c: The change in value (c = change).
-        - t: The amount of time elapsed since the start of the ease (t = time).
-        - d: The total amount of time the ease will run (d = duration).
+        - t: The elapsed time of the ease (t = time).
+        - d: The duration of the ease (d = duration).
 
-     - Returns: The value at a specific point in time from the start value.
+     - Returns: The number between the start and end value at a specific point in time.
      */
     public static func bounceIn(b: Number, c: Number, t: Number, d: Number) -> Number {
         let m = EaseFunction.bounceOut(b: Number.const.zero, c: c, t: d-t, d: d)
@@ -789,16 +779,16 @@ extension EaseFunction {
     }
 
     /**
-     The algorithmic function of a `bounceOut` ease used to calculate a value between a
-     starting and ending position at a specific point in time.
+     The algorithmic function of a `bounceOut` ease that calculates the number between a
+     start and end value at a specific point in time.
 
      - Parameters:
         - b: The start value (b = begin).
         - c: The change in value (c = change).
-        - t: The amount of time elapsed since the start of the ease (t = time).
-        - d: The total amount of time the ease will run (d = duration).
+        - t: The elapsed time of the ease (t = time).
+        - d: The duration of the ease (d = duration).
 
-     - Returns: The value at a specific point in time from the start value.
+     - Returns: The number between the start and end value at a specific point in time.
      */
     public static func bounceOut(b: Number, c: Number, t: Number, d: Number) -> Number {
         var x = t/d
@@ -822,16 +812,16 @@ extension EaseFunction {
     }
 
     /**
-     The algorithmic function of a `bounceInOut` ease used to calculate a value between a
-     starting and ending position at a specific point in time.
+     The algorithmic function of a `bounceInOut` ease that calculates the number between a
+     start and end value at a specific point in time.
 
      - Parameters:
         - b: The start value (b = begin).
         - c: The change in value (c = change).
-        - t: The amount of time elapsed since the start of the ease (t = time).
-        - d: The total amount of time the ease will run (d = duration).
+        - t: The elapsed time of the ease (t = time).
+        - d: The duration of the ease (d = duration).
 
-     - Returns: The value at a specific point in time from the start value.
+     - Returns: The number between the start and end value at a specific point in time.
      */
     public static func bounceInOut(b: Number, c: Number, t: Number, d: Number) -> Number {
         if t < (d.half) {

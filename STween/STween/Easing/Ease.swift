@@ -6,212 +6,183 @@
 //  Copyright © 2016 Adam Graham. All rights reserved.
 //
 
-/// An enum to describe an easing function.
+/// A type of easing function, described from an algorithmic classification and acceleration
+/// pattern.
 public enum Ease {
 
     // MARK: Linear
 
-    /// A case to denote an `EaseClassification.linear` function.
+    /// An ease with a `linear` classification.
     ///
     /// [Visual Reference](http://easings.net/)
     case linear
 
     // MARK: Sinusoidal
 
-    /// A case to denote an `EaseClassification.sine` function with an
-    /// `EaseCurve.in` acceleration pattern.
+    /// An ease with a `sine` classification and `in` acceleration pattern.
     ///
     /// [Visual Reference](http://easings.net/#easeInSine)
     case sineIn
 
-    /// A case to denote an `EaseClassification.sine` function with an
-    /// `EaseCurve.out` acceleration pattern.
+    /// An ease with a `sine` classification and `out` acceleration pattern.
     ///
     /// [Visual Reference](http://easings.net/#easeOutSine)
     case sineOut
 
-    /// A case to denote an `EaseClassification.sine` function with an
-    /// `EaseCurve.inOut` acceleration pattern.
+    /// An ease with a `sine` classification and `inOut` acceleration pattern.
     ///
     /// [Visual Reference](http://easings.net/#easeInOutSine)
     case sineInOut
 
     // MARK: Cubic
 
-    /// A case to denote an `EaseClassification.cubic` function with an
-    /// `EaseCurve.in` acceleration pattern.
+    /// An ease with a `cubic` classification and `in` acceleration pattern.
     ///
     /// [Visual Reference](http://easings.net/#easeInCubic)
     case cubicIn
 
-    /// A case to denote an `EaseClassification.cubic` function with an
-    /// `EaseCurve.out` acceleration pattern.
+    /// An ease with a `cubic` classification and `out` acceleration pattern.
     ///
     /// [Visual Reference](http://easings.net/#easeOutCubic)
     case cubicOut
 
-    /// A case to denote an `EaseClassification.cubic` function with an
-    /// `EaseCurve.inOut` acceleration pattern.
+    /// An ease with a `cubic` classification and `inOut` acceleration pattern.
     ///
     /// [Visual Reference](http://easings.net/#easeInOutCubic)
     case cubicInOut
 
     // MARK: Quadratic
 
-    /// A case to denote an `EaseClassification.quad` function with an
-    /// `EaseCurve.in` acceleration pattern.
+    /// An ease with a `quad` classification and `in` acceleration pattern.
     ///
     /// [Visual Reference](http://easings.net/#easeInQuad)
     case quadIn
 
-    /// A case to denote an `EaseClassification.quad` function with an
-    /// `EaseCurve.out` acceleration pattern.
+    /// An ease with a `quad` classification and `out` acceleration pattern.
     ///
     /// [Visual Reference](http://easings.net/#easeOutQuad)
     case quadOut
 
-    /// A case to denote an `EaseClassification.quad` function with an
-    /// `EaseCurve.inOut` acceleration pattern.
+    /// An ease with a `quad` classification and `inOut` acceleration pattern.
     ///
     /// [Visual Reference](http://easings.net/#easeInOutQuad)
     case quadInOut
 
     // MARK: Quartic
 
-    /// A case to denote an `EaseClassification.quart` function with an
-    /// `EaseCurve.in` acceleration pattern.
+    /// An ease with a `quart` classification and `in` acceleration pattern.
     ///
     /// [Visual Reference](http://easings.net/#easeInQuart)
     case quartIn
 
-    /// A case to denote an `EaseClassification.quart` function with an
-    /// `EaseCurve.out` acceleration pattern.
+    /// An ease with a `quart` classification and `out` acceleration pattern.
     ///
     /// [Visual Reference](http://easings.net/#easeOutQuart)
     case quartOut
 
-    /// A case to denote an `EaseClassification.quart` function with an
-    /// `EaseCurve.inOut` acceleration pattern.
+    /// An ease with a `quart` classification and `inOut` acceleration pattern.
     ///
     /// [Visual Reference](http://easings.net/#easeInOutQuart)
     case quartInOut
 
     // MARK: Quintic
 
-    /// A case to denote an `EaseClassification.quint` function with an
-    /// `EaseCurve.in` acceleration pattern.
+    /// An ease with a `quint` classification and `in` acceleration pattern.
     ///
     /// [Visual Reference](http://easings.net/#easeInQuint)
     case quintIn
 
-    /// A case to denote an `EaseClassification.quint` function with an
-    /// `EaseCurve.out` acceleration pattern.
+    /// An ease with a `quint` classification and `out` acceleration pattern.
     ///
     /// [Visual Reference](http://easings.net/#easeOutQuint)
     case quintOut
 
-    /// A case to denote an `EaseClassification.quint` function with an
-    /// `EaseCurve.inOut` acceleration pattern.
+    /// An ease with a `quint` classification and `inOut` acceleration pattern.
     ///
     /// [Visual Reference](http://easings.net/#easeInOutQuint)
     case quintInOut
 
     // MARK: Exponential
 
-    /// A case to denote an `EaseClassification.expo` function with an
-    /// `EaseCurve.in` acceleration pattern.
+    /// An ease with a `expo` classification and `in` acceleration pattern.
     ///
     /// [Visual Reference](http://easings.net/#easeInExpo)
     case expoIn
 
-    /// A case to denote an `EaseClassification.expo` function with an
-    /// `EaseCurve.out` acceleration pattern.
+    /// An ease with a `expo` classification and `out` acceleration pattern.
     ///
     /// [Visual Reference](http://easings.net/#easeOutExpo)
     case expoOut
 
-    /// A case to denote an `EaseClassification.expo` function with an
-    /// `EaseCurve.inOut` acceleration pattern.
+    /// An ease with a `expo` classification and `inOut` acceleration pattern.
     ///
     /// [Visual Reference](http://easings.net/#easeInOutExpo)
     case expoInOut
 
     // MARK: Circular
 
-    /// A case to denote an `EaseClassification.circ` function with an
-    /// `EaseCurve.in` acceleration pattern.
+    /// An ease with a `circ` classification and `in` acceleration pattern.
     ///
     /// [Visual Reference](http://easings.net/#easeInCirc)
     case circIn
 
-    /// A case to denote an `EaseClassification.circ` function with an
-    /// `EaseCurve.out` acceleration pattern.
+    /// An ease with a `circ` classification and `out` acceleration pattern.
     ///
     /// [Visual Reference](http://easings.net/#easeOutCirc)
     case circOut
 
-    /// A case to denote an `EaseClassification.circ` function with an
-    /// `EaseCurve.inOut` acceleration pattern.
+    /// An ease with a `circ` classification and `inOut` acceleration pattern.
     ///
     /// [Visual Reference](http://easings.net/#easeInOutCirc)
     case circInOut
 
     // MARK: Back
 
-    /// A case to denote an `EaseClassification.back` function with an
-    /// `EaseCurve.in` acceleration pattern.
+    /// An ease with a `back` classification and `in` acceleration pattern.
     ///
     /// [Visual Reference](http://easings.net/#easeInBack)
     case backIn
 
-    /// A case to denote an `EaseClassification.back` function with an
-    /// `EaseCurve.out` acceleration pattern.
+    /// An ease with a `back` classification and `out` acceleration pattern.
     ///
     /// [Visual Reference](http://easings.net/#easeOutBack)
     case backOut
 
-    /// A case to denote an `EaseClassification.back` function with an
-    /// `EaseCurve.inOut` acceleration pattern.
+    /// An ease with a `back` classification and `inOut` acceleration pattern.
     ///
     /// [Visual Reference](http://easings.net/#easeInOutBack)
     case backInOut
 
     // MARK: Elastic
 
-    /// A case to denote an `EaseClassification.elastic` function with an
-    /// `EaseCurve.in` acceleration pattern.
+    /// An ease with a `elastic` classification and `in` acceleration pattern.
     ///
     /// [Visual Reference](http://easings.net/#easeInElastic)
     case elasticIn
 
-    /// A case to denote an `EaseClassification.elastic` function with an
-    /// `EaseCurve.out` acceleration pattern.
+    /// An ease with a `elastic` classification and `out` acceleration pattern.
     ///
     /// [Visual Reference](http://easings.net/#easeOutElastic)
     case elasticOut
 
-    /// A case to denote an `EaseClassification.elastic` function with an
-    /// `EaseCurve.inOut` acceleration pattern.
+    /// An ease with a `elastic` classification and `inOut` acceleration pattern.
     ///
     /// [Visual Reference](http://easings.net/#easeInOutElastic)
     case elasticInOut
 
     // MARK: Bounce
 
-    /// A case to denote an `EaseClassification.bounce` function with an
-    /// `EaseCurve.in` acceleration pattern.
+    /// An ease with a `bounce` classification and `in` acceleration pattern.
     ///
     /// [Visual Reference](http://easings.net/#easeInBounce)
     case bounceIn
 
-    /// A case to denote an `EaseClassification.bounce` function with an
-    /// `EaseCurve.out` acceleration pattern.
+    /// An ease with a `bounce` classification and `out` acceleration pattern.
     ///
     /// [Visual Reference](http://easings.net/#easeOutBounce)
     case bounceOut
 
-    /// A case to denote an `EaseClassification.bounce` function with an
-    /// `EaseCurve.inOut` acceleration pattern.
+    /// An ease with a `bounce` classification and `inOut` acceleration pattern.
     ///
     /// [Visual Reference](http://easings.net/#easeInOutBounce)
     case bounceInOut
@@ -222,12 +193,12 @@ extension Ease {
 
     // MARK: Properties
 
-    /// The `EaseClassification` associated with `self`.
+    /// The classification of the ease.
     public var classification: EaseClassification {
         return EaseMappings.eases[self]!.classification
     }
 
-    /// The `EaseCurve` associated with `self`.
+    /// The acceleration pattern of the ease.
     public var curve: EaseCurve {
         return EaseMappings.eases[self]!.curve
     }
@@ -239,14 +210,13 @@ extension Ease {
     // MARK: Methods
 
     /**
-     A method to calculate the value between a starting and ending position at a specific
-     point in time using `self`'s easing function.
+     Calculates the value between a start and end value at a specific point in time.
 
      - Parameters:
-        - startValue: The start value passed to `self`'s easing function.
-        - endValue: The end value passed to `self`'s easing function.
-        - elapsed: The elapsed amount of time passed to `self`'s easing function.
-        - duration: The duration of time passed to `self`'s easing function.
+        - startValue: The start value passed to the easing function.
+        - endValue: The end value passed to the easing function.
+        - elapsed: The elapsed amount of time passed to the easing function.
+        - duration: The duration of time passed to the easing function.
 
      - Returns: The value interpolated between the start and end value.
      */
