@@ -95,24 +95,3 @@ public enum EaseClassification {
     case bounce
 
 }
-
-extension EaseClassification {
-
-    // MARK: Look-up Helpers
-
-    /// The `Ease` associated with `self` and `EaseCurve.in`.
-    public var `in`: Ease {
-        return EaseMappings.classifications[self]![.in]!
-    }
-
-    /// The `Ease` associated with `self` and `EaseCurve.out`.
-    public var out: Ease {
-        return EaseMappings.classifications[self]![.out]!
-    }
-
-    /// The `Ease` associated with `self` and `EaseCurve.inOut`.
-    public var inOut: Ease {
-        return EaseMappings.classifications[self]![.inOut]!
-    }
-
-}
