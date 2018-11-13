@@ -94,18 +94,6 @@ internal final class TweenTimer {
         self.lastTickDate = Date()
     }
 
-    /**
-     A method to reset then start `self`.
-
-     See also, the following methods:
-        - `reset()`
-        - `start()`
-     */
-    internal func restart() {
-        reset()
-        start()
-    }
-
     // MARK: Timer Event Methods
 
     /**
