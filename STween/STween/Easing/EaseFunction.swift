@@ -35,7 +35,7 @@
 
  - Returns: The value at a specific point in time from the start value.
  */
-public enum EaseFunction {
+public enum EaseFunction<Number: InterpolatableNumber> {
 
     /**
      Calculates a value between a starting and ending position at a specific point in time.
@@ -48,7 +48,7 @@ public enum EaseFunction {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    public typealias Definition<Number: InterpolatableNumber> = (
+    public typealias Definition = (
         _ b: Number,
         _ c: Number,
         _ t: Number,
@@ -73,9 +73,7 @@ extension EaseFunction {
      
      - Returns: The value at a specific point in time from the start value.
      */
-    public static func linear<Number: InterpolatableNumber>(
-        b: Number, c: Number, t: Number, d: Number) -> Number {
-
+    public static func linear(b: Number, c: Number, t: Number, d: Number) -> Number {
         let x = t/d
         return c * x + b
     }
@@ -99,9 +97,7 @@ extension EaseFunction {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    public static func sineIn<Number: InterpolatableNumber>(
-        b: Number, c: Number, t: Number, d: Number) -> Number {
-
+    public static func sineIn(b: Number, c: Number, t: Number, d: Number) -> Number {
         let x = t/d
         let m = cos(x * Number.pi.half)
         return -c * m + c + b
@@ -119,9 +115,7 @@ extension EaseFunction {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    public static func sineOut<Number: InterpolatableNumber>(
-        b: Number, c: Number, t: Number, d: Number) -> Number {
-
+    public static func sineOut(b: Number, c: Number, t: Number, d: Number) -> Number {
         let x = t/d
         let m = sin(x * Number.pi.half)
         return c * m + b
@@ -139,9 +133,7 @@ extension EaseFunction {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    public static func sineInOut<Number: InterpolatableNumber>(
-        b: Number, c: Number, t: Number, d: Number) -> Number {
-
+    public static func sineInOut(b: Number, c: Number, t: Number, d: Number) -> Number {
         let x = t/d
         let m = cos(x * Number.pi) - Number.const.one
         return -c.half * m + b
@@ -166,9 +158,7 @@ extension EaseFunction {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    public static func cubicIn<Number: InterpolatableNumber>(
-        b: Number, c: Number, t: Number, d: Number) -> Number {
-
+    public static func cubicIn(b: Number, c: Number, t: Number, d: Number) -> Number {
         let x = t/d
         let m = x*x*x
         return c * m + b
@@ -186,9 +176,7 @@ extension EaseFunction {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    public static func cubicOut<Number: InterpolatableNumber>(
-        b: Number, c: Number, t: Number, d: Number) -> Number {
-
+    public static func cubicOut(b: Number, c: Number, t: Number, d: Number) -> Number {
         let x = (t/d) - Number.const.one
         let m = (x*x*x) + Number.const.one
         return c * m + b
@@ -206,9 +194,7 @@ extension EaseFunction {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    public static func cubicInOut<Number: InterpolatableNumber>(
-        b: Number, c: Number, t: Number, d: Number) -> Number {
-
+    public static func cubicInOut(b: Number, c: Number, t: Number, d: Number) -> Number {
         var x = t/(d.half)
 
         if x < Number.const.one {
@@ -240,9 +226,7 @@ extension EaseFunction {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    public static func quadIn<Number: InterpolatableNumber>(
-        b: Number, c: Number, t: Number, d: Number) -> Number {
-
+    public static func quadIn(b: Number, c: Number, t: Number, d: Number) -> Number {
         let x = t/d
         let m = x*x
         return c * m + b
@@ -260,9 +244,7 @@ extension EaseFunction {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    public static func quadOut<Number: InterpolatableNumber>(
-        b: Number, c: Number, t: Number, d: Number) -> Number {
-
+    public static func quadOut(b: Number, c: Number, t: Number, d: Number) -> Number {
         let x = t/d
         let m = x*(x - Number.const.two)
         return -c * m + b
@@ -280,9 +262,7 @@ extension EaseFunction {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    public static func quadInOut<Number: InterpolatableNumber>(
-        b: Number, c: Number, t: Number, d: Number) -> Number {
-
+    public static func quadInOut(b: Number, c: Number, t: Number, d: Number) -> Number {
         var x = t/(d.half)
 
         if x < Number.const.one {
@@ -314,9 +294,7 @@ extension EaseFunction {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    public static func quartIn<Number: InterpolatableNumber>(
-        b: Number, c: Number, t: Number, d: Number) -> Number {
-
+    public static func quartIn(b: Number, c: Number, t: Number, d: Number) -> Number {
         let x = t/d
         let m = x*x*x*x
         return c * m + b
@@ -334,9 +312,7 @@ extension EaseFunction {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    public static func quartOut<Number: InterpolatableNumber>(
-        b: Number, c: Number, t: Number, d: Number) -> Number {
-
+    public static func quartOut(b: Number, c: Number, t: Number, d: Number) -> Number {
         let x = (t/d) - Number.const.one
         let m = (x*x*x*x) - Number.const.one
         return -c * m + b
@@ -354,9 +330,7 @@ extension EaseFunction {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    public static func quartInOut<Number: InterpolatableNumber>(
-        b: Number, c: Number, t: Number, d: Number) -> Number {
-
+    public static func quartInOut(b: Number, c: Number, t: Number, d: Number) -> Number {
         var x = t/(d.half)
 
         if x < Number.const.one {
@@ -388,9 +362,7 @@ extension EaseFunction {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    public static func quintIn<Number: InterpolatableNumber>(
-        b: Number, c: Number, t: Number, d: Number) -> Number {
-
+    public static func quintIn(b: Number, c: Number, t: Number, d: Number) -> Number {
         let x = t/d
         let m = x*x*x*x*x
         return c * m + b
@@ -408,9 +380,7 @@ extension EaseFunction {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    public static func quintOut<Number: InterpolatableNumber>(
-        b: Number, c: Number, t: Number, d: Number) -> Number {
-
+    public static func quintOut(b: Number, c: Number, t: Number, d: Number) -> Number {
         let x = (t/d) - Number.const.one
         let m = (x*x*x*x*x) + Number.const.one
         return c * m + b
@@ -428,9 +398,7 @@ extension EaseFunction {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    public static func quintInOut<Number: InterpolatableNumber>(
-        b: Number, c: Number, t: Number, d: Number) -> Number {
-
+    public static func quintInOut(b: Number, c: Number, t: Number, d: Number) -> Number {
         var x = t/(d.half)
 
         if x < Number.const.one {
@@ -462,9 +430,7 @@ extension EaseFunction {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    public static func expoIn<Number: InterpolatableNumber>(
-        b: Number, c: Number, t: Number, d: Number) -> Number {
-
+    public static func expoIn(b: Number, c: Number, t: Number, d: Number) -> Number {
         if t.isZero {
             return b
         }
@@ -487,9 +453,7 @@ extension EaseFunction {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    public static func expoOut<Number: InterpolatableNumber>(
-        b: Number, c: Number, t: Number, d: Number) -> Number {
-
+    public static func expoOut(b: Number, c: Number, t: Number, d: Number) -> Number {
         if t == d {
             return b + c
         }
@@ -512,9 +476,7 @@ extension EaseFunction {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    public static func expoInOut<Number: InterpolatableNumber>(
-        b: Number, c: Number, t: Number, d: Number) -> Number {
-
+    public static func expoInOut(b: Number, c: Number, t: Number, d: Number) -> Number {
         if t.isZero {
             return b
         } else if t == d {
@@ -554,9 +516,7 @@ extension EaseFunction {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    public static func circIn<Number: InterpolatableNumber>(
-        b: Number, c: Number, t: Number, d: Number) -> Number {
-
+    public static func circIn(b: Number, c: Number, t: Number, d: Number) -> Number {
         let x = t/d
         let m = sqrt(Number.const.one - (x*x)) - Number.const.one
         return -c * m + b
@@ -574,9 +534,7 @@ extension EaseFunction {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    public static func circOut<Number: InterpolatableNumber>(
-        b: Number, c: Number, t: Number, d: Number) -> Number {
-
+    public static func circOut(b: Number, c: Number, t: Number, d: Number) -> Number {
         let x = (t/d) - Number.const.one
         let m = sqrt(Number.const.one - (x*x))
         return c * m + b
@@ -594,9 +552,7 @@ extension EaseFunction {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    public static func circInOut<Number: InterpolatableNumber>(
-        b: Number, c: Number, t: Number, d: Number) -> Number {
-
+    public static func circInOut(b: Number, c: Number, t: Number, d: Number) -> Number {
         var x = t/(d.half)
 
         if x < Number.const.one {
@@ -628,9 +584,7 @@ extension EaseFunction {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    public static func backIn<Number: InterpolatableNumber>(
-        b: Number, c: Number, t: Number, d: Number) -> Number {
-
+    public static func backIn(b: Number, c: Number, t: Number, d: Number) -> Number {
         let s = Number(Defaults.overshoot)
         let x = t/d
         let e = ((s + Number.const.one) * x) - s
@@ -650,9 +604,7 @@ extension EaseFunction {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    public static func backOut<Number: InterpolatableNumber>(
-        b: Number, c: Number, t: Number, d: Number) -> Number {
-
+    public static func backOut(b: Number, c: Number, t: Number, d: Number) -> Number {
         let s = Number(Defaults.overshoot)
         let x = (t/d) - Number.const.one
         let e = ((s + Number.const.one) * x) + s
@@ -672,9 +624,7 @@ extension EaseFunction {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    public static func backInOut<Number: InterpolatableNumber>(
-        b: Number, c: Number, t: Number, d: Number) -> Number {
-
+    public static func backInOut(b: Number, c: Number, t: Number, d: Number) -> Number {
         let s = Number(Defaults.overshoot * 1.525)
         var x = t/(d.half)
 
@@ -709,9 +659,7 @@ extension EaseFunction {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    public static func elasticIn<Number: InterpolatableNumber>(
-        b: Number, c: Number, t: Number, d: Number) -> Number {
-
+    public static func elasticIn(b: Number, c: Number, t: Number, d: Number) -> Number {
         var x = t/d
 
         if t.isZero {
@@ -746,9 +694,7 @@ extension EaseFunction {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    public static func elasticOut<Number: InterpolatableNumber>(
-        b: Number, c: Number, t: Number, d: Number) -> Number {
-
+    public static func elasticOut(b: Number, c: Number, t: Number, d: Number) -> Number {
         let x = t/d
 
         if t.isZero {
@@ -782,9 +728,7 @@ extension EaseFunction {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    public static func elasticInOut<Number: InterpolatableNumber>(
-        b: Number, c: Number, t: Number, d: Number) -> Number {
-
+    public static func elasticInOut(b: Number, c: Number, t: Number, d: Number) -> Number {
         var x = t/(d.half)
 
         if t.isZero {
@@ -839,9 +783,7 @@ extension EaseFunction {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    public static func bounceIn<Number: InterpolatableNumber>(
-        b: Number, c: Number, t: Number, d: Number) -> Number {
-
+    public static func bounceIn(b: Number, c: Number, t: Number, d: Number) -> Number {
         let m = EaseFunction.bounceOut(b: Number.const.zero, c: c, t: d-t, d: d)
         return c - m + b
     }
@@ -858,9 +800,7 @@ extension EaseFunction {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    public static func bounceOut<Number: InterpolatableNumber>(
-        b: Number, c: Number, t: Number, d: Number) -> Number {
-
+    public static func bounceOut(b: Number, c: Number, t: Number, d: Number) -> Number {
         var x = t/d
         let e: Number
 
@@ -893,9 +833,7 @@ extension EaseFunction {
 
      - Returns: The value at a specific point in time from the start value.
      */
-    public static func bounceInOut<Number: InterpolatableNumber>(
-        b: Number, c: Number, t: Number, d: Number) -> Number {
-
+    public static func bounceInOut(b: Number, c: Number, t: Number, d: Number) -> Number {
         if t < (d.half) {
             let m = EaseFunction.bounceIn(b: Number.const.zero, c: c, t: t.double, d: d).half
             return m + b
