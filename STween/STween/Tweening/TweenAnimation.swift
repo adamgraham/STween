@@ -21,7 +21,7 @@ internal final class TweenAnimation<Property: TweenableProperty>: Tween {
     internal let targetProperties: [Property]
 
     /// An array of values used to interpolate each property every update cycle.
-    private var interpolationValues = [InterpolationValues<Property>]()
+    private var interpolationValues: [InterpolationValues<Property>]?
 
     // MARK: Animation & State Properties
 
@@ -122,9 +122,22 @@ extension TweenAnimation {
         let elapsed = self.elapsed
         let duration = self.duration
 
-        self.interpolationValues.forEach {
+        self.interpolationValues?.forEach {
             let interpolatedValue = $0.interpolate(with: ease, elapsed: elapsed, duration: duration)
             interpolatedValue.apply(to: self.target)
+        }
+    }
+
+    /**
+     Applies the end value of each target property to the target object.
+     */
+    private func completeUpdates() {
+        if self.interpolationValues == nil {
+            storeInterpolationValues()
+        }
+
+        self.interpolationValues?.forEach {
+            $0.end.apply(to: self.target)
         }
     }
 
@@ -133,7 +146,7 @@ extension TweenAnimation {
 
      If the tween is reversed, the start and end value will be flipped with each other.
      */
-    private func storeStartingAndEndingValues() {
+    private func storeInterpolationValues() {
         self.interpolationValues = self.targetProperties.map {
             let start = $0.value(from: self.target)
             let end = $0
@@ -165,7 +178,7 @@ extension TweenAnimation {
         self.state = .active
 
         // Store property values
-        storeStartingAndEndingValues()
+        storeInterpolationValues()
 
         if self.reversed {
             updateProperties()
@@ -263,8 +276,8 @@ extension TweenAnimation {
         self.timer.elapsed = self.duration
         self.delayElapsed = 0.0
 
-        // Update properties
-        updateProperties()
+        // Complete updates
+        completeUpdates()
 
         // Callback event
         self.onComplete?()
@@ -306,7 +319,7 @@ extension TweenAnimation {
         self.state = .new
 
         // Default properties
-        self.interpolationValues = []
+        self.interpolationValues = nil
         self.reversed = Defaults.reversed
         self.ease = Defaults.ease
         self.delay = Defaults.delay

@@ -86,13 +86,13 @@ extension TweenState {
     }
 
     /// Returns `true` if a tween can be completed –
-    /// must currently be in an `active`, `delayed`, or `paused` state.
+    /// must currently *not* be in a `completed` or `killed` state.
     internal var canComplete: Bool {
         switch self {
-        case .active, .delayed, .paused:
-            return true
-        default:
+        case .completed, .killed:
             return false
+        default:
+            return true
         }
     }
 

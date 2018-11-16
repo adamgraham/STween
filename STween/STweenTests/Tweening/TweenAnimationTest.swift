@@ -264,11 +264,9 @@ class TweenAnimationTest: XCTestCase {
         Defaults.autoKillCompletedTweens = true
 
         XCTAssertEqual(tween.state, .new)
-        XCTAssertFalse(tween.complete())
-        XCTAssertEqual(tween.state, .new)
-        XCTAssertTrue(tween.start())
-        XCTAssertEqual(tween.state, .active)
         XCTAssertTrue(tween.complete())
+        XCTAssertEqual(tween.state, .killed)
+        XCTAssertFalse(tween.complete())
         XCTAssertEqual(tween.state, .killed)
         XCTAssertEqual(tween.elapsed, tween.duration)
         XCTAssertEqual(tween.target.frame.origin.x, 100.0)
@@ -286,11 +284,9 @@ class TweenAnimationTest: XCTestCase {
         Defaults.autoKillCompletedTweens = false
 
         XCTAssertEqual(tween.state, .new)
-        XCTAssertFalse(tween.complete())
-        XCTAssertEqual(tween.state, .new)
-        XCTAssertTrue(tween.start())
-        XCTAssertEqual(tween.state, .active)
         XCTAssertTrue(tween.complete())
+        XCTAssertEqual(tween.state, .completed)
+        XCTAssertFalse(tween.complete())
         XCTAssertEqual(tween.state, .completed)
         XCTAssertEqual(tween.elapsed, tween.duration)
         XCTAssertEqual(tween.target.frame.origin.x, 100.0)
