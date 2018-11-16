@@ -21,7 +21,7 @@ internal final class TweenAnimation<Property: TweenableProperty>: Tween {
     internal let targetProperties: [Property]
 
     /// An array of values used to interpolate each property every update cycle.
-    private var interpolationValues: [InterpolationValues<Property>]?
+    private var interpolationValues: [(start: Property, end: Property)]?
 
     // MARK: Animation & State Properties
 
@@ -123,7 +123,7 @@ extension TweenAnimation {
         let duration = self.duration
 
         self.interpolationValues?.forEach {
-            let interpolatedValue = $0.interpolate(with: ease, elapsed: elapsed, duration: duration)
+            let interpolatedValue = Property.interpolate(from: $0.start, to: $0.end, with: ease, elapsed: elapsed, duration: duration)
             interpolatedValue.apply(to: self.target)
         }
     }
@@ -152,10 +152,10 @@ extension TweenAnimation {
             let end = $0
 
             if self.reversed {
-                return InterpolationValues(start: end, end: start)
+                return (end, start)
             }
 
-            return InterpolationValues(start: start, end: end)
+            return (start, end)
         }
     }
 

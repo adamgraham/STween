@@ -27,7 +27,6 @@
 		9D8890691E2883160023FE78 /* EaseClassification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8890481E2883160023FE78 /* EaseClassification.swift */; };
 		9D88906A1E2883160023FE78 /* EaseCurve.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8890491E2883160023FE78 /* EaseCurve.swift */; };
 		9D88906C1E2883160023FE78 /* Interpolatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D88904C1E2883160023FE78 /* Interpolatable.swift */; };
-		9D88906E1E2883160023FE78 /* InterpolationValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D88904E1E2883160023FE78 /* InterpolationValues.swift */; };
 		9D88906F1E2883160023FE78 /* NSLayoutConstraint+Tweening.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8890511E2883160023FE78 /* NSLayoutConstraint+Tweening.swift */; };
 		9D8890701E2883160023FE78 /* Tween+Chaining.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8890521E2883160023FE78 /* Tween+Chaining.swift */; };
 		9D8890711E2883160023FE78 /* UIView+Tweening.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8890531E2883160023FE78 /* UIView+Tweening.swift */; };
@@ -38,7 +37,6 @@
 		9D8890771E2883160023FE78 /* TweenState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8890591E2883160023FE78 /* TweenState.swift */; };
 		9D8890791E2883160023FE78 /* TweenTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D88905B1E2883160023FE78 /* TweenTimer.swift */; };
 		9D88907C1E2883160023FE78 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8890601E2883160023FE78 /* Functions.swift */; };
-		9D889D2A1E29D48C00B3207E /* InterpolationValuesTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D889D291E29D48C00B3207E /* InterpolationValuesTest.swift */; };
 		9DB3D6351DAE686F00134C1D /* DefaultsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB3D6301DAE686F00134C1D /* DefaultsTest.swift */; };
 		9DB3D6381DAE686F00134C1D /* CallbackTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB3D6341DAE686F00134C1D /* CallbackTest.swift */; };
 		9DB3D6401DAE6CCB00134C1D /* XCTestCase+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB3D63F1DAE6CCB00134C1D /* XCTestCase+Utils.swift */; };
@@ -95,7 +93,6 @@
 		9D8890481E2883160023FE78 /* EaseClassification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EaseClassification.swift; sourceTree = "<group>"; };
 		9D8890491E2883160023FE78 /* EaseCurve.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EaseCurve.swift; sourceTree = "<group>"; };
 		9D88904C1E2883160023FE78 /* Interpolatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Interpolatable.swift; sourceTree = "<group>"; };
-		9D88904E1E2883160023FE78 /* InterpolationValues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterpolationValues.swift; sourceTree = "<group>"; };
 		9D8890511E2883160023FE78 /* NSLayoutConstraint+Tweening.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Tweening.swift"; sourceTree = "<group>"; };
 		9D8890521E2883160023FE78 /* Tween+Chaining.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tween+Chaining.swift"; sourceTree = "<group>"; };
 		9D8890531E2883160023FE78 /* UIView+Tweening.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Tweening.swift"; sourceTree = "<group>"; };
@@ -106,7 +103,6 @@
 		9D8890591E2883160023FE78 /* TweenState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweenState.swift; sourceTree = "<group>"; };
 		9D88905B1E2883160023FE78 /* TweenTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweenTimer.swift; sourceTree = "<group>"; };
 		9D8890601E2883160023FE78 /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
-		9D889D291E29D48C00B3207E /* InterpolationValuesTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterpolationValuesTest.swift; sourceTree = "<group>"; };
 		9DB3D6301DAE686F00134C1D /* DefaultsTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultsTest.swift; sourceTree = "<group>"; };
 		9DB3D6341DAE686F00134C1D /* CallbackTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallbackTest.swift; sourceTree = "<group>"; };
 		9DB3D63F1DAE6CCB00134C1D /* XCTestCase+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Utils.swift"; sourceTree = "<group>"; };
@@ -221,7 +217,6 @@
 			children = (
 				9D88904C1E2883160023FE78 /* Interpolatable.swift */,
 				9D804D7E2167D1B300401533 /* InterpolatableNumber.swift */,
-				9D88904E1E2883160023FE78 /* InterpolationValues.swift */,
 			);
 			path = Interpolation;
 			sourceTree = "<group>";
@@ -329,7 +324,6 @@
 			children = (
 				9DD240461DCD436A009C658F /* InterpolatableTest.swift */,
 				9D3493E32194C00C00630051 /* InterpolatableNumberTest.swift */,
-				9D889D291E29D48C00B3207E /* InterpolationValuesTest.swift */,
 			);
 			path = Interpolation;
 			sourceTree = "<group>";
@@ -465,7 +459,6 @@
 				9DEDF79C1E36FCA7002E0CB9 /* TweenableProperty.swift in Sources */,
 				9D88907C1E2883160023FE78 /* Functions.swift in Sources */,
 				9D8890701E2883160023FE78 /* Tween+Chaining.swift in Sources */,
-				9D88906E1E2883160023FE78 /* InterpolationValues.swift in Sources */,
 				9D8890711E2883160023FE78 /* UIView+Tweening.swift in Sources */,
 				9D185B241E443A8600CF8F5C /* UILabel+Tweening.swift in Sources */,
 				9D804D7F2167D1B300401533 /* InterpolatableNumber.swift in Sources */,
@@ -501,7 +494,6 @@
 				9D6A3DBB1DDEB095009B6352 /* TweenerTest.swift in Sources */,
 				9DBF34021DB8F4BA006C0D84 /* EaseFunctionTest.swift in Sources */,
 				9D6A3DB31DDEB05B009B6352 /* TweenTest.swift in Sources */,
-				9D889D2A1E29D48C00B3207E /* InterpolationValuesTest.swift in Sources */,
 				9DF7248E1E47A51000A0BDB9 /* UITextField+TweeningTest.swift in Sources */,
 				9D6A3DC31DDEB0BE009B6352 /* TweenTimerTest.swift in Sources */,
 				9DB46B1C1E29EB6000CB21F9 /* Tween+ChainingTest.swift in Sources */,
