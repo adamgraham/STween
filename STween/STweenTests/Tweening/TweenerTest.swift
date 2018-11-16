@@ -165,14 +165,103 @@ class TweenerTest: XCTestCase {
 
     // MARK: Global State Control Tests
 
+    func testStartAll() {
+        Defaults.autoStartTweens = false
+        defer { Defaults.reset() }
+
+        var count = 0
+        let expectedCount = 3
+
+        for _ in 1...expectedCount {
+            let tween = Tweener.default.animate(UIView(), to: [UIViewTweenProperty](), duration: 1.0, completion: {})
+            tween.onStart = { count += 1 }
+        }
+
+        Tweener.default.startAll()
+        XCTAssertEqual(count, expectedCount)
+    }
+
+    func testStopAll() {
+        var count = 0
+        let expectedCount = 3
+
+        for _ in 1...expectedCount {
+            let tween = Tweener.default.animate(UIView(), to: [UIViewTweenProperty](), duration: 1.0, completion: {})
+            tween.onStop = { count += 1 }
+            tween.start()
+        }
+
+        Tweener.default.stopAll()
+        XCTAssertEqual(count, expectedCount)
+    }
+
+    func testRestartAll() {
+        var count = 0
+        let expectedCount = 3
+
+        for _ in 1...expectedCount {
+            let tween = Tweener.default.animate(UIView(), to: [UIViewTweenProperty](), duration: 1.0, completion: {})
+            tween.onRestart = { count += 1 }
+            tween.start()
+        }
+
+        Tweener.default.restartAll()
+        XCTAssertEqual(count, expectedCount)
+    }
+
+    func testPauseAll() {
+        var count = 0
+        let expectedCount = 3
+
+        for _ in 1...expectedCount {
+            let tween = Tweener.default.animate(UIView(), to: [UIViewTweenProperty](), duration: 1.0, completion: {})
+            tween.onPause = { count += 1 }
+            tween.start()
+        }
+
+        Tweener.default.pauseAll()
+        XCTAssertEqual(count, expectedCount)
+    }
+
+    func testResumeAll() {
+        var count = 0
+        let expectedCount = 3
+
+        for _ in 1...expectedCount {
+            let tween = Tweener.default.animate(UIView(), to: [UIViewTweenProperty](), duration: 1.0, completion: {})
+            tween.onResume = { count += 1 }
+            tween.start()
+            tween.pause()
+        }
+
+        Tweener.default.resumeAll()
+        XCTAssertEqual(count, expectedCount)
+    }
+
+    func testCompleteAll() {
+        var count = 0
+        let expectedCount = 3
+
+        for _ in 1...expectedCount {
+            let tween = Tweener.default.animate(UIView(), to: [UIViewTweenProperty](), duration: 1.0, completion: {})
+            tween.onComplete = { count += 1 }
+        }
+
+        Tweener.default.completeAll()
+        XCTAssertEqual(count, expectedCount)
+    }
+
     func testKillAll() {
-        let tween = Tweener.default.animate(UIView(), to: [UIViewTweenProperty](), duration: 1.0, completion: {})
-        let anotherTween = Tweener.default.animate(UIView(), from: [UIViewTweenProperty](), duration: 1.0, completion: {})
+        var count = 0
+        let expectedCount = 3
+
+        for _ in 1...expectedCount {
+            let tween = Tweener.default.animate(UIView(), to: [UIViewTweenProperty](), duration: 1.0, completion: {})
+            tween.onKill = { count += 1 }
+        }
 
         Tweener.default.killAll()
-
-        XCTAssertEqual(tween.state, .killed)
-        XCTAssertEqual(anotherTween.state, .killed)
+        XCTAssertEqual(count, expectedCount)
     }
 
 }

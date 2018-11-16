@@ -210,16 +210,53 @@ extension Tweener {
 
     // MARK: Global State Control
 
-    /**
-     A method to kill all currently tracked tweens.
-     */
+    /// Invokes `start` on all currently tracked tweens.
+    public func startAll() {
+        self.tweens.forEach {
+            $0.start()
+        }
+    }
+
+    /// Invokes `stop` on all currently tracked tweens.
+    public func stopAll() {
+        self.tweens.forEach {
+            $0.stop()
+        }
+    }
+
+    /// Invokes `stop` on all currently tracked tweens.
+    public func restartAll() {
+        self.tweens.forEach {
+            $0.restart()
+        }
+    }
+
+    /// Invokes `pause` on all currently tracked tweens.
+    public func pauseAll() {
+        self.tweens.forEach {
+            $0.pause()
+        }
+    }
+
+    /// Invokes `resume` on all currently tracked tweens.
+    public func resumeAll() {
+        self.tweens.forEach {
+            $0.resume()
+        }
+    }
+
+    /// Invokes `complete` on all currently tracked tweens.
+    public func completeAll() {
+        self.tweens.forEach {
+            $0.complete()
+        }
+    }
+
+    /// Invokes `kill` on all currently tracked tweens.
     public func killAll() {
         self.tweens.forEach {
             $0.kill()
         }
-
-        self.tweens.removeAll()
-        self.queuedTweens.removeAll()
     }
 
 }
