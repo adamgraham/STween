@@ -28,7 +28,7 @@ class TweenableTest: XCTestCase {
         XCTAssertNil(tweenA.onComplete)
         XCTAssertEqual(Tweener.default.count, 1)
 
-        let tweenB = UIView().tween(to: UIViewTweenProperty.y(100.0), duration: 1.0, completion: {})
+        let tweenB = UIView().tween(to: UIViewTweenProperty.y(100.0), duration: 1.0, completion: { _ in })
         XCTAssertFalse(tweenB.reversed)
         XCTAssertNotNil(tweenB.onComplete)
         XCTAssertEqual(Tweener.default.count, 2)
@@ -40,7 +40,7 @@ class TweenableTest: XCTestCase {
         XCTAssertNil(tweenA.onComplete)
         XCTAssertEqual(Tweener.default.count, 1)
 
-        let tweenB = UIView().tween(to: [UIViewTweenProperty.width(100.0), UIViewTweenProperty.height(100.0)], duration: 1.0, completion: {})
+        let tweenB = UIView().tween(to: [UIViewTweenProperty.width(100.0), UIViewTweenProperty.height(100.0)], duration: 1.0, completion: { _ in })
         XCTAssertFalse(tweenB.reversed)
         XCTAssertNotNil(tweenB.onComplete)
         XCTAssertEqual(Tweener.default.count, 2)
@@ -52,7 +52,7 @@ class TweenableTest: XCTestCase {
         XCTAssertNil(tweenA.onComplete)
         XCTAssertEqual(Tweener.default.count, 1)
 
-        let tweenB = UIView().tween(from: UIViewTweenProperty.y(100.0), duration: 1.0, completion: {})
+        let tweenB = UIView().tween(from: UIViewTweenProperty.y(100.0), duration: 1.0, completion: { _ in })
         XCTAssertTrue(tweenB.reversed)
         XCTAssertNotNil(tweenB.onComplete)
         XCTAssertEqual(Tweener.default.count, 2)
@@ -64,7 +64,7 @@ class TweenableTest: XCTestCase {
         XCTAssertNil(tweenA.onComplete)
         XCTAssertEqual(Tweener.default.count, 1)
 
-        let tweenB = UIView().tween(from: [UIViewTweenProperty.width(100.0), UIViewTweenProperty.height(100.0)], duration: 1.0, completion: {})
+        let tweenB = UIView().tween(from: [UIViewTweenProperty.width(100.0), UIViewTweenProperty.height(100.0)], duration: 1.0, completion: { _ in })
         XCTAssertTrue(tweenB.reversed)
         XCTAssertNotNil(tweenB.onComplete)
         XCTAssertEqual(Tweener.default.count, 2)

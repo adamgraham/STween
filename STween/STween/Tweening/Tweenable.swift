@@ -24,7 +24,7 @@ public protocol Tweenable {
      - Returns: The `Tween` control for the animation.
      */
     @discardableResult func tween<TweenProperty: TweenableProperty>(
-        to property: TweenProperty, duration: TimeInterval, completion: Callback?) -> Tween
+        to property: TweenProperty, duration: TimeInterval, completion: Tween.Callback?) -> Tween
         where TweenProperty.Target == Self
 
     /**
@@ -38,7 +38,7 @@ public protocol Tweenable {
      - Returns: The `Tween` control for the animation.
      */
     @discardableResult func tween<TweenProperty: TweenableProperty>(
-        to properties: [TweenProperty], duration: TimeInterval, completion: Callback?) -> Tween
+        to properties: [TweenProperty], duration: TimeInterval, completion: Tween.Callback?) -> Tween
         where TweenProperty.Target == Self
 
     /**
@@ -52,7 +52,7 @@ public protocol Tweenable {
      - Returns: The `Tween` control for the animation.
      */
     @discardableResult func tween<TweenProperty: TweenableProperty>(
-        from property: TweenProperty, duration: TimeInterval, completion: Callback?) -> Tween
+        from property: TweenProperty, duration: TimeInterval, completion: Tween.Callback?) -> Tween
         where TweenProperty.Target == Self
 
     /**
@@ -66,7 +66,7 @@ public protocol Tweenable {
      - Returns: The `Tween` control for the animation.
      */
     @discardableResult func tween<TweenProperty: TweenableProperty>(
-        from properties: [TweenProperty], duration: TimeInterval, completion: Callback?) -> Tween
+        from properties: [TweenProperty], duration: TimeInterval, completion: Tween.Callback?) -> Tween
         where TweenProperty.Target == Self
 
 }
@@ -77,7 +77,7 @@ extension Tweenable {
     // MARK: Default Implementation
 
     @discardableResult public func tween<TweenProperty: TweenableProperty>(
-        to property: TweenProperty, duration: TimeInterval, completion: Callback? = nil) -> Tween
+        to property: TweenProperty, duration: TimeInterval, completion: Tween.Callback? = nil) -> Tween
         where TweenProperty.Target == Self {
 
             return Tweener.default.animate(self, to: [property],
@@ -86,7 +86,7 @@ extension Tweenable {
     }
 
     @discardableResult public func tween<TweenProperty: TweenableProperty>(
-        to properties: [TweenProperty], duration: TimeInterval, completion: Callback? = nil) -> Tween
+        to properties: [TweenProperty], duration: TimeInterval, completion: Tween.Callback? = nil) -> Tween
         where TweenProperty.Target == Self {
 
             return Tweener.default.animate(self, to: properties,
@@ -95,7 +95,7 @@ extension Tweenable {
     }
 
     @discardableResult public func tween<TweenProperty: TweenableProperty>(
-        from property: TweenProperty, duration: TimeInterval, completion: Callback? = nil) -> Tween
+        from property: TweenProperty, duration: TimeInterval, completion: Tween.Callback? = nil) -> Tween
         where TweenProperty.Target == Self {
 
             return Tweener.default.animate(self, from: [property],
@@ -104,7 +104,7 @@ extension Tweenable {
     }
 
     @discardableResult public func tween<TweenProperty: TweenableProperty>(
-        from properties: [TweenProperty], duration: TimeInterval, completion: Callback? = nil) -> Tween
+        from properties: [TweenProperty], duration: TimeInterval, completion: Tween.Callback? = nil) -> Tween
         where TweenProperty.Target == Self {
 
             return Tweener.default.animate(self, from: properties,

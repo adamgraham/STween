@@ -11,6 +11,10 @@ import Foundation
 /// A handle that provides state control and customization of a tween animation.
 public protocol Tween: AnyObject {
 
+    /// The method signature of a "callback" closure. Callbacks are invoked upon completion
+    /// of many different events, such as when a tween has finished animating.
+    typealias Callback = (Tween) -> Void
+
     // MARK: Animation & State Properties
 
     /// The `Ease` used to interpolate values.

@@ -20,7 +20,6 @@
 		9D6A3DC31DDEB0BE009B6352 /* TweenTimerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6A3DC21DDEB0BE009B6352 /* TweenTimerTest.swift */; };
 		9D77AC3A1D13B8D70033F88E /* STween.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D77AC391D13B8D70033F88E /* STween.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9D804D7F2167D1B300401533 /* InterpolatableNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D804D7E2167D1B300401533 /* InterpolatableNumber.swift */; };
-		9D8890641E2883160023FE78 /* Callback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8890421E2883160023FE78 /* Callback.swift */; };
 		9D8890651E2883160023FE78 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8890431E2883160023FE78 /* Defaults.swift */; };
 		9D8890671E2883160023FE78 /* Ease.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8890461E2883160023FE78 /* Ease.swift */; };
 		9D8890681E2883160023FE78 /* EaseFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8890471E2883160023FE78 /* EaseFunction.swift */; };
@@ -38,7 +37,6 @@
 		9D8890791E2883160023FE78 /* TweenTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D88905B1E2883160023FE78 /* TweenTimer.swift */; };
 		9D88907C1E2883160023FE78 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8890601E2883160023FE78 /* Functions.swift */; };
 		9DB3D6351DAE686F00134C1D /* DefaultsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB3D6301DAE686F00134C1D /* DefaultsTest.swift */; };
-		9DB3D6381DAE686F00134C1D /* CallbackTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB3D6341DAE686F00134C1D /* CallbackTest.swift */; };
 		9DB3D6401DAE6CCB00134C1D /* XCTestCase+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB3D63F1DAE6CCB00134C1D /* XCTestCase+Utils.swift */; };
 		9DB3D6441DAE758F00134C1D /* FunctionsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB3D6431DAE758F00134C1D /* FunctionsTest.swift */; };
 		9DB46B191E29EB6000CB21F9 /* NSLayoutConstraint+TweeningTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB46B141E29EB6000CB21F9 /* NSLayoutConstraint+TweeningTest.swift */; };
@@ -86,7 +84,6 @@
 		9D77AC391D13B8D70033F88E /* STween.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STween.h; sourceTree = "<group>"; };
 		9D77AC3B1D13B8D70033F88E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D804D7E2167D1B300401533 /* InterpolatableNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterpolatableNumber.swift; sourceTree = "<group>"; };
-		9D8890421E2883160023FE78 /* Callback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Callback.swift; sourceTree = "<group>"; };
 		9D8890431E2883160023FE78 /* Defaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
 		9D8890461E2883160023FE78 /* Ease.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ease.swift; sourceTree = "<group>"; };
 		9D8890471E2883160023FE78 /* EaseFunction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = EaseFunction.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -104,7 +101,6 @@
 		9D88905B1E2883160023FE78 /* TweenTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweenTimer.swift; sourceTree = "<group>"; };
 		9D8890601E2883160023FE78 /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		9DB3D6301DAE686F00134C1D /* DefaultsTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultsTest.swift; sourceTree = "<group>"; };
-		9DB3D6341DAE686F00134C1D /* CallbackTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallbackTest.swift; sourceTree = "<group>"; };
 		9DB3D63F1DAE6CCB00134C1D /* XCTestCase+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Utils.swift"; sourceTree = "<group>"; };
 		9DB3D6431DAE758F00134C1D /* FunctionsTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FunctionsTest.swift; sourceTree = "<group>"; };
 		9DB46B141E29EB6000CB21F9 /* NSLayoutConstraint+TweeningTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+TweeningTest.swift"; sourceTree = "<group>"; };
@@ -248,7 +244,6 @@
 		9D88905C1E2883160023FE78 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				9D8890421E2883160023FE78 /* Callback.swift */,
 				9D8890601E2883160023FE78 /* Functions.swift */,
 			);
 			path = Utils;
@@ -265,7 +260,6 @@
 		9DB3D6391DAE688200134C1D /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				9DB3D6341DAE686F00134C1D /* CallbackTest.swift */,
 				9DB3D6431DAE758F00134C1D /* FunctionsTest.swift */,
 			);
 			path = Utils;
@@ -463,7 +457,6 @@
 				9D185B241E443A8600CF8F5C /* UILabel+Tweening.swift in Sources */,
 				9D804D7F2167D1B300401533 /* InterpolatableNumber.swift in Sources */,
 				9D8890721E2883160023FE78 /* Tween.swift in Sources */,
-				9D8890641E2883160023FE78 /* Callback.swift in Sources */,
 				9D88906F1E2883160023FE78 /* NSLayoutConstraint+Tweening.swift in Sources */,
 				9D8890771E2883160023FE78 /* TweenState.swift in Sources */,
 				9D8890751E2883160023FE78 /* TweenAnimation.swift in Sources */,
@@ -483,7 +476,6 @@
 			files = (
 				9DB46B191E29EB6000CB21F9 /* NSLayoutConstraint+TweeningTest.swift in Sources */,
 				9DB3D6351DAE686F00134C1D /* DefaultsTest.swift in Sources */,
-				9DB3D6381DAE686F00134C1D /* CallbackTest.swift in Sources */,
 				9D17DC0A1E4199E000DC96A1 /* TweenablePropertyTest.swift in Sources */,
 				9D482BCD1DC22F55009A1CCD /* EaseClassificationTest.swift in Sources */,
 				9D6A3DB71DDEB07B009B6352 /* TweenableTest.swift in Sources */,

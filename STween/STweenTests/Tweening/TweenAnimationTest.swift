@@ -42,11 +42,11 @@ class TweenAnimationTest: XCTestCase {
         let tween = TweenAnimation<UIViewTweenProperty>(target: target, properties: [.x(100.0), .y(100.0)], duration: 1.0)
         let tweeningExpectation = expectation(description: "tweening")
 
-        tween.onUpdate = {
+        tween.onUpdate = { _ in
             XCTAssertNotEqual(tween.elapsed, 0.0)
         }
 
-        tween.onComplete = {
+        tween.onComplete = { _ in
             tweeningExpectation.fulfill()
         }
 
@@ -70,11 +70,11 @@ class TweenAnimationTest: XCTestCase {
         let tween = TweenAnimation<UIViewTweenProperty>(target: target, properties: [.x(100.0), .y(100.0)], duration: 1.0)
         let tweeningExpectation = expectation(description: "tweening:reversed")
 
-        tween.onUpdate = {
+        tween.onUpdate = { _ in
             XCTAssertNotEqual(tween.elapsed, 0.0)
         }
 
-        tween.onComplete = {
+        tween.onComplete = { _ in
             tweeningExpectation.fulfill()
         }
 
@@ -99,11 +99,11 @@ class TweenAnimationTest: XCTestCase {
         let tween = TweenAnimation<UIViewTweenProperty>(target: target, properties: [.x(100.0), .y(100.0)], duration: 1.0)
         let tweeningExpectation = expectation(description: "tweening:delayed")
 
-        tween.onUpdate = {
+        tween.onUpdate = { _ in
             XCTAssertNotEqual(tween.elapsed, 0.0)
         }
 
-        tween.onComplete = {
+        tween.onComplete = { _ in
             tweeningExpectation.fulfill()
         }
 
@@ -129,7 +129,7 @@ class TweenAnimationTest: XCTestCase {
         let tween = TweenAnimation<UIViewTweenProperty>(target: UIView(), properties: [], duration: 1.0)
 
         var callbackInvoked = false
-        tween.onStart = {
+        tween.onStart = { _ in
             callbackInvoked = true
         }
 
@@ -145,7 +145,7 @@ class TweenAnimationTest: XCTestCase {
         tween.delay = 1.0
 
         var callbackInvoked = false
-        tween.onStart = {
+        tween.onStart = { _ in
             callbackInvoked = true
         }
 
@@ -160,7 +160,7 @@ class TweenAnimationTest: XCTestCase {
         let tween = TweenAnimation<UIViewTweenProperty>(target: UIView(), properties: [], duration: 1.0)
 
         var callbackInvoked = false
-        tween.onStop = {
+        tween.onStop = { _ in
             callbackInvoked = true
         }
 
@@ -178,7 +178,7 @@ class TweenAnimationTest: XCTestCase {
         let tween = TweenAnimation<UIViewTweenProperty>(target: UIView(), properties: [], duration: 1.0)
 
         var callbackInvoked = false
-        tween.onRestart = {
+        tween.onRestart = { _ in
             callbackInvoked = true
         }
 
@@ -198,7 +198,7 @@ class TweenAnimationTest: XCTestCase {
         let tween = TweenAnimation<UIViewTweenProperty>(target: UIView(), properties: [], duration: 1.0)
 
         var callbackInvoked = false
-        tween.onPause = {
+        tween.onPause = { _ in
             callbackInvoked = true
         }
 
@@ -216,7 +216,7 @@ class TweenAnimationTest: XCTestCase {
         let tween = TweenAnimation<UIViewTweenProperty>(target: UIView(), properties: [], duration: 1.0)
 
         var callbackInvoked = false
-        tween.onResume = {
+        tween.onResume = { _ in
             callbackInvoked = true
         }
 
@@ -237,7 +237,7 @@ class TweenAnimationTest: XCTestCase {
         tween.delay = 1.0
 
         var callbackInvoked = false
-        tween.onResume = {
+        tween.onResume = { _ in
             callbackInvoked = true
         }
 
@@ -257,7 +257,7 @@ class TweenAnimationTest: XCTestCase {
         let tween = TweenAnimation<UIViewTweenProperty>(target: UIView(), properties: [.x(100.0)], duration: 1.0)
 
         var callbackInvoked = false
-        tween.onComplete = {
+        tween.onComplete = { _ in
             callbackInvoked = true
         }
 
@@ -277,7 +277,7 @@ class TweenAnimationTest: XCTestCase {
         let tween = TweenAnimation<UIViewTweenProperty>(target: UIView(), properties: [.x(100.0)], duration: 1.0)
 
         var callbackInvoked = false
-        tween.onComplete = {
+        tween.onComplete = { _ in
             callbackInvoked = true
         }
 
@@ -297,7 +297,7 @@ class TweenAnimationTest: XCTestCase {
         let tween = TweenAnimation<UIViewTweenProperty>(target: UIView(), properties: [], duration: 1.0)
 
         var callbackInvoked = false
-        tween.onKill = {
+        tween.onKill = { _ in
             callbackInvoked = true
         }
 
@@ -315,7 +315,7 @@ class TweenAnimationTest: XCTestCase {
         tween.delay = Defaults.delay + 1.0
 
         var callbackInvoked = false
-        tween.onReset = {
+        tween.onReset = { _ in 
             callbackInvoked = true
         }
 
@@ -339,7 +339,7 @@ class TweenAnimationTest: XCTestCase {
         let tween = TweenAnimation<UIViewTweenProperty>(target: UIView(), properties: [], duration: 1.0)
 
         var callbackInvoked = false
-        tween.onUpdate = {
+        tween.onUpdate = { _ in
             callbackInvoked = true
         }
 

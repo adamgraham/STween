@@ -104,7 +104,7 @@ extension TweenAnimation {
         }
 
         updateProperties()
-        self.onUpdate?()
+        self.onUpdate?(self)
 
         if self.elapsed >= self.duration {
             complete()
@@ -189,7 +189,7 @@ extension TweenAnimation {
         self.timer.start()
 
         // Callback event
-        self.onStart?()
+        self.onStart?(self)
 
         return true
     }
@@ -208,7 +208,7 @@ extension TweenAnimation {
         self.delayElapsed = 0.0
 
         // Callback event
-        self.onStop?()
+        self.onStop?(self)
 
         return true
     }
@@ -219,7 +219,7 @@ extension TweenAnimation {
         }
 
         stop()
-        self.onRestart?()
+        self.onRestart?(self)
         start()
 
         return true
@@ -237,7 +237,7 @@ extension TweenAnimation {
         self.timer.stop()
 
         // Callback event
-        self.onPause?()
+        self.onPause?(self)
 
         return true
     }
@@ -258,7 +258,7 @@ extension TweenAnimation {
         self.timer.start()
 
         // Callback event
-        self.onResume?()
+        self.onResume?(self)
 
         return true
     }
@@ -280,7 +280,7 @@ extension TweenAnimation {
         completeUpdates()
 
         // Callback event
-        self.onComplete?()
+        self.onComplete?(self)
 
         // Kill, if necessary
         if Defaults.autoKillCompletedTweens {
@@ -305,7 +305,7 @@ extension TweenAnimation {
         Tweener.default.remove(self)
 
         // Callback event
-        self.onKill?()
+        self.onKill?(self)
 
         return true
     }
@@ -333,7 +333,7 @@ extension TweenAnimation {
         Tweener.default.add(self)
         
         // Callback event
-        self.onReset?()
+        self.onReset?(self)
         self.onUpdate = nil
         self.onStart = nil
         self.onStop = nil

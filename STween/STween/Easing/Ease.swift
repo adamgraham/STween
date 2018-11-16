@@ -27,7 +27,7 @@ extension Ease: Equatable {
 
     public static func ==(lhs: Ease, rhs: Ease) -> Bool {
         return lhs.classification == rhs.classification &&
-            lhs.curve == rhs.curve
+               lhs.curve == rhs.curve
     }
 
 }

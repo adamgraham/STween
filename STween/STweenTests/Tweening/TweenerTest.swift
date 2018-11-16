@@ -35,7 +35,7 @@ class TweenerTest: XCTestCase {
     }
 
     func testAnimateToWithCallback() {
-        let tween = Tweener.default.animate(UIView(), to: [UIViewTweenProperty](), duration: 1.0, completion: {})
+        let tween = Tweener.default.animate(UIView(), to: [UIViewTweenProperty](), duration: 1.0, completion: { _ in })
         XCTAssertEqual(tween.state, .new)
         XCTAssertFalse(tween.reversed)
         XCTAssertEqual(tween.duration, 1.0)
@@ -44,7 +44,7 @@ class TweenerTest: XCTestCase {
 
     func testAnimateToWithoutAutoStart() {
         Defaults.autoStartTweens = false
-        let tween = Tweener.default.animate(UIView(), to: [UIViewTweenProperty](), duration: 1.0, completion: {})
+        let tween = Tweener.default.animate(UIView(), to: [UIViewTweenProperty](), duration: 1.0, completion: { _ in })
         XCTAssertEqual(tween.state, .new)
         XCTAssertFalse(tween.reversed)
         XCTAssertEqual(tween.duration, 1.0)
@@ -54,7 +54,7 @@ class TweenerTest: XCTestCase {
 
     func testAnimateToWithAutoStart() {
         Defaults.autoStartTweens = true
-        let tween = Tweener.default.animate(UIView(), to: [UIViewTweenProperty](), duration: 1.0, completion: {})
+        let tween = Tweener.default.animate(UIView(), to: [UIViewTweenProperty](), duration: 1.0, completion: { _ in })
         XCTAssertEqual(tween.state, .new)
         XCTAssertFalse(tween.reversed)
         XCTAssertEqual(tween.duration, 1.0)
@@ -71,7 +71,7 @@ class TweenerTest: XCTestCase {
     }
 
     func testAnimateFromWithCallback() {
-        let tween = Tweener.default.animate(UIView(), from: [UIViewTweenProperty](), duration: 1.0, completion: {})
+        let tween = Tweener.default.animate(UIView(), from: [UIViewTweenProperty](), duration: 1.0, completion: { _ in })
         XCTAssertEqual(tween.state, .new)
         XCTAssertTrue(tween.reversed)
         XCTAssertEqual(tween.duration, 1.0)
@@ -80,7 +80,7 @@ class TweenerTest: XCTestCase {
 
     func testAnimateFromWithoutAutoStart() {
         Defaults.autoStartTweens = false
-        let tween = Tweener.default.animate(UIView(), from: [UIViewTweenProperty](), duration: 1.0, completion: {})
+        let tween = Tweener.default.animate(UIView(), from: [UIViewTweenProperty](), duration: 1.0, completion: { _ in })
         XCTAssertEqual(tween.state, .new)
         XCTAssertTrue(tween.reversed)
         XCTAssertEqual(tween.duration, 1.0)
@@ -90,7 +90,7 @@ class TweenerTest: XCTestCase {
 
     func testAnimateFromWithAutoStart() {
         Defaults.autoStartTweens = true
-        let tween = Tweener.default.animate(UIView(), from: [UIViewTweenProperty](), duration: 1.0, completion: {})
+        let tween = Tweener.default.animate(UIView(), from: [UIViewTweenProperty](), duration: 1.0, completion: { _ in })
         XCTAssertEqual(tween.state, .new)
         XCTAssertTrue(tween.reversed)
         XCTAssertEqual(tween.duration, 1.0)
@@ -173,8 +173,10 @@ class TweenerTest: XCTestCase {
         let expectedCount = 3
 
         for _ in 1...expectedCount {
-            let tween = Tweener.default.animate(UIView(), to: [UIViewTweenProperty](), duration: 1.0, completion: {})
-            tween.onStart = { count += 1 }
+            let tween = Tweener.default.animate(UIView(), to: [UIViewTweenProperty](), duration: 1.0, completion: { _ in })
+            tween.onStart = { _ in
+                count += 1
+            }
         }
 
         Tweener.default.startAll()
@@ -186,8 +188,10 @@ class TweenerTest: XCTestCase {
         let expectedCount = 3
 
         for _ in 1...expectedCount {
-            let tween = Tweener.default.animate(UIView(), to: [UIViewTweenProperty](), duration: 1.0, completion: {})
-            tween.onStop = { count += 1 }
+            let tween = Tweener.default.animate(UIView(), to: [UIViewTweenProperty](), duration: 1.0, completion: { _ in })
+            tween.onStop = { _ in
+                count += 1
+            }
             tween.start()
         }
 
@@ -200,8 +204,10 @@ class TweenerTest: XCTestCase {
         let expectedCount = 3
 
         for _ in 1...expectedCount {
-            let tween = Tweener.default.animate(UIView(), to: [UIViewTweenProperty](), duration: 1.0, completion: {})
-            tween.onRestart = { count += 1 }
+            let tween = Tweener.default.animate(UIView(), to: [UIViewTweenProperty](), duration: 1.0, completion: { _ in })
+            tween.onRestart = { _ in
+                count += 1
+            }
             tween.start()
         }
 
@@ -214,8 +220,10 @@ class TweenerTest: XCTestCase {
         let expectedCount = 3
 
         for _ in 1...expectedCount {
-            let tween = Tweener.default.animate(UIView(), to: [UIViewTweenProperty](), duration: 1.0, completion: {})
-            tween.onPause = { count += 1 }
+            let tween = Tweener.default.animate(UIView(), to: [UIViewTweenProperty](), duration: 1.0, completion: { _ in })
+            tween.onPause = { _ in
+                count += 1
+            }
             tween.start()
         }
 
@@ -228,8 +236,10 @@ class TweenerTest: XCTestCase {
         let expectedCount = 3
 
         for _ in 1...expectedCount {
-            let tween = Tweener.default.animate(UIView(), to: [UIViewTweenProperty](), duration: 1.0, completion: {})
-            tween.onResume = { count += 1 }
+            let tween = Tweener.default.animate(UIView(), to: [UIViewTweenProperty](), duration: 1.0, completion: { _ in })
+            tween.onResume = { _ in
+                count += 1
+            }
             tween.start()
             tween.pause()
         }
@@ -243,8 +253,10 @@ class TweenerTest: XCTestCase {
         let expectedCount = 3
 
         for _ in 1...expectedCount {
-            let tween = Tweener.default.animate(UIView(), to: [UIViewTweenProperty](), duration: 1.0, completion: {})
-            tween.onComplete = { count += 1 }
+            let tween = Tweener.default.animate(UIView(), to: [UIViewTweenProperty](), duration: 1.0, completion: { _ in })
+            tween.onComplete = { _ in
+                count += 1
+            }
         }
 
         Tweener.default.completeAll()
@@ -256,8 +268,10 @@ class TweenerTest: XCTestCase {
         let expectedCount = 3
 
         for _ in 1...expectedCount {
-            let tween = Tweener.default.animate(UIView(), to: [UIViewTweenProperty](), duration: 1.0, completion: {})
-            tween.onKill = { count += 1 }
+            let tween = Tweener.default.animate(UIView(), to: [UIViewTweenProperty](), duration: 1.0, completion: { _ in })
+            tween.onKill = { _ in
+                count += 1
+            }
         }
 
         Tweener.default.killAll()

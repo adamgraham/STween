@@ -48,55 +48,55 @@ class Tween_ChainingTest: XCTestCase {
 
     func testSetOnUpdate() {
         let tween = Tweener.default.animate(UIView(), to: [UIViewTweenProperty](), duration: 1.0)
-            .set(onUpdate: {})
+            .set(onUpdate: { _ in })
         XCTAssertNotNil(tween.onUpdate)
     }
 
     func testSetOnStart() {
         let tween = Tweener.default.animate(UIView(), to: [UIViewTweenProperty](), duration: 1.0)
-            .set(onStart: {})
+            .set(onStart: { _ in })
         XCTAssertNotNil(tween.onStart)
     }
 
     func testSetOnStop() {
         let tween = Tweener.default.animate(UIView(), to: [UIViewTweenProperty](), duration: 1.0)
-            .set(onStop: {})
+            .set(onStop: { _ in })
         XCTAssertNotNil(tween.onStop)
     }
 
     func testSetOnRestart() {
         let tween = Tweener.default.animate(UIView(), to: [UIViewTweenProperty](), duration: 1.0)
-            .set(onRestart: {})
+            .set(onRestart: { _ in })
         XCTAssertNotNil(tween.onRestart)
     }
 
     func testSetOnPause() {
         let tween = Tweener.default.animate(UIView(), to: [UIViewTweenProperty](), duration: 1.0)
-            .set(onPause: {})
+            .set(onPause: { _ in })
         XCTAssertNotNil(tween.onPause)
     }
 
     func testSetOnResume() {
         let tween = Tweener.default.animate(UIView(), to: [UIViewTweenProperty](), duration: 1.0)
-            .set(onResume: {})
+            .set(onResume: { _ in })
         XCTAssertNotNil(tween.onResume)
     }
 
     func testSetOnComplete() {
         let tween = Tweener.default.animate(UIView(), to: [UIViewTweenProperty](), duration: 1.0)
-            .set(onComplete: {})
+            .set(onComplete: { _ in })
         XCTAssertNotNil(tween.onComplete)
     }
 
     func testSetOnKill() {
         let tween = Tweener.default.animate(UIView(), to: [UIViewTweenProperty](), duration: 1.0)
-            .set(onKill: {})
+            .set(onKill: { _ in })
         XCTAssertNotNil(tween.onKill)
     }
 
     func testSetOnReset() {
         let tween = Tweener.default.animate(UIView(), to: [UIViewTweenProperty](), duration: 1.0)
-            .set(onReset: {})
+            .set(onReset: { _ in })
         XCTAssertNotNil(tween.onReset)
     }
 
