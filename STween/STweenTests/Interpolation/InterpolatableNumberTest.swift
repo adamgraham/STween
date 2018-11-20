@@ -45,6 +45,7 @@ class InterpolatableNumberTest: XCTestCase {
         XCTAssertEqual(Number(0).sin, Number(0))
         XCTAssertEqual(cos(Number(0)), Number(1))
         XCTAssertEqual(sin(Number(0)), Number(0))
+        XCTAssertEqual(sqrt(Number(4)), Number(2))
         XCTAssertEqual(pow(Number(3), Number(2)), Number(9))
         XCTAssertEqual(Number.pow(Number(3), Number(2)), Number(9))
     }

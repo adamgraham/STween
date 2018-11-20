@@ -25,9 +25,9 @@ public protocol InterpolatableNumber: FloatingPoint {
      */
     static func pow(_ x: Self, _ y: Self) -> Self
 
-    /// The cosine of `self`.
+    /// The cosine of the number.
     var cos: Self { get }
-    /// The sine of `self`.
+    /// The sine of the number.
     var sin: Self { get }
 
     init(_ x: Double)
@@ -114,12 +114,12 @@ public struct InterpolatableNumberConstants<Number: InterpolatableNumber> {
 
 extension InterpolatableNumber {
 
-    /// Twice the value of `self`.
+    /// Twice the value of the number.
     internal var double: Self {
         return self * Self.const.two
     }
 
-    /// Half the value of `self`.
+    /// Half the value of the number.
     internal var half: Self {
         return self * Self.const.½
     }
@@ -182,39 +182,7 @@ extension CGFloat: InterpolatableNumber {
 
 // MARK: - Global Functions
 
-/**
- Calculates the cosine of an interpolatable number.
-
- - Parameters:
-    - x: The interpolatable number of which the cosine is calculated.
-
- - Returns: The cosine of the interpolatable number.
- */
-public func cos<Number: InterpolatableNumber>(_ x: Number) -> Number {
-    return x.cos
-}
-
-/**
- Calculates the sine of an interpolatable number.
-
- - Parameters:
-    - x: The interpolatable number of which the sine is calculated.
-
- - Returns: The sine of the interpolatable number.
- */
-public func sin<Number: InterpolatableNumber>(_ x: Number) -> Number {
-    return x.sin
-}
-
-/**
- Calculates an interpolatable number raised to a given power.
-
- - Parameters:
-    - x: The base number that is raised to the power of some exponent.
-    - y: The exponent that is raised against the base number.
-
- - Returns: The value of the base number (`x`) raised to the exponent (`y`).
- */
-public func pow<Number: InterpolatableNumber>(_ x: Number, _ y: Number) -> Number {
-    return Number.pow(x, y)
-}
+public func cos<Number: InterpolatableNumber>(_ x: Number) -> Number { return x.cos }
+public func sin<Number: InterpolatableNumber>(_ x: Number) -> Number { return x.sin }
+public func sqrt<Number: InterpolatableNumber>(_ x: Number) -> Number { return x.squareRoot() }
+public func pow<Number: InterpolatableNumber>(_ x: Number, _ y: Number) -> Number { return Number.pow(x, y) }
