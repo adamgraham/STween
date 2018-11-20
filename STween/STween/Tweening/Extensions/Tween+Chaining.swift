@@ -180,15 +180,15 @@ extension Tween {
     }
 
     /**
-     Assigns a callback to the `onReset` property of the tween.
+     Assigns a callback to the `onRevive` property of the tween.
 
      - Parameters:
         - callback: The callback closure to be assigned.
 
      - Returns: The tween to allow for additional method chaining.
      */
-    @discardableResult public func set(onReset callback: @escaping Callback) -> Tween {
-        self.onReset = callback
+    @discardableResult public func set(onRevive callback: @escaping Callback) -> Tween {
+        self.onRevive = callback
         return self
     }
 

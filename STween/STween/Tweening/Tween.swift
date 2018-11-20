@@ -45,13 +45,9 @@ public protocol Tween: AnyObject {
 
     /// The amount of seconds the tween has been active.
     ///
-    /// The elapsed time is reset when the tween is restarted or stopped (but not paused).
+    /// The elapsed time is reset when the tween is started.
     /// If the tween is completed, the elapsed time is the same as the duration.
     var elapsed: TimeInterval { get }
-
-    /// The percentage of the tween's `elapsed` time in relation to its `duration` specified in a
-    /// range of `0.0` to `1.0`.
-    var percentComplete: Double { get }
 
     // MARK: Callback Properties
 
@@ -79,8 +75,8 @@ public protocol Tween: AnyObject {
     /// The callback invoked when the tween is killed.
     var onKill: Callback? { get set }
 
-    /// The callback invoked when the tween is reset.
-    var onReset: Callback? { get set }
+    /// The callback invoked when the tween is revived.
+    var onRevive: Callback? { get set }
 
     // MARK: State Control Methods
 
@@ -105,7 +101,7 @@ public protocol Tween: AnyObject {
     /**
      Stops the tween, then immediately starts it over again.
 
-     The tween can only be restarted if it's *not* in a `new` or `killed` state.
+     The tween can only be restarted if it's *not* in a `killed` state.
 
      - Returns: `true` if the tween is successfully restarted.
      */
@@ -130,19 +126,19 @@ public protocol Tween: AnyObject {
     @discardableResult func resume() -> Bool
 
     /**
-     Completes updates on the tween, jumping to its ending values.
+     Completes updates on the tween, jumping to its ending values if not already there.
 
-     The tween can only be completed if it's in an `active`, `delayed`, or `paused` state.
-
-     The tween will automatically be killed if `Defaults.autoKillCompletedTweens` is `true`.
+     The tween can only be completed if it's *not* already in a `complete` state and not in a
+     `killed` state. The tween will automatically be killed if `Defaults.autoKillCompletedTweens`
+     is `true`.
 
      - Returns: `true` if the tween is successfully completed.
      */
     @discardableResult func complete() -> Bool
 
     /**
-     Kills the tween in place, haulting at its current values, and removes it from
-     `Tweener`'s list of tracked tweens.
+     Kills the tween in place, haulting at its current values, and removes it from `Tweener`'s
+     list of tracked tweens.
 
      The tween can only be killed if it's *not* already in a `killed` state.
 
@@ -151,21 +147,21 @@ public protocol Tween: AnyObject {
     @discardableResult func kill() -> Bool
 
     /**
-     Resets all properties to their original values, putting it in a `new` state, and re-adds the
-     tween to `Tweener`'s list of tracked tweens. This is the only way to revive a killed tween.
+     Revives the tween, putting it in a `new` state, and re-adds it to `Tweener`'s list of tracked
+     tweens.
 
-     The tween can only be reset if it's *not* already in a `new` state.
+     The tween can only be revived if it's in a `killed` state.
 
-     - Returns: `true` if the tween is successfully reset.
+     - Returns: `true` if the tween is successfully revived.
      */
-    @discardableResult func reset() -> Bool
+    @discardableResult func revive() -> Bool
 
 }
 
 extension Tween {
 
-    // MARK: Default Implementation
-
+    /// The percentage of the tween's `elapsed` time in relation to its `duration` specified in a
+    /// range of `0.0` to `1.0`.
     public var percentComplete: Double {
         return clamp(value: self.elapsed / self.duration, lower: 0.0, upper: 1.0)
     }

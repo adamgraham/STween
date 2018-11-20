@@ -94,10 +94,10 @@ class Tween_ChainingTest: XCTestCase {
         XCTAssertNotNil(tween.onKill)
     }
 
-    func testSetOnReset() {
+    func testSetOnRevive() {
         let tween = Tweener.default.animate(UIView(), to: [UIViewTweenProperty](), duration: 1.0)
-            .set(onReset: { _ in })
-        XCTAssertNotNil(tween.onReset)
+            .set(onRevive: { _ in })
+        XCTAssertNotNil(tween.onRevive)
     }
 
 }

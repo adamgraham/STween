@@ -15,12 +15,10 @@ class TweenAnimationTest: XCTestCase {
     override func setUp() {
         super.setUp()
         Tweener.default.killAll()
-        Defaults.reset()
     }
 
     override func tearDown() {
         Tweener.default.killAll()
-        Defaults.reset()
         super.tearDown()
     }
 
@@ -183,14 +181,18 @@ class TweenAnimationTest: XCTestCase {
         }
 
         XCTAssertEqual(tween.state, .new)
-        XCTAssertFalse(tween.restart())
-        XCTAssertEqual(tween.state, .new)
         XCTAssertTrue(tween.start())
         XCTAssertEqual(tween.state, .active)
         XCTAssertTrue(tween.stop())
         XCTAssertEqual(tween.state, .inactive)
         XCTAssertTrue(tween.restart())
         XCTAssertEqual(tween.state, .active)
+        XCTAssertTrue(tween.restart())
+        XCTAssertEqual(tween.state, .active)
+        XCTAssertTrue(tween.kill())
+        XCTAssertEqual(tween.state, .killed)
+        XCTAssertFalse(tween.restart())
+        XCTAssertEqual(tween.state, .killed)
         XCTAssertTrue(callbackInvoked)
     }
 
@@ -254,14 +256,15 @@ class TweenAnimationTest: XCTestCase {
     }
 
     func testCompleteWithAutoKillOn() {
+        Defaults.autoKillCompletedTweens = true
+        defer { Defaults.reset() }
+
         let tween = TweenAnimation<UIViewTweenProperty>(target: UIView(), properties: [.x(100.0)], duration: 1.0)
 
         var callbackInvoked = false
         tween.onComplete = { _ in
             callbackInvoked = true
         }
-
-        Defaults.autoKillCompletedTweens = true
 
         XCTAssertEqual(tween.state, .new)
         XCTAssertTrue(tween.complete())
@@ -274,14 +277,15 @@ class TweenAnimationTest: XCTestCase {
     }
 
     func testCompleteWithAutoKillOff() {
+        Defaults.autoKillCompletedTweens = false
+        defer { Defaults.reset() }
+
         let tween = TweenAnimation<UIViewTweenProperty>(target: UIView(), properties: [.x(100.0)], duration: 1.0)
 
         var callbackInvoked = false
         tween.onComplete = { _ in
             callbackInvoked = true
         }
-
-        Defaults.autoKillCompletedTweens = false
 
         XCTAssertEqual(tween.state, .new)
         XCTAssertTrue(tween.complete())
@@ -308,29 +312,25 @@ class TweenAnimationTest: XCTestCase {
         XCTAssertTrue(callbackInvoked)
     }
 
-    func testReset() {
+    func testRevive() {
         let tween = TweenAnimation<UIViewTweenProperty>(target: UIView(), properties: [], duration: 1.0)
-        tween.reversed = !Defaults.reversed
-        tween.ease = .backOut
-        tween.delay = Defaults.delay + 1.0
 
         var callbackInvoked = false
-        tween.onReset = { _ in 
+        tween.onRevive = { _ in
             callbackInvoked = true
         }
 
         XCTAssertEqual(Tweener.default.count, 0)
         XCTAssertEqual(tween.state, .new)
-        XCTAssertFalse(tween.reset())
-        XCTAssertEqual(tween.state, .new)
         XCTAssertTrue(tween.start())
-        XCTAssertEqual(tween.state, .delayed)
-        XCTAssertTrue(tween.reset())
+        XCTAssertEqual(tween.state, .active)
+        XCTAssertFalse(tween.revive())
+        XCTAssertEqual(tween.state, .active)
+        XCTAssertTrue(tween.kill())
+        XCTAssertEqual(tween.state, .killed)
+        XCTAssertTrue(tween.revive())
         XCTAssertEqual(tween.state, .new)
-        XCTAssertEqual(tween.reversed, Defaults.reversed)
-        XCTAssertEqual(tween.ease, Defaults.ease)
-        XCTAssertEqual(tween.delay, Defaults.delay)
-        XCTAssertNil(tween.onReset)
+        XCTAssertEqual(tween.elapsed, 0.0)
         XCTAssertTrue(callbackInvoked)
         XCTAssertEqual(Tweener.default.count, 1)
     }

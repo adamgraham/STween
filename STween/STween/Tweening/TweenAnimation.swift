@@ -64,7 +64,7 @@ internal final class TweenAnimation<Property: TweenableProperty>: Tween {
     internal var onResume: Callback?
     internal var onComplete: Callback?
     internal var onKill: Callback?
-    internal var onReset: Callback?
+    internal var onRevive: Callback?
 
     // MARK: Initialization
 
@@ -310,39 +310,25 @@ extension TweenAnimation {
         return true
     }
 
-    @discardableResult internal func reset() -> Bool {
-        guard self.state.canReset else {
+    @discardableResult internal func revive() -> Bool {
+        guard self.state.canRevive else {
             return false
         }
 
         // Set state
         self.state = .new
-
-        // Default properties
         self.interpolationValues = nil
-        self.reversed = Defaults.reversed
-        self.ease = Defaults.ease
-        self.delay = Defaults.delay
-        self.delayElapsed = 0.0
         
         // Update timer
         self.timer.stop()
         self.timer.reset()
+        self.delayElapsed = 0.0
         
         // Add to Tweener
         Tweener.default.add(self)
         
         // Callback event
-        self.onReset?(self)
-        self.onUpdate = nil
-        self.onStart = nil
-        self.onStop = nil
-        self.onRestart = nil
-        self.onPause = nil
-        self.onResume = nil
-        self.onComplete = nil
-        self.onKill = nil
-        self.onReset = nil
+        self.onRevive?(self)
 
         return true
     }

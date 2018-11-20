@@ -29,7 +29,7 @@ class TweenTest: XCTestCase {
         var onResume: Callback?
         var onComplete: Callback?
         var onKill: Callback?
-        var onReset: Callback?
+        var onRevive: Callback?
 
         func start() -> Bool { return false }
         func stop() -> Bool { return false }
@@ -38,7 +38,7 @@ class TweenTest: XCTestCase {
         func resume() -> Bool { return false }
         func complete() -> Bool { return false }
         func kill() -> Bool { return false }
-        func reset() -> Bool { return false }
+        func revive() -> Bool { return false }
 
     }
 

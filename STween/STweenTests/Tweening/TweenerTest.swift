@@ -15,12 +15,10 @@ class TweenerTest: XCTestCase {
     override func setUp() {
         super.setUp()
         Tweener.default.killAll()
-        Defaults.reset()
     }
 
     override func tearDown() {
         Tweener.default.killAll()
-        Defaults.reset()
         super.tearDown()
     }
 
@@ -44,6 +42,8 @@ class TweenerTest: XCTestCase {
 
     func testAnimateToWithoutAutoStart() {
         Defaults.autoStartTweens = false
+        defer { Defaults.reset() }
+
         let tween = Tweener.default.animate(UIView(), to: [UIViewTweenProperty](), duration: 1.0, completion: { _ in })
         XCTAssertEqual(tween.state, .new)
         XCTAssertFalse(tween.reversed)
@@ -54,6 +54,8 @@ class TweenerTest: XCTestCase {
 
     func testAnimateToWithAutoStart() {
         Defaults.autoStartTweens = true
+        defer { Defaults.reset() }
+
         let tween = Tweener.default.animate(UIView(), to: [UIViewTweenProperty](), duration: 1.0, completion: { _ in })
         XCTAssertEqual(tween.state, .new)
         XCTAssertFalse(tween.reversed)
@@ -80,6 +82,8 @@ class TweenerTest: XCTestCase {
 
     func testAnimateFromWithoutAutoStart() {
         Defaults.autoStartTweens = false
+        defer { Defaults.reset() }
+
         let tween = Tweener.default.animate(UIView(), from: [UIViewTweenProperty](), duration: 1.0, completion: { _ in })
         XCTAssertEqual(tween.state, .new)
         XCTAssertTrue(tween.reversed)
@@ -90,6 +94,8 @@ class TweenerTest: XCTestCase {
 
     func testAnimateFromWithAutoStart() {
         Defaults.autoStartTweens = true
+        defer { Defaults.reset() }
+
         let tween = Tweener.default.animate(UIView(), from: [UIViewTweenProperty](), duration: 1.0, completion: { _ in })
         XCTAssertEqual(tween.state, .new)
         XCTAssertTrue(tween.reversed)
