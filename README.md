@@ -17,13 +17,13 @@ This one line of code creates an animation that changes a view's width to `100.0
 Tweens are not just limited to the animation of visual elements, though. Tweening can be applied to virtually any type of data. See below for more information.
 
 ### Supported Types
-Tweening animations can be applied to any of the supported types below. If a type is not listed below, you can add tweening support by conforming to the `STween.Tweenable` protocol. Feel free to leave suggestions to new types you would like to see added.
+Tweening animations can be applied to any of the supported types below. If a type is not listed below, you can add tweening support by conforming to the `Tweenable` protocol. Feel free to leave suggestions to new types you would like to see added.
 
 - `UIView`, `UIButton`, `UILabel`, `UITextField`
 - `CALayer`
 - `NSLayoutConstraint`
 
-All of the following data types can be interpolated - the ability for a type to calculate the value between a starting and ending position at a specific point in time. If a type is not listed below, you can add interpolation support by conforming to the `STween.Interpolatable` protocol.
+All of the following data types can be interpolated - the ability for a type to calculate the value between a start and end value at a specific point in time. If a type is not listed below, you can add interpolation support by conforming to the `Interpolatable` protocol.
 
 - `UInt`, `UInt8`, `UInt16`, `UInt32`, `UInt64`
 - `Int`, `Int8`, `Int16`, `Int32`, `Int64`
@@ -35,7 +35,7 @@ All of the following data types can be interpolated - the ability for a type to 
 - `UIColor`, `UIEdgeInsetes`, `UIOffset`
 
 ### Supported Functions
-The below easing function classifications are supported. Each classification has 3 variations: `.in`, `.out`, `.inOut`. A visualized cheat-sheet of these easing functions can be found at [easings.net](http://easings.net/).
+The below easing function classifications are supported. Each classification has three variations: `.in`, `.out`, `.inOut`. A visualized cheat-sheet of these easing functions can be found at [easings.net](http://easings.net/).
 
 - Linear
 - Cubic

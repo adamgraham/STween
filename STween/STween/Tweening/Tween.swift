@@ -11,10 +11,6 @@ import Foundation
 /// A handle that provides state control and customization of a tween animation.
 public protocol Tween: AnyObject {
 
-    /// The method signature of a "callback" closure. Callbacks are invoked upon completion
-    /// of many different events, such as when a tween has finished animating.
-    typealias Callback = (Tween) -> Void
-
     // MARK: Animation & State Properties
 
     /// The `Ease` used to interpolate values.
@@ -50,6 +46,10 @@ public protocol Tween: AnyObject {
     var elapsed: TimeInterval { get }
 
     // MARK: Callback Properties
+
+    /// The method signature of a "callback" closure. Callbacks are invoked upon completion
+    /// of many different events, such as when a tween has finished animating.
+    typealias Callback = (Tween) -> Void
 
     /// The callback invoked every time the tween is updated.
     var onUpdate: Callback? { get set }
@@ -159,6 +159,8 @@ public protocol Tween: AnyObject {
 }
 
 extension Tween {
+
+    // MARK: Computed Properties
 
     /// The percentage of the tween's `elapsed` time in relation to its `duration` specified in a
     /// range of `0.0` to `1.0`.

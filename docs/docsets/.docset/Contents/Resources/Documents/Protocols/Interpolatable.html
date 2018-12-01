@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>TweenTimerDelegate Protocol Reference</title>
+    <title>Interpolatable Protocol Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -10,11 +10,11 @@
     
   </head>
   <body>
-    <a name="//apple_ref/swift/Protocol/TweenTimerDelegate" class="dashAnchor"></a>
-    <a title="TweenTimerDelegate Protocol Reference"></a>
+    <a name="//apple_ref/swift/Protocol/Interpolatable" class="dashAnchor"></a>
+    <a title="Interpolatable Protocol Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html"> Docs</a> (98% documented)</p>
+        <p><a href="../index.html"> Docs</a> (100% documented)</p>
         <p class="header-right"><a href="https://github.com/adamgraham/STween"><img src="../img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
@@ -22,7 +22,7 @@
       <p id="breadcrumbs">
         <a href="../index.html"> Reference</a>
         <img id="carat" src="../img/carat.png" />
-        TweenTimerDelegate Protocol Reference
+        Interpolatable Protocol Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -32,7 +32,7 @@
             <a href="../Easing.html">Easing</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Enums/Ease.html">Ease</a>
+                <a href="../Structs/Ease.html">Ease</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Enums/EaseClassification.html">EaseClassification</a>
@@ -41,10 +41,7 @@
                 <a href="../Enums/EaseCurve.html">EaseCurve</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Easing.html#/s:6STween12EaseFunction">EaseFunction</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Classes/EaseFunctions.html">EaseFunctions</a>
+                <a href="../Enums/EaseFunction.html">EaseFunction</a>
               </li>
             </ul>
           </li>
@@ -55,7 +52,10 @@
                 <a href="../Protocols/Interpolatable.html">Interpolatable</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/InterpolationValues.html">InterpolationValues</a>
+                <a href="../Protocols/InterpolatableNumber.html">InterpolatableNumber</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/InterpolatableNumberConstants.html">InterpolatableNumberConstants</a>
               </li>
             </ul>
           </li>
@@ -66,19 +66,7 @@
                 <a href="../Protocols/Tween.html">Tween</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Classes/TweenAnimation.html">TweenAnimation</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="../Enums/TweenState.html">TweenState</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Enums/TweenStateChange.html">TweenStateChange</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Classes/TweenTimer.html">TweenTimer</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Protocols/TweenTimerDelegate.html">TweenTimerDelegate</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/Tweenable.html">Tweenable</a>
@@ -95,18 +83,7 @@
             <a href="../Settings.html">Settings</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Classes/Defaults.html">Defaults</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Classes/FrameRate.html">FrameRate</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-group-name">
-            <a href="../Other Typealiases.html">Other Typealiases</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a href="../Other Typealiases.html#/s:6STween8Callback">Callback</a>
+                <a href="../Enums/Defaults.html">Defaults</a>
               </li>
             </ul>
           </li>
@@ -115,14 +92,14 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>TweenTimerDelegate</h1>
+            <h1>Interpolatable</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight"><code><span class="kd">protocol</span> <span class="kt">TweenTimerDelegate</span><span class="p">:</span> <span class="kd">class</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">Interpolatable</span> <span class="p">:</span> <span class="kt">Equatable</span></code></pre>
 
                 </div>
               </div>
-            <p>A protocol to inform a <code><a href="../Classes/TweenTimer.html">TweenTimer</a></code>&lsquo;s delegate of events.</p>
+            <p>A type that can be interpolated from a start and end value.</p>
 
           </section>
           <section class="section task-group-section">
@@ -131,9 +108,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FP6STween18TweenTimerDelegate10tweenTimerFTCS_10TweenTimer24didUpdateWithElapsedTimeSd_T_"></a>
-                    <a name="//apple_ref/swift/Method/tweenTimer(_:didUpdateWithElapsedTime:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FP6STween18TweenTimerDelegate10tweenTimerFTCS_10TweenTimer24didUpdateWithElapsedTimeSd_T_">tweenTimer(_:didUpdateWithElapsedTime:)</a>
+                    <a name="/s:6STween14InterpolatableP11interpolate4from2to4with7elapsed8duration5ValueQzAK_AkA4EaseVS2dtFZ"></a>
+                    <a name="//apple_ref/swift/Method/interpolate(from:to:with:elapsed:duration:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6STween14InterpolatableP11interpolate4from2to4with7elapsed8duration5ValueQzAK_AkA4EaseVS2dtFZ">interpolate(from:to:with:elapsed:duration:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -141,15 +118,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>A delegate method to inform the listener that a timer invoked a <q>tick</q> 
-event and has updated the elapsed time.</p>
+                        <p>Calculates the value between a start and end value at a specific point in time.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">tweenTimer</span><span class="p">(</span><span class="n">_</span> <span class="nv">timer</span><span class="p">:</span> <span class="kt"><a href="../Classes/TweenTimer.html">TweenTimer</a></span><span class="p">,</span> <span class="n">didUpdateWithElapsedTime</span> <span class="nv">elapsed</span><span class="p">:</span> <span class="kt">TimeInterval</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="kd">func</span> <span class="nf">interpolate</span><span class="p">(</span><span class="n">from</span> <span class="nv">startValue</span><span class="p">:</span> <span class="kt">Value</span><span class="p">,</span> <span class="n">to</span> <span class="nv">endValue</span><span class="p">:</span> <span class="kt">Value</span><span class="p">,</span> <span class="n">with</span> <span class="nv">ease</span><span class="p">:</span> <span class="kt"><a href="../Structs/Ease.html">Ease</a></span><span class="p">,</span> <span class="nv">elapsed</span><span class="p">:</span> <span class="kt">TimeInterval</span><span class="p">,</span> <span class="nv">duration</span><span class="p">:</span> <span class="kt">TimeInterval</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Value</span></code></pre>
 
                         </div>
                       </div>
@@ -160,13 +136,36 @@ event and has updated the elapsed time.</p>
                             <tr>
                               <td>
                                 <code>
-                                <em>timer</em>
+                                <em>ease</em>
                                 </code>
                               </td>
                               <td>
                                 <div>
-                                  <p>The timer the “tick” event was invoked on.</p>
-
+                                  <p>The <code><a href="../Structs/Ease.html">Ease</a></code> used to interpolate values.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>startValue</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The start value passed to the <code>ease</code> function.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>endValue</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The end value passed to the <code>ease</code> function.</p>
                                 </div>
                               </td>
                             </tr>
@@ -178,13 +177,28 @@ event and has updated the elapsed time.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The amount of time, in seconds, the <code>timer</code> has been running.</p>
-
+                                  <p>The elapsed amount of time passed to the <code>ease</code> function.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>duration</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The duration of time passed to the <code>ease</code> function.</p>
                                 </div>
                               </td>
                             </tr>
                           </tbody>
                         </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The value interpolated between the start and end value.</p>
                       </div>
                     </section>
                   </div>
@@ -194,8 +208,8 @@ event and has updated the elapsed time.</p>
           </section>
         </section>
         <section id="footer">
-          <p>Copyright (c) 2017 Adam Graham</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>Copyright (c) 2016 Adam Graham</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

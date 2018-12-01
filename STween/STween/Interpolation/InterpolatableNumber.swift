@@ -30,7 +30,14 @@ public protocol InterpolatableNumber: FloatingPoint {
     /// The sine of the number.
     var sin: Self { get }
 
-    init(_ x: Double)
+    /**
+     Creates a new instance from the given value, rounded to the closest possible
+     representation.
+
+     - Parameters:
+        - value: A floating-point value to be converted.
+     */
+    init(_ value: Double)
 
 }
 
@@ -110,7 +117,7 @@ public struct InterpolatableNumberConstants<Number: InterpolatableNumber> {
 
 }
 
-// MARK: - Default Implementation
+// MARK: - Helpers
 
 extension InterpolatableNumber {
 
@@ -128,6 +135,7 @@ extension InterpolatableNumber {
 
 // MARK: - Conformance
 
+/// :nodoc:
 extension Float32: InterpolatableNumber {
 
     public static let const = InterpolatableNumberConstants<Float32>()
@@ -141,6 +149,7 @@ extension Float32: InterpolatableNumber {
 
 }
 
+/// :nodoc:
 extension Float64: InterpolatableNumber {
 
     public static let const = InterpolatableNumberConstants<Float64>()
@@ -154,6 +163,7 @@ extension Float64: InterpolatableNumber {
 
 }
 
+/// :nodoc:
 extension Float80: InterpolatableNumber {
 
     public static let const = InterpolatableNumberConstants<Float80>()
@@ -167,6 +177,7 @@ extension Float80: InterpolatableNumber {
 
 }
 
+/// :nodoc:
 extension CGFloat: InterpolatableNumber {
 
     public static let const = InterpolatableNumberConstants<CGFloat>()
@@ -182,7 +193,11 @@ extension CGFloat: InterpolatableNumber {
 
 // MARK: - Global Functions
 
+/// :nodoc:
 public func cos<Number: InterpolatableNumber>(_ x: Number) -> Number { return x.cos }
+/// :nodoc:
 public func sin<Number: InterpolatableNumber>(_ x: Number) -> Number { return x.sin }
+/// :nodoc:
 public func sqrt<Number: InterpolatableNumber>(_ x: Number) -> Number { return x.squareRoot() }
+/// :nodoc:
 public func pow<Number: InterpolatableNumber>(_ x: Number, _ y: Number) -> Number { return Number.pow(x, y) }

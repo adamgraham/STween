@@ -15,6 +15,7 @@ import UIKit
 /// A type that can be interpolated from a start and end value.
 public protocol Interpolatable: Equatable {
 
+    /// :nodoc:
     associatedtype Value = Self
 
     /**

@@ -10,10 +10,14 @@
 /// pattern.
 public struct Ease {
 
+    // MARK: Properties
+
     /// The algorithmic classification of the ease.
     public let classification: EaseClassification
     /// The acceleration pattern of the ease.
     public let curve: EaseCurve
+
+    // MARK: Initialization
 
     /// :nodoc:
     private init(classification: EaseClassification, curve: EaseCurve) {
@@ -25,6 +29,7 @@ public struct Ease {
 
 extension Ease: Equatable {
 
+    /// :nodoc:
     public static func ==(lhs: Ease, rhs: Ease) -> Bool {
         return lhs.classification == rhs.classification &&
                lhs.curve == rhs.curve
@@ -219,6 +224,8 @@ extension Ease {
 
 extension Ease {
 
+    // MARK: Helpers
+
     /**
      Calculates the value between a start and end value at a specific point in time.
 
@@ -230,7 +237,7 @@ extension Ease {
 
      - Returns: The value interpolated between the start and end value.
      */
-    public func interpolate<Number: InterpolatableNumber>(
+    internal func interpolate<Number: InterpolatableNumber>(
         from startValue: Number, to endValue: Number,
         elapsed: Number, duration: Number) -> Number {
 

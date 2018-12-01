@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>EaseClassification Enumeration Reference</title>
+    <title>Defaults Enumeration Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -10,8 +10,8 @@
     
   </head>
   <body>
-    <a name="//apple_ref/swift/Enum/EaseClassification" class="dashAnchor"></a>
-    <a title="EaseClassification Enumeration Reference"></a>
+    <a name="//apple_ref/swift/Enum/Defaults" class="dashAnchor"></a>
+    <a title="Defaults Enumeration Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="../index.html"> Docs</a> (100% documented)</p>
@@ -22,7 +22,7 @@
       <p id="breadcrumbs">
         <a href="../index.html"> Reference</a>
         <img id="carat" src="../img/carat.png" />
-        EaseClassification Enumeration Reference
+        Defaults Enumeration Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -92,25 +92,32 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>EaseClassification</h1>
+            <h1>Defaults</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">EaseClassification</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">Defaults</span></code></pre>
 
                 </div>
               </div>
-            <p>The algorithmic classification of an ease.</p>
+            <p>The default tweening and easing settings.</p>
 
           </section>
           <section class="section task-group-section">
             <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Properties"></a>
+                <a name="//apple_ref/swift/Section/Properties" class="dashAnchor"></a>
+                <a href="#/Properties">
+                  <h3 class="section-name">Properties</h3>
+                </a>
+              </div>
               <ul>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:6STween18EaseClassificationO6linearyA2CmF"></a>
-                    <a name="//apple_ref/swift/Element/linear" class="dashAnchor"></a>
-                    <a class="token" href="#/s:6STween18EaseClassificationO6linearyA2CmF">linear</a>
+                    <a name="/s:6STween8DefaultsO4easeAA4EaseVvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/ease" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6STween8DefaultsO4easeAA4EaseVvpZ">ease</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -118,16 +125,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>A <q>linear</q> algorithmic classification – a 1st degree polynomial.</p>
-
-<p>This is also considered <q>none</q> or <q>no ease</q>.</p>
+                        <p>The default <code><a href="../Structs/Ease.html">Ease</a></code> assigned to every tween.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">linear</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">var</span> <span class="nv">ease</span><span class="p">:</span> <span class="kt"><a href="../Structs/Ease.html">Ease</a></span></code></pre>
 
                         </div>
                       </div>
@@ -137,9 +142,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:6STween18EaseClassificationO4sineyA2CmF"></a>
-                    <a name="//apple_ref/swift/Element/sine" class="dashAnchor"></a>
-                    <a class="token" href="#/s:6STween18EaseClassificationO4sineyA2CmF">sine</a>
+                    <a name="/s:6STween8DefaultsO9overshootSdvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/overshoot" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6STween8DefaultsO9overshootSdvpZ">overshoot</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -147,14 +152,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>A <q>sinusoidal</q> algorithmic classification.</p>
+                        <p>The default overshoot value used in easing functions.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">sine</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">var</span> <span class="nv">overshoot</span><span class="p">:</span> <span class="kt">Double</span></code></pre>
 
                         </div>
                       </div>
@@ -164,9 +169,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:6STween18EaseClassificationO5cubicyA2CmF"></a>
-                    <a name="//apple_ref/swift/Element/cubic" class="dashAnchor"></a>
-                    <a class="token" href="#/s:6STween18EaseClassificationO5cubicyA2CmF">cubic</a>
+                    <a name="/s:6STween8DefaultsO5delaySdvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/delay" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6STween8DefaultsO5delaySdvpZ">delay</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -174,14 +179,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>A <q>cubic</q> algorithmic classification – a 3rd degree polynomial.</p>
+                        <p>The default amount of seconds before every tween starts.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">cubic</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">var</span> <span class="nv">delay</span><span class="p">:</span> <span class="kt">Double</span></code></pre>
 
                         </div>
                       </div>
@@ -191,9 +196,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:6STween18EaseClassificationO4quadyA2CmF"></a>
-                    <a name="//apple_ref/swift/Element/quad" class="dashAnchor"></a>
-                    <a class="token" href="#/s:6STween18EaseClassificationO4quadyA2CmF">quad</a>
+                    <a name="/s:6STween8DefaultsO8reversedSbvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/reversed" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6STween8DefaultsO8reversedSbvpZ">reversed</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -201,14 +206,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>A <q>quadratic</q> algorithmic classification – a 2nd degree polynomial.</p>
+                        <p>The default state of every tween being reversed.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">quad</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">var</span> <span class="nv">reversed</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
 
                         </div>
                       </div>
@@ -218,9 +223,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:6STween18EaseClassificationO5quartyA2CmF"></a>
-                    <a name="//apple_ref/swift/Element/quart" class="dashAnchor"></a>
-                    <a class="token" href="#/s:6STween18EaseClassificationO5quartyA2CmF">quart</a>
+                    <a name="/s:6STween8DefaultsO15autoStartTweensSbvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/autoStartTweens" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6STween8DefaultsO15autoStartTweensSbvpZ">autoStartTweens</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -228,14 +233,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>A <q>quartic</q> algorithmic classification – a 4th degree polynomial.</p>
+                        <p>The default state of every tween automatically started upon creation.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">quart</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">var</span> <span class="nv">autoStartTweens</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
 
                         </div>
                       </div>
@@ -245,9 +250,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:6STween18EaseClassificationO5quintyA2CmF"></a>
-                    <a name="//apple_ref/swift/Element/quint" class="dashAnchor"></a>
-                    <a class="token" href="#/s:6STween18EaseClassificationO5quintyA2CmF">quint</a>
+                    <a name="/s:6STween8DefaultsO23autoKillCompletedTweensSbvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/autoKillCompletedTweens" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6STween8DefaultsO23autoKillCompletedTweensSbvpZ">autoKillCompletedTweens</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -255,26 +260,37 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>A <q>quintic</q> algorithmic classification – a 5th degree polynomial.</p>
+                        <p>The default state of every tween automatically killed upon completion.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">quint</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">var</span> <span class="nv">autoKillCompletedTweens</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
 
                         </div>
                       </div>
                     </section>
                   </div>
                 </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Methods"></a>
+                <a name="//apple_ref/swift/Section/Methods" class="dashAnchor"></a>
+                <a href="#/Methods">
+                  <h3 class="section-name">Methods</h3>
+                </a>
+              </div>
+              <ul>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:6STween18EaseClassificationO4expoyA2CmF"></a>
-                    <a name="//apple_ref/swift/Element/expo" class="dashAnchor"></a>
-                    <a class="token" href="#/s:6STween18EaseClassificationO4expoyA2CmF">expo</a>
+                    <a name="/s:6STween8DefaultsO5resetyyFZ"></a>
+                    <a name="//apple_ref/swift/Method/reset()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6STween8DefaultsO5resetyyFZ">reset()</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -282,122 +298,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>An <q>exponential</q> algorithmic classification.</p>
+                        <p>Resets all defaults to their original values.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">expo</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:6STween18EaseClassificationO4circyA2CmF"></a>
-                    <a name="//apple_ref/swift/Element/circ" class="dashAnchor"></a>
-                    <a class="token" href="#/s:6STween18EaseClassificationO4circyA2CmF">circ</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>A <q>circular</q> algorithmic classification.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">circ</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:6STween18EaseClassificationO4backyA2CmF"></a>
-                    <a name="//apple_ref/swift/Element/back" class="dashAnchor"></a>
-                    <a class="token" href="#/s:6STween18EaseClassificationO4backyA2CmF">back</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>A <q>back</q> algorithmic classification.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">back</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:6STween18EaseClassificationO7elasticyA2CmF"></a>
-                    <a name="//apple_ref/swift/Element/elastic" class="dashAnchor"></a>
-                    <a class="token" href="#/s:6STween18EaseClassificationO7elasticyA2CmF">elastic</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>An <q>elastic</q> algorithmic classification.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">elastic</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:6STween18EaseClassificationO6bounceyA2CmF"></a>
-                    <a name="//apple_ref/swift/Element/bounce" class="dashAnchor"></a>
-                    <a class="token" href="#/s:6STween18EaseClassificationO6bounceyA2CmF">bounce</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>A <q>bounce</q> algorithmic classification.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">bounce</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">reset</span><span class="p">()</span></code></pre>
 
                         </div>
                       </div>

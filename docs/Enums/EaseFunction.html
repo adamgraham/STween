@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>EaseFunctions Class Reference</title>
+    <title>EaseFunction Enumeration Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -10,11 +10,11 @@
     
   </head>
   <body>
-    <a name="//apple_ref/swift/Class/EaseFunctions" class="dashAnchor"></a>
-    <a title="EaseFunctions Class Reference"></a>
+    <a name="//apple_ref/swift/Enum/EaseFunction" class="dashAnchor"></a>
+    <a title="EaseFunction Enumeration Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html"> Docs</a> (98% documented)</p>
+        <p><a href="../index.html"> Docs</a> (100% documented)</p>
         <p class="header-right"><a href="https://github.com/adamgraham/STween"><img src="../img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
@@ -22,7 +22,7 @@
       <p id="breadcrumbs">
         <a href="../index.html"> Reference</a>
         <img id="carat" src="../img/carat.png" />
-        EaseFunctions Class Reference
+        EaseFunction Enumeration Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -32,7 +32,7 @@
             <a href="../Easing.html">Easing</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Enums/Ease.html">Ease</a>
+                <a href="../Structs/Ease.html">Ease</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Enums/EaseClassification.html">EaseClassification</a>
@@ -41,10 +41,7 @@
                 <a href="../Enums/EaseCurve.html">EaseCurve</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Easing.html#/s:6STween12EaseFunction">EaseFunction</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Classes/EaseFunctions.html">EaseFunctions</a>
+                <a href="../Enums/EaseFunction.html">EaseFunction</a>
               </li>
             </ul>
           </li>
@@ -55,7 +52,10 @@
                 <a href="../Protocols/Interpolatable.html">Interpolatable</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/InterpolationValues.html">InterpolationValues</a>
+                <a href="../Protocols/InterpolatableNumber.html">InterpolatableNumber</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/InterpolatableNumberConstants.html">InterpolatableNumberConstants</a>
               </li>
             </ul>
           </li>
@@ -66,19 +66,7 @@
                 <a href="../Protocols/Tween.html">Tween</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Classes/TweenAnimation.html">TweenAnimation</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="../Enums/TweenState.html">TweenState</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Enums/TweenStateChange.html">TweenStateChange</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Classes/TweenTimer.html">TweenTimer</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Protocols/TweenTimerDelegate.html">TweenTimerDelegate</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/Tweenable.html">Tweenable</a>
@@ -95,18 +83,7 @@
             <a href="../Settings.html">Settings</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Classes/Defaults.html">Defaults</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Classes/FrameRate.html">FrameRate</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-group-name">
-            <a href="../Other Typealiases.html">Other Typealiases</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a href="../Other Typealiases.html#/s:6STween8Callback">Callback</a>
+                <a href="../Enums/Defaults.html">Defaults</a>
               </li>
             </ul>
           </li>
@@ -115,51 +92,43 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>EaseFunctions</h1>
+            <h1>EaseFunction</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight"><code><span class="kd">internal</span> <span class="kd">final</span> <span class="kd">class</span> <span class="kt">EaseFunctions</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">EaseFunction</span><span class="o">&lt;</span><span class="kt">Number</span><span class="o">&gt;</span> <span class="k">where</span> <span class="kt">Number</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/InterpolatableNumber.html">InterpolatableNumber</a></span></code></pre>
 
                 </div>
               </div>
-            <p>A class to hold a collection of easing functions based upon
-<a href="http://robertpenner.com/easing/">Robert Penner&rsquo;s Easing Functions</a>. 
-A visualized cheat-sheet of these functions can be found at
-<a href="http://easings.net/">easings.net</a>.</p>
+            <p>Calculates the number between a start and end value at a specific point in time.
+In simpler terms, an easing function determines the path/motion used to get from point <em>A</em>
+to point <em>B</em>.</p>
 
-<p>Easing functions calculate the value between a starting and ending
-position at a specific point in time. In simpler terms, these functions
-determine the path/motion used to get from point <q>A</q> to point <q>B</q>.</p>
+<p>These easing functions are based upon <a href="http://robertpenner.com/easing/">Robert Penner&rsquo;s Easing Functions</a>.
+A visualized cheat-sheet of these functions can be found at <a href="http://easings.net/">easings.net</a>.</p>
+
+<hr>
 
 <blockquote>
-<p>&ldquo;The aspect of time is crucial to motion — things change over time.
-Nothing can move in “zero time”, or be in two places at once. In other
-words, a position needs time to change, and it can have only one value
-at a specific point in time.</p>
+<p><em>The aspect of time is crucial to motion — things change over time. Nothing can move in
+“zero time”, or be in two places at once. In other words, a position needs time to
+change, and it can have only one value at a specific point in time.</em></p>
 
-<p>Because position and time have this one-to-one relationship, we can say
-that position is a function of time. This means that, given a specific point
-in time, we can find one, and only one, corresponding position.&rdquo;
+<p><em>Because position and time have this one-to-one relationship, we can say that position
+is a function of time. This means that, given a specific point in time, we can find one,
+and only one, corresponding position.</em>
 - <a href="http://robertpenner.com/easing/penner_chapter7_tweening.pdf">Robert Penner</a></p>
 </blockquote>
 
           </section>
           <section class="section task-group-section">
             <div class="task-group">
-              <div class="task-name-container">
-                <a name="/Linear"></a>
-                <a name="//apple_ref/swift/Section/Linear" class="dashAnchor"></a>
-                <a href="#/Linear">
-                  <h3 class="section-name">Linear</h3>
-                </a>
-              </div>
               <ul>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:ZFC6STween13EaseFunctions6linearuRxs13FloatingPointrFT1bx1cx1tx1dx_x"></a>
-                    <a name="//apple_ref/swift/Method/linear(b:c:t:d:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:ZFC6STween13EaseFunctions6linearuRxs13FloatingPointrFT1bx1cx1tx1dx_x">linear(b:c:t:d:)</a>
+                    <a name="/s:6STween12EaseFunctionO10Definitiona"></a>
+                    <a name="//apple_ref/swift/Alias/Definition" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6STween12EaseFunctionO10Definitiona">Definition</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -167,15 +136,14 @@ in time, we can find one, and only one, corresponding position.&rdquo;
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The algorithmic function of a <code>linear</code> ease used to calculate a value
-between a starting and ending position at a specific point in time.</p>
+                        <p>Calculates the number between a start and end value at a specific point in time.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">internal</span> <span class="kd">static</span> <span class="kd">func</span> <span class="n">linear</span><span class="o">&lt;</span><span class="kt">Number</span><span class="p">:</span> <span class="kt">FloatingPoint</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">b</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">c</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">t</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">d</span><span class="p">:</span> <span class="kt">Number</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Number</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">Definition</span> <span class="o">=</span> <span class="p">(</span><span class="n">_</span> <span class="nv">b</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="n">_</span> <span class="nv">c</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="n">_</span> <span class="nv">t</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="n">_</span> <span class="nv">d</span><span class="p">:</span> <span class="kt">Number</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Number</span></code></pre>
 
                         </div>
                       </div>
@@ -192,7 +160,6 @@ between a starting and ending position at a specific point in time.</p>
                               <td>
                                 <div>
                                   <p>The start value (b = begin).</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -205,7 +172,6 @@ between a starting and ending position at a specific point in time.</p>
                               <td>
                                 <div>
                                   <p>The change in value (c = change).</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -217,8 +183,7 @@ between a starting and ending position at a specific point in time.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The amount of time elapsed since the start of the ease (t = time).</p>
-
+                                  <p>The elapsed time of the ease (t = time).</p>
                                 </div>
                               </td>
                             </tr>
@@ -230,8 +195,7 @@ between a starting and ending position at a specific point in time.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The total amount of time the ease will run (d = duration).</p>
-
+                                  <p>The duration of the ease (d = duration).</p>
                                 </div>
                               </td>
                             </tr>
@@ -240,8 +204,105 @@ between a starting and ending position at a specific point in time.</p>
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>The value at a specific point in time from the start value.</p>
+                        <p>The number between the start and end value at a specific point in time.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Linear"></a>
+                <a name="//apple_ref/swift/Section/Linear" class="dashAnchor"></a>
+                <a href="#/Linear">
+                  <h3 class="section-name">Linear</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6STween12EaseFunctionO6linear1b1c1t1dxx_xxxtFZ"></a>
+                    <a name="//apple_ref/swift/Method/linear(b:c:t:d:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6STween12EaseFunctionO6linear1b1c1t1dxx_xxxtFZ">linear(b:c:t:d:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The algorithmic function of a <code>linear</code> ease that calculates the number between a
+start and end value at a specific point in time.</p>
 
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">linear</span><span class="p">(</span><span class="nv">b</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">c</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">t</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">d</span><span class="p">:</span> <span class="kt">Number</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Number</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>b</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The start value (b = begin).</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>c</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The change in value (c = change).</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>t</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The elapsed time of the ease (t = time).</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>d</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The duration of the ease (d = duration).</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The number between the start and end value at a specific point in time.</p>
                       </div>
                     </section>
                   </div>
@@ -260,9 +321,9 @@ between a starting and ending position at a specific point in time.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:ZFC6STween13EaseFunctions6sineInuRxs13FloatingPointrFT1bx1cx1tx1dx_x"></a>
+                    <a name="/s:6STween12EaseFunctionO6sineIn1b1c1t1dxx_xxxtFZ"></a>
                     <a name="//apple_ref/swift/Method/sineIn(b:c:t:d:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:ZFC6STween13EaseFunctions6sineInuRxs13FloatingPointrFT1bx1cx1tx1dx_x">sineIn(b:c:t:d:)</a>
+                    <a class="token" href="#/s:6STween12EaseFunctionO6sineIn1b1c1t1dxx_xxxtFZ">sineIn(b:c:t:d:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -270,15 +331,15 @@ between a starting and ending position at a specific point in time.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The algorithmic function of a <code>sineIn</code> ease used to calculate a value
-between a starting and ending position at a specific point in time.</p>
+                        <p>The algorithmic function of a <code>sineIn</code> ease that calculates the number between a
+start and end value at a specific point in time.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">internal</span> <span class="kd">static</span> <span class="kd">func</span> <span class="n">sineIn</span><span class="o">&lt;</span><span class="kt">Number</span><span class="p">:</span> <span class="kt">FloatingPoint</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">b</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">c</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">t</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">d</span><span class="p">:</span> <span class="kt">Number</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Number</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">sineIn</span><span class="p">(</span><span class="nv">b</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">c</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">t</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">d</span><span class="p">:</span> <span class="kt">Number</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Number</span></code></pre>
 
                         </div>
                       </div>
@@ -295,7 +356,6 @@ between a starting and ending position at a specific point in time.</p>
                               <td>
                                 <div>
                                   <p>The start value (b = begin).</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -308,7 +368,6 @@ between a starting and ending position at a specific point in time.</p>
                               <td>
                                 <div>
                                   <p>The change in value (c = change).</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -320,8 +379,7 @@ between a starting and ending position at a specific point in time.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The amount of time elapsed since the start of the ease (t = time).</p>
-
+                                  <p>The elapsed time of the ease (t = time).</p>
                                 </div>
                               </td>
                             </tr>
@@ -333,8 +391,7 @@ between a starting and ending position at a specific point in time.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The total amount of time the ease will run (d = duration).</p>
-
+                                  <p>The duration of the ease (d = duration).</p>
                                 </div>
                               </td>
                             </tr>
@@ -343,8 +400,7 @@ between a starting and ending position at a specific point in time.</p>
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>The value at a specific point in time from the start value.</p>
-
+                        <p>The number between the start and end value at a specific point in time.</p>
                       </div>
                     </section>
                   </div>
@@ -352,9 +408,9 @@ between a starting and ending position at a specific point in time.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:ZFC6STween13EaseFunctions7sineOutuRxs13FloatingPointrFT1bx1cx1tx1dx_x"></a>
+                    <a name="/s:6STween12EaseFunctionO7sineOut1b1c1t1dxx_xxxtFZ"></a>
                     <a name="//apple_ref/swift/Method/sineOut(b:c:t:d:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:ZFC6STween13EaseFunctions7sineOutuRxs13FloatingPointrFT1bx1cx1tx1dx_x">sineOut(b:c:t:d:)</a>
+                    <a class="token" href="#/s:6STween12EaseFunctionO7sineOut1b1c1t1dxx_xxxtFZ">sineOut(b:c:t:d:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -362,15 +418,15 @@ between a starting and ending position at a specific point in time.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The algorithmic function of a <code>sineOut</code> ease used to calculate a value
-between a starting and ending position at a specific point in time.</p>
+                        <p>The algorithmic function of a <code>sineOut</code> ease that calculates the number between a
+start and end value at a specific point in time.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">internal</span> <span class="kd">static</span> <span class="kd">func</span> <span class="n">sineOut</span><span class="o">&lt;</span><span class="kt">Number</span><span class="p">:</span> <span class="kt">FloatingPoint</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">b</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">c</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">t</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">d</span><span class="p">:</span> <span class="kt">Number</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Number</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">sineOut</span><span class="p">(</span><span class="nv">b</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">c</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">t</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">d</span><span class="p">:</span> <span class="kt">Number</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Number</span></code></pre>
 
                         </div>
                       </div>
@@ -387,7 +443,6 @@ between a starting and ending position at a specific point in time.</p>
                               <td>
                                 <div>
                                   <p>The start value (b = begin).</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -400,7 +455,6 @@ between a starting and ending position at a specific point in time.</p>
                               <td>
                                 <div>
                                   <p>The change in value (c = change).</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -412,8 +466,7 @@ between a starting and ending position at a specific point in time.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The amount of time elapsed since the start of the ease (t = time).</p>
-
+                                  <p>The elapsed time of the ease (t = time).</p>
                                 </div>
                               </td>
                             </tr>
@@ -425,8 +478,7 @@ between a starting and ending position at a specific point in time.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The total amount of time the ease will run (d = duration).</p>
-
+                                  <p>The duration of the ease (d = duration).</p>
                                 </div>
                               </td>
                             </tr>
@@ -435,8 +487,7 @@ between a starting and ending position at a specific point in time.</p>
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>The value at a specific point in time from the start value.</p>
-
+                        <p>The number between the start and end value at a specific point in time.</p>
                       </div>
                     </section>
                   </div>
@@ -444,9 +495,9 @@ between a starting and ending position at a specific point in time.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:ZFC6STween13EaseFunctions9sineInOutuRxs13FloatingPointrFT1bx1cx1tx1dx_x"></a>
+                    <a name="/s:6STween12EaseFunctionO9sineInOut1b1c1t1dxx_xxxtFZ"></a>
                     <a name="//apple_ref/swift/Method/sineInOut(b:c:t:d:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:ZFC6STween13EaseFunctions9sineInOutuRxs13FloatingPointrFT1bx1cx1tx1dx_x">sineInOut(b:c:t:d:)</a>
+                    <a class="token" href="#/s:6STween12EaseFunctionO9sineInOut1b1c1t1dxx_xxxtFZ">sineInOut(b:c:t:d:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -454,15 +505,15 @@ between a starting and ending position at a specific point in time.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The algorithmic function of a <code>sineInOut</code> ease used to calculate a value
-between a starting and ending position at a specific point in time.</p>
+                        <p>The algorithmic function of a <code>sineInOut</code> ease that calculates the number between a
+start and end value at a specific point in time.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">internal</span> <span class="kd">static</span> <span class="kd">func</span> <span class="n">sineInOut</span><span class="o">&lt;</span><span class="kt">Number</span><span class="p">:</span> <span class="kt">FloatingPoint</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">b</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">c</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">t</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">d</span><span class="p">:</span> <span class="kt">Number</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Number</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">sineInOut</span><span class="p">(</span><span class="nv">b</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">c</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">t</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">d</span><span class="p">:</span> <span class="kt">Number</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Number</span></code></pre>
 
                         </div>
                       </div>
@@ -479,7 +530,6 @@ between a starting and ending position at a specific point in time.</p>
                               <td>
                                 <div>
                                   <p>The start value (b = begin).</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -492,7 +542,6 @@ between a starting and ending position at a specific point in time.</p>
                               <td>
                                 <div>
                                   <p>The change in value (c = change).</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -504,8 +553,7 @@ between a starting and ending position at a specific point in time.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The amount of time elapsed since the start of the ease (t = time).</p>
-
+                                  <p>The elapsed time of the ease (t = time).</p>
                                 </div>
                               </td>
                             </tr>
@@ -517,8 +565,7 @@ between a starting and ending position at a specific point in time.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The total amount of time the ease will run (d = duration).</p>
-
+                                  <p>The duration of the ease (d = duration).</p>
                                 </div>
                               </td>
                             </tr>
@@ -527,8 +574,7 @@ between a starting and ending position at a specific point in time.</p>
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>The value at a specific point in time from the start value.</p>
-
+                        <p>The number between the start and end value at a specific point in time.</p>
                       </div>
                     </section>
                   </div>
@@ -547,9 +593,9 @@ between a starting and ending position at a specific point in time.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:ZFC6STween13EaseFunctions7cubicInuRxs13FloatingPointrFT1bx1cx1tx1dx_x"></a>
+                    <a name="/s:6STween12EaseFunctionO7cubicIn1b1c1t1dxx_xxxtFZ"></a>
                     <a name="//apple_ref/swift/Method/cubicIn(b:c:t:d:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:ZFC6STween13EaseFunctions7cubicInuRxs13FloatingPointrFT1bx1cx1tx1dx_x">cubicIn(b:c:t:d:)</a>
+                    <a class="token" href="#/s:6STween12EaseFunctionO7cubicIn1b1c1t1dxx_xxxtFZ">cubicIn(b:c:t:d:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -557,15 +603,15 @@ between a starting and ending position at a specific point in time.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The algorithmic function of a <code>cubicIn</code> ease used to calculate a value
-between a starting and ending position at a specific point in time.</p>
+                        <p>The algorithmic function of a <code>cubicIn</code> ease that calculates the number between a
+start and end value at a specific point in time.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">internal</span> <span class="kd">static</span> <span class="kd">func</span> <span class="n">cubicIn</span><span class="o">&lt;</span><span class="kt">Number</span><span class="p">:</span> <span class="kt">FloatingPoint</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">b</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">c</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">t</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">d</span><span class="p">:</span> <span class="kt">Number</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Number</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">cubicIn</span><span class="p">(</span><span class="nv">b</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">c</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">t</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">d</span><span class="p">:</span> <span class="kt">Number</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Number</span></code></pre>
 
                         </div>
                       </div>
@@ -582,7 +628,6 @@ between a starting and ending position at a specific point in time.</p>
                               <td>
                                 <div>
                                   <p>The start value (b = begin).</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -595,7 +640,6 @@ between a starting and ending position at a specific point in time.</p>
                               <td>
                                 <div>
                                   <p>The change in value (c = change).</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -607,8 +651,7 @@ between a starting and ending position at a specific point in time.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The amount of time elapsed since the start of the ease (t = time).</p>
-
+                                  <p>The elapsed time of the ease (t = time).</p>
                                 </div>
                               </td>
                             </tr>
@@ -620,8 +663,7 @@ between a starting and ending position at a specific point in time.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The total amount of time the ease will run (d = duration).</p>
-
+                                  <p>The duration of the ease (d = duration).</p>
                                 </div>
                               </td>
                             </tr>
@@ -630,8 +672,7 @@ between a starting and ending position at a specific point in time.</p>
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>The value at a specific point in time from the start value.</p>
-
+                        <p>The number between the start and end value at a specific point in time.</p>
                       </div>
                     </section>
                   </div>
@@ -639,9 +680,9 @@ between a starting and ending position at a specific point in time.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:ZFC6STween13EaseFunctions8cubicOutuRxs13FloatingPointrFT1bx1cx1tx1dx_x"></a>
+                    <a name="/s:6STween12EaseFunctionO8cubicOut1b1c1t1dxx_xxxtFZ"></a>
                     <a name="//apple_ref/swift/Method/cubicOut(b:c:t:d:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:ZFC6STween13EaseFunctions8cubicOutuRxs13FloatingPointrFT1bx1cx1tx1dx_x">cubicOut(b:c:t:d:)</a>
+                    <a class="token" href="#/s:6STween12EaseFunctionO8cubicOut1b1c1t1dxx_xxxtFZ">cubicOut(b:c:t:d:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -649,15 +690,15 @@ between a starting and ending position at a specific point in time.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The algorithmic function of a <code>cubicOut</code> ease used to calculate a value
-between a starting and ending position at a specific point in time.</p>
+                        <p>The algorithmic function of a <code>cubicOut</code> ease that calculates the number between a
+start and end value at a specific point in time.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">internal</span> <span class="kd">static</span> <span class="kd">func</span> <span class="n">cubicOut</span><span class="o">&lt;</span><span class="kt">Number</span><span class="p">:</span> <span class="kt">FloatingPoint</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">b</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">c</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">t</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">d</span><span class="p">:</span> <span class="kt">Number</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Number</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">cubicOut</span><span class="p">(</span><span class="nv">b</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">c</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">t</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">d</span><span class="p">:</span> <span class="kt">Number</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Number</span></code></pre>
 
                         </div>
                       </div>
@@ -674,7 +715,6 @@ between a starting and ending position at a specific point in time.</p>
                               <td>
                                 <div>
                                   <p>The start value (b = begin).</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -687,7 +727,6 @@ between a starting and ending position at a specific point in time.</p>
                               <td>
                                 <div>
                                   <p>The change in value (c = change).</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -699,8 +738,7 @@ between a starting and ending position at a specific point in time.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The amount of time elapsed since the start of the ease (t = time).</p>
-
+                                  <p>The elapsed time of the ease (t = time).</p>
                                 </div>
                               </td>
                             </tr>
@@ -712,8 +750,7 @@ between a starting and ending position at a specific point in time.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The total amount of time the ease will run (d = duration).</p>
-
+                                  <p>The duration of the ease (d = duration).</p>
                                 </div>
                               </td>
                             </tr>
@@ -722,8 +759,7 @@ between a starting and ending position at a specific point in time.</p>
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>The value at a specific point in time from the start value.</p>
-
+                        <p>The number between the start and end value at a specific point in time.</p>
                       </div>
                     </section>
                   </div>
@@ -731,9 +767,9 @@ between a starting and ending position at a specific point in time.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:ZFC6STween13EaseFunctions10cubicInOutuRxs13FloatingPointrFT1bx1cx1tx1dx_x"></a>
+                    <a name="/s:6STween12EaseFunctionO10cubicInOut1b1c1t1dxx_xxxtFZ"></a>
                     <a name="//apple_ref/swift/Method/cubicInOut(b:c:t:d:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:ZFC6STween13EaseFunctions10cubicInOutuRxs13FloatingPointrFT1bx1cx1tx1dx_x">cubicInOut(b:c:t:d:)</a>
+                    <a class="token" href="#/s:6STween12EaseFunctionO10cubicInOut1b1c1t1dxx_xxxtFZ">cubicInOut(b:c:t:d:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -741,15 +777,15 @@ between a starting and ending position at a specific point in time.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The algorithmic function of a <code>cubicInOut</code> ease used to calculate a value
-between a starting and ending position at a specific point in time.</p>
+                        <p>The algorithmic function of a <code>cubicInOut</code> ease that calculates the number between a
+start and end value at a specific point in time.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">internal</span> <span class="kd">static</span> <span class="kd">func</span> <span class="n">cubicInOut</span><span class="o">&lt;</span><span class="kt">Number</span><span class="p">:</span> <span class="kt">FloatingPoint</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">b</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">c</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">t</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">d</span><span class="p">:</span> <span class="kt">Number</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Number</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">cubicInOut</span><span class="p">(</span><span class="nv">b</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">c</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">t</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">d</span><span class="p">:</span> <span class="kt">Number</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Number</span></code></pre>
 
                         </div>
                       </div>
@@ -766,7 +802,6 @@ between a starting and ending position at a specific point in time.</p>
                               <td>
                                 <div>
                                   <p>The start value (b = begin).</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -779,7 +814,6 @@ between a starting and ending position at a specific point in time.</p>
                               <td>
                                 <div>
                                   <p>The change in value (c = change).</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -791,8 +825,7 @@ between a starting and ending position at a specific point in time.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The amount of time elapsed since the start of the ease (t = time).</p>
-
+                                  <p>The elapsed time of the ease (t = time).</p>
                                 </div>
                               </td>
                             </tr>
@@ -804,8 +837,7 @@ between a starting and ending position at a specific point in time.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The total amount of time the ease will run (d = duration).</p>
-
+                                  <p>The duration of the ease (d = duration).</p>
                                 </div>
                               </td>
                             </tr>
@@ -814,8 +846,7 @@ between a starting and ending position at a specific point in time.</p>
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>The value at a specific point in time from the start value.</p>
-
+                        <p>The number between the start and end value at a specific point in time.</p>
                       </div>
                     </section>
                   </div>
@@ -834,9 +865,9 @@ between a starting and ending position at a specific point in time.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:ZFC6STween13EaseFunctions6quadInuRxs13FloatingPointrFT1bx1cx1tx1dx_x"></a>
+                    <a name="/s:6STween12EaseFunctionO6quadIn1b1c1t1dxx_xxxtFZ"></a>
                     <a name="//apple_ref/swift/Method/quadIn(b:c:t:d:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:ZFC6STween13EaseFunctions6quadInuRxs13FloatingPointrFT1bx1cx1tx1dx_x">quadIn(b:c:t:d:)</a>
+                    <a class="token" href="#/s:6STween12EaseFunctionO6quadIn1b1c1t1dxx_xxxtFZ">quadIn(b:c:t:d:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -844,15 +875,15 @@ between a starting and ending position at a specific point in time.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The algorithmic function of a <code>quadIn</code> ease used to calculate a value
-between a starting and ending position at a specific point in time.</p>
+                        <p>The algorithmic function of a <code>quadIn</code> ease that calculates the number between a
+start and end value at a specific point in time.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">internal</span> <span class="kd">static</span> <span class="kd">func</span> <span class="n">quadIn</span><span class="o">&lt;</span><span class="kt">Number</span><span class="p">:</span> <span class="kt">FloatingPoint</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">b</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">c</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">t</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">d</span><span class="p">:</span> <span class="kt">Number</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Number</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">quadIn</span><span class="p">(</span><span class="nv">b</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">c</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">t</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">d</span><span class="p">:</span> <span class="kt">Number</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Number</span></code></pre>
 
                         </div>
                       </div>
@@ -869,7 +900,6 @@ between a starting and ending position at a specific point in time.</p>
                               <td>
                                 <div>
                                   <p>The start value (b = begin).</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -882,7 +912,6 @@ between a starting and ending position at a specific point in time.</p>
                               <td>
                                 <div>
                                   <p>The change in value (c = change).</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -894,8 +923,7 @@ between a starting and ending position at a specific point in time.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The amount of time elapsed since the start of the ease (t = time).</p>
-
+                                  <p>The elapsed time of the ease (t = time).</p>
                                 </div>
                               </td>
                             </tr>
@@ -907,8 +935,7 @@ between a starting and ending position at a specific point in time.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The total amount of time the ease will run (d = duration).</p>
-
+                                  <p>The duration of the ease (d = duration).</p>
                                 </div>
                               </td>
                             </tr>
@@ -917,8 +944,7 @@ between a starting and ending position at a specific point in time.</p>
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>The value at a specific point in time from the start value.</p>
-
+                        <p>The number between the start and end value at a specific point in time.</p>
                       </div>
                     </section>
                   </div>
@@ -926,9 +952,9 @@ between a starting and ending position at a specific point in time.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:ZFC6STween13EaseFunctions7quadOutuRxs13FloatingPointrFT1bx1cx1tx1dx_x"></a>
+                    <a name="/s:6STween12EaseFunctionO7quadOut1b1c1t1dxx_xxxtFZ"></a>
                     <a name="//apple_ref/swift/Method/quadOut(b:c:t:d:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:ZFC6STween13EaseFunctions7quadOutuRxs13FloatingPointrFT1bx1cx1tx1dx_x">quadOut(b:c:t:d:)</a>
+                    <a class="token" href="#/s:6STween12EaseFunctionO7quadOut1b1c1t1dxx_xxxtFZ">quadOut(b:c:t:d:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -936,15 +962,15 @@ between a starting and ending position at a specific point in time.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The algorithmic function of a <code>quadOut</code> ease used to calculate a value
-between a starting and ending position at a specific point in time.</p>
+                        <p>The algorithmic function of a <code>quadOut</code> ease that calculates the number between a
+start and end value at a specific point in time.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">internal</span> <span class="kd">static</span> <span class="kd">func</span> <span class="n">quadOut</span><span class="o">&lt;</span><span class="kt">Number</span><span class="p">:</span> <span class="kt">FloatingPoint</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">b</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">c</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">t</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">d</span><span class="p">:</span> <span class="kt">Number</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Number</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">quadOut</span><span class="p">(</span><span class="nv">b</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">c</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">t</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">d</span><span class="p">:</span> <span class="kt">Number</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Number</span></code></pre>
 
                         </div>
                       </div>
@@ -961,7 +987,6 @@ between a starting and ending position at a specific point in time.</p>
                               <td>
                                 <div>
                                   <p>The start value (b = begin).</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -974,7 +999,6 @@ between a starting and ending position at a specific point in time.</p>
                               <td>
                                 <div>
                                   <p>The change in value (c = change).</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -986,8 +1010,7 @@ between a starting and ending position at a specific point in time.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The amount of time elapsed since the start of the ease (t = time).</p>
-
+                                  <p>The elapsed time of the ease (t = time).</p>
                                 </div>
                               </td>
                             </tr>
@@ -999,8 +1022,7 @@ between a starting and ending position at a specific point in time.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The total amount of time the ease will run (d = duration).</p>
-
+                                  <p>The duration of the ease (d = duration).</p>
                                 </div>
                               </td>
                             </tr>
@@ -1009,8 +1031,7 @@ between a starting and ending position at a specific point in time.</p>
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>The value at a specific point in time from the start value.</p>
-
+                        <p>The number between the start and end value at a specific point in time.</p>
                       </div>
                     </section>
                   </div>
@@ -1018,9 +1039,9 @@ between a starting and ending position at a specific point in time.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:ZFC6STween13EaseFunctions9quadInOutuRxs13FloatingPointrFT1bx1cx1tx1dx_x"></a>
+                    <a name="/s:6STween12EaseFunctionO9quadInOut1b1c1t1dxx_xxxtFZ"></a>
                     <a name="//apple_ref/swift/Method/quadInOut(b:c:t:d:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:ZFC6STween13EaseFunctions9quadInOutuRxs13FloatingPointrFT1bx1cx1tx1dx_x">quadInOut(b:c:t:d:)</a>
+                    <a class="token" href="#/s:6STween12EaseFunctionO9quadInOut1b1c1t1dxx_xxxtFZ">quadInOut(b:c:t:d:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1028,15 +1049,15 @@ between a starting and ending position at a specific point in time.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The algorithmic function of a <code>quadInOut</code> ease used to calculate a value
-between a starting and ending position at a specific point in time.</p>
+                        <p>The algorithmic function of a <code>quadInOut</code> ease that calculates the number between a
+start and end value at a specific point in time.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">internal</span> <span class="kd">static</span> <span class="kd">func</span> <span class="n">quadInOut</span><span class="o">&lt;</span><span class="kt">Number</span><span class="p">:</span> <span class="kt">FloatingPoint</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">b</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">c</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">t</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">d</span><span class="p">:</span> <span class="kt">Number</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Number</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">quadInOut</span><span class="p">(</span><span class="nv">b</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">c</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">t</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">d</span><span class="p">:</span> <span class="kt">Number</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Number</span></code></pre>
 
                         </div>
                       </div>
@@ -1053,7 +1074,6 @@ between a starting and ending position at a specific point in time.</p>
                               <td>
                                 <div>
                                   <p>The start value (b = begin).</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -1066,7 +1086,6 @@ between a starting and ending position at a specific point in time.</p>
                               <td>
                                 <div>
                                   <p>The change in value (c = change).</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -1078,8 +1097,7 @@ between a starting and ending position at a specific point in time.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The amount of time elapsed since the start of the ease (t = time).</p>
-
+                                  <p>The elapsed time of the ease (t = time).</p>
                                 </div>
                               </td>
                             </tr>
@@ -1091,8 +1109,7 @@ between a starting and ending position at a specific point in time.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The total amount of time the ease will run (d = duration).</p>
-
+                                  <p>The duration of the ease (d = duration).</p>
                                 </div>
                               </td>
                             </tr>
@@ -1101,8 +1118,7 @@ between a starting and ending position at a specific point in time.</p>
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>The value at a specific point in time from the start value.</p>
-
+                        <p>The number between the start and end value at a specific point in time.</p>
                       </div>
                     </section>
                   </div>
@@ -1121,9 +1137,9 @@ between a starting and ending position at a specific point in time.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:ZFC6STween13EaseFunctions7quartInuRxs13FloatingPointrFT1bx1cx1tx1dx_x"></a>
+                    <a name="/s:6STween12EaseFunctionO7quartIn1b1c1t1dxx_xxxtFZ"></a>
                     <a name="//apple_ref/swift/Method/quartIn(b:c:t:d:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:ZFC6STween13EaseFunctions7quartInuRxs13FloatingPointrFT1bx1cx1tx1dx_x">quartIn(b:c:t:d:)</a>
+                    <a class="token" href="#/s:6STween12EaseFunctionO7quartIn1b1c1t1dxx_xxxtFZ">quartIn(b:c:t:d:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1131,15 +1147,15 @@ between a starting and ending position at a specific point in time.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The algorithmic function of a <code>quartIn</code> ease used to calculate a value
-between a starting and ending position at a specific point in time.</p>
+                        <p>The algorithmic function of a <code>quartIn</code> ease that calculates the number between a
+start and end value at a specific point in time.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">internal</span> <span class="kd">static</span> <span class="kd">func</span> <span class="n">quartIn</span><span class="o">&lt;</span><span class="kt">Number</span><span class="p">:</span> <span class="kt">FloatingPoint</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">b</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">c</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">t</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">d</span><span class="p">:</span> <span class="kt">Number</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Number</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">quartIn</span><span class="p">(</span><span class="nv">b</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">c</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">t</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">d</span><span class="p">:</span> <span class="kt">Number</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Number</span></code></pre>
 
                         </div>
                       </div>
@@ -1156,7 +1172,6 @@ between a starting and ending position at a specific point in time.</p>
                               <td>
                                 <div>
                                   <p>The start value (b = begin).</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -1169,7 +1184,6 @@ between a starting and ending position at a specific point in time.</p>
                               <td>
                                 <div>
                                   <p>The change in value (c = change).</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -1181,8 +1195,7 @@ between a starting and ending position at a specific point in time.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The amount of time elapsed since the start of the ease (t = time).</p>
-
+                                  <p>The elapsed time of the ease (t = time).</p>
                                 </div>
                               </td>
                             </tr>
@@ -1194,8 +1207,7 @@ between a starting and ending position at a specific point in time.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The total amount of time the ease will run (d = duration).</p>
-
+                                  <p>The duration of the ease (d = duration).</p>
                                 </div>
                               </td>
                             </tr>
@@ -1204,8 +1216,7 @@ between a starting and ending position at a specific point in time.</p>
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>The value at a specific point in time from the start value.</p>
-
+                        <p>The number between the start and end value at a specific point in time.</p>
                       </div>
                     </section>
                   </div>
@@ -1213,9 +1224,9 @@ between a starting and ending position at a specific point in time.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:ZFC6STween13EaseFunctions8quartOutuRxs13FloatingPointrFT1bx1cx1tx1dx_x"></a>
+                    <a name="/s:6STween12EaseFunctionO8quartOut1b1c1t1dxx_xxxtFZ"></a>
                     <a name="//apple_ref/swift/Method/quartOut(b:c:t:d:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:ZFC6STween13EaseFunctions8quartOutuRxs13FloatingPointrFT1bx1cx1tx1dx_x">quartOut(b:c:t:d:)</a>
+                    <a class="token" href="#/s:6STween12EaseFunctionO8quartOut1b1c1t1dxx_xxxtFZ">quartOut(b:c:t:d:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1223,15 +1234,15 @@ between a starting and ending position at a specific point in time.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The algorithmic function of a <code>quartOut</code> ease used to calculate a value
-between a starting and ending position at a specific point in time.</p>
+                        <p>The algorithmic function of a <code>quartOut</code> ease that calculates the number between a
+start and end value at a specific point in time.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">internal</span> <span class="kd">static</span> <span class="kd">func</span> <span class="n">quartOut</span><span class="o">&lt;</span><span class="kt">Number</span><span class="p">:</span> <span class="kt">FloatingPoint</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">b</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">c</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">t</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">d</span><span class="p">:</span> <span class="kt">Number</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Number</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">quartOut</span><span class="p">(</span><span class="nv">b</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">c</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">t</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">d</span><span class="p">:</span> <span class="kt">Number</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Number</span></code></pre>
 
                         </div>
                       </div>
@@ -1248,7 +1259,6 @@ between a starting and ending position at a specific point in time.</p>
                               <td>
                                 <div>
                                   <p>The start value (b = begin).</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -1261,7 +1271,6 @@ between a starting and ending position at a specific point in time.</p>
                               <td>
                                 <div>
                                   <p>The change in value (c = change).</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -1273,8 +1282,7 @@ between a starting and ending position at a specific point in time.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The amount of time elapsed since the start of the ease (t = time).</p>
-
+                                  <p>The elapsed time of the ease (t = time).</p>
                                 </div>
                               </td>
                             </tr>
@@ -1286,8 +1294,7 @@ between a starting and ending position at a specific point in time.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The total amount of time the ease will run (d = duration).</p>
-
+                                  <p>The duration of the ease (d = duration).</p>
                                 </div>
                               </td>
                             </tr>
@@ -1296,8 +1303,7 @@ between a starting and ending position at a specific point in time.</p>
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>The value at a specific point in time from the start value.</p>
-
+                        <p>The number between the start and end value at a specific point in time.</p>
                       </div>
                     </section>
                   </div>
@@ -1305,9 +1311,9 @@ between a starting and ending position at a specific point in time.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:ZFC6STween13EaseFunctions10quartInOutuRxs13FloatingPointrFT1bx1cx1tx1dx_x"></a>
+                    <a name="/s:6STween12EaseFunctionO10quartInOut1b1c1t1dxx_xxxtFZ"></a>
                     <a name="//apple_ref/swift/Method/quartInOut(b:c:t:d:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:ZFC6STween13EaseFunctions10quartInOutuRxs13FloatingPointrFT1bx1cx1tx1dx_x">quartInOut(b:c:t:d:)</a>
+                    <a class="token" href="#/s:6STween12EaseFunctionO10quartInOut1b1c1t1dxx_xxxtFZ">quartInOut(b:c:t:d:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1315,15 +1321,15 @@ between a starting and ending position at a specific point in time.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The algorithmic function of a <code>quartInOut</code> ease used to calculate a value
-between a starting and ending position at a specific point in time.</p>
+                        <p>The algorithmic function of a <code>quartInOut</code> ease that calculates the number between a
+start and end value at a specific point in time.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">internal</span> <span class="kd">static</span> <span class="kd">func</span> <span class="n">quartInOut</span><span class="o">&lt;</span><span class="kt">Number</span><span class="p">:</span> <span class="kt">FloatingPoint</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">b</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">c</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">t</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">d</span><span class="p">:</span> <span class="kt">Number</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Number</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">quartInOut</span><span class="p">(</span><span class="nv">b</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">c</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">t</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">d</span><span class="p">:</span> <span class="kt">Number</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Number</span></code></pre>
 
                         </div>
                       </div>
@@ -1340,7 +1346,6 @@ between a starting and ending position at a specific point in time.</p>
                               <td>
                                 <div>
                                   <p>The start value (b = begin).</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -1353,7 +1358,6 @@ between a starting and ending position at a specific point in time.</p>
                               <td>
                                 <div>
                                   <p>The change in value (c = change).</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -1365,8 +1369,7 @@ between a starting and ending position at a specific point in time.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The amount of time elapsed since the start of the ease (t = time).</p>
-
+                                  <p>The elapsed time of the ease (t = time).</p>
                                 </div>
                               </td>
                             </tr>
@@ -1378,8 +1381,7 @@ between a starting and ending position at a specific point in time.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The total amount of time the ease will run (d = duration).</p>
-
+                                  <p>The duration of the ease (d = duration).</p>
                                 </div>
                               </td>
                             </tr>
@@ -1388,8 +1390,7 @@ between a starting and ending position at a specific point in time.</p>
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>The value at a specific point in time from the start value.</p>
-
+                        <p>The number between the start and end value at a specific point in time.</p>
                       </div>
                     </section>
                   </div>
@@ -1408,9 +1409,9 @@ between a starting and ending position at a specific point in time.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:ZFC6STween13EaseFunctions7quintInuRxs13FloatingPointrFT1bx1cx1tx1dx_x"></a>
+                    <a name="/s:6STween12EaseFunctionO7quintIn1b1c1t1dxx_xxxtFZ"></a>
                     <a name="//apple_ref/swift/Method/quintIn(b:c:t:d:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:ZFC6STween13EaseFunctions7quintInuRxs13FloatingPointrFT1bx1cx1tx1dx_x">quintIn(b:c:t:d:)</a>
+                    <a class="token" href="#/s:6STween12EaseFunctionO7quintIn1b1c1t1dxx_xxxtFZ">quintIn(b:c:t:d:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1418,15 +1419,15 @@ between a starting and ending position at a specific point in time.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The algorithmic function of a <code>quintIn</code> ease used to calculate a value
-between a starting and ending position at a specific point in time.</p>
+                        <p>The algorithmic function of a <code>quintIn</code> ease that calculates the number between a
+start and end value at a specific point in time.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">internal</span> <span class="kd">static</span> <span class="kd">func</span> <span class="n">quintIn</span><span class="o">&lt;</span><span class="kt">Number</span><span class="p">:</span> <span class="kt">FloatingPoint</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">b</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">c</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">t</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">d</span><span class="p">:</span> <span class="kt">Number</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Number</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">quintIn</span><span class="p">(</span><span class="nv">b</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">c</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">t</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">d</span><span class="p">:</span> <span class="kt">Number</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Number</span></code></pre>
 
                         </div>
                       </div>
@@ -1443,7 +1444,6 @@ between a starting and ending position at a specific point in time.</p>
                               <td>
                                 <div>
                                   <p>The start value (b = begin).</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -1456,7 +1456,6 @@ between a starting and ending position at a specific point in time.</p>
                               <td>
                                 <div>
                                   <p>The change in value (c = change).</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -1468,8 +1467,7 @@ between a starting and ending position at a specific point in time.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The amount of time elapsed since the start of the ease (t = time).</p>
-
+                                  <p>The elapsed time of the ease (t = time).</p>
                                 </div>
                               </td>
                             </tr>
@@ -1481,8 +1479,7 @@ between a starting and ending position at a specific point in time.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The total amount of time the ease will run (d = duration).</p>
-
+                                  <p>The duration of the ease (d = duration).</p>
                                 </div>
                               </td>
                             </tr>
@@ -1491,8 +1488,7 @@ between a starting and ending position at a specific point in time.</p>
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>The value at a specific point in time from the start value.</p>
-
+                        <p>The number between the start and end value at a specific point in time.</p>
                       </div>
                     </section>
                   </div>
@@ -1500,9 +1496,9 @@ between a starting and ending position at a specific point in time.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:ZFC6STween13EaseFunctions8quintOutuRxs13FloatingPointrFT1bx1cx1tx1dx_x"></a>
+                    <a name="/s:6STween12EaseFunctionO8quintOut1b1c1t1dxx_xxxtFZ"></a>
                     <a name="//apple_ref/swift/Method/quintOut(b:c:t:d:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:ZFC6STween13EaseFunctions8quintOutuRxs13FloatingPointrFT1bx1cx1tx1dx_x">quintOut(b:c:t:d:)</a>
+                    <a class="token" href="#/s:6STween12EaseFunctionO8quintOut1b1c1t1dxx_xxxtFZ">quintOut(b:c:t:d:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1510,15 +1506,15 @@ between a starting and ending position at a specific point in time.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The algorithmic function of a <code>quintOut</code> ease used to calculate a value
-between a starting and ending position at a specific point in time.</p>
+                        <p>The algorithmic function of a <code>quintOut</code> ease that calculates the number between a
+start and end value at a specific point in time.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">internal</span> <span class="kd">static</span> <span class="kd">func</span> <span class="n">quintOut</span><span class="o">&lt;</span><span class="kt">Number</span><span class="p">:</span> <span class="kt">FloatingPoint</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">b</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">c</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">t</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">d</span><span class="p">:</span> <span class="kt">Number</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Number</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">quintOut</span><span class="p">(</span><span class="nv">b</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">c</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">t</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">d</span><span class="p">:</span> <span class="kt">Number</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Number</span></code></pre>
 
                         </div>
                       </div>
@@ -1535,7 +1531,6 @@ between a starting and ending position at a specific point in time.</p>
                               <td>
                                 <div>
                                   <p>The start value (b = begin).</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -1548,7 +1543,6 @@ between a starting and ending position at a specific point in time.</p>
                               <td>
                                 <div>
                                   <p>The change in value (c = change).</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -1560,8 +1554,7 @@ between a starting and ending position at a specific point in time.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The amount of time elapsed since the start of the ease (t = time).</p>
-
+                                  <p>The elapsed time of the ease (t = time).</p>
                                 </div>
                               </td>
                             </tr>
@@ -1573,8 +1566,7 @@ between a starting and ending position at a specific point in time.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The total amount of time the ease will run (d = duration).</p>
-
+                                  <p>The duration of the ease (d = duration).</p>
                                 </div>
                               </td>
                             </tr>
@@ -1583,8 +1575,7 @@ between a starting and ending position at a specific point in time.</p>
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>The value at a specific point in time from the start value.</p>
-
+                        <p>The number between the start and end value at a specific point in time.</p>
                       </div>
                     </section>
                   </div>
@@ -1592,9 +1583,9 @@ between a starting and ending position at a specific point in time.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:ZFC6STween13EaseFunctions10quintInOutuRxs13FloatingPointrFT1bx1cx1tx1dx_x"></a>
+                    <a name="/s:6STween12EaseFunctionO10quintInOut1b1c1t1dxx_xxxtFZ"></a>
                     <a name="//apple_ref/swift/Method/quintInOut(b:c:t:d:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:ZFC6STween13EaseFunctions10quintInOutuRxs13FloatingPointrFT1bx1cx1tx1dx_x">quintInOut(b:c:t:d:)</a>
+                    <a class="token" href="#/s:6STween12EaseFunctionO10quintInOut1b1c1t1dxx_xxxtFZ">quintInOut(b:c:t:d:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1602,15 +1593,15 @@ between a starting and ending position at a specific point in time.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The algorithmic function of a <code>quintInOut</code> ease used to calculate a value
-between a starting and ending position at a specific point in time.</p>
+                        <p>The algorithmic function of a <code>quintInOut</code> ease that calculates the number between a
+start and end value at a specific point in time.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">internal</span> <span class="kd">static</span> <span class="kd">func</span> <span class="n">quintInOut</span><span class="o">&lt;</span><span class="kt">Number</span><span class="p">:</span> <span class="kt">FloatingPoint</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">b</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">c</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">t</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">d</span><span class="p">:</span> <span class="kt">Number</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Number</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">quintInOut</span><span class="p">(</span><span class="nv">b</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">c</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">t</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">d</span><span class="p">:</span> <span class="kt">Number</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Number</span></code></pre>
 
                         </div>
                       </div>
@@ -1627,7 +1618,6 @@ between a starting and ending position at a specific point in time.</p>
                               <td>
                                 <div>
                                   <p>The start value (b = begin).</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -1640,7 +1630,6 @@ between a starting and ending position at a specific point in time.</p>
                               <td>
                                 <div>
                                   <p>The change in value (c = change).</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -1652,8 +1641,7 @@ between a starting and ending position at a specific point in time.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The amount of time elapsed since the start of the ease (t = time).</p>
-
+                                  <p>The elapsed time of the ease (t = time).</p>
                                 </div>
                               </td>
                             </tr>
@@ -1665,8 +1653,7 @@ between a starting and ending position at a specific point in time.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The total amount of time the ease will run (d = duration).</p>
-
+                                  <p>The duration of the ease (d = duration).</p>
                                 </div>
                               </td>
                             </tr>
@@ -1675,8 +1662,7 @@ between a starting and ending position at a specific point in time.</p>
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>The value at a specific point in time from the start value.</p>
-
+                        <p>The number between the start and end value at a specific point in time.</p>
                       </div>
                     </section>
                   </div>
@@ -1695,9 +1681,9 @@ between a starting and ending position at a specific point in time.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:ZFC6STween13EaseFunctions6expoInuRxs13FloatingPointrFT1bx1cx1tx1dx_x"></a>
+                    <a name="/s:6STween12EaseFunctionO6expoIn1b1c1t1dxx_xxxtFZ"></a>
                     <a name="//apple_ref/swift/Method/expoIn(b:c:t:d:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:ZFC6STween13EaseFunctions6expoInuRxs13FloatingPointrFT1bx1cx1tx1dx_x">expoIn(b:c:t:d:)</a>
+                    <a class="token" href="#/s:6STween12EaseFunctionO6expoIn1b1c1t1dxx_xxxtFZ">expoIn(b:c:t:d:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1705,15 +1691,15 @@ between a starting and ending position at a specific point in time.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The algorithmic function of an <code>expoIn</code> ease used to calculate a value
-between a starting and ending position at a specific point in time.</p>
+                        <p>The algorithmic function of an <code>expoIn</code> ease that calculates the number between a
+start and end value at a specific point in time.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">internal</span> <span class="kd">static</span> <span class="kd">func</span> <span class="n">expoIn</span><span class="o">&lt;</span><span class="kt">Number</span><span class="p">:</span> <span class="kt">FloatingPoint</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">b</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">c</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">t</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">d</span><span class="p">:</span> <span class="kt">Number</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Number</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">expoIn</span><span class="p">(</span><span class="nv">b</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">c</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">t</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">d</span><span class="p">:</span> <span class="kt">Number</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Number</span></code></pre>
 
                         </div>
                       </div>
@@ -1730,7 +1716,6 @@ between a starting and ending position at a specific point in time.</p>
                               <td>
                                 <div>
                                   <p>The start value (b = begin).</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -1743,7 +1728,6 @@ between a starting and ending position at a specific point in time.</p>
                               <td>
                                 <div>
                                   <p>The change in value (c = change).</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -1755,8 +1739,7 @@ between a starting and ending position at a specific point in time.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The amount of time elapsed since the start of the ease (t = time).</p>
-
+                                  <p>The elapsed time of the ease (t = time).</p>
                                 </div>
                               </td>
                             </tr>
@@ -1768,8 +1751,7 @@ between a starting and ending position at a specific point in time.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The total amount of time the ease will run (d = duration).</p>
-
+                                  <p>The duration of the ease (d = duration).</p>
                                 </div>
                               </td>
                             </tr>
@@ -1778,8 +1760,7 @@ between a starting and ending position at a specific point in time.</p>
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>The value at a specific point in time from the start value.</p>
-
+                        <p>The number between the start and end value at a specific point in time.</p>
                       </div>
                     </section>
                   </div>
@@ -1787,9 +1768,9 @@ between a starting and ending position at a specific point in time.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:ZFC6STween13EaseFunctions7expoOutuRxs13FloatingPointrFT1bx1cx1tx1dx_x"></a>
+                    <a name="/s:6STween12EaseFunctionO7expoOut1b1c1t1dxx_xxxtFZ"></a>
                     <a name="//apple_ref/swift/Method/expoOut(b:c:t:d:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:ZFC6STween13EaseFunctions7expoOutuRxs13FloatingPointrFT1bx1cx1tx1dx_x">expoOut(b:c:t:d:)</a>
+                    <a class="token" href="#/s:6STween12EaseFunctionO7expoOut1b1c1t1dxx_xxxtFZ">expoOut(b:c:t:d:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1797,15 +1778,15 @@ between a starting and ending position at a specific point in time.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The algorithmic function of an <code>expoOut</code> ease used to calculate a value
-between a starting and ending position at a specific point in time.</p>
+                        <p>The algorithmic function of an <code>expoOut</code> ease that calculates the number between a
+start and end value at a specific point in time.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">internal</span> <span class="kd">static</span> <span class="kd">func</span> <span class="n">expoOut</span><span class="o">&lt;</span><span class="kt">Number</span><span class="p">:</span> <span class="kt">FloatingPoint</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">b</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">c</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">t</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">d</span><span class="p">:</span> <span class="kt">Number</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Number</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">expoOut</span><span class="p">(</span><span class="nv">b</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">c</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">t</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">d</span><span class="p">:</span> <span class="kt">Number</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Number</span></code></pre>
 
                         </div>
                       </div>
@@ -1822,7 +1803,6 @@ between a starting and ending position at a specific point in time.</p>
                               <td>
                                 <div>
                                   <p>The start value (b = begin).</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -1835,7 +1815,6 @@ between a starting and ending position at a specific point in time.</p>
                               <td>
                                 <div>
                                   <p>The change in value (c = change).</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -1847,8 +1826,7 @@ between a starting and ending position at a specific point in time.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The amount of time elapsed since the start of the ease (t = time).</p>
-
+                                  <p>The elapsed time of the ease (t = time).</p>
                                 </div>
                               </td>
                             </tr>
@@ -1860,8 +1838,7 @@ between a starting and ending position at a specific point in time.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The total amount of time the ease will run (d = duration).</p>
-
+                                  <p>The duration of the ease (d = duration).</p>
                                 </div>
                               </td>
                             </tr>
@@ -1870,8 +1847,7 @@ between a starting and ending position at a specific point in time.</p>
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>The value at a specific point in time from the start value.</p>
-
+                        <p>The number between the start and end value at a specific point in time.</p>
                       </div>
                     </section>
                   </div>
@@ -1879,9 +1855,9 @@ between a starting and ending position at a specific point in time.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:ZFC6STween13EaseFunctions9expoInOutuRxs13FloatingPointrFT1bx1cx1tx1dx_x"></a>
+                    <a name="/s:6STween12EaseFunctionO9expoInOut1b1c1t1dxx_xxxtFZ"></a>
                     <a name="//apple_ref/swift/Method/expoInOut(b:c:t:d:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:ZFC6STween13EaseFunctions9expoInOutuRxs13FloatingPointrFT1bx1cx1tx1dx_x">expoInOut(b:c:t:d:)</a>
+                    <a class="token" href="#/s:6STween12EaseFunctionO9expoInOut1b1c1t1dxx_xxxtFZ">expoInOut(b:c:t:d:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1889,15 +1865,15 @@ between a starting and ending position at a specific point in time.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The algorithmic function of an <code>expoInOut</code> ease used to calculate a value
-between a starting and ending position at a specific point in time.</p>
+                        <p>The algorithmic function of an <code>expoInOut</code> ease that calculates the number between a
+start and end value at a specific point in time.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">internal</span> <span class="kd">static</span> <span class="kd">func</span> <span class="n">expoInOut</span><span class="o">&lt;</span><span class="kt">Number</span><span class="p">:</span> <span class="kt">FloatingPoint</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">b</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">c</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">t</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">d</span><span class="p">:</span> <span class="kt">Number</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Number</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">expoInOut</span><span class="p">(</span><span class="nv">b</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">c</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">t</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">d</span><span class="p">:</span> <span class="kt">Number</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Number</span></code></pre>
 
                         </div>
                       </div>
@@ -1914,7 +1890,6 @@ between a starting and ending position at a specific point in time.</p>
                               <td>
                                 <div>
                                   <p>The start value (b = begin).</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -1927,7 +1902,6 @@ between a starting and ending position at a specific point in time.</p>
                               <td>
                                 <div>
                                   <p>The change in value (c = change).</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -1939,8 +1913,7 @@ between a starting and ending position at a specific point in time.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The amount of time elapsed since the start of the ease (t = time).</p>
-
+                                  <p>The elapsed time of the ease (t = time).</p>
                                 </div>
                               </td>
                             </tr>
@@ -1952,8 +1925,7 @@ between a starting and ending position at a specific point in time.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The total amount of time the ease will run (d = duration).</p>
-
+                                  <p>The duration of the ease (d = duration).</p>
                                 </div>
                               </td>
                             </tr>
@@ -1962,8 +1934,7 @@ between a starting and ending position at a specific point in time.</p>
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>The value at a specific point in time from the start value.</p>
-
+                        <p>The number between the start and end value at a specific point in time.</p>
                       </div>
                     </section>
                   </div>
@@ -1982,9 +1953,9 @@ between a starting and ending position at a specific point in time.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:ZFC6STween13EaseFunctions6circInuRxs13FloatingPointrFT1bx1cx1tx1dx_x"></a>
+                    <a name="/s:6STween12EaseFunctionO6circIn1b1c1t1dxx_xxxtFZ"></a>
                     <a name="//apple_ref/swift/Method/circIn(b:c:t:d:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:ZFC6STween13EaseFunctions6circInuRxs13FloatingPointrFT1bx1cx1tx1dx_x">circIn(b:c:t:d:)</a>
+                    <a class="token" href="#/s:6STween12EaseFunctionO6circIn1b1c1t1dxx_xxxtFZ">circIn(b:c:t:d:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1992,15 +1963,15 @@ between a starting and ending position at a specific point in time.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The algorithmic function of a <code>circIn</code> ease used to calculate a value
-between a starting and ending position at a specific point in time.</p>
+                        <p>The algorithmic function of a <code>circIn</code> ease that calculates the number between a
+start and end value at a specific point in time.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">internal</span> <span class="kd">static</span> <span class="kd">func</span> <span class="n">circIn</span><span class="o">&lt;</span><span class="kt">Number</span><span class="p">:</span> <span class="kt">FloatingPoint</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">b</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">c</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">t</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">d</span><span class="p">:</span> <span class="kt">Number</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Number</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">circIn</span><span class="p">(</span><span class="nv">b</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">c</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">t</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">d</span><span class="p">:</span> <span class="kt">Number</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Number</span></code></pre>
 
                         </div>
                       </div>
@@ -2017,7 +1988,6 @@ between a starting and ending position at a specific point in time.</p>
                               <td>
                                 <div>
                                   <p>The start value (b = begin).</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -2030,7 +2000,6 @@ between a starting and ending position at a specific point in time.</p>
                               <td>
                                 <div>
                                   <p>The change in value (c = change).</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -2042,8 +2011,7 @@ between a starting and ending position at a specific point in time.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The amount of time elapsed since the start of the ease (t = time).</p>
-
+                                  <p>The elapsed time of the ease (t = time).</p>
                                 </div>
                               </td>
                             </tr>
@@ -2055,8 +2023,7 @@ between a starting and ending position at a specific point in time.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The total amount of time the ease will run (d = duration).</p>
-
+                                  <p>The duration of the ease (d = duration).</p>
                                 </div>
                               </td>
                             </tr>
@@ -2065,8 +2032,7 @@ between a starting and ending position at a specific point in time.</p>
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>The value at a specific point in time from the start value.</p>
-
+                        <p>The number between the start and end value at a specific point in time.</p>
                       </div>
                     </section>
                   </div>
@@ -2074,9 +2040,9 @@ between a starting and ending position at a specific point in time.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:ZFC6STween13EaseFunctions7circOutuRxs13FloatingPointrFT1bx1cx1tx1dx_x"></a>
+                    <a name="/s:6STween12EaseFunctionO7circOut1b1c1t1dxx_xxxtFZ"></a>
                     <a name="//apple_ref/swift/Method/circOut(b:c:t:d:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:ZFC6STween13EaseFunctions7circOutuRxs13FloatingPointrFT1bx1cx1tx1dx_x">circOut(b:c:t:d:)</a>
+                    <a class="token" href="#/s:6STween12EaseFunctionO7circOut1b1c1t1dxx_xxxtFZ">circOut(b:c:t:d:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -2084,15 +2050,15 @@ between a starting and ending position at a specific point in time.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The algorithmic function of a <code>circOut</code> ease used to calculate a value
-between a starting and ending position at a specific point in time.</p>
+                        <p>The algorithmic function of a <code>circOut</code> ease that calculates the number between a
+start and end value at a specific point in time.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">internal</span> <span class="kd">static</span> <span class="kd">func</span> <span class="n">circOut</span><span class="o">&lt;</span><span class="kt">Number</span><span class="p">:</span> <span class="kt">FloatingPoint</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">b</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">c</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">t</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">d</span><span class="p">:</span> <span class="kt">Number</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Number</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">circOut</span><span class="p">(</span><span class="nv">b</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">c</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">t</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">d</span><span class="p">:</span> <span class="kt">Number</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Number</span></code></pre>
 
                         </div>
                       </div>
@@ -2109,7 +2075,6 @@ between a starting and ending position at a specific point in time.</p>
                               <td>
                                 <div>
                                   <p>The start value (b = begin).</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -2122,7 +2087,6 @@ between a starting and ending position at a specific point in time.</p>
                               <td>
                                 <div>
                                   <p>The change in value (c = change).</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -2134,8 +2098,7 @@ between a starting and ending position at a specific point in time.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The amount of time elapsed since the start of the ease (t = time).</p>
-
+                                  <p>The elapsed time of the ease (t = time).</p>
                                 </div>
                               </td>
                             </tr>
@@ -2147,8 +2110,7 @@ between a starting and ending position at a specific point in time.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The total amount of time the ease will run (d = duration).</p>
-
+                                  <p>The duration of the ease (d = duration).</p>
                                 </div>
                               </td>
                             </tr>
@@ -2157,8 +2119,7 @@ between a starting and ending position at a specific point in time.</p>
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>The value at a specific point in time from the start value.</p>
-
+                        <p>The number between the start and end value at a specific point in time.</p>
                       </div>
                     </section>
                   </div>
@@ -2166,9 +2127,9 @@ between a starting and ending position at a specific point in time.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:ZFC6STween13EaseFunctions9circInOutuRxs13FloatingPointrFT1bx1cx1tx1dx_x"></a>
+                    <a name="/s:6STween12EaseFunctionO9circInOut1b1c1t1dxx_xxxtFZ"></a>
                     <a name="//apple_ref/swift/Method/circInOut(b:c:t:d:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:ZFC6STween13EaseFunctions9circInOutuRxs13FloatingPointrFT1bx1cx1tx1dx_x">circInOut(b:c:t:d:)</a>
+                    <a class="token" href="#/s:6STween12EaseFunctionO9circInOut1b1c1t1dxx_xxxtFZ">circInOut(b:c:t:d:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -2176,15 +2137,15 @@ between a starting and ending position at a specific point in time.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The algorithmic function of a <code>circInOut</code> ease used to calculate a value
-between a starting and ending position at a specific point in time.</p>
+                        <p>The algorithmic function of a <code>circInOut</code> ease that calculates the number between a
+start and end value at a specific point in time.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">internal</span> <span class="kd">static</span> <span class="kd">func</span> <span class="n">circInOut</span><span class="o">&lt;</span><span class="kt">Number</span><span class="p">:</span> <span class="kt">FloatingPoint</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">b</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">c</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">t</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">d</span><span class="p">:</span> <span class="kt">Number</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Number</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">circInOut</span><span class="p">(</span><span class="nv">b</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">c</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">t</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">d</span><span class="p">:</span> <span class="kt">Number</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Number</span></code></pre>
 
                         </div>
                       </div>
@@ -2201,7 +2162,6 @@ between a starting and ending position at a specific point in time.</p>
                               <td>
                                 <div>
                                   <p>The start value (b = begin).</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -2214,7 +2174,6 @@ between a starting and ending position at a specific point in time.</p>
                               <td>
                                 <div>
                                   <p>The change in value (c = change).</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -2226,8 +2185,7 @@ between a starting and ending position at a specific point in time.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The amount of time elapsed since the start of the ease (t = time).</p>
-
+                                  <p>The elapsed time of the ease (t = time).</p>
                                 </div>
                               </td>
                             </tr>
@@ -2239,8 +2197,7 @@ between a starting and ending position at a specific point in time.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The total amount of time the ease will run (d = duration).</p>
-
+                                  <p>The duration of the ease (d = duration).</p>
                                 </div>
                               </td>
                             </tr>
@@ -2249,8 +2206,7 @@ between a starting and ending position at a specific point in time.</p>
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>The value at a specific point in time from the start value.</p>
-
+                        <p>The number between the start and end value at a specific point in time.</p>
                       </div>
                     </section>
                   </div>
@@ -2269,9 +2225,9 @@ between a starting and ending position at a specific point in time.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:ZFC6STween13EaseFunctions6backInuRxs13FloatingPointrFT1bx1cx1tx1dx_x"></a>
+                    <a name="/s:6STween12EaseFunctionO6backIn1b1c1t1dxx_xxxtFZ"></a>
                     <a name="//apple_ref/swift/Method/backIn(b:c:t:d:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:ZFC6STween13EaseFunctions6backInuRxs13FloatingPointrFT1bx1cx1tx1dx_x">backIn(b:c:t:d:)</a>
+                    <a class="token" href="#/s:6STween12EaseFunctionO6backIn1b1c1t1dxx_xxxtFZ">backIn(b:c:t:d:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -2279,15 +2235,15 @@ between a starting and ending position at a specific point in time.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The algorithmic function of a <code>backIn</code> ease used to calculate a value
-between a starting and ending position at a specific point in time.</p>
+                        <p>The algorithmic function of a <code>backIn</code> ease that calculates the number between a
+start and end value at a specific point in time.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">internal</span> <span class="kd">static</span> <span class="kd">func</span> <span class="n">backIn</span><span class="o">&lt;</span><span class="kt">Number</span><span class="p">:</span> <span class="kt">FloatingPoint</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">b</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">c</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">t</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">d</span><span class="p">:</span> <span class="kt">Number</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Number</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">backIn</span><span class="p">(</span><span class="nv">b</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">c</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">t</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">d</span><span class="p">:</span> <span class="kt">Number</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Number</span></code></pre>
 
                         </div>
                       </div>
@@ -2304,7 +2260,6 @@ between a starting and ending position at a specific point in time.</p>
                               <td>
                                 <div>
                                   <p>The start value (b = begin).</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -2317,7 +2272,6 @@ between a starting and ending position at a specific point in time.</p>
                               <td>
                                 <div>
                                   <p>The change in value (c = change).</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -2329,8 +2283,7 @@ between a starting and ending position at a specific point in time.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The amount of time elapsed since the start of the ease (t = time).</p>
-
+                                  <p>The elapsed time of the ease (t = time).</p>
                                 </div>
                               </td>
                             </tr>
@@ -2342,8 +2295,7 @@ between a starting and ending position at a specific point in time.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The total amount of time the ease will run (d = duration).</p>
-
+                                  <p>The duration of the ease (d = duration).</p>
                                 </div>
                               </td>
                             </tr>
@@ -2352,8 +2304,7 @@ between a starting and ending position at a specific point in time.</p>
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>The value at a specific point in time from the start value.</p>
-
+                        <p>The number between the start and end value at a specific point in time.</p>
                       </div>
                     </section>
                   </div>
@@ -2361,9 +2312,9 @@ between a starting and ending position at a specific point in time.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:ZFC6STween13EaseFunctions7backOutuRxs13FloatingPointrFT1bx1cx1tx1dx_x"></a>
+                    <a name="/s:6STween12EaseFunctionO7backOut1b1c1t1dxx_xxxtFZ"></a>
                     <a name="//apple_ref/swift/Method/backOut(b:c:t:d:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:ZFC6STween13EaseFunctions7backOutuRxs13FloatingPointrFT1bx1cx1tx1dx_x">backOut(b:c:t:d:)</a>
+                    <a class="token" href="#/s:6STween12EaseFunctionO7backOut1b1c1t1dxx_xxxtFZ">backOut(b:c:t:d:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -2371,15 +2322,15 @@ between a starting and ending position at a specific point in time.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The algorithmic function of a <code>backOut</code> ease used to calculate a value
-between a starting and ending position at a specific point in time.</p>
+                        <p>The algorithmic function of a <code>backOut</code> ease that calculates the number between a
+start and end value at a specific point in time.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">internal</span> <span class="kd">static</span> <span class="kd">func</span> <span class="n">backOut</span><span class="o">&lt;</span><span class="kt">Number</span><span class="p">:</span> <span class="kt">FloatingPoint</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">b</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">c</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">t</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">d</span><span class="p">:</span> <span class="kt">Number</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Number</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">backOut</span><span class="p">(</span><span class="nv">b</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">c</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">t</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">d</span><span class="p">:</span> <span class="kt">Number</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Number</span></code></pre>
 
                         </div>
                       </div>
@@ -2396,7 +2347,6 @@ between a starting and ending position at a specific point in time.</p>
                               <td>
                                 <div>
                                   <p>The start value (b = begin).</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -2409,7 +2359,6 @@ between a starting and ending position at a specific point in time.</p>
                               <td>
                                 <div>
                                   <p>The change in value (c = change).</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -2421,8 +2370,7 @@ between a starting and ending position at a specific point in time.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The amount of time elapsed since the start of the ease (t = time).</p>
-
+                                  <p>The elapsed time of the ease (t = time).</p>
                                 </div>
                               </td>
                             </tr>
@@ -2434,8 +2382,7 @@ between a starting and ending position at a specific point in time.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The total amount of time the ease will run (d = duration).</p>
-
+                                  <p>The duration of the ease (d = duration).</p>
                                 </div>
                               </td>
                             </tr>
@@ -2444,8 +2391,7 @@ between a starting and ending position at a specific point in time.</p>
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>The value at a specific point in time from the start value.</p>
-
+                        <p>The number between the start and end value at a specific point in time.</p>
                       </div>
                     </section>
                   </div>
@@ -2453,9 +2399,9 @@ between a starting and ending position at a specific point in time.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:ZFC6STween13EaseFunctions9backInOutuRxs13FloatingPointrFT1bx1cx1tx1dx_x"></a>
+                    <a name="/s:6STween12EaseFunctionO9backInOut1b1c1t1dxx_xxxtFZ"></a>
                     <a name="//apple_ref/swift/Method/backInOut(b:c:t:d:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:ZFC6STween13EaseFunctions9backInOutuRxs13FloatingPointrFT1bx1cx1tx1dx_x">backInOut(b:c:t:d:)</a>
+                    <a class="token" href="#/s:6STween12EaseFunctionO9backInOut1b1c1t1dxx_xxxtFZ">backInOut(b:c:t:d:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -2463,15 +2409,15 @@ between a starting and ending position at a specific point in time.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The algorithmic function of a <code>backInOut</code> ease used to calculate a value
-between a starting and ending position at a specific point in time.</p>
+                        <p>The algorithmic function of a <code>backInOut</code> ease that calculates the number between a
+start and end value at a specific point in time.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">internal</span> <span class="kd">static</span> <span class="kd">func</span> <span class="n">backInOut</span><span class="o">&lt;</span><span class="kt">Number</span><span class="p">:</span> <span class="kt">FloatingPoint</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">b</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">c</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">t</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">d</span><span class="p">:</span> <span class="kt">Number</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Number</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">backInOut</span><span class="p">(</span><span class="nv">b</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">c</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">t</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">d</span><span class="p">:</span> <span class="kt">Number</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Number</span></code></pre>
 
                         </div>
                       </div>
@@ -2488,7 +2434,6 @@ between a starting and ending position at a specific point in time.</p>
                               <td>
                                 <div>
                                   <p>The start value (b = begin).</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -2501,7 +2446,6 @@ between a starting and ending position at a specific point in time.</p>
                               <td>
                                 <div>
                                   <p>The change in value (c = change).</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -2513,8 +2457,7 @@ between a starting and ending position at a specific point in time.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The amount of time elapsed since the start of the ease (t = time).</p>
-
+                                  <p>The elapsed time of the ease (t = time).</p>
                                 </div>
                               </td>
                             </tr>
@@ -2526,8 +2469,7 @@ between a starting and ending position at a specific point in time.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The total amount of time the ease will run (d = duration).</p>
-
+                                  <p>The duration of the ease (d = duration).</p>
                                 </div>
                               </td>
                             </tr>
@@ -2536,8 +2478,7 @@ between a starting and ending position at a specific point in time.</p>
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>The value at a specific point in time from the start value.</p>
-
+                        <p>The number between the start and end value at a specific point in time.</p>
                       </div>
                     </section>
                   </div>
@@ -2556,9 +2497,9 @@ between a starting and ending position at a specific point in time.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:ZFC6STween13EaseFunctions9elasticInuRxs13FloatingPointrFT1bx1cx1tx1dx_x"></a>
+                    <a name="/s:6STween12EaseFunctionO9elasticIn1b1c1t1dxx_xxxtFZ"></a>
                     <a name="//apple_ref/swift/Method/elasticIn(b:c:t:d:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:ZFC6STween13EaseFunctions9elasticInuRxs13FloatingPointrFT1bx1cx1tx1dx_x">elasticIn(b:c:t:d:)</a>
+                    <a class="token" href="#/s:6STween12EaseFunctionO9elasticIn1b1c1t1dxx_xxxtFZ">elasticIn(b:c:t:d:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -2566,15 +2507,15 @@ between a starting and ending position at a specific point in time.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The algorithmic function of an <code>elasticIn</code> ease used to calculate a value
-between a starting and ending position at a specific point in time.</p>
+                        <p>The algorithmic function of an <code>elasticIn</code> ease that calculates the number between a
+start and end value at a specific point in time.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">internal</span> <span class="kd">static</span> <span class="kd">func</span> <span class="n">elasticIn</span><span class="o">&lt;</span><span class="kt">Number</span><span class="p">:</span> <span class="kt">FloatingPoint</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">b</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">c</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">t</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">d</span><span class="p">:</span> <span class="kt">Number</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Number</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">elasticIn</span><span class="p">(</span><span class="nv">b</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">c</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">t</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">d</span><span class="p">:</span> <span class="kt">Number</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Number</span></code></pre>
 
                         </div>
                       </div>
@@ -2591,7 +2532,6 @@ between a starting and ending position at a specific point in time.</p>
                               <td>
                                 <div>
                                   <p>The start value (b = begin).</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -2604,7 +2544,6 @@ between a starting and ending position at a specific point in time.</p>
                               <td>
                                 <div>
                                   <p>The change in value (c = change).</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -2616,8 +2555,7 @@ between a starting and ending position at a specific point in time.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The amount of time elapsed since the start of the ease (t = time).</p>
-
+                                  <p>The elapsed time of the ease (t = time).</p>
                                 </div>
                               </td>
                             </tr>
@@ -2629,8 +2567,7 @@ between a starting and ending position at a specific point in time.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The total amount of time the ease will run (d = duration).</p>
-
+                                  <p>The duration of the ease (d = duration).</p>
                                 </div>
                               </td>
                             </tr>
@@ -2639,8 +2576,7 @@ between a starting and ending position at a specific point in time.</p>
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>The value at a specific point in time from the start value.</p>
-
+                        <p>The number between the start and end value at a specific point in time.</p>
                       </div>
                     </section>
                   </div>
@@ -2648,9 +2584,9 @@ between a starting and ending position at a specific point in time.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:ZFC6STween13EaseFunctions10elasticOutuRxs13FloatingPointrFT1bx1cx1tx1dx_x"></a>
+                    <a name="/s:6STween12EaseFunctionO10elasticOut1b1c1t1dxx_xxxtFZ"></a>
                     <a name="//apple_ref/swift/Method/elasticOut(b:c:t:d:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:ZFC6STween13EaseFunctions10elasticOutuRxs13FloatingPointrFT1bx1cx1tx1dx_x">elasticOut(b:c:t:d:)</a>
+                    <a class="token" href="#/s:6STween12EaseFunctionO10elasticOut1b1c1t1dxx_xxxtFZ">elasticOut(b:c:t:d:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -2658,15 +2594,15 @@ between a starting and ending position at a specific point in time.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The algorithmic function of an <code>elasticOut</code> ease used to calculate a value
-between a starting and ending position at a specific point in time.</p>
+                        <p>The algorithmic function of an <code>elasticOut</code> ease that calculates the number between a
+start and end value at a specific point in time.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">internal</span> <span class="kd">static</span> <span class="kd">func</span> <span class="n">elasticOut</span><span class="o">&lt;</span><span class="kt">Number</span><span class="p">:</span> <span class="kt">FloatingPoint</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">b</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">c</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">t</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">d</span><span class="p">:</span> <span class="kt">Number</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Number</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">elasticOut</span><span class="p">(</span><span class="nv">b</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">c</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">t</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">d</span><span class="p">:</span> <span class="kt">Number</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Number</span></code></pre>
 
                         </div>
                       </div>
@@ -2683,7 +2619,6 @@ between a starting and ending position at a specific point in time.</p>
                               <td>
                                 <div>
                                   <p>The start value (b = begin).</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -2696,7 +2631,6 @@ between a starting and ending position at a specific point in time.</p>
                               <td>
                                 <div>
                                   <p>The change in value (c = change).</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -2708,8 +2642,7 @@ between a starting and ending position at a specific point in time.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The amount of time elapsed since the start of the ease (t = time).</p>
-
+                                  <p>The elapsed time of the ease (t = time).</p>
                                 </div>
                               </td>
                             </tr>
@@ -2721,8 +2654,7 @@ between a starting and ending position at a specific point in time.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The total amount of time the ease will run (d = duration).</p>
-
+                                  <p>The duration of the ease (d = duration).</p>
                                 </div>
                               </td>
                             </tr>
@@ -2731,8 +2663,7 @@ between a starting and ending position at a specific point in time.</p>
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>The value at a specific point in time from the start value.</p>
-
+                        <p>The number between the start and end value at a specific point in time.</p>
                       </div>
                     </section>
                   </div>
@@ -2740,9 +2671,9 @@ between a starting and ending position at a specific point in time.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:ZFC6STween13EaseFunctions12elasticInOutuRxs13FloatingPointrFT1bx1cx1tx1dx_x"></a>
+                    <a name="/s:6STween12EaseFunctionO12elasticInOut1b1c1t1dxx_xxxtFZ"></a>
                     <a name="//apple_ref/swift/Method/elasticInOut(b:c:t:d:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:ZFC6STween13EaseFunctions12elasticInOutuRxs13FloatingPointrFT1bx1cx1tx1dx_x">elasticInOut(b:c:t:d:)</a>
+                    <a class="token" href="#/s:6STween12EaseFunctionO12elasticInOut1b1c1t1dxx_xxxtFZ">elasticInOut(b:c:t:d:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -2750,15 +2681,15 @@ between a starting and ending position at a specific point in time.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The algorithmic function of an <code>elasticInOut</code> ease used to calculate a value
-between a starting and ending position at a specific point in time.</p>
+                        <p>The algorithmic function of an <code>elasticInOut</code> ease that calculates the number between a
+start and end value at a specific point in time.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">internal</span> <span class="kd">static</span> <span class="kd">func</span> <span class="n">elasticInOut</span><span class="o">&lt;</span><span class="kt">Number</span><span class="p">:</span> <span class="kt">FloatingPoint</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">b</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">c</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">t</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">d</span><span class="p">:</span> <span class="kt">Number</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Number</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">elasticInOut</span><span class="p">(</span><span class="nv">b</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">c</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">t</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">d</span><span class="p">:</span> <span class="kt">Number</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Number</span></code></pre>
 
                         </div>
                       </div>
@@ -2775,7 +2706,6 @@ between a starting and ending position at a specific point in time.</p>
                               <td>
                                 <div>
                                   <p>The start value (b = begin).</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -2788,7 +2718,6 @@ between a starting and ending position at a specific point in time.</p>
                               <td>
                                 <div>
                                   <p>The change in value (c = change).</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -2800,8 +2729,7 @@ between a starting and ending position at a specific point in time.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The amount of time elapsed since the start of the ease (t = time).</p>
-
+                                  <p>The elapsed time of the ease (t = time).</p>
                                 </div>
                               </td>
                             </tr>
@@ -2813,8 +2741,7 @@ between a starting and ending position at a specific point in time.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The total amount of time the ease will run (d = duration).</p>
-
+                                  <p>The duration of the ease (d = duration).</p>
                                 </div>
                               </td>
                             </tr>
@@ -2823,8 +2750,7 @@ between a starting and ending position at a specific point in time.</p>
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>The value at a specific point in time from the start value.</p>
-
+                        <p>The number between the start and end value at a specific point in time.</p>
                       </div>
                     </section>
                   </div>
@@ -2843,9 +2769,9 @@ between a starting and ending position at a specific point in time.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:ZFC6STween13EaseFunctions8bounceInuRxs13FloatingPointrFT1bx1cx1tx1dx_x"></a>
+                    <a name="/s:6STween12EaseFunctionO8bounceIn1b1c1t1dxx_xxxtFZ"></a>
                     <a name="//apple_ref/swift/Method/bounceIn(b:c:t:d:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:ZFC6STween13EaseFunctions8bounceInuRxs13FloatingPointrFT1bx1cx1tx1dx_x">bounceIn(b:c:t:d:)</a>
+                    <a class="token" href="#/s:6STween12EaseFunctionO8bounceIn1b1c1t1dxx_xxxtFZ">bounceIn(b:c:t:d:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -2853,15 +2779,15 @@ between a starting and ending position at a specific point in time.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The algorithmic function of a <code>bounceIn</code> ease used to calculate a value
-between a starting and ending position at a specific point in time.</p>
+                        <p>The algorithmic function of a <code>bounceIn</code> ease that calculates the number between a
+start and end value at a specific point in time.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">internal</span> <span class="kd">static</span> <span class="kd">func</span> <span class="n">bounceIn</span><span class="o">&lt;</span><span class="kt">Number</span><span class="p">:</span> <span class="kt">FloatingPoint</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">b</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">c</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">t</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">d</span><span class="p">:</span> <span class="kt">Number</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Number</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">bounceIn</span><span class="p">(</span><span class="nv">b</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">c</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">t</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">d</span><span class="p">:</span> <span class="kt">Number</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Number</span></code></pre>
 
                         </div>
                       </div>
@@ -2878,7 +2804,6 @@ between a starting and ending position at a specific point in time.</p>
                               <td>
                                 <div>
                                   <p>The start value (b = begin).</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -2891,7 +2816,6 @@ between a starting and ending position at a specific point in time.</p>
                               <td>
                                 <div>
                                   <p>The change in value (c = change).</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -2903,8 +2827,7 @@ between a starting and ending position at a specific point in time.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The amount of time elapsed since the start of the ease (t = time).</p>
-
+                                  <p>The elapsed time of the ease (t = time).</p>
                                 </div>
                               </td>
                             </tr>
@@ -2916,8 +2839,7 @@ between a starting and ending position at a specific point in time.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The total amount of time the ease will run (d = duration).</p>
-
+                                  <p>The duration of the ease (d = duration).</p>
                                 </div>
                               </td>
                             </tr>
@@ -2926,8 +2848,7 @@ between a starting and ending position at a specific point in time.</p>
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>The value at a specific point in time from the start value.</p>
-
+                        <p>The number between the start and end value at a specific point in time.</p>
                       </div>
                     </section>
                   </div>
@@ -2935,9 +2856,9 @@ between a starting and ending position at a specific point in time.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:ZFC6STween13EaseFunctions9bounceOutuRxs13FloatingPointrFT1bx1cx1tx1dx_x"></a>
+                    <a name="/s:6STween12EaseFunctionO9bounceOut1b1c1t1dxx_xxxtFZ"></a>
                     <a name="//apple_ref/swift/Method/bounceOut(b:c:t:d:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:ZFC6STween13EaseFunctions9bounceOutuRxs13FloatingPointrFT1bx1cx1tx1dx_x">bounceOut(b:c:t:d:)</a>
+                    <a class="token" href="#/s:6STween12EaseFunctionO9bounceOut1b1c1t1dxx_xxxtFZ">bounceOut(b:c:t:d:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -2945,15 +2866,15 @@ between a starting and ending position at a specific point in time.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The algorithmic function of a <code>bounceOut</code> ease used to calculate a value
-between a starting and ending position at a specific point in time.</p>
+                        <p>The algorithmic function of a <code>bounceOut</code> ease that calculates the number between a
+start and end value at a specific point in time.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">internal</span> <span class="kd">static</span> <span class="kd">func</span> <span class="n">bounceOut</span><span class="o">&lt;</span><span class="kt">Number</span><span class="p">:</span> <span class="kt">FloatingPoint</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">b</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">c</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">t</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">d</span><span class="p">:</span> <span class="kt">Number</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Number</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">bounceOut</span><span class="p">(</span><span class="nv">b</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">c</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">t</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">d</span><span class="p">:</span> <span class="kt">Number</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Number</span></code></pre>
 
                         </div>
                       </div>
@@ -2970,7 +2891,6 @@ between a starting and ending position at a specific point in time.</p>
                               <td>
                                 <div>
                                   <p>The start value (b = begin).</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -2983,7 +2903,6 @@ between a starting and ending position at a specific point in time.</p>
                               <td>
                                 <div>
                                   <p>The change in value (c = change).</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -2995,8 +2914,7 @@ between a starting and ending position at a specific point in time.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The amount of time elapsed since the start of the ease (t = time).</p>
-
+                                  <p>The elapsed time of the ease (t = time).</p>
                                 </div>
                               </td>
                             </tr>
@@ -3008,8 +2926,7 @@ between a starting and ending position at a specific point in time.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The total amount of time the ease will run (d = duration).</p>
-
+                                  <p>The duration of the ease (d = duration).</p>
                                 </div>
                               </td>
                             </tr>
@@ -3018,8 +2935,7 @@ between a starting and ending position at a specific point in time.</p>
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>The value at a specific point in time from the start value.</p>
-
+                        <p>The number between the start and end value at a specific point in time.</p>
                       </div>
                     </section>
                   </div>
@@ -3027,9 +2943,9 @@ between a starting and ending position at a specific point in time.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:ZFC6STween13EaseFunctions11bounceInOutuRxs13FloatingPointrFT1bx1cx1tx1dx_x"></a>
+                    <a name="/s:6STween12EaseFunctionO11bounceInOut1b1c1t1dxx_xxxtFZ"></a>
                     <a name="//apple_ref/swift/Method/bounceInOut(b:c:t:d:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:ZFC6STween13EaseFunctions11bounceInOutuRxs13FloatingPointrFT1bx1cx1tx1dx_x">bounceInOut(b:c:t:d:)</a>
+                    <a class="token" href="#/s:6STween12EaseFunctionO11bounceInOut1b1c1t1dxx_xxxtFZ">bounceInOut(b:c:t:d:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -3037,15 +2953,15 @@ between a starting and ending position at a specific point in time.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The algorithmic function of a <code>bounceInOut</code> ease used to calculate a value
-between a starting and ending position at a specific point in time.</p>
+                        <p>The algorithmic function of a <code>bounceInOut</code> ease that calculates the number between a
+start and end value at a specific point in time.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">internal</span> <span class="kd">static</span> <span class="kd">func</span> <span class="n">bounceInOut</span><span class="o">&lt;</span><span class="kt">Number</span><span class="p">:</span> <span class="kt">FloatingPoint</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">b</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">c</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">t</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">d</span><span class="p">:</span> <span class="kt">Number</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Number</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">bounceInOut</span><span class="p">(</span><span class="nv">b</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">c</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">t</span><span class="p">:</span> <span class="kt">Number</span><span class="p">,</span> <span class="nv">d</span><span class="p">:</span> <span class="kt">Number</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Number</span></code></pre>
 
                         </div>
                       </div>
@@ -3062,7 +2978,6 @@ between a starting and ending position at a specific point in time.</p>
                               <td>
                                 <div>
                                   <p>The start value (b = begin).</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -3075,7 +2990,6 @@ between a starting and ending position at a specific point in time.</p>
                               <td>
                                 <div>
                                   <p>The change in value (c = change).</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -3087,8 +3001,7 @@ between a starting and ending position at a specific point in time.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The amount of time elapsed since the start of the ease (t = time).</p>
-
+                                  <p>The elapsed time of the ease (t = time).</p>
                                 </div>
                               </td>
                             </tr>
@@ -3100,8 +3013,7 @@ between a starting and ending position at a specific point in time.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>The total amount of time the ease will run (d = duration).</p>
-
+                                  <p>The duration of the ease (d = duration).</p>
                                 </div>
                               </td>
                             </tr>
@@ -3110,8 +3022,7 @@ between a starting and ending position at a specific point in time.</p>
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>The value at a specific point in time from the start value.</p>
-
+                        <p>The number between the start and end value at a specific point in time.</p>
                       </div>
                     </section>
                   </div>
@@ -3121,8 +3032,8 @@ between a starting and ending position at a specific point in time.</p>
           </section>
         </section>
         <section id="footer">
-          <p>Copyright (c) 2017 Adam Graham</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>Copyright (c) 2016 Adam Graham</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

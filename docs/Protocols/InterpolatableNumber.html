@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>TweenState Enumeration Reference</title>
+    <title>InterpolatableNumber Protocol Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -10,8 +10,8 @@
     
   </head>
   <body>
-    <a name="//apple_ref/swift/Enum/TweenState" class="dashAnchor"></a>
-    <a title="TweenState Enumeration Reference"></a>
+    <a name="//apple_ref/swift/Protocol/InterpolatableNumber" class="dashAnchor"></a>
+    <a title="InterpolatableNumber Protocol Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="../index.html"> Docs</a> (100% documented)</p>
@@ -22,7 +22,7 @@
       <p id="breadcrumbs">
         <a href="../index.html"> Reference</a>
         <img id="carat" src="../img/carat.png" />
-        TweenState Enumeration Reference
+        InterpolatableNumber Protocol Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -92,14 +92,14 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>TweenState</h1>
+            <h1>InterpolatableNumber</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">TweenState</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">InterpolatableNumber</span> <span class="p">:</span> <span class="kt">FloatingPoint</span></code></pre>
 
                 </div>
               </div>
-            <p>The state of a tween.</p>
+            <p>A floating-point type that is used to interpolate numerical values.</p>
 
           </section>
           <section class="section task-group-section">
@@ -108,9 +108,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:6STween10TweenStateO3newyA2CmF"></a>
-                    <a name="//apple_ref/swift/Element/new" class="dashAnchor"></a>
-                    <a class="token" href="#/s:6STween10TweenStateO3newyA2CmF">new</a>
+                    <a name="/s:6STween20InterpolatableNumberP5constAA0bC9ConstantsVyxGvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/const" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6STween20InterpolatableNumberP5constAA0bC9ConstantsVyxGvpZ">const</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -118,14 +118,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The state of a tween that is brand new or has just been revived.</p>
+                        <p>A set of constant values that are used to optimize interpolation functions.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="k">new</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="k">var</span> <span class="nv">const</span><span class="p">:</span> <span class="kt"><a href="../Structs/InterpolatableNumberConstants.html">InterpolatableNumberConstants</a></span><span class="o">&lt;</span><span class="k">Self</span><span class="o">&gt;</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -135,9 +135,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:6STween10TweenStateO8inactiveyA2CmF"></a>
-                    <a name="//apple_ref/swift/Element/inactive" class="dashAnchor"></a>
-                    <a class="token" href="#/s:6STween10TweenStateO8inactiveyA2CmF">inactive</a>
+                    <a name="/s:6STween20InterpolatableNumberP3powyxx_xtFZ"></a>
+                    <a name="//apple_ref/swift/Method/pow(_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6STween20InterpolatableNumberP3powyxx_xtFZ">pow(_:_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -145,14 +145,76 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The state of a tween that has been stopped and is no longer updating.</p>
+                        <p>Calculates an interpolatable number raised to a given power.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">inactive</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="kd">func</span> <span class="nf">pow</span><span class="p">(</span><span class="n">_</span> <span class="nv">x</span><span class="p">:</span> <span class="k">Self</span><span class="p">,</span> <span class="n">_</span> <span class="nv">y</span><span class="p">:</span> <span class="k">Self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="k">Self</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>x</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The base number that is raised to the power of some exponent.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>y</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The exponent that is raised against the base number.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The value of the base number (<code>x</code>) raised to the exponent (<code>y</code>).</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6STween20InterpolatableNumberP3cosxvp"></a>
+                    <a name="//apple_ref/swift/Property/cos" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6STween20InterpolatableNumberP3cosxvp">cos</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The cosine of the number.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">cos</span><span class="p">:</span> <span class="k">Self</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -162,9 +224,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:6STween10TweenStateO6activeyA2CmF"></a>
-                    <a name="//apple_ref/swift/Element/active" class="dashAnchor"></a>
-                    <a class="token" href="#/s:6STween10TweenStateO6activeyA2CmF">active</a>
+                    <a name="/s:6STween20InterpolatableNumberP3sinxvp"></a>
+                    <a name="//apple_ref/swift/Property/sin" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6STween20InterpolatableNumberP3sinxvp">sin</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -172,14 +234,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The state of a tween that has been started and is currently updating.</p>
+                        <p>The sine of the number.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">active</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">sin</span><span class="p">:</span> <span class="k">Self</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -189,9 +251,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:6STween10TweenStateO7delayedyA2CmF"></a>
-                    <a name="//apple_ref/swift/Element/delayed" class="dashAnchor"></a>
-                    <a class="token" href="#/s:6STween10TweenStateO7delayedyA2CmF">delayed</a>
+                    <a name="/s:6STween20InterpolatableNumberPyxSdcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6STween20InterpolatableNumberPyxSdcfc">init(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -199,97 +261,36 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The state of a tween that is about to start but is waiting for its delay to elapse.</p>
+                        <p>Creates a new instance from the given value, rounded to the closest possible
+representation.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">delayed</span></code></pre>
+                          <pre class="highlight swift"><code><span class="nf">init</span><span class="p">(</span><span class="n">_</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">Double</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:6STween10TweenStateO6pausedyA2CmF"></a>
-                    <a name="//apple_ref/swift/Element/paused" class="dashAnchor"></a>
-                    <a class="token" href="#/s:6STween10TweenStateO6pausedyA2CmF">paused</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The state of a tween that has been started but is paused.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">paused</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:6STween10TweenStateO9completedyA2CmF"></a>
-                    <a name="//apple_ref/swift/Element/completed" class="dashAnchor"></a>
-                    <a class="token" href="#/s:6STween10TweenStateO9completedyA2CmF">completed</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The state of a tween that has been completed.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">completed</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:6STween10TweenStateO6killedyA2CmF"></a>
-                    <a name="//apple_ref/swift/Element/killed" class="dashAnchor"></a>
-                    <a class="token" href="#/s:6STween10TweenStateO6killedyA2CmF">killed</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The state of a tween that has been killed.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">killed</span></code></pre>
-
-                        </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>value</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A floating-point value to be converted.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>

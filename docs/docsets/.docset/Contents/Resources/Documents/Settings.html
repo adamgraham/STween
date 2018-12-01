@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Other Typealiases  Reference</title>
+    <title>Settings  Reference</title>
     <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="css/highlight.css" />
     <meta charset='utf-8'>
@@ -10,10 +10,11 @@
     
   </head>
   <body>
-    <a title="Other Typealiases  Reference"></a>
+    <a name="//apple_ref/swift/Section/Settings" class="dashAnchor"></a>
+    <a title="Settings  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html"> Docs</a> (98% documented)</p>
+        <p><a href="index.html"> Docs</a> (100% documented)</p>
         <p class="header-right"><a href="https://github.com/adamgraham/STween"><img src="img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
@@ -21,7 +22,7 @@
       <p id="breadcrumbs">
         <a href="index.html"> Reference</a>
         <img id="carat" src="img/carat.png" />
-        Other Typealiases  Reference
+        Settings  Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -31,7 +32,7 @@
             <a href="Easing.html">Easing</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Enums/Ease.html">Ease</a>
+                <a href="Structs/Ease.html">Ease</a>
               </li>
               <li class="nav-group-task">
                 <a href="Enums/EaseClassification.html">EaseClassification</a>
@@ -40,10 +41,7 @@
                 <a href="Enums/EaseCurve.html">EaseCurve</a>
               </li>
               <li class="nav-group-task">
-                <a href="Easing.html#/s:6STween12EaseFunction">EaseFunction</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Classes/EaseFunctions.html">EaseFunctions</a>
+                <a href="Enums/EaseFunction.html">EaseFunction</a>
               </li>
             </ul>
           </li>
@@ -54,7 +52,10 @@
                 <a href="Protocols/Interpolatable.html">Interpolatable</a>
               </li>
               <li class="nav-group-task">
-                <a href="Structs/InterpolationValues.html">InterpolationValues</a>
+                <a href="Protocols/InterpolatableNumber.html">InterpolatableNumber</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/InterpolatableNumberConstants.html">InterpolatableNumberConstants</a>
               </li>
             </ul>
           </li>
@@ -65,19 +66,7 @@
                 <a href="Protocols/Tween.html">Tween</a>
               </li>
               <li class="nav-group-task">
-                <a href="Classes/TweenAnimation.html">TweenAnimation</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="Enums/TweenState.html">TweenState</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Enums/TweenStateChange.html">TweenStateChange</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Classes/TweenTimer.html">TweenTimer</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Protocols/TweenTimerDelegate.html">TweenTimerDelegate</a>
               </li>
               <li class="nav-group-task">
                 <a href="Protocols/Tweenable.html">Tweenable</a>
@@ -94,18 +83,7 @@
             <a href="Settings.html">Settings</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Classes/Defaults.html">Defaults</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Classes/FrameRate.html">FrameRate</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-group-name">
-            <a href="Other Typealiases.html">Other Typealiases</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a href="Other Typealiases.html#/s:6STween8Callback">Callback</a>
+                <a href="Enums/Defaults.html">Defaults</a>
               </li>
             </ul>
           </li>
@@ -114,9 +92,8 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>Other Typealiases</h1>
-            <p>The following typealiases are available globally.</p>
-
+            <h1>Settings</h1>
+            
           </section>
           <section class="section task-group-section">
             <div class="task-group">
@@ -124,9 +101,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:6STween8Callback"></a>
-                    <a name="//apple_ref/swift/Alias/Callback" class="dashAnchor"></a>
-                    <a class="token" href="#/s:6STween8Callback">Callback</a>
+                    <a name="/s:6STween8DefaultsO"></a>
+                    <a name="//apple_ref/swift/Enum/Defaults" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6STween8DefaultsO">Defaults</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -134,16 +111,15 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>A typealias for the method signature of a <q>callback</q> closure. Callbacks
-are invoked upon completion of many different events, such as when a
-<code><a href="Protocols/Tween.html">Tween</a></code> has finished animating.</p>
+                        <p>The default tweening and easing settings.</p>
 
+                        <a href="Enums/Defaults.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">Callback</span> <span class="o">=</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Void</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">Defaults</span></code></pre>
 
                         </div>
                       </div>
@@ -155,8 +131,8 @@ are invoked upon completion of many different events, such as when a
           </section>
         </section>
         <section id="footer">
-          <p>Copyright (c) 2017 Adam Graham</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>Copyright (c) 2016 Adam Graham</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

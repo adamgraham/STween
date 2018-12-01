@@ -12,6 +12,8 @@ import QuartzCore
 /// A singleton, factory class to create, queue, and manage `Tween` animations.
 public final class Tweener {
 
+    // MARK: Instance
+
     /// The default, single instance of `Tweener`.
     public static let `default` = Tweener()
 

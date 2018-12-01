@@ -11,8 +11,6 @@ import Foundation
 /// A type that can animate tweenable properties on itself.
 public protocol Tweenable {
 
-    // MARK: Methods
-
     /**
      Animates a tweenable property from its current value *to* the desired value.
 

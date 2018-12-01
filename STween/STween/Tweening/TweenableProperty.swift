@@ -9,9 +9,8 @@
 /// A property that can be animated on a `Tweenable` type.
 public protocol TweenableProperty: Interpolatable where Value == Self {
 
+    /// The type of which the property can be retrieved from and applied to.
     associatedtype Target: Tweenable
-
-    // MARK: Methods
 
     /**
      Gets the value of the property from an object.
