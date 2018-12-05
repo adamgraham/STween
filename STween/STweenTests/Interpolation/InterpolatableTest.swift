@@ -14,156 +14,156 @@ class InterpolatableTest: XCTestCase {
 
     // MARK: Assertions
 
-    private func assertInterpolation<T: Interpolatable & Equatable>(startValue: T, endValue: T, middleValue: T) where T.Value == T {
-        var interpolatedValue = T.interpolate(from: startValue, to: endValue, with: .linear, elapsed: 0.0, duration: 1.0)
-        XCTAssertEqual(interpolatedValue, startValue)
-        interpolatedValue = T.interpolate(from: startValue, to: endValue, with: .linear, elapsed: 0.5, duration: 1.0)
-        XCTAssertEqual(interpolatedValue, middleValue)
-        interpolatedValue = T.interpolate(from: startValue, to: endValue, with: .linear, elapsed: 1.0, duration: 1.0)
-        XCTAssertEqual(interpolatedValue, endValue)
+    private func assertInterpolation<T: Interpolatable>(_ start: T, _ end: T, _ middle: T) where T.Value == T {
+        var interpolatedValue = T.interpolate(from: start, to: end, with: .linear, elapsed: 0.0, duration: 1.0)
+        XCTAssertEqual(interpolatedValue, start)
+        interpolatedValue = T.interpolate(from: start, to: end, with: .linear, elapsed: 0.5, duration: 1.0)
+        XCTAssertEqual(interpolatedValue, middle)
+        interpolatedValue = T.interpolate(from: start, to: end, with: .linear, elapsed: 1.0, duration: 1.0)
+        XCTAssertEqual(interpolatedValue, end)
     }
 
-    private func assertInterpolation<T: Interpolatable>(startValue: T, endValue: T, middleValue: T, isEqual: (_ lhs: T, _ rhs: T) -> Bool) where T.Value == T {
-        var interpolatedValue = T.interpolate(from: startValue, to: endValue, with: .linear, elapsed: 0.0, duration: 1.0)
-        XCTAssertTrue(isEqual(interpolatedValue, startValue))
-        interpolatedValue = T.interpolate(from: startValue, to: endValue, with: .linear, elapsed: 0.5, duration: 1.0)
-        XCTAssertTrue(isEqual(interpolatedValue, middleValue))
-        interpolatedValue = T.interpolate(from: startValue, to: endValue, with: .linear, elapsed: 1.0, duration: 1.0)
-        XCTAssertTrue(isEqual(interpolatedValue, endValue))
+    private func assertInterpolation<T: Interpolatable>(_ start: T, _ end: T, _ middle: T, _ isEqual: (_ lhs: T, _ rhs: T) -> Bool) where T.Value == T {
+        var interpolatedValue = T.interpolate(from: start, to: end, with: .linear, elapsed: 0.0, duration: 1.0)
+        XCTAssertTrue(isEqual(interpolatedValue, start))
+        interpolatedValue = T.interpolate(from: start, to: end, with: .linear, elapsed: 0.5, duration: 1.0)
+        XCTAssertTrue(isEqual(interpolatedValue, middle))
+        interpolatedValue = T.interpolate(from: start, to: end, with: .linear, elapsed: 1.0, duration: 1.0)
+        XCTAssertTrue(isEqual(interpolatedValue, end))
     }
 
     // MARK: Swift Tests
 
     func testUInt() {
-        let startValue: UInt = 0
-        let endValue: UInt = 10
-        let middleValue: UInt = 5
-        assertInterpolation(startValue: startValue, endValue: endValue, middleValue: middleValue)
+        let start: UInt = 0
+        let end: UInt = 10
+        let middle: UInt = 5
+        assertInterpolation(start, end, middle)
     }
 
     func testUInt8() {
-        let startValue: UInt8 = 0
-        let endValue: UInt8 = 10
-        let middleValue: UInt8 = 5
-        assertInterpolation(startValue: startValue, endValue: endValue, middleValue: middleValue)
+        let start: UInt8 = 0
+        let end: UInt8 = 10
+        let middle: UInt8 = 5
+        assertInterpolation(start, end, middle)
     }
 
     func testUInt16() {
-        let startValue: UInt16 = 0
-        let endValue: UInt16 = 10
-        let middleValue: UInt16 = 5
-        assertInterpolation(startValue: startValue, endValue: endValue, middleValue: middleValue)
+        let start: UInt16 = 0
+        let end: UInt16 = 10
+        let middle: UInt16 = 5
+        assertInterpolation(start, end, middle)
     }
 
     func testUInt32() {
-        let startValue: UInt32 = 0
-        let endValue: UInt32 = 10
-        let middleValue: UInt32 = 5
-        assertInterpolation(startValue: startValue, endValue: endValue, middleValue: middleValue)
+        let start: UInt32 = 0
+        let end: UInt32 = 10
+        let middle: UInt32 = 5
+        assertInterpolation(start, end, middle)
     }
 
     func testUInt64() {
-        let startValue: UInt64 = 0
-        let endValue: UInt64 = 10
-        let middleValue: UInt64 = 5
-        assertInterpolation(startValue: startValue, endValue: endValue, middleValue: middleValue)
+        let start: UInt64 = 0
+        let end: UInt64 = 10
+        let middle: UInt64 = 5
+        assertInterpolation(start, end, middle)
     }
 
     func testInt() {
-        let startValue: Int = 0
-        let endValue: Int = 10
-        let middleValue: Int = 5
-        assertInterpolation(startValue: startValue, endValue: endValue, middleValue: middleValue)
+        let start: Int = 0
+        let end: Int = 10
+        let middle: Int = 5
+        assertInterpolation(start, end, middle)
     }
 
     func testInt8() {
-        let startValue: Int8 = 0
-        let endValue: Int8 = 10
-        let middleValue: Int8 = 5
-        assertInterpolation(startValue: startValue, endValue: endValue, middleValue: middleValue)
+        let start: Int8 = 0
+        let end: Int8 = 10
+        let middle: Int8 = 5
+        assertInterpolation(start, end, middle)
     }
 
     func testInt16() {
-        let startValue: Int16 = 0
-        let endValue: Int16 = 10
-        let middleValue: Int16 = 5
-        assertInterpolation(startValue: startValue, endValue: endValue, middleValue: middleValue)
+        let start: Int16 = 0
+        let end: Int16 = 10
+        let middle: Int16 = 5
+        assertInterpolation(start, end, middle)
     }
 
     func testInt32() {
-        let startValue: Int32 = 0
-        let endValue: Int32 = 10
-        let middleValue: Int32 = 5
-        assertInterpolation(startValue: startValue, endValue: endValue, middleValue: middleValue)
+        let start: Int32 = 0
+        let end: Int32 = 10
+        let middle: Int32 = 5
+        assertInterpolation(start, end, middle)
     }
 
     func testInt64() {
-        let startValue: Int64 = 0
-        let endValue: Int64 = 10
-        let middleValue: Int64 = 5
-        assertInterpolation(startValue: startValue, endValue: endValue, middleValue: middleValue)
+        let start: Int64 = 0
+        let end: Int64 = 10
+        let middle: Int64 = 5
+        assertInterpolation(start, end, middle)
     }
 
     func testFloat() {
-        let startValue: Float = 0.0
-        let endValue: Float = 10.0
-        let middleValue: Float = 5.0
-        assertInterpolation(startValue: startValue, endValue: endValue, middleValue: middleValue)
+        let start: Float = 0.0
+        let end: Float = 10.0
+        let middle: Float = 5.0
+        assertInterpolation(start, end, middle)
     }
 
     func testFloat32() {
-        let startValue: Float32 = 0.0
-        let endValue: Float32 = 10.0
-        let middleValue: Float32 = 5.0
-        assertInterpolation(startValue: startValue, endValue: endValue, middleValue: middleValue)
+        let start: Float32 = 0.0
+        let end: Float32 = 10.0
+        let middle: Float32 = 5.0
+        assertInterpolation(start, end, middle)
     }
 
     func testFloat64() {
-        let startValue: Float64 = 0.0
-        let endValue: Float64 = 10.0
-        let middleValue: Float64 = 5.0
-        assertInterpolation(startValue: startValue, endValue: endValue, middleValue: middleValue)
+        let start: Float64 = 0.0
+        let end: Float64 = 10.0
+        let middle: Float64 = 5.0
+        assertInterpolation(start, end, middle)
     }
 
     #if arch(i386) || arch(x86_64)
     func testFloat80() {
-        let startValue: Float80 = 0.0
-        let endValue: Float80 = 10.0
-        let middleValue: Float80 = 5.0
-        assertInterpolation(startValue: startValue, endValue: endValue, middleValue: middleValue)
+        let start: Float80 = 0.0
+        let end: Float80 = 10.0
+        let middle: Float80 = 5.0
+        assertInterpolation(start, end, middle)
     }
     #endif
 
     func testDouble() {
-        let startValue: Double = 0.0
-        let endValue: Double = 10.0
-        let middleValue: Double = 5.0
-        assertInterpolation(startValue: startValue, endValue: endValue, middleValue: middleValue)
+        let start: Double = 0.0
+        let end: Double = 10.0
+        let middle: Double = 5.0
+        assertInterpolation(start, end, middle)
     }
 
     func testDate() {
-        let startValue = Date(timeIntervalSince1970: 0.0)
-        let endValue = Date(timeIntervalSince1970: 10.0)
-        let middleValue = Date(timeIntervalSince1970: 5.0)
-        assertInterpolation(startValue: startValue, endValue: endValue, middleValue: middleValue)
+        let start = Date(timeIntervalSince1970: 0.0)
+        let end = Date(timeIntervalSince1970: 10.0)
+        let middle = Date(timeIntervalSince1970: 5.0)
+        assertInterpolation(start, end, middle)
     }
 
     // MARK: CoreAnimation Tests
 
     func testCATransform3D() {
-        let startValue = CATransform3D(m11: 0.0, m12: 0.0, m13: 0.0, m14: 0.0,
+        let start = CATransform3D(m11: 0.0, m12: 0.0, m13: 0.0, m14: 0.0,
                                        m21: 0.0, m22: 0.0, m23: 0.0, m24: 0.0,
                                        m31: 0.0, m32: 0.0, m33: 0.0, m34: 0.0,
                                        m41: 0.0, m42: 0.0, m43: 0.0, m44: 0.0)
-        let endValue = CATransform3D(m11: 10.0, m12: 10.0, m13: 10.0, m14: 10.0,
+        let end = CATransform3D(m11: 10.0, m12: 10.0, m13: 10.0, m14: 10.0,
                                      m21: 10.0, m22: 10.0, m23: 10.0, m24: 10.0,
                                      m31: 10.0, m32: 10.0, m33: 10.0, m34: 10.0,
                                      m41: 10.0, m42: 10.0, m43: 10.0, m44: 10.0)
-        let middleValue = CATransform3D(m11: 5.0, m12: 5.0, m13: 5.0, m14: 5.0,
+        let middle = CATransform3D(m11: 5.0, m12: 5.0, m13: 5.0, m14: 5.0,
                                         m21: 5.0, m22: 5.0, m23: 5.0, m24: 5.0,
                                         m31: 5.0, m32: 5.0, m33: 5.0, m34: 5.0,
                                         m41: 5.0, m42: 5.0, m43: 5.0, m44: 5.0)
-        assertInterpolation(startValue: startValue, endValue: endValue, middleValue: middleValue) {
+        assertInterpolation(start, end, middle) {
             return $0 == $1
         }
     }
@@ -196,93 +196,93 @@ class InterpolatableTest: XCTestCase {
     // MARK: CoreGraphics Tests
 
     func testCGAffineTransform() {
-        let startValue = CGAffineTransform(a: 0.0, b: 0.0, c: 0.0, d: 0.0, tx: 0.0, ty: 0.0)
-        let endValue = CGAffineTransform(a: 10.0, b: 10.0, c: 10.0, d: 10.0, tx: 10.0, ty: 10.0)
-        let middleValue = CGAffineTransform(a: 5.0, b: 5.0, c: 5.0, d: 5.0, tx: 5.0, ty: 5.0)
-        assertInterpolation(startValue: startValue, endValue: endValue, middleValue: middleValue)
+        let start = CGAffineTransform(a: 0.0, b: 0.0, c: 0.0, d: 0.0, tx: 0.0, ty: 0.0)
+        let end = CGAffineTransform(a: 10.0, b: 10.0, c: 10.0, d: 10.0, tx: 10.0, ty: 10.0)
+        let middle = CGAffineTransform(a: 5.0, b: 5.0, c: 5.0, d: 5.0, tx: 5.0, ty: 5.0)
+        assertInterpolation(start, end, middle)
     }
 
     func testCGColor() {
-        let startValue = UIColor.red.cgColor
-        let endValue = UIColor.blue.cgColor
-        let middleValue = UIColor.purple.cgColor
-        assertInterpolation(startValue: startValue, endValue: endValue, middleValue: middleValue)
+        let start = UIColor.red.cgColor
+        let end = UIColor.blue.cgColor
+        let middle = UIColor.purple.cgColor
+        assertInterpolation(start, end, middle)
     }
 
     func testCGFloat() {
-        let startValue: CGFloat = 0.0
-        let endValue: CGFloat = 10.0
-        let middleValue: CGFloat = 5.0
-        assertInterpolation(startValue: startValue, endValue: endValue, middleValue: middleValue)
+        let start: CGFloat = 0.0
+        let end: CGFloat = 10.0
+        let middle: CGFloat = 5.0
+        assertInterpolation(start, end, middle)
     }
 
     func testCGPoint() {
-        let startValue = CGPoint(x: 0.0, y: 0.0)
-        let endValue = CGPoint(x: 10.0, y: 10.0)
-        let middleValue = CGPoint(x: 5.0, y: 5.0)
-        assertInterpolation(startValue: startValue, endValue: endValue, middleValue: middleValue)
+        let start = CGPoint(x: 0.0, y: 0.0)
+        let end = CGPoint(x: 10.0, y: 10.0)
+        let middle = CGPoint(x: 5.0, y: 5.0)
+        assertInterpolation(start, end, middle)
     }
 
     func testCGRect() {
-        let startValue = CGRect(x: 0.0, y: 0.0, width: 0.0, height: 0.0)
-        let endValue = CGRect(x: 10.0, y: 10.0, width: 10.0, height: 10.0)
-        let middleValue = CGRect(x: 5.0, y: 5.0, width: 5.0, height: 5.0)
-        assertInterpolation(startValue: startValue, endValue: endValue, middleValue: middleValue)
+        let start = CGRect(x: 0.0, y: 0.0, width: 0.0, height: 0.0)
+        let end = CGRect(x: 10.0, y: 10.0, width: 10.0, height: 10.0)
+        let middle = CGRect(x: 5.0, y: 5.0, width: 5.0, height: 5.0)
+        assertInterpolation(start, end, middle)
     }
 
     func testCGSize() {
-        let startValue = CGSize(width: 0.0, height: 0.0)
-        let endValue = CGSize(width: 10.0, height: 10.0)
-        let middleValue = CGSize(width: 5.0, height: 5.0)
-        assertInterpolation(startValue: startValue, endValue: endValue, middleValue: middleValue)
+        let start = CGSize(width: 0.0, height: 0.0)
+        let end = CGSize(width: 10.0, height: 10.0)
+        let middle = CGSize(width: 5.0, height: 5.0)
+        assertInterpolation(start, end, middle)
     }
 
     func testCGVector() {
-        let startValue = CGVector(dx: 0.0, dy: 0.0)
-        let endValue = CGVector(dx: 10.0, dy: 10.0)
-        let middleValue = CGVector(dx: 5.0, dy: 5.0)
-        assertInterpolation(startValue: startValue, endValue: endValue, middleValue: middleValue)
+        let start = CGVector(dx: 0.0, dy: 0.0)
+        let end = CGVector(dx: 10.0, dy: 10.0)
+        let middle = CGVector(dx: 5.0, dy: 5.0)
+        assertInterpolation(start, end, middle)
     }
 
     // MARK: CoreImage Tests
 
     func testCIColor() {
-        let startValue = CIColor(color: UIColor.red)
-        let endValue = CIColor(color: UIColor.blue)
-        let middleValue = CIColor(color: UIColor.purple)
-        assertInterpolation(startValue: startValue, endValue: endValue, middleValue: middleValue) {
+        let start = CIColor(color: UIColor.red)
+        let end = CIColor(color: UIColor.blue)
+        let middle = CIColor(color: UIColor.purple)
+        assertInterpolation(start, end, middle) {
             return $0 == $1
         }
     }
 
     func testCIVector() {
-        let startValue = CIVector(x: 0.0, y: 0.0, z: 0.0, w: 1.0)
-        let endValue = CIVector(x: 10.0, y: 10.0, z: 10.0, w: 1.0)
-        let middleValue = CIVector(x: 5.0, y: 5.0, z: 5.0, w: 1.0)
-        assertInterpolation(startValue: startValue, endValue: endValue, middleValue: middleValue)
+        let start = CIVector(x: 0.0, y: 0.0, z: 0.0, w: 1.0)
+        let end = CIVector(x: 10.0, y: 10.0, z: 10.0, w: 1.0)
+        let middle = CIVector(x: 5.0, y: 5.0, z: 5.0, w: 1.0)
+        assertInterpolation(start, end, middle)
     }
 
     // MARK: UIKit Tests
 
     func testUIColor() {
-        let startValue = UIColor.red
-        let endValue = UIColor.blue
-        let middleValue = UIColor.purple
-        assertInterpolation(startValue: startValue, endValue: endValue, middleValue: middleValue)
+        let start = UIColor.red
+        let end = UIColor.blue
+        let middle = UIColor.purple
+        assertInterpolation(start, end, middle)
     }
 
     func testUIEdgeInsets() {
-        let startValue = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)
-        let endValue = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
-        let middleValue = UIEdgeInsets(top: 5.0, left: 5.0, bottom: 5.0, right: 5.0)
-        assertInterpolation(startValue: startValue, endValue: endValue, middleValue: middleValue)
+        let start = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)
+        let end = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
+        let middle = UIEdgeInsets(top: 5.0, left: 5.0, bottom: 5.0, right: 5.0)
+        assertInterpolation(start, end, middle)
     }
 
     func testUIOffset() {
-        let startValue = UIOffset(horizontal: 0.0, vertical: 0.0)
-        let endValue = UIOffset(horizontal: 10.0, vertical: 10.0)
-        let middleValue = UIOffset(horizontal: 5.0, vertical: 5.0)
-        assertInterpolation(startValue: startValue, endValue: endValue, middleValue: middleValue)
+        let start = UIOffset(horizontal: 0.0, vertical: 0.0)
+        let end = UIOffset(horizontal: 10.0, vertical: 10.0)
+        let middle = UIOffset(horizontal: 5.0, vertical: 5.0)
+        assertInterpolation(start, end, middle)
     }
 
 }

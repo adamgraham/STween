@@ -12,7 +12,7 @@ import Foundation
 public protocol Tweenable {
 
     /**
-     Animates a tweenable property from its current value *to* the desired value.
+     Animates a tweenable property from its current value *to* a desired value.
 
      - Parameters:
         - property: The property to animate.
@@ -21,12 +21,12 @@ public protocol Tweenable {
 
      - Returns: The `Tween` control for the animation.
      */
-    @discardableResult func tween<TweenProperty: TweenableProperty>(
-        to property: TweenProperty, duration: TimeInterval, completion: Tween.Callback?) -> Tween
-        where TweenProperty.Target == Self
+    @discardableResult func tween<Property: TweenableProperty>(
+        to property: Property, duration: TimeInterval, completion: Tween.Callback?) -> Tween
+        where Property.Target == Self
 
     /**
-     Animates an array of tweenable properties from its current values *to* the desired values.
+     Animates an array of tweenable properties from its current values *to* desired values.
 
      - Parameters:
         - properties: The array of properties to animate.
@@ -35,12 +35,12 @@ public protocol Tweenable {
 
      - Returns: The `Tween` control for the animation.
      */
-    @discardableResult func tween<TweenProperty: TweenableProperty>(
-        to properties: [TweenProperty], duration: TimeInterval, completion: Tween.Callback?) -> Tween
-        where TweenProperty.Target == Self
+    @discardableResult func tween<Property: TweenableProperty>(
+        to properties: [Property], duration: TimeInterval, completion: Tween.Callback?) -> Tween
+        where Property.Target == Self
 
     /**
-     Animates a tweenable property *from* the desired value to its current value.
+     Animates a tweenable property *from* a desired value to its current value.
 
      - Parameters:
         - property: The property to animate.
@@ -49,12 +49,12 @@ public protocol Tweenable {
 
      - Returns: The `Tween` control for the animation.
      */
-    @discardableResult func tween<TweenProperty: TweenableProperty>(
-        from property: TweenProperty, duration: TimeInterval, completion: Tween.Callback?) -> Tween
-        where TweenProperty.Target == Self
+    @discardableResult func tween<Property: TweenableProperty>(
+        from property: Property, duration: TimeInterval, completion: Tween.Callback?) -> Tween
+        where Property.Target == Self
 
     /**
-     Animates an array of tweenable properties *from* the desired values to its current values.
+     Animates an array of tweenable properties *from* desired values to its current values.
 
      - Parameters:
         - properties: The array of properties to animate.
@@ -63,9 +63,9 @@ public protocol Tweenable {
 
      - Returns: The `Tween` control for the animation.
      */
-    @discardableResult func tween<TweenProperty: TweenableProperty>(
-        from properties: [TweenProperty], duration: TimeInterval, completion: Tween.Callback?) -> Tween
-        where TweenProperty.Target == Self
+    @discardableResult func tween<Property: TweenableProperty>(
+        from properties: [Property], duration: TimeInterval, completion: Tween.Callback?) -> Tween
+        where Property.Target == Self
 
 }
 
@@ -74,36 +74,36 @@ extension Tweenable {
 
     // MARK: Default Implementation
 
-    @discardableResult public func tween<TweenProperty: TweenableProperty>(
-        to property: TweenProperty, duration: TimeInterval, completion: Tween.Callback? = nil) -> Tween
-        where TweenProperty.Target == Self {
+    @discardableResult public func tween<Property: TweenableProperty>(
+        to property: Property, duration: TimeInterval, completion: Tween.Callback? = nil) -> Tween
+        where Property.Target == Self {
 
             return Tweener.default.animate(self, to: [property],
                                            duration: duration,
                                            completion: completion)
     }
 
-    @discardableResult public func tween<TweenProperty: TweenableProperty>(
-        to properties: [TweenProperty], duration: TimeInterval, completion: Tween.Callback? = nil) -> Tween
-        where TweenProperty.Target == Self {
+    @discardableResult public func tween<Property: TweenableProperty>(
+        to properties: [Property], duration: TimeInterval, completion: Tween.Callback? = nil) -> Tween
+        where Property.Target == Self {
 
             return Tweener.default.animate(self, to: properties,
                                            duration: duration,
                                            completion: completion)
     }
 
-    @discardableResult public func tween<TweenProperty: TweenableProperty>(
-        from property: TweenProperty, duration: TimeInterval, completion: Tween.Callback? = nil) -> Tween
-        where TweenProperty.Target == Self {
+    @discardableResult public func tween<Property: TweenableProperty>(
+        from property: Property, duration: TimeInterval, completion: Tween.Callback? = nil) -> Tween
+        where Property.Target == Self {
 
             return Tweener.default.animate(self, from: [property],
                                            duration: duration,
                                            completion: completion)
     }
 
-    @discardableResult public func tween<TweenProperty: TweenableProperty>(
-        from properties: [TweenProperty], duration: TimeInterval, completion: Tween.Callback? = nil) -> Tween
-        where TweenProperty.Target == Self {
+    @discardableResult public func tween<Property: TweenableProperty>(
+        from properties: [Property], duration: TimeInterval, completion: Tween.Callback? = nil) -> Tween
+        where Property.Target == Self {
 
             return Tweener.default.animate(self, from: properties,
                                            duration: duration,

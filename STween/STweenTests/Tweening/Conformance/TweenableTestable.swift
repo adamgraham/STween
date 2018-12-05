@@ -18,8 +18,8 @@ extension TweenableTestable {
         of property: Property, on target: Property.Target,
         assertEqual: ((Property, Property) -> Bool)? = nil) {
         
-        let startValue = property.value(from: target)
-        let values = (start: startValue, end: property)
+        let start = property.value(from: target)
+        let values = (start: start, end: property)
         let interpolatedValue = Property.interpolate(
             from: values.start, to: values.end,
             with: .linear, elapsed: 1.0, duration: 1.0)
@@ -42,8 +42,8 @@ extension TweenableTestable {
         on target: Property.Target,
         assertEqual: ((Property, Property) -> Bool)? = nil) {
 
-        let startValue = property.value(from: target)
-        let values = (start: startValue, end: endValue)
+        let start = property.value(from: target)
+        let values = (start: start, end: endValue)
         let interpolatedValue = Property.interpolate(
             from: values.start, to: values.end,
             with: .linear, elapsed: 1.0, duration: 1.0)

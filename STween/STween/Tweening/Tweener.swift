@@ -48,7 +48,7 @@ extension Tweener {
     // MARK: Factory Creation
 
     /**
-     Creates a `Tween` that animates an array of properties on a `Tweenable` type *to* the
+     Creates a `Tween` that animates an array of properties on a `Tweenable` type *to*
      desired values from its current values over a set duration.
 
      The created tween will automatically be queued to start if
@@ -62,8 +62,8 @@ extension Tweener {
 
      - Returns: The `Tween` control for the animation.
      */
-    @discardableResult public func animate<TargetProperty: TweenableProperty>(
-        _ target: TargetProperty.Target, to properties: [TargetProperty],
+    @discardableResult public func animate<Property: TweenableProperty>(
+        _ target: Property.Target, to properties: [Property],
         duration: TimeInterval, completion: Tween.Callback? = nil) -> Tween {
 
         let tween = TweenAnimation(target: target, properties: properties, duration: duration)
@@ -80,7 +80,7 @@ extension Tweener {
     }
 
     /**
-     Creates a `Tween` that animates an array of properties on a `Tweenable` type *from* the
+     Creates a `Tween` that animates an array of properties on a `Tweenable` type *from*
      desired values to its current values over a set duration.
 
      The created tween will automatically be queued to start if
@@ -94,8 +94,8 @@ extension Tweener {
      
      - Returns: The `Tween` control for the animation.
      */
-    @discardableResult public func animate<TargetProperty: TweenableProperty>(
-        _ target: TargetProperty.Target, from properties: [TargetProperty],
+    @discardableResult public func animate<Property: TweenableProperty>(
+        _ target: Property.Target, from properties: [Property],
         duration: TimeInterval, completion: Tween.Callback? = nil) -> Tween {
 
         let tween = TweenAnimation(target: target, properties: properties, duration: duration)

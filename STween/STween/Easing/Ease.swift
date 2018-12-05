@@ -6,8 +6,17 @@
 //  Copyright © 2016 Adam Graham. All rights reserved.
 //
 
-/// A type of easing function, described from an algorithmic classification and acceleration
-/// pattern.
+/**
+ A type of easing function, described from an algorithmic classification and acceleration
+ pattern, providing the sense of motion.
+
+ > *Nothing in nature moves linearly from one point to another. In reality, things tend to
+ > accelerate or decelerate as they move. Our brains are wired to expect this kind of
+ > motion, so when animating you should use this to your advantage. Natural motion
+ > makes your users feel more comfortable with your apps, which in turn leads to a better
+ > overall experience.*
+ > \- [Paul Lewis](https://developers.google.com/web/fundamentals/design-and-ux/animations/the-basics-of-easing)
+ */
 public struct Ease {
 
     // MARK: Properties
@@ -230,19 +239,19 @@ extension Ease {
      Calculates the value between a start and end value at a specific point in time.
 
      - Parameters:
-        - startValue: The start value passed to the easing function.
-        - endValue: The end value passed to the easing function.
+        - start: The start value passed to the easing function.
+        - end: The end value passed to the easing function.
         - elapsed: The elapsed amount of time passed to the easing function.
         - duration: The duration of time passed to the easing function.
 
      - Returns: The value interpolated between the start and end value.
      */
     internal func interpolate<Number: InterpolatableNumber>(
-        from startValue: Number, to endValue: Number,
+        from start: Number, to end: Number,
         elapsed: Number, duration: Number) -> Number {
 
-        let b = startValue
-        let c = endValue - startValue
+        let b = start
+        let c = end - start
         let t = elapsed
         let d = duration
 

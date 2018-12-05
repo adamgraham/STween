@@ -8,7 +8,7 @@
 
 /**
  Calculates the number between a start and end value at a specific point in time.
- In simpler terms, an easing function determines the path/motion used to get from point *A*
+ In simpler terms, an easing function determines the path used to get from point *A*
  to point *B*.
 
  These easing functions are based upon [Robert Penner's Easing Functions](http://robertpenner.com/easing/).

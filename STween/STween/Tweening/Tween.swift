@@ -99,7 +99,7 @@ public protocol Tween: AnyObject {
     @discardableResult func stop() -> Bool
 
     /**
-     Stops the tween, then immediately starts it over again.
+     Stops the tween, then immediately starts it over again from the beginning.
 
      The tween can only be restarted if it's *not* in a `killed` state.
 
@@ -137,7 +137,7 @@ public protocol Tween: AnyObject {
     @discardableResult func complete() -> Bool
 
     /**
-     Kills the tween in place, haulting at its current values, and removes it from `Tweener`'s
+     Kills the tween in place, halting at its current values, and removes it from `Tweener`'s
      list of tracked tweens.
 
      The tween can only be killed if it's *not* already in a `killed` state.

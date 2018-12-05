@@ -9,11 +9,11 @@
 import Foundation
 
 /**
- Provides query method chaining to a tween. This allows multiple properties to be set on
- the tween during initialization in a simpler and more readable way.
+ Provides method chaining to a tween. This allows multiple properties to be assigned in
+ a single statement without requiring a variable to store the intermediate results.
 
  ```
- view.tween(to: .y(100.0), duration: 1.0)
+ view.tween(to: .width(100.0), duration: 1.0)
     .set(ease: .backOut)
     .set(delay: 0.5)
     .set(onComplete: { ... })
