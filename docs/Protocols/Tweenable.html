@@ -118,7 +118,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Animates a tweenable property from its current value <em>to</em> the desired value.</p>
+                        <p>Animates a tweenable property from its current value <em>to</em> a desired value.</p>
 
                       </div>
                       <div class="declaration">
@@ -126,7 +126,7 @@
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
-<span class="kd">func</span> <span class="n">tween</span><span class="o">&lt;</span><span class="kt">TweenProperty</span><span class="o">&gt;</span><span class="p">(</span><span class="n">to</span> <span class="nv">property</span><span class="p">:</span> <span class="kt">TweenProperty</span><span class="p">,</span> <span class="nv">duration</span><span class="p">:</span> <span class="kt">TimeInterval</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kt"><a href="../Protocols/Tween.html">Tween</a></span><span class="o">.</span><span class="kt">Callback</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Protocols/Tween.html">Tween</a></span> <span class="k">where</span> <span class="k">Self</span> <span class="o">==</span> <span class="kt">TweenProperty</span><span class="o">.</span><span class="kt">Target</span><span class="p">,</span> <span class="kt">TweenProperty</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/TweenableProperty.html">TweenableProperty</a></span></code></pre>
+<span class="kd">func</span> <span class="n">tween</span><span class="o">&lt;</span><span class="kt">Property</span><span class="o">&gt;</span><span class="p">(</span><span class="n">to</span> <span class="nv">property</span><span class="p">:</span> <span class="kt">Property</span><span class="p">,</span> <span class="nv">duration</span><span class="p">:</span> <span class="kt">TimeInterval</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kt"><a href="../Protocols/Tween.html">Tween</a></span><span class="o">.</span><span class="kt">Callback</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Protocols/Tween.html">Tween</a></span> <span class="k">where</span> <span class="k">Self</span> <span class="o">==</span> <span class="kt">Property</span><span class="o">.</span><span class="kt">Target</span><span class="p">,</span> <span class="kt">Property</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/TweenableProperty.html">TweenableProperty</a></span></code></pre>
 
                         </div>
                       </div>
@@ -193,7 +193,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Animates an array of tweenable properties from its current values <em>to</em> the desired values.</p>
+                        <p>Animates an array of tweenable properties from its current values <em>to</em> desired values.</p>
 
                       </div>
                       <div class="declaration">
@@ -201,7 +201,7 @@
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
-<span class="kd">func</span> <span class="n">tween</span><span class="o">&lt;</span><span class="kt">TweenProperty</span><span class="o">&gt;</span><span class="p">(</span><span class="n">to</span> <span class="nv">properties</span><span class="p">:</span> <span class="p">[</span><span class="kt">TweenProperty</span><span class="p">],</span> <span class="nv">duration</span><span class="p">:</span> <span class="kt">TimeInterval</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kt"><a href="../Protocols/Tween.html">Tween</a></span><span class="o">.</span><span class="kt">Callback</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Protocols/Tween.html">Tween</a></span> <span class="k">where</span> <span class="k">Self</span> <span class="o">==</span> <span class="kt">TweenProperty</span><span class="o">.</span><span class="kt">Target</span><span class="p">,</span> <span class="kt">TweenProperty</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/TweenableProperty.html">TweenableProperty</a></span></code></pre>
+<span class="kd">func</span> <span class="n">tween</span><span class="o">&lt;</span><span class="kt">Property</span><span class="o">&gt;</span><span class="p">(</span><span class="n">to</span> <span class="nv">properties</span><span class="p">:</span> <span class="p">[</span><span class="kt">Property</span><span class="p">],</span> <span class="nv">duration</span><span class="p">:</span> <span class="kt">TimeInterval</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kt"><a href="../Protocols/Tween.html">Tween</a></span><span class="o">.</span><span class="kt">Callback</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Protocols/Tween.html">Tween</a></span> <span class="k">where</span> <span class="k">Self</span> <span class="o">==</span> <span class="kt">Property</span><span class="o">.</span><span class="kt">Target</span><span class="p">,</span> <span class="kt">Property</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/TweenableProperty.html">TweenableProperty</a></span></code></pre>
 
                         </div>
                       </div>
@@ -268,7 +268,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Animates a tweenable property <em>from</em> the desired value to its current value.</p>
+                        <p>Animates a tweenable property <em>from</em> a desired value to its current value.</p>
 
                       </div>
                       <div class="declaration">
@@ -276,7 +276,7 @@
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
-<span class="kd">func</span> <span class="n">tween</span><span class="o">&lt;</span><span class="kt">TweenProperty</span><span class="o">&gt;</span><span class="p">(</span><span class="n">from</span> <span class="nv">property</span><span class="p">:</span> <span class="kt">TweenProperty</span><span class="p">,</span> <span class="nv">duration</span><span class="p">:</span> <span class="kt">TimeInterval</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kt"><a href="../Protocols/Tween.html">Tween</a></span><span class="o">.</span><span class="kt">Callback</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Protocols/Tween.html">Tween</a></span> <span class="k">where</span> <span class="k">Self</span> <span class="o">==</span> <span class="kt">TweenProperty</span><span class="o">.</span><span class="kt">Target</span><span class="p">,</span> <span class="kt">TweenProperty</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/TweenableProperty.html">TweenableProperty</a></span></code></pre>
+<span class="kd">func</span> <span class="n">tween</span><span class="o">&lt;</span><span class="kt">Property</span><span class="o">&gt;</span><span class="p">(</span><span class="n">from</span> <span class="nv">property</span><span class="p">:</span> <span class="kt">Property</span><span class="p">,</span> <span class="nv">duration</span><span class="p">:</span> <span class="kt">TimeInterval</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kt"><a href="../Protocols/Tween.html">Tween</a></span><span class="o">.</span><span class="kt">Callback</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Protocols/Tween.html">Tween</a></span> <span class="k">where</span> <span class="k">Self</span> <span class="o">==</span> <span class="kt">Property</span><span class="o">.</span><span class="kt">Target</span><span class="p">,</span> <span class="kt">Property</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/TweenableProperty.html">TweenableProperty</a></span></code></pre>
 
                         </div>
                       </div>
@@ -343,7 +343,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Animates an array of tweenable properties <em>from</em> the desired values to its current values.</p>
+                        <p>Animates an array of tweenable properties <em>from</em> desired values to its current values.</p>
 
                       </div>
                       <div class="declaration">
@@ -351,7 +351,7 @@
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
-<span class="kd">func</span> <span class="n">tween</span><span class="o">&lt;</span><span class="kt">TweenProperty</span><span class="o">&gt;</span><span class="p">(</span><span class="n">from</span> <span class="nv">properties</span><span class="p">:</span> <span class="p">[</span><span class="kt">TweenProperty</span><span class="p">],</span> <span class="nv">duration</span><span class="p">:</span> <span class="kt">TimeInterval</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kt"><a href="../Protocols/Tween.html">Tween</a></span><span class="o">.</span><span class="kt">Callback</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Protocols/Tween.html">Tween</a></span> <span class="k">where</span> <span class="k">Self</span> <span class="o">==</span> <span class="kt">TweenProperty</span><span class="o">.</span><span class="kt">Target</span><span class="p">,</span> <span class="kt">TweenProperty</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/TweenableProperty.html">TweenableProperty</a></span></code></pre>
+<span class="kd">func</span> <span class="n">tween</span><span class="o">&lt;</span><span class="kt">Property</span><span class="o">&gt;</span><span class="p">(</span><span class="n">from</span> <span class="nv">properties</span><span class="p">:</span> <span class="p">[</span><span class="kt">Property</span><span class="p">],</span> <span class="nv">duration</span><span class="p">:</span> <span class="kt">TimeInterval</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kt"><a href="../Protocols/Tween.html">Tween</a></span><span class="o">.</span><span class="kt">Callback</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Protocols/Tween.html">Tween</a></span> <span class="k">where</span> <span class="k">Self</span> <span class="o">==</span> <span class="kt">Property</span><span class="o">.</span><span class="kt">Target</span><span class="p">,</span> <span class="kt">Property</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/TweenableProperty.html">TweenableProperty</a></span></code></pre>
 
                         </div>
                       </div>
