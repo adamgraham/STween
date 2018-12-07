@@ -36,6 +36,8 @@ class TweenTimerTest: XCTestCase {
         XCTAssertFalse(timer.running)
         timer.start()
         XCTAssertTrue(timer.running)
+        timer.start()
+        XCTAssertTrue(timer.running)
     }
 
     func testStop() {
@@ -43,6 +45,8 @@ class TweenTimerTest: XCTestCase {
         XCTAssertFalse(timer.running)
         timer.start()
         XCTAssertTrue(timer.running)
+        timer.stop()
+        XCTAssertFalse(timer.running)
         timer.stop()
         XCTAssertFalse(timer.running)
     }
@@ -69,30 +73,6 @@ class TweenTimerTest: XCTestCase {
         XCTAssertEqual(timer.elapsed, 0.0)
     }
 
-    func testRestart() {
-        let tickExpectation = expectation(description: "timer:restart:tick")
-        let delegate = TestDelegateClass()
-        delegate.callback = {
-            tickExpectation.fulfill()
-        }
-
-        let timer = TweenTimer(delegate: delegate)
-        XCTAssertFalse(timer.running)
-        timer.start()
-        XCTAssertTrue(timer.running)
-
-        XCTAssertEqual(timer.elapsed, 0.0)
-        waitForExpectations(timeout: 1.0)
-        XCTAssertGreaterThan(timer.elapsed, 0.0)
-
-        XCTAssertTrue(timer.running)
-        timer.stop()
-        XCTAssertFalse(timer.running)
-        timer.restart()
-        XCTAssertTrue(timer.running)
-        XCTAssertEqual(timer.elapsed, 0.0)
-    }
-
     // MARK: Timer Event Tests
 
     func testTick() {
@@ -112,7 +92,7 @@ class TweenTimerTest: XCTestCase {
 
 }
 
-fileprivate class TestDelegateClass: TweenTimerDelegate {
+private class TestDelegateClass: TweenTimerDelegate {
 
     var callback: (() -> Void)?
 

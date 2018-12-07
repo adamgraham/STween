@@ -19,9 +19,8 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         Defaults.overshoot /= 2.0
-        Defaults.frameRate = 60.0
     }
 
     // MARK: IBOutlets
@@ -115,11 +114,12 @@ class ViewController: UIViewController {
         self.backgroundOverlayView.isHidden = false
         self.backgroundOverlayView.tween(to: UIViewTweenProperty.alpha(0.5), duration: 0.75)
             .set(delay: delay)
-
+        
         self.purchaseModalYConstraint.tween(from: NSLayoutConstraintTweenProperty.constant(self.view.frame.height), duration: 0.6)
             .set(ease: .backOut)
             .set(delay: delay + 0.5)
-            .set(callback: { self.purchaseModalView.isHidden = false }, for: .start)
+            .set(callback: { self.purchaseModalYConstraint.constant = self.view.frame.height
+                             self.purchaseModalView.isHidden = false }, for: .start)
     }
 
     private func hidePurchaseModal() {

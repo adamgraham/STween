@@ -6,23 +6,21 @@
 //  Copyright © 2016 Adam Graham. All rights reserved.
 //
 
-/// An extension to provide tweening animation functionality to `NSLayoutConstraint`.
-extension NSLayoutConstraint: Tweenable {
-    
-}
+import CoreGraphics
+import Foundation
 
-/// An enum to describe the properties that can be animated with a tween
-/// on a `NSLayoutConstraint`.
-public enum NSLayoutConstraintTweenProperty {
+/// Provides tweening animation functionality to `NSLayoutConstraint`.
+extension NSLayoutConstraint: Tweenable {}
 
-    /// A case to denote the `constant` property of a `NSLayoutConstraint`.
+/// The properties of a `NSLayoutConstraint` that can be animated with a tween.
+public enum NSLayoutConstraintTweenProperty: Equatable {
+
+    /// The `constant` property of a `NSLayoutConstraint`.
     case constant(CGFloat)
 
 }
 
 extension NSLayoutConstraintTweenProperty: TweenableProperty {
-
-    public typealias TweenableType = NSLayoutConstraint
 
     public func value(from object: NSLayoutConstraint) -> NSLayoutConstraintTweenProperty {
         switch self {

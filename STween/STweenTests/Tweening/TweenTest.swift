@@ -12,64 +12,53 @@ import XCTest
 
 class TweenTest: XCTestCase {
 
-    override func setUp() {
-        super.setUp()
-        Tweener.invokeStateChangeOnAllTweens(.kill)
-    }
+    private class TestTween: Tween {
 
-    override func tearDown() {
-        Tweener.invokeStateChangeOnAllTweens(.kill)
-        super.tearDown()
-    }
+        var ease: Ease = Defaults.ease
+        var reversed: Bool = Defaults.reversed
+        var state: TweenState = .new
+        var delay: TimeInterval = Defaults.delay
+        var duration: TimeInterval = 2.0
+        var elapsed: TimeInterval = 0.0
 
-    func testEase() {
-        let tween = Tweener.animate(UIView(), to: [UIViewTweenProperty](), duration: 1.0)
-        XCTAssertEqual(tween.ease, Defaults.ease)
-        tween.ease = .backOut
-        XCTAssertEqual(tween.ease, .backOut)
-    }
+        var onUpdate: Callback?
+        var onStart: Callback?
+        var onStop: Callback?
+        var onRestart: Callback?
+        var onPause: Callback?
+        var onResume: Callback?
+        var onComplete: Callback?
+        var onKill: Callback?
+        var onRevive: Callback?
 
-    func testReversed() {
-        let tween = Tweener.animate(UIView(), to: [UIViewTweenProperty](), duration: 1.0)
-        XCTAssertFalse(tween.reversed)
-        tween.reversed = true
-        XCTAssertTrue(tween.reversed)
-    }
+        func start() -> Bool { return false }
+        func stop() -> Bool { return false }
+        func restart() -> Bool { return false }
+        func pause() -> Bool { return false }
+        func resume() -> Bool { return false }
+        func complete() -> Bool { return false }
+        func kill() -> Bool { return false }
+        func revive() -> Bool { return false }
 
-    func testState() {
-        let tween = Tweener.animate(UIView(), to: [UIViewTweenProperty](), duration: 1.0)
-        XCTAssertEqual(tween.state, .new)
-        tween.invoke(.kill)
-        XCTAssertEqual(tween.state, .killed)
-    }
-
-    func testDelay() {
-        let tween = Tweener.animate(UIView(), to: [UIViewTweenProperty](), duration: 1.0)
-        XCTAssertEqual(tween.delay, 0.0)
-        tween.delay = 1.0
-        XCTAssertEqual(tween.delay, 1.0)
-    }
-
-    func testDuration() {
-        let tween = Tweener.animate(UIView(), to: [UIViewTweenProperty](), duration: 1.0)
-        XCTAssertEqual(tween.duration, 1.0)
-        tween.duration = 2.0
-        XCTAssertEqual(tween.duration, 2.0)
-    }
-
-    func testElapsed() {
-        let tween = Tweener.animate(UIView(), to: [UIViewTweenProperty](), duration: 1.0)
-        XCTAssertEqual(tween.elapsed, 0.0)
-        tween.invoke(.start)
-        tween.invoke(.complete)
-        XCTAssertEqual(tween.elapsed, tween.duration)
     }
 
     func testPercentComplete() {
-        let tween = Tweener.animate(UIView(), to: [UIViewTweenProperty](), duration: 1.0)
+        let tween = TestTween()
+        tween.duration = 4.0
+
+        tween.elapsed = -1.0
         XCTAssertEqual(tween.percentComplete, 0.0)
-        tween.invoke(.start)
-        tween.invoke(.complete)
+        tween.elapsed = 0.0
+        XCTAssertEqual(tween.percentComplete, 0.0)
+        tween.elapsed = 1.0
+        XCTAssertEqual(tween.percentComplete, 0.25)
+        tween.elapsed = 2.0
+        XCTAssertEqual(tween.percentComplete, 0.5)
+        tween.elapsed = 3.0
+        XCTAssertEqual(tween.percentComplete, 0.75)
+        tween.elapsed = 4.0
+        XCTAssertEqual(tween.percentComplete, 1.0)
+        tween.elapsed = 5.0
         XCTAssertEqual(tween.percentComplete, 1.0)
     }
 

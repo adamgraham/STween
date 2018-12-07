@@ -6,30 +6,27 @@
 //  Copyright © 2017 Adam Graham. All rights reserved.
 //
 
-/// A protocol to describe a tweenable property.
-public protocol TweenableProperty: Interpolatable {
+/// A property that can be animated on a `Tweenable` type.
+public protocol TweenableProperty: Interpolatable where Value == Self {
 
+    /// The type of which the property can be retrieved from and applied to.
     associatedtype Target: Tweenable
 
-    typealias Value = Self
-
-    // MARK: Methods
-
     /**
-     A method to retrieve the value of `self` from an object.
+     Gets the value of the property from an object.
      
      - Parameters:
-        - object: The object from which a value will be retrieved.
+        - object: The object from which the value is retrieved.
 
-     - Returns: The value of `self` from the `object`.
+     - Returns: The value retrieved from the `object`.
      */
     func value(from object: Target) -> Self.Value
 
     /**
-     A method to apply the value of `self` to an object.
+     Sets the value of the property on an object.
      
      - Parameters:
-        - object: The object to which a value will be applied.
+        - object: The object to which the value is applied.
      */
     func apply(to object: Target)
 

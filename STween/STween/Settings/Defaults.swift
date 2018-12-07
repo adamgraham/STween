@@ -6,34 +6,28 @@
 //  Copyright © 2016 Adam Graham. All rights reserved.
 //
 
-/// A class to store default tweening and easing settings.
-public final class Defaults {
-
-    // Prevent instantiation of the class.
-    private init() {}
+/// The default tweening and easing settings.
+public enum Defaults {
 
     // MARK: Properties
-
-    /// The default rate at which every `Tween` updates.
-    public static var frameRate = 30.0
-    /// The default `Ease` assigned to every `Tween`.
+    
+    /// The default `Ease` assigned to every tween.
     public static var ease = Ease.quadOut
     /// The default overshoot value used in easing functions.
     public static var overshoot = 1.70158
-    /// The default amount of time, in seconds, before every `Tween` starts.
+    /// The default amount of seconds before every tween starts.
     public static var delay = 0.0
-    /// The default state of every `Tween` being reversed.
+    /// The default state of every tween being reversed.
     public static var reversed = false
-    /// The default state of every `Tween` automatically starting upon creation.
+    /// The default state of every tween automatically started upon creation.
     public static var autoStartTweens = true
-    /// The default state of every `Tween` automatically being killed upon completion.
+    /// The default state of every tween automatically killed upon completion.
     public static var autoKillCompletedTweens = true
 
     // MARK: Methods
 
-    /// A method to reset all defaults to their original values.
+    /// Resets all defaults to their original values.
     public static func reset() {
-        self.frameRate = 30.0
         self.ease = .quadOut
         self.overshoot = 1.70158
         self.delay = 0.0

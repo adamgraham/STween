@@ -6,36 +6,34 @@
 //  Copyright © 2017 Adam Graham. All rights reserved.
 //
 
-/// An extension to provide tweening animation functionality to `UIButton`.
-extension UIButton {
-    
-}
+import Foundation
+import UIKit
 
-/// An enum to describe the properties that can be animated with a tween
-/// on a `UIButton`.
-public enum UIButtonTweenProperty {
+/// Provides tweening animation functionality to `UIButton`.
+extension UIButton {}
 
-    /// A case to denote the `contentEdgeInsets` property of a `UIButton`.
+/// The properties of a `UIButton` that can be animated with a tween.
+public enum UIButtonTweenProperty: Equatable {
+
+    /// The `contentEdgeInsets` property of a `UIButton`.
     case contentEdgeInsets(UIEdgeInsets)
-    /// A case to denote the `titleEdgeInsets` property of a `UIButton`.
+    /// The `titleEdgeInsets` property of a `UIButton`.
     case titleEdgeInsets(UIEdgeInsets)
-    /// A case to denote the `imageEdgeInsets` property of a `UIButton`.
+    /// The `imageEdgeInsets` property of a `UIButton`.
     case imageEdgeInsets(UIEdgeInsets)
 
-    /// A case to denote the `titleColor(state:)` function of a `UIButton`.
-    case titleColor(UIColor, UIControlState)
-    /// A case to denote the `titleShadowColor(state:)` function of a `UIButton`.
-    case titleShadowColor(UIColor, UIControlState)
+    /// The `titleColor(state:)` function of a `UIButton`.
+    case titleColor(UIColor, UIControl.State)
+    /// The `titleShadowColor(state:)` function of a `UIButton`.
+    case titleShadowColor(UIColor, UIControl.State)
 
-    /// A case to denote the `tintColor` property of a `UIButton`.
+    /// The `tintColor` property of a `UIButton`.
     @available(iOS 5.0, *)
     case tintColor(UIColor)
 
 }
 
 extension UIButtonTweenProperty: TweenableProperty {
-
-    public typealias TweenableType = UIButton
 
     public func value(from object: UIButton) -> UIButtonTweenProperty {
         switch self {

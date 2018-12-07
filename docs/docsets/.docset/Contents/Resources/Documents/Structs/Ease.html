@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Ease Structure Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Struct/Ease" class="dashAnchor"></a>
+    <a title="Ease Structure Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html"> Docs</a> (100% documented)</p>
+        <p class="header-right"><a href="https://github.com/adamgraham/STween"><img src="../img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html"> Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        Ease Structure Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Easing.html">Easing</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/Ease.html">Ease</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/EaseClassification.html">EaseClassification</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/EaseCurve.html">EaseCurve</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/EaseFunction.html">EaseFunction</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Interpolation.html">Interpolation</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/Interpolatable.html">Interpolatable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/InterpolatableNumber.html">InterpolatableNumber</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/InterpolatableNumberConstants.html">InterpolatableNumberConstants</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Tweening.html">Tweening</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/Tween.html">Tween</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/TweenState.html">TweenState</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Tweenable.html">Tweenable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/TweenableProperty.html">TweenableProperty</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Tweener.html">Tweener</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Settings.html">Settings</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/Defaults.html">Defaults</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>Ease</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Ease</span></code></pre>
+
+                </div>
+              </div>
+            <p>A type of easing function, described from an algorithmic classification and acceleration
+pattern.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Properties"></a>
+                <a name="//apple_ref/swift/Section/Properties" class="dashAnchor"></a>
+                <a href="#/Properties">
+                  <h3 class="section-name">Properties</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6STween4EaseV14classificationAA0B14ClassificationOvp"></a>
+                    <a name="//apple_ref/swift/Property/classification" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6STween4EaseV14classificationAA0B14ClassificationOvp">classification</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The algorithmic classification of the ease.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">classification</span><span class="p">:</span> <span class="kt"><a href="../Enums/EaseClassification.html">EaseClassification</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6STween4EaseV5curveAA0B5CurveOvp"></a>
+                    <a name="//apple_ref/swift/Property/curve" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6STween4EaseV5curveAA0B5CurveOvp">curve</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The acceleration pattern of the ease.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">curve</span><span class="p">:</span> <span class="kt"><a href="../Enums/EaseCurve.html">EaseCurve</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Linear"></a>
+                <a name="//apple_ref/swift/Section/Linear" class="dashAnchor"></a>
+                <a href="#/Linear">
+                  <h3 class="section-name">Linear</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6STween4EaseV6linearACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/linear" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6STween4EaseV6linearACvpZ">linear</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An ease with a <code>linear</code> classification.</p>
+
+<p><a href="http://easings.net/">Visual Reference</a></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">linear</span><span class="p">:</span> <span class="kt">Ease</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Sinusoidal"></a>
+                <a name="//apple_ref/swift/Section/Sinusoidal" class="dashAnchor"></a>
+                <a href="#/Sinusoidal">
+                  <h3 class="section-name">Sinusoidal</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6STween4EaseV6sineInACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/sineIn" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6STween4EaseV6sineInACvpZ">sineIn</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An ease with a <code>sine</code> classification and <code>in</code> acceleration pattern.</p>
+
+<p><a href="http://easings.net/#easeInSine">Visual Reference</a></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">sineIn</span><span class="p">:</span> <span class="kt">Ease</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6STween4EaseV7sineOutACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/sineOut" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6STween4EaseV7sineOutACvpZ">sineOut</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An ease with a <code>sine</code> classification and <code>out</code> acceleration pattern.</p>
+
+<p><a href="http://easings.net/#easeOutSine">Visual Reference</a></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">sineOut</span><span class="p">:</span> <span class="kt">Ease</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6STween4EaseV9sineInOutACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/sineInOut" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6STween4EaseV9sineInOutACvpZ">sineInOut</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An ease with a <code>sine</code> classification and <code>inOut</code> acceleration pattern.</p>
+
+<p><a href="http://easings.net/#easeInOutSine">Visual Reference</a></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">sineInOut</span><span class="p">:</span> <span class="kt">Ease</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Cubic"></a>
+                <a name="//apple_ref/swift/Section/Cubic" class="dashAnchor"></a>
+                <a href="#/Cubic">
+                  <h3 class="section-name">Cubic</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6STween4EaseV7cubicInACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/cubicIn" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6STween4EaseV7cubicInACvpZ">cubicIn</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An ease with a <code>cubic</code> classification and <code>in</code> acceleration pattern.</p>
+
+<p><a href="http://easings.net/#easeInCubic">Visual Reference</a></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">cubicIn</span><span class="p">:</span> <span class="kt">Ease</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6STween4EaseV8cubicOutACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/cubicOut" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6STween4EaseV8cubicOutACvpZ">cubicOut</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An ease with a <code>cubic</code> classification and <code>out</code> acceleration pattern.</p>
+
+<p><a href="http://easings.net/#easeOutCubic">Visual Reference</a></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">cubicOut</span><span class="p">:</span> <span class="kt">Ease</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6STween4EaseV10cubicInOutACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/cubicInOut" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6STween4EaseV10cubicInOutACvpZ">cubicInOut</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An ease with a <code>cubic</code> classification and <code>inOut</code> acceleration pattern.</p>
+
+<p><a href="http://easings.net/#easeInOutCubic">Visual Reference</a></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">cubicInOut</span><span class="p">:</span> <span class="kt">Ease</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Quadratic"></a>
+                <a name="//apple_ref/swift/Section/Quadratic" class="dashAnchor"></a>
+                <a href="#/Quadratic">
+                  <h3 class="section-name">Quadratic</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6STween4EaseV6quadInACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/quadIn" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6STween4EaseV6quadInACvpZ">quadIn</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An ease with a <code>quad</code> classification and <code>in</code> acceleration pattern.</p>
+
+<p><a href="http://easings.net/#easeInQuad">Visual Reference</a></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">quadIn</span><span class="p">:</span> <span class="kt">Ease</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6STween4EaseV7quadOutACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/quadOut" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6STween4EaseV7quadOutACvpZ">quadOut</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An ease with a <code>quad</code> classification and <code>out</code> acceleration pattern.</p>
+
+<p><a href="http://easings.net/#easeOutQuad">Visual Reference</a></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">quadOut</span><span class="p">:</span> <span class="kt">Ease</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6STween4EaseV9quadInOutACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/quadInOut" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6STween4EaseV9quadInOutACvpZ">quadInOut</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An ease with a <code>quad</code> classification and <code>inOut</code> acceleration pattern.</p>
+
+<p><a href="http://easings.net/#easeInOutQuad">Visual Reference</a></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">quadInOut</span><span class="p">:</span> <span class="kt">Ease</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Quartic"></a>
+                <a name="//apple_ref/swift/Section/Quartic" class="dashAnchor"></a>
+                <a href="#/Quartic">
+                  <h3 class="section-name">Quartic</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6STween4EaseV7quartInACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/quartIn" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6STween4EaseV7quartInACvpZ">quartIn</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An ease with a <code>quart</code> classification and <code>in</code> acceleration pattern.</p>
+
+<p><a href="http://easings.net/#easeInQuart">Visual Reference</a></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">quartIn</span><span class="p">:</span> <span class="kt">Ease</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6STween4EaseV8quartOutACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/quartOut" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6STween4EaseV8quartOutACvpZ">quartOut</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An ease with a <code>quart</code> classification and <code>out</code> acceleration pattern.</p>
+
+<p><a href="http://easings.net/#easeOutQuart">Visual Reference</a></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">quartOut</span><span class="p">:</span> <span class="kt">Ease</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6STween4EaseV10quartInOutACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/quartInOut" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6STween4EaseV10quartInOutACvpZ">quartInOut</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An ease with a <code>quart</code> classification and <code>inOut</code> acceleration pattern.</p>
+
+<p><a href="http://easings.net/#easeInOutQuart">Visual Reference</a></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">quartInOut</span><span class="p">:</span> <span class="kt">Ease</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Quintic"></a>
+                <a name="//apple_ref/swift/Section/Quintic" class="dashAnchor"></a>
+                <a href="#/Quintic">
+                  <h3 class="section-name">Quintic</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6STween4EaseV7quintInACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/quintIn" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6STween4EaseV7quintInACvpZ">quintIn</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An ease with a <code>quint</code> classification and <code>in</code> acceleration pattern.</p>
+
+<p><a href="http://easings.net/#easeInQuint">Visual Reference</a></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">quintIn</span><span class="p">:</span> <span class="kt">Ease</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6STween4EaseV8quintOutACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/quintOut" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6STween4EaseV8quintOutACvpZ">quintOut</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An ease with a <code>quint</code> classification and <code>out</code> acceleration pattern.</p>
+
+<p><a href="http://easings.net/#easeOutQuint">Visual Reference</a></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">quintOut</span><span class="p">:</span> <span class="kt">Ease</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6STween4EaseV10quintInOutACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/quintInOut" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6STween4EaseV10quintInOutACvpZ">quintInOut</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An ease with a <code>quint</code> classification and <code>inOut</code> acceleration pattern.</p>
+
+<p><a href="http://easings.net/#easeInOutQuint">Visual Reference</a></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">quintInOut</span><span class="p">:</span> <span class="kt">Ease</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Exponential"></a>
+                <a name="//apple_ref/swift/Section/Exponential" class="dashAnchor"></a>
+                <a href="#/Exponential">
+                  <h3 class="section-name">Exponential</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6STween4EaseV6expoInACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/expoIn" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6STween4EaseV6expoInACvpZ">expoIn</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An ease with an <code>expo</code> classification and <code>in</code> acceleration pattern.</p>
+
+<p><a href="http://easings.net/#easeInExpo">Visual Reference</a></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">expoIn</span><span class="p">:</span> <span class="kt">Ease</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6STween4EaseV7expoOutACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/expoOut" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6STween4EaseV7expoOutACvpZ">expoOut</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An ease with an <code>expo</code> classification and <code>out</code> acceleration pattern.</p>
+
+<p><a href="http://easings.net/#easeOutExpo">Visual Reference</a></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">expoOut</span><span class="p">:</span> <span class="kt">Ease</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6STween4EaseV9expoInOutACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/expoInOut" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6STween4EaseV9expoInOutACvpZ">expoInOut</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An ease with an <code>expo</code> classification and <code>inOut</code> acceleration pattern.</p>
+
+<p><a href="http://easings.net/#easeInOutExpo">Visual Reference</a></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">expoInOut</span><span class="p">:</span> <span class="kt">Ease</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Circular"></a>
+                <a name="//apple_ref/swift/Section/Circular" class="dashAnchor"></a>
+                <a href="#/Circular">
+                  <h3 class="section-name">Circular</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6STween4EaseV6circInACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/circIn" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6STween4EaseV6circInACvpZ">circIn</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An ease with a <code>circ</code> classification and <code>in</code> acceleration pattern.</p>
+
+<p><a href="http://easings.net/#easeInCirc">Visual Reference</a></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">circIn</span><span class="p">:</span> <span class="kt">Ease</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6STween4EaseV7circOutACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/circOut" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6STween4EaseV7circOutACvpZ">circOut</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An ease with a <code>circ</code> classification and <code>out</code> acceleration pattern.</p>
+
+<p><a href="http://easings.net/#easeOutCirc">Visual Reference</a></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">circOut</span><span class="p">:</span> <span class="kt">Ease</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6STween4EaseV9circInOutACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/circInOut" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6STween4EaseV9circInOutACvpZ">circInOut</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An ease with a <code>circ</code> classification and <code>inOut</code> acceleration pattern.</p>
+
+<p><a href="http://easings.net/#easeInOutCirc">Visual Reference</a></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">circInOut</span><span class="p">:</span> <span class="kt">Ease</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Back"></a>
+                <a name="//apple_ref/swift/Section/Back" class="dashAnchor"></a>
+                <a href="#/Back">
+                  <h3 class="section-name">Back</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6STween4EaseV6backInACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/backIn" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6STween4EaseV6backInACvpZ">backIn</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An ease with a <code>back</code> classification and <code>in</code> acceleration pattern.</p>
+
+<p><a href="http://easings.net/#easeInBack">Visual Reference</a></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">backIn</span><span class="p">:</span> <span class="kt">Ease</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6STween4EaseV7backOutACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/backOut" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6STween4EaseV7backOutACvpZ">backOut</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An ease with a <code>back</code> classification and <code>out</code> acceleration pattern.</p>
+
+<p><a href="http://easings.net/#easeOutBack">Visual Reference</a></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">backOut</span><span class="p">:</span> <span class="kt">Ease</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6STween4EaseV9backInOutACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/backInOut" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6STween4EaseV9backInOutACvpZ">backInOut</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An ease with a <code>back</code> classification and <code>inOut</code> acceleration pattern.</p>
+
+<p><a href="http://easings.net/#easeInOutBack">Visual Reference</a></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">backInOut</span><span class="p">:</span> <span class="kt">Ease</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Elastic"></a>
+                <a name="//apple_ref/swift/Section/Elastic" class="dashAnchor"></a>
+                <a href="#/Elastic">
+                  <h3 class="section-name">Elastic</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6STween4EaseV9elasticInACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/elasticIn" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6STween4EaseV9elasticInACvpZ">elasticIn</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An ease with an <code>elastic</code> classification and <code>in</code> acceleration pattern.</p>
+
+<p><a href="http://easings.net/#easeInElastic">Visual Reference</a></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">elasticIn</span><span class="p">:</span> <span class="kt">Ease</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6STween4EaseV10elasticOutACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/elasticOut" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6STween4EaseV10elasticOutACvpZ">elasticOut</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An ease with an <code>elastic</code> classification and <code>out</code> acceleration pattern.</p>
+
+<p><a href="http://easings.net/#easeOutElastic">Visual Reference</a></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">elasticOut</span><span class="p">:</span> <span class="kt">Ease</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6STween4EaseV12elasticInOutACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/elasticInOut" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6STween4EaseV12elasticInOutACvpZ">elasticInOut</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An ease with an <code>elastic</code> classification and <code>inOut</code> acceleration pattern.</p>
+
+<p><a href="http://easings.net/#easeInOutElastic">Visual Reference</a></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">elasticInOut</span><span class="p">:</span> <span class="kt">Ease</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Bounce"></a>
+                <a name="//apple_ref/swift/Section/Bounce" class="dashAnchor"></a>
+                <a href="#/Bounce">
+                  <h3 class="section-name">Bounce</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6STween4EaseV8bounceInACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/bounceIn" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6STween4EaseV8bounceInACvpZ">bounceIn</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An ease with a <code>bounce</code> classification and <code>in</code> acceleration pattern.</p>
+
+<p><a href="http://easings.net/#easeInBounce">Visual Reference</a></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">bounceIn</span><span class="p">:</span> <span class="kt">Ease</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6STween4EaseV9bounceOutACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/bounceOut" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6STween4EaseV9bounceOutACvpZ">bounceOut</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An ease with a <code>bounce</code> classification and <code>out</code> acceleration pattern.</p>
+
+<p><a href="http://easings.net/#easeOutBounce">Visual Reference</a></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">bounceOut</span><span class="p">:</span> <span class="kt">Ease</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6STween4EaseV11bounceInOutACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/bounceInOut" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6STween4EaseV11bounceInOutACvpZ">bounceInOut</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An ease with a <code>bounce</code> classification and <code>inOut</code> acceleration pattern.</p>
+
+<p><a href="http://easings.net/#easeInOutBounce">Visual Reference</a></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">bounceInOut</span><span class="p">:</span> <span class="kt">Ease</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>Copyright (c) 2016 Adam Graham</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

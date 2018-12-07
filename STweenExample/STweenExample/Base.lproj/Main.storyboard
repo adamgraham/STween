@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13178.6" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13156.2"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -26,7 +25,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d1w-QN-mpN">
-                                <rect key="frame" x="130" y="526.33333333333348" width="154" height="51.666666666666629"/>
+                                <rect key="frame" x="131.66666666666669" y="526.33333333333348" width="151.00000000000006" height="51.666666666666629"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="24"/>
                                 <inset key="contentEdgeInsets" minX="35" minY="10" maxX="35" maxY="12.5"/>
                                 <state key="normal" title="animate">
@@ -67,16 +66,16 @@
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gNl-Ai-fsI" userLabel="Loading View">
-                                <rect key="frame" x="138.33333333333331" y="296.66666666666669" width="138.33333333333331" height="88.666666666666629"/>
+                                <rect key="frame" x="140.33333333333337" y="296.66666666666669" width="134.66666666666663" height="88.666666666666629"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="purchasing..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BuA-hE-tGT" userLabel="Purchasing...">
-                                        <rect key="frame" x="0.0" y="60" width="138.33333333333334" height="28.666666666666629"/>
+                                        <rect key="frame" x="0.0" y="60" width="134.66666666666666" height="28.666666666666629"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="uf6-i5-A7I">
-                                        <rect key="frame" x="44.333333333333314" y="0.0" width="50" height="50"/>
+                                        <rect key="frame" x="42.333333333333314" y="0.0" width="50" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="C0H-6T-asX"/>
                                             <constraint firstAttribute="height" constant="50" id="sgD-RU-jzc"/>
@@ -101,16 +100,16 @@
                                 </constraints>
                             </view>
                             <view hidden="YES" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hYl-Jg-0HH" userLabel="Success View">
-                                <rect key="frame" x="147" y="275" width="120" height="112.66666666666669"/>
+                                <rect key="frame" x="149" y="275" width="116.33333333333331" height="112.66666666666669"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="✓" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tXn-si-1en">
-                                        <rect key="frame" x="24" y="0.0" width="72" height="84"/>
+                                        <rect key="frame" x="22" y="0.0" width="72" height="84"/>
                                         <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="72"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="purchased!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1bW-Ci-fPj">
-                                        <rect key="frame" x="0.0" y="84" width="120" height="28.666666666666686"/>
+                                        <rect key="frame" x="0.0" y="84" width="116.33333333333331" height="28.666666666666686"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -130,7 +129,7 @@
                                 <rect key="frame" x="42" y="125" width="330" height="486"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="HOUSE PLANT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mV3-Wa-Wdg">
-                                        <rect key="frame" x="70" y="24.666666666666657" width="190" height="34"/>
+                                        <rect key="frame" x="70.666666666666686" y="24.666666666666657" width="188.66666666666663" height="34"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="28"/>
                                         <color key="textColor" red="0.16443462669849396" green="0.21523170173168182" blue="0.24254439771175385" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -145,7 +144,7 @@
                                         <rect key="frame" x="24.666666666666686" y="113.66666666666667" width="279.66666666666663" height="250.66666666666663"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="752" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WX6-P4-NbF">
-                                        <rect key="frame" x="84.666666666666686" y="399.33333333333337" width="161" height="51.666666666666629"/>
+                                        <rect key="frame" x="86.333333333333329" y="399.33333333333337" width="158" height="51.666666666666629"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                         <inset key="contentEdgeInsets" minX="35" minY="10" maxX="35" maxY="12.5"/>
                                         <state key="normal" title="buy now">

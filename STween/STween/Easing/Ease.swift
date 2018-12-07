@@ -6,332 +6,328 @@
 //  Copyright © 2016 Adam Graham. All rights reserved.
 //
 
-/// An enum to describe an easing function.
-public enum Ease {
+/**
+ A type of easing function, described from an algorithmic classification and acceleration
+ pattern, providing the sense of motion.
 
-    // MARK: Linear
-
-    /// A case to denote an `EaseClassification.linear` function.
-    ///
-    /// [Visual Reference](http://easings.net/)
-    case linear
-
-    // MARK: Sinusoidal
-
-    /// A case to denote an `EaseClassification.sine` function with an
-    /// `EaseCurve.in` acceleration pattern.
-    ///
-    /// [Visual Reference](http://easings.net/#easeInSine)
-    case sineIn
-
-    /// A case to denote an `EaseClassification.sine` function with an
-    /// `EaseCurve.out` acceleration pattern.
-    ///
-    /// [Visual Reference](http://easings.net/#easeOutSine)
-    case sineOut
-
-    /// A case to denote an `EaseClassification.sine` function with an
-    /// `EaseCurve.inOut` acceleration pattern.
-    ///
-    /// [Visual Reference](http://easings.net/#easeInOutSine)
-    case sineInOut
-
-    // MARK: Cubic
-
-    /// A case to denote an `EaseClassification.cubic` function with an
-    /// `EaseCurve.in` acceleration pattern.
-    ///
-    /// [Visual Reference](http://easings.net/#easeInCubic)
-    case cubicIn
-
-    /// A case to denote an `EaseClassification.cubic` function with an
-    /// `EaseCurve.out` acceleration pattern.
-    ///
-    /// [Visual Reference](http://easings.net/#easeOutCubic)
-    case cubicOut
-
-    /// A case to denote an `EaseClassification.cubic` function with an
-    /// `EaseCurve.inOut` acceleration pattern.
-    ///
-    /// [Visual Reference](http://easings.net/#easeInOutCubic)
-    case cubicInOut
-
-    // MARK: Quadratic
-
-    /// A case to denote an `EaseClassification.quad` function with an
-    /// `EaseCurve.in` acceleration pattern.
-    ///
-    /// [Visual Reference](http://easings.net/#easeInQuad)
-    case quadIn
-
-    /// A case to denote an `EaseClassification.quad` function with an
-    /// `EaseCurve.out` acceleration pattern.
-    ///
-    /// [Visual Reference](http://easings.net/#easeOutQuad)
-    case quadOut
-
-    /// A case to denote an `EaseClassification.quad` function with an
-    /// `EaseCurve.inOut` acceleration pattern.
-    ///
-    /// [Visual Reference](http://easings.net/#easeInOutQuad)
-    case quadInOut
-
-    // MARK: Quartic
-
-    /// A case to denote an `EaseClassification.quart` function with an
-    /// `EaseCurve.in` acceleration pattern.
-    ///
-    /// [Visual Reference](http://easings.net/#easeInQuart)
-    case quartIn
-
-    /// A case to denote an `EaseClassification.quart` function with an
-    /// `EaseCurve.out` acceleration pattern.
-    ///
-    /// [Visual Reference](http://easings.net/#easeOutQuart)
-    case quartOut
-
-    /// A case to denote an `EaseClassification.quart` function with an
-    /// `EaseCurve.inOut` acceleration pattern.
-    ///
-    /// [Visual Reference](http://easings.net/#easeInOutQuart)
-    case quartInOut
-
-    // MARK: Quintic
-
-    /// A case to denote an `EaseClassification.quint` function with an
-    /// `EaseCurve.in` acceleration pattern.
-    ///
-    /// [Visual Reference](http://easings.net/#easeInQuint)
-    case quintIn
-
-    /// A case to denote an `EaseClassification.quint` function with an
-    /// `EaseCurve.out` acceleration pattern.
-    ///
-    /// [Visual Reference](http://easings.net/#easeOutQuint)
-    case quintOut
-
-    /// A case to denote an `EaseClassification.quint` function with an
-    /// `EaseCurve.inOut` acceleration pattern.
-    ///
-    /// [Visual Reference](http://easings.net/#easeInOutQuint)
-    case quintInOut
-
-    // MARK: Exponential
-
-    /// A case to denote an `EaseClassification.expo` function with an
-    /// `EaseCurve.in` acceleration pattern.
-    ///
-    /// [Visual Reference](http://easings.net/#easeInExpo)
-    case expoIn
-
-    /// A case to denote an `EaseClassification.expo` function with an
-    /// `EaseCurve.out` acceleration pattern.
-    ///
-    /// [Visual Reference](http://easings.net/#easeOutExpo)
-    case expoOut
-
-    /// A case to denote an `EaseClassification.expo` function with an
-    /// `EaseCurve.inOut` acceleration pattern.
-    ///
-    /// [Visual Reference](http://easings.net/#easeInOutExpo)
-    case expoInOut
-
-    // MARK: Circular
-
-    /// A case to denote an `EaseClassification.circ` function with an
-    /// `EaseCurve.in` acceleration pattern.
-    ///
-    /// [Visual Reference](http://easings.net/#easeInCirc)
-    case circIn
-
-    /// A case to denote an `EaseClassification.circ` function with an
-    /// `EaseCurve.out` acceleration pattern.
-    ///
-    /// [Visual Reference](http://easings.net/#easeOutCirc)
-    case circOut
-
-    /// A case to denote an `EaseClassification.circ` function with an
-    /// `EaseCurve.inOut` acceleration pattern.
-    ///
-    /// [Visual Reference](http://easings.net/#easeInOutCirc)
-    case circInOut
-
-    // MARK: Back
-
-    /// A case to denote an `EaseClassification.back` function with an
-    /// `EaseCurve.in` acceleration pattern.
-    ///
-    /// [Visual Reference](http://easings.net/#easeInBack)
-    case backIn
-
-    /// A case to denote an `EaseClassification.back` function with an
-    /// `EaseCurve.out` acceleration pattern.
-    ///
-    /// [Visual Reference](http://easings.net/#easeOutBack)
-    case backOut
-
-    /// A case to denote an `EaseClassification.back` function with an
-    /// `EaseCurve.inOut` acceleration pattern.
-    ///
-    /// [Visual Reference](http://easings.net/#easeInOutBack)
-    case backInOut
-
-    // MARK: Elastic
-
-    /// A case to denote an `EaseClassification.elastic` function with an
-    /// `EaseCurve.in` acceleration pattern.
-    ///
-    /// [Visual Reference](http://easings.net/#easeInElastic)
-    case elasticIn
-
-    /// A case to denote an `EaseClassification.elastic` function with an
-    /// `EaseCurve.out` acceleration pattern.
-    ///
-    /// [Visual Reference](http://easings.net/#easeOutElastic)
-    case elasticOut
-
-    /// A case to denote an `EaseClassification.elastic` function with an
-    /// `EaseCurve.inOut` acceleration pattern.
-    ///
-    /// [Visual Reference](http://easings.net/#easeInOutElastic)
-    case elasticInOut
-
-    // MARK: Bounce
-
-    /// A case to denote an `EaseClassification.bounce` function with an
-    /// `EaseCurve.in` acceleration pattern.
-    ///
-    /// [Visual Reference](http://easings.net/#easeInBounce)
-    case bounceIn
-
-    /// A case to denote an `EaseClassification.bounce` function with an
-    /// `EaseCurve.out` acceleration pattern.
-    ///
-    /// [Visual Reference](http://easings.net/#easeOutBounce)
-    case bounceOut
-
-    /// A case to denote an `EaseClassification.bounce` function with an
-    /// `EaseCurve.inOut` acceleration pattern.
-    ///
-    /// [Visual Reference](http://easings.net/#easeInOutBounce)
-    case bounceInOut
-
-}
-
-extension Ease {
+ > *Nothing in nature moves linearly from one point to another. In reality, things tend to
+ > accelerate or decelerate as they move. Our brains are wired to expect this kind of
+ > motion, so when animating you should use this to your advantage. Natural motion
+ > makes your users feel more comfortable with your apps, which in turn leads to a better
+ > overall experience.*
+ > \- [Paul Lewis](https://developers.google.com/web/fundamentals/design-and-ux/animations/the-basics-of-easing)
+ */
+public struct Ease {
 
     // MARK: Properties
 
-    /// The `EaseClassification` associated with `self`.
-    public var classification: EaseClassification {
-        return EaseMappings.eases[self]!.classification
+    /// The algorithmic classification of the ease.
+    public let classification: EaseClassification
+    /// The acceleration pattern of the ease.
+    public let curve: EaseCurve
+
+    // MARK: Initialization
+
+    /// :nodoc:
+    private init(classification: EaseClassification, curve: EaseCurve) {
+        self.classification = classification
+        self.curve = curve
     }
 
-    /// The `EaseCurve` associated with `self`.
-    public var curve: EaseCurve {
-        return EaseMappings.eases[self]!.curve
-    }
-    
 }
+
+extension Ease: Equatable {
+
+    /// :nodoc:
+    public static func ==(lhs: Ease, rhs: Ease) -> Bool {
+        return lhs.classification == rhs.classification &&
+               lhs.curve == rhs.curve
+    }
+
+}
+
+// MARK: -
 
 extension Ease {
 
-    // MARK: Methods
+    // MARK: Linear
+
+    /// An ease with a `linear` classification.
+    ///
+    /// [Visual Reference](http://easings.net/)
+    public static let linear = Ease(classification: .linear, curve: .none)
+
+    // MARK: Sinusoidal
+
+    /// An ease with a `sine` classification and `in` acceleration pattern.
+    ///
+    /// [Visual Reference](http://easings.net/#easeInSine)
+    public static let sineIn = Ease(classification: .sine, curve: .in)
+
+    /// An ease with a `sine` classification and `out` acceleration pattern.
+    ///
+    /// [Visual Reference](http://easings.net/#easeOutSine)
+    public static let sineOut = Ease(classification: .sine, curve: .out)
+
+    /// An ease with a `sine` classification and `inOut` acceleration pattern.
+    ///
+    /// [Visual Reference](http://easings.net/#easeInOutSine)
+    public static let sineInOut = Ease(classification: .sine, curve: .inOut)
+
+    // MARK: Cubic
+
+    /// An ease with a `cubic` classification and `in` acceleration pattern.
+    ///
+    /// [Visual Reference](http://easings.net/#easeInCubic)
+    public static let cubicIn = Ease(classification: .cubic, curve: .in)
+
+    /// An ease with a `cubic` classification and `out` acceleration pattern.
+    ///
+    /// [Visual Reference](http://easings.net/#easeOutCubic)
+    public static let cubicOut = Ease(classification: .cubic, curve: .out)
+
+    /// An ease with a `cubic` classification and `inOut` acceleration pattern.
+    ///
+    /// [Visual Reference](http://easings.net/#easeInOutCubic)
+    public static let cubicInOut = Ease(classification: .cubic, curve: .inOut)
+
+    // MARK: Quadratic
+
+    /// An ease with a `quad` classification and `in` acceleration pattern.
+    ///
+    /// [Visual Reference](http://easings.net/#easeInQuad)
+    public static let quadIn = Ease(classification: .quad, curve: .in)
+
+    /// An ease with a `quad` classification and `out` acceleration pattern.
+    ///
+    /// [Visual Reference](http://easings.net/#easeOutQuad)
+    public static let quadOut = Ease(classification: .quad, curve: .out)
+
+    /// An ease with a `quad` classification and `inOut` acceleration pattern.
+    ///
+    /// [Visual Reference](http://easings.net/#easeInOutQuad)
+    public static let quadInOut = Ease(classification: .quad, curve: .inOut)
+
+    // MARK: Quartic
+
+    /// An ease with a `quart` classification and `in` acceleration pattern.
+    ///
+    /// [Visual Reference](http://easings.net/#easeInQuart)
+    public static let quartIn = Ease(classification: .quart, curve: .in)
+
+    /// An ease with a `quart` classification and `out` acceleration pattern.
+    ///
+    /// [Visual Reference](http://easings.net/#easeOutQuart)
+    public static let quartOut = Ease(classification: .quart, curve: .out)
+
+    /// An ease with a `quart` classification and `inOut` acceleration pattern.
+    ///
+    /// [Visual Reference](http://easings.net/#easeInOutQuart)
+    public static let quartInOut = Ease(classification: .quart, curve: .inOut)
+
+    // MARK: Quintic
+
+    /// An ease with a `quint` classification and `in` acceleration pattern.
+    ///
+    /// [Visual Reference](http://easings.net/#easeInQuint)
+    public static let quintIn = Ease(classification: .quint, curve: .in)
+
+    /// An ease with a `quint` classification and `out` acceleration pattern.
+    ///
+    /// [Visual Reference](http://easings.net/#easeOutQuint)
+    public static let quintOut = Ease(classification: .quint, curve: .out)
+
+    /// An ease with a `quint` classification and `inOut` acceleration pattern.
+    ///
+    /// [Visual Reference](http://easings.net/#easeInOutQuint)
+    public static let quintInOut = Ease(classification: .quint, curve: .inOut)
+
+    // MARK: Exponential
+
+    /// An ease with an `expo` classification and `in` acceleration pattern.
+    ///
+    /// [Visual Reference](http://easings.net/#easeInExpo)
+    public static let expoIn = Ease(classification: .expo, curve: .in)
+
+    /// An ease with an `expo` classification and `out` acceleration pattern.
+    ///
+    /// [Visual Reference](http://easings.net/#easeOutExpo)
+    public static let expoOut = Ease(classification: .expo, curve: .out)
+
+    /// An ease with an `expo` classification and `inOut` acceleration pattern.
+    ///
+    /// [Visual Reference](http://easings.net/#easeInOutExpo)
+    public static let expoInOut = Ease(classification: .expo, curve: .inOut)
+
+    // MARK: Circular
+
+    /// An ease with a `circ` classification and `in` acceleration pattern.
+    ///
+    /// [Visual Reference](http://easings.net/#easeInCirc)
+    public static let circIn = Ease(classification: .circ, curve: .in)
+
+    /// An ease with a `circ` classification and `out` acceleration pattern.
+    ///
+    /// [Visual Reference](http://easings.net/#easeOutCirc)
+    public static let circOut = Ease(classification: .circ, curve: .out)
+
+    /// An ease with a `circ` classification and `inOut` acceleration pattern.
+    ///
+    /// [Visual Reference](http://easings.net/#easeInOutCirc)
+    public static let circInOut = Ease(classification: .circ, curve: .inOut)
+
+    // MARK: Back
+
+    /// An ease with a `back` classification and `in` acceleration pattern.
+    ///
+    /// [Visual Reference](http://easings.net/#easeInBack)
+    public static let backIn = Ease(classification: .back, curve: .in)
+
+    /// An ease with a `back` classification and `out` acceleration pattern.
+    ///
+    /// [Visual Reference](http://easings.net/#easeOutBack)
+    public static let backOut = Ease(classification: .back, curve: .out)
+
+    /// An ease with a `back` classification and `inOut` acceleration pattern.
+    ///
+    /// [Visual Reference](http://easings.net/#easeInOutBack)
+    public static let backInOut = Ease(classification: .back, curve: .inOut)
+
+    // MARK: Elastic
+
+    /// An ease with an `elastic` classification and `in` acceleration pattern.
+    ///
+    /// [Visual Reference](http://easings.net/#easeInElastic)
+    public static let elasticIn = Ease(classification: .elastic, curve: .in)
+
+    /// An ease with an `elastic` classification and `out` acceleration pattern.
+    ///
+    /// [Visual Reference](http://easings.net/#easeOutElastic)
+    public static let elasticOut = Ease(classification: .elastic, curve: .out)
+
+    /// An ease with an `elastic` classification and `inOut` acceleration pattern.
+    ///
+    /// [Visual Reference](http://easings.net/#easeInOutElastic)
+    public static let elasticInOut = Ease(classification: .elastic, curve: .inOut)
+
+    // MARK: Bounce
+
+    /// An ease with a `bounce` classification and `in` acceleration pattern.
+    ///
+    /// [Visual Reference](http://easings.net/#easeInBounce)
+    public static let bounceIn = Ease(classification: .bounce, curve: .in)
+
+    /// An ease with a `bounce` classification and `out` acceleration pattern.
+    ///
+    /// [Visual Reference](http://easings.net/#easeOutBounce)
+    public static let bounceOut = Ease(classification: .bounce, curve: .out)
+
+    /// An ease with a `bounce` classification and `inOut` acceleration pattern.
+    ///
+    /// [Visual Reference](http://easings.net/#easeInOutBounce)
+    public static let bounceInOut = Ease(classification: .bounce, curve: .inOut)
+
+}
+
+// MARK: -
+
+extension Ease {
+
+    // MARK: Helpers
 
     /**
-     A method to calculate the value between a starting and ending position at a
-     specific point in time using `self`'s easing function.
+     Calculates the value between a start and end value at a specific point in time.
 
      - Parameters:
-        - startValue: The start value passed to `self`'s easing function.
-        - endValue: The end value passed to `self`'s easing function.
-        - elapsed: The elapsed amount of time passed to `self`'s easing function.
-        - duration: The duration of time passed to `self`'s easing function.
+        - start: The start value passed to the easing function.
+        - end: The end value passed to the easing function.
+        - elapsed: The elapsed amount of time passed to the easing function.
+        - duration: The duration of time passed to the easing function.
 
      - Returns: The value interpolated between the start and end value.
      */
-    public func interpolate<Number: FloatingPoint>(
-        from startValue: Number, to endValue: Number,
+    internal func interpolate<Number: InterpolatableNumber>(
+        from start: Number, to end: Number,
         elapsed: Number, duration: Number) -> Number {
 
-        let b = startValue
-        let c = endValue - startValue
+        let b = start
+        let c = end - start
         let t = elapsed
         let d = duration
 
         switch self {
-        case .linear:
-            return EaseFunctions.linear(b: b, c: c, t: t, d: d)
-
         case .sineIn:
-            return EaseFunctions.sineIn(b: b, c: c, t: t, d: d)
+            return EaseFunction.sineIn(b: b, c: c, t: t, d: d)
         case .sineOut:
-            return EaseFunctions.sineOut(b: b, c: c, t: t, d: d)
+            return EaseFunction.sineOut(b: b, c: c, t: t, d: d)
         case .sineInOut:
-            return EaseFunctions.sineInOut(b: b, c: c, t: t, d: d)
+            return EaseFunction.sineInOut(b: b, c: c, t: t, d: d)
 
         case .cubicIn:
-            return EaseFunctions.cubicIn(b: b, c: c, t: t, d: d)
+            return EaseFunction.cubicIn(b: b, c: c, t: t, d: d)
         case .cubicOut:
-            return EaseFunctions.cubicOut(b: b, c: c, t: t, d: d)
+            return EaseFunction.cubicOut(b: b, c: c, t: t, d: d)
         case .cubicInOut:
-            return EaseFunctions.cubicInOut(b: b, c: c, t: t, d: d)
+            return EaseFunction.cubicInOut(b: b, c: c, t: t, d: d)
 
         case .quadIn:
-            return EaseFunctions.quadIn(b: b, c: c, t: t, d: d)
+            return EaseFunction.quadIn(b: b, c: c, t: t, d: d)
         case .quadOut:
-            return EaseFunctions.quadOut(b: b, c: c, t: t, d: d)
+            return EaseFunction.quadOut(b: b, c: c, t: t, d: d)
         case .quadInOut:
-            return EaseFunctions.quadInOut(b: b, c: c, t: t, d: d)
+            return EaseFunction.quadInOut(b: b, c: c, t: t, d: d)
 
         case .quartIn:
-            return EaseFunctions.quartIn(b: b, c: c, t: t, d: d)
+            return EaseFunction.quartIn(b: b, c: c, t: t, d: d)
         case .quartOut:
-            return EaseFunctions.quartOut(b: b, c: c, t: t, d: d)
+            return EaseFunction.quartOut(b: b, c: c, t: t, d: d)
         case .quartInOut:
-            return EaseFunctions.quartInOut(b: b, c: c, t: t, d: d)
+            return EaseFunction.quartInOut(b: b, c: c, t: t, d: d)
 
         case .quintIn:
-            return EaseFunctions.quintIn(b: b, c: c, t: t, d: d)
+            return EaseFunction.quintIn(b: b, c: c, t: t, d: d)
         case .quintOut:
-            return EaseFunctions.quintOut(b: b, c: c, t: t, d: d)
+            return EaseFunction.quintOut(b: b, c: c, t: t, d: d)
         case .quintInOut:
-            return EaseFunctions.quintInOut(b: b, c: c, t: t, d: d)
+            return EaseFunction.quintInOut(b: b, c: c, t: t, d: d)
 
         case .expoIn:
-            return EaseFunctions.expoIn(b: b, c: c, t: t, d: d)
+            return EaseFunction.expoIn(b: b, c: c, t: t, d: d)
         case .expoOut:
-            return EaseFunctions.expoOut(b: b, c: c, t: t, d: d)
+            return EaseFunction.expoOut(b: b, c: c, t: t, d: d)
         case .expoInOut:
-            return EaseFunctions.expoInOut(b: b, c: c, t: t, d: d)
+            return EaseFunction.expoInOut(b: b, c: c, t: t, d: d)
 
         case .circIn:
-            return EaseFunctions.circIn(b: b, c: c, t: t, d: d)
+            return EaseFunction.circIn(b: b, c: c, t: t, d: d)
         case .circOut:
-            return EaseFunctions.circOut(b: b, c: c, t: t, d: d)
+            return EaseFunction.circOut(b: b, c: c, t: t, d: d)
         case .circInOut:
-            return EaseFunctions.circInOut(b: b, c: c, t: t, d: d)
+            return EaseFunction.circInOut(b: b, c: c, t: t, d: d)
 
         case .backIn:
-            return EaseFunctions.backIn(b: b, c: c, t: t, d: d)
+            return EaseFunction.backIn(b: b, c: c, t: t, d: d)
         case .backOut:
-            return EaseFunctions.backOut(b: b, c: c, t: t, d: d)
+            return EaseFunction.backOut(b: b, c: c, t: t, d: d)
         case .backInOut:
-            return EaseFunctions.backInOut(b: b, c: c, t: t, d: d)
+            return EaseFunction.backInOut(b: b, c: c, t: t, d: d)
 
         case .elasticIn:
-            return EaseFunctions.elasticIn(b: b, c: c, t: t, d: d)
+            return EaseFunction.elasticIn(b: b, c: c, t: t, d: d)
         case .elasticOut:
-            return EaseFunctions.elasticOut(b: b, c: c, t: t, d: d)
+            return EaseFunction.elasticOut(b: b, c: c, t: t, d: d)
         case .elasticInOut:
-            return EaseFunctions.elasticInOut(b: b, c: c, t: t, d: d)
+            return EaseFunction.elasticInOut(b: b, c: c, t: t, d: d)
 
         case .bounceIn:
-            return EaseFunctions.bounceIn(b: b, c: c, t: t, d: d)
+            return EaseFunction.bounceIn(b: b, c: c, t: t, d: d)
         case .bounceOut:
-            return EaseFunctions.bounceOut(b: b, c: c, t: t, d: d)
+            return EaseFunction.bounceOut(b: b, c: c, t: t, d: d)
         case .bounceInOut:
-            return EaseFunctions.bounceInOut(b: b, c: c, t: t, d: d)
+            return EaseFunction.bounceInOut(b: b, c: c, t: t, d: d)
+
+        default:
+            return EaseFunction.linear(b: b, c: c, t: t, d: d)
         }
     }
 

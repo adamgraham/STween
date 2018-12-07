@@ -1,0 +1,11 @@
+framework module STween {
+  umbrella header "STween.h"
+
+  export *
+  module * { export * }
+}
+
+module STween.Swift {
+    header "STween-Swift.h"
+    requires objc
+}

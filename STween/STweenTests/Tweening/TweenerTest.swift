@@ -14,87 +14,135 @@ class TweenerTest: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        Tweener.invokeStateChangeOnAllTweens(.kill)
+        Tweener.default.killAll()
     }
 
     override func tearDown() {
-        Tweener.invokeStateChangeOnAllTweens(.kill)
+        Tweener.default.killAll()
         super.tearDown()
     }
 
     // MARK: Factory Creation Tests
 
-    func testToWithCallback() {
-        let tween = Tweener.animate(UIView(), to: [UIViewTweenProperty](), duration: 1.0, completion: {})
+    func testAnimateToWithoutCallback() {
+        let tween = Tweener.default.animate(UIView(), to: [UIViewTweenProperty](), duration: 1.0)
         XCTAssertEqual(tween.state, .new)
         XCTAssertFalse(tween.reversed)
         XCTAssertEqual(tween.duration, 1.0)
-        XCTAssertNotNil(tween.callback(get: .complete))
+        XCTAssertNil(tween.onComplete)
     }
 
-    func testToWithoutCallback() {
-        let tween = Tweener.animate(UIView(), to: [UIViewTweenProperty](), duration: 1.0)
+    func testAnimateToWithCallback() {
+        let tween = Tweener.default.animate(UIView(), to: [UIViewTweenProperty](), duration: 1.0, completion: { _ in })
         XCTAssertEqual(tween.state, .new)
         XCTAssertFalse(tween.reversed)
         XCTAssertEqual(tween.duration, 1.0)
-        XCTAssertNil(tween.callback(get: .complete))
+        XCTAssertNotNil(tween.onComplete)
     }
 
-    func testFromWithCallback() {
-        let tween = Tweener.animate(UIView(), from: [UIViewTweenProperty](), duration: 1.0, completion: {})
+    func testAnimateToWithoutAutoStart() {
+        Defaults.autoStartTweens = false
+        defer { Defaults.reset() }
+
+        let tween = Tweener.default.animate(UIView(), to: [UIViewTweenProperty](), duration: 1.0, completion: { _ in })
+        XCTAssertEqual(tween.state, .new)
+        XCTAssertFalse(tween.reversed)
+        XCTAssertEqual(tween.duration, 1.0)
+        XCTAssertNotNil(tween.onComplete)
+        XCTAssertEqual(Tweener.default.queuedCount, 0)
+    }
+
+    func testAnimateToWithAutoStart() {
+        Defaults.autoStartTweens = true
+        defer { Defaults.reset() }
+
+        let tween = Tweener.default.animate(UIView(), to: [UIViewTweenProperty](), duration: 1.0, completion: { _ in })
+        XCTAssertEqual(tween.state, .new)
+        XCTAssertFalse(tween.reversed)
+        XCTAssertEqual(tween.duration, 1.0)
+        XCTAssertNotNil(tween.onComplete)
+        XCTAssertEqual(Tweener.default.queuedCount, 1)
+    }
+
+    func testAnimateFromWithoutCallback() {
+        let tween = Tweener.default.animate(UIView(), from: [UIViewTweenProperty](), duration: 1.0)
         XCTAssertEqual(tween.state, .new)
         XCTAssertTrue(tween.reversed)
         XCTAssertEqual(tween.duration, 1.0)
-        XCTAssertNotNil(tween.callback(get: .complete))
+        XCTAssertNil(tween.onComplete)
     }
 
-    func testFromWithoutCallback() {
-        let tween = Tweener.animate(UIView(), from: [UIViewTweenProperty](), duration: 1.0)
+    func testAnimateFromWithCallback() {
+        let tween = Tweener.default.animate(UIView(), from: [UIViewTweenProperty](), duration: 1.0, completion: { _ in })
         XCTAssertEqual(tween.state, .new)
         XCTAssertTrue(tween.reversed)
         XCTAssertEqual(tween.duration, 1.0)
-        XCTAssertNil(tween.callback(get: .complete))
+        XCTAssertNotNil(tween.onComplete)
+    }
+
+    func testAnimateFromWithoutAutoStart() {
+        Defaults.autoStartTweens = false
+        defer { Defaults.reset() }
+
+        let tween = Tweener.default.animate(UIView(), from: [UIViewTweenProperty](), duration: 1.0, completion: { _ in })
+        XCTAssertEqual(tween.state, .new)
+        XCTAssertTrue(tween.reversed)
+        XCTAssertEqual(tween.duration, 1.0)
+        XCTAssertNotNil(tween.onComplete)
+        XCTAssertEqual(Tweener.default.queuedCount, 0)
+    }
+
+    func testAnimateFromWithAutoStart() {
+        Defaults.autoStartTweens = true
+        defer { Defaults.reset() }
+
+        let tween = Tweener.default.animate(UIView(), from: [UIViewTweenProperty](), duration: 1.0, completion: { _ in })
+        XCTAssertEqual(tween.state, .new)
+        XCTAssertTrue(tween.reversed)
+        XCTAssertEqual(tween.duration, 1.0)
+        XCTAssertNotNil(tween.onComplete)
+        XCTAssertEqual(Tweener.default.queuedCount, 1)
     }
 
     // MARK: Tracking Tests
 
     func testTracking() {
-        XCTAssertEqual(Tweener.count, 0)
+        XCTAssertEqual(Tweener.default.count, 0)
 
         let tween = TweenAnimation<UIViewTweenProperty>(target: UIView(), properties: [], duration: 1.0)
         let anotherTween = TweenAnimation<UIViewTweenProperty>(target: UIView(), properties: [], duration: 1.0)
 
         // Add
 
-        Tweener.add(tween)
-        XCTAssertTrue(Tweener.contains(tween))
-        XCTAssertEqual(Tweener.count, 1)
+        Tweener.default.add(tween)
+        XCTAssertTrue(Tweener.default.contains(tween))
+        XCTAssertEqual(Tweener.default.count, 1)
 
-        Tweener.add(anotherTween)
-        XCTAssertTrue(Tweener.contains(anotherTween))
-        XCTAssertEqual(Tweener.count, 2)
+        Tweener.default.add(anotherTween)
+        XCTAssertTrue(Tweener.default.contains(anotherTween))
+        XCTAssertEqual(Tweener.default.count, 2)
 
-        Tweener.add(anotherTween)
-        XCTAssertEqual(Tweener.count, 2)
+        Tweener.default.add(anotherTween) // test same tween cannot be added multiple times
+        XCTAssertEqual(Tweener.default.count, 2)
 
         // Remove
 
-        Tweener.remove(tween)
-        XCTAssertFalse(Tweener.contains(tween))
-        XCTAssertEqual(Tweener.count, 1)
+        Tweener.default.remove(tween)
+        XCTAssertFalse(Tweener.default.contains(tween))
+        XCTAssertEqual(Tweener.default.count, 1)
 
-        Tweener.remove(anotherTween)
-        XCTAssertFalse(Tweener.contains(anotherTween))
-        XCTAssertEqual(Tweener.count, 0)
+        Tweener.default.remove(anotherTween)
+        XCTAssertFalse(Tweener.default.contains(anotherTween))
+        XCTAssertEqual(Tweener.default.count, 0)
 
-        Tweener.remove(anotherTween)
-        XCTAssertEqual(Tweener.count, 0)
+        Tweener.default.remove(anotherTween) // test same tween cannot be removed multiple times
+        XCTAssertEqual(Tweener.default.count, 0)
     }
 
     // MARK: Queueing
 
     func testQueueing() {
-        XCTAssertEqual(Tweener.queuedCount, 0)
+        XCTAssertEqual(Tweener.default.queuedCount, 0)
 
         let tween = TweenAnimation(target: UIView(), properties: [UIViewTweenProperty](), duration: 1.0)
         XCTAssertEqual(tween.state, .new)
@@ -104,33 +152,136 @@ class TweenerTest: XCTestCase {
 
         // Queue
 
-        Tweener.queue(tween)
-        XCTAssertEqual(Tweener.queuedCount, 1)
+        Tweener.default.queue(tween)
+        XCTAssertEqual(Tweener.default.queuedCount, 1)
 
-        Tweener.queue(anotherTween)
-        XCTAssertEqual(Tweener.queuedCount, 2)
-
-        Tweener.queue(anotherTween)
-        XCTAssertEqual(Tweener.queuedCount, 2)
+        Tweener.default.queue(anotherTween)
+        XCTAssertEqual(Tweener.default.queuedCount, 2)
+    
+        Tweener.default.queue(anotherTween) // test same tween cannot be queued multiple times
+        XCTAssertEqual(Tweener.default.queuedCount, 2)
 
         // Start
 
-        Tweener.startQueuedTweens()
+        Tweener.default.startQueuedTweens()
         XCTAssertEqual(tween.state, .active)
         XCTAssertEqual(anotherTween.state, .active)
-        XCTAssertEqual(Tweener.queuedCount, 0)
+        XCTAssertEqual(Tweener.default.queuedCount, 0)
     }
 
     // MARK: Global State Control Tests
 
-    func testInvokeGlobalStateChange() {
-        let tween = Tweener.animate(UIView(), to: [UIViewTweenProperty](), duration: 1.0, completion: {})
-        let anotherTween = Tweener.animate(UIView(), from: [UIViewTweenProperty](), duration: 1.0, completion: {})
+    func testStartAll() {
+        Defaults.autoStartTweens = false
+        defer { Defaults.reset() }
 
-        Tweener.invokeStateChangeOnAllTweens(.kill)
+        var count = 0
+        let expectedCount = 3
 
-        XCTAssertEqual(tween.state, .killed)
-        XCTAssertEqual(anotherTween.state, .killed)
+        for _ in 1...expectedCount {
+            let tween = Tweener.default.animate(UIView(), to: [UIViewTweenProperty](), duration: 1.0, completion: { _ in })
+            tween.onStart = { _ in
+                count += 1
+            }
+        }
+
+        Tweener.default.startAll()
+        XCTAssertEqual(count, expectedCount)
+    }
+
+    func testStopAll() {
+        var count = 0
+        let expectedCount = 3
+
+        for _ in 1...expectedCount {
+            let tween = Tweener.default.animate(UIView(), to: [UIViewTweenProperty](), duration: 1.0, completion: { _ in })
+            tween.onStop = { _ in
+                count += 1
+            }
+            tween.start()
+        }
+
+        Tweener.default.stopAll()
+        XCTAssertEqual(count, expectedCount)
+    }
+
+    func testRestartAll() {
+        var count = 0
+        let expectedCount = 3
+
+        for _ in 1...expectedCount {
+            let tween = Tweener.default.animate(UIView(), to: [UIViewTweenProperty](), duration: 1.0, completion: { _ in })
+            tween.onRestart = { _ in
+                count += 1
+            }
+            tween.start()
+        }
+
+        Tweener.default.restartAll()
+        XCTAssertEqual(count, expectedCount)
+    }
+
+    func testPauseAll() {
+        var count = 0
+        let expectedCount = 3
+
+        for _ in 1...expectedCount {
+            let tween = Tweener.default.animate(UIView(), to: [UIViewTweenProperty](), duration: 1.0, completion: { _ in })
+            tween.onPause = { _ in
+                count += 1
+            }
+            tween.start()
+        }
+
+        Tweener.default.pauseAll()
+        XCTAssertEqual(count, expectedCount)
+    }
+
+    func testResumeAll() {
+        var count = 0
+        let expectedCount = 3
+
+        for _ in 1...expectedCount {
+            let tween = Tweener.default.animate(UIView(), to: [UIViewTweenProperty](), duration: 1.0, completion: { _ in })
+            tween.onResume = { _ in
+                count += 1
+            }
+            tween.start()
+            tween.pause()
+        }
+
+        Tweener.default.resumeAll()
+        XCTAssertEqual(count, expectedCount)
+    }
+
+    func testCompleteAll() {
+        var count = 0
+        let expectedCount = 3
+
+        for _ in 1...expectedCount {
+            let tween = Tweener.default.animate(UIView(), to: [UIViewTweenProperty](), duration: 1.0, completion: { _ in })
+            tween.onComplete = { _ in
+                count += 1
+            }
+        }
+
+        Tweener.default.completeAll()
+        XCTAssertEqual(count, expectedCount)
+    }
+
+    func testKillAll() {
+        var count = 0
+        let expectedCount = 3
+
+        for _ in 1...expectedCount {
+            let tween = Tweener.default.animate(UIView(), to: [UIViewTweenProperty](), duration: 1.0, completion: { _ in })
+            tween.onKill = { _ in
+                count += 1
+            }
+        }
+
+        Tweener.default.killAll()
+        XCTAssertEqual(count, expectedCount)
     }
 
 }

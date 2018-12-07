@@ -7,10 +7,10 @@
 //
 
 /**
- A function to restrict a `value` between a `lower` and `upper` range.
+ Restricts a value between a lower and upper range.
  
  - Parameters:
-    - value: The value to be clamped to a range.
+    - value: The value to be clamped.
     - lower: The minimum value that can be returned.
     - upper: The maximum value that can be returned.
  

@@ -1,28 +1,23 @@
 {
   "author": "Adam Graham",
   "author_url": "https://github.com/adamgraham",
-  "copyright": "Copyright (c) 2017 Adam Graham",
+  "copyright": "Copyright (c) 2016 Adam Graham",
   "github_url": "https://github.com/adamgraham/STween",
   "readme": "README.md",
   
   "source_directory": "./STween",
-  "min_acl": "internal",
+  "min_acl": "public",
   "skip_undocumented": true,
   "clean": true,
 
   "exclude": [
-    "./STween/STween/Easing/EaseMappings.swift",
     "./STween/STween/Tweening/Conformance/CALayer+Tweening.swift",
     "./STween/STween/Tweening/Conformance/NSLayoutConstraint+Tweening.swift",
     "./STween/STween/Tweening/Conformance/UIButton+Tweening.swift",
     "./STween/STween/Tweening/Conformance/UILabel+Tweening.swift",
     "./STween/STween/Tweening/Conformance/UITextField+Tweening.swift",
     "./STween/STween/Tweening/Conformance/UIView+Tweening.swift",
-    "./STween/STween/Utils/DoubleConvertible.swift",
-    "./STween/STween/Utils/FloatingPoint+Arithmetic.swift",
-    "./STween/STween/Utils/Functions.swift",
-    "./STween/STween/Utils/Color/RGBA.swift",
-    "./STween/STween/Utils/Color/UIColor+RGBA.swift"
+    "./STween/STween/Utils/Functions.swift"
   ],
 
   "custom_categories": [
@@ -32,15 +27,15 @@
         "Ease",
         "EaseClassification",
         "EaseCurve",
-        "EaseFunction",
-        "EaseFunctions"
+        "EaseFunction"
       ]
     },
     {
       "name": "Interpolation",
       "children": [
         "Interpolatable",
-        "InterpolationValues"
+        "InterpolatableNumber",
+        "InterpolatableNumberConstants"
       ]
     },
     {
@@ -49,7 +44,6 @@
         "Tween",
         "TweenAnimation",
         "TweenState",
-        "TweenStateChange",
         "TweenTimer",
         "TweenTimerDelegate",
         "Tweenable",
@@ -60,8 +54,7 @@
     {
       "name": "Settings",
       "children": [
-        "Defaults",
-        "FrameRate"
+        "Defaults"
       ]
     }
   ]

@@ -6,67 +6,67 @@
 //  Copyright © 2017 Adam Graham. All rights reserved.
 //
 
-/// An extension to provide tweening animation functionality to `CALayer`.
-extension CALayer: Tweenable {
+import CoreGraphics
+import Foundation
+import QuartzCore
+import UIKit
 
-}
+/// Provides tweening animation functionality to `CALayer`.
+extension CALayer: Tweenable {}
 
-/// An enum to describe the properties that can be animated with a tween
-/// on a `CALayer`.
-public enum CALayerTweenProperty {
+/// The properties of a `CALayer` that can be animated with a tween.
+public enum CALayerTweenProperty: Equatable {
 
-    /// A case to denote the `frame` property of a `CALayer`.
+    /// The `frame` property of a `CALayer`.
     case frame(CGRect)
-    /// A case to denote the `bounds` property of a `CALayer`.
+    /// The `bounds` property of a `CALayer`.
     case bounds(CGRect)
 
-    /// A case to denote the `position` property of a `CALayer`.
+    /// The `position` property of a `CALayer`.
     case position(CGPoint)
-    /// A case to denote the `zPosition` property of a `CALayer`.
+    /// The `zPosition` property of a `CALayer`.
     case zPosition(CGFloat)
-    /// A case to denote the `anchorPoint` property of a `CALayer`.
+    /// The `anchorPoint` property of a `CALayer`.
     case anchorPoint(CGPoint)
-    /// A case to denote the `anchorPointZ` property of a `CALayer`.
+    /// The `anchorPointZ` property of a `CALayer`.
     case anchorPointZ(CGFloat)
 
-    /// A case to denote the `transform` property of a `CALayer`.
+    /// The `transform` property of a `CALayer`.
     case transform(CATransform3D)
-    /// A case to denote the `sublayerTransform` property of a `CALayer`.
+    /// The `sublayerTransform` property of a `CALayer`.
     case sublayerTransform(CATransform3D)
 
-    /// A case to denote the `contentsRect` property of a `CALayer`.
+    /// The `contentsRect` property of a `CALayer`.
     case contentsRect(CGRect)
-    /// A case to denote the `contentsCenter` property of a `CALayer`.
+    /// The `contentsCenter` property of a `CALayer`.
     case contentsCenter(CGRect)
     @available(iOS 4.0, *)
-    /// A case to denote the `contentsScale` property of a `CALayer`.
+    /// The `contentsScale` property of a `CALayer`.
     case contentsScale(CGFloat)
 
-    /// A case to denote the `cornerRadius` property of a `CALayer`.
+    /// The `cornerRadius` property of a `CALayer`.
     case cornerRadius(CGFloat)
-    /// A case to denote the `borderWidth` property of a `CALayer`.
+    /// The `borderWidth` property of a `CALayer`.
     case borderWidth(CGFloat)
-    /// A case to denote the `borderColor` property of a `CALayer`.
+    /// The `borderColor` property of a `CALayer`.
     case borderColor(CGColor)
-    /// A case to denote the `backgroundColor` property of a `CALayer`.
+    /// The `backgroundColor` property of a `CALayer`.
     case backgroundColor(CGColor)
-    /// A case to denote the `opacity` property of a `CALayer`.
+    /// The `opacity` property of a `CALayer`.
     case opacity(Float)
 
-    /// A case to denote the `shadowColor` property of a `CALayer`.
+    /// The `shadowColor` property of a `CALayer`.
     case shadowColor(CGColor)
-    /// A case to denote the `shadowOpacity` property of a `CALayer`.
+    /// The `shadowOpacity` property of a `CALayer`.
     case shadowOpacity(Float)
-    /// A case to denote the `shadowOffset` property of a `CALayer`.
+    /// The `shadowOffset` property of a `CALayer`.
     case shadowOffset(CGSize)
-    /// A case to denote the `shadowRadius` property of a `CALayer`.
+    /// The `shadowRadius` property of a `CALayer`.
     case shadowRadius(CGFloat)
 
 }
 
 extension CALayerTweenProperty: TweenableProperty {
-
-    public typealias TweenableType = CALayer
 
     public func value(from object: CALayer) -> CALayerTweenProperty {
         switch self {
