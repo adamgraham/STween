@@ -1,5 +1,5 @@
 # STween
-> A Swift iOS animation framework based on [Robert Penner's Easing Functions](http://robertpenner.com/easing/).<br/>
+> An iOS animation framework based on [Robert Penner's Easing Functions](http://robertpenner.com/easing/).<br/>
 > Complex animations done simple. An easy-to-use interface.
 
 For detailed usage and documentation, please visit the [STween Wiki](https://github.com/adamgraham/STween/wiki).
