@@ -12,7 +12,11 @@ import QuartzCore
 import UIKit
 
 /// Provides tweening animation functionality to `CALayer`.
-extension CALayer: Tweenable {}
+extension CALayer: Tweenable {
+
+    public typealias Property = CALayerTweenProperty
+
+}
 
 /// The properties of a `CALayer` that can be animated with a tween.
 public enum CALayerTweenProperty: Equatable {

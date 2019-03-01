@@ -10,7 +10,11 @@ import CoreGraphics
 import Foundation
 
 /// Provides tweening animation functionality to `NSLayoutConstraint`.
-extension NSLayoutConstraint: Tweenable {}
+extension NSLayoutConstraint: Tweenable {
+
+    public typealias Property = NSLayoutConstraintTweenProperty
+
+}
 
 /// The properties of a `NSLayoutConstraint` that can be animated with a tween.
 public enum NSLayoutConstraintTweenProperty: Equatable {

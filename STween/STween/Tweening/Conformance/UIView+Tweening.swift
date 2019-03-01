@@ -11,7 +11,11 @@ import Foundation
 import UIKit
 
 /// Provides tweening animation functionality to `UIView`.
-extension UIView: Tweenable {}
+extension UIView: Tweenable {
+
+    public typealias Property = UIViewTweenProperty
+
+}
 
 /// The properties of a `UIView` that can be animated with a tween.
 public enum UIViewTweenProperty: Equatable {
