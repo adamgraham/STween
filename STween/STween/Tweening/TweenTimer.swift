@@ -9,15 +9,15 @@
 import Foundation
 import QuartzCore
 
-/// A timer that schedules interval events for a tween.
+/// A timer that schedules and fires intervaled events for a tween.
 internal final class TweenTimer {
 
     // MARK: References
 
-    /// The object listening to the timer events.
+    /// A reference to the object listening to the timer events.
     internal weak var delegate: TweenTimerDelegate?
 
-    /// The timer that invokes "tick" events based on display vsync.
+    /// The native timer that invokes "tick" events based on display vsync.
     private lazy var timer: CADisplayLink = {
         let displayLink = CADisplayLink(target: self, selector: #selector(tick))
         displayLink.add(to: .main, forMode: RunLoop.Mode.default)
