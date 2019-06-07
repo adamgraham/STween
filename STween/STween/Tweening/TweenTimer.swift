@@ -61,9 +61,7 @@ internal final class TweenTimer {
      Starts running the timer, enabling "tick" events to be fired.
      */
     internal func start() {
-        guard !self.running else {
-            return
-        }
+        guard !self.running else { return }
 
         self.lastTickDate = Date()
         self.running = true
@@ -74,9 +72,7 @@ internal final class TweenTimer {
      Stops running the timer, disabling "tick" events from being fired.
      */
     internal func stop() {
-        guard self.running else {
-            return
-        }
+        guard self.running else { return }
 
         self.running = false
         self.timer.isPaused = true
@@ -100,9 +96,7 @@ internal final class TweenTimer {
      update cycle. Informs the delegate of the updated time.
      */
     @objc private func tick() {
-        guard self.running else {
-            return
-        }
+        guard self.running else { return }
 
         let now = Date()
         let deltaTime = now.timeIntervalSince(self.lastTickDate)

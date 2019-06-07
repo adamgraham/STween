@@ -99,9 +99,7 @@ extension TweenAnimation {
      - Returns: `true` if the tween is successfully updated.
      */
     @discardableResult internal func update() -> Bool {
-        guard self.state.canUpdate else {
-            return false
-        }
+        guard self.state.canUpdate else { return false }
 
         updateProperties()
         self.onUpdate?(self)
@@ -166,10 +164,7 @@ extension TweenAnimation {
     // MARK: State Control Methods
 
     @discardableResult internal func start() -> Bool {
-        guard self.state.canStart else {
-            return false
-        }
-
+        guard self.state.canStart else { return false }
         guard self.delayElapsed >= self.delay else {
             return startDelay()
         }
@@ -195,9 +190,7 @@ extension TweenAnimation {
     }
 
     @discardableResult internal func stop() -> Bool {
-        guard self.state.canStop else {
-            return false
-        }
+        guard self.state.canStop else { return false }
 
         // Set state
         self.state = .inactive
@@ -214,9 +207,7 @@ extension TweenAnimation {
     }
 
     @discardableResult internal func restart() -> Bool {
-        guard self.state.canRestart else {
-            return false
-        }
+        guard self.state.canRestart else { return false }
 
         stop()
         self.onRestart?(self)
@@ -226,9 +217,7 @@ extension TweenAnimation {
     }
 
     @discardableResult internal func pause() -> Bool {
-        guard self.state.canPause else {
-            return false
-        }
+        guard self.state.canPause else { return false }
 
         // Update state
         self.state = .paused
@@ -243,9 +232,7 @@ extension TweenAnimation {
     }
 
     @discardableResult internal func resume() -> Bool {
-        guard self.state.canResume else {
-            return false
-        }
+        guard self.state.canResume else { return false }
 
         // Update state
         if self.delayElapsed >= self.delay {
@@ -264,9 +251,7 @@ extension TweenAnimation {
     }
 
     @discardableResult internal func complete() -> Bool {
-        guard self.state.canComplete else {
-            return false
-        }
+        guard self.state.canComplete else { return false }
 
         // Set state
         self.state = .completed
@@ -291,9 +276,7 @@ extension TweenAnimation {
     }
 
     @discardableResult internal func kill() -> Bool {
-        guard self.state.canKill else {
-            return false
-        }
+        guard self.state.canKill else { return false }
 
         // Set state
         self.state = .killed
@@ -311,9 +294,7 @@ extension TweenAnimation {
     }
 
     @discardableResult internal func revive() -> Bool {
-        guard self.state.canRevive else {
-            return false
-        }
+        guard self.state.canRevive else { return false }
 
         // Set state
         self.state = .new
@@ -347,9 +328,7 @@ extension TweenAnimation {
      - Returns: `true` if the tween is successfully marked as delayed.
      */
     @discardableResult private func startDelay() -> Bool {
-        guard self.state != .delayed else {
-            return false
-        }
+        guard self.state != .delayed else { return false }
 
         // Set state
         self.state = .delayed
