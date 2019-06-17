@@ -129,7 +129,7 @@ extension Tweener {
         - tween: The `Tween` to be added.
      */
     internal func add(_ tween: Tween) {
-        guard self.tweens.index(where: { $0 === tween }) == nil else {
+        guard self.tweens.firstIndex(where: { $0 === tween }) == nil else {
             return
         }
 
@@ -143,12 +143,12 @@ extension Tweener {
         - tween: The `Tween` to be removed.
      */
     internal func remove(_ tween: Tween) {
-        if let index = self.tweens.index(where: { $0 === tween }),
+        if let index = self.tweens.firstIndex(where: { $0 === tween }),
             index >= 0 && index < self.tweens.count {
                 self.tweens.remove(at: index)
         }
 
-        if let index = self.queuedTweens.index(where: { $0 === tween }),
+        if let index = self.queuedTweens.firstIndex(where: { $0 === tween }),
             index >= 0 && index < self.queuedTweens.count {
                 self.queuedTweens.remove(at: index)
         }
@@ -187,7 +187,7 @@ extension Tweener {
         - tween: The `Tween` to be queued.
      */
     internal func queue(_ tween: Tween) {
-        guard self.queuedTweens.index(where: { $0 === tween }) == nil else {
+        guard self.queuedTweens.firstIndex(where: { $0 === tween }) == nil else {
             return
         }
 
