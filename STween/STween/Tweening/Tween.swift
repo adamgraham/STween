@@ -78,6 +78,21 @@ public protocol Tween: AnyObject {
     /// The callback invoked when the tween is revived.
     var onRevive: Callback? { get set }
 
+    // MARK: Tweening Methods
+
+    /**
+     Increases the tween's elapsed time and updates all target properties of the tween after
+     interpolating new values.
+
+     The tween can only be updated if it's in an `active` state.
+     If it's in a `delayed` state, the tween's elapsed delay will be increased instead.
+     The tween will be completed if its elapsed time has reached or exceeded its duration.
+
+     - Parameter deltaTime: The amount of seconds passed since the last update.
+     - Returns: `true` if the tween is successfully updated.
+     */
+    @discardableResult func update(by deltaTime: TimeInterval) -> Bool
+
     // MARK: State Control Methods
 
     /**

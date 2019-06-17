@@ -41,6 +41,9 @@ public final class Tweener {
         return timer
     }()
 
+    /// The timer used to update all active tweens.
+    private lazy var tweenTimer = TweenTimer(delegate: self)
+
 }
 
 extension Tweener {
@@ -204,6 +207,7 @@ extension Tweener {
         }
 
         self.queuedTweens.removeAll()
+        self.tweenTimer.start()
     }
 
 }
@@ -258,6 +262,16 @@ extension Tweener {
     public func killAll() {
         self.tweens.forEach {
             $0.kill()
+        }
+    }
+
+}
+
+extension Tweener: TweenTimerDelegate {
+
+    func tweenTimer(_ timer: TweenTimer, didUpdateWithElapsedTime elapsed: TimeInterval, delta: TimeInterval) {
+        self.tweens.forEach {
+            $0.update(by: delta)
         }
     }
 

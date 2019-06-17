@@ -96,7 +96,7 @@ private class TestDelegateClass: TweenTimerDelegate {
 
     var callback: (() -> Void)?
 
-    func tweenTimer(_ timer: TweenTimer, didUpdateWithElapsedTime elapsed: TimeInterval) {
+    func tweenTimer(_ timer: TweenTimer, didUpdateWithElapsedTime elapsed: TimeInterval, delay: TimeInterval) {
         self.callback?()
     }
 

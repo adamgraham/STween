@@ -63,7 +63,6 @@ internal final class TweenTimer {
     internal func start() {
         guard !self.running else { return }
 
-        self.lastTickDate = Date()
         self.running = true
         self.timer.isPaused = false
     }
@@ -103,7 +102,7 @@ internal final class TweenTimer {
 
         self.elapsed += deltaTime
         self.lastTickDate = now
-        self.delegate?.tweenTimer(self, didUpdateWithElapsedTime: self.elapsed)
+        self.delegate?.tweenTimer(self, didUpdateWithElapsedTime: self.elapsed, delta: deltaTime)
     }
     
 }
@@ -118,8 +117,9 @@ internal protocol TweenTimerDelegate: AnyObject {
      
      - Parameters:
         - timer: The `TweenTimer` the event was invoked on.
-        - elapsed: The amount of seconds the `timer` has been running.
+        - elapsed: The amount of seconds the timer has been running.
+        - delta: The amount of seconds since the last tick event.
      */
-    func tweenTimer(_ timer: TweenTimer, didUpdateWithElapsedTime elapsed: TimeInterval)
+    func tweenTimer(_ timer: TweenTimer, didUpdateWithElapsedTime elapsed: TimeInterval, delta: TimeInterval)
 
 }
