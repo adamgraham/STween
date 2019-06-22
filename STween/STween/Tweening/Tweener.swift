@@ -23,7 +23,20 @@ public final class Tweener {
     // MARK: Properties
 
     /// An array of every instantiated tween.
-    private var tweens = [Tween]()
+    private var tweens = [Tween]() {
+        didSet {
+            self.tweenTimer.isPaused = self.tweens.isEmpty
+        }
+    }
+
+    /// The timer used to update all active tweens.
+    private lazy var tweenTimer: CADisplayLink = {
+        let selector = #selector(self.startQueuedTweens)
+        let timer = CADisplayLink(target: self, selector: selector)
+        timer.add(to: .main, forMode: RunLoop.Mode.default)
+        timer.isPaused = true
+        return timer
+    }()
 
     /// An array of every instantiated tween that is waiting to be started.
     private var queuedTweens = [Tween]() {
@@ -40,9 +53,6 @@ public final class Tweener {
         timer.isPaused = true
         return timer
     }()
-
-    /// The timer used to update all active tweens.
-    private lazy var tweenTimer = TweenTimer(delegate: self)
 
 }
 
@@ -207,7 +217,6 @@ extension Tweener {
         }
 
         self.queuedTweens.removeAll()
-        self.tweenTimer.start()
     }
 
 }
@@ -215,6 +224,13 @@ extension Tweener {
 extension Tweener {
 
     // MARK: Global State Control
+
+    /// Invokes `update` on all currently tracked tweens.
+    public func updateAll(by deltaTime: TimeInterval) {
+        self.tweens.forEach {
+            $0.update(by: deltaTime)
+        }
+    }
 
     /// Invokes `start` on all currently tracked tweens.
     public func startAll() {
@@ -262,16 +278,6 @@ extension Tweener {
     public func killAll() {
         self.tweens.forEach {
             $0.kill()
-        }
-    }
-
-}
-
-extension Tweener: TweenTimerDelegate {
-
-    func tweenTimer(_ timer: TweenTimer, didUpdateWithElapsedTime elapsed: TimeInterval, delta: TimeInterval) {
-        self.tweens.forEach {
-            $0.update(by: delta)
         }
     }
 
