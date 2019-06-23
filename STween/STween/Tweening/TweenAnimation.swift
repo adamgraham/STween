@@ -12,18 +12,9 @@ import Foundation
 /// while maintaining state.
 internal final class TweenAnimation<Property: TweenableProperty>: Tween {
 
-    // MARK: Core Properties
-
-    /// The target object on which properties are animated.
-    internal let target: Property.Target
-
-    /// The array of properties being animated.
-    internal let targetProperties: [Property]
-
-    /// An array of values used to interpolate each property every update cycle.
-    private var interpolationValues: [(start: Property, end: Property)]?
-
     // MARK: Animation & State Properties
+
+    private var animations: [Tween.Animation] = []
 
     internal var ease = Defaults.ease
 
@@ -63,7 +54,7 @@ internal final class TweenAnimation<Property: TweenableProperty>: Tween {
         - properties: The array of properties to animate.
         - duration: The amount of seconds the animation takes to complete.
      */
-    internal init(target: Property.Target, properties: [Property], duration: TimeInterval) {
+    internal init(animations: , duration: TimeInterval) {
         self.target = target
         self.duration = duration
         self.targetProperties = properties
@@ -105,10 +96,10 @@ extension TweenAnimation {
         let ease = self.ease
         let elapsed = self.elapsed
         let duration = self.duration
-        let percent = CGFloat(ease.function(elapsed / duration))
+        let percent = ease.function(elapsed / duration)
 
         self.interpolationValues?.forEach {
-            let interpolatedValue = Property.interpolate(from: $0.start, to: $0.end, ease: percent)
+            let interpolatedValue = Property.interpolate(from: $0.start, to: $0.end, time: percent)
             interpolatedValue.apply(to: self.target)
         }
     }
