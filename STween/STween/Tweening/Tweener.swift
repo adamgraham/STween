@@ -14,11 +14,26 @@ public final class Tweener {
 
     // MARK: Instance
 
-    /// The default, single instance of `Tweener`.
-    public static let `default` = Tweener()
+    /// A dictionary to store each instantiated `Tweener` by id.
+    private static var tweeners: [String: Tweener] = [:]
+
+    /// The default instance of `Tweener`.
+    public static let `default` = Tweener(identifier: "default")
+
+    /// Returns a reference to a custom `Tweener` instance by its identifier. If the instance does
+    /// not already exist, it is created.
+    /// - parameter identifier: The identifier of the custom `Tweener` instance.
+    /// - returns: The custom `Tweener` instance for the given `identifier`.
+    public static func custom(_ identifier: String) -> Tweener {
+        let identifier = identifier.lowercased()
+        if let tweener = tweeners[identifier] { return tweener }
+        return Tweener(identifier: identifier)
+    }
 
     // Prevent outside instantiation of the singleton.
-    private init() {}
+    private init(identifier: String) {
+        Tweener.tweeners[identifier] = self
+    }
 
     // MARK: Properties
 
@@ -80,7 +95,9 @@ extension Tweener {
                         completion: Tween.Callback? = nil) -> Tween {
 
         let tween = TweenAnimator(tweens, duration: duration, completion: completion)
-        add(tween)
+        tween.tweener = self
+
+        track(tween)
 
         if Defaults.autoStartTweens {
             queue(tween)
@@ -109,8 +126,10 @@ extension Tweener {
                         completion: Tween.Callback? = nil) -> Tween {
 
         let tween = TweenAnimator(tweens, duration: duration, completion: completion)
+        tween.tweener = self
         tween.reversed = true
-        add(tween)
+
+        track(tween)
 
         if Defaults.autoStartTweens {
             queue(tween)
@@ -132,7 +151,7 @@ extension Tweener {
 
     /// Adds a tween to the list of tracked tweens.
     /// - parameter tween: The `Tween` control to be added.
-    internal func add(_ tween: Tween) {
+    internal func track(_ tween: Tween) {
         guard self.tweens.firstIndex(where: { $0 === tween }) == nil else {
             return
         }
@@ -142,7 +161,7 @@ extension Tweener {
 
     /// Removes a tween from the list of tracked tweens.
     /// - parameter tween: The `Tween` control to be removed.
-    internal func remove(_ tween: Tween) {
+    internal func untrack(_ tween: Tween) {
         if let index = self.tweens.firstIndex(where: { $0 === tween }),
             index >= 0 && index < self.tweens.count {
                 self.tweens.remove(at: index)
@@ -157,7 +176,7 @@ extension Tweener {
     /// Checks if a tween is being tracked.
     /// - parameter tween: The `Tween`control to be checked.
     /// - returns: `true` if the tween is contained in the list of tracked tweens.
-    internal func contains(_ tween: Tween) -> Bool {
+    internal func isTracked(_ tween: Tween) -> Bool {
         return self.tweens.contains(where: { $0 === tween })
     }
 

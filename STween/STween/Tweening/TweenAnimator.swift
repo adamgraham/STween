@@ -14,6 +14,9 @@ internal final class TweenAnimator: Tween {
 
     // MARK: Animation & State Properties
 
+    /// A weak reference to the `Tweener` instance that is tracking this tween.
+    internal weak var tweener: Tweener?
+
     /// An array of animation closures that are invoked every update cycle.
     private var tweens: [Tween.Animation] = []
 
@@ -255,7 +258,8 @@ extension TweenAnimator {
         self.state = .killed
 
         // Remove from Tweener
-        Tweener.default.remove(self)
+        let tweener = self.tweener ?? Tweener.default
+        tweener.untrack(self)
 
         // Callback event
         self.onKill?(self)
@@ -275,7 +279,8 @@ extension TweenAnimator {
         self.delayElapsed = 0.0
         
         // Add to Tweener
-        Tweener.default.add(self)
+        let tweener = self.tweener ?? Tweener.default
+        tweener.track(self)
         
         // Callback event
         self.onRevive?(self)
