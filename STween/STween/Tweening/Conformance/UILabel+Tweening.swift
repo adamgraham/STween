@@ -64,28 +64,14 @@ public struct UILabelTweenProperty: TweenableProperty {
 public extension UILabel {
 
     @discardableResult
-    func tween(to property: UILabelTweenProperty, duration: TimeInterval, completion: Tween.Callback? = nil) -> Tween {
-        return Tweener.default.animate(tweens: [property.animation(self)],
-                                       duration: duration,
-                                       completion: completion)
-    }
-
-    @discardableResult
-    func tween(to properties: [UILabelTweenProperty], duration: TimeInterval, completion: Tween.Callback? = nil) -> Tween {
+    func tween(to properties: UILabelTweenProperty..., duration: TimeInterval, completion: Tween.Callback? = nil) -> Tween {
         return Tweener.default.animate(tweens: properties.map { $0.animation(self) },
                                        duration: duration,
                                        completion: completion)
     }
 
     @discardableResult
-    func tween(from property: UILabelTweenProperty, duration: TimeInterval, completion: Tween.Callback? = nil) -> Tween {
-        return Tweener.default.animate(reversedTweens: [property.animation(self)],
-                                       duration: duration,
-                                       completion: completion)
-    }
-
-    @discardableResult
-    func tween(from properties: [UILabelTweenProperty], duration: TimeInterval, completion: Tween.Callback? = nil) -> Tween {
+    func tween(from properties: UILabelTweenProperty..., duration: TimeInterval, completion: Tween.Callback? = nil) -> Tween {
         return Tweener.default.animate(reversedTweens: properties.map { $0.animation(self) },
                                        duration: duration,
                                        completion: completion)

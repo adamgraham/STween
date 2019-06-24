@@ -63,28 +63,14 @@ public struct UIButtonTweenProperty: TweenableProperty {
 public extension UIButton {
 
     @discardableResult
-    func tween(to property: UIButtonTweenProperty, duration: TimeInterval, completion: Tween.Callback? = nil) -> Tween {
-        return Tweener.default.animate(tweens: [property.animation(self)],
-                                       duration: duration,
-                                       completion: completion)
-    }
-
-    @discardableResult
-    func tween(to properties: [UIButtonTweenProperty], duration: TimeInterval, completion: Tween.Callback? = nil) -> Tween {
+    func tween(to properties: UIButtonTweenProperty..., duration: TimeInterval, completion: Tween.Callback? = nil) -> Tween {
         return Tweener.default.animate(tweens: properties.map { $0.animation(self) },
                                        duration: duration,
                                        completion: completion)
     }
 
     @discardableResult
-    func tween(from property: UIButtonTweenProperty, duration: TimeInterval, completion: Tween.Callback? = nil) -> Tween {
-        return Tweener.default.animate(reversedTweens: [property.animation(self)],
-                                       duration: duration,
-                                       completion: completion)
-    }
-
-    @discardableResult
-    func tween(from properties: [UIButtonTweenProperty], duration: TimeInterval, completion: Tween.Callback? = nil) -> Tween {
+    func tween(from properties: UIButtonTweenProperty..., duration: TimeInterval, completion: Tween.Callback? = nil) -> Tween {
         return Tweener.default.animate(reversedTweens: properties.map { $0.animation(self) },
                                        duration: duration,
                                        completion: completion)

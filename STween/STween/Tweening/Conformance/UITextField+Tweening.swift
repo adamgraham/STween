@@ -42,28 +42,14 @@ public struct UITextFieldTweenProperty: TweenableProperty {
 public extension UITextField {
 
     @discardableResult
-    func tween(to property: UITextFieldTweenProperty, duration: TimeInterval, completion: Tween.Callback? = nil) -> Tween {
-        return Tweener.default.animate(tweens: [property.animation(self)],
-                                       duration: duration,
-                                       completion: completion)
-    }
-
-    @discardableResult
-    func tween(to properties: [UITextFieldTweenProperty], duration: TimeInterval, completion: Tween.Callback? = nil) -> Tween {
+    func tween(to properties: UITextFieldTweenProperty..., duration: TimeInterval, completion: Tween.Callback? = nil) -> Tween {
         return Tweener.default.animate(tweens: properties.map { $0.animation(self) },
                                        duration: duration,
                                        completion: completion)
     }
 
     @discardableResult
-    func tween(from property: UITextFieldTweenProperty, duration: TimeInterval, completion: Tween.Callback? = nil) -> Tween {
-        return Tweener.default.animate(reversedTweens: [property.animation(self)],
-                                       duration: duration,
-                                       completion: completion)
-    }
-
-    @discardableResult
-    func tween(from properties: [UITextFieldTweenProperty], duration: TimeInterval, completion: Tween.Callback? = nil) -> Tween {
+    func tween(from properties: UITextFieldTweenProperty..., duration: TimeInterval, completion: Tween.Callback? = nil) -> Tween {
         return Tweener.default.animate(reversedTweens: properties.map { $0.animation(self) },
                                        duration: duration,
                                        completion: completion)
