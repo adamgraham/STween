@@ -25,7 +25,7 @@ public struct Ease {
     public let classification: EaseClassification
     /// The acceleration pattern of the ease.
     public let curve: EaseCurve
-    /// The f(x) of the ease.
+    /// The function, f(x), of the ease.
     public let function: (Double) -> Double
 
     // MARK: Initialization
