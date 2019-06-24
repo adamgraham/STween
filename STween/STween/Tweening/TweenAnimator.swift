@@ -1,5 +1,5 @@
 //
-//  TweenAnimation.swift
+//  TweenAnimator.swift
 //  STween
 //
 //  Created by Adam Graham on 6/16/16.
@@ -8,10 +8,9 @@
 
 import Foundation
 
-// TODO: rename to TweenAnimator
 /// Maintains the state of a tween animation while invoking animation closures to
 /// interpolate and update the properties of a `Tweenable` object.
-internal final class TweenAnimation: Tween {
+internal final class TweenAnimator: Tween {
 
     // MARK: Animation & State Properties
 
@@ -47,9 +46,9 @@ internal final class TweenAnimation: Tween {
 
     // MARK: Initialization
 
-    /// Initializes the object to invoke an array of animation closures over a set duration. These
-    /// animation closures interpolate a new value of a property and apply it back to a target
-    /// object.
+    /// Initializes the animator to invoke an array of animation closures over a set duration.
+    /// These animation closures interpolate a new value of a property and apply it back to a
+    /// target object.
     ///
     /// - parameter tweens: The array of animation closures that are invoked every update cycle.
     /// - parameter duration: The amount of seconds the animation takes to complete.
@@ -62,7 +61,7 @@ internal final class TweenAnimation: Tween {
 
 }
 
-extension TweenAnimation {
+extension TweenAnimator {
 
     // MARK: Tweening Methods
 
@@ -106,7 +105,7 @@ extension TweenAnimation {
 
 }
 
-extension TweenAnimation {
+extension TweenAnimator {
 
     // MARK: Delay Methods
 
@@ -141,7 +140,7 @@ extension TweenAnimation {
 
 }
 
-extension TweenAnimation {
+extension TweenAnimator {
 
     // MARK: State Control Methods
 

@@ -109,8 +109,8 @@ class TweenerTest: XCTestCase {
     func testTracking() {
         XCTAssertEqual(Tweener.default.count, 0)
 
-        let tween = TweenAnimation<UIViewTweenProperty>(target: UIView(), properties: [], duration: 1.0)
-        let anotherTween = TweenAnimation<UIViewTweenProperty>(target: UIView(), properties: [], duration: 1.0)
+        let tween = TweenAnimator<UIViewTweenProperty>(target: UIView(), properties: [], duration: 1.0)
+        let anotherTween = TweenAnimator<UIViewTweenProperty>(target: UIView(), properties: [], duration: 1.0)
 
         // Add
 
@@ -144,10 +144,10 @@ class TweenerTest: XCTestCase {
     func testQueueing() {
         XCTAssertEqual(Tweener.default.queuedCount, 0)
 
-        let tween = TweenAnimation(target: UIView(), properties: [UIViewTweenProperty](), duration: 1.0)
+        let tween = TweenAnimator(target: UIView(), properties: [UIViewTweenProperty](), duration: 1.0)
         XCTAssertEqual(tween.state, .new)
 
-        let anotherTween = TweenAnimation<UIViewTweenProperty>(target: UIView(), properties: [], duration: 1.0)
+        let anotherTween = TweenAnimator<UIViewTweenProperty>(target: UIView(), properties: [], duration: 1.0)
         XCTAssertEqual(anotherTween.state, .new)
 
         // Queue

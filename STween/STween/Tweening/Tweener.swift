@@ -79,7 +79,7 @@ extension Tweener {
                         duration: TimeInterval,
                         completion: Tween.Callback? = nil) -> Tween {
 
-        let tween = TweenAnimation(tweens, duration: duration, completion: completion)
+        let tween = TweenAnimator(tweens, duration: duration, completion: completion)
         add(tween)
 
         if Defaults.autoStartTweens {
@@ -108,7 +108,7 @@ extension Tweener {
                         duration: TimeInterval,
                         completion: Tween.Callback? = nil) -> Tween {
 
-        let tween = TweenAnimation(tweens, duration: duration, completion: completion)
+        let tween = TweenAnimator(tweens, duration: duration, completion: completion)
         tween.reversed = true
         add(tween)
 
@@ -131,7 +131,7 @@ extension Tweener {
     }
 
     /// Adds a tween to the list of tracked tweens.
-    /// - parameter tween: The `Tween` to be added.
+    /// - parameter tween: The `Tween` control to be added.
     internal func add(_ tween: Tween) {
         guard self.tweens.firstIndex(where: { $0 === tween }) == nil else {
             return
@@ -141,7 +141,7 @@ extension Tweener {
     }
 
     /// Removes a tween from the list of tracked tweens.
-    /// - parameter tween: The `Tween` to be removed.
+    /// - parameter tween: The `Tween` control to be removed.
     internal func remove(_ tween: Tween) {
         if let index = self.tweens.firstIndex(where: { $0 === tween }),
             index >= 0 && index < self.tweens.count {
@@ -155,7 +155,7 @@ extension Tweener {
     }
 
     /// Checks if a tween is being tracked.
-    /// - parameter tween: The `Tween` to be checked.
+    /// - parameter tween: The `Tween`control to be checked.
     /// - returns: `true` if the tween is contained in the list of tracked tweens.
     internal func contains(_ tween: Tween) -> Bool {
         return self.tweens.contains(where: { $0 === tween })
@@ -177,7 +177,7 @@ extension Tweener {
     /// Tweens are started one frame after being created in order for all necessarily properties
     /// to be applied before starting.
     ///
-    /// - parameter tween: The `Tween` to be queued.
+    /// - parameter tween: The `Tween` control to be queued.
     internal func queue(_ tween: Tween) {
         guard self.queuedTweens.firstIndex(where: { $0 === tween }) == nil else {
             return
