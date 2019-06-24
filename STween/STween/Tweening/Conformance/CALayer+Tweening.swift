@@ -6,225 +6,130 @@
 //  Copyright © 2017 Adam Graham. All rights reserved.
 //
 
-import CoreGraphics
 import Foundation
 import QuartzCore
-import UIKit
 
 /// Provides tweening animation functionality to `CALayer`.
 extension CALayer: Tweenable {
 
-    public typealias Property = CALayerTweenProperty
+    /// The properties of `CALayer` that can be animated with a tween.
+    public struct TweenProperty: TweenableProperty {
 
-}
+        public let animation: (CALayer) -> Tween.Animation
 
-/// The properties of a `CALayer` that can be animated with a tween.
-public enum CALayerTweenProperty: Equatable {
+        private init<T: Interpolatable>(get: @escaping (CALayer) -> T,
+                                        set: @escaping (CALayer, T) -> Void,
+                                        value endValue: T) {
 
-    /// The `frame` property of a `CALayer`.
-    case frame(CGRect)
-    /// The `bounds` property of a `CALayer`.
-    case bounds(CGRect)
-
-    /// The `position` property of a `CALayer`.
-    case position(CGPoint)
-    /// The `zPosition` property of a `CALayer`.
-    case zPosition(CGFloat)
-    /// The `anchorPoint` property of a `CALayer`.
-    case anchorPoint(CGPoint)
-    /// The `anchorPointZ` property of a `CALayer`.
-    case anchorPointZ(CGFloat)
-
-    /// The `transform` property of a `CALayer`.
-    case transform(CATransform3D)
-    /// The `sublayerTransform` property of a `CALayer`.
-    case sublayerTransform(CATransform3D)
-
-    /// The `contentsRect` property of a `CALayer`.
-    case contentsRect(CGRect)
-    /// The `contentsCenter` property of a `CALayer`.
-    case contentsCenter(CGRect)
-    @available(iOS 4.0, *)
-    /// The `contentsScale` property of a `CALayer`.
-    case contentsScale(CGFloat)
-
-    /// The `cornerRadius` property of a `CALayer`.
-    case cornerRadius(CGFloat)
-    /// The `borderWidth` property of a `CALayer`.
-    case borderWidth(CGFloat)
-    /// The `borderColor` property of a `CALayer`.
-    case borderColor(CGColor)
-    /// The `backgroundColor` property of a `CALayer`.
-    case backgroundColor(CGColor)
-    /// The `opacity` property of a `CALayer`.
-    case opacity(Float)
-
-    /// The `shadowColor` property of a `CALayer`.
-    case shadowColor(CGColor)
-    /// The `shadowOpacity` property of a `CALayer`.
-    case shadowOpacity(Float)
-    /// The `shadowOffset` property of a `CALayer`.
-    case shadowOffset(CGSize)
-    /// The `shadowRadius` property of a `CALayer`.
-    case shadowRadius(CGFloat)
-
-}
-
-extension CALayerTweenProperty: TweenableProperty {
-
-    public func value(from object: CALayer) -> CALayerTweenProperty {
-        switch self {
-        case .frame:
-            return .frame(object.frame)
-        case .bounds:
-            return .bounds(object.bounds)
-
-        case .position:
-            return .position(object.position)
-        case .zPosition:
-            return .zPosition(object.zPosition)
-        case .anchorPoint:
-            return .anchorPoint(object.anchorPoint)
-        case .anchorPointZ:
-            return .anchorPointZ(object.anchorPointZ)
-
-        case .transform:
-            return .transform(object.transform)
-        case .sublayerTransform:
-            return .sublayerTransform(object.sublayerTransform)
-
-        case .contentsRect:
-            return .contentsRect(object.contentsRect)
-        case .contentsCenter:
-            return .contentsCenter(object.contentsCenter)
-        case .contentsScale:
-            return .contentsScale(object.contentsScale)
-
-        case .cornerRadius:
-            return .cornerRadius(object.cornerRadius)
-        case .borderWidth:
-            return .borderWidth(object.borderWidth)
-        case .borderColor:
-            return .borderColor(object.borderColor ?? UIColor.clear.cgColor)
-        case .backgroundColor:
-            return .backgroundColor(object.backgroundColor ?? UIColor.clear.cgColor)
-        case .opacity:
-            return .opacity(object.opacity)
-
-        case .shadowColor:
-            return .shadowColor(object.shadowColor ?? UIColor.clear.cgColor)
-        case .shadowOpacity:
-            return .shadowOpacity(object.shadowOpacity)
-        case .shadowOffset:
-            return .shadowOffset(object.shadowOffset)
-        case .shadowRadius:
-            return .shadowRadius(object.shadowRadius)
+            self.animation = { (target: CALayer) in
+                let startValue = get(target)
+                return { (time: TimeInterval) in
+                    set(target, T.interpolate(from: startValue, to: endValue, time: time))
+                }
+            }
         }
+
+        /// The `frame` property of `CALayer`.
+        public static func frame(_ value: CGRect) -> TweenProperty {
+            return .init(get: { $0.frame }, set: { $0.frame = $1 }, value: value)
+        }
+
+        /// The `bounds` property of `CALayer`.
+        public static func bounds(_ value: CGRect) -> TweenProperty {
+            return .init(get: { $0.frame }, set: { $0.frame = $1 }, value: value)
+        }
+
+        /// The `position` property of `CALayer`.
+        public static func position(_ value: CGPoint) -> TweenProperty {
+            return .init(get: { $0.position }, set: { $0.position = $1 }, value: value)
+        }
+
+        /// The `zPosition` property of `CALayer`.
+        public static func zPosition(_ value: CGFloat) -> TweenProperty {
+            return .init(get: { $0.zPosition }, set: { $0.zPosition = $1 }, value: value)
+        }
+
+        /// The `anchorPoint` property of `CALayer`.
+        public static func anchorPoint(_ value: CGPoint) -> TweenProperty {
+            return .init(get: { $0.anchorPoint }, set: { $0.anchorPoint = $1 }, value: value)
+        }
+
+        /// The `anchorPointZ` property of `CALayer`.
+        public static func anchorPointZ(_ value: CGFloat) -> TweenProperty {
+            return .init(get: { $0.anchorPointZ }, set: { $0.anchorPointZ = $1 }, value: value)
+        }
+
+        /// The `transform` property of `CALayer`.
+        public static func transform(_ value: CATransform3D) -> TweenProperty {
+            return .init(get: { $0.transform }, set: { $0.transform = $1 }, value: value)
+        }
+
+        /// The `sublayerTransform` property of `CALayer`.
+        public static func sublayerTransform(_ value: CATransform3D) -> TweenProperty {
+            return .init(get: { $0.sublayerTransform }, set: { $0.sublayerTransform = $1 }, value: value)
+        }
+
+        /// The `contentsRect` property of `CALayer`.
+        public static func contentsRect(_ value: CGRect) -> TweenProperty {
+            return .init(get: { $0.contentsRect }, set: { $0.contentsRect = $1 }, value: value)
+        }
+
+        /// The `contentsCenter` property of `CALayer`.
+        public static func contentsCenter(_ value: CGRect) -> TweenProperty {
+            return .init(get: { $0.contentsCenter }, set: { $0.contentsCenter = $1 }, value: value)
+        }
+
+        /// The `contentsScale` property of `CALayer`.
+        @available(iOS 4.0, *)
+        public static func contentsScale(_ value: CGFloat) -> TweenProperty {
+            return .init(get: { $0.contentsScale }, set: { $0.contentsScale = $1 }, value: value)
+        }
+
+        /// The `cornerRadius` property of `CALayer`.
+        public static func cornerRadius(_ value: CGFloat) -> TweenProperty {
+            return .init(get: { $0.cornerRadius }, set: { $0.cornerRadius = $1 }, value: value)
+        }
+
+        /// The `borderWidth` property of `CALayer`.
+        public static func borderWidth(_ value: CGFloat) -> TweenProperty {
+            return .init(get: { $0.borderWidth }, set: { $0.borderWidth = $1 }, value: value)
+        }
+
+        /// The `borderColor` property of `CALayer`.
+        public static func borderColor(_ value: CGColor) -> TweenProperty {
+            return .init(get: { $0.borderColor ?? UIColor.clear.cgColor }, set: { $0.borderColor = $1 }, value: value)
+        }
+
+        /// The `backgroundColor` property of `CALayer`.
+        public static func backgroundColor(_ value: CGColor) -> TweenProperty {
+            return .init(get: { $0.backgroundColor ?? UIColor.clear.cgColor }, set: { $0.backgroundColor = $1 }, value: value)
+        }
+
+        /// The `opacity` property of `CALayer`.
+        public static func opacity(_ value: Float) -> TweenProperty {
+            return .init(get: { $0.opacity }, set: { $0.opacity = $1 }, value: value)
+        }
+
+        /// The `shadowColor` property of `CALayer`.
+        public static func shadowColor(_ value: CGColor) -> TweenProperty {
+            return .init(get: { $0.shadowColor ?? UIColor.clear.cgColor }, set: { $0.shadowColor = $1 }, value: value)
+        }
+
+        /// The `shadowOpacity` property of `CALayer`.
+        public static func shadowOpacity(_ value: Float) -> TweenProperty {
+            return .init(get: { $0.shadowOpacity }, set: { $0.shadowOpacity = $1 }, value: value)
+        }
+
+        /// The `shadowOffset` property of `CALayer`.
+        public static func shadowOffset(_ value: CGSize) -> TweenProperty {
+            return .init(get: { $0.shadowOffset }, set: { $0.shadowOffset = $1 }, value: value)
+        }
+
+        /// The `shadowRadius` property of `CALayer`.
+        public static func shadowRadius(_ value: CGFloat) -> TweenProperty {
+            return .init(get: { $0.shadowRadius }, set: { $0.shadowRadius = $1 }, value: value)
+        }
+
     }
 
-    public func apply(to object: CALayer) {
-        switch self {
-        case let .frame(value):
-            object.frame = value
-        case let .bounds(value):
-            object.bounds = value
-
-        case let .position(value):
-            object.position = value
-        case let .zPosition(value):
-            object.zPosition = value
-        case let .anchorPoint(value):
-            object.anchorPoint = value
-        case let .anchorPointZ(value):
-            object.anchorPointZ = value
-
-        case let .transform(value):
-            object.transform = value
-        case let .sublayerTransform(value):
-            object.sublayerTransform = value
-
-        case let .contentsRect(value):
-            object.contentsRect = value
-        case let .contentsCenter(value):
-            object.contentsCenter = value
-        case let .contentsScale(value):
-            object.contentsScale = value
-
-        case let .cornerRadius(value):
-            object.cornerRadius = value
-        case let .borderWidth(value):
-            object.borderWidth = value
-        case let .borderColor(value):
-            object.borderColor = value
-        case let .backgroundColor(value):
-            object.backgroundColor = value
-        case let .opacity(value):
-            object.opacity = value
-
-        case let .shadowColor(value):
-            object.shadowColor = value
-        case let .shadowOpacity(value):
-            object.shadowOpacity = value
-        case let .shadowOffset(value):
-            object.shadowOffset = value
-        case let .shadowRadius(value):
-            object.shadowRadius = value
-        }
-    }
-
-    public static func interpolate(from startValue: CALayerTweenProperty, to endValue: CALayerTweenProperty, with ease: Ease,
-                                   elapsed: TimeInterval, duration: TimeInterval) -> CALayerTweenProperty {
-
-        switch (startValue, endValue) {
-        case let (.frame(start), .frame(end)):
-            return .frame(CGRect.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
-        case let (.bounds(start), .bounds(end)):
-            return .bounds(CGRect.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
-
-        case let (.position(start), .position(end)):
-            return .position(CGPoint.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
-        case let (.zPosition(start), .zPosition(end)):
-            return .zPosition(CGFloat.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
-        case let (.anchorPoint(start), .anchorPoint(end)):
-            return .anchorPoint(CGPoint.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
-        case let (.anchorPointZ(start), .anchorPointZ(end)):
-            return .anchorPointZ(CGFloat.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
-
-        case let (.transform(start), .transform(end)):
-            return .transform(CATransform3D.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
-        case let (.sublayerTransform(start), .sublayerTransform(end)):
-            return .sublayerTransform(CATransform3D.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
-
-        case let (.contentsRect(start), .contentsRect(end)):
-            return .contentsRect(CGRect.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
-        case let (.contentsCenter(start), .contentsCenter(end)):
-            return .contentsCenter(CGRect.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
-        case let (.contentsScale(start), .contentsScale(end)):
-            return .contentsScale(CGFloat.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
-
-        case let (.cornerRadius(start), .cornerRadius(end)):
-            return .cornerRadius(CGFloat.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
-        case let (.borderWidth(start), .borderWidth(end)):
-            return .borderWidth(CGFloat.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
-        case let (.borderColor(start), .borderColor(end)):
-            return .borderColor(CGColor.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
-        case let (.backgroundColor(start), .backgroundColor(end)):
-            return .backgroundColor(CGColor.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
-        case let (.opacity(start), .opacity(end)):
-            return .opacity(Float.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
-
-        case let (.shadowColor(start), .shadowColor(end)):
-            return .shadowColor(CGColor.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
-        case let (.shadowOpacity(start), .shadowOpacity(end)):
-            return .shadowOpacity(Float.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
-        case let (.shadowOffset(start), .shadowOffset(end)):
-            return .shadowOffset(CGSize.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
-        case let (.shadowRadius(start), .shadowRadius(end)):
-            return .shadowRadius(CGFloat.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
-            
-        default:
-            return startValue
-        }
-    }
-        
 }

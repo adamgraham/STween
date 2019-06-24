@@ -8,13 +8,15 @@
 
 import Foundation
 
-/// An animation that interpolates and updates properties on a `Tweenable` type
-/// while maintaining state.
-internal final class TweenAnimation<Property: TweenableProperty>: Tween {
+// TODO: rename to TweenAnimator
+/// Maintains the state of a tween animation while invoking animation closures to
+/// interpolate and update the properties of a `Tweenable` object.
+internal final class TweenAnimation: Tween {
 
     // MARK: Animation & State Properties
 
-    private var animations: [Tween.Animation] = []
+    /// An array of animation closures that are invoked every update cycle.
+    private var tweens: [Tween.Animation] = []
 
     internal var ease = Defaults.ease
 
@@ -45,19 +47,17 @@ internal final class TweenAnimation<Property: TweenableProperty>: Tween {
 
     // MARK: Initialization
 
-    /**
-     Initializes a `TweenAnimation` to animate an array of properties on a target object over
-     a set duration.
-     
-     - Parameters:
-        - target: The object on which properties are animated.
-        - properties: The array of properties to animate.
-        - duration: The amount of seconds the animation takes to complete.
-     */
-    internal init(animations: , duration: TimeInterval) {
-        self.target = target
+    /// Initializes the object to invoke an array of animation closures over a set duration. These
+    /// animation closures interpolate a new value of a property and apply it back to a target
+    /// object.
+    ///
+    /// - parameter tweens: The array of animation closures that are invoked every update cycle.
+    /// - parameter duration: The amount of seconds the animation takes to complete.
+    /// - parameter completion: An optional closure invoked when the animation is finished.
+    internal init(_ tweens: [Tween.Animation], duration: TimeInterval, completion: Tween.Callback? = nil) {
+        self.tweens = tweens
         self.duration = duration
-        self.targetProperties = properties
+        self.onComplete = completion
     }
 
 }
@@ -66,7 +66,8 @@ extension TweenAnimation {
 
     // MARK: Tweening Methods
 
-    @discardableResult public func update(by deltaTime: TimeInterval) -> Bool {
+    @discardableResult
+    public func update(by deltaTime: TimeInterval) -> Bool {
         guard self.state != .delayed else {
             updateDelay(by: deltaTime)
             return false
@@ -75,11 +76,10 @@ extension TweenAnimation {
         guard self.state.canUpdate else { return false }
 
         // Increase elapsed time
-        self.elapsed = clamp(value: self.elapsed + deltaTime,
-                             lower: 0.0, upper: self.duration)
+        self.elapsed += deltaTime
 
-        // Update all properties
-        updateProperties()
+        // Invoke tweens for the current time
+        tween(percent: self.percentComplete)
         self.onUpdate?(self)
 
         // Check if the animation is complete
@@ -90,44 +90,52 @@ extension TweenAnimation {
         return true
     }
 
-    /// Interpolates new values for all target properties of the tween, based on its current state, and
-    /// assigns the interpolated values to the target object.
-    private func updateProperties() {
-        let ease = self.ease
-        let elapsed = self.elapsed
-        let duration = self.duration
-        let percent = ease.function(elapsed / duration)
+    /// Invokes all animation closures for the current time after applying an easing function.
+    /// These animation closures interpolate a new value of a property and apply it back to a
+    /// target object.
+    /// - parameter percent: The percentage of the tween's elapsed time in relation to its duration.
+    private func tween(percent: TimeInterval) {
+        var percent = percent
+        if self.reversed { percent = 1.0 - percent }
+        let time = self.ease.function(percent)
 
-        self.interpolationValues?.forEach {
-            let interpolatedValue = Property.interpolate(from: $0.start, to: $0.end, time: percent)
-            interpolatedValue.apply(to: self.target)
+        for tween in self.tweens {
+            tween(time)
         }
     }
 
-    /// Applies the end value of each target property to the target object.
-    private func completeUpdates() {
-        if self.interpolationValues == nil {
-            storeInterpolationValues()
-        }
+}
 
-        self.interpolationValues?.forEach {
-            $0.end.apply(to: self.target)
-        }
+extension TweenAnimation {
+
+    // MARK: Delay Methods
+
+    /// Marks the tween as delayed, starting the delay timer from zero.
+    /// The tween can only be delayed if it's *not* already in a `delayed` state.
+    /// - returns: `true` if the tween is successfully marked as delayed.
+    @discardableResult
+    private func startDelay() -> Bool {
+        guard self.state != .delayed else { return false }
+
+        // Set state
+        self.state = .delayed
+        self.delayElapsed = 0.0
+
+        return true
     }
 
-    /// Stores all the necessary data needed to interpolate each target property.
-    ///
-    /// If the tween is reversed, the start and end value will be flipped with each other.
-    private func storeInterpolationValues() {
-        self.interpolationValues = self.targetProperties.map {
-            let start = $0.value(from: self.target)
-            let end = $0
+    /// Updates the elapsed delay time and checks if the delay has finished.
+    /// If the delay has finished, `start` will be invoked on the tween.
+    /// - parameter deltaTime: The amount of seconds elapsed since the last update.
+    private func updateDelay(by deltaTime: TimeInterval) {
+        // Increase elapsed time
+        self.delayElapsed += deltaTime
 
-            if self.reversed {
-                return (end, start)
-            }
-
-            return (start, end)
+        // Check if the delay is complete
+        if self.delayElapsed >= self.delay {
+            self.state = .inactive
+            self.delayElapsed = self.delay
+            start()
         }
     }
 
@@ -137,7 +145,8 @@ extension TweenAnimation {
 
     // MARK: State Control Methods
 
-    @discardableResult internal func start() -> Bool {
+    @discardableResult
+    internal func start() -> Bool {
         guard self.state.canStart else { return false }
         guard self.delayElapsed >= self.delay else {
             return startDelay()
@@ -147,12 +156,8 @@ extension TweenAnimation {
         self.state = .active
         self.elapsed = 0.0
 
-        // Store property values
-        storeInterpolationValues()
-
-        if self.reversed {
-            updateProperties()
-        }
+        // Apply initial updates
+        tween(percent: 0.0)
 
         // Callback event
         self.onStart?(self)
@@ -160,7 +165,8 @@ extension TweenAnimation {
         return true
     }
 
-    @discardableResult internal func stop() -> Bool {
+    @discardableResult
+    internal func stop() -> Bool {
         guard self.state.canStop else { return false }
 
         // Set state
@@ -176,7 +182,8 @@ extension TweenAnimation {
         return true
     }
 
-    @discardableResult internal func restart() -> Bool {
+    @discardableResult
+    internal func restart() -> Bool {
         guard self.state.canRestart else { return false }
 
         stop()
@@ -186,10 +193,11 @@ extension TweenAnimation {
         return true
     }
 
-    @discardableResult internal func pause() -> Bool {
+    @discardableResult
+    internal func pause() -> Bool {
         guard self.state.canPause else { return false }
 
-        // Update state
+        // Set state
         self.state = .paused
 
         // Callback event
@@ -198,10 +206,11 @@ extension TweenAnimation {
         return true
     }
 
-    @discardableResult internal func resume() -> Bool {
+    @discardableResult
+    internal func resume() -> Bool {
         guard self.state.canResume else { return false }
 
-        // Update state
+        // Set state
         if self.delayElapsed >= self.delay {
             self.state = .active
         } else {
@@ -214,7 +223,8 @@ extension TweenAnimation {
         return true
     }
 
-    @discardableResult internal func complete() -> Bool {
+    @discardableResult
+    internal func complete() -> Bool {
         guard self.state.canComplete else { return false }
 
         // Set state
@@ -225,7 +235,7 @@ extension TweenAnimation {
         self.delayElapsed = self.delay
 
         // Complete updates
-        completeUpdates()
+        tween(percent: 1.0)
 
         // Callback event
         self.onComplete?(self)
@@ -238,7 +248,8 @@ extension TweenAnimation {
         return true
     }
 
-    @discardableResult internal func kill() -> Bool {
+    @discardableResult
+    internal func kill() -> Bool {
         guard self.state.canKill else { return false }
 
         // Set state
@@ -253,14 +264,14 @@ extension TweenAnimation {
         return true
     }
 
-    @discardableResult internal func revive() -> Bool {
+    @discardableResult
+    internal func revive() -> Bool {
         guard self.state.canRevive else { return false }
 
         // Set state
         self.state = .new
-        self.interpolationValues = nil
         
-        // Update timer
+        // Update elapsed time
         self.elapsed = 0.0
         self.delayElapsed = 0.0
         
@@ -271,46 +282,6 @@ extension TweenAnimation {
         self.onRevive?(self)
 
         return true
-    }
-
-}
-
-extension TweenAnimation {
-
-    // MARK: Delay Methods
-
-    /**
-     Marks the tween as delayed, starting the delay timer from zero.
-
-     The tween can only be delayed if it's *not* already in a `delayed` state.
-
-     - Returns: `true` if the tween is successfully marked as delayed.
-     */
-    @discardableResult private func startDelay() -> Bool {
-        guard self.state != .delayed else { return false }
-
-        // Set state
-        self.state = .delayed
-        self.delayElapsed = 0.0
-
-        return true
-    }
-
-    /**
-     Updates the elapsed delay time and checks if the delay has finished.
-
-     If the delay has finished, `start` will be invoked on the tween.
-
-     - parameter deltaTime: The amount of seconds elapsed since the previous update.
-     */
-    private func updateDelay(by deltaTime: TimeInterval) {
-        self.delayElapsed += deltaTime
-
-        if self.delayElapsed >= self.delay {
-            self.state = .inactive
-            self.delayElapsed = self.delay
-            start()
-        }
     }
 
 }

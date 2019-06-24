@@ -61,28 +61,25 @@ extension Tweener {
     // MARK: Factory Creation
 
     /**
-     Creates a `Tween` that animates an array of properties on a `Tweenable` type *to*
-     desired values from its current values over a set duration.
+     Creates a `Tween` that invokes an array of animation closures over a set duration. These
+     animation closures interpolate a new value of a property and apply it back to a target
+     object.
 
      The created tween will automatically be queued to start if
      `Defaults.autoStartTweens` is `true`.
-     
+
      - Parameters:
-        - target: The object on which properties are animated.
-        - properties: The array of properties to be animated.
-        - duration: The amount of seconds the animation takes to complete.
-        - completion: The callback invoked when the animation is finished (optional).
+         - tweens: The array of animation closures that are invoked every update cycle.
+         - duration: The amount of seconds the animation takes to complete.
+         - completion: An optional closure invoked when the animation is finished.
 
      - Returns: The `Tween` control for the animation.
      */
-    @discardableResult public func animate<Property: TweenableProperty>(
-        _ target: Property.Target, to properties: [Property],
-        duration: TimeInterval, completion: Tween.Callback? = nil) -> Tween {
+    public func animate(tweens: [Tween.Animation],
+                        duration: TimeInterval,
+                        completion: Tween.Callback? = nil) -> Tween {
 
-        let tween = TweenAnimation(target: target, properties: properties, duration: duration)
-        tween.reversed = false
-        tween.onComplete = completion
-
+        let tween = TweenAnimation(tweens, duration: duration, completion: completion)
         add(tween)
 
         if Defaults.autoStartTweens {
@@ -93,28 +90,26 @@ extension Tweener {
     }
 
     /**
-     Creates a `Tween` that animates an array of properties on a `Tweenable` type *from*
-     desired values to its current values over a set duration.
+     Creates a `Tween` that invokes an array of animation closures over a set duration in
+     reverse direction. These animation closures interpolate a new value of a property and
+     apply it back to a target object.
 
      The created tween will automatically be queued to start if
      `Defaults.autoStartTweens` is `true`.
-     
+
      - Parameters:
-        - target: The object on which properties are animated.
-        - properties: The array of properties to be animated.
-        - duration: The amount of seconds the animation takes to complete.
-        - completion: The callback invoked when the animation is finished (optional).
-     
+         - tweens: The array of animation closures that are invoked every update cycle.
+         - duration: The amount of seconds the animation takes to complete.
+         - completion: An optional closure invoked when the animation is finished.
+
      - Returns: The `Tween` control for the animation.
      */
-    @discardableResult public func animate<Property: TweenableProperty>(
-        _ target: Property.Target, from properties: [Property],
-        duration: TimeInterval, completion: Tween.Callback? = nil) -> Tween {
+    public func animate(reversedTweens tweens: [Tween.Animation],
+                        duration: TimeInterval,
+                        completion: Tween.Callback? = nil) -> Tween {
 
-        let tween = TweenAnimation(target: target, properties: properties, duration: duration)
+        let tween = TweenAnimation(tweens, duration: duration, completion: completion)
         tween.reversed = true
-        tween.onComplete = completion
-
         add(tween)
 
         if Defaults.autoStartTweens {
@@ -135,12 +130,8 @@ extension Tweener {
         return self.tweens.count
     }
 
-    /**
-     Adds a tween to the list of tracked tweens.
-     
-     - Parameters:
-        - tween: The `Tween` to be added.
-     */
+    /// Adds a tween to the list of tracked tweens.
+    /// - parameter tween: The `Tween` to be added.
     internal func add(_ tween: Tween) {
         guard self.tweens.firstIndex(where: { $0 === tween }) == nil else {
             return
@@ -149,12 +140,8 @@ extension Tweener {
         self.tweens.append(tween)
     }
 
-    /**
-     Removes a tween from the list of tracked tweens.
-     
-     - Parameters:
-        - tween: The `Tween` to be removed.
-     */
+    /// Removes a tween from the list of tracked tweens.
+    /// - parameter tween: The `Tween` to be removed.
     internal func remove(_ tween: Tween) {
         if let index = self.tweens.firstIndex(where: { $0 === tween }),
             index >= 0 && index < self.tweens.count {
@@ -167,14 +154,9 @@ extension Tweener {
         }
     }
 
-    /**
-     Checks if a tween is being tracked.
-
-     - Parameters:
-        - tween: The `Tween` to be checked.
-     
-     - Returns: `true` if the tween is contained in the list of tracked tweens.
-     */
+    /// Checks if a tween is being tracked.
+    /// - parameter tween: The `Tween` to be checked.
+    /// - returns: `true` if the tween is contained in the list of tracked tweens.
     internal func contains(_ tween: Tween) -> Bool {
         return self.tweens.contains(where: { $0 === tween })
     }
@@ -190,15 +172,12 @@ extension Tweener {
         return self.queuedTweens.count
     }
 
-    /**
-     Queues a tween to be started.
-
-     Tweens are started one frame after being created in order for all necessarily properties
-     to be applied before starting.
-     
-     - Parameters:
-        - tween: The `Tween` to be queued.
-     */
+    /// Queues a tween to be started.
+    ///
+    /// Tweens are started one frame after being created in order for all necessarily properties
+    /// to be applied before starting.
+    ///
+    /// - parameter tween: The `Tween` to be queued.
     internal func queue(_ tween: Tween) {
         guard self.queuedTweens.firstIndex(where: { $0 === tween }) == nil else {
             return
@@ -207,10 +186,8 @@ extension Tweener {
         self.queuedTweens.append(tween)
     }
 
-    /**
-     Starts all queued tweens by invoking `start` on each one – putting the tweens in an
-     `active` state and removing them from the list of queued tweens.
-     */
+    /// Starts all queued tweens by invoking `start` on each one – putting the tweens in an
+    /// `active` state and removing them from the list of queued tweens.
     @objc internal func startQueuedTweens() {
         self.queuedTweens.forEach {
             $0.start()
