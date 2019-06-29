@@ -49,16 +49,12 @@ public extension Tweenable {
 
     @discardableResult
     func tween(to properties: TweenProperty..., duration: TimeInterval, completion: Tween.Callback? = nil) -> Tween {
-        return Tweener.default.animate(tweens: properties.map { $0.animation(self) },
-                                       duration: duration,
-                                       completion: completion)
+        return Tweener.default.animate(self, to: properties, duration: duration)
     }
 
     @discardableResult
     func tween(from properties: TweenProperty..., duration: TimeInterval, completion: Tween.Callback? = nil) -> Tween {
-        return Tweener.default.animate(reversedTweens: properties.map { $0.animation(self) },
-                                       duration: duration,
-                                       completion: completion)
+        return Tweener.default.animate(self, from: properties, duration: duration)
     }
 
 }

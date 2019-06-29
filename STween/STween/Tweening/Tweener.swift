@@ -20,17 +20,17 @@ public final class Tweener {
     /// The default instance of `Tweener`.
     public static let `default` = Tweener(identifier: "default")
 
-    /// Returns a reference to a custom `Tweener` instance by its identifier. If the instance does
-    /// not already exist, it is created.
+    /// Returns a reference to a custom `Tweener` instance by its identifier. The `Tweener`
+    /// instance is created if it does not already exist.
     /// - parameter identifier: The identifier of the custom `Tweener` instance.
-    /// - returns: The custom `Tweener` instance for the given `identifier`.
+    /// - returns: The custom `Tweener` instance for the given identifier.
     public static func custom(_ identifier: String) -> Tweener {
         let identifier = identifier.lowercased()
         if let tweener = tweeners[identifier] { return tweener }
         return Tweener(identifier: identifier)
     }
 
-    // Prevent outside instantiation of the singleton.
+    // Private initializer to prevent outside instantiation.
     private init(identifier: String) {
         Tweener.tweeners[identifier] = self
     }
@@ -84,17 +84,20 @@ extension Tweener {
      `Defaults.autoStartTweens` is `true`.
 
      - Parameters:
-         - tweens: The array of animation closures that are invoked every update cycle.
-         - duration: The amount of seconds the animation takes to complete.
-         - completion: An optional closure invoked when the animation is finished.
+        - target: The target object to which the animated `properties` are applied.
+        - properties: The properties to animate on the `target` instance.
+        - duration: The amount of seconds the animation takes to complete.
+        - completion: An optional closure invoked when the animation is finished.
 
      - Returns: The `Tween` control for the animation.
      */
-    public func animate(tweens: [Tween.Animation],
-                        duration: TimeInterval,
-                        completion: Tween.Callback? = nil) -> Tween {
+    @discardableResult
+    public func animate<Prop: TweenableProperty>(
+        _ target: Prop.Target, to properties: [Prop],
+        duration: TimeInterval, completion: Tween.Callback? = nil) -> Tween {
 
-        let tween = TweenAnimator(tweens, duration: duration, completion: completion)
+        let animations = properties.map { $0.animation(target) }
+        let tween = TweenAnimator(animations, duration: duration, completion: completion)
         tween.tweener = self
 
         track(tween)
@@ -115,17 +118,20 @@ extension Tweener {
      `Defaults.autoStartTweens` is `true`.
 
      - Parameters:
-         - tweens: The array of animation closures that are invoked every update cycle.
-         - duration: The amount of seconds the animation takes to complete.
-         - completion: An optional closure invoked when the animation is finished.
+        - target: The target object to which the animated `properties` are applied.
+        - properties: The properties to animate on the `target` instance.
+        - duration: The amount of seconds the animation takes to complete.
+        - completion: An optional closure invoked when the animation is finished.
 
      - Returns: The `Tween` control for the animation.
      */
-    public func animate(reversedTweens tweens: [Tween.Animation],
-                        duration: TimeInterval,
-                        completion: Tween.Callback? = nil) -> Tween {
+    @discardableResult
+    public func animate<Prop: TweenableProperty>(
+        _ target: Prop.Target, from properties: [Prop],
+        duration: TimeInterval, completion: Tween.Callback? = nil) -> Tween {
 
-        let tween = TweenAnimator(tweens, duration: duration, completion: completion)
+        let animations = properties.map { $0.animation(target) }
+        let tween = TweenAnimator(animations, duration: duration, completion: completion)
         tween.tweener = self
         tween.reversed = true
 

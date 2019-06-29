@@ -9,31 +9,36 @@
 import Foundation
 import UIKit
 
-/// The properties of `UITextField` that can be animated with a tween.
-public struct UITextFieldTweenProperty: TweenableProperty {
+/// Provides tweening animation functionality to `UITextField`.
+extension UITextField {
 
-    public let animation: (UITextField) -> Tween.Animation
+    /// The properties of `UITextField` that can be animated with a tween.
+    public struct TweenPropertyDerived: TweenableProperty {
 
-    private init<T: Interpolatable>(get: @escaping (UITextField) -> T,
-                                    set: @escaping (UITextField, T) -> Void,
-                                    value endValue: T) {
+        public let animation: (UITextField) -> Tween.Animation
 
-        self.animation = { (target: UITextField) in
-            let startValue = get(target)
-            return { (time: TimeInterval) in
-                set(target, T.interpolate(from: startValue, to: endValue, time: time))
+        private init<T: Interpolatable>(get: @escaping (UITextField) -> T,
+                                        set: @escaping (UITextField, T) -> Void,
+                                        value endValue: T) {
+
+            self.animation = { (target: UITextField) in
+                let startValue = get(target)
+                return { (time: TimeInterval) in
+                    set(target, T.interpolate(from: startValue, to: endValue, time: time))
+                }
             }
         }
-    }
 
-    /// The `textColor` property of `UITextField`.
-    public static func textColor(_ value: UIColor) -> UITextFieldTweenProperty {
-        return .init(get: { $0.textColor ?? .clear }, set: { $0.textColor = $1 }, value: value)
-    }
+        /// The `textColor` property of `UITextField`.
+        public static func textColor(_ value: UIColor) -> TweenPropertyDerived {
+            return .init(get: { $0.textColor ?? .clear }, set: { $0.textColor = $1 }, value: value)
+        }
 
-    /// The `minimumFontSize` property of `UITextField`.
-    public static func minimumFontSize(_ value: CGFloat) -> UITextFieldTweenProperty {
-        return .init(get: { $0.minimumFontSize }, set: { $0.minimumFontSize = $1 }, value: value)
+        /// The `minimumFontSize` property of `UITextField`.
+        public static func minimumFontSize(_ value: CGFloat) -> TweenPropertyDerived {
+            return .init(get: { $0.minimumFontSize }, set: { $0.minimumFontSize = $1 }, value: value)
+        }
+
     }
 
 }
@@ -42,17 +47,13 @@ public struct UITextFieldTweenProperty: TweenableProperty {
 public extension UITextField {
 
     @discardableResult
-    func tween(to properties: UITextFieldTweenProperty..., duration: TimeInterval, completion: Tween.Callback? = nil) -> Tween {
-        return Tweener.default.animate(tweens: properties.map { $0.animation(self) },
-                                       duration: duration,
-                                       completion: completion)
+    func tween(to properties: TweenPropertyDerived..., duration: TimeInterval, completion: Tween.Callback? = nil) -> Tween {
+        return Tweener.default.animate(self, to: properties, duration: duration, completion: completion)
     }
 
     @discardableResult
-    func tween(from properties: UITextFieldTweenProperty..., duration: TimeInterval, completion: Tween.Callback? = nil) -> Tween {
-        return Tweener.default.animate(reversedTweens: properties.map { $0.animation(self) },
-                                       duration: duration,
-                                       completion: completion)
+    func tween(from properties: TweenPropertyDerived..., duration: TimeInterval, completion: Tween.Callback? = nil) -> Tween {
+        return Tweener.default.animate(self, from: properties, duration: duration, completion: completion)
     }
 
 }

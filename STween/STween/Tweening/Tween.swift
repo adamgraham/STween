@@ -79,10 +79,12 @@ public protocol Tween: AnyObject {
     // MARK: Tweening Methods
 
     /// Increases the tween's elapsed time and invokes all animation closures. These closures
-    /// interpolate new values of properties and apply them back to the target object. If in a
-    /// `delayed` state, the tween's elapsed delay will be updated; otherwise, the tween can
-    /// only be updated if in an `active` state. The tween will be completed if its elapsed time
-    /// has reached or exceeded its duration.
+    /// interpolate new values of properties and apply them back to the target object. The
+    /// tween will be completed if its elapsed time has reached or exceeded its duration.
+    ///
+    /// If the tween is in a `delayed` state, the elapsed delay is updated instead; otherwise, the
+    /// tween can only be updated if in an `active` state.
+    ///
     /// - parameter deltaTime: The amount of seconds passed since the last update.
     /// - returns: `true` if the tween is successfully updated.
     @discardableResult
