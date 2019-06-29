@@ -10,11 +10,11 @@
  A type of easing function, described from an algorithmic classification and acceleration
  pattern, providing the sense of motion.
 
- > *Nothing in nature moves linearly from one point to another. In reality, things tend to
+ > "Nothing in nature moves linearly from one point to another. In reality, things tend to
  > accelerate or decelerate as they move. Our brains are wired to expect this kind of
  > motion, so when animating you should use this to your advantage. Natural motion
  > makes your users feel more comfortable with your apps, which in turn leads to a better
- > overall experience.*
+ > overall experience."
  > \- [Paul Lewis](https://developers.google.com/web/fundamentals/design-and-ux/animations/the-basics-of-easing)
  */
 public struct Ease {

@@ -14,10 +14,14 @@ import UIKit
 /// A type that can be represented and initialized by floats.
 public protocol FloatRepresentable {
 
+    /// The type of floating point number that can represent this type.
     typealias FloatType = CGFloat
 
+    /// The floating point values that represent this type.
     var floats: [FloatType] { get }
 
+    /// Initializes an instance using an array of floating point values that represent the type.
+    /// - parameter floats: The floating points values that represent the type.
     init(floats: [FloatType])
 
 }
