@@ -14,11 +14,19 @@ public final class Tweener {
 
     // MARK: Instance
 
-    /// A dictionary to store each instantiated `Tweener` by id.
+    /// A dictionary to store each instantiated `Tweener` by its identifier.
     private static var tweeners: [String: Tweener] = [:]
 
-    /// The default instance of `Tweener`.
-    public static let `default` = Tweener(identifier: "default")
+    /// The main, shared instance of `Tweener`.
+    public static let shared: Tweener = {
+        let setAsDefault = tweeners["default"] == nil
+        return Tweener(identifier: "shared", setAsDefault: setAsDefault)
+    }()
+
+    /// The default assigned instance of `Tweener`.
+    public static var `default`: Tweener {
+        return self.tweeners["default"] ?? self.shared
+    }
 
     /// Returns a reference to a custom `Tweener` instance by its identifier. The `Tweener`
     /// instance is created if it does not already exist.
@@ -27,12 +35,24 @@ public final class Tweener {
     public static func custom(_ identifier: String) -> Tweener {
         let identifier = identifier.lowercased()
         if let tweener = tweeners[identifier] { return tweener }
-        return Tweener(identifier: identifier)
+        return Tweener(identifier: identifier, setAsDefault: false)
     }
 
-    // Private initializer to prevent outside instantiation.
-    private init(identifier: String) {
+    /// The identifier of this `Tweener` instance.
+    public let identifier: String
+
+    /// Initializes an instance of `Tweener` with a given identifier.
+    /// - parameter identifier: The identifier of the `Tweener` instance.
+    /// - parameter setAsDefault: Sets the default `Tweener` instance to this one if `true`.
+    private init(identifier: String, setAsDefault: Bool = false) {
+        self.identifier = identifier
         Tweener.tweeners[identifier] = self
+        if setAsDefault { self.setAsDefault() }
+    }
+
+    /// Assigns this instance of `Tweener` as the default instance.
+    public func setAsDefault() {
+        Tweener.tweeners["default"] = self
     }
 
     // MARK: Properties
