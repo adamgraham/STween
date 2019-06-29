@@ -23,6 +23,14 @@ public final class Tweener {
         return Tweener(identifier: "shared", setAsDefault: setAsDefault)
     }()
 
+    /// An instance of `Tweener` where all tweens are manually controlled and updated.
+    public static let manual: Tweener = {
+        let tweener = Tweener(identifier: "manual")
+        tweener.tweenTimer.invalidate()
+        tweener.queueTimer.invalidate()
+        return tweener
+    }()
+
     /// The default assigned instance of `Tweener`.
     public static var `default`: Tweener {
         return self.tweeners["default"] ?? self.shared
@@ -35,7 +43,7 @@ public final class Tweener {
     public static func custom(_ identifier: String) -> Tweener {
         let identifier = identifier.lowercased()
         if let tweener = tweeners[identifier] { return tweener }
-        return Tweener(identifier: identifier, setAsDefault: false)
+        return Tweener(identifier: identifier)
     }
 
     /// The identifier of this `Tweener` instance.
@@ -122,7 +130,7 @@ extension Tweener {
 
         track(tween)
 
-        if Defaults.autoStartTweens {
+        if Defaults.autoStartTweens && self !== Tweener.manual {
             queue(tween)
         }
 
@@ -157,7 +165,7 @@ extension Tweener {
 
         track(tween)
 
-        if Defaults.autoStartTweens {
+        if Defaults.autoStartTweens && self !== Tweener.manual {
             queue(tween)
         }
 
