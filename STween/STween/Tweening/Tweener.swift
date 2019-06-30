@@ -9,7 +9,7 @@
 import Foundation
 import QuartzCore
 
-/// A singleton, factory class to create, queue, and manage `Tween` animations.
+/// A factory class to create, queue, and manage `Tween` animations.
 public final class Tweener {
 
     // MARK: Instance
@@ -99,70 +99,17 @@ public final class Tweener {
 
 }
 
-extension Tweener {
+public extension Tweener {
 
     // MARK: Factory Creation
 
-    /**
-     Creates a `Tween` that invokes an array of animation closures over a set duration. These
-     animation closures interpolate a new value of a property and apply it back to a target
-     object.
-
-     The created tween will automatically be queued to start if
-     `Defaults.autoStartTweens` is `true`.
-
-     - Parameters:
-        - target: The target object to which the animated `properties` are applied.
-        - properties: The properties to animate on the `target` instance.
-        - duration: The amount of seconds the animation takes to complete.
-        - completion: An optional closure invoked when the animation is finished.
-
-     - Returns: The `Tween` control for the animation.
-     */
+    /// Creates a `Tween` that can be customized to animate properties on a target instance.
+    /// - parameter target: The `Tweenable` instance on which properties are animated.
+    /// - returns: The `Tween` handle that manages and controls the animation.
     @discardableResult
-    public func animate<Prop: TweenableProperty>(
-        _ target: Prop.Target, to properties: [Prop],
-        duration: TimeInterval, completion: Tween.Callback? = nil) -> Tween {
-
-        let animations = properties.map { $0.animation(target) }
-        let tween = TweenAnimator(animations, duration: duration, completion: completion)
+    func animate<Target: Tweenable>(_ target: Target) -> TweenAnimator<Target> {
+        let tween = TweenAnimator(targets: [target])
         tween.tweener = self
-
-        track(tween)
-
-        if Defaults.autoStartTweens && self !== Tweener.manual {
-            queue(tween)
-        }
-
-        return tween
-    }
-
-    /**
-     Creates a `Tween` that invokes an array of animation closures over a set duration in
-     reverse direction. These animation closures interpolate a new value of a property and
-     apply it back to a target object.
-
-     The created tween will automatically be queued to start if
-     `Defaults.autoStartTweens` is `true`.
-
-     - Parameters:
-        - target: The target object to which the animated `properties` are applied.
-        - properties: The properties to animate on the `target` instance.
-        - duration: The amount of seconds the animation takes to complete.
-        - completion: An optional closure invoked when the animation is finished.
-
-     - Returns: The `Tween` control for the animation.
-     */
-    @discardableResult
-    public func animate<Prop: TweenableProperty>(
-        _ target: Prop.Target, from properties: [Prop],
-        duration: TimeInterval, completion: Tween.Callback? = nil) -> Tween {
-
-        let animations = properties.map { $0.animation(target) }
-        let tween = TweenAnimator(animations, duration: duration, completion: completion)
-        tween.tweener = self
-        tween.reversed = true
-
         track(tween)
 
         if Defaults.autoStartTweens && self !== Tweener.manual {
@@ -251,61 +198,62 @@ extension Tweener {
 
 }
 
-extension Tweener {
+public extension Tweener {
 
     // MARK: Global State Control
 
     /// Invokes `update` on all currently tracked tweens.
-    public func updateAll(by deltaTime: TimeInterval) {
+    /// - parameter deltaTime: The amount of seconds passed since the last update.
+    func updateAll(by deltaTime: TimeInterval) {
         self.tweens.forEach {
             $0.update(by: deltaTime)
         }
     }
 
     /// Invokes `start` on all currently tracked tweens.
-    public func startAll() {
+    func startAll() {
         self.tweens.forEach {
             $0.start()
         }
     }
 
     /// Invokes `stop` on all currently tracked tweens.
-    public func stopAll() {
+    func stopAll() {
         self.tweens.forEach {
             $0.stop()
         }
     }
 
     /// Invokes `stop` on all currently tracked tweens.
-    public func restartAll() {
+    func restartAll() {
         self.tweens.forEach {
             $0.restart()
         }
     }
 
     /// Invokes `pause` on all currently tracked tweens.
-    public func pauseAll() {
+    func pauseAll() {
         self.tweens.forEach {
             $0.pause()
         }
     }
 
     /// Invokes `resume` on all currently tracked tweens.
-    public func resumeAll() {
+    func resumeAll() {
         self.tweens.forEach {
             $0.resume()
         }
     }
 
     /// Invokes `complete` on all currently tracked tweens.
-    public func completeAll() {
+    func completeAll() {
         self.tweens.forEach {
             $0.complete()
         }
     }
 
     /// Invokes `kill` on all currently tracked tweens.
-    public func killAll() {
+    func killAll() {
         self.tweens.forEach {
             $0.kill()
         }

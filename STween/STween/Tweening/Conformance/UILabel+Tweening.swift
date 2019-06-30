@@ -65,17 +65,42 @@ extension UILabel {
 
 }
 
-/// Provides tweening animation functionality to `UILabel`.
-public extension UILabel {
+/// :nodoc:
+public extension TweenAnimator where Target == UILabel {
 
+    /// Animates tweenable properties from the target's current values *to* the desired values.
+    /// - parameter properties: The properties to animate.
+    /// - returns: The current `TweenAnimator` instance to allow for additional customization.
     @discardableResult
-    func tween(to properties: TweenPropertyDerived..., duration: TimeInterval, completion: Tween.Callback? = nil) -> Tween {
-        return Tweener.default.animate(self, to: properties, duration: duration, completion: completion)
+    func to(_ properties: UILabel.TweenPropertyDerived...) -> TweenAnimator<Target> {
+        return to(properties)
     }
 
+    /// Animates tweenable properties *from* desired values to the target's current values.
+    /// - parameter properties: The properties to animate.
+    /// - returns: The current `TweenAnimator` instance to allow for additional customization.
     @discardableResult
-    func tween(from properties: TweenPropertyDerived..., duration: TimeInterval, completion: Tween.Callback? = nil) -> Tween {
-        return Tweener.default.animate(self, from: properties, duration: duration, completion: completion)
+    func from(_ properties: UILabel.TweenPropertyDerived...) -> TweenAnimator<Target> {
+        return from(properties)
+    }
+
+}
+
+/// :nodoc:
+public extension UILabel {
+
+    /// Animates tweenable properties from the target's current values *to* the desired values.
+    /// - parameter properties: The properties to animate.
+    /// - returns: The `Tween` control for the animation.
+    func tween(to properties: TweenPropertyDerived...) -> Tween {
+        return Tweener.default.animate(self).to(properties)
+    }
+
+    /// Animates tweenable properties *from* desired values to the target's current values.
+    /// - parameter properties: The properties to animate.
+    /// - returns: The `Tween` control for the animation.
+    func tween(from properties: TweenPropertyDerived...) -> Tween {
+        return Tweener.default.animate(self).from(properties)
     }
 
 }

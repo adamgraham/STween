@@ -14,14 +14,11 @@ public protocol Tween: AnyObject {
     // MARK: Animation & State Properties
 
     /// An animation closure that is invoked every time a tween is updated. These closures
-    /// interpolate new values of properties and apply them back to a target object.
+    /// interpolate new values of properties and apply them back to a target instance.
     typealias Animation = (TimeInterval) -> Void
 
     /// The `Ease` used to interpolate values.
     var ease: Ease { get set }
-
-    /// The state of animating *to* the target values (`false`) or *from* the target values (`true`).
-    var reversed: Bool { get set }
 
     /// The tween's current state, i.e., active, paused, etc.
     var state: TweenState { get }
@@ -79,7 +76,7 @@ public protocol Tween: AnyObject {
     // MARK: Tweening Methods
 
     /// Increases the tween's elapsed time and invokes all animation closures. These closures
-    /// interpolate new values of properties and apply them back to the target object. The
+    /// interpolate new values of properties and apply them back to the target instance(s). The
     /// tween will be completed if its elapsed time has reached or exceeded its duration.
     ///
     /// If the tween is in a `delayed` state, the elapsed delay is updated instead; otherwise, the
