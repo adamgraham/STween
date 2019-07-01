@@ -6,242 +6,137 @@
 //  Copyright © 2016 Adam Graham. All rights reserved.
 //
 
-import CoreGraphics
 import Foundation
 import UIKit
 
 /// Provides tweening animation functionality to `UIView`.
-extension UIView: Tweenable {}
+extension UIView: Tweenable {
 
-/// The properties of a `UIView` that can be animated with a tween.
-public enum UIViewTweenProperty: Equatable {
+    /// The properties of `UIView` that can be animated with a tween.
+    public struct TweenProperty: TweenableProperty {
 
-    /// The `frame.origin.x` property of a `UIView`.
-    case x(CGFloat)
-    /// The `frame.origin.y` property of a `UIView`.
-    case y(CGFloat)
-    /// The `frame.origin` property of a `UIView`.
-    case origin(CGPoint)
+        public let animation: (UIView) -> Tween.Animation
 
-    /// The `frame.size.width` property of a `UIView`.
-    case width(CGFloat)
-    /// The `frame.size.height` property of a `UIView`.
-    case height(CGFloat)
-    /// The `frame.size` property of a `UIView`.
-    case size(CGSize)
+        private init<T: Interpolatable>(get: @escaping (UIView) -> T,
+                                        set: @escaping (UIView, T) -> Void,
+                                        value endValue: T) {
 
-    /// The `frame.minX` property of a `UIView`.
-    case left(CGFloat)
-    /// The `frame.maxX` property of a `UIView`.
-    case right(CGFloat)
-    /// The `frame.minY` property of a `UIView`.
-    case top(CGFloat)
-    /// The `frame.maxY` property of a `UIView`.
-    case bottom(CGFloat)
-
-    /// The `frame` property of a `UIView`.
-    case frame(CGRect)
-    /// The `bounds` property of a `UIView`.
-    case bounds(CGRect)
-    /// The `transform` property of a `UIView`.
-    case transform(CGAffineTransform)
-
-    /// The `center` property of a `UIView`.
-    case center(CGPoint)
-    /// The `center.x` property of a `UIView`.
-    case centerX(CGFloat)
-    /// The `center.y` property of a `UIView`.
-    case centerY(CGFloat)
-
-    /// The `alpha` property of a `UIView`.
-    case alpha(CGFloat)
-    /// The `backgroundColor` property of a `UIView`.
-    case backgroundColor(UIColor)
-
-    /// The `tintColor` property of a `UIView`.
-    @available(iOS 7.0, *)
-    case tintColor(UIColor)
-
-    /// The `contentScaleFactor` property of a `UIView`.
-    @available(iOS 4.0, *)
-    case contentScaleFactor(CGFloat)
-
-    /// The `layoutMargins` property of a `UIView`.
-    @available(iOS 8.0, *)
-    case layoutMargins(UIEdgeInsets)
-
-}
-
-extension UIViewTweenProperty: TweenableProperty {
-
-    public func value(from object: UIView) -> UIViewTweenProperty {
-        switch self {
-        case .x:
-            return .x(object.frame.origin.x)
-        case .y:
-            return .y(object.frame.origin.y)
-        case .origin:
-            return .origin(object.frame.origin)
-
-        case .width:
-            return .width(object.frame.width)
-        case .height:
-            return .height(object.frame.height)
-        case .size:
-            return .size(object.frame.size)
-
-        case .left:
-            return .left(object.frame.minX)
-        case .right:
-            return .right(object.frame.maxX)
-        case .top:
-            return .top(object.frame.minY)
-        case .bottom:
-            return .bottom(object.frame.maxY)
-
-        case .frame:
-            return .frame(object.frame)
-        case .bounds:
-            return .bounds(object.bounds)
-        case .transform:
-            return .transform(object.transform)
-
-        case .center:
-            return .center(object.center)
-        case .centerX:
-            return .centerX(object.center.x)
-        case .centerY:
-            return .centerY(object.center.y)
-
-        case .alpha:
-            return .alpha(object.alpha)
-        case .backgroundColor:
-            return .backgroundColor(object.backgroundColor ?? UIColor.clear)
-
-        case .tintColor:
-            return .tintColor(object.tintColor)
-
-        case .contentScaleFactor:
-            return .contentScaleFactor(object.contentScaleFactor)
-
-        case .layoutMargins:
-            return .layoutMargins(object.layoutMargins)
+            self.animation = { (target: UIView) in
+                let startValue = get(target)
+                return { (time: TimeInterval) in
+                    set(target, T.interpolate(from: startValue, to: endValue, time: time))
+                }
+            }
         }
-    }
 
-    public func apply(to object: UIView) {
-        switch self {
-        case let .x(value):
-            object.frame.origin.x = value
-        case let .y(value):
-            object.frame.origin.y = value
-        case let .origin(value):
-            object.frame.origin = value
-
-        case let .width(value):
-            object.frame.size.width = value
-        case let .height(value):
-            object.frame.size.height = value
-        case let .size(value):
-            object.frame.size = value
-
-        case let .left(value):
-            object.frame.origin.x = value
-        case let .right(value):
-            object.frame.origin.x = -object.frame.size.width + value
-        case let .top(value):
-            object.frame.origin.y = value
-        case let .bottom(value):
-            object.frame.origin.y = -object.frame.size.height + value
-
-        case let .frame(value):
-            object.frame = value
-        case let .bounds(value):
-            object.bounds = value
-        case let .transform(value):
-            object.transform = value
-
-        case let .center(value):
-            object.center = value
-        case let .centerX(value):
-            object.center.x = value
-        case let .centerY(value):
-            object.center.y = value
-
-        case let .alpha(value):
-            object.alpha = value
-        case let .backgroundColor(value):
-            object.backgroundColor = value
-
-        case let .tintColor(value):
-            object.tintColor = value
-
-        case let .contentScaleFactor(value):
-            object.contentScaleFactor = value
-            
-        case let .layoutMargins(value):
-            object.layoutMargins = value
+        /// The `frame.origin.x` property of `UIView`.
+        public static func x(_ value: CGFloat) -> TweenProperty {
+            return .init(get: { $0.frame.origin.x }, set: { $0.frame.origin.x = $1 }, value: value)
         }
-    }
 
-    public static func interpolate(from startValue: UIViewTweenProperty, to endValue: UIViewTweenProperty, with ease: Ease,
-                                   elapsed: TimeInterval, duration: TimeInterval) -> UIViewTweenProperty {
-
-        switch (startValue, endValue) {
-        case let (.x(start), .x(end)):
-            return .x(CGFloat.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
-        case let (.y(start), .y(end)):
-            return .y(CGFloat.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
-        case let (.origin(start), .origin(end)):
-            return .origin(CGPoint.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
-
-        case let (.width(start), .width(end)):
-            return .width(CGFloat.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
-        case let (.height(start), .height(end)):
-            return .height(CGFloat.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
-        case let (.size(start), .size(end)):
-            return .size(CGSize.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
-
-        case let (.left(start), .left(end)):
-            return .left(CGFloat.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
-        case let (.right(start), .right(end)):
-            return .right(CGFloat.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
-        case let (.top(start), .top(end)):
-            return .top(CGFloat.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
-        case let (.bottom(start), .bottom(end)):
-            return .bottom(CGFloat.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
-
-        case let (.frame(start), .frame(end)):
-            return .frame(CGRect.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
-        case let (.bounds(start), .bounds(end)):
-            return .bounds(CGRect.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
-        case let (.transform(start), .transform(end)):
-            return .transform(CGAffineTransform.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
-
-        case let (.center(start), .center(end)):
-            return .center(CGPoint.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
-        case let (.centerX(start), .centerX(end)):
-            return .centerX(CGFloat.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
-        case let (.centerY(start), .centerY(end)):
-            return .centerY(CGFloat.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
-
-        case let (.alpha(start), .alpha(end)):
-            return .alpha(CGFloat.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
-        case let (.backgroundColor(start), .backgroundColor(end)):
-            return .backgroundColor(UIColor.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
-
-        case let (.tintColor(start), .tintColor(end)):
-            return .tintColor(UIColor.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
-
-        case let (.contentScaleFactor(start), .contentScaleFactor(end)):
-            return .contentScaleFactor(CGFloat.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
-
-        case let (.layoutMargins(start), .layoutMargins(end)):
-            return .layoutMargins(UIEdgeInsets.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
-            
-        default:
-            return startValue
+        /// The `frame.origin.y` property of `UIView`.
+        public static func y(_ value: CGFloat) -> TweenProperty {
+            return .init(get: { $0.frame.origin.y }, set: { $0.frame.origin.y = $1 }, value: value)
         }
+
+        /// The `frame.origin` property of `UIView`.
+        public static func origin(_ value: CGPoint) -> TweenProperty {
+            return .init(get: { $0.frame.origin }, set: { $0.frame.origin = $1 }, value: value)
+        }
+
+        /// The `frame.size.width` property of `UIView`.
+        public static func width(_ value: CGFloat) -> TweenProperty {
+            return .init(get: { $0.frame.size.width }, set: { $0.frame.size.width = $1 }, value: value)
+        }
+
+        /// The `frame.size.height` property of `UIView`.
+        public static func height(_ value: CGFloat) -> TweenProperty {
+            return .init(get: { $0.frame.size.height }, set: { $0.frame.size.height = $1 }, value: value)
+        }
+
+        /// The `frame.size` property of `UIView`.
+        public static func size(_ value: CGSize) -> TweenProperty {
+            return .init(get: { $0.frame.size }, set: { $0.frame.size = $1 }, value: value)
+        }
+
+        /// The `frame.minX` property of `UIView`.
+        public static func left(_ value: CGFloat) -> TweenProperty {
+            return .init(get: { $0.frame.minX }, set: { $0.frame.origin.x = $1 }, value: value)
+        }
+
+        /// The `frame.maxX` property of `UIView`.
+        public static func right(_ value: CGFloat) -> TweenProperty {
+            return .init(get: { $0.frame.maxX }, set: { $0.frame.origin.x = -$0.frame.size.width + $1 }, value: value)
+        }
+
+        /// The `frame.minY` property of `UIView`.
+        public static func top(_ value: CGFloat) -> TweenProperty {
+            return .init(get: { $0.frame.minY }, set: { $0.frame.origin.y = $1 }, value: value)
+        }
+
+        /// The `frame.maxY` property of `UIView`.
+        public static func bottom(_ value: CGFloat) -> TweenProperty {
+            return .init(get: { $0.frame.maxY }, set: { $0.frame.origin.y = -$0.frame.size.height + $1 }, value: value)
+        }
+
+        /// The `frame` property of `UIView`.
+        public static func frame(_ value: CGRect) -> TweenProperty {
+            return .init(get: { $0.frame }, set: { $0.frame = $1 }, value: value)
+        }
+
+        /// The `bounds` property of `UIView`.
+        public static func bounds(_ value: CGRect) -> TweenProperty {
+            return .init(get: { $0.bounds }, set: { $0.bounds = $1 }, value: value)
+        }
+
+        /// The `transform` property of `UIView`.
+        public static func transform(_ value: CGAffineTransform) -> TweenProperty {
+            return .init(get: { $0.transform }, set: { $0.transform = $1 }, value: value)
+        }
+
+        /// The `center` property of `UIView`.
+        public static func center(_ value: CGPoint) -> TweenProperty {
+            return .init(get: { $0.center }, set: { $0.center = $1 }, value: value)
+        }
+
+        /// The `center.x` property of `UIView`.
+        public static func centerX(_ value: CGFloat) -> TweenProperty {
+            return .init(get: { $0.center.x }, set: { $0.center.x = $1 }, value: value)
+        }
+
+        /// The `center.y` property of `UIView`.
+        public static func centerY(_ value: CGFloat) -> TweenProperty {
+            return .init(get: { $0.center.y }, set: { $0.center.y = $1 }, value: value)
+        }
+
+        /// The `alpha` property of `UIView`.
+        public static func alpha(_ value: CGFloat) -> TweenProperty {
+            return .init(get: { $0.alpha }, set: { $0.alpha = $1 }, value: value)
+        }
+
+        /// The `backgroundColor` property of `UIView`.
+        public static func backgroundColor(_ value: UIColor) -> TweenProperty {
+            return .init(get: { $0.backgroundColor ?? .clear }, set: { $0.backgroundColor = $1 }, value: value)
+        }
+
+        /// The `tintColor` property of `UIView`.
+        @available(iOS 7.0, *)
+        public static func tintColor(_ value: UIColor) -> TweenProperty {
+            return .init(get: { $0.tintColor }, set: { $0.tintColor = $1 }, value: value)
+        }
+
+        /// The `contentScaleFactor` property of `UIView`.
+        @available(iOS 4.0, *)
+        public static func contentScaleFactor(_ value: CGFloat) -> TweenProperty {
+            return .init(get: { $0.contentScaleFactor }, set: { $0.contentScaleFactor = $1 }, value: value)
+        }
+
+        /// The `layoutMargins` property of `UIView`.
+        @available(iOS 8.0, *)
+        public static func layoutMargins(_ value: UIEdgeInsets) -> TweenProperty {
+            return .init(get: { $0.layoutMargins }, set: { $0.layoutMargins = $1 }, value: value)
+        }
+
     }
 
 }

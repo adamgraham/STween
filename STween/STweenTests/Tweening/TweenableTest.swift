@@ -22,52 +22,36 @@ class TweenableTest: XCTestCase {
         super.tearDown()
     }
 
-    func testTweenToProperty() {
-        let tweenA = UIView().tween(to: UIViewTweenProperty.x(100.0), duration: 1.0)
-        XCTAssertFalse(tweenA.reversed)
-        XCTAssertNil(tweenA.onComplete)
-        XCTAssertEqual(Tweener.default.count, 1)
+    func testTweenTo() {
+        let view = UIView()
+        let tween = view.tween(to: .x(100.0), .y(100.0))
 
-        let tweenB = UIView().tween(to: UIViewTweenProperty.y(100.0), duration: 1.0, completion: { _ in })
-        XCTAssertFalse(tweenB.reversed)
-        XCTAssertNotNil(tweenB.onComplete)
-        XCTAssertEqual(Tweener.default.count, 2)
+        guard let animator = tween as? TweenAnimator<UIView> else {
+            XCTFail()
+            return
+        }
+
+        XCTAssertEqual(Tweener.default.count, 1)
+        XCTAssertEqual(animator.targets, [view])
+        XCTAssertEqual(animator.tweens.count, 2)
+        XCTAssertFalse(animator.tweens[0].reversed)
+        XCTAssertFalse(animator.tweens[1].reversed)
     }
 
-    func testTweenToProperties() {
-        let tweenA = UIView().tween(to: [UIViewTweenProperty.x(100.0), UIViewTweenProperty.y(100.0)], duration: 1.0)
-        XCTAssertFalse(tweenA.reversed)
-        XCTAssertNil(tweenA.onComplete)
+    func testTweenFrom() {
+        let view = UIView()
+        let tween = view.tween(from: .x(100.0), .y(100.0))
+
+        guard let animator = tween as? TweenAnimator<UIView> else {
+            XCTFail()
+            return
+        }
+
         XCTAssertEqual(Tweener.default.count, 1)
-
-        let tweenB = UIView().tween(to: [UIViewTweenProperty.width(100.0), UIViewTweenProperty.height(100.0)], duration: 1.0, completion: { _ in })
-        XCTAssertFalse(tweenB.reversed)
-        XCTAssertNotNil(tweenB.onComplete)
-        XCTAssertEqual(Tweener.default.count, 2)
-    }
-
-    func testTweenFromProperty() {
-        let tweenA = UIView().tween(from: UIViewTweenProperty.x(100.0), duration: 1.0)
-        XCTAssertTrue(tweenA.reversed)
-        XCTAssertNil(tweenA.onComplete)
-        XCTAssertEqual(Tweener.default.count, 1)
-
-        let tweenB = UIView().tween(from: UIViewTweenProperty.y(100.0), duration: 1.0, completion: { _ in })
-        XCTAssertTrue(tweenB.reversed)
-        XCTAssertNotNil(tweenB.onComplete)
-        XCTAssertEqual(Tweener.default.count, 2)
-    }
-
-    func testTweenFromProperties() {
-        let tweenA = UIView().tween(from: [UIViewTweenProperty.x(100.0), UIViewTweenProperty.y(100.0)], duration: 1.0)
-        XCTAssertTrue(tweenA.reversed)
-        XCTAssertNil(tweenA.onComplete)
-        XCTAssertEqual(Tweener.default.count, 1)
-
-        let tweenB = UIView().tween(from: [UIViewTweenProperty.width(100.0), UIViewTweenProperty.height(100.0)], duration: 1.0, completion: { _ in })
-        XCTAssertTrue(tweenB.reversed)
-        XCTAssertNotNil(tweenB.onComplete)
-        XCTAssertEqual(Tweener.default.count, 2)
+        XCTAssertEqual(animator.targets, [view])
+        XCTAssertEqual(animator.tweens.count, 2)
+        XCTAssertTrue(animator.tweens[0].reversed)
+        XCTAssertTrue(animator.tweens[1].reversed)
     }
 
 }

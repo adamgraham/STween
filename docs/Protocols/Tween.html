@@ -4,94 +4,114 @@
     <title>Tween Protocol Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
-    <meta charset='utf-8'>
+    <meta charset="utf-8">
     <script src="../js/jquery.min.js" defer></script>
     <script src="../js/jazzy.js" defer></script>
     
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
   </head>
   <body>
+
     <a name="//apple_ref/swift/Protocol/Tween" class="dashAnchor"></a>
+
     <a title="Tween Protocol Reference"></a>
-    <header>
-      <div class="content-wrapper">
-        <p><a href="../index.html"> Docs</a> (100% documented)</p>
-        <p class="header-right"><a href="https://github.com/adamgraham/STween"><img src="../img/gh.png"/>View on GitHub</a></p>
-      </div>
-    </header>
-    <div class="content-wrapper">
-      <p id="breadcrumbs">
-        <a href="../index.html"> Reference</a>
-        <img id="carat" src="../img/carat.png" />
-        Tween Protocol Reference
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="../index.html">
+          STween
+        </a>
+         (100% documented)
       </p>
-    </div>
+    
+      <p class="header-col--secondary">
+        <form role="search" action="../search.json">
+          <input type="text" placeholder="Search documentation" data-typeahead>
+        </form>
+      </p>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="https://github.com/adamgraham/STween">
+            <img class="header-icon" src="../img/gh.png"/>
+            View on GitHub
+          </a>
+        </p>
+    
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="../index.html"> Reference</a>
+      <img class="carat" src="../img/carat.png" />
+      Tween Protocol Reference
+    </p>
+
     <div class="content-wrapper">
-      <nav class="sidebar">
+      <nav class="navigation">
         <ul class="nav-groups">
           <li class="nav-group-name">
-            <a href="../Easing.html">Easing</a>
+            <a class="nav-group-name-link" href="../Tweening.html">Tweening</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Structs/Ease.html">Ease</a>
+                <a class="nav-group-task-link" href="../Protocols/Tween.html">Tween</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Enums/EaseClassification.html">EaseClassification</a>
+                <a class="nav-group-task-link" href="../Protocols/Tweenable.html">Tweenable</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Enums/EaseCurve.html">EaseCurve</a>
+                <a class="nav-group-task-link" href="../Protocols/TweenableProperty.html">TweenableProperty</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Enums/EaseFunction.html">EaseFunction</a>
+                <a class="nav-group-task-link" href="../Classes/TweenAnimator.html">TweenAnimator</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/Tweener.html">Tweener</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/TweenState.html">TweenState</a>
               </li>
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="../Interpolation.html">Interpolation</a>
+            <a class="nav-group-name-link" href="../Easing.html">Easing</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Protocols/Interpolatable.html">Interpolatable</a>
+                <a class="nav-group-task-link" href="../Structs/Ease.html">Ease</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Protocols/InterpolatableNumber.html">InterpolatableNumber</a>
+                <a class="nav-group-task-link" href="../Enums/EaseClassification.html">EaseClassification</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/InterpolatableNumberConstants.html">InterpolatableNumberConstants</a>
+                <a class="nav-group-task-link" href="../Enums/EaseCurve.html">EaseCurve</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/EaseFunction.html">EaseFunction</a>
               </li>
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="../Tweening.html">Tweening</a>
+            <a class="nav-group-name-link" href="../Interpolation.html">Interpolation</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Protocols/Tween.html">Tween</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Enums/TweenState.html">TweenState</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Protocols/Tweenable.html">Tweenable</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Protocols/TweenableProperty.html">TweenableProperty</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Classes/Tweener.html">Tweener</a>
+                <a class="nav-group-task-link" href="../Protocols/Interpolatable.html">Interpolatable</a>
               </li>
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="../Settings.html">Settings</a>
+            <a class="nav-group-name-link" href="../Settings.html">Settings</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Enums/Defaults.html">Defaults</a>
+                <a class="nav-group-task-link" href="../Enums/Defaults.html">Defaults</a>
               </li>
             </ul>
           </li>
         </ul>
       </nav>
       <article class="main-content">
-        <section>
-          <section class="section">
+
+        <section class="section">
+          <div class="section-content">
             <h1>Tween</h1>
               <div class="declaration">
                 <div class="language">
@@ -101,8 +121,11 @@
               </div>
             <p>A handle that provides state control and customization of a tween animation.</p>
 
-          </section>
-          <section class="section task-group-section">
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-content">
             <div class="task-group">
               <div class="task-name-container">
                 <a name="/Animation%20&amp;%20State%20Properties"></a>
@@ -111,7 +134,35 @@
                   <h3 class="section-name">Animation &amp; State Properties</h3>
                 </a>
               </div>
-              <ul>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6STween5TweenP9Animationa"></a>
+                    <a name="//apple_ref/swift/Alias/Animation" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6STween5TweenP9Animationa">Animation</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An animation closure that is invoked every time a tween is updated. These closures
+interpolate new values of properties and apply them back to a target instance.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">typealias</span> <span class="kt">Animation</span> <span class="o">=</span> <span class="p">(</span><span class="kt">TimeInterval</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
                 <li class="item">
                   <div>
                     <code>
@@ -133,37 +184,6 @@
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">ease</span><span class="p">:</span> <span class="kt"><a href="../Structs/Ease.html">Ease</a></span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:6STween5TweenP8reversedSbvp"></a>
-                    <a name="//apple_ref/swift/Property/reversed" class="dashAnchor"></a>
-                    <a class="token" href="#/s:6STween5TweenP8reversedSbvp">reversed</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The state of animating <em>to</em> the target property values (<code>false</code>) or <em>from</em> the target
-property values (<code>true</code>).</p>
-
-<p>Assigning this will not take effect until the tween is started. If the tween has already
-been started, it must be restarted before taking effect.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">reversed</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -207,7 +227,7 @@ been started, it must be restarted before taking effect.</p>
                   <h3 class="section-name">Time Properties</h3>
                 </a>
               </div>
-              <ul>
+              <ul class="item-container">
                 <li class="item">
                   <div>
                     <code>
@@ -252,8 +272,6 @@ been started, it must be restarted before taking effect.</p>
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>The amount of seconds the tween takes to complete.</p>
-
-<p>Assigning this while the tween is active may cause undesired behavior.</p>
 
                       </div>
                       <div class="declaration">
@@ -307,7 +325,7 @@ If the tween is completed, the elapsed time is the same as the duration.</p>
                   <h3 class="section-name">Callback Properties</h3>
                 </a>
               </div>
-              <ul>
+              <ul class="item-container">
                 <li class="item">
                   <div>
                     <code>
@@ -321,8 +339,8 @@ If the tween is completed, the elapsed time is the same as the duration.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The method signature of a <q>callback</q> closure. Callbacks are invoked upon completion
-of many different events, such as when a tween has finished animating.</p>
+                        <p>Callbacks are invoked upon completion of many different events, such as when a tween
+has finished animating.</p>
 
                       </div>
                       <div class="declaration">
@@ -583,13 +601,69 @@ of many different events, such as when a tween has finished animating.</p>
             </div>
             <div class="task-group">
               <div class="task-name-container">
-                <a name="/State%20Control%20Methods"></a>
-                <a name="//apple_ref/swift/Section/State Control Methods" class="dashAnchor"></a>
-                <a href="#/State%20Control%20Methods">
-                  <h3 class="section-name">State Control Methods</h3>
+                <a name="/State%20Control"></a>
+                <a name="//apple_ref/swift/Section/State Control" class="dashAnchor"></a>
+                <a href="#/State%20Control">
+                  <h3 class="section-name">State Control</h3>
                 </a>
               </div>
-              <ul>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6STween5TweenP6update2bySbSd_tF"></a>
+                    <a name="//apple_ref/swift/Method/update(by:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6STween5TweenP6update2bySbSd_tF">update(by:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Increases the tween&rsquo;s elapsed time and invokes all animation closures. These closures
+interpolate new values of properties and apply them back to the target instance(s). The
+tween will be completed if its elapsed time has reached or exceeded its duration.</p>
+
+<p>If the tween is in a <code>delayed</code> state, the elapsed delay is updated instead; otherwise, the
+tween can only be updated if in an <code>active</code> state.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
+<span class="kd">func</span> <span class="nf">update</span><span class="p">(</span><span class="n">by</span> <span class="nv">deltaTime</span><span class="p">:</span> <span class="kt">TimeInterval</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>deltaTime</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The amount of seconds passed since the last update.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p><code>true</code> if the tween is successfully updated.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
                 <li class="item">
                   <div>
                     <code>
@@ -603,9 +677,8 @@ of many different events, such as when a tween has finished animating.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Starts the tween for updates, putting it in an <code>active</code> state from its beginning values.</p>
-
-<p>The tween can only be started if it&rsquo;s in a <code>new</code> or <code>inactive</code> state.</p>
+                        <p>Starts the tween for updates, putting it in an <code>active</code> state from its beginning values.
+The tween can only be started if it&rsquo;s in a <code>new</code> or <code>inactive</code> state.</p>
 
                       </div>
                       <div class="declaration">
@@ -637,9 +710,8 @@ of many different events, such as when a tween has finished animating.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Stops the tween from updating, putting it in an <code>inactive</code> state.</p>
-
-<p>The tween can only be stopped if it&rsquo;s in an <code>active</code>, <code>delayed</code>, or <code>paused</code> state.</p>
+                        <p>Stops the tween from updating, putting it in an <code>inactive</code> state. The tween can only be
+stopped if it&rsquo;s in an <code>active</code>, <code>delayed</code>, or <code>paused</code> state.</p>
 
                       </div>
                       <div class="declaration">
@@ -671,9 +743,8 @@ of many different events, such as when a tween has finished animating.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Stops the tween, then immediately starts it over again from the beginning.</p>
-
-<p>The tween can only be restarted if it&rsquo;s <em>not</em> in a <code>killed</code> state.</p>
+                        <p>Stops the tween, then immediately starts it over again from the beginning. The tween
+can only be restarted if it&rsquo;s <em>not</em> in a <code>killed</code> state.</p>
 
                       </div>
                       <div class="declaration">
@@ -705,9 +776,8 @@ of many different events, such as when a tween has finished animating.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Pauses the tween, maintaining its current progress.</p>
-
-<p>The tween can only be paused if it&rsquo;s in an <code>active</code> or <code>delayed</code> state.</p>
+                        <p>Pauses the tween, maintaining its current progress. The tween can only be paused if
+it&rsquo;s in an <code>active</code> or <code>delayed</code> state.</p>
 
                       </div>
                       <div class="declaration">
@@ -739,9 +809,8 @@ of many different events, such as when a tween has finished animating.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Resumes the tween, continuing where it left off before being paused.</p>
-
-<p>The tween can only be resumed if it&rsquo;s in a <code>paused</code> state.</p>
+                        <p>Resumes the tween, continuing where it left off before being paused. The tween can
+only be resumed if it&rsquo;s in a <code>paused</code> state.</p>
 
                       </div>
                       <div class="declaration">
@@ -773,11 +842,10 @@ of many different events, such as when a tween has finished animating.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Completes updates on the tween, jumping to its ending values if not already there.</p>
-
-<p>The tween can only be completed if it&rsquo;s <em>not</em> already in a <code>complete</code> state and not in a
-<code>killed</code> state. The tween will automatically be killed if <code><a href="../Enums/Defaults.html#/s:6STween8DefaultsO23autoKillCompletedTweensSbvpZ">Defaults.autoKillCompletedTweens</a></code>
-is <code>true</code>.</p>
+                        <p>Completes updates on the tween, jumping to its ending values if not already there.
+The tween can only be completed if it&rsquo;s <em>not</em> already in a <code>complete</code> state and <em>not</em> in a
+<code>killed</code> state. The tween will automatically be killed if
+<code><a href="../Enums/Defaults.html#/s:6STween8DefaultsO23autoKillCompletedTweensSbvpZ">Defaults.autoKillCompletedTweens</a></code> is <code>true</code>.</p>
 
                       </div>
                       <div class="declaration">
@@ -810,9 +878,7 @@ is <code>true</code>.</p>
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>Kills the tween in place, halting at its current values, and removes it from <code><a href="../Classes/Tweener.html">Tweener</a></code>&lsquo;s
-list of tracked tweens.</p>
-
-<p>The tween can only be killed if it&rsquo;s <em>not</em> already in a <code>killed</code> state.</p>
+list of tracked tweens. The tween can only be killed if it&rsquo;s <em>not</em> already in a <code>killed</code> state.</p>
 
                       </div>
                       <div class="declaration">
@@ -844,10 +910,8 @@ list of tracked tweens.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Revives the tween, putting it in a <code>new</code> state, and re-adds it to <code><a href="../Classes/Tweener.html">Tweener</a></code>&lsquo;s list of tracked
-tweens.</p>
-
-<p>The tween can only be revived if it&rsquo;s in a <code>killed</code> state.</p>
+                        <p>Revives the tween, putting it in a <code>new</code> state, and re-adds it to <code><a href="../Classes/Tweener.html">Tweener</a></code>&lsquo;s list of
+tracked tweens. The tween can only be revived if it&rsquo;s in a <code>killed</code> state.</p>
 
                       </div>
                       <div class="declaration">
@@ -876,13 +940,13 @@ tweens.</p>
                   <h3 class="section-name">Chaining Methods</h3>
                 </a>
               </div>
-              <ul>
+              <ul class="item-container">
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:6STween5TweenPAAE3set4easeAaB_pAA4EaseV_tF"></a>
-                    <a name="//apple_ref/swift/Method/set(ease:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:6STween5TweenPAAE3set4easeAaB_pAA4EaseV_tF">set(ease:)</a>
+                    <a name="/s:6STween5TweenPAAE4easeyAaB_pAA4EaseVF"></a>
+                    <a name="//apple_ref/swift/Method/ease(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6STween5TweenPAAE4easeyAaB_pAA4EaseVF">ease(_:)</a>
                     </code>
                       <span class="declaration-note">
                         Extension method
@@ -901,7 +965,7 @@ tweens.</p>
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
-<span class="kd">public</span> <span class="kd">func</span> <span class="nf">set</span><span class="p">(</span><span class="nv">ease</span><span class="p">:</span> <span class="kt"><a href="../Structs/Ease.html">Ease</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Tween</span></code></pre>
+<span class="kd">func</span> <span class="nf">ease</span><span class="p">(</span><span class="n">_</span> <span class="nv">value</span><span class="p">:</span> <span class="kt"><a href="../Structs/Ease.html">Ease</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Tween</span></code></pre>
 
                         </div>
                       </div>
@@ -912,7 +976,7 @@ tweens.</p>
                             <tr>
                               <td>
                                 <code>
-                                <em>ease</em>
+                                <em>value</em>
                                 </code>
                               </td>
                               <td>
@@ -926,7 +990,7 @@ tweens.</p>
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>The tween to allow for additional method chaining.</p>
+                        <p>The current tween to allow for additional customization.</p>
                       </div>
                     </section>
                   </div>
@@ -934,9 +998,9 @@ tweens.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:6STween5TweenPAAE3set5delayAaB_pSd_tF"></a>
-                    <a name="//apple_ref/swift/Method/set(delay:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:6STween5TweenPAAE3set5delayAaB_pSd_tF">set(delay:)</a>
+                    <a name="/s:6STween5TweenPAAE5delayyAaB_pSdF"></a>
+                    <a name="//apple_ref/swift/Method/delay(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6STween5TweenPAAE5delayyAaB_pSdF">delay(_:)</a>
                     </code>
                       <span class="declaration-note">
                         Extension method
@@ -955,7 +1019,7 @@ tweens.</p>
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
-<span class="kd">public</span> <span class="kd">func</span> <span class="nf">set</span><span class="p">(</span><span class="nv">delay</span><span class="p">:</span> <span class="kt">TimeInterval</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Tween</span></code></pre>
+<span class="kd">func</span> <span class="nf">delay</span><span class="p">(</span><span class="n">_</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">TimeInterval</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Tween</span></code></pre>
 
                         </div>
                       </div>
@@ -966,7 +1030,7 @@ tweens.</p>
                             <tr>
                               <td>
                                 <code>
-                                <em>delay</em>
+                                <em>value</em>
                                 </code>
                               </td>
                               <td>
@@ -980,7 +1044,7 @@ tweens.</p>
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>The tween to allow for additional method chaining.</p>
+                        <p>The current tween to allow for additional customization.</p>
                       </div>
                     </section>
                   </div>
@@ -988,9 +1052,9 @@ tweens.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:6STween5TweenPAAE3set8durationAaB_pSd_tF"></a>
-                    <a name="//apple_ref/swift/Method/set(duration:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:6STween5TweenPAAE3set8durationAaB_pSd_tF">set(duration:)</a>
+                    <a name="/s:6STween5TweenPAAE8durationyAaB_pSdF"></a>
+                    <a name="//apple_ref/swift/Method/duration(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6STween5TweenPAAE8durationyAaB_pSdF">duration(_:)</a>
                     </code>
                       <span class="declaration-note">
                         Extension method
@@ -1009,7 +1073,7 @@ tweens.</p>
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
-<span class="kd">public</span> <span class="kd">func</span> <span class="nf">set</span><span class="p">(</span><span class="nv">duration</span><span class="p">:</span> <span class="kt">TimeInterval</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Tween</span></code></pre>
+<span class="kd">func</span> <span class="nf">duration</span><span class="p">(</span><span class="n">_</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">TimeInterval</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Tween</span></code></pre>
 
                         </div>
                       </div>
@@ -1020,7 +1084,7 @@ tweens.</p>
                             <tr>
                               <td>
                                 <code>
-                                <em>duration</em>
+                                <em>value</em>
                                 </code>
                               </td>
                               <td>
@@ -1034,7 +1098,7 @@ tweens.</p>
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>The tween to allow for additional method chaining.</p>
+                        <p>The current tween to allow for additional customization.</p>
                       </div>
                     </section>
                   </div>
@@ -1042,9 +1106,9 @@ tweens.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:6STween5TweenPAAE3set8reversedAaB_pSb_tF"></a>
-                    <a name="//apple_ref/swift/Method/set(reversed:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:6STween5TweenPAAE3set8reversedAaB_pSb_tF">set(reversed:)</a>
+                    <a name="/s:6STween5TweenPAAE8onUpdateyAaB_pyAaB_pcF"></a>
+                    <a name="//apple_ref/swift/Method/onUpdate(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6STween5TweenPAAE8onUpdateyAaB_pyAaB_pcF">onUpdate(_:)</a>
                     </code>
                       <span class="declaration-note">
                         Extension method
@@ -1055,7 +1119,7 @@ tweens.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Assigns a value to the <code><a href="../Protocols/Tween.html#/s:6STween5TweenP8reversedSbvp">reversed</a></code> property of the tween.</p>
+                        <p>Assigns a value to the <code><a href="../Protocols/Tween.html#/s:6STween5TweenP8onUpdateyAaB_pcSgvp">onUpdate</a></code> property of the tween.</p>
 
                       </div>
                       <div class="declaration">
@@ -1063,7 +1127,7 @@ tweens.</p>
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
-<span class="kd">public</span> <span class="kd">func</span> <span class="nf">set</span><span class="p">(</span><span class="nv">reversed</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Tween</span></code></pre>
+<span class="kd">func</span> <span class="nf">onUpdate</span><span class="p">(</span><span class="n">_</span> <span class="nv">callback</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Protocols/Tween.html#/s:6STween5TweenP8Callbacka">Callback</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Tween</span></code></pre>
 
                         </div>
                       </div>
@@ -1074,61 +1138,7 @@ tweens.</p>
                             <tr>
                               <td>
                                 <code>
-                                <em>reversed</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The boolean value to be assigned.</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>The tween to allow for additional method chaining.</p>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:6STween5TweenPAAE3set8onUpdateAaB_pyAaB_pc_tF"></a>
-                    <a name="//apple_ref/swift/Method/set(onUpdate:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:6STween5TweenPAAE3set8onUpdateAaB_pyAaB_pc_tF">set(onUpdate:)</a>
-                    </code>
-                      <span class="declaration-note">
-                        Extension method
-                      </span>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Assigns a callback to the <code><a href="../Protocols/Tween.html#/s:6STween5TweenP8onUpdateyAaB_pcSgvp">onUpdate</a></code> property of the tween.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
-<span class="kd">public</span> <span class="kd">func</span> <span class="nf">set</span><span class="p">(</span><span class="n"><a href="../Protocols/Tween.html#/s:6STween5TweenP8onUpdateyAaB_pcSgvp">onUpdate</a></span> <span class="nv">callback</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Protocols/Tween.html#/s:6STween5TweenP8Callbacka">Callback</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Tween</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>callback</em>
+                                <em>value</em>
                                 </code>
                               </td>
                               <td>
@@ -1142,7 +1152,7 @@ tweens.</p>
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>The tween to allow for additional method chaining.</p>
+                        <p>The current tween to allow for additional customization.</p>
                       </div>
                     </section>
                   </div>
@@ -1150,9 +1160,9 @@ tweens.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:6STween5TweenPAAE3set7onStartAaB_pyAaB_pc_tF"></a>
-                    <a name="//apple_ref/swift/Method/set(onStart:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:6STween5TweenPAAE3set7onStartAaB_pyAaB_pc_tF">set(onStart:)</a>
+                    <a name="/s:6STween5TweenPAAE7onStartyAaB_pyAaB_pcF"></a>
+                    <a name="//apple_ref/swift/Method/onStart(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6STween5TweenPAAE7onStartyAaB_pyAaB_pcF">onStart(_:)</a>
                     </code>
                       <span class="declaration-note">
                         Extension method
@@ -1163,7 +1173,7 @@ tweens.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Assigns a callback to the <code><a href="../Protocols/Tween.html#/s:6STween5TweenP7onStartyAaB_pcSgvp">onStart</a></code> property of the tween.</p>
+                        <p>Assigns a value to the <code><a href="../Protocols/Tween.html#/s:6STween5TweenP7onStartyAaB_pcSgvp">onStart</a></code> property of the tween.</p>
 
                       </div>
                       <div class="declaration">
@@ -1171,7 +1181,7 @@ tweens.</p>
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
-<span class="kd">public</span> <span class="kd">func</span> <span class="nf">set</span><span class="p">(</span><span class="n"><a href="../Protocols/Tween.html#/s:6STween5TweenP7onStartyAaB_pcSgvp">onStart</a></span> <span class="nv">callback</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Protocols/Tween.html#/s:6STween5TweenP8Callbacka">Callback</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Tween</span></code></pre>
+<span class="kd">func</span> <span class="nf">onStart</span><span class="p">(</span><span class="n">_</span> <span class="nv">callback</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Protocols/Tween.html#/s:6STween5TweenP8Callbacka">Callback</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Tween</span></code></pre>
 
                         </div>
                       </div>
@@ -1182,7 +1192,7 @@ tweens.</p>
                             <tr>
                               <td>
                                 <code>
-                                <em>callback</em>
+                                <em>value</em>
                                 </code>
                               </td>
                               <td>
@@ -1196,7 +1206,7 @@ tweens.</p>
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>The tween to allow for additional method chaining.</p>
+                        <p>The current tween to allow for additional customization.</p>
                       </div>
                     </section>
                   </div>
@@ -1204,9 +1214,9 @@ tweens.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:6STween5TweenPAAE3set6onStopAaB_pyAaB_pc_tF"></a>
-                    <a name="//apple_ref/swift/Method/set(onStop:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:6STween5TweenPAAE3set6onStopAaB_pyAaB_pc_tF">set(onStop:)</a>
+                    <a name="/s:6STween5TweenPAAE6onStopyAaB_pyAaB_pcF"></a>
+                    <a name="//apple_ref/swift/Method/onStop(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6STween5TweenPAAE6onStopyAaB_pyAaB_pcF">onStop(_:)</a>
                     </code>
                       <span class="declaration-note">
                         Extension method
@@ -1217,7 +1227,7 @@ tweens.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Assigns a callback to the <code><a href="../Protocols/Tween.html#/s:6STween5TweenP6onStopyAaB_pcSgvp">onStop</a></code> property of the tween.</p>
+                        <p>Assigns a value to the <code><a href="../Protocols/Tween.html#/s:6STween5TweenP6onStopyAaB_pcSgvp">onStop</a></code> property of the tween.</p>
 
                       </div>
                       <div class="declaration">
@@ -1225,7 +1235,7 @@ tweens.</p>
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
-<span class="kd">public</span> <span class="kd">func</span> <span class="nf">set</span><span class="p">(</span><span class="n"><a href="../Protocols/Tween.html#/s:6STween5TweenP6onStopyAaB_pcSgvp">onStop</a></span> <span class="nv">callback</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Protocols/Tween.html#/s:6STween5TweenP8Callbacka">Callback</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Tween</span></code></pre>
+<span class="kd">func</span> <span class="nf">onStop</span><span class="p">(</span><span class="n">_</span> <span class="nv">callback</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Protocols/Tween.html#/s:6STween5TweenP8Callbacka">Callback</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Tween</span></code></pre>
 
                         </div>
                       </div>
@@ -1236,7 +1246,7 @@ tweens.</p>
                             <tr>
                               <td>
                                 <code>
-                                <em>callback</em>
+                                <em>value</em>
                                 </code>
                               </td>
                               <td>
@@ -1250,7 +1260,7 @@ tweens.</p>
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>The tween to allow for additional method chaining.</p>
+                        <p>The current tween to allow for additional customization.</p>
                       </div>
                     </section>
                   </div>
@@ -1258,9 +1268,9 @@ tweens.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:6STween5TweenPAAE3set9onRestartAaB_pyAaB_pc_tF"></a>
-                    <a name="//apple_ref/swift/Method/set(onRestart:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:6STween5TweenPAAE3set9onRestartAaB_pyAaB_pc_tF">set(onRestart:)</a>
+                    <a name="/s:6STween5TweenPAAE9onRestartyAaB_pyAaB_pcF"></a>
+                    <a name="//apple_ref/swift/Method/onRestart(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6STween5TweenPAAE9onRestartyAaB_pyAaB_pcF">onRestart(_:)</a>
                     </code>
                       <span class="declaration-note">
                         Extension method
@@ -1271,7 +1281,7 @@ tweens.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Assigns a callback to the <code><a href="../Protocols/Tween.html#/s:6STween5TweenP9onRestartyAaB_pcSgvp">onRestart</a></code> property of the tween.</p>
+                        <p>Assigns a value to the <code><a href="../Protocols/Tween.html#/s:6STween5TweenP9onRestartyAaB_pcSgvp">onRestart</a></code> property of the tween.</p>
 
                       </div>
                       <div class="declaration">
@@ -1279,7 +1289,7 @@ tweens.</p>
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
-<span class="kd">public</span> <span class="kd">func</span> <span class="nf">set</span><span class="p">(</span><span class="n"><a href="../Protocols/Tween.html#/s:6STween5TweenP9onRestartyAaB_pcSgvp">onRestart</a></span> <span class="nv">callback</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Protocols/Tween.html#/s:6STween5TweenP8Callbacka">Callback</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Tween</span></code></pre>
+<span class="kd">func</span> <span class="nf">onRestart</span><span class="p">(</span><span class="n">_</span> <span class="nv">callback</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Protocols/Tween.html#/s:6STween5TweenP8Callbacka">Callback</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Tween</span></code></pre>
 
                         </div>
                       </div>
@@ -1290,7 +1300,7 @@ tweens.</p>
                             <tr>
                               <td>
                                 <code>
-                                <em>callback</em>
+                                <em>value</em>
                                 </code>
                               </td>
                               <td>
@@ -1304,7 +1314,7 @@ tweens.</p>
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>The tween to allow for additional method chaining.</p>
+                        <p>The current tween to allow for additional customization.</p>
                       </div>
                     </section>
                   </div>
@@ -1312,9 +1322,9 @@ tweens.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:6STween5TweenPAAE3set7onPauseAaB_pyAaB_pc_tF"></a>
-                    <a name="//apple_ref/swift/Method/set(onPause:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:6STween5TweenPAAE3set7onPauseAaB_pyAaB_pc_tF">set(onPause:)</a>
+                    <a name="/s:6STween5TweenPAAE7onPauseyAaB_pyAaB_pcF"></a>
+                    <a name="//apple_ref/swift/Method/onPause(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6STween5TweenPAAE7onPauseyAaB_pyAaB_pcF">onPause(_:)</a>
                     </code>
                       <span class="declaration-note">
                         Extension method
@@ -1325,7 +1335,7 @@ tweens.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Assigns a callback to the <code><a href="../Protocols/Tween.html#/s:6STween5TweenP7onPauseyAaB_pcSgvp">onPause</a></code> property of the tween.</p>
+                        <p>Assigns a value to the <code><a href="../Protocols/Tween.html#/s:6STween5TweenP7onPauseyAaB_pcSgvp">onPause</a></code> property of the tween.</p>
 
                       </div>
                       <div class="declaration">
@@ -1333,7 +1343,7 @@ tweens.</p>
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
-<span class="kd">public</span> <span class="kd">func</span> <span class="nf">set</span><span class="p">(</span><span class="n"><a href="../Protocols/Tween.html#/s:6STween5TweenP7onPauseyAaB_pcSgvp">onPause</a></span> <span class="nv">callback</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Protocols/Tween.html#/s:6STween5TweenP8Callbacka">Callback</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Tween</span></code></pre>
+<span class="kd">func</span> <span class="nf">onPause</span><span class="p">(</span><span class="n">_</span> <span class="nv">callback</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Protocols/Tween.html#/s:6STween5TweenP8Callbacka">Callback</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Tween</span></code></pre>
 
                         </div>
                       </div>
@@ -1344,7 +1354,7 @@ tweens.</p>
                             <tr>
                               <td>
                                 <code>
-                                <em>callback</em>
+                                <em>value</em>
                                 </code>
                               </td>
                               <td>
@@ -1358,7 +1368,7 @@ tweens.</p>
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>The tween to allow for additional method chaining.</p>
+                        <p>The current tween to allow for additional customization.</p>
                       </div>
                     </section>
                   </div>
@@ -1366,9 +1376,9 @@ tweens.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:6STween5TweenPAAE3set8onResumeAaB_pyAaB_pc_tF"></a>
-                    <a name="//apple_ref/swift/Method/set(onResume:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:6STween5TweenPAAE3set8onResumeAaB_pyAaB_pc_tF">set(onResume:)</a>
+                    <a name="/s:6STween5TweenPAAE8onResumeyAaB_pyAaB_pcF"></a>
+                    <a name="//apple_ref/swift/Method/onResume(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6STween5TweenPAAE8onResumeyAaB_pyAaB_pcF">onResume(_:)</a>
                     </code>
                       <span class="declaration-note">
                         Extension method
@@ -1379,7 +1389,7 @@ tweens.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Assigns a callback to the <code><a href="../Protocols/Tween.html#/s:6STween5TweenP8onResumeyAaB_pcSgvp">onResume</a></code> property of the tween.</p>
+                        <p>Assigns a value to the <code><a href="../Protocols/Tween.html#/s:6STween5TweenP8onResumeyAaB_pcSgvp">onResume</a></code> property of the tween.</p>
 
                       </div>
                       <div class="declaration">
@@ -1387,7 +1397,7 @@ tweens.</p>
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
-<span class="kd">public</span> <span class="kd">func</span> <span class="nf">set</span><span class="p">(</span><span class="n"><a href="../Protocols/Tween.html#/s:6STween5TweenP8onResumeyAaB_pcSgvp">onResume</a></span> <span class="nv">callback</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Protocols/Tween.html#/s:6STween5TweenP8Callbacka">Callback</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Tween</span></code></pre>
+<span class="kd">func</span> <span class="nf">onResume</span><span class="p">(</span><span class="n">_</span> <span class="nv">callback</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Protocols/Tween.html#/s:6STween5TweenP8Callbacka">Callback</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Tween</span></code></pre>
 
                         </div>
                       </div>
@@ -1398,7 +1408,7 @@ tweens.</p>
                             <tr>
                               <td>
                                 <code>
-                                <em>callback</em>
+                                <em>value</em>
                                 </code>
                               </td>
                               <td>
@@ -1412,7 +1422,7 @@ tweens.</p>
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>The tween to allow for additional method chaining.</p>
+                        <p>The current tween to allow for additional customization.</p>
                       </div>
                     </section>
                   </div>
@@ -1420,9 +1430,9 @@ tweens.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:6STween5TweenPAAE3set10onCompleteAaB_pyAaB_pc_tF"></a>
-                    <a name="//apple_ref/swift/Method/set(onComplete:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:6STween5TweenPAAE3set10onCompleteAaB_pyAaB_pc_tF">set(onComplete:)</a>
+                    <a name="/s:6STween5TweenPAAE10onCompleteyAaB_pyAaB_pcF"></a>
+                    <a name="//apple_ref/swift/Method/onComplete(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6STween5TweenPAAE10onCompleteyAaB_pyAaB_pcF">onComplete(_:)</a>
                     </code>
                       <span class="declaration-note">
                         Extension method
@@ -1433,7 +1443,7 @@ tweens.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Assigns a callback to the <code><a href="../Protocols/Tween.html#/s:6STween5TweenP10onCompleteyAaB_pcSgvp">onComplete</a></code> property of the tween.</p>
+                        <p>Assigns a value to the <code><a href="../Protocols/Tween.html#/s:6STween5TweenP10onCompleteyAaB_pcSgvp">onComplete</a></code> property of the tween.</p>
 
                       </div>
                       <div class="declaration">
@@ -1441,7 +1451,7 @@ tweens.</p>
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
-<span class="kd">public</span> <span class="kd">func</span> <span class="nf">set</span><span class="p">(</span><span class="n"><a href="../Protocols/Tween.html#/s:6STween5TweenP10onCompleteyAaB_pcSgvp">onComplete</a></span> <span class="nv">callback</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Protocols/Tween.html#/s:6STween5TweenP8Callbacka">Callback</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Tween</span></code></pre>
+<span class="kd">func</span> <span class="nf">onComplete</span><span class="p">(</span><span class="n">_</span> <span class="nv">callback</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Protocols/Tween.html#/s:6STween5TweenP8Callbacka">Callback</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Tween</span></code></pre>
 
                         </div>
                       </div>
@@ -1452,7 +1462,7 @@ tweens.</p>
                             <tr>
                               <td>
                                 <code>
-                                <em>callback</em>
+                                <em>value</em>
                                 </code>
                               </td>
                               <td>
@@ -1466,7 +1476,7 @@ tweens.</p>
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>The tween to allow for additional method chaining.</p>
+                        <p>The current tween to allow for additional customization.</p>
                       </div>
                     </section>
                   </div>
@@ -1474,9 +1484,9 @@ tweens.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:6STween5TweenPAAE3set6onKillAaB_pyAaB_pc_tF"></a>
-                    <a name="//apple_ref/swift/Method/set(onKill:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:6STween5TweenPAAE3set6onKillAaB_pyAaB_pc_tF">set(onKill:)</a>
+                    <a name="/s:6STween5TweenPAAE6onKillyAaB_pyAaB_pcF"></a>
+                    <a name="//apple_ref/swift/Method/onKill(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6STween5TweenPAAE6onKillyAaB_pyAaB_pcF">onKill(_:)</a>
                     </code>
                       <span class="declaration-note">
                         Extension method
@@ -1487,7 +1497,7 @@ tweens.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Assigns a callback to the <code><a href="../Protocols/Tween.html#/s:6STween5TweenP6onKillyAaB_pcSgvp">onKill</a></code> property of the tween.</p>
+                        <p>Assigns a value to the <code><a href="../Protocols/Tween.html#/s:6STween5TweenP6onKillyAaB_pcSgvp">onKill</a></code> property of the tween.</p>
 
                       </div>
                       <div class="declaration">
@@ -1495,7 +1505,7 @@ tweens.</p>
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
-<span class="kd">public</span> <span class="kd">func</span> <span class="nf">set</span><span class="p">(</span><span class="n"><a href="../Protocols/Tween.html#/s:6STween5TweenP6onKillyAaB_pcSgvp">onKill</a></span> <span class="nv">callback</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Protocols/Tween.html#/s:6STween5TweenP8Callbacka">Callback</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Tween</span></code></pre>
+<span class="kd">func</span> <span class="nf">onKill</span><span class="p">(</span><span class="n">_</span> <span class="nv">callback</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Protocols/Tween.html#/s:6STween5TweenP8Callbacka">Callback</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Tween</span></code></pre>
 
                         </div>
                       </div>
@@ -1506,7 +1516,7 @@ tweens.</p>
                             <tr>
                               <td>
                                 <code>
-                                <em>callback</em>
+                                <em>value</em>
                                 </code>
                               </td>
                               <td>
@@ -1520,7 +1530,7 @@ tweens.</p>
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>The tween to allow for additional method chaining.</p>
+                        <p>The current tween to allow for additional customization.</p>
                       </div>
                     </section>
                   </div>
@@ -1528,9 +1538,9 @@ tweens.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:6STween5TweenPAAE3set8onReviveAaB_pyAaB_pc_tF"></a>
-                    <a name="//apple_ref/swift/Method/set(onRevive:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:6STween5TweenPAAE3set8onReviveAaB_pyAaB_pc_tF">set(onRevive:)</a>
+                    <a name="/s:6STween5TweenPAAE8onReviveyAaB_pyAaB_pcF"></a>
+                    <a name="//apple_ref/swift/Method/onRevive(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6STween5TweenPAAE8onReviveyAaB_pyAaB_pcF">onRevive(_:)</a>
                     </code>
                       <span class="declaration-note">
                         Extension method
@@ -1541,7 +1551,7 @@ tweens.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Assigns a callback to the <code><a href="../Protocols/Tween.html#/s:6STween5TweenP8onReviveyAaB_pcSgvp">onRevive</a></code> property of the tween.</p>
+                        <p>Assigns a value to the <code><a href="../Protocols/Tween.html#/s:6STween5TweenP8onReviveyAaB_pcSgvp">onRevive</a></code> property of the tween.</p>
 
                       </div>
                       <div class="declaration">
@@ -1549,7 +1559,7 @@ tweens.</p>
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
-<span class="kd">public</span> <span class="kd">func</span> <span class="nf">set</span><span class="p">(</span><span class="n"><a href="../Protocols/Tween.html#/s:6STween5TweenP8onReviveyAaB_pcSgvp">onRevive</a></span> <span class="nv">callback</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Protocols/Tween.html#/s:6STween5TweenP8Callbacka">Callback</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Tween</span></code></pre>
+<span class="kd">func</span> <span class="nf">onRevive</span><span class="p">(</span><span class="n">_</span> <span class="nv">callback</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Protocols/Tween.html#/s:6STween5TweenP8Callbacka">Callback</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Tween</span></code></pre>
 
                         </div>
                       </div>
@@ -1560,7 +1570,7 @@ tweens.</p>
                             <tr>
                               <td>
                                 <code>
-                                <em>callback</em>
+                                <em>value</em>
                                 </code>
                               </td>
                               <td>
@@ -1574,7 +1584,7 @@ tweens.</p>
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>The tween to allow for additional method chaining.</p>
+                        <p>The current tween to allow for additional customization.</p>
                       </div>
                     </section>
                   </div>
@@ -1589,7 +1599,7 @@ tweens.</p>
                   <h3 class="section-name">Computed Properties</h3>
                 </a>
               </div>
-              <ul>
+              <ul class="item-container">
                 <li class="item">
                   <div>
                     <code>
@@ -1606,8 +1616,8 @@ tweens.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The percentage of the tween&rsquo;s <code><a href="../Protocols/Tween.html#/s:6STween5TweenP7elapsedSdvp">elapsed</a></code> time in relation to its <code><a href="../Protocols/Tween.html#/s:6STween5TweenP8durationSdvp">duration</a></code> specified in a
-range of <code>0.0</code> to <code>1.0</code>.</p>
+                        <p>The percentage of the tween&rsquo;s <code><a href="../Protocols/Tween.html#/s:6STween5TweenP7elapsedSdvp">elapsed</a></code> time in relation to its <code><a href="../Protocols/Tween.html#/s:6STween5TweenP8durationSdvp">duration</a></code> specified in
+the range [0, 1].</p>
 
                       </div>
                       <div class="declaration">
@@ -1623,14 +1633,15 @@ range of <code>0.0</code> to <code>1.0</code>.</p>
                 </li>
               </ul>
             </div>
-          </section>
+          </div>
         </section>
-        <section id="footer">
-          <p>Copyright (c) 2016 Adam Graham</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
-        </section>
+
       </article>
     </div>
+    <section class="footer">
+      <p>Copyright (c) 2016 Adam Graham</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.10.0</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+    </section>
   </body>
 </div>
 </html>

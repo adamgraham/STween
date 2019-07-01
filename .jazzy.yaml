@@ -1,0 +1,20 @@
+theme: fullwidth
+title: STween
+author: Adam Graham
+author_url: https://github.com/adamgraham
+github_url: https://github.com/adamgraham/STween
+copyright: Copyright (c) 2016 Adam Graham
+readme: README.md
+source_directory: ./STween
+clean: true
+skip_undocumented: true
+exclude: [/*/Conformance*, /*/FloatRepresentable*]
+custom_categories:
+  - name: Tweening
+    children: [Tween, Tweenable, TweenableProperty, TweenAnimator, Tweener, TweenState]
+  - name: Easing
+    children: [Ease, EaseClassification, EaseCurve, EaseFunction]
+  - name: Interpolation
+    children: [Interpolatable]
+  - name: Settings
+    children: [Defaults]

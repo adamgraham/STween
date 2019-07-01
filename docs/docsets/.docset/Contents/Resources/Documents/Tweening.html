@@ -4,100 +4,123 @@
     <title>Tweening  Reference</title>
     <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="css/highlight.css" />
-    <meta charset='utf-8'>
+    <meta charset="utf-8">
     <script src="js/jquery.min.js" defer></script>
     <script src="js/jazzy.js" defer></script>
     
+    <script src="js/lunr.min.js" defer></script>
+    <script src="js/typeahead.jquery.js" defer></script>
+    <script src="js/jazzy.search.js" defer></script>
   </head>
   <body>
+
     <a name="//apple_ref/swift/Section/Tweening" class="dashAnchor"></a>
+
     <a title="Tweening  Reference"></a>
-    <header>
-      <div class="content-wrapper">
-        <p><a href="index.html"> Docs</a> (100% documented)</p>
-        <p class="header-right"><a href="https://github.com/adamgraham/STween"><img src="img/gh.png"/>View on GitHub</a></p>
-      </div>
-    </header>
-    <div class="content-wrapper">
-      <p id="breadcrumbs">
-        <a href="index.html"> Reference</a>
-        <img id="carat" src="img/carat.png" />
-        Tweening  Reference
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="index.html">
+          STween
+        </a>
+         (100% documented)
       </p>
-    </div>
+    
+      <p class="header-col--secondary">
+        <form role="search" action="search.json">
+          <input type="text" placeholder="Search documentation" data-typeahead>
+        </form>
+      </p>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="https://github.com/adamgraham/STween">
+            <img class="header-icon" src="img/gh.png"/>
+            View on GitHub
+          </a>
+        </p>
+    
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="index.html"> Reference</a>
+      <img class="carat" src="img/carat.png" />
+      Tweening  Reference
+    </p>
+
     <div class="content-wrapper">
-      <nav class="sidebar">
+      <nav class="navigation">
         <ul class="nav-groups">
           <li class="nav-group-name">
-            <a href="Easing.html">Easing</a>
+            <a class="nav-group-name-link" href="Tweening.html">Tweening</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Structs/Ease.html">Ease</a>
+                <a class="nav-group-task-link" href="Protocols/Tween.html">Tween</a>
               </li>
               <li class="nav-group-task">
-                <a href="Enums/EaseClassification.html">EaseClassification</a>
+                <a class="nav-group-task-link" href="Protocols/Tweenable.html">Tweenable</a>
               </li>
               <li class="nav-group-task">
-                <a href="Enums/EaseCurve.html">EaseCurve</a>
+                <a class="nav-group-task-link" href="Protocols/TweenableProperty.html">TweenableProperty</a>
               </li>
               <li class="nav-group-task">
-                <a href="Enums/EaseFunction.html">EaseFunction</a>
+                <a class="nav-group-task-link" href="Classes/TweenAnimator.html">TweenAnimator</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/Tweener.html">Tweener</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/TweenState.html">TweenState</a>
               </li>
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="Interpolation.html">Interpolation</a>
+            <a class="nav-group-name-link" href="Easing.html">Easing</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Protocols/Interpolatable.html">Interpolatable</a>
+                <a class="nav-group-task-link" href="Structs/Ease.html">Ease</a>
               </li>
               <li class="nav-group-task">
-                <a href="Protocols/InterpolatableNumber.html">InterpolatableNumber</a>
+                <a class="nav-group-task-link" href="Enums/EaseClassification.html">EaseClassification</a>
               </li>
               <li class="nav-group-task">
-                <a href="Structs/InterpolatableNumberConstants.html">InterpolatableNumberConstants</a>
+                <a class="nav-group-task-link" href="Enums/EaseCurve.html">EaseCurve</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/EaseFunction.html">EaseFunction</a>
               </li>
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="Tweening.html">Tweening</a>
+            <a class="nav-group-name-link" href="Interpolation.html">Interpolation</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Protocols/Tween.html">Tween</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Enums/TweenState.html">TweenState</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Protocols/Tweenable.html">Tweenable</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Protocols/TweenableProperty.html">TweenableProperty</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Classes/Tweener.html">Tweener</a>
+                <a class="nav-group-task-link" href="Protocols/Interpolatable.html">Interpolatable</a>
               </li>
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="Settings.html">Settings</a>
+            <a class="nav-group-name-link" href="Settings.html">Settings</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Enums/Defaults.html">Defaults</a>
+                <a class="nav-group-task-link" href="Enums/Defaults.html">Defaults</a>
               </li>
             </ul>
           </li>
         </ul>
       </nav>
       <article class="main-content">
-        <section>
-          <section class="section">
+
+        <section class="section">
+          <div class="section-content">
             <h1>Tweening</h1>
             
-          </section>
-          <section class="section task-group-section">
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-content">
             <div class="task-group">
-              <ul>
+              <ul class="item-container">
                 <li class="item">
                   <div>
                     <code>
@@ -129,39 +152,7 @@
               </ul>
             </div>
             <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:6STween10TweenStateO"></a>
-                    <a name="//apple_ref/swift/Enum/TweenState" class="dashAnchor"></a>
-                    <a class="token" href="#/s:6STween10TweenStateO">TweenState</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The state of a tween.</p>
-
-                        <a href="Enums/TweenState.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">TweenState</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
+              <ul class="item-container">
                 <li class="item">
                   <div>
                     <code>
@@ -193,7 +184,7 @@
               </ul>
             </div>
             <div class="task-group">
-              <ul>
+              <ul class="item-container">
                 <li class="item">
                   <div>
                     <code>
@@ -215,7 +206,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">TweenableProperty</span> <span class="p">:</span> <span class="kt"><a href="Protocols/Interpolatable.html">Interpolatable</a></span> <span class="k">where</span> <span class="k">Self</span> <span class="o">==</span> <span class="k">Self</span><span class="o">.</span><span class="kt">Value</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">TweenableProperty</span></code></pre>
 
                         </div>
                       </div>
@@ -225,7 +216,40 @@
               </ul>
             </div>
             <div class="task-group">
-              <ul>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6STween13TweenAnimatorC"></a>
+                    <a name="//apple_ref/swift/Class/TweenAnimator" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6STween13TweenAnimatorC">TweenAnimator</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Maintains the state of a tween animation while invoking animation closures to
+interpolate and update the properties of <code><a href="Protocols/Tweenable.html">Tweenable</a></code> targets.</p>
+
+                        <a href="Classes/TweenAnimator.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="kt">TweenAnimator</span><span class="o">&lt;</span><span class="kt">Target</span><span class="o">&gt;</span> <span class="p">:</span> <span class="kt"><a href="Protocols/Tween.html">Tween</a></span> <span class="k">where</span> <span class="kt">Target</span> <span class="p">:</span> <span class="kt"><a href="Protocols/Tweenable.html">Tweenable</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul class="item-container">
                 <li class="item">
                   <div>
                     <code>
@@ -239,7 +263,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>A singleton, factory class to create, queue, and manage <code><a href="Protocols/Tween.html">Tween</a></code> animations.</p>
+                        <p>A factory class to create, queue, and manage <code><a href="Protocols/Tween.html">Tween</a></code> animations.</p>
 
                         <a href="Classes/Tweener.html" class="slightly-smaller">See more</a>
                       </div>
@@ -256,14 +280,47 @@
                 </li>
               </ul>
             </div>
-          </section>
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6STween10TweenStateO"></a>
+                    <a name="//apple_ref/swift/Enum/TweenState" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6STween10TweenStateO">TweenState</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The state of a tween.</p>
+
+                        <a href="Enums/TweenState.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">TweenState</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
         </section>
-        <section id="footer">
-          <p>Copyright (c) 2016 Adam Graham</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
-        </section>
+
       </article>
     </div>
+    <section class="footer">
+      <p>Copyright (c) 2016 Adam Graham</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.10.0</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+    </section>
   </body>
 </div>
 </html>

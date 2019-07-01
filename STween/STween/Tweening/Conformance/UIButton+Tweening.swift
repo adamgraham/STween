@@ -10,91 +10,96 @@ import Foundation
 import UIKit
 
 /// Provides tweening animation functionality to `UIButton`.
-extension UIButton {}
+extension UIButton {
 
-/// The properties of a `UIButton` that can be animated with a tween.
-public enum UIButtonTweenProperty: Equatable {
+    /// The properties of `UIButton` that can be animated with a tween.
+    public struct TweenPropertyDerived: TweenableProperty {
 
-    /// The `contentEdgeInsets` property of a `UIButton`.
-    case contentEdgeInsets(UIEdgeInsets)
-    /// The `titleEdgeInsets` property of a `UIButton`.
-    case titleEdgeInsets(UIEdgeInsets)
-    /// The `imageEdgeInsets` property of a `UIButton`.
-    case imageEdgeInsets(UIEdgeInsets)
+        public let animation: (UIButton) -> Tween.Animation
 
-    /// The `titleColor(state:)` function of a `UIButton`.
-    case titleColor(UIColor, UIControl.State)
-    /// The `titleShadowColor(state:)` function of a `UIButton`.
-    case titleShadowColor(UIColor, UIControl.State)
+        private init<T: Interpolatable>(get: @escaping (UIButton) -> T,
+                                        set: @escaping (UIButton, T) -> Void,
+                                        value endValue: T) {
 
-    /// The `tintColor` property of a `UIButton`.
-    @available(iOS 5.0, *)
-    case tintColor(UIColor)
+            self.animation = { (target: UIButton) in
+                let startValue = get(target)
+                return { (time: TimeInterval) in
+                    set(target, T.interpolate(from: startValue, to: endValue, time: time))
+                }
+            }
+        }
+
+        /// The `contentEdgeInsets` property of `UIButton`.
+        public static func contentEdgeInsets(_ value: UIEdgeInsets) -> TweenPropertyDerived {
+            return .init(get: { $0.contentEdgeInsets }, set: { $0.contentEdgeInsets = $1 }, value: value)
+        }
+
+        /// The `titleEdgeInsets` property of `UIButton`.
+        public static func titleEdgeInsets(_ value: UIEdgeInsets) -> TweenPropertyDerived {
+            return .init(get: { $0.titleEdgeInsets }, set: { $0.titleEdgeInsets = $1 }, value: value)
+        }
+
+        /// The `imageEdgeInsets` property of `UIButton`.
+        public static func imageEdgeInsets(_ value: UIEdgeInsets) -> TweenPropertyDerived {
+            return .init(get: { $0.imageEdgeInsets }, set: { $0.imageEdgeInsets = $1 }, value: value)
+        }
+
+        /// The `titleColor` property of `UIButton`.
+        public static func titleColor(_ value: UIColor, state: UIControl.State) -> TweenPropertyDerived {
+            return .init(get: { $0.titleColor(for: state) ?? .clear }, set: { $0.setTitleColor($1, for: state) }, value: value)
+        }
+
+        /// The `titleShadowColor` property of `UIButton`.
+        public static func titleShadowColor(_ value: UIColor, state: UIControl.State) -> TweenPropertyDerived {
+            return .init(get: { $0.titleShadowColor(for: state) ?? .clear }, set: { $0.setTitleShadowColor($1, for: state) }, value: value)
+        }
+
+        /// The `tintColor` property of `UIButton`.
+        @available(iOS 5.0, *)
+        public static func tintColor(_ value: UIColor) -> TweenPropertyDerived {
+            return .init(get: { $0.tintColor }, set: { $0.tintColor = $1 }, value: value)
+        }
+
+    }
 
 }
 
-extension UIButtonTweenProperty: TweenableProperty {
+/// :nodoc:
+public extension TweenAnimator where Target == UIButton {
 
-    public func value(from object: UIButton) -> UIButtonTweenProperty {
-        switch self {
-        case .contentEdgeInsets:
-            return .contentEdgeInsets(object.contentEdgeInsets)
-        case .titleEdgeInsets:
-            return .titleEdgeInsets(object.titleEdgeInsets)
-        case .imageEdgeInsets:
-            return .imageEdgeInsets(object.imageEdgeInsets)
-
-        case let .titleColor(_, state):
-            return .titleColor(object.titleColor(for: state) ?? UIColor.clear, state)
-        case let .titleShadowColor(_, state):
-            return .titleShadowColor(object.titleShadowColor(for: state) ?? UIColor.clear, state)
-
-        case .tintColor:
-            return .tintColor(object.tintColor)
-        }
+    /// Animates tweenable properties from the target's current values *to* the desired values.
+    /// - parameter properties: The properties to animate.
+    /// - returns: The current `TweenAnimator` instance to allow for additional customization.
+    @discardableResult
+    func to(_ properties: UIButton.TweenPropertyDerived...) -> TweenAnimator<Target> {
+        return to(properties)
     }
 
-    public func apply(to object: UIButton) {
-        switch self {
-        case let .contentEdgeInsets(value):
-            object.contentEdgeInsets = value
-        case let .titleEdgeInsets(value):
-            object.titleEdgeInsets = value
-        case let .imageEdgeInsets(value):
-            object.imageEdgeInsets = value
-
-        case let .titleColor(color, state):
-            object.setTitleColor(color, for: state)
-        case let .titleShadowColor(color, state):
-            object.setTitleShadowColor(color, for: state)
-
-        case let .tintColor(value):
-            object.tintColor = value
-        }
+    /// Animates tweenable properties *from* desired values to the target's current values.
+    /// - parameter properties: The properties to animate.
+    /// - returns: The current `TweenAnimator` instance to allow for additional customization.
+    @discardableResult
+    func from(_ properties: UIButton.TweenPropertyDerived...) -> TweenAnimator<Target> {
+        return from(properties)
     }
 
-    public static func interpolate(from startValue: UIButtonTweenProperty, to endValue: UIButtonTweenProperty, with ease: Ease,
-                                   elapsed: TimeInterval, duration: TimeInterval) -> UIButtonTweenProperty {
+}
 
-        switch (startValue, endValue) {
-        case let (.contentEdgeInsets(start), .contentEdgeInsets(end)):
-            return .contentEdgeInsets(UIEdgeInsets.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
-        case let (.titleEdgeInsets(start), .titleEdgeInsets(end)):
-            return .titleEdgeInsets(UIEdgeInsets.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
-        case let (.imageEdgeInsets(start), .imageEdgeInsets(end)):
-            return .imageEdgeInsets(UIEdgeInsets.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
+/// :nodoc:
+public extension UIButton {
 
-        case let (.titleColor(start), .titleColor(end)):
-            return .titleColor(UIColor.interpolate(from: start.0, to: end.0, with: ease, elapsed: elapsed, duration: duration), end.1)
-        case let (.titleShadowColor(start), .titleShadowColor(end)):
-            return .titleShadowColor(UIColor.interpolate(from: start.0, to: end.0, with: ease, elapsed: elapsed, duration: duration), end.1)
+    /// Animates tweenable properties from the target's current values *to* the desired values.
+    /// - parameter properties: The properties to animate.
+    /// - returns: The `Tween` control for the animation.
+    func tween(to properties: TweenPropertyDerived...) -> Tween {
+        return Tweener.default.animate(self).to(properties)
+    }
 
-        case let (.tintColor(start), .tintColor(end)):
-            return .tintColor(UIColor.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
-
-        default:
-            return startValue
-        }
+    /// Animates tweenable properties *from* desired values to the target's current values.
+    /// - parameter properties: The properties to animate.
+    /// - returns: The `Tween` control for the animation.
+    func tween(from properties: TweenPropertyDerived...) -> Tween {
+        return Tweener.default.animate(self).from(properties)
     }
 
 }

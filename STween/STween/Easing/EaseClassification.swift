@@ -44,4 +44,7 @@ public enum EaseClassification {
     /// A "bounce" algorithmic classification.
     case bounce
 
+    /// A custom algorithmic classification.
+    case custom
+
 }

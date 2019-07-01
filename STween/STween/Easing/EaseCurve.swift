@@ -25,4 +25,7 @@ public enum EaseCurve {
     /// speeding up, then slowing down.
     case inOut
 
+    /// A custom acceleration pattern.
+    case custom
+
 }

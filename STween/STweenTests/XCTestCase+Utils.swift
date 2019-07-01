@@ -6,41 +6,18 @@
 //  Copyright © 2016 Adam Graham. All rights reserved.
 //
 
+import UIKit
 import XCTest
 
-extension XCTestCase {
+func XCTAssertColor(_ lhs: UIColor, _ rhs: UIColor, accuracy: CGFloat = .ulpOfOne) {
+    var (r1, g1, b1, a1) = (CGFloat(), CGFloat(), CGFloat(), CGFloat())
+    lhs.getRed(&r1, green: &g1, blue: &b1, alpha: &a1)
 
-    func XCTAssertColor(_ lhs: UIColor, _ rhs: UIColor, includeAlpha: Bool = true) {
-        XCTAssertTrue(isEqual(lhs, rhs, includeAlpha: includeAlpha))
-    }
+    var (r2, g2, b2, a2) = (CGFloat(), CGFloat(), CGFloat(), CGFloat())
+    rhs.getRed(&r2, green: &g2, blue: &b2, alpha: &a2)
 
-    func isEqual(_ lhs: UIColor, _ rhs: UIColor, includeAlpha: Bool = true) -> Bool {
-        var lhsRed: CGFloat = 0.0
-        var lhsGreen: CGFloat = 0.0
-        var lhsBlue: CGFloat = 0.0
-        var lhsAlpha: CGFloat = 0.0
-
-        lhs.getRed(&lhsRed, green: &lhsGreen, blue: &lhsBlue, alpha: &lhsAlpha)
-
-        var rhsRed: CGFloat = 0.0
-        var rhsGreen: CGFloat = 0.0
-        var rhsBlue: CGFloat = 0.0
-        var rhsAlpha: CGFloat = 0.0
-
-        rhs.getRed(&rhsRed, green: &rhsGreen, blue: &rhsBlue, alpha: &rhsAlpha)
-
-        let epsilon = CGFloat(Float.ulpOfOne)
-
-        if includeAlpha {
-            return abs(lhsRed - rhsRed) <= epsilon &&
-                   abs(lhsGreen - rhsGreen) <= epsilon &&
-                   abs(lhsBlue - rhsBlue) <= epsilon &&
-                   abs(lhsAlpha - rhsAlpha) <= epsilon
-        } else {
-            return abs(lhsRed - rhsRed) <= epsilon &&
-                   abs(lhsGreen - rhsGreen) <= epsilon &&
-                   abs(lhsBlue - rhsBlue) <= epsilon
-        }
-    }
-
+    XCTAssertEqual(r1, r2, accuracy: accuracy)
+    XCTAssertEqual(g1, g2, accuracy: accuracy)
+    XCTAssertEqual(b1, b2, accuracy: accuracy)
+    XCTAssertEqual(a1, a2, accuracy: accuracy)
 }

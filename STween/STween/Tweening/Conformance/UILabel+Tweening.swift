@@ -6,97 +6,101 @@
 //  Copyright © 2017 Adam Graham. All rights reserved.
 //
 
-import CoreGraphics
 import Foundation
 import UIKit
 
 /// Provides tweening animation functionality to `UILabel`.
-extension UILabel {}
+extension UILabel {
 
-/// The properties of a `UILabel` that can be animated with a tween.
-public enum UILabelTweenProperty: Equatable {
+    /// The properties of `UILabel` that can be animated with a tween.
+    public struct TweenPropertyDerived: TweenableProperty {
 
-    /// The `textColor` property of a `UILabel`.
-    case textColor(UIColor)
-    /// The `highlightedTextColor` property of a `UILabel`.
-    case highlightedTextColor(UIColor)
+        public let animation: (UILabel) -> Tween.Animation
 
-    /// The `shadowColor` property of a `UILabel`.
-    case shadowColor(UIColor)
-    /// The `shadowOffset` property of a `UILabel`.
-    case shadowOffset(CGSize)
+        private init<T: Interpolatable>(get: @escaping (UILabel) -> T,
+                                        set: @escaping (UILabel, T) -> Void,
+                                        value endValue: T) {
 
-    /// The `minimumScaleFactor` property of a `UILabel`.
-    @available(iOS 6.0, *)
-    case minimumScaleFactor(CGFloat)
-    /// The `preferredMaxLayoutWidth` property of a `UILabel`.
-    @available(iOS 6.0, *)
-    case preferredMaxLayoutWidth(CGFloat)
+            self.animation = { (target: UILabel) in
+                let startValue = get(target)
+                return { (time: TimeInterval) in
+                    set(target, T.interpolate(from: startValue, to: endValue, time: time))
+                }
+            }
+        }
+
+        /// The `textColor` property of `UILabel`.
+        public static func textColor(_ value: UIColor) -> TweenPropertyDerived {
+            return .init(get: { $0.textColor ?? .clear }, set: { $0.textColor = $1 }, value: value)
+        }
+
+        /// The `highlightedTextColor` property of `UILabel`.
+        public static func highlightedTextColor(_ value: UIColor) -> TweenPropertyDerived {
+            return .init(get: { $0.highlightedTextColor ?? .clear }, set: { $0.highlightedTextColor = $1 }, value: value)
+        }
+
+        /// The `shadowColor` property of `UILabel`.
+        public static func shadowColor(_ value: UIColor) -> TweenPropertyDerived {
+            return .init(get: { $0.shadowColor ?? .clear }, set: { $0.shadowColor = $1 }, value: value)
+        }
+
+        /// The `shadowOffset` property of `UILabel`.
+        public static func shadowOffset(_ value: CGSize) -> TweenPropertyDerived {
+            return .init(get: { $0.shadowOffset }, set: { $0.shadowOffset = $1 }, value: value)
+        }
+
+        /// The `minimumScaleFactor` property of `UILabel`.
+        @available(iOS 6.0, *)
+        public static func minimumScaleFactor(_ value: CGFloat) -> TweenPropertyDerived {
+            return .init(get: { $0.minimumScaleFactor }, set: { $0.minimumScaleFactor = $1 }, value: value)
+        }
+
+        /// The `preferredMaxLayoutWidth` property of `UILabel`.
+        @available(iOS 6.0, *)
+        public static func preferredMaxLayoutWidth(_ value: CGFloat) -> TweenPropertyDerived {
+            return .init(get: { $0.preferredMaxLayoutWidth }, set: { $0.preferredMaxLayoutWidth = $1 }, value: value)
+        }
+
+    }
 
 }
 
-extension UILabelTweenProperty: TweenableProperty {
+/// :nodoc:
+public extension TweenAnimator where Target == UILabel {
 
-    public func value(from object: UILabel) -> UILabelTweenProperty {
-        switch self {
-        case .textColor:
-            return .textColor(object.textColor)
-        case .highlightedTextColor:
-            return .highlightedTextColor(object.highlightedTextColor ?? UIColor.clear)
-
-        case .shadowColor:
-            return .shadowColor(object.shadowColor ?? UIColor.clear)
-        case .shadowOffset:
-            return .shadowOffset(object.shadowOffset)
-
-        case .minimumScaleFactor:
-            return .minimumScaleFactor(object.minimumScaleFactor)
-        case .preferredMaxLayoutWidth:
-            return .preferredMaxLayoutWidth(object.preferredMaxLayoutWidth)
-        }
+    /// Animates tweenable properties from the target's current values *to* the desired values.
+    /// - parameter properties: The properties to animate.
+    /// - returns: The current `TweenAnimator` instance to allow for additional customization.
+    @discardableResult
+    func to(_ properties: UILabel.TweenPropertyDerived...) -> TweenAnimator<Target> {
+        return to(properties)
     }
 
-    public func apply(to object: UILabel) {
-        switch self {
-        case let .textColor(value):
-            object.textColor = value
-        case let .highlightedTextColor(value):
-            object.highlightedTextColor = value
-
-        case let .shadowColor(value):
-            object.shadowColor = value
-        case let .shadowOffset(value):
-            object.shadowOffset = value
-
-        case let .minimumScaleFactor(value):
-            object.minimumScaleFactor = value
-        case let .preferredMaxLayoutWidth(value):
-            object.preferredMaxLayoutWidth = value
-        }
+    /// Animates tweenable properties *from* desired values to the target's current values.
+    /// - parameter properties: The properties to animate.
+    /// - returns: The current `TweenAnimator` instance to allow for additional customization.
+    @discardableResult
+    func from(_ properties: UILabel.TweenPropertyDerived...) -> TweenAnimator<Target> {
+        return from(properties)
     }
 
-    public static func interpolate(from startValue: UILabelTweenProperty, to endValue: UILabelTweenProperty, with ease: Ease,
-                                   elapsed: TimeInterval, duration: TimeInterval) -> UILabelTweenProperty {
+}
 
-        switch (startValue, endValue) {
-        case let (.textColor(start), .textColor(end)):
-            return .textColor(UIColor.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
-        case let (.highlightedTextColor(start), .highlightedTextColor(end)):
-            return .highlightedTextColor(UIColor.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
+/// :nodoc:
+public extension UILabel {
 
-        case let (.shadowColor(start), .shadowColor(end)):
-            return .shadowColor(UIColor.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
-        case let (.shadowOffset(start), .shadowOffset(end)):
-            return .shadowOffset(CGSize.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
+    /// Animates tweenable properties from the target's current values *to* the desired values.
+    /// - parameter properties: The properties to animate.
+    /// - returns: The `Tween` control for the animation.
+    func tween(to properties: TweenPropertyDerived...) -> Tween {
+        return Tweener.default.animate(self).to(properties)
+    }
 
-        case let (.minimumScaleFactor(start), .minimumScaleFactor(end)):
-            return .minimumScaleFactor(CGFloat.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
-        case let (.preferredMaxLayoutWidth(start), .preferredMaxLayoutWidth(end)):
-            return .preferredMaxLayoutWidth(CGFloat.interpolate(from: start, to: end, with: ease, elapsed: elapsed, duration: duration))
-            
-        default:
-            return startValue
-        }
+    /// Animates tweenable properties *from* desired values to the target's current values.
+    /// - parameter properties: The properties to animate.
+    /// - returns: The `Tween` control for the animation.
+    func tween(from properties: TweenPropertyDerived...) -> Tween {
+        return Tweener.default.animate(self).from(properties)
     }
 
 }
