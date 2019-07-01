@@ -4,113 +4,299 @@
     <title>  Reference</title>
     <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="css/highlight.css" />
-    <meta charset='utf-8'>
+    <meta charset="utf-8">
     <script src="js/jquery.min.js" defer></script>
     <script src="js/jazzy.js" defer></script>
     
+    <script src="js/lunr.min.js" defer></script>
+    <script src="js/typeahead.jquery.js" defer></script>
+    <script src="js/jazzy.search.js" defer></script>
   </head>
   <body>
+
+
     <a title="  Reference"></a>
-    <header>
-      <div class="content-wrapper">
-        <p><a href="index.html"> Docs</a> (100% documented)</p>
-        <p class="header-right"><a href="https://github.com/adamgraham/STween"><img src="img/gh.png"/>View on GitHub</a></p>
-      </div>
-    </header>
-    <div class="content-wrapper">
-      <p id="breadcrumbs">
-        <a href="index.html"> Reference</a>
-        <img id="carat" src="img/carat.png" />
-          Reference
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="index.html">
+          STween
+        </a>
+         (100% documented)
       </p>
-    </div>
+    
+      <p class="header-col--secondary">
+        <form role="search" action="search.json">
+          <input type="text" placeholder="Search documentation" data-typeahead>
+        </form>
+      </p>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="https://github.com/adamgraham/STween">
+            <img class="header-icon" src="img/gh.png"/>
+            View on GitHub
+          </a>
+        </p>
+    
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="index.html"> Reference</a>
+      <img class="carat" src="img/carat.png" />
+        Reference
+    </p>
+
     <div class="content-wrapper">
-      <nav class="sidebar">
+      <nav class="navigation">
         <ul class="nav-groups">
           <li class="nav-group-name">
-            <a href="Easing.html">Easing</a>
+            <a class="nav-group-name-link" href="Tweening.html">Tweening</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Structs/Ease.html">Ease</a>
+                <a class="nav-group-task-link" href="Protocols/Tween.html">Tween</a>
               </li>
               <li class="nav-group-task">
-                <a href="Enums/EaseClassification.html">EaseClassification</a>
+                <a class="nav-group-task-link" href="Protocols/Tweenable.html">Tweenable</a>
               </li>
               <li class="nav-group-task">
-                <a href="Enums/EaseCurve.html">EaseCurve</a>
+                <a class="nav-group-task-link" href="Protocols/TweenableProperty.html">TweenableProperty</a>
               </li>
               <li class="nav-group-task">
-                <a href="Enums/EaseFunction.html">EaseFunction</a>
+                <a class="nav-group-task-link" href="Classes/TweenAnimator.html">TweenAnimator</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/Tweener.html">Tweener</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/TweenState.html">TweenState</a>
               </li>
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="Interpolation.html">Interpolation</a>
+            <a class="nav-group-name-link" href="Easing.html">Easing</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Protocols/Interpolatable.html">Interpolatable</a>
+                <a class="nav-group-task-link" href="Structs/Ease.html">Ease</a>
               </li>
               <li class="nav-group-task">
-                <a href="Protocols/InterpolatableNumber.html">InterpolatableNumber</a>
+                <a class="nav-group-task-link" href="Enums/EaseClassification.html">EaseClassification</a>
               </li>
               <li class="nav-group-task">
-                <a href="Structs/InterpolatableNumberConstants.html">InterpolatableNumberConstants</a>
+                <a class="nav-group-task-link" href="Enums/EaseCurve.html">EaseCurve</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/EaseFunction.html">EaseFunction</a>
               </li>
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="Tweening.html">Tweening</a>
+            <a class="nav-group-name-link" href="Interpolation.html">Interpolation</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Protocols/Tween.html">Tween</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Enums/TweenState.html">TweenState</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Protocols/Tweenable.html">Tweenable</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Protocols/TweenableProperty.html">TweenableProperty</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Classes/Tweener.html">Tweener</a>
+                <a class="nav-group-task-link" href="Protocols/Interpolatable.html">Interpolatable</a>
               </li>
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="Settings.html">Settings</a>
+            <a class="nav-group-name-link" href="Settings.html">Settings</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Enums/Defaults.html">Defaults</a>
+                <a class="nav-group-task-link" href="Enums/Defaults.html">Defaults</a>
               </li>
             </ul>
           </li>
         </ul>
       </nav>
       <article class="main-content">
-        <section>
-          <section class="section">
+
+        <section class="section">
+          <div class="section-content">
             
             <h1 id='stween' class='heading'>STween</h1>
 
 <blockquote>
-<p>A Swift iOS animation framework based on <a href="http://robertpenner.com/easing/">Robert Penner&rsquo;s Easing Functions</a>.<br/>
+<p>An iOS animation framework based on <a href="http://robertpenner.com/easing/">Robert Penner&rsquo;s Easing Functions</a>.<br/>
 Complex animations done simple. An easy-to-use interface.</p>
 </blockquote>
 
-<p>For detailed usage and documentation, please visit the <a href="https://github.com/adamgraham/STween/wiki">STween Wiki</a>.</p>
+<p>For detailed usage and documentation, please visit the <a href="https://adamgraham.github.io/STween/">STween Reference</a>.</p>
+<h2 id='requirements' class='heading'>Requirements</h2>
+
+<ul>
+<li>iOS 10.0+</li>
+<li>Swift 5.0+</li>
+<li>Xcode 10.2+</li>
+</ul>
+<h2 id='usage' class='heading'>Usage</h2>
 <h3 id='tweening' class='heading'>Tweening</h3>
 
-<p>A Tween is an animation of a value from a start position to an end position with a given duration of time and a type of easing function (linear, exponential, quadratic, etc).</p>
+<p>A Tween is an animation of a value from a start position to an end position over time using a given ease (linear, quadratic, exponential, etc). An ease is a timing function that provides a natural sense of motion.</p>
 
 <p>Tweening engines make animations simple. Take the following, for example:</p>
-<pre class="highlight swift"><code><span class="n">view</span><span class="o">.</span><span class="nf">tween</span><span class="p">(</span><span class="nv">to</span><span class="p">:</span> <span class="o">.</span><span class="nf">width</span><span class="p">(</span><span class="mf">100.0</span><span class="p">),</span> <span class="nv">duration</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">)</span>
+<pre class="highlight swift"><code><span class="n">view</span><span class="o">.</span><span class="nf">tween</span><span class="p">(</span><span class="nv">to</span><span class="p">:</span> <span class="o">.</span><span class="nf">width</span><span class="p">(</span><span class="mf">100.0</span><span class="p">))</span>
 </code></pre>
 
-<p>This one line of code creates an animation that changes a view&rsquo;s width to <code>100.0</code> over a duration of <code>1.0</code> second.</p>
+<p>This one line of code creates an animation that changes a view&rsquo;s width to <code>100.0</code>.</p>
+
+<p>Alternatively, tweens can be created using the generic <code><a href="Classes/Tweener.html">Tweener</a></code> class:</p>
+<pre class="highlight swift"><code><span class="kt">Tweener</span><span class="o">.</span><span class="k">default</span><span class="o">.</span><span class="nf">animate</span><span class="p">(</span><span class="n">view</span><span class="p">)</span><span class="o">.</span><span class="nf">to</span><span class="p">(</span><span class="o">.</span><span class="nf">width</span><span class="p">(</span><span class="mf">100.0</span><span class="p">))</span>
+</code></pre>
 
 <p>Tweens are not just limited to the animation of visual elements, though. Tweening can be applied to virtually any type of data. See below for more information.</p>
+<h3 id='customizing-tweens' class='heading'>Customizing Tweens</h3>
+
+<p>Once you have instantiated a <code><a href="Protocols/Tween.html">Tween</a></code> using the tween methods on an object or using the <code>animate</code> function from the <code><a href="Classes/Tweener.html">Tweener</a></code> class, you can customize it in many ways:</p>
+<pre class="highlight swift"><code><span class="c1">// Animates properties from the target's current values *to* the desired values</span>
+<span class="n">tween</span><span class="o">.</span><span class="nf">to</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="c1">// Animates properties *from* desired values to the target's current values</span>
+<span class="n">tween</span><span class="o">.</span><span class="nf">from</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+
+<span class="c1">// The amount of seconds the tween takes to complete</span>
+<span class="n">tween</span><span class="o">.</span><span class="nf">duration</span><span class="p">(</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="c1">// The amount of seconds before the tween starts updating after being started</span>
+<span class="n">tween</span><span class="o">.</span><span class="nf">delay</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
+<span class="c1">// The `Ease` used to interpolate values</span>
+<span class="n">tween</span><span class="o">.</span><span class="nf">ease</span><span class="p">(</span><span class="o">.</span><span class="n">quadOut</span><span class="p">)</span>
+
+<span class="c1">// The callback invoked every time the tween is updated</span>
+<span class="n">tween</span><span class="o">.</span><span class="nf">onUpdate</span><span class="p">({</span> <span class="o">...</span> <span class="p">})</span>
+<span class="c1">// The callback invoked when the tween is started</span>
+<span class="n">tween</span><span class="o">.</span><span class="nf">onStart</span><span class="p">({</span> <span class="o">...</span> <span class="p">})</span>
+<span class="c1">// The callback invoked when the tween is stopped</span>
+<span class="n">tween</span><span class="o">.</span><span class="nf">onStop</span><span class="p">({</span> <span class="o">...</span> <span class="p">})</span>
+<span class="c1">// The callback invoked when the tween is restarted</span>
+<span class="n">tween</span><span class="o">.</span><span class="nf">onRestart</span><span class="p">({</span> <span class="o">...</span> <span class="p">})</span>
+<span class="c1">// The callback invoked when the tween is paused</span>
+<span class="n">tween</span><span class="o">.</span><span class="nf">onPause</span><span class="p">({</span> <span class="o">...</span> <span class="p">})</span>
+<span class="c1">// The callback invoked when the tween is resumed</span>
+<span class="n">tween</span><span class="o">.</span><span class="nf">onResume</span><span class="p">({</span> <span class="o">...</span> <span class="p">})</span>
+<span class="c1">// The callback invoked when the tween is completed</span>
+<span class="n">tween</span><span class="o">.</span><span class="nf">onComplete</span><span class="p">({</span> <span class="o">...</span> <span class="p">})</span>
+<span class="c1">// The callback invoked when the tween is killed</span>
+<span class="n">tween</span><span class="o">.</span><span class="nf">onKill</span><span class="p">({</span> <span class="o">...</span> <span class="p">})</span>
+<span class="c1">// The callback invoked when the tween is revived</span>
+<span class="n">tween</span><span class="o">.</span><span class="nf">onRevive</span><span class="p">({</span> <span class="o">...</span> <span class="p">})</span>
+</code></pre>
+
+<p>Now that the tween has been customized, you can control its playback using the following state control methods:</p>
+<pre class="highlight swift"><code><span class="c1">// Increases the tween's elapsed time and invokes all animation closures</span>
+<span class="n">tween</span><span class="o">.</span><span class="nf">update</span><span class="p">(</span><span class="nv">by</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">)</span>
+<span class="c1">// Starts the tween for updates, putting it in an `active` state</span>
+<span class="n">tween</span><span class="o">.</span><span class="nf">start</span><span class="p">()</span>
+<span class="c1">// Stops the tween from updating, putting it in an `inactive` state</span>
+<span class="n">tween</span><span class="o">.</span><span class="nf">stop</span><span class="p">()</span>
+<span class="c1">// Stops the tween, then immediately starts it over again from the beginning</span>
+<span class="n">tween</span><span class="o">.</span><span class="nf">restart</span><span class="p">()</span>
+<span class="c1">// Pauses the tween, maintaining its current progress</span>
+<span class="n">tween</span><span class="o">.</span><span class="nf">pause</span><span class="p">()</span>
+<span class="c1">// Resumes the tween, continuing where it left off before being paused</span>
+<span class="n">tween</span><span class="o">.</span><span class="nf">resume</span><span class="p">()</span>
+<span class="c1">// Completes updates on the tween, jumping to its ending values</span>
+<span class="n">tween</span><span class="o">.</span><span class="nf">complete</span><span class="p">()</span>
+<span class="c1">// Kills the tween in place, halting at its current values</span>
+<span class="n">tween</span><span class="o">.</span><span class="nf">kill</span><span class="p">()</span>
+<span class="c1">// Revives the tween, putting it in a `new` state</span>
+<span class="n">tween</span><span class="o">.</span><span class="nf">revive</span><span class="p">()</span>
+</code></pre>
+
+<p>There are a few additional properties that can be used to get more information about the tween:</p>
+<pre class="highlight swift"><code><span class="c1">// The tween's current state, i.e., active, paused, etc</span>
+<span class="n">tween</span><span class="o">.</span><span class="n">state</span>
+<span class="c1">// The amount of seconds the tween has been active</span>
+<span class="n">tween</span><span class="o">.</span><span class="n">elapsed</span>
+<span class="c1">// The percentage of the tween's elapsed time in relation to its duration</span>
+<span class="n">tween</span><span class="o">.</span><span class="n">percentComplete</span>
+</code></pre>
+<h3 id='managing-tweens' class='heading'>Managing Tweens</h3>
+
+<p>The <code><a href="Classes/Tweener.html">Tweener</a></code> class keeps track of all of the active tweens and continues to update them using a display link timer. There are few methods available to aid in managing tweens:</p>
+<pre class="highlight swift"><code><span class="c1">// The number of tweens crrently being tracked</span>
+<span class="kt">Tweener</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="n">count</span>
+<span class="c1">// Checks if a tween is being tracked</span>
+<span class="kt">Tweener</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="nf">isTracking</span><span class="p">(</span><span class="n">tween</span><span class="p">)</span>
+<span class="c1">// Adds a tween to the list of tracked tweens</span>
+<span class="kt">Tweener</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="nf">track</span><span class="p">(</span><span class="n">tween</span><span class="p">)</span>
+<span class="c1">// Removes a tween from the list of tracked tweens</span>
+<span class="kt">Tweener</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="nf">untrack</span><span class="p">(</span><span class="n">tween</span><span class="p">)</span>
+<span class="c1">// Global state control methods</span>
+<span class="kt">Tweener</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="nf">updateAll</span><span class="p">(</span><span class="nv">by</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">)</span>
+<span class="kt">Tweener</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="nf">startAll</span><span class="p">()</span>
+<span class="kt">Tweener</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="nf">stopAll</span><span class="p">()</span>
+<span class="kt">Tweener</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="nf">restartAll</span><span class="p">()</span>
+<span class="kt">Tweener</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="nf">pauseAll</span><span class="p">()</span>
+<span class="kt">Tweener</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="nf">resumeAll</span><span class="p">()</span>
+<span class="kt">Tweener</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="nf">completeAll</span><span class="p">()</span>
+<span class="kt">Tweener</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="nf">killAll</span><span class="p">()</span>
+</code></pre>
+
+<p>There are other instances of <code><a href="Classes/Tweener.html">Tweener</a></code> available, too, and you can even create your own.</p>
+<pre class="highlight swift"><code><span class="c1">// The default assigned instance</span>
+<span class="kt">Tweener</span><span class="o">.</span><span class="k">default</span>
+<span class="c1">// The main shared instance (default)</span>
+<span class="kt">Tweener</span><span class="o">.</span><span class="n">shared</span>
+<span class="c1">// An instance where all tweens are updated manually</span>
+<span class="kt">Tweener</span><span class="o">.</span><span class="n">manual</span>
+<span class="c1">// A custom instance</span>
+<span class="kt">Tweener</span><span class="o">.</span><span class="nf">custom</span><span class="p">(</span><span class="s">"id"</span><span class="p">)</span>
+<span class="c1">// Assigns this instance as the default</span>
+<span class="kt">Tweener</span><span class="o">.</span><span class="nf">custom</span><span class="p">(</span><span class="s">"id"</span><span class="p">)</span><span class="o">.</span><span class="nf">setAsDefault</span><span class="p">()</span>
+</code></pre>
+<h3 id='examples' class='heading'>Examples</h3>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">view</span> <span class="o">=</span> <span class="kt">UIView</span><span class="p">()</span>
+<span class="n">view</span><span class="o">.</span><span class="nf">tween</span><span class="p">(</span><span class="nv">to</span><span class="p">:</span> <span class="o">.</span><span class="nf">backgroundColor</span><span class="p">(</span><span class="o">.</span><span class="n">black</span><span class="p">),</span> <span class="o">.</span><span class="nf">width</span><span class="p">(</span><span class="mf">256.0</span><span class="p">),</span> <span class="o">.</span><span class="nf">height</span><span class="p">(</span><span class="mf">256.0</span><span class="p">))</span>
+<span class="n">view</span><span class="o">.</span><span class="nf">tween</span><span class="p">(</span><span class="nv">from</span><span class="p">:</span> <span class="o">.</span><span class="nf">alpha</span><span class="p">(</span><span class="mf">0.0</span><span class="p">),</span> <span class="o">.</span><span class="nf">frame</span><span class="p">(</span><span class="o">.</span><span class="n">zero</span><span class="p">))</span>
+</code></pre>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">view</span> <span class="o">=</span> <span class="kt">UIView</span><span class="p">()</span>
+<span class="k">let</span> <span class="nv">position</span> <span class="o">=</span> <span class="kt">CGPoint</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="mf">100.0</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="mf">100.0</span><span class="p">)</span>
+<span class="n">view</span><span class="o">.</span><span class="nf">tween</span><span class="p">(</span><span class="nv">to</span><span class="p">:</span> <span class="o">.</span><span class="nf">origin</span><span class="p">(</span><span class="n">position</span><span class="p">))</span>
+    <span class="o">.</span><span class="nf">duration</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="o">.</span><span class="nf">ease</span><span class="p">(</span><span class="o">.</span><span class="n">backOut</span><span class="p">)</span>
+    <span class="o">.</span><span class="nf">onComplete</span><span class="p">({</span> <span class="o">...</span> <span class="p">})</span>
+</code></pre>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">view</span> <span class="o">=</span> <span class="kt">UIView</span><span class="p">()</span>
+<span class="kt">Tweener</span><span class="o">.</span><span class="k">default</span><span class="o">.</span><span class="nf">animate</span><span class="p">(</span><span class="n">view</span><span class="p">)</span><span class="o">.</span><span class="nf">to</span><span class="p">(</span><span class="o">.</span><span class="nf">left</span><span class="p">(</span><span class="mf">20.0</span><span class="p">),</span> <span class="o">.</span><span class="nf">top</span><span class="p">(</span><span class="mf">40.0</span><span class="p">))</span>
+<span class="kt">Tweener</span><span class="o">.</span><span class="k">default</span><span class="o">.</span><span class="nf">animate</span><span class="p">(</span><span class="n">view</span><span class="p">)</span><span class="o">.</span><span class="nf">from</span><span class="p">(</span><span class="o">.</span><span class="nf">backgroundColor</span><span class="p">(</span><span class="o">.</span><span class="n">white</span><span class="p">),</span> <span class="o">.</span><span class="nf">size</span><span class="p">(</span><span class="o">.</span><span class="n">zero</span><span class="p">))</span>
+</code></pre>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">view</span> <span class="o">=</span> <span class="kt">UIView</span><span class="p">()</span>
+<span class="kt">Tweener</span><span class="o">.</span><span class="k">default</span><span class="o">.</span><span class="nf">animate</span><span class="p">(</span><span class="n">view</span><span class="p">)</span>
+    <span class="o">.</span><span class="nf">to</span><span class="p">(</span><span class="o">.</span><span class="nf">transform</span><span class="p">(</span><span class="o">...</span><span class="p">))</span>
+    <span class="o">.</span><span class="nf">duration</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
+    <span class="o">.</span><span class="nf">ease</span><span class="p">(</span><span class="o">.</span><span class="n">cubicIn</span><span class="p">)</span>
+    <span class="o">.</span><span class="nf">onUpdate</span><span class="p">({</span> <span class="o">...</span> <span class="p">})</span>
+</code></pre>
+<h3 id='supported-eases' class='heading'>Supported Eases</h3>
+
+<p>The easing functions below are all supported. A visualized cheat-sheet of these easing functions can be found at <a href="http://easings.net/">easings.net</a>.</p>
+<pre class="highlight swift"><code><span class="kt">Ease</span><span class="o">.</span><span class="n">linear</span>
+<span class="kt">Ease</span><span class="o">.</span><span class="n">cubicIn</span>
+<span class="kt">Ease</span><span class="o">.</span><span class="n">cubicOut</span>
+<span class="kt">Ease</span><span class="o">.</span><span class="n">cubicInOut</span>
+<span class="kt">Ease</span><span class="o">.</span><span class="n">quadIn</span>
+<span class="kt">Ease</span><span class="o">.</span><span class="n">quadOut</span>
+<span class="kt">Ease</span><span class="o">.</span><span class="n">quadInOut</span>
+<span class="kt">Ease</span><span class="o">.</span><span class="n">quartIn</span>
+<span class="kt">Ease</span><span class="o">.</span><span class="n">quartOut</span>
+<span class="kt">Ease</span><span class="o">.</span><span class="n">quartInOut</span>
+<span class="kt">Ease</span><span class="o">.</span><span class="n">quintIn</span>
+<span class="kt">Ease</span><span class="o">.</span><span class="n">quintOut</span>
+<span class="kt">Ease</span><span class="o">.</span><span class="n">quintInOut</span>
+<span class="kt">Ease</span><span class="o">.</span><span class="n">expoIn</span>
+<span class="kt">Ease</span><span class="o">.</span><span class="n">expoOut</span>
+<span class="kt">Ease</span><span class="o">.</span><span class="n">expoInOut</span>
+<span class="kt">Ease</span><span class="o">.</span><span class="n">circIn</span>
+<span class="kt">Ease</span><span class="o">.</span><span class="n">circOut</span>
+<span class="kt">Ease</span><span class="o">.</span><span class="n">circInOut</span>
+<span class="kt">Ease</span><span class="o">.</span><span class="n">backIn</span>
+<span class="kt">Ease</span><span class="o">.</span><span class="n">backOut</span>
+<span class="kt">Ease</span><span class="o">.</span><span class="n">backInOut</span>
+<span class="kt">Ease</span><span class="o">.</span><span class="n">elasticIn</span>
+<span class="kt">Ease</span><span class="o">.</span><span class="n">elasticOut</span>
+<span class="kt">Ease</span><span class="o">.</span><span class="n">elasticInOut</span>
+<span class="kt">Ease</span><span class="o">.</span><span class="n">bounceIn</span>
+<span class="kt">Ease</span><span class="o">.</span><span class="n">bounceOut</span>
+<span class="kt">Ease</span><span class="o">.</span><span class="n">bounceInOut</span>
+<span class="kt">Ease</span><span class="o">.</span><span class="nf">custom</span><span class="p">({</span> <span class="o">...</span> <span class="p">})</span>
+</code></pre>
 <h3 id='supported-types' class='heading'>Supported Types</h3>
 
 <p>Tweening animations can be applied to any of the supported types below. If a type is not listed below, you can add tweening support by conforming to the <code><a href="Protocols/Tweenable.html">Tweenable</a></code> protocol. Feel free to leave suggestions to new types you would like to see added.</p>
@@ -121,7 +307,7 @@ Complex animations done simple. An easy-to-use interface.</p>
 <li><code>NSLayoutConstraint</code></li>
 </ul>
 
-<p>All of the following data types can be interpolated - the ability for a type to calculate the value between a start and end value at a specific point in time. If a type is not listed below, you can add interpolation support by conforming to the <code><a href="Protocols/Interpolatable.html">Interpolatable</a></code> protocol.</p>
+<p>All of the following data types can be interpolated - the ability for a type to calculate the value between a start and end position at a specific point in time. If a type is not listed below, you can add interpolation support by conforming to the <code><a href="Protocols/Interpolatable.html">Interpolatable</a></code> protocol.</p>
 
 <ul>
 <li><code>UInt</code>, <code>UInt8</code>, <code>UInt16</code>, <code>UInt32</code>, <code>UInt64</code></li>
@@ -133,23 +319,7 @@ Complex animations done simple. An easy-to-use interface.</p>
 <li><code>CIColor</code>, <code>CIVector</code></li>
 <li><code>UIColor</code>, <code>UIEdgeInsetes</code>, <code>UIOffset</code></li>
 </ul>
-<h3 id='supported-functions' class='heading'>Supported Functions</h3>
-
-<p>The below easing function classifications are supported. Each classification has three variations: <code>.in</code>, <code>.out</code>, <code>.inOut</code>. A visualized cheat-sheet of these easing functions can be found at <a href="http://easings.net/">easings.net</a>.</p>
-
-<ul>
-<li>Linear</li>
-<li>Cubic</li>
-<li>Quadratic</li>
-<li>Quartic</li>
-<li>Quintic</li>
-<li>Exponential</li>
-<li>Circular</li>
-<li>Back</li>
-<li>Elastic</li>
-<li>Bounce</li>
-</ul>
-<h3 id='license' class='heading'>License</h3>
+<h2 id='license' class='heading'>License</h2>
 <pre class="highlight plaintext"><code>MIT License
 
 Copyright (c) 2016 Adam Graham
@@ -173,14 +343,16 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 </code></pre>
 
-          </section>
+          </div>
         </section>
-        <section id="footer">
-          <p>Copyright (c) 2016 Adam Graham</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
-        </section>
+
+
       </article>
     </div>
+    <section class="footer">
+      <p>Copyright (c) 2016 Adam Graham</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.10.0</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+    </section>
   </body>
 </div>
 </html>

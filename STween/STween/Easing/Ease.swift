@@ -237,8 +237,8 @@ extension Ease {
 
     // MARK: Custom
 
-    /// An ease with a custom algorithmic classification and acceleration pattern.
-    /// - parameter function: The custom function of the ease.
+    /// An ease with a custom timing function.
+    /// - parameter function: The custom timing function of the ease.
     /// - returns: The custom ease.
     public static func custom(function: @escaping (Double) -> Double) -> Ease {
         return Ease(classification: .custom, curve: .custom, function: function)

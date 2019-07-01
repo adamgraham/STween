@@ -20,8 +20,8 @@ public protocol FloatRepresentable {
     /// The floating point values that represent this type.
     var floats: [FloatType] { get }
 
-    /// Initializes an instance using an array of floating point values that represent the type.
-    /// - parameter floats: The floating points values that represent the type.
+    /// Initializes an instance using an array of floating point values that represent this type.
+    /// - parameter floats: The floating points values that represent this type.
     init(floats: [FloatType])
 
 }

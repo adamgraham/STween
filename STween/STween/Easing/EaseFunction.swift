@@ -7,9 +7,8 @@
 //
 
 /**
- Calculates the number between a start and end value at a specific point in time.
- In simpler terms, an easing function determines the path used to get from point *A*
- to point *B*.
+ An easing function that determines the path used to get from point *A* to point *B* by
+ calculating the position given a specific point in time.
 
  These easing functions are based upon [Robert Penner's Easing Functions](http://robertpenner.com/easing/).
  A visualized cheat-sheet of these functions can be found at [easings.net](http://easings.net/).
@@ -23,6 +22,7 @@
  > *Because position and time have this one-to-one relationship, we can say that position
  > is a function of time. This means that, given a specific point in time, we can find one,
  > and only one, corresponding position.*
+ >
  > \- [Robert Penner](http://robertpenner.com/easing/penner_chapter7_tweening.pdf)
  */
 public enum EaseFunction {

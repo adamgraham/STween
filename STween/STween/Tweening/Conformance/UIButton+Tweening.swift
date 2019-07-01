@@ -85,7 +85,7 @@ public extension TweenAnimator where Target == UIButton {
 
 }
 
-/// :nodoc
+/// :nodoc:
 public extension UIButton {
 
     /// Animates tweenable properties from the target's current values *to* the desired values.

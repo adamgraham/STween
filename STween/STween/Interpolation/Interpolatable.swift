@@ -16,13 +16,13 @@ import UIKit
 public protocol Interpolatable {
 
     /**
-     Calculates the value between a start and end at a specific point in time.
+     Calculates the value between a start and end position at a specific point in time.
 
      - Parameters:
         - start: The start value to interpolate from, the minimum value.
         - end: The end value to interpolate to, the maximum value.
         - time: A percentage between 0 and 1 that represents time. The interpolated value
-                is calculated by multiplying the range by the percentage of time.
+                is calculated by multiplying the change in value by the percentage of time.
 
      - Returns: The value interpolated between the start and end.
      */
@@ -30,18 +30,17 @@ public protocol Interpolatable {
 
 }
 
-// MARK: Default Implementation
-
+/// :nodoc:
 public extension Interpolatable {
 
     /**
-     Calculates the values between a start and end at a specific point in time.
+     Calculates the values between a start and end position at a specific point in time.
 
      - Parameters:
         - start: The start values to interpolate from, the minimum values.
         - end: The end values to interpolate to, the maximum values.
         - time: A percentage between 0 and 1 that represents time. The interpolated values
-                are calculated by multiplying the range of values by the percentage of time.
+                are calculated by multiplying the change in values by the percentage of time.
 
      - Returns: The values interpolated between the start and end.
      */
@@ -57,16 +56,16 @@ public extension Interpolatable {
     }
 
     /**
-     Calculates the value between a start and end at a specific point in time.
+     Calculates the value between a start and end position at a specific point in time.
 
      - Parameters:
         - start: The start value to interpolate from, the minimum value.
         - end: The end value to interpolate to, the maximum value.
         - ease: The easing function used to create a realistic sense of motion over time.
-        - elapsed: The elapsed amount of time, used to calculate the percentage of time
-                   in relation to the `duration`.
-        - duration: The duration of time, used to calculate the percentage of time in
-                    relation to the `elapsed` amount of time.
+        - elapsed: The elapsed amount of time used to calculate the percentage of time
+                   in relation to a duration.
+        - duration: The duration of time used to calculate the percentage of time in
+                    relation to an elapsed amount of time.
 
      - Returns: The value interpolated between the start and end.
      */
@@ -78,16 +77,16 @@ public extension Interpolatable {
     }
 
     /**
-     Calculates the values between a start and end at a specific point in time.
+     Calculates the values between a start and end position at a specific point in time.
 
      - Parameters:
         - start: The start values to interpolate from, the minimum values.
         - end: The end values to interpolate to, the maximum values.
         - ease: The easing function used to create a realistic sense of motion over time.
-        - elapsed: The elapsed amount of time, used to calculate the percentage of time
-                   in relation to the `duration`.
+        - elapsed: The elapsed amount of time used to calculate the percentage of time
+                   in relation to a duration.
         - duration: The duration of time, used to calculate the percentage of time in
-                    relation to the `elapsed` amount of time.
+                    relation to an elapsed amount of time.
 
      - Returns: The value interpolated between the start and end.
      */

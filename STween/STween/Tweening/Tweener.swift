@@ -17,7 +17,12 @@ public final class Tweener {
     /// A dictionary to store each instantiated `Tweener` by its identifier.
     private static var tweeners: [String: Tweener] = [:]
 
-    /// The main, shared instance of `Tweener`.
+    /// The default assigned instance of `Tweener`.
+    public static var `default`: Tweener {
+        return self.tweeners["default"] ?? self.shared
+    }
+
+    /// The main shared instance of `Tweener`.
     public static let shared: Tweener = {
         let setAsDefault = tweeners["default"] == nil
         return Tweener(identifier: "shared", setAsDefault: setAsDefault)
@@ -30,11 +35,6 @@ public final class Tweener {
         tweener.queueTimer.invalidate()
         return tweener
     }()
-
-    /// The default assigned instance of `Tweener`.
-    public static var `default`: Tweener {
-        return self.tweeners["default"] ?? self.shared
-    }
 
     /// Returns a reference to a custom `Tweener` instance by its identifier. The `Tweener`
     /// instance is created if it does not already exist.
@@ -146,7 +146,7 @@ public extension Tweener {
 
     /// Adds a tween to the list of tracked tweens.
     /// - parameter tween: The `Tween` control to be added.
-    internal func track(_ tween: Tween) {
+    func track(_ tween: Tween) {
         guard self.tweens.firstIndex(where: { $0 === tween }) == nil else {
             return
         }
@@ -156,7 +156,7 @@ public extension Tweener {
 
     /// Removes a tween from the list of tracked tweens.
     /// - parameter tween: The `Tween` control to be removed.
-    internal func untrack(_ tween: Tween) {
+    func untrack(_ tween: Tween) {
         if let index = self.tweens.firstIndex(where: { $0 === tween }),
             index >= 0 && index < self.tweens.count {
                 self.tweens.remove(at: index)
