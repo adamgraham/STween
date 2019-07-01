@@ -264,6 +264,16 @@ Complex animations done simple. An easy-to-use interface.</p>
     <span class="o">.</span><span class="nf">ease</span><span class="p">(</span><span class="o">.</span><span class="n">cubicIn</span><span class="p">)</span>
     <span class="o">.</span><span class="nf">onUpdate</span><span class="p">({</span> <span class="o">...</span> <span class="p">})</span>
 </code></pre>
+<h3 id='defaults' class='heading'>Defaults</h3>
+
+<p>There are a set of values that are applied to every tween by default. These values can be changed via the <code><a href="Enums/Defaults.html">Defaults</a></code> class.</p>
+<pre class="highlight swift"><code><span class="kt">Defaults</span><span class="o">.</span><span class="n">ease</span> <span class="c1">// .quadOut</span>
+<span class="kt">Defaults</span><span class="o">.</span><span class="n">overshoot</span> <span class="c1">// 1.70158</span>
+<span class="kt">Defaults</span><span class="o">.</span><span class="n">duration</span> <span class="c1">// 0.3</span>
+<span class="kt">Defaults</span><span class="o">.</span><span class="n">delay</span> <span class="c1">// 0.0</span>
+<span class="kt">Defaults</span><span class="o">.</span><span class="n">autoStartTweens</span> <span class="c1">// true</span>
+<span class="kt">Defaults</span><span class="o">.</span><span class="n">autoKillCompletedTweens</span> <span class="c1">// true</span>
+</code></pre>
 <h3 id='supported-eases' class='heading'>Supported Eases</h3>
 
 <p>The easing functions below are all supported. A visualized cheat-sheet of these easing functions can be found at <a href="http://easings.net/">easings.net</a>.</p>

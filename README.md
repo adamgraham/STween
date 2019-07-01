@@ -160,6 +160,17 @@ Tweener.default.animate(view)
     .onUpdate({ ... })
 ```
 
+### Defaults
+There are a set of values that are applied to every tween by default. These values can be changed via the `Defaults` class.
+``` swift
+Defaults.ease // .quadOut
+Defaults.overshoot // 1.70158
+Defaults.duration // 0.3
+Defaults.delay // 0.0
+Defaults.autoStartTweens // true
+Defaults.autoKillCompletedTweens // true
+```
+
 ### Supported Eases
 The easing functions below are all supported. A visualized cheat-sheet of these easing functions can be found at [easings.net](http://easings.net/).
 
