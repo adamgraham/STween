@@ -15,10 +15,9 @@ class TweenTest: XCTestCase {
     private class TestTween: Tween {
 
         var ease: Ease = Defaults.ease
-        var reversed: Bool = Defaults.reversed
         var state: TweenState = .new
         var delay: TimeInterval = Defaults.delay
-        var duration: TimeInterval = 2.0
+        var duration: TimeInterval = Defaults.duration
         var elapsed: TimeInterval = 0.0
 
         var onUpdate: Callback?
@@ -31,6 +30,7 @@ class TweenTest: XCTestCase {
         var onKill: Callback?
         var onRevive: Callback?
 
+        func update(by deltaTime: TimeInterval) -> Bool { return false }
         func start() -> Bool { return false }
         func stop() -> Bool { return false }
         func restart() -> Bool { return false }

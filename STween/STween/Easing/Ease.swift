@@ -25,13 +25,16 @@ public struct Ease {
     public let classification: EaseClassification
     /// The acceleration pattern of the ease.
     public let curve: EaseCurve
-    /// The function, f(x), of the ease.
+    /// The timing function, f(x), of the ease.
     public let function: (Double) -> Double
 
     // MARK: Initialization
 
-    /// :nodoc:
-    private init(classification: EaseClassification, curve: EaseCurve, function: @escaping ((Double) -> Double)) {
+    /// Initializes an ease with a classification, curve, and timing function.
+    /// - parameter classification: The algorithmic classification of the ease.
+    /// - parameter curve: The acceleration pattern of the ease.
+    /// - parameter function: The timing function, f(x), of the ease.
+    internal init(classification: EaseClassification, curve: EaseCurve, function: @escaping ((Double) -> Double)) {
         self.classification = classification
         self.curve = curve
         self.function = function
@@ -39,12 +42,14 @@ public struct Ease {
 
 }
 
+/// :nodoc:
 extension Ease: Equatable {
 
-    /// :nodoc:
     public static func ==(lhs: Ease, rhs: Ease) -> Bool {
         return lhs.classification == rhs.classification &&
-               lhs.curve == rhs.curve
+               lhs.curve == rhs.curve &&
+               lhs.classification != .custom &&
+               lhs.curve != .custom
     }
 
 }

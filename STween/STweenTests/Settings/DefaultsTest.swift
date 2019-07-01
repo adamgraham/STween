@@ -30,12 +30,12 @@ class DefaultsTest: XCTestCase {
         XCTAssertEqual(Defaults.overshoot, 1.70158)
     }
 
-    func testDefaultDelay() {
-        XCTAssertEqual(Defaults.delay, 0.0)
+    func testDefaultDuration() {
+        XCTAssertEqual(Defaults.duration, 0.3)
     }
 
-    func testDefaultReversed() {
-        XCTAssertFalse(Defaults.reversed)
+    func testDefaultDelay() {
+        XCTAssertEqual(Defaults.delay, 0.0)
     }
 
     func testDefaultAutoStartTweens() {
@@ -49,16 +49,16 @@ class DefaultsTest: XCTestCase {
     func testRestDefaults() {
         Defaults.ease = .backOut
         Defaults.overshoot = 1.0
+        Defaults.duration = 1.0
         Defaults.delay = 1.0
-        Defaults.reversed = true
         Defaults.autoStartTweens = false
         Defaults.autoKillCompletedTweens = false
         Defaults.reset()
 
         XCTAssertEqual(Defaults.ease, .quadOut)
         XCTAssertEqual(Defaults.overshoot, 1.70158)
+        XCTAssertEqual(Defaults.duration, 0.3)
         XCTAssertEqual(Defaults.delay, 0.0)
-        XCTAssertFalse(Defaults.reversed)
         XCTAssertTrue(Defaults.autoStartTweens)
         XCTAssertTrue(Defaults.autoKillCompletedTweens)
     }

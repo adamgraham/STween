@@ -33,11 +33,11 @@
 		9D8890761E2883160023FE78 /* Tweener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8890581E2883160023FE78 /* Tweener.swift */; };
 		9D8890771E2883160023FE78 /* TweenState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8890591E2883160023FE78 /* TweenState.swift */; };
 		9D88907C1E2883160023FE78 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8890601E2883160023FE78 /* Functions.swift */; };
+		9D96C3C322C94EFB005DBA55 /* FloatRepresentableTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D96C3C222C94EFB005DBA55 /* FloatRepresentableTest.swift */; };
 		9DB3D6351DAE686F00134C1D /* DefaultsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB3D6301DAE686F00134C1D /* DefaultsTest.swift */; };
 		9DB3D6401DAE6CCB00134C1D /* XCTestCase+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB3D63F1DAE6CCB00134C1D /* XCTestCase+Utils.swift */; };
 		9DB3D6441DAE758F00134C1D /* FunctionsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB3D6431DAE758F00134C1D /* FunctionsTest.swift */; };
 		9DB46B191E29EB6000CB21F9 /* NSLayoutConstraint+TweeningTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB46B141E29EB6000CB21F9 /* NSLayoutConstraint+TweeningTest.swift */; };
-		9DB46B1A1E29EB6000CB21F9 /* TweenableTestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB46B151E29EB6000CB21F9 /* TweenableTestable.swift */; };
 		9DB46B1B1E29EB6000CB21F9 /* UIView+TweeningTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB46B161E29EB6000CB21F9 /* UIView+TweeningTest.swift */; };
 		9DB46B1C1E29EB6000CB21F9 /* Tween+ChainingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB46B181E29EB6000CB21F9 /* Tween+ChainingTest.swift */; };
 		9DBF34011DB8F4BA006C0D84 /* EaseTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBF33FB1DB8F4BA006C0D84 /* EaseTest.swift */; };
@@ -94,11 +94,11 @@
 		9D8890581E2883160023FE78 /* Tweener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweener.swift; sourceTree = "<group>"; };
 		9D8890591E2883160023FE78 /* TweenState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweenState.swift; sourceTree = "<group>"; };
 		9D8890601E2883160023FE78 /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
+		9D96C3C222C94EFB005DBA55 /* FloatRepresentableTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatRepresentableTest.swift; sourceTree = "<group>"; };
 		9DB3D6301DAE686F00134C1D /* DefaultsTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultsTest.swift; sourceTree = "<group>"; };
 		9DB3D63F1DAE6CCB00134C1D /* XCTestCase+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Utils.swift"; sourceTree = "<group>"; };
 		9DB3D6431DAE758F00134C1D /* FunctionsTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FunctionsTest.swift; sourceTree = "<group>"; };
 		9DB46B141E29EB6000CB21F9 /* NSLayoutConstraint+TweeningTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+TweeningTest.swift"; sourceTree = "<group>"; };
-		9DB46B151E29EB6000CB21F9 /* TweenableTestable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweenableTestable.swift; sourceTree = "<group>"; };
 		9DB46B161E29EB6000CB21F9 /* UIView+TweeningTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+TweeningTest.swift"; sourceTree = "<group>"; };
 		9DB46B181E29EB6000CB21F9 /* Tween+ChainingTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tween+ChainingTest.swift"; sourceTree = "<group>"; };
 		9DBF33FB1DB8F4BA006C0D84 /* EaseTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EaseTest.swift; sourceTree = "<group>"; };
@@ -260,7 +260,6 @@
 		9DB46B131E29EB6000CB21F9 /* Conformance */ = {
 			isa = PBXGroup;
 			children = (
-				9DB46B151E29EB6000CB21F9 /* TweenableTestable.swift */,
 				9DD8CF171E31C721004A196D /* CALayer+TweeningTest.swift */,
 				9DB46B141E29EB6000CB21F9 /* NSLayoutConstraint+TweeningTest.swift */,
 				9DF7248F1E47A52000A0BDB9 /* UIButton+TweeningTest.swift */,
@@ -308,6 +307,7 @@
 		9DD240451DCD436A009C658F /* Interpolation */ = {
 			isa = PBXGroup;
 			children = (
+				9D96C3C222C94EFB005DBA55 /* FloatRepresentableTest.swift */,
 				9DD240461DCD436A009C658F /* InterpolatableTest.swift */,
 			);
 			path = Interpolation;
@@ -483,10 +483,10 @@
 				9DB46B1C1E29EB6000CB21F9 /* Tween+ChainingTest.swift in Sources */,
 				9D6A3DBF1DDEB0AC009B6352 /* TweenStateTest.swift in Sources */,
 				9DB3D6401DAE6CCB00134C1D /* XCTestCase+Utils.swift in Sources */,
-				9DB46B1A1E29EB6000CB21F9 /* TweenableTestable.swift in Sources */,
 				9DB3D6441DAE758F00134C1D /* FunctionsTest.swift in Sources */,
 				9DF724901E47A52000A0BDB9 /* UIButton+TweeningTest.swift in Sources */,
 				9DD8CF181E31C721004A196D /* CALayer+TweeningTest.swift in Sources */,
+				9D96C3C322C94EFB005DBA55 /* FloatRepresentableTest.swift in Sources */,
 				9DF724921E47A52B00A0BDB9 /* UILabel+TweeningTest.swift in Sources */,
 				9DBF34011DB8F4BA006C0D84 /* EaseTest.swift in Sources */,
 			);

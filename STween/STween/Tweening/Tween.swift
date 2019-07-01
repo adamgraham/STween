@@ -73,7 +73,7 @@ public protocol Tween: AnyObject {
     /// The callback invoked when the tween is revived.
     var onRevive: Callback? { get set }
 
-    // MARK: Tweening Methods
+    // MARK: State Control
 
     /// Increases the tween's elapsed time and invokes all animation closures. These closures
     /// interpolate new values of properties and apply them back to the target instance(s). The
@@ -86,8 +86,6 @@ public protocol Tween: AnyObject {
     /// - returns: `true` if the tween is successfully updated.
     @discardableResult
     func update(by deltaTime: TimeInterval) -> Bool
-
-    // MARK: State Control Methods
 
     /// Starts the tween for updates, putting it in an `active` state from its beginning values.
     /// The tween can only be started if it's in a `new` or `inactive` state.

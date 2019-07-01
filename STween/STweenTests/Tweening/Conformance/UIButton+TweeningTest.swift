@@ -10,70 +10,107 @@ import XCTest
 
 @testable import STween
 
-class UIButton_TweeningTest: XCTestCase, TweenableTestable {
+class UIButton_TweeningTest: XCTestCase {
+
+    override func setUp() {
+        super.setUp()
+        Tweener.default.killAll()
+    }
+
+    override func tearDown() {
+        Tweener.default.killAll()
+        super.tearDown()
+    }
+
+    // MARK: Properties
 
     func testContentEdgeInsets() {
         let button = UIButton()
-        let property = UIButtonTweenProperty.contentEdgeInsets(UIEdgeInsets(top: 5.0, left: 5.0, bottom: 5.0, right: 5.0))
-        assertValidInterpolation(of: property, on: button)
+        let value = UIEdgeInsets(top: 5.0, left: 5.0, bottom: 5.0, right: 5.0)
+        let property = UIButton.TweenPropertyDerived.contentEdgeInsets(value)
+        property.animation(button)(1.0)
+        XCTAssertEqual(button.contentEdgeInsets, value)
     }
 
     func testTitleEdgeInsets() {
         let button = UIButton()
-        let property = UIButtonTweenProperty.titleEdgeInsets(UIEdgeInsets(top: 5.0, left: 5.0, bottom: 5.0, right: 5.0))
-        assertValidInterpolation(of: property, on: button)
+        let value = UIEdgeInsets(top: 5.0, left: 5.0, bottom: 5.0, right: 5.0)
+        let property = UIButton.TweenPropertyDerived.titleEdgeInsets(value)
+        property.animation(button)(1.0)
+        XCTAssertEqual(button.titleEdgeInsets, value)
     }
 
     func testImageEdgeInsets() {
         let button = UIButton()
-        let property = UIButtonTweenProperty.imageEdgeInsets(UIEdgeInsets(top: 5.0, left: 5.0, bottom: 5.0, right: 5.0))
-        assertValidInterpolation(of: property, on: button)
+        let value = UIEdgeInsets(top: 5.0, left: 5.0, bottom: 5.0, right: 5.0)
+        let property = UIButton.TweenPropertyDerived.imageEdgeInsets(value)
+        property.animation(button)(1.0)
+        XCTAssertEqual(button.imageEdgeInsets, value)
     }
 
     func testTitleColor() {
         let button = UIButton()
         button.setTitleColor(nil, for: .normal)
-        let property = UIButtonTweenProperty.titleColor(UIColor.lightGray, .normal)
-        assertValidInterpolation(of: property, on: button) {
-            (lhs: UIButtonTweenProperty, rhs: UIButtonTweenProperty) -> Bool in
-
-            switch (lhs, rhs) {
-            case (.titleColor(let lhsValues), .titleColor(let rhsValues)):
-                return self.isEqual(lhsValues.0, rhsValues.0) && lhsValues.1 == rhsValues.1
-            default:
-                return false
-            }
-        }
+        let value = UIColor.red
+        let property = UIButton.TweenPropertyDerived.titleColor(value, state: .normal)
+        property.animation(button)(1.0)
+        XCTAssertEqual(button.titleColor(for: .normal), value)
     }
 
     func testTitleShadowColor() {
         let button = UIButton()
         button.setTitleShadowColor(nil, for: .normal)
-        let property = UIButtonTweenProperty.titleShadowColor(UIColor.darkGray, .normal)
-        assertValidInterpolation(of: property, on: button) {
-            (lhs: UIButtonTweenProperty, rhs: UIButtonTweenProperty) -> Bool in
-
-            switch (lhs, rhs) {
-            case (.titleShadowColor(let lhsValues), .titleShadowColor(let rhsValues)):
-                return self.isEqual(lhsValues.0, rhsValues.0) && lhsValues.1 == rhsValues.1
-            default:
-                return false
-            }
-        }
+        let value = UIColor.green
+        let property = UIButton.TweenPropertyDerived.titleShadowColor(value, state: .normal)
+        property.animation(button)(1.0)
+        XCTAssertEqual(button.titleShadowColor(for: .normal), value)
     }
 
     @available(iOS 5.0, *)
     func testTintColor() {
         let button = UIButton()
-        let property = UIButtonTweenProperty.tintColor(UIColor.blue)
-        assertValidInterpolation(of: property, on: button)
+        let value = UIColor.blue
+        let property = UIButton.TweenPropertyDerived.tintColor(value)
+        property.animation(button)(1.0)
+        XCTAssertEqual(button.tintColor, value)
     }
 
-    func testInvalidInterpolation() {
+    // MARK: Tweening
+
+    func testTweenTo() {
         let button = UIButton()
-        let property = UIButtonTweenProperty.contentEdgeInsets(UIEdgeInsets(top: 5.0, left: 5.0, bottom: 5.0, right: 5.0))
-        let otherProperty = UIButtonTweenProperty.titleEdgeInsets(UIEdgeInsets(top: 5.0, left: 5.0, bottom: 5.0, right: 5.0))
-        assertInvalidInterpolation(of: property, to: otherProperty, on: button)
+        let tween = button.tween(to: .titleEdgeInsets(.zero))
+
+        guard let animator = tween as? TweenAnimator<UIButton> else {
+            XCTFail()
+            return
+        }
+
+        animator.to(.imageEdgeInsets(.zero))
+
+        XCTAssertEqual(Tweener.default.count, 1)
+        XCTAssertEqual(animator.targets, [button])
+        XCTAssertEqual(animator.tweens.count, 2)
+        XCTAssertFalse(animator.tweens[0].reversed)
+        XCTAssertFalse(animator.tweens[1].reversed)
+    }
+
+    func testTweenFrom() {
+        let button = UIButton()
+        let tween = button.tween(from: .titleEdgeInsets(.zero))
+
+        guard let animator = tween as? TweenAnimator<UIButton> else {
+            XCTFail()
+            return
+        }
+
+        animator.from(.imageEdgeInsets(.zero))
+
+        XCTAssertEqual(Tweener.default.count, 1)
+        XCTAssertEqual(animator.targets, [button])
+        XCTAssertEqual(animator.tweens.count, 2)
+        XCTAssertTrue(animator.tweens[0].reversed)
+        XCTAssertTrue(animator.tweens[1].reversed)
     }
 
 }

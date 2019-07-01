@@ -46,14 +46,11 @@ public extension Interpolatable {
      - Returns: The values interpolated between the start and end.
      */
     static func interpolate(from start: [Self], to end: [Self], time: TimeInterval) -> [Self] {
-        assert(start.count == end.count)
+        var interpolatedValues = end
 
-        var interpolatedValues: [Self] = []
-
-        for (index, startValue) in start.enumerated() {
-            let endValue = end[index]
-            let interpolatedValue = Self.interpolate(from: startValue, to: endValue, time: time)
-            interpolatedValues.append(interpolatedValue)
+        for index in 0..<min(start.count, end.count) {
+            let value = Self.interpolate(from: start[index], to: end[index], time: time)
+            interpolatedValues[index] = value
         }
 
         return interpolatedValues
@@ -107,7 +104,7 @@ public extension Interpolatable {
 public extension Interpolatable where Self: UnsignedInteger {
 
     static func interpolate(from start: Self, to end: Self, time: TimeInterval) -> Self {
-        return Self(time) * (start + end) + start
+        return Self(time * Double(end - start) + Double(start))
     }
 
 }
@@ -116,7 +113,7 @@ public extension Interpolatable where Self: UnsignedInteger {
 public extension Interpolatable where Self: SignedInteger {
 
     static func interpolate(from start: Self, to end: Self, time: TimeInterval) -> Self {
-        return Self(time) * (start + end) + start
+        return Self(time * Double(end - start) + Double(start))
     }
 
 }
@@ -125,7 +122,7 @@ public extension Interpolatable where Self: SignedInteger {
 public extension Interpolatable where Self: BinaryFloatingPoint {
 
     static func interpolate(from start: Self, to end: Self, time: TimeInterval) -> Self {
-        return Self(time) * (start + end) + start
+        return Self(time) * (end - start) + start
     }
 
 }
@@ -199,21 +196,6 @@ extension CGRect: Interpolatable {}
 extension CGSize: Interpolatable {}
 /// :nodoc:
 extension CGVector: Interpolatable {}
-
-/// :nodoc:
-extension CGColor: Interpolatable {
-
-    public static func interpolate(from start: CGColor, to end: CGColor, time: TimeInterval) -> Self {
-        let interpolatedComponents = CGFloat.interpolate(
-            from: start.components ?? [0.0, 0.0, 0.0, 0.0],
-            to: end.components ?? [0.0, 0.0, 0.0, 0.0],
-            time: time)
-
-        let colorSpace = end.colorSpace ?? CGColorSpaceCreateDeviceRGB()
-        return self.init(colorSpace: colorSpace, components: interpolatedComponents)!
-    }
-
-}
 
 // MARK: - Conformance: CoreImage
 

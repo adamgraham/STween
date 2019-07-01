@@ -36,7 +36,7 @@ extension CALayer: Tweenable {
 
         /// The `bounds` property of `CALayer`.
         public static func bounds(_ value: CGRect) -> TweenProperty {
-            return .init(get: { $0.frame }, set: { $0.frame = $1 }, value: value)
+            return .init(get: { $0.bounds }, set: { $0.bounds = $1 }, value: value)
         }
 
         /// The `position` property of `CALayer`.
@@ -96,13 +96,13 @@ extension CALayer: Tweenable {
         }
 
         /// The `borderColor` property of `CALayer`.
-        public static func borderColor(_ value: CGColor) -> TweenProperty {
-            return .init(get: { $0.borderColor ?? UIColor.clear.cgColor }, set: { $0.borderColor = $1 }, value: value)
+        public static func borderColor(_ value: UIColor) -> TweenProperty {
+            return .init(get: { UIColor(cgColor: $0.borderColor ?? .clear) }, set: { $0.borderColor = $1.cgColor }, value: value)
         }
 
         /// The `backgroundColor` property of `CALayer`.
-        public static func backgroundColor(_ value: CGColor) -> TweenProperty {
-            return .init(get: { $0.backgroundColor ?? UIColor.clear.cgColor }, set: { $0.backgroundColor = $1 }, value: value)
+        public static func backgroundColor(_ value: UIColor) -> TweenProperty {
+            return .init(get: { UIColor(cgColor: $0.backgroundColor ?? .clear) }, set: { $0.backgroundColor = $1.cgColor }, value: value)
         }
 
         /// The `opacity` property of `CALayer`.
@@ -111,8 +111,8 @@ extension CALayer: Tweenable {
         }
 
         /// The `shadowColor` property of `CALayer`.
-        public static func shadowColor(_ value: CGColor) -> TweenProperty {
-            return .init(get: { $0.shadowColor ?? UIColor.clear.cgColor }, set: { $0.shadowColor = $1 }, value: value)
+        public static func shadowColor(_ value: UIColor) -> TweenProperty {
+            return .init(get: { UIColor(cgColor: $0.shadowColor ?? .clear) }, set: { $0.shadowColor = $1.cgColor }, value: value)
         }
 
         /// The `shadowOpacity` property of `CALayer`.
@@ -131,5 +131,13 @@ extension CALayer: Tweenable {
         }
 
     }
+
+}
+
+/// :nodoc:
+private extension CGColor {
+
+    /// A color with red, green, blue, and alpha component values of 0.0.
+    static let clear = UIColor.clear.cgColor
 
 }

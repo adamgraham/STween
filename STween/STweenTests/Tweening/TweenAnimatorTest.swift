@@ -22,109 +22,279 @@ class TweenAnimatorTest: XCTestCase {
         super.tearDown()
     }
 
-    // MARK: Initialization Tests
+    // MARK: Initialization
 
-    func testInit() {
+    func testInitialization() {
         let target = UIView()
-        let tween = TweenAnimator<UIViewTweenProperty>(target: target, properties: [], duration: 1.0)
+        let anotherTarget = UIView()
+        let tween = TweenAnimator(targets: target, anotherTarget)
 
-        XCTAssertEqual(tween.target, target)
-        XCTAssertEqual(tween.targetProperties.count, 0)
-        XCTAssertEqual(tween.duration, 1.0)
-    }
-
-    // MARK: Tweening Tests
-
-    func testTweening() {
-        let target = UIView()
-        let tween = TweenAnimator<UIViewTweenProperty>(target: target, properties: [.x(100.0), .y(100.0)], duration: 1.0)
-        let tweeningExpectation = expectation(description: "tweening")
-
-        tween.onUpdate = { _ in
-            XCTAssertNotEqual(tween.elapsed, 0.0)
-        }
-
-        tween.onComplete = { _ in
-            tweeningExpectation.fulfill()
-        }
-
-        tween.ease = .linear
-        tween.start()
-
-        XCTAssertEqual(tween.state, .active)
+        XCTAssertNil(tween.tweener)
+        XCTAssertEqual(tween.targets, [target, anotherTarget])
+        XCTAssertTrue(tween.tweens.isEmpty)
+        XCTAssertEqual(tween.state, .new)
+        XCTAssertEqual(tween.ease, Defaults.ease)
+        XCTAssertEqual(tween.delay, Defaults.delay)
+        XCTAssertEqual(tween.duration, Defaults.duration)
         XCTAssertEqual(tween.elapsed, 0.0)
-        XCTAssertEqual(Double(target.frame.origin.x), 0.0, accuracy: .ulpOfOne)
-        XCTAssertEqual(Double(target.frame.origin.y), 0.0, accuracy: .ulpOfOne)
-
-        waitForExpectations(timeout: 3.0) { error in
-            XCTAssertEqual(tween.elapsed, tween.duration)
-            XCTAssertEqual(Double(target.frame.origin.x), 100.0, accuracy: .ulpOfOne)
-            XCTAssertEqual(Double(target.frame.origin.y), 100.0, accuracy: .ulpOfOne)
-        }
+        XCTAssertNil(tween.onUpdate)
+        XCTAssertNil(tween.onStart)
+        XCTAssertNil(tween.onStop)
+        XCTAssertNil(tween.onRestart)
+        XCTAssertNil(tween.onPause)
+        XCTAssertNil(tween.onResume)
+        XCTAssertNil(tween.onComplete)
+        XCTAssertNil(tween.onKill)
+        XCTAssertNil(tween.onRevive)
     }
 
-    func testTweeningReversed() {
+    // MARK: Tweening
+
+    func testTweenTo() {
         let target = UIView()
-        let tween = TweenAnimator<UIViewTweenProperty>(target: target, properties: [.x(100.0), .y(100.0)], duration: 1.0)
-        let tweeningExpectation = expectation(description: "tweening:reversed")
+        let tween = TweenAnimator(targets: target).to(.x(100.0), .y(100.0))
 
-        tween.onUpdate = { _ in
-            XCTAssertNotEqual(tween.elapsed, 0.0)
-        }
-
-        tween.onComplete = { _ in
-            tweeningExpectation.fulfill()
-        }
-
-        tween.reversed = true
+        tween.onUpdate = { _ in XCTAssertNotEqual(tween.elapsed, 0.0) }
+        tween.onComplete = { _ in XCTAssertEqual(tween.elapsed, tween.duration) }
         tween.ease = .linear
+        tween.duration = 1.0
+
         tween.start()
-
-        XCTAssertEqual(tween.state, .active)
         XCTAssertEqual(tween.elapsed, 0.0)
-        XCTAssertEqual(Double(target.frame.origin.x), 100.0, accuracy: .ulpOfOne)
-        XCTAssertEqual(Double(target.frame.origin.y), 100.0, accuracy: .ulpOfOne)
+        XCTAssertEqual(target.frame.origin.x, 0.0)
+        XCTAssertEqual(target.frame.origin.y, 0.0)
 
-        waitForExpectations(timeout: 3.0) { error in
-            XCTAssertEqual(tween.elapsed, tween.duration)
-            XCTAssertEqual(Double(target.frame.origin.x), 0.0, accuracy: .ulpOfOne)
-            XCTAssertEqual(Double(target.frame.origin.y), 0.0, accuracy: .ulpOfOne)
-        }
+        tween.update(by: 0.5)
+        XCTAssertEqual(tween.elapsed, 0.5)
+        XCTAssertEqual(target.frame.origin.x, 50.0)
+        XCTAssertEqual(target.frame.origin.y, 50.0)
+
+        tween.update(by: 1.0)
+        XCTAssertEqual(tween.elapsed, 1.0)
+        XCTAssertEqual(target.frame.origin.x, 100.0)
+        XCTAssertEqual(target.frame.origin.y, 100.0)
     }
 
-    func testTweeningDelayed() {
+    func testTweenToCustomProperty() {
+        struct CustomProperty: TweenableProperty {
+            var animation: ((UILabel) -> (TimeInterval) -> Void) {
+                return { _ in return { _ in } }
+            }
+        }
+        
+        let target = UILabel()
+        target.textColor = .black
+
+        let tween = TweenAnimator(targets: target)
+            .to(.x(100.0), .y(100.0))
+            .to(.textColor(.white))
+            .to(CustomProperty())
+
+        tween.onUpdate = { _ in XCTAssertNotEqual(tween.elapsed, 0.0) }
+        tween.onComplete = { _ in XCTAssertEqual(tween.elapsed, tween.duration) }
+        tween.ease = .linear
+        tween.duration = 1.0
+
+        tween.start()
+        XCTAssertEqual(tween.elapsed, 0.0)
+        XCTAssertColor(target.textColor, .black)
+        XCTAssertEqual(target.frame.origin.x, 0.0)
+        XCTAssertEqual(target.frame.origin.y, 0.0)
+
+        tween.update(by: 0.5)
+        XCTAssertEqual(tween.elapsed, 0.5)
+        XCTAssertColor(target.textColor, .gray)
+        XCTAssertEqual(target.frame.origin.x, 50.0)
+        XCTAssertEqual(target.frame.origin.y, 50.0)
+
+        tween.update(by: 1.0)
+        XCTAssertEqual(tween.elapsed, 1.0)
+        XCTAssertColor(target.textColor, .white)
+        XCTAssertEqual(target.frame.origin.x, 100.0)
+        XCTAssertEqual(target.frame.origin.y, 100.0)
+    }
+
+    func testTweenToDelayed() {
         let target = UIView()
-        let tween = TweenAnimator<UIViewTweenProperty>(target: target, properties: [.x(100.0), .y(100.0)], duration: 1.0)
-        let tweeningExpectation = expectation(description: "tweening:delayed")
+        let tween = TweenAnimator(targets: target).to(.x(100.0), .y(100.0))
 
-        tween.onUpdate = { _ in
-            XCTAssertNotEqual(tween.elapsed, 0.0)
-        }
-
-        tween.onComplete = { _ in
-            tweeningExpectation.fulfill()
-        }
-
+        tween.onUpdate = { _ in XCTAssertNotEqual(tween.elapsed, 0.0) }
+        tween.onComplete = { _ in XCTAssertEqual(tween.elapsed, tween.duration) }
+        tween.ease = .linear
+        tween.duration = 1.0
         tween.delay = 1.0
-        tween.ease = .linear
+
         tween.start()
-
-        XCTAssertEqual(tween.state, .delayed)
         XCTAssertEqual(tween.elapsed, 0.0)
-        XCTAssertEqual(Double(target.frame.origin.x), 0.0, accuracy: .ulpOfOne)
-        XCTAssertEqual(Double(target.frame.origin.y), 0.0, accuracy: .ulpOfOne)
+        XCTAssertEqual(target.frame.origin.x, 0.0)
+        XCTAssertEqual(target.frame.origin.y, 0.0)
 
-        waitForExpectations(timeout: 3.0) { error in
-            XCTAssertEqual(tween.elapsed, tween.duration)
-            XCTAssertEqual(Double(target.frame.origin.x), 100.0, accuracy: .ulpOfOne)
-            XCTAssertEqual(Double(target.frame.origin.y), 100.0, accuracy: .ulpOfOne)
-        }
+        tween.update(by: 0.5)
+        XCTAssertEqual(tween.elapsed, 0.0)
+        XCTAssertEqual(target.frame.origin.x, 0.0)
+        XCTAssertEqual(target.frame.origin.y, 0.0)
+
+        tween.update(by: 1.0)
+        XCTAssertEqual(tween.elapsed, 0.0)
+        XCTAssertEqual(target.frame.origin.x, 0.0)
+        XCTAssertEqual(target.frame.origin.y, 0.0)
+
+        tween.update(by: 0.5)
+        XCTAssertEqual(tween.elapsed, 0.5)
+        XCTAssertEqual(target.frame.origin.x, 50.0)
+        XCTAssertEqual(target.frame.origin.y, 50.0)
+
+        tween.update(by: 1.0)
+        XCTAssertEqual(tween.elapsed, 1.0)
+        XCTAssertEqual(target.frame.origin.x, 100.0)
+        XCTAssertEqual(target.frame.origin.y, 100.0)
     }
 
-    // MARK: State Control Tests
+    func testTweenFrom() {
+        let target = UIView()
+        let tween = TweenAnimator(targets: target).from(.x(100.0), .y(100.0))
+
+        tween.onUpdate = { _ in XCTAssertNotEqual(tween.elapsed, 0.0) }
+        tween.onComplete = { _ in XCTAssertEqual(tween.elapsed, tween.duration) }
+        tween.ease = .linear
+        tween.duration = 1.0
+
+        tween.start()
+        XCTAssertEqual(tween.elapsed, 0.0)
+        XCTAssertEqual(target.frame.origin.x, 100.0)
+        XCTAssertEqual(target.frame.origin.y, 100.0)
+
+        tween.update(by: 0.5)
+        XCTAssertEqual(tween.elapsed, 0.5)
+        XCTAssertEqual(target.frame.origin.x, 50.0)
+        XCTAssertEqual(target.frame.origin.y, 50.0)
+
+        tween.update(by: 1.0)
+        XCTAssertEqual(tween.elapsed, 1.0)
+        XCTAssertEqual(target.frame.origin.x, 0.0)
+        XCTAssertEqual(target.frame.origin.y, 0.0)
+    }
+
+    func testTweenFromCustomProperty() {
+        struct CustomProperty: TweenableProperty {
+            var animation: ((UILabel) -> (TimeInterval) -> Void) {
+                return { _ in return { _ in } }
+            }
+        }
+
+        let target = UILabel()
+        target.textColor = .black
+
+        let tween = TweenAnimator(targets: target)
+            .from(.x(100.0), .y(100.0))
+            .from(.textColor(.white))
+            .from(CustomProperty())
+
+        tween.onUpdate = { _ in XCTAssertNotEqual(tween.elapsed, 0.0) }
+        tween.onComplete = { _ in XCTAssertEqual(tween.elapsed, tween.duration) }
+        tween.ease = .linear
+        tween.duration = 1.0
+
+        tween.start()
+        XCTAssertEqual(tween.elapsed, 0.0)
+        XCTAssertColor(target.textColor, .white)
+        XCTAssertEqual(target.frame.origin.x, 100.0)
+        XCTAssertEqual(target.frame.origin.y, 100.0)
+
+        tween.update(by: 0.5)
+        XCTAssertEqual(tween.elapsed, 0.5)
+        XCTAssertColor(target.textColor, .gray)
+        XCTAssertEqual(target.frame.origin.x, 50.0)
+        XCTAssertEqual(target.frame.origin.y, 50.0)
+
+        tween.update(by: 1.0)
+        XCTAssertEqual(tween.elapsed, 1.0)
+        XCTAssertColor(target.textColor, .black)
+        XCTAssertEqual(target.frame.origin.x, 0.0)
+        XCTAssertEqual(target.frame.origin.y, 0.0)
+    }
+
+    func testTweenFromDelayed() {
+        let target = UIView()
+        let tween = TweenAnimator(targets: target).from(.x(100.0), .y(100.0))
+
+        tween.onUpdate = { _ in XCTAssertNotEqual(tween.elapsed, 0.0) }
+        tween.onComplete = { _ in XCTAssertEqual(tween.elapsed, tween.duration) }
+        tween.ease = .linear
+        tween.duration = 1.0
+        tween.delay = 1.0
+
+        tween.start()
+        XCTAssertEqual(tween.elapsed, 0.0)
+        XCTAssertEqual(target.frame.origin.x, 0.0)
+        XCTAssertEqual(target.frame.origin.y, 0.0)
+
+        tween.update(by: 0.5)
+        XCTAssertEqual(tween.elapsed, 0.0)
+        XCTAssertEqual(target.frame.origin.x, 0.0)
+        XCTAssertEqual(target.frame.origin.y, 0.0)
+
+        tween.update(by: 1.0)
+        XCTAssertEqual(tween.elapsed, 0.0)
+        XCTAssertEqual(target.frame.origin.x, 100.0)
+        XCTAssertEqual(target.frame.origin.y, 100.0)
+
+        tween.update(by: 0.5)
+        XCTAssertEqual(tween.elapsed, 0.5)
+        XCTAssertEqual(target.frame.origin.x, 50.0)
+        XCTAssertEqual(target.frame.origin.y, 50.0)
+
+        tween.update(by: 1.0)
+        XCTAssertEqual(tween.elapsed, 1.0)
+        XCTAssertEqual(target.frame.origin.x, 0.0)
+        XCTAssertEqual(target.frame.origin.y, 0.0)
+    }
+
+    // MARK: State Control
+
+    func testUpdate() {
+        let tween = TweenAnimator(targets: UIView())
+
+        var callbackInvoked = false
+        tween.onUpdate = { _ in
+            callbackInvoked = true
+        }
+
+        XCTAssertEqual(tween.state, .new)
+        XCTAssertFalse(tween.update(by: .ulpOfOne))
+        XCTAssertEqual(tween.state, .new)
+        XCTAssertTrue(tween.start())
+        XCTAssertEqual(tween.state, .active)
+        XCTAssertTrue(tween.update(by: .ulpOfOne))
+        XCTAssertEqual(tween.state, .active)
+        XCTAssertTrue(callbackInvoked)
+    }
+
+    func testUpdateWithDelay() {
+        let tween = TweenAnimator(targets: UIView())
+        tween.delay = 1.0
+
+        var callbackInvoked = false
+        tween.onUpdate = { _ in
+            callbackInvoked = true
+        }
+
+        XCTAssertEqual(tween.state, .new)
+        XCTAssertFalse(tween.update(by: .ulpOfOne))
+        XCTAssertEqual(tween.state, .new)
+        XCTAssertTrue(tween.start())
+        XCTAssertEqual(tween.state, .delayed)
+        XCTAssertTrue(tween.update(by: .ulpOfOne))
+        XCTAssertEqual(tween.state, .delayed)
+        XCTAssertFalse(callbackInvoked)
+        XCTAssertTrue(tween.update(by: tween.delay))
+        XCTAssertEqual(tween.state, .active)
+        XCTAssertTrue(tween.update(by: .ulpOfOne))
+        XCTAssertTrue(callbackInvoked)
+    }
 
     func testStart() {
-        let tween = TweenAnimator<UIViewTweenProperty>(target: UIView(), properties: [], duration: 1.0)
+        let tween = TweenAnimator(targets: UIView())
 
         var callbackInvoked = false
         tween.onStart = { _ in
@@ -139,7 +309,7 @@ class TweenAnimatorTest: XCTestCase {
     }
 
     func testStartWithDelay() {
-        let tween = TweenAnimator<UIViewTweenProperty>(target: UIView(), properties: [], duration: 1.0)
+        let tween = TweenAnimator(targets: UIView())
         tween.delay = 1.0
 
         var callbackInvoked = false
@@ -152,10 +322,13 @@ class TweenAnimatorTest: XCTestCase {
         XCTAssertEqual(tween.state, .delayed)
         XCTAssertFalse(tween.start())
         XCTAssertFalse(callbackInvoked)
+        XCTAssertTrue(tween.update(by: tween.delay))
+        XCTAssertEqual(tween.state, .active)
+        XCTAssertTrue(callbackInvoked)
     }
 
     func testStop() {
-        let tween = TweenAnimator<UIViewTweenProperty>(target: UIView(), properties: [], duration: 1.0)
+        let tween = TweenAnimator(targets: UIView())
 
         var callbackInvoked = false
         tween.onStop = { _ in
@@ -173,7 +346,7 @@ class TweenAnimatorTest: XCTestCase {
     }
 
     func testRestart() {
-        let tween = TweenAnimator<UIViewTweenProperty>(target: UIView(), properties: [], duration: 1.0)
+        let tween = TweenAnimator(targets: UIView())
 
         var callbackInvoked = false
         tween.onRestart = { _ in
@@ -197,7 +370,7 @@ class TweenAnimatorTest: XCTestCase {
     }
 
     func testPause() {
-        let tween = TweenAnimator<UIViewTweenProperty>(target: UIView(), properties: [], duration: 1.0)
+        let tween = TweenAnimator(targets: UIView())
 
         var callbackInvoked = false
         tween.onPause = { _ in
@@ -215,7 +388,7 @@ class TweenAnimatorTest: XCTestCase {
     }
 
     func testResume() {
-        let tween = TweenAnimator<UIViewTweenProperty>(target: UIView(), properties: [], duration: 1.0)
+        let tween = TweenAnimator(targets: UIView())
 
         var callbackInvoked = false
         tween.onResume = { _ in
@@ -235,7 +408,7 @@ class TweenAnimatorTest: XCTestCase {
     }
 
     func testResumeWithDelay() {
-        let tween = TweenAnimator<UIViewTweenProperty>(target: UIView(), properties: [], duration: 1.0)
+        let tween = TweenAnimator(targets: UIView())
         tween.delay = 1.0
 
         var callbackInvoked = false
@@ -259,7 +432,8 @@ class TweenAnimatorTest: XCTestCase {
         Defaults.autoKillCompletedTweens = true
         defer { Defaults.reset() }
 
-        let tween = TweenAnimator<UIViewTweenProperty>(target: UIView(), properties: [.x(100.0)], duration: 1.0)
+        let target = UIView()
+        let tween = TweenAnimator(targets: target).to(.x(100.0))
 
         var callbackInvoked = false
         tween.onComplete = { _ in
@@ -272,7 +446,7 @@ class TweenAnimatorTest: XCTestCase {
         XCTAssertFalse(tween.complete())
         XCTAssertEqual(tween.state, .killed)
         XCTAssertEqual(tween.elapsed, tween.duration)
-        XCTAssertEqual(tween.target.frame.origin.x, 100.0)
+        XCTAssertEqual(target.frame.origin.x, 100.0)
         XCTAssertTrue(callbackInvoked)
     }
 
@@ -280,7 +454,8 @@ class TweenAnimatorTest: XCTestCase {
         Defaults.autoKillCompletedTweens = false
         defer { Defaults.reset() }
 
-        let tween = TweenAnimator<UIViewTweenProperty>(target: UIView(), properties: [.x(100.0)], duration: 1.0)
+        let target = UIView()
+        let tween = TweenAnimator(targets: target).to(.x(100.0))
 
         var callbackInvoked = false
         tween.onComplete = { _ in
@@ -293,34 +468,38 @@ class TweenAnimatorTest: XCTestCase {
         XCTAssertFalse(tween.complete())
         XCTAssertEqual(tween.state, .completed)
         XCTAssertEqual(tween.elapsed, tween.duration)
-        XCTAssertEqual(tween.target.frame.origin.x, 100.0)
+        XCTAssertEqual(target.frame.origin.x, 100.0)
         XCTAssertTrue(callbackInvoked)
     }
 
     func testKill() {
-        let tween = TweenAnimator<UIViewTweenProperty>(target: UIView(), properties: [], duration: 1.0)
+        let tween = TweenAnimator(targets: UIView())
+        Tweener.default.track(tween)
 
         var callbackInvoked = false
         tween.onKill = { _ in
             callbackInvoked = true
         }
 
+        XCTAssertTrue(Tweener.default.isTracking(tween))
         XCTAssertEqual(tween.state, .new)
         XCTAssertTrue(tween.kill())
         XCTAssertEqual(tween.state, .killed)
         XCTAssertFalse(tween.kill())
         XCTAssertTrue(callbackInvoked)
+        XCTAssertFalse(Tweener.default.isTracking(tween))
     }
 
     func testRevive() {
-        let tween = TweenAnimator<UIViewTweenProperty>(target: UIView(), properties: [], duration: 1.0)
+        let tween = TweenAnimator(targets: UIView())
+        Tweener.default.track(tween)
 
         var callbackInvoked = false
         tween.onRevive = { _ in
             callbackInvoked = true
         }
 
-        XCTAssertEqual(Tweener.default.count, 0)
+        XCTAssertTrue(Tweener.default.isTracking(tween))
         XCTAssertEqual(tween.state, .new)
         XCTAssertTrue(tween.start())
         XCTAssertEqual(tween.state, .active)
@@ -328,29 +507,12 @@ class TweenAnimatorTest: XCTestCase {
         XCTAssertEqual(tween.state, .active)
         XCTAssertTrue(tween.kill())
         XCTAssertEqual(tween.state, .killed)
+        XCTAssertFalse(Tweener.default.isTracking(tween))
         XCTAssertTrue(tween.revive())
         XCTAssertEqual(tween.state, .new)
         XCTAssertEqual(tween.elapsed, 0.0)
         XCTAssertTrue(callbackInvoked)
-        XCTAssertEqual(Tweener.default.count, 1)
-    }
-
-    func testUpdate() {
-        let tween = TweenAnimator<UIViewTweenProperty>(target: UIView(), properties: [], duration: 1.0)
-
-        var callbackInvoked = false
-        tween.onUpdate = { _ in
-            callbackInvoked = true
-        }
-
-        XCTAssertEqual(tween.state, .new)
-        XCTAssertFalse(tween.update())
-        XCTAssertEqual(tween.state, .new)
-        XCTAssertTrue(tween.start())
-        XCTAssertEqual(tween.state, .active)
-        XCTAssertTrue(tween.update())
-        XCTAssertEqual(tween.state, .active)
-        XCTAssertTrue(callbackInvoked)
+        XCTAssertTrue(Tweener.default.isTracking(tween))
     }
 
 }

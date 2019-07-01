@@ -329,14 +329,27 @@ extension EaseFunction {
     /// - parameter x: The `x` coordinate to which the `y` value is returned, between [0, 1].
     /// - returns: The `y` value for coordinate `x`, between [0, 1].
     public static func bounceIn(_ x: Double) -> Double {
-        return 1.0 - bounceInOut(1.0 - x)
+        return 1.0 - bounceOut(1.0 - x)
     }
 
     /// Calculates the `y` value for coordinate `x` using bounce-out easing.
     /// - parameter x: The `x` coordinate to which the `y` value is returned, between [0, 1].
     /// - returns: The `y` value for coordinate `x`, between [0, 1].
     public static func bounceOut(_ x: Double) -> Double {
-        return bounceInOut(x)
+        var x = x
+
+        if (x < 1.0 / 2.75) {
+            return 7.5625 * x * x;
+        } else if (x < 2.0 / 2.75) {
+            x -= (1.5 / 2.75)
+            return 7.5625 * x * x + 0.75;
+        } else if (x < 2.5 / 2.75) {
+            x -= (2.25 / 2.75)
+            return 7.5625 * x * x + 0.9375;
+        }
+
+        x -= (2.625 / 2.75)
+        return 7.5625 * x * x + 0.984375;
     }
 
     /// Calculates the `y` value for coordinate `x` using bounce-in-out easing.
@@ -344,8 +357,8 @@ extension EaseFunction {
     /// - returns: The `y` value for coordinate `x`, between [0, 1].
     public static func bounceInOut(_ x: Double) -> Double {
         return x < 0.5 ?
-            (1.0 - bounceInOut(1.0 - 2.0 * x)) / 2.0 :
-            (1.0 + bounceInOut(2.0 * x - 1.0)) / 2.0
+            (1.0 - bounceOut(1.0 - 2.0 * x)) / 2.0 :
+            (1.0 + bounceOut(2.0 * x - 1.0)) / 2.0
     }
     
 }

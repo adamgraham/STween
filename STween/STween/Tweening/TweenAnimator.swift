@@ -18,14 +18,14 @@ public final class TweenAnimator<Target: Tweenable>: Tween {
     internal weak var tweener: Tweener?
 
     /// An array of target instances to which the animated properties are applied.
-    private var targets: [Target] = []
+    internal var targets: [Target] = []
 
     /// An array of animation closures that are invoked every update cycle.
-    private var tweens: [(animate: Tween.Animation, reversed: Bool)] = []
+    internal var tweens: [(animate: Tween.Animation, reversed: Bool)] = []
+
+    public private(set) var state = TweenState.new
 
     public var ease = Defaults.ease
-    
-    public private(set) var state = TweenState.new
 
     // MARK: Time Properties
     
@@ -53,7 +53,7 @@ public final class TweenAnimator<Target: Tweenable>: Tween {
     /// Initializes the animator with an array of target instances on which properties can be
     /// animated.
     /// - parameter targets: The target instances on which properties can be animated.
-    internal init(targets: [Target]) {
+    internal init(targets: Target...) {
         self.targets = targets
     }
 
@@ -61,7 +61,7 @@ public final class TweenAnimator<Target: Tweenable>: Tween {
 
 extension TweenAnimator {
 
-    // MARK: Tweening Methods
+    // MARK: Tweening
 
     /// Animates tweenable properties from the target's current values *to* the desired values.
     /// - parameter properties: The properties to animate.
@@ -151,20 +151,14 @@ extension TweenAnimator {
 
 private extension TweenAnimator {
 
-    // MARK: Delay Methods
+    // MARK: Delaying
 
     /// Marks the tween as delayed, starting the delay timer from zero.
     /// The tween can only be delayed if it's *not* already in a `delayed` state.
     /// - returns: `true` if the tween is successfully marked as delayed.
-    @discardableResult
-    func startDelay() -> Bool {
-        guard self.state != .delayed else { return false }
-
-        // Set state
+    func startDelay() {
         self.state = .delayed
         self.delayElapsed = 0.0
-
-        return true
     }
 
     /// Updates the elapsed delay time and checks if the delay has finished.
@@ -186,7 +180,7 @@ private extension TweenAnimator {
 
 public extension TweenAnimator {
 
-    // MARK: State Control Methods
+    // MARK: State Control
 
     /// Invokes all animation closures for the current time after applying an easing function.
     /// These animation closures interpolate a new value of a property and apply it back to the
@@ -206,7 +200,7 @@ public extension TweenAnimator {
     func update(by deltaTime: TimeInterval) -> Bool {
         guard self.state != .delayed else {
             updateDelay(by: deltaTime)
-            return false
+            return true
         }
 
         guard self.state.canUpdate else { return false }
@@ -230,7 +224,8 @@ public extension TweenAnimator {
     func start() -> Bool {
         guard self.state.canStart else { return false }
         guard self.delayElapsed >= self.delay else {
-            return startDelay()
+            startDelay()
+            return true
         }
 
         // Set state

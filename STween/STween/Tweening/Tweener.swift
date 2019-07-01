@@ -63,18 +63,25 @@ public final class Tweener {
         Tweener.tweeners["default"] = self
     }
 
-    // MARK: Properties
+    // MARK: Time Properties
+
+    /// The time of the last update event.
+    private var lastUpdate = Date()
 
     /// An array of every instantiated tween.
     private var tweens = [Tween]() {
         didSet {
+            let wasPaused = self.tweenTimer.isPaused
             self.tweenTimer.isPaused = self.tweens.isEmpty
+            if !self.tweenTimer.isPaused && wasPaused {
+                self.lastUpdate = Date()
+            }
         }
     }
 
     /// The timer used to update all active tweens.
     private lazy var tweenTimer: CADisplayLink = {
-        let selector = #selector(self.startQueuedTweens)
+        let selector = #selector(self.updateTrackedTweens)
         let timer = CADisplayLink(target: self, selector: selector)
         timer.add(to: .main, forMode: RunLoop.Mode.default)
         timer.isPaused = true
@@ -108,7 +115,7 @@ public extension Tweener {
     /// - returns: The `Tween` handle that manages and controls the animation.
     @discardableResult
     func animate<Target: Tweenable>(_ target: Target) -> TweenAnimator<Target> {
-        let tween = TweenAnimator(targets: [target])
+        let tween = TweenAnimator(targets: target)
         tween.tweener = self
         track(tween)
 
@@ -121,13 +128,20 @@ public extension Tweener {
 
 }
 
-extension Tweener {
+public extension Tweener {
 
     // MARK: Tracking
 
     /// The number of tweens crrently being tracked.
-    public var count: Int {
+    var count: Int {
         return self.tweens.count
+    }
+
+    /// Checks if a tween is being tracked.
+    /// - parameter tween: The `Tween`control to be checked.
+    /// - returns: `true` if the tween is contained in the list of tracked tweens.
+    func isTracking(_ tween: Tween) -> Bool {
+        return self.tweens.contains(where: { $0 === tween })
     }
 
     /// Adds a tween to the list of tracked tweens.
@@ -154,21 +168,14 @@ extension Tweener {
         }
     }
 
-    /// Checks if a tween is being tracked.
-    /// - parameter tween: The `Tween`control to be checked.
-    /// - returns: `true` if the tween is contained in the list of tracked tweens.
-    internal func isTracked(_ tween: Tween) -> Bool {
-        return self.tweens.contains(where: { $0 === tween })
-    }
-
 }
 
-extension Tweener {
+internal extension Tweener {
 
     // MARK: Queueing
 
     /// The number of tweens currently queued to start.
-    internal var queuedCount: Int {
+    var queuedCount: Int {
         return self.queuedTweens.count
     }
 
@@ -178,7 +185,7 @@ extension Tweener {
     /// to be applied before starting.
     ///
     /// - parameter tween: The `Tween` control to be queued.
-    internal func queue(_ tween: Tween) {
+    func queue(_ tween: Tween) {
         guard self.queuedTweens.firstIndex(where: { $0 === tween }) == nil else {
             return
         }
@@ -188,7 +195,7 @@ extension Tweener {
 
     /// Starts all queued tweens by invoking `start` on each one – putting the tweens in an
     /// `active` state and removing them from the list of queued tweens.
-    @objc internal func startQueuedTweens() {
+    @objc func startQueuedTweens() {
         self.queuedTweens.forEach {
             $0.start()
         }
@@ -202,61 +209,53 @@ public extension Tweener {
 
     // MARK: Global State Control
 
+    /// Updates all tweens
+    @objc private func updateTrackedTweens() {
+        let now = Date()
+        let deltaTime = now.timeIntervalSince(self.lastUpdate)
+        updateAll(by: deltaTime)
+        self.lastUpdate = now
+    }
+
     /// Invokes `update` on all currently tracked tweens.
     /// - parameter deltaTime: The amount of seconds passed since the last update.
     func updateAll(by deltaTime: TimeInterval) {
-        self.tweens.forEach {
-            $0.update(by: deltaTime)
-        }
+        self.tweens.forEach { $0.update(by: deltaTime) }
     }
 
     /// Invokes `start` on all currently tracked tweens.
     func startAll() {
-        self.tweens.forEach {
-            $0.start()
-        }
+        self.tweens.forEach { $0.start() }
     }
 
     /// Invokes `stop` on all currently tracked tweens.
     func stopAll() {
-        self.tweens.forEach {
-            $0.stop()
-        }
+        self.tweens.forEach { $0.stop() }
     }
 
     /// Invokes `stop` on all currently tracked tweens.
     func restartAll() {
-        self.tweens.forEach {
-            $0.restart()
-        }
+        self.tweens.forEach { $0.restart() }
     }
 
     /// Invokes `pause` on all currently tracked tweens.
     func pauseAll() {
-        self.tweens.forEach {
-            $0.pause()
-        }
+        self.tweens.forEach { $0.pause() }
     }
 
     /// Invokes `resume` on all currently tracked tweens.
     func resumeAll() {
-        self.tweens.forEach {
-            $0.resume()
-        }
+        self.tweens.forEach { $0.resume() }
     }
 
     /// Invokes `complete` on all currently tracked tweens.
     func completeAll() {
-        self.tweens.forEach {
-            $0.complete()
-        }
+        self.tweens.forEach { $0.complete() }
     }
 
     /// Invokes `kill` on all currently tracked tweens.
     func killAll() {
-        self.tweens.forEach {
-            $0.kill()
-        }
+        self.tweens.forEach { $0.kill() }
     }
 
 }

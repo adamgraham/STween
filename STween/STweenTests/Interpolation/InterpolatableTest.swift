@@ -14,25 +14,43 @@ class InterpolatableTest: XCTestCase {
 
     // MARK: Assertions
 
-    private func assertInterpolation<T: Interpolatable>(_ start: T, _ end: T, _ middle: T) where T.Value == T {
-        var interpolatedValue = T.interpolate(from: start, to: end, with: .linear, elapsed: 0.0, duration: 1.0)
-        XCTAssertEqual(interpolatedValue, start)
-        interpolatedValue = T.interpolate(from: start, to: end, with: .linear, elapsed: 0.5, duration: 1.0)
-        XCTAssertEqual(interpolatedValue, middle)
-        interpolatedValue = T.interpolate(from: start, to: end, with: .linear, elapsed: 1.0, duration: 1.0)
-        XCTAssertEqual(interpolatedValue, end)
+    private func assertInterpolation<T: Interpolatable & Equatable>(_ start: T, _ end: T, _ middle: T) {
+        XCTAssertEqual(start, T.interpolate(from: start, to: end, time: 0.0))
+        XCTAssertEqual(middle, T.interpolate(from: start, to: end, time: 0.5))
+        XCTAssertEqual(end, T.interpolate(from: start, to: end, time: 1.0))
+
+        XCTAssertEqual(start, T.interpolate(from: start, to: end, with: .linear, elapsed: 0.0, duration: 1.0))
+        XCTAssertEqual(middle, T.interpolate(from: start, to: end, with: .linear, elapsed: 0.5, duration: 1.0))
+        XCTAssertEqual(end, T.interpolate(from: start, to: end, with: .linear, elapsed: 1.0, duration: 1.0))
+
+        XCTAssertEqual(start, T.interpolate(from: [start], to: [end], time: 0.0)[0])
+        XCTAssertEqual(middle, T.interpolate(from: [start], to: [end], time: 0.5)[0])
+        XCTAssertEqual(end, T.interpolate(from: [start], to: [end], time: 1.0)[0])
+
+        XCTAssertEqual(start, T.interpolate(from: [start], to: [end], with: .linear, elapsed: 0.0, duration: 1.0)[0])
+        XCTAssertEqual(middle, T.interpolate(from: [start], to: [end], with: .linear, elapsed: 0.5, duration: 1.0)[0])
+        XCTAssertEqual(end, T.interpolate(from: [start], to: [end], with: .linear, elapsed: 1.0, duration: 1.0)[0])
     }
 
-    private func assertInterpolation<T: Interpolatable>(_ start: T, _ end: T, _ middle: T, _ isEqual: (_ lhs: T, _ rhs: T) -> Bool) where T.Value == T {
-        var interpolatedValue = T.interpolate(from: start, to: end, with: .linear, elapsed: 0.0, duration: 1.0)
-        XCTAssertTrue(isEqual(interpolatedValue, start))
-        interpolatedValue = T.interpolate(from: start, to: end, with: .linear, elapsed: 0.5, duration: 1.0)
-        XCTAssertTrue(isEqual(interpolatedValue, middle))
-        interpolatedValue = T.interpolate(from: start, to: end, with: .linear, elapsed: 1.0, duration: 1.0)
-        XCTAssertTrue(isEqual(interpolatedValue, end))
+    private func assertInterpolation<T: Interpolatable>(_ start: T, _ end: T, _ middle: T, _ isEqual: (_ lhs: T, _ rhs: T) -> Bool) {
+        XCTAssertTrue(isEqual(start, T.interpolate(from: start, to: end, time: 0.0)))
+        XCTAssertTrue(isEqual(middle, T.interpolate(from: start, to: end, time: 0.5)))
+        XCTAssertTrue(isEqual(end, T.interpolate(from: start, to: end, time: 1.0)))
+
+        XCTAssertTrue(isEqual(start, T.interpolate(from: start, to: end, with: .linear, elapsed: 0.0, duration: 1.0)))
+        XCTAssertTrue(isEqual(middle, T.interpolate(from: start, to: end, with: .linear, elapsed: 0.5, duration: 1.0)))
+        XCTAssertTrue(isEqual(end, T.interpolate(from: start, to: end, with: .linear, elapsed: 1.0, duration: 1.0)))
+
+        XCTAssertTrue(isEqual(start, T.interpolate(from: [start], to: [end], time: 0.0)[0]))
+        XCTAssertTrue(isEqual(middle, T.interpolate(from: [start], to: [end], time: 0.5)[0]))
+        XCTAssertTrue(isEqual(end, T.interpolate(from: [start], to: [end], time: 1.0)[0]))
+
+        XCTAssertTrue(isEqual(start, T.interpolate(from: [start], to: [end], with: .linear, elapsed: 0.0, duration: 1.0)[0]))
+        XCTAssertTrue(isEqual(middle, T.interpolate(from: [start], to: [end], with: .linear, elapsed: 0.5, duration: 1.0)[0]))
+        XCTAssertTrue(isEqual(end, T.interpolate(from: [start], to: [end], with: .linear, elapsed: 1.0, duration: 1.0)[0]))
     }
 
-    // MARK: Swift Tests
+    // MARK: Foundation
 
     func testUInt() {
         let start: UInt = 0
@@ -148,7 +166,7 @@ class InterpolatableTest: XCTestCase {
         assertInterpolation(start, end, middle)
     }
 
-    // MARK: CoreAnimation Tests
+    // MARK: CoreAnimation
 
     func testCATransform3D() {
         let start = CATransform3D(m11: 0.0, m12: 0.0, m13: 0.0, m14: 0.0,
@@ -168,44 +186,12 @@ class InterpolatableTest: XCTestCase {
         }
     }
 
-    func testCATransform3DEquatable() {
-        let a = CATransform3D(m11: 10.0, m12: 10.0, m13: 10.0, m14: 10.0,
-                              m21: 10.0, m22: 10.0, m23: 10.0, m24: 10.0,
-                              m31: 10.0, m32: 10.0, m33: 10.0, m34: 10.0,
-                              m41: 10.0, m42: 10.0, m43: 10.0, m44: 10.0)
-        let b = CATransform3D(m11: 10.0, m12: 10.0, m13: 10.0, m14: 10.0,
-                              m21: 10.0, m22: 10.0, m23: 10.0, m24: 10.0,
-                              m31: 10.0, m32: 10.0, m33: 10.0, m34: 10.0,
-                              m41: 10.0, m42: 10.0, m43: 10.0, m44: 10.0)
-        let c = CATransform3D(m11: 0.0, m12: 0.0, m13: 0.0, m14: 0.0,
-                              m21: 0.0, m22: 0.0, m23: 0.0, m24: 0.0,
-                              m31: 0.0, m32: 0.0, m33: 0.0, m34: 0.0,
-                              m41: 0.0, m42: 0.0, m43: 0.0, m44: 0.0)
-
-        XCTAssertEqual(a, a)
-        XCTAssertEqual(a, b)
-        XCTAssertNotEqual(a, c)
-        XCTAssertEqual(b, a)
-        XCTAssertEqual(b, b)
-        XCTAssertNotEqual(b, c)
-        XCTAssertNotEqual(c, a)
-        XCTAssertNotEqual(c, b)
-        XCTAssertEqual(c, c)
-    }
-
-    // MARK: CoreGraphics Tests
+    // MARK: CoreGraphics
 
     func testCGAffineTransform() {
         let start = CGAffineTransform(a: 0.0, b: 0.0, c: 0.0, d: 0.0, tx: 0.0, ty: 0.0)
         let end = CGAffineTransform(a: 10.0, b: 10.0, c: 10.0, d: 10.0, tx: 10.0, ty: 10.0)
         let middle = CGAffineTransform(a: 5.0, b: 5.0, c: 5.0, d: 5.0, tx: 5.0, ty: 5.0)
-        assertInterpolation(start, end, middle)
-    }
-
-    func testCGColor() {
-        let start = UIColor.red.cgColor
-        let end = UIColor.blue.cgColor
-        let middle = UIColor.purple.cgColor
         assertInterpolation(start, end, middle)
     }
 
@@ -244,7 +230,7 @@ class InterpolatableTest: XCTestCase {
         assertInterpolation(start, end, middle)
     }
 
-    // MARK: CoreImage Tests
+    // MARK: CoreImage
 
     func testCIColor() {
         let start = CIColor(color: UIColor.red)
@@ -262,7 +248,7 @@ class InterpolatableTest: XCTestCase {
         assertInterpolation(start, end, middle)
     }
 
-    // MARK: UIKit Tests
+    // MARK: UIKit
 
     func testUIColor() {
         let start = UIColor.red
@@ -287,11 +273,11 @@ class InterpolatableTest: XCTestCase {
 
 }
 
-// MARK: - Equatable Helpers
+// MARK: - Equatable
 
-extension CATransform3D {
+extension CATransform3D: Equatable {
 
-    internal static func ==(lhs: CATransform3D, rhs: CATransform3D) -> Bool {
+    public static func ==(lhs: CATransform3D, rhs: CATransform3D) -> Bool {
         return (lhs.m11 == rhs.m11) && (lhs.m12 == rhs.m12) && (lhs.m13 == rhs.m13) && (lhs.m14 == rhs.m14) &&
                (lhs.m21 == rhs.m21) && (lhs.m22 == rhs.m22) && (lhs.m23 == rhs.m23) && (lhs.m24 == rhs.m24) &&
                (lhs.m31 == rhs.m31) && (lhs.m32 == rhs.m32) && (lhs.m33 == rhs.m33) && (lhs.m34 == rhs.m34) &&
@@ -302,7 +288,7 @@ extension CATransform3D {
 
 extension CIColor {
 
-    internal static func ==(lhs: CIColor, rhs: CIColor) -> Bool {
+    static func ==(lhs: CIColor, rhs: CIColor) -> Bool {
         return lhs.red == rhs.red &&
                lhs.green == rhs.green &&
                lhs.blue == rhs.blue &&

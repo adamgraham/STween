@@ -10,12 +10,14 @@ import XCTest
 
 @testable import STween
 
-class NSLayoutConstraint_TweeningTest: XCTestCase, TweenableTestable {
+class NSLayoutConstraint_TweeningTest: XCTestCase {
 
     func testConstantTweenProperty() {
         let constraint = NSLayoutConstraint()
-        let property = NSLayoutConstraintTweenProperty.constant(100.0)
-        assertValidInterpolation(of: property, on: constraint)
+        let value = CGFloat(100.0)
+        let property = NSLayoutConstraint.TweenProperty.constant(value)
+        property.animation(constraint)(1.0)
+        XCTAssertEqual(constraint.constant, value)
     }
 
 }

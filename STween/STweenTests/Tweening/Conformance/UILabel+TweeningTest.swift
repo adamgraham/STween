@@ -10,78 +10,109 @@ import XCTest
 
 @testable import STween
 
-class UILabel_TweeningTest: XCTestCase, TweenableTestable {
+class UILabel_TweeningTest: XCTestCase {
+
+    override func setUp() {
+        super.setUp()
+        Tweener.default.killAll()
+    }
+
+    override func tearDown() {
+        Tweener.default.killAll()
+        super.tearDown()
+    }
+
+    // MARK: Properties
 
     func testTextColor() {
         let label = UILabel()
-        let property = UILabelTweenProperty.textColor(UIColor.lightGray)
-        assertValidInterpolation(of: property, on: label) {
-            (lhs: UILabelTweenProperty, rhs: UILabelTweenProperty) -> Bool in
-
-            switch (lhs, rhs) {
-            case (.textColor(let lhsColor), .textColor(let rhsColor)):
-                return self.isEqual(lhsColor, rhsColor)
-            default:
-                return false
-            }
-        }
+        label.textColor = nil
+        let value = UIColor.red
+        let property = UILabel.TweenPropertyDerived.textColor(value)
+        property.animation(label)(1.0)
+        XCTAssertEqual(label.textColor, value)
     }
 
     func testHighlightedTextColor() {
         let label = UILabel()
-        let property = UILabelTweenProperty.highlightedTextColor(UIColor.gray)
-        assertValidInterpolation(of: property, on: label) {
-            (lhs: UILabelTweenProperty, rhs: UILabelTweenProperty) -> Bool in
-
-            switch (lhs, rhs) {
-            case (.highlightedTextColor(let lhsColor), .highlightedTextColor(let rhsColor)):
-                return self.isEqual(lhsColor, rhsColor)
-            default:
-                return false
-            }
-        }
+        label.highlightedTextColor = nil
+        let value = UIColor.blue
+        let property = UILabel.TweenPropertyDerived.highlightedTextColor(value)
+        property.animation(label)(1.0)
+        XCTAssertEqual(label.highlightedTextColor, value)
     }
 
     func testShadowColor() {
         let label = UILabel()
-        let property = UILabelTweenProperty.shadowColor(UIColor.darkGray)
-        assertValidInterpolation(of: property, on: label) {
-            (lhs: UILabelTweenProperty, rhs: UILabelTweenProperty) -> Bool in
-
-            switch (lhs, rhs) {
-            case (.shadowColor(let lhsColor), .shadowColor(let rhsColor)):
-                return self.isEqual(lhsColor, rhsColor)
-            default:
-                return false
-            }
-        }
+        label.shadowColor = nil
+        let value = UIColor.green
+        let property = UILabel.TweenPropertyDerived.shadowColor(value)
+        property.animation(label)(1.0)
+        XCTAssertEqual(label.shadowColor, value)
     }
 
     func testShadowOffset() {
         let label = UILabel()
-        let property = UILabelTweenProperty.shadowOffset(CGSize(width: 2.0, height: 2.0))
-        assertValidInterpolation(of: property, on: label)
+        let value = CGSize(width: 2.0, height: 2.0)
+        let property = UILabel.TweenPropertyDerived.shadowOffset(value)
+        property.animation(label)(1.0)
+        XCTAssertEqual(label.shadowOffset, value)
     }
 
     @available(iOS 6.0, *)
     func testMinimumScaleFactor() {
         let label = UILabel()
-        let property = UILabelTweenProperty.minimumScaleFactor(0.5)
-        assertValidInterpolation(of: property, on: label)
+        let value = CGFloat(0.5)
+        let property = UILabel.TweenPropertyDerived.minimumScaleFactor(value)
+        property.animation(label)(1.0)
+        XCTAssertEqual(label.minimumScaleFactor, value)
     }
 
     @available(iOS 6.0, *)
     func testPreferredMaxLayoutWidth() {
         let label = UILabel()
-        let property = UILabelTweenProperty.preferredMaxLayoutWidth(100.0)
-        assertValidInterpolation(of: property, on: label)
+        let value = CGFloat(100.0)
+        let property = UILabel.TweenPropertyDerived.preferredMaxLayoutWidth(value)
+        property.animation(label)(1.0)
+        XCTAssertEqual(label.preferredMaxLayoutWidth, value)
     }
 
-    func testInvalidInterpolation() {
+    // MARK: Tweening
+
+    func testTweenTo() {
         let label = UILabel()
-        let property = UILabelTweenProperty.shadowOffset(CGSize(width: 2.0, height: 2.0))
-        let otherProperty = UILabelTweenProperty.shadowColor(UIColor.darkGray)
-        assertInvalidInterpolation(of: property, to: otherProperty, on: label)
+        let tween = label.tween(to: .textColor(.white))
+
+        guard let animator = tween as? TweenAnimator<UILabel> else {
+            XCTFail()
+            return
+        }
+
+        animator.to(.highlightedTextColor(.black))
+
+        XCTAssertEqual(Tweener.default.count, 1)
+        XCTAssertEqual(animator.targets, [label])
+        XCTAssertEqual(animator.tweens.count, 2)
+        XCTAssertFalse(animator.tweens[0].reversed)
+        XCTAssertFalse(animator.tweens[1].reversed)
+    }
+
+    func testTweenFrom() {
+        let label = UILabel()
+        let tween = label.tween(from: .textColor(.white))
+
+        guard let animator = tween as? TweenAnimator<UILabel> else {
+            XCTFail()
+            return
+        }
+
+        animator.from(.highlightedTextColor(.black))
+
+        XCTAssertEqual(Tweener.default.count, 1)
+        XCTAssertEqual(animator.targets, [label])
+        XCTAssertEqual(animator.tweens.count, 2)
+        XCTAssertTrue(animator.tweens[0].reversed)
+        XCTAssertTrue(animator.tweens[1].reversed)
     }
 
 }
