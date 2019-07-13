@@ -8,7 +8,7 @@ readme: README.md
 source_directory: ./STween
 clean: true
 skip_undocumented: true
-exclude: [/*/Conformance*, /*/FloatRepresentable*]
+exclude: [/*/FloatRepresentable*]
 custom_categories:
   - name: Tweening
     children: [Tween, Tweenable, TweenableProperty, TweenAnimator, Tweener, TweenState]
@@ -18,3 +18,5 @@ custom_categories:
     children: [Interpolatable]
   - name: Settings
     children: [Defaults]
+  - name: Conformance
+    children: [CALayer, NSLayoutConstraint, UIButton, UILabel, UITextField, UIView]
