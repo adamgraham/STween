@@ -237,14 +237,14 @@ extension EaseFunction {
     /// - parameter x: The `x` coordinate to which the `y` value is returned, between [0, 1].
     /// - returns: The `y` value for coordinate `x`, between [0, 1].
     public static func circIn(_ x: Double) -> Double {
-        return 1 - sqrt( 1 - pow( x, 2 ) )
+        return 1.0 - sqrt(1.0 - pow(x, 2.0))
     }
 
     /// Calculates the `y` value for coordinate `x` using circular-out easing.
     /// - parameter x: The `x` coordinate to which the `y` value is returned, between [0, 1].
     /// - returns: The `y` value for coordinate `x`, between [0, 1].
     public static func circOut(_ x: Double) -> Double {
-        return sqrt( 1 - pow( x - 1, 2 ) )
+        return sqrt(1.0 - pow(x - 1.0, 2.0))
     }
 
     /// Calculates the `y` value for coordinate `x` using circular-in-out easing.
