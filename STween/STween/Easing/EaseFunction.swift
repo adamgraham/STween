@@ -339,17 +339,17 @@ extension EaseFunction {
         var x = x
 
         if (x < 1.0 / 2.75) {
-            return 7.5625 * x * x;
+            return 7.5625 * x * x
         } else if (x < 2.0 / 2.75) {
             x -= (1.5 / 2.75)
-            return 7.5625 * x * x + 0.75;
+            return 7.5625 * x * x + 0.75
         } else if (x < 2.5 / 2.75) {
             x -= (2.25 / 2.75)
-            return 7.5625 * x * x + 0.9375;
+            return 7.5625 * x * x + 0.9375
         }
 
         x -= (2.625 / 2.75)
-        return 7.5625 * x * x + 0.984375;
+        return 7.5625 * x * x + 0.984375
     }
 
     /// Calculates the `y` value for coordinate `x` using bounce-in-out easing.
