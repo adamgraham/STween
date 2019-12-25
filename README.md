@@ -8,7 +8,7 @@ For detailed usage and documentation, please visit the [STween Reference](https:
 
 - iOS 10.0+
 - Swift 5.0+
-- Xcode 10.2+
+- Xcode 11.0+
 
 ## Usage
 
